@@ -1,0 +1,483 @@
+
+[2026-08-07T05:48:38.093366Z] COMMAND ["docker", "compose", "-p", "sonnet5-fixed-v2-20260807", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--output-dir", "/app/outputs/cells/ackley_standard_sonnet5_fixed_v2_r02/eval", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "ackley_standard_sonnet5_fixed_v2_r02-20260803", "--subagent-model", "anthropic:claude-sonnet-5"]
+ Container sonnet5-fixed-v2-20260807-eval-run-942c398cba37 Creating 
+ Container sonnet5-fixed-v2-20260807-eval-run-942c398cba37 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+05:49:00.534 evaluate bo_mcp_graph_eval
+05:49:00.535   case: synthetic_ackley_6d
+05:49:00.535     execute _run_case
+mkdir -p failed for path /root/.config/matplotlib: [Errno 30] Read-only file system: '/root/.config'
+Matplotlib created a temporary cache directory at /tmp/matplotlib-g5pdanrj because there was an issue with the default path (/root/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+05:49:22.397       agent run
+05:49:22.403         chat gpt-5.4
+05:49:23.850           POST api.openai.com/v1/responses
+05:49:33.690         running tool: task
+05:49:33.735 agent run
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+05:49:33.744         chat gpt-5.4
+05:49:34.073           POST api.openai.com/v1/responses
+             agent run
+05:49:34.078   chat claude-sonnet-5
+05:49:34.799     POST api.anthropic.com/v1/messages ? beta='true'
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+05:49:35.499         running tool: wait_tasks
+             agent run
+05:49:39.039   running tool: read_memory
+05:49:39.096   chat claude-sonnet-5
+05:49:39.206     POST api.anthropic.com/v1/messages ? beta='true'
+05:49:46.016   running tool: write_todos
+05:49:46.102   chat claude-sonnet-5
+05:49:46.284     POST api.anthropic.com/v1/messages ? beta='true'
+05:49:51.073   running tool: update_todo_status
+05:49:51.075   running tool: execute
+05:49:52.592   chat claude-sonnet-5
+05:49:52.879     POST api.anthropic.com/v1/messages ? beta='true'
+05:49:55.838   running tool: inspect_bo_mcp_openapi_overview
+05:49:55.925   chat claude-sonnet-5
+05:49:56.049     POST api.anthropic.com/v1/messages ? beta='true'
+05:49:59.153   running tool: inspect_bo_mcp_openapi_operation
+05:49:59.221   chat claude-sonnet-5
+05:49:59.352     POST api.anthropic.com/v1/messages ? beta='true'
+05:50:05.192   running tool: inspect_bo_mcp_openapi_overview
+05:50:05.193   running tool: inspect_bo_mcp_openapi_overview
+05:50:05.193   running tool: inspect_bo_mcp_openapi_overview
+05:50:05.339   chat claude-sonnet-5
+05:50:05.448     POST api.anthropic.com/v1/messages ? beta='true'
+05:50:09.358   running tool: inspect_bo_mcp_openapi_operation
+05:50:09.359   running tool: grep
+05:50:09.433   chat claude-sonnet-5
+05:50:09.520     POST api.anthropic.com/v1/messages ? beta='true'
+05:50:14.785   running tool: execute
+05:50:15.484   chat claude-sonnet-5
+05:50:16.421     POST api.anthropic.com/v1/messages ? beta='true'
+05:50:19.887   running tool: execute
+05:50:20.584   chat claude-sonnet-5
+05:50:20.732     POST api.anthropic.com/v1/messages ? beta='true'
+05:50:24.494   running tool: update_todo_statuses
+05:50:24.628   chat claude-sonnet-5
+05:50:24.823     POST api.anthropic.com/v1/messages ? beta='true'
+05:50:26.766   running tool: read_todos
+05:50:26.858   chat claude-sonnet-5
+05:50:27.307     POST api.anthropic.com/v1/messages ? beta='true'
+05:50:30.649   running tool: update_todo_statuses
+05:50:31.126   chat claude-sonnet-5
+05:50:31.420     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:04.216   running tool: execute
+05:52:04.976   chat claude-sonnet-5
+05:52:05.104     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:08.113   running tool: execute
+05:52:09.643   chat claude-sonnet-5
+05:52:09.831     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:12.744   running tool: update_todo_statuses
+05:52:12.857   chat claude-sonnet-5
+05:52:13.096     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:17.083   running tool: write_file
+05:52:17.228   chat claude-sonnet-5
+05:52:17.529     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:20.879   running tool: write_file
+05:52:20.962   chat claude-sonnet-5
+05:52:21.157     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:23.108   running tool: update_todo_statuses
+05:52:23.263   chat claude-sonnet-5
+05:52:23.571     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:29.311   running tool: write_file
+05:52:29.403   chat claude-sonnet-5
+05:52:30.444     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:33.559   running tool: update_todo_statuses
+05:52:33.626   chat claude-sonnet-5
+05:52:33.826     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:40.101   running tool: write_file
+05:52:40.172   chat claude-sonnet-5
+05:52:40.340     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:42.726   running tool: read_file
+05:52:42.794   chat claude-sonnet-5
+05:52:42.964     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:45.137   running tool: hashline_edit
+05:52:45.216   chat claude-sonnet-5
+05:52:45.436     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:56.272   running tool: write_file
+05:52:56.427   chat claude-sonnet-5
+05:52:56.698     POST api.anthropic.com/v1/messages ? beta='true'
+05:52:59.978   running tool: update_todo_statuses
+05:53:00.049   chat claude-sonnet-5
+05:53:00.217     POST api.anthropic.com/v1/messages ? beta='true'
+05:53:12.857   running tool: write_file
+05:53:12.911   chat claude-sonnet-5
+05:53:13.067     POST api.anthropic.com/v1/messages ? beta='true'
+05:53:16.684   running tool: update_todo_statuses
+05:53:16.725   chat claude-sonnet-5
+05:53:16.855     POST api.anthropic.com/v1/messages ? beta='true'
+05:53:25.637   running tool: execute
+05:53:26.677   chat claude-sonnet-5
+05:53:26.858     POST api.anthropic.com/v1/messages ? beta='true'
+05:53:31.528   running tool: execute
+05:53:32.870   chat claude-sonnet-5
+05:53:33.089     POST api.anthropic.com/v1/messages ? beta='true'
+05:53:40.883   running tool: execute
+05:53:41.775   chat claude-sonnet-5
+05:53:42.779     POST api.anthropic.com/v1/messages ? beta='true'
+05:53:48.541   running tool: execute
+05:53:50.807   chat claude-sonnet-5
+05:53:50.951     POST api.anthropic.com/v1/messages ? beta='true'
+05:53:55.130   running tool: execute
+05:53:56.073   chat claude-sonnet-5
+05:53:56.298     POST api.anthropic.com/v1/messages ? beta='true'
+05:54:03.037   running tool: execute
+05:54:04.748   chat claude-sonnet-5
+05:54:05.113     POST api.anthropic.com/v1/messages ? beta='true'
+05:54:11.286   running tool: execute
+05:54:12.287   chat claude-sonnet-5
+05:54:12.826     POST api.anthropic.com/v1/messages ? beta='true'
+05:54:24.749   running tool: execute
+05:54:25.991   chat claude-sonnet-5
+05:54:26.713     POST api.anthropic.com/v1/messages ? beta='true'
+05:54:30.929   running tool: execute
+05:54:31.959   chat claude-sonnet-5
+05:54:32.207     POST api.anthropic.com/v1/messages ? beta='true'
+05:54:40.033   running tool: execute
+05:54:41.092   chat claude-sonnet-5
+05:54:41.311     POST api.anthropic.com/v1/messages ? beta='true'
+05:55:04.764   running tool: write_file
+05:55:04.806   chat claude-sonnet-5
+05:55:04.970     POST api.anthropic.com/v1/messages ? beta='true'
+05:55:16.446   running tool: execute
+05:55:17.799   chat claude-sonnet-5
+05:55:17.955     POST api.anthropic.com/v1/messages ? beta='true'
+05:55:21.141   running tool: inspect_bo_mcp_openapi_operation
+05:55:21.242   chat claude-sonnet-5
+05:55:21.439     POST api.anthropic.com/v1/messages ? beta='true'
+05:55:36.116   running tool: read_file
+05:55:36.158   chat claude-sonnet-5
+05:55:37.125     POST api.anthropic.com/v1/messages ? beta='true'
+05:55:42.598   running tool: hashline_edit
+05:55:42.652   chat claude-sonnet-5
+05:55:42.935     POST api.anthropic.com/v1/messages ? beta='true'
+05:55:46.073   running tool: read_file
+05:55:46.856   chat claude-sonnet-5
+05:55:47.623     POST api.anthropic.com/v1/messages ? beta='true'
+05:55:52.524   running tool: hashline_edit
+05:55:52.603   chat claude-sonnet-5
+05:55:52.857     POST api.anthropic.com/v1/messages ? beta='true'
+05:55:58.153   running tool: read_file
+05:55:58.448   chat claude-sonnet-5
+05:55:58.722     POST api.anthropic.com/v1/messages ? beta='true'
+05:56:07.035   running tool: hashline_edit
+05:56:07.113   chat claude-sonnet-5
+05:56:07.697     POST api.anthropic.com/v1/messages ? beta='true'
+05:56:12.238   running tool: read_file
+05:56:12.480   chat claude-sonnet-5
+05:56:12.713     POST api.anthropic.com/v1/messages ? beta='true'
+05:56:14.887   running tool: hashline_edit
+05:56:14.930   chat claude-sonnet-5
+05:56:16.428     POST api.anthropic.com/v1/messages ? beta='true'
+05:56:19.723   running tool: execute
+05:56:22.439   chat claude-sonnet-5
+05:56:22.692     POST api.anthropic.com/v1/messages ? beta='true'
+05:56:27.316   running tool: update_todo_statuses
+05:56:27.370   chat claude-sonnet-5
+05:56:27.615     POST api.anthropic.com/v1/messages ? beta='true'
+05:56:34.206   running tool: execute
+05:56:35.410   chat claude-sonnet-5
+05:56:35.584     POST api.anthropic.com/v1/messages ? beta='true'
+05:56:55.169   running tool: write_file
+05:56:55.211   chat claude-sonnet-5
+05:56:56.488     POST api.anthropic.com/v1/messages ? beta='true'
+05:56:59.762   running tool: execute
+05:57:03.796   chat claude-sonnet-5
+05:57:04.004     POST api.anthropic.com/v1/messages ? beta='true'
+05:57:07.943   running tool: update_todo_statuses
+05:57:07.983   chat claude-sonnet-5
+05:57:08.269     POST api.anthropic.com/v1/messages ? beta='true'
+05:57:16.814   running tool: write_file
+05:57:16.855   chat claude-sonnet-5
+05:57:17.527     POST api.anthropic.com/v1/messages ? beta='true'
+05:57:21.238   running tool: update_todo_statuses
+05:57:21.283   chat claude-sonnet-5
+05:57:21.496     POST api.anthropic.com/v1/messages ? beta='true'
+05:57:45.611   running tool: write_file
+05:57:45.670   chat claude-sonnet-5
+05:57:45.844     POST api.anthropic.com/v1/messages ? beta='true'
+05:57:49.563   running tool: update_todo_statuses
+05:57:49.652   chat claude-sonnet-5
+05:57:49.876     POST api.anthropic.com/v1/messages ? beta='true'
+05:57:54.215   running tool: run_in_background
+05:57:54.291   chat claude-sonnet-5
+05:57:54.525     POST api.anthropic.com/v1/messages ? beta='true'
+05:57:56.118   running tool: read_output
+05:57:56.173   chat claude-sonnet-5
+05:57:56.396     POST api.anthropic.com/v1/messages ? beta='true'
+05:57:58.007   running tool: execute
+05:58:06.754   chat claude-sonnet-5
+05:58:07.277     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:08.855   running tool: read_output
+05:58:08.907   chat claude-sonnet-5
+05:58:10.453     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:14.075   running tool: execute
+05:58:17.821   chat claude-sonnet-5
+05:58:18.506     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:20.676   running tool: read_output
+05:58:20.717   chat claude-sonnet-5
+05:58:21.046     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:23.684   running tool: execute
+05:58:30.047   chat claude-sonnet-5
+05:58:30.237     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:34.729   running tool: read_output
+05:58:34.770   chat claude-sonnet-5
+05:58:35.192     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:40.776   running tool: execute
+05:58:40.849   chat claude-sonnet-5
+05:58:41.329     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:46.194   running tool: execute
+05:58:46.995   chat claude-sonnet-5
+05:58:47.325     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:51.583   running tool: run_in_background
+05:58:51.653   chat claude-sonnet-5
+05:58:52.120     POST api.anthropic.com/v1/messages ? beta='true'
+05:58:55.298   running tool: execute
+05:58:58.427   chat claude-sonnet-5
+05:58:58.678     POST api.anthropic.com/v1/messages ? beta='true'
+05:59:00.409   running tool: execute
+05:59:03.522   chat claude-sonnet-5
+05:59:03.955     POST api.anthropic.com/v1/messages ? beta='true'
+05:59:08.647   running tool: read_output
+05:59:08.781   chat claude-sonnet-5
+05:59:09.041     POST api.anthropic.com/v1/messages ? beta='true'
+05:59:13.844   running tool: execute
+05:59:13.925   chat claude-sonnet-5
+05:59:14.177     POST api.anthropic.com/v1/messages ? beta='true'
+05:59:18.447   running tool: execute
+05:59:18.506   chat claude-sonnet-5
+05:59:18.695     POST api.anthropic.com/v1/messages ? beta='true'
+05:59:23.195   running tool: execute
+05:59:24.567   chat claude-sonnet-5
+05:59:24.776     POST api.anthropic.com/v1/messages ? beta='true'
+05:59:28.137   running tool: update_todo_statuses
+05:59:28.194   chat claude-sonnet-5
+05:59:28.414     POST api.anthropic.com/v1/messages ? beta='true'
+05:59:42.485   running tool: write_memory
+05:59:42.551   chat claude-sonnet-5
+05:59:42.801     POST api.anthropic.com/v1/messages ? beta='true'
+05:59:52.863   running tool: update_todo_status
+05:59:52.908   chat claude-sonnet-5
+05:59:53.090     POST api.anthropic.com/v1/messages ? beta='true'
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+06:00:13.379         chat gpt-5.4
+06:00:13.465           POST api.openai.com/v1/responses
+06:00:15.888         running tool: bash_exec
+06:00:15.896 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+06:00:15.908           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+06:00:15.974         chat gpt-5.4
+06:00:16.060           POST api.openai.com/v1/responses
+06:00:19.645         running tool: bash_exec
+06:00:19.740         chat gpt-5.4
+06:00:19.859           POST api.openai.com/v1/responses
+06:00:22.697         running tool: bash_exec
+06:00:22.798         chat gpt-5.4
+06:00:24.087           POST api.openai.com/v1/responses
+06:00:31.734         running tool: start_monitor
+06:00:31.775         chat gpt-5.4
+06:00:31.862           POST api.openai.com/v1/responses
+06:00:35.461         running tool: list_monitors
+06:00:35.513         chat gpt-5.4
+06:00:35.648           POST api.openai.com/v1/responses
+06:00:38.998         running tool: bash_exec
+06:00:49.551         chat gpt-5.4
+06:00:49.650           POST api.openai.com/v1/responses
+06:00:51.022         running tool: list_monitors
+06:00:51.063         chat gpt-5.4
+06:00:51.171           POST api.openai.com/v1/responses
+06:00:53.017         running tool: bash_exec
+06:01:13.404         chat gpt-5.4
+06:01:13.520           POST api.openai.com/v1/responses
+06:01:16.775         running tool: list_monitors
+06:01:16.816         chat gpt-5.4
+06:01:17.767           POST api.openai.com/v1/responses
+06:01:21.621         running tool: bash_exec
+06:01:41.940         chat gpt-5.4
+06:01:42.173           POST api.openai.com/v1/responses
+06:01:44.521         running tool: list_monitors
+06:01:44.588         chat gpt-5.4
+06:01:44.734           POST api.openai.com/v1/responses
+06:01:48.073         running tool: bash_exec
+06:02:04.738         chat gpt-5.4
+06:02:04.848           POST api.openai.com/v1/responses
+06:02:06.982         running tool: list_monitors
+06:02:07.026         chat gpt-5.4
+06:02:07.131           POST api.openai.com/v1/responses
+06:02:08.781         running tool: stop_monitor
+06:02:08.824         chat gpt-5.4
+06:02:08.918           POST api.openai.com/v1/responses
+06:02:12.330         running tool: bash_exec
+06:02:12.333         running tool: bash_exec
+06:02:12.442         chat gpt-5.4
+06:02:12.547           POST api.openai.com/v1/responses
+06:02:17.250         running tool: bash_exec
+06:02:17.338         chat gpt-5.4
+06:02:17.470           POST api.openai.com/v1/responses
+06:02:24.644         running tool: python_repl
+06:02:24.799         chat gpt-5.4
+06:02:24.932           POST api.openai.com/v1/responses
+06:02:34.733         running tool: task
+06:02:34.774 agent run
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+06:02:34.783         chat gpt-5.4
+06:02:34.881           POST api.openai.com/v1/responses
+             agent run
+06:02:34.891   chat claude-sonnet-5
+06:02:35.062     POST api.anthropic.com/v1/messages ? beta='true'
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+06:02:36.550         running tool: wait_tasks
+             agent run
+06:02:45.531   running tool: read_memory
+06:02:45.577   chat claude-sonnet-5
+06:02:45.746     POST api.anthropic.com/v1/messages ? beta='true'
+06:02:48.331   running tool: ls
+06:02:48.386   chat claude-sonnet-5
+06:02:48.558     POST api.anthropic.com/v1/messages ? beta='true'
+06:02:57.609   running tool: execute
+06:02:57.686   chat claude-sonnet-5
+06:02:57.895     POST api.anthropic.com/v1/messages ? beta='true'
+06:03:04.698   running tool: execute
+06:03:05.436   chat claude-sonnet-5
+06:03:05.618     POST api.anthropic.com/v1/messages ? beta='true'
+06:03:20.245   running tool: execute
+06:03:20.954   chat claude-sonnet-5
+06:03:21.152     POST api.anthropic.com/v1/messages ? beta='true'
+06:03:59.018   running tool: update_todo_status
+06:03:59.090   chat claude-sonnet-5
+06:03:59.502     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:04.955   running tool: write_todos
+06:04:04.995   chat claude-sonnet-5
+06:04:05.159     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:06.990   running tool: update_todo_status
+06:04:07.031   chat claude-sonnet-5
+06:04:07.217     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:08.873   running tool: read_todos
+06:04:08.913   chat claude-sonnet-5
+06:04:09.089     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:11.305   running tool: update_todo_status
+06:04:11.472   chat claude-sonnet-5
+06:04:12.678     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:27.074   running tool: write_file
+06:04:27.129   chat claude-sonnet-5
+06:04:27.351     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:31.228   running tool: update_todo_statuses
+06:04:31.285   chat claude-sonnet-5
+06:04:31.505     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:49.142   running tool: write_file
+06:04:49.290   chat claude-sonnet-5
+06:04:49.504     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:52.644   running tool: execute
+06:04:52.867   chat claude-sonnet-5
+06:04:53.051     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:55.778   running tool: update_todo_statuses
+06:04:55.818   chat claude-sonnet-5
+06:04:56.005     POST api.anthropic.com/v1/messages ? beta='true'
+06:04:58.207   running tool: read_file
+06:04:58.251   chat claude-sonnet-5
+06:04:58.485     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:03.160   running tool: hashline_edit
+06:05:03.226   chat claude-sonnet-5
+06:05:03.447     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:07.131   running tool: execute
+06:05:07.502   chat claude-sonnet-5
+06:05:07.773     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:10.623   running tool: update_todo_statuses
+06:05:10.694   chat claude-sonnet-5
+06:05:10.949     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:15.942   running tool: read_file
+06:05:16.339   chat claude-sonnet-5
+06:05:17.357     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:24.217   running tool: write_file
+06:05:24.295   chat claude-sonnet-5
+06:05:24.489     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:27.460   running tool: update_todo_statuses
+06:05:27.506   chat claude-sonnet-5
+06:05:27.787     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:30.713   running tool: read_file
+06:05:30.760   chat claude-sonnet-5
+06:05:31.095     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:43.011   running tool: hashline_edit
+06:05:43.088   chat claude-sonnet-5
+06:05:43.314     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:46.471   running tool: update_todo_statuses
+06:05:46.517   chat claude-sonnet-5
+06:05:46.720     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:50.299   running tool: execute
+06:05:51.922   chat claude-sonnet-5
+06:05:52.129     POST api.anthropic.com/v1/messages ? beta='true'
+06:05:58.043   running tool: execute
+06:05:58.202   chat claude-sonnet-5
+06:05:58.433     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:03.222   running tool: execute
+06:06:03.922   chat claude-sonnet-5
+06:06:04.150     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:08.738   running tool: execute
+06:06:08.985   chat claude-sonnet-5
+06:06:09.258     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:13.305   running tool: execute
+06:06:16.185   chat claude-sonnet-5
+06:06:17.209     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:22.733   running tool: read_file
+06:06:22.775   chat claude-sonnet-5
+06:06:23.004     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:27.643   running tool: execute
+06:06:29.445   chat claude-sonnet-5
+06:06:29.723     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:33.938   running tool: execute
+06:06:34.015   chat claude-sonnet-5
+06:06:34.246     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:39.374   running tool: execute
+06:06:40.081   chat claude-sonnet-5
+06:06:40.321     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:42.656   running tool: update_todo_status
+06:06:42.712   chat claude-sonnet-5
+06:06:42.967     POST api.anthropic.com/v1/messages ? beta='true'
+06:06:47.899   running tool: update_todo_status
+06:06:47.974   chat claude-sonnet-5
+06:06:48.221     POST api.anthropic.com/v1/messages ? beta='true'
+06:07:02.190   running tool: write_memory
+06:07:02.232   chat claude-sonnet-5
+06:07:02.567     POST api.anthropic.com/v1/messages ? beta='true'
+06:07:09.622   running tool: update_todo_status
+06:07:09.700   chat claude-sonnet-5
+06:07:11.063     POST api.anthropic.com/v1/messages ? beta='true'
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+06:07:30.106         chat gpt-5.4
+06:07:30.537           POST api.openai.com/v1/responses
+06:07:33.788         running tool: bash_exec
+06:07:33.790         running tool: python_repl
+06:07:34.034         chat gpt-5.4
+06:07:34.241           POST api.openai.com/v1/responses
+06:07:42.071         running tool: python_repl
+06:07:42.304         chat gpt-5.4
+06:07:43.405           POST api.openai.com/v1/responses
+[2026-08-07T06:08:55.459003Z] EXIT 0

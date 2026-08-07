@@ -1,0 +1,34 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+   Building grafico @ file:///app
+  × Failed to build `grafico @ file:///app`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_editable` failed (exit status: 1)
+
+      [stdout]
+      running egg_info
+
+      [stderr]
+      error: Cannot update time stamp of directory 'grafico.egg-info'
+
+
+hint: Build failures usually indicate a problem with the package or the build environment
+
+=== stderr (model-visible) ===
+   Building grafico @ file:///app
+  × Failed to build `grafico @ file:///app`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_editable` failed (exit status: 1)
+
+      [stdout]
+      running egg_info
+
+      [stderr]
+      error: Cannot update time stamp of directory 'grafico.egg-info'
+
+
+hint: Build failures usually indicate a problem with the package or the build environment

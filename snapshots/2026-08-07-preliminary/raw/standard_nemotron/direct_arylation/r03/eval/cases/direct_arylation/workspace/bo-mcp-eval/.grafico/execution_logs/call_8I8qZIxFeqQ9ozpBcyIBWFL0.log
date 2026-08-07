@@ -1,0 +1,28 @@
+exit_code=0
+
+=== stdout (raw) ===
+(self, campaign_id: 'str', *, status_filter: 'str | None' = None, limit: 'int' = 500) -> 'list[dict[str, Any]]'
+    def query_suggestions(
+        self,
+        campaign_id: str,
+        *,
+        status_filter: str | None = None,
+        limit: int = 500,
+    ) -> list[dict[str, Any]]:
+        response = self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{campaign_id}/query",
+            json={
+                "status_filter": status_filter,
+                "limit": limit,
+                "verbosity": "standard",
+            },
+        )
+        return list(response.get("suggestions") or [])
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

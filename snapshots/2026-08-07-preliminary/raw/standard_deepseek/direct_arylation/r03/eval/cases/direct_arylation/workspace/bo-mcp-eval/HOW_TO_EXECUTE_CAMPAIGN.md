@@ -1,0 +1,126 @@
+# HOW TO EXECUTE: Direct Arylation Yield Optimisation BO-MCP Campaign
+
+## Overview
+
+Bayesian optimisation of measured yield (%) for a direct arylation reaction.
+The oracle is a table-lookup REST API.  The campaign uses BO-MCP with the
+BoTorch backend, Noisy Expected Improvement acquisition, and a fully
+categorical 5-parameter search space (1 728 combinations).
+
+**Campaign marker** (embedded in every campaign name):
+`akg-eval-b288ac68d8794799b65df188a7ae4ea4`
+
+## Required Environment Variables
+
+| Variable                  | Purpose                              |
+|---------------------------|--------------------------------------|
+| `BO_MCP_API_URL`          | BO-MCP REST API base URL             |
+| `BO_MCP_API_KEY`          | BO-MCP API key                       |
+| `DIRECT_ARYLATION_API_URL`| Oracle base URL for yield evaluation |
+
+All three **must** be set; the script fails fast if any is missing.
+
+## Execution Command
+
+```bash
+uv run python run_direct_arylation_bo.py \
+    --max-attempts 60 \
+    --poll-s 180 \
+    --heartbeat-s 1800 \
+    --artifact-dir artifacts_direct_arylation
+```
+
+### Resume a previous run
+
+```bash
+uv run python run_direct_arylation_bo.py \
+    --campaign-id <campaign_id> \
+    --max-attempts 60 \
+    --artifact-dir artifacts_direct_arylation
+```
+
+The script auto-detects the campaign status (paused/completed) and applies
+the correct lifecycle action (resume/reopen).
+
+## Stop File
+
+- **Location**: `STOP` in the current working directory.
+- **Behaviour**: Create this file to request a graceful shutdown at the
+  next iteration boundary.  The script deletes it on detection so a
+  subsequent resume is not blocked by a stale marker.
+- The stop file is checked **before** generating each new suggestion.
+
+## Monitor Tags
+
+The script prints unbuffered tagged lines suitable for monitor matching:
+
+| Tag          | Meaning                                          |
+|--------------|--------------------------------------------------|
+| `[EVENT]`    | State changes, lifecycle actions, loop decisions |
+| `[ALERT]`    | Failures, stop conditions, submission rejections |
+| `[RESULT]`   | Per-experiment yield and parameter summary       |
+| `[HEARTBEAT]`| Liveness ping (every `--heartbeat-s` seconds)    |
+
+## Output Artifacts
+
+All artifacts land in `--artifact-dir` (default: `artifacts_direct_arylation/`):
+
+| File               | Content                                              |
+|--------------------|------------------------------------------------------|
+| `campaign_id.txt`  | The BO-MCP campaign id (for resume)                  |
+| `results.jsonl`    | Append-only log of every attempted evaluation        |
+| `summary.json`     | Final aggregate: best/mean/worst yield, counts       |
+| `diagnostics.json` | BO-MCP diagnostics (fetched once at end)             |
+
+## Campaign Behaviour
+
+1. **Create** a new campaign (or resume an existing one via `--campaign-id`).
+2. **Loop** until 60 attempted evaluations are recorded:
+   - Check stop file.
+   - Ask BO-MCP `next_action` — only proceed if it says `bo_generate_suggestions`.
+   - Generate one suggestion.
+   - Call the oracle at `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate`.
+   - Submit the result to BO-MCP (success) or reject the suggestion (failure).
+   - Failed oracle calls **count** toward the 60-attempt budget.
+3. **Pause** the campaign at end of invocation (never terminate).
+4. **Print** `BO_MCP_CAMPAIGN_ID=<campaign_id>` as the final line.
+
+## Finding the Campaign ID
+
+The campaign id is printed:
+- At creation: `[EVENT] BO_MCP_CAMPAIGN_ID=<cid>`
+- At end: `BO_MCP_CAMPAIGN_ID=<cid>` (final stdout line)
+- In `artifacts_direct_arylation/campaign_id.txt`
+
+## Reading Final Results
+
+```bash
+# Best yield and summary:
+cat artifacts_direct_arylation/summary.json
+
+# All evaluated candidates:
+cat artifacts_direct_arylation/results.jsonl
+```
+
+## Search Space
+
+| Parameter        | Type        | Values                                                                 |
+|------------------|-------------|------------------------------------------------------------------------|
+| `base`           | categorical | Potassium acetate, Potassium pivalate, Cesium acetate, Cesium pivalate |
+| `ligand`         | categorical | BrettPhos, Di-tert-butylphenylphosphine, (t-Bu)PhCPhos, Tricyclohexylphosphine, PPh3, XPhos, P(2-furyl)3, Methyldiphenylphosphine, 1268824-69-6, JackiePhos, SCHEMBL15068049, Me2PPh |
+| `solvent`        | categorical | DMAc, Butyornitrile, Butyl Ester, p-Xylene                             |
+| `concentration`  | categorical | 0.057, 0.1, 0.153                                                      |
+| `temperature_c`  | categorical | 90, 105, 120                                                            |
+
+Total: 4 × 12 × 4 × 3 × 3 = **1 728** combinations.
+
+## BO Configuration
+
+| Setting              | Value        |
+|----------------------|--------------|
+| Backend              | BoTorch      |
+| Acquisition          | Noisy EI     |
+| Batch size           | 1            |
+| Initial design size  | 10 (Sobol)   |
+| Max observations     | 60           |
+| Random seed          | 42           |

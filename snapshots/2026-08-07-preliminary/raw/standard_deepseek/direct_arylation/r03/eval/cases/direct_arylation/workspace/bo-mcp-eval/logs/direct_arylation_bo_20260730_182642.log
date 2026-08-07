@@ -1,0 +1,387 @@
+[EVENT] Validating intake for new campaign 'direct-arylation-yield-akg-eval-b288ac68d8794799b65df188a7ae4ea4'
+18:26:44.082 POST api/api/v1/campaigns/validate
+[EVENT] Creating campaign (idempotency_key=create-direct-arylation-yield-akg-eval-b288ac68d8794799b65df188a7ae4ea4-827d1cc3cc)
+18:26:44.089 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Created campaign aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+[EVENT] BO_MCP_CAMPAIGN_ID=aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:26:44.170 GET api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+[EVENT] Campaign aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a: 0 results already recorded, budget=60
+18:26:44.177 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=No results yet — generate initial suggestions to start optimization.  n_results=0
+18:26:44.187 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:26:44.232 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=001  yield=68.17%  base=Cesium pivalate  ligand=P(2-furyl)3  solvent=DMAc  conc=0.153  T=120°C
+18:26:44.236 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:26:49.289 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 1 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=1
+18:26:49.303 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:26:49.586 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=002  yield=0.00%  base=Potassium pivalate  ligand=Me2PPh  solvent=Butyornitrile  conc=0.1  T=105°C
+18:26:49.589 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:26:54.643 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 2 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=2
+18:26:54.655 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:26:54.724 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=003  yield=5.67%  base=Potassium acetate  ligand=PPh3  solvent=Butyl Ester  conc=0.057  T=120°C
+18:26:54.728 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:26:59.781 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 3 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=3
+18:26:59.794 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:00.214 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=004  yield=27.80%  base=Potassium pivalate  ligand=XPhos  solvent=Butyornitrile  conc=0.057  T=120°C
+18:27:00.217 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:27:05.277 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 4 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=4
+18:27:05.290 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:05.368 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=005  yield=12.44%  base=Cesium acetate  ligand=(t-Bu)PhCPhos  solvent=DMAc  conc=0.153  T=90°C
+18:27:05.371 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:27:10.425 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 5 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=5
+18:27:10.438 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:10.916 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=006  yield=18.55%  base=Potassium acetate  ligand=BrettPhos  solvent=p-Xylene  conc=0.1  T=120°C
+18:27:10.919 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:27:15.973 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 6 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=6
+18:27:15.986 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:16.709 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=007  yield=0.00%  base=Cesium acetate  ligand=Me2PPh  solvent=Butyornitrile  conc=0.057  T=105°C
+18:27:16.712 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:27:21.785 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 7 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=7
+18:27:21.796 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:22.795 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=008  yield=0.00%  base=Potassium pivalate  ligand=Di-tert-butylphenylphosphine  solvent=p-Xylene  conc=0.1  T=90°C
+18:27:22.800 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:27:27.858 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 8 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=8
+18:27:27.870 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:27.963 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=009  yield=85.24%  base=Cesium acetate  ligand=XPhos  solvent=Butyl Ester  conc=0.1  T=90°C
+18:27:27.967 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:27:33.031 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 9 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=9
+18:27:33.043 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:33.112 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=010  yield=41.64%  base=Potassium acetate  ligand=SCHEMBL15068049  solvent=p-Xylene  conc=0.153  T=105°C
+18:27:33.115 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:27:38.169 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 10 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=10
+18:27:38.180 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:45.007 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=011  yield=28.11%  base=Potassium acetate  ligand=XPhos  solvent=Butyl Ester  conc=0.1  T=90°C
+18:27:45.010 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:27:50.076 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 11 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=11
+18:27:50.089 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:27:57.179 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=012  yield=61.71%  base=Cesium acetate  ligand=XPhos  solvent=Butyl Ester  conc=0.057  T=90°C
+18:27:57.183 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:28:02.268 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 12 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=12
+18:28:02.280 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:28:11.210 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=013  yield=42.30%  base=Potassium pivalate  ligand=XPhos  solvent=Butyl Ester  conc=0.1  T=90°C
+18:28:11.213 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:28:16.297 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 13 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=13
+18:28:16.309 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:28:22.825 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=014  yield=86.43%  base=Cesium acetate  ligand=XPhos  solvent=Butyl Ester  conc=0.1  T=105°C
+18:28:22.829 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:28:28.314 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 14 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=14
+18:28:28.327 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:28:37.764 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=015  yield=67.17%  base=Cesium acetate  ligand=XPhos  solvent=p-Xylene  conc=0.1  T=105°C
+18:28:37.768 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:28:42.822 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 15 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=15
+18:28:42.834 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:28:51.960 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=016  yield=2.79%  base=Cesium acetate  ligand=XPhos  solvent=Butyl Ester  conc=0.1  T=120°C
+18:28:51.963 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:28:57.017 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 16 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=16
+18:28:57.029 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:29:10.598 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=017  yield=81.66%  base=Cesium acetate  ligand=XPhos  solvent=Butyl Ester  conc=0.153  T=105°C
+18:29:10.601 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:29:15.717 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 17 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=17
+18:29:15.730 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:29:27.307 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=018  yield=87.83%  base=Cesium acetate  ligand=XPhos  solvent=DMAc  conc=0.1  T=105°C
+18:29:27.311 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:29:32.887 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 18 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=18
+18:29:32.900 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:29:37.215 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=019  yield=83.83%  base=Cesium acetate  ligand=XPhos  solvent=Butyornitrile  conc=0.1  T=105°C
+18:29:37.219 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:29:42.381 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 19 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=19
+18:29:42.393 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:29:44.968 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=020  yield=5.15%  base=Cesium pivalate  ligand=P(2-furyl)3  solvent=p-Xylene  conc=0.057  T=120°C
+18:29:44.972 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:29:50.036 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 20 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=20
+18:29:50.048 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:29:52.472 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=021  yield=5.65%  base=Cesium pivalate  ligand=JackiePhos  solvent=DMAc  conc=0.153  T=120°C
+18:29:52.475 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:29:57.535 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 21 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=21
+18:29:57.548 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:01.240 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=022  yield=52.08%  base=Potassium acetate  ligand=P(2-furyl)3  solvent=DMAc  conc=0.153  T=120°C
+18:30:01.243 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:06.297 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 22 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=22
+18:30:06.308 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:06.700 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=023  yield=74.30%  base=Cesium acetate  ligand=P(2-furyl)3  solvent=DMAc  conc=0.153  T=120°C
+18:30:06.703 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:11.758 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 23 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=23
+18:30:11.773 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:12.282 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=024  yield=84.17%  base=Cesium acetate  ligand=XPhos  solvent=DMAc  conc=0.1  T=90°C
+18:30:12.285 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:17.357 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 24 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=24
+18:30:17.373 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:17.895 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=025  yield=40.02%  base=Potassium pivalate  ligand=P(2-furyl)3  solvent=Butyornitrile  conc=0.1  T=120°C
+18:30:17.898 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:22.952 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 25 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=25
+18:30:22.965 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:23.393 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=026  yield=53.02%  base=Cesium acetate  ligand=P(2-furyl)3  solvent=p-Xylene  conc=0.153  T=120°C
+18:30:23.398 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:28.462 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 26 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=26
+18:30:28.477 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:28.884 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=027  yield=52.56%  base=Cesium acetate  ligand=P(2-furyl)3  solvent=DMAc  conc=0.153  T=105°C
+18:30:28.887 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:33.942 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 27 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=27
+18:30:33.956 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:34.574 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=028  yield=99.22%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.153  T=120°C
+18:30:34.579 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:39.630 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 28 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=28
+18:30:39.643 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:40.552 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=029  yield=99.98%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=Butyornitrile  conc=0.153  T=120°C
+18:30:40.559 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:45.621 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 29 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=29
+18:30:45.638 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:45.939 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=030  yield=62.33%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=Butyl Ester  conc=0.153  T=120°C
+18:30:45.942 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:50.998 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 30 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=30
+18:30:51.012 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:51.599 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=031  yield=80.65%  base=Potassium pivalate  ligand=SCHEMBL15068049  solvent=Butyornitrile  conc=0.153  T=120°C
+18:30:51.602 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:30:56.663 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 31 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=31
+18:30:56.674 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:30:57.864 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=032  yield=1.89%  base=Cesium acetate  ligand=Tricyclohexylphosphine  solvent=Butyornitrile  conc=0.153  T=120°C
+18:30:57.869 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:03.142 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 32 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=32
+18:31:03.153 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:03.833 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=033  yield=36.46%  base=Cesium acetate  ligand=1268824-69-6  solvent=Butyornitrile  conc=0.153  T=120°C
+18:31:03.836 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:08.891 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 33 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=33
+18:31:08.904 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:09.759 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=034  yield=0.00%  base=Cesium acetate  ligand=Methyldiphenylphosphine  solvent=Butyornitrile  conc=0.153  T=120°C
+18:31:09.762 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:14.816 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 34 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=34
+18:31:14.829 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:16.836 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=035  yield=45.01%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=Butyl Ester  conc=0.1  T=105°C
+18:31:16.839 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:21.893 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 35 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=35
+18:31:21.904 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:23.129 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=036  yield=19.64%  base=Cesium acetate  ligand=PPh3  solvent=Butyornitrile  conc=0.153  T=120°C
+18:31:23.134 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:29.279 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 36 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=36
+18:31:29.294 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:30.241 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=037  yield=69.03%  base=Cesium acetate  ligand=BrettPhos  solvent=Butyornitrile  conc=0.153  T=120°C
+18:31:30.246 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:35.867 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 37 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=37
+18:31:35.879 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:36.662 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=038  yield=88.82%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=Butyornitrile  conc=0.1  T=120°C
+18:31:36.670 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:41.748 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 38 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=38
+18:31:41.761 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:42.569 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=039  yield=71.81%  base=Cesium pivalate  ligand=SCHEMBL15068049  solvent=Butyornitrile  conc=0.153  T=120°C
+18:31:42.574 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+[HEARTBEAT] alive  campaign=aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a  attempts=39/60  ts=2026-07-30T18:31:47.706810+00:00
+18:31:47.707 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 39 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=39
+18:31:47.724 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:48.419 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=040  yield=50.74%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=Butyornitrile  conc=0.057  T=120°C
+18:31:48.422 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:53.699 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 40 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=40
+18:31:53.713 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:31:54.378 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=041  yield=0.51%  base=Cesium acetate  ligand=Di-tert-butylphenylphosphine  solvent=DMAc  conc=0.153  T=120°C
+18:31:54.381 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:31:59.435 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 41 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=41
+18:31:59.500 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:01.959 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=042  yield=32.21%  base=Cesium acetate  ligand=(t-Bu)PhCPhos  solvent=DMAc  conc=0.153  T=120°C
+18:32:01.962 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:32:07.195 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 42 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=42
+18:32:07.208 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:07.877 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=043  yield=2.79%  base=Cesium acetate  ligand=Me2PPh  solvent=DMAc  conc=0.153  T=120°C
+18:32:07.881 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:32:12.935 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 43 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=43
+18:32:12.949 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:14.286 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=044  yield=40.06%  base=Cesium pivalate  ligand=XPhos  solvent=DMAc  conc=0.153  T=105°C
+18:32:14.290 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:32:20.189 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 44 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=44
+18:32:20.204 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:21.385 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=045  yield=91.19%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=p-Xylene  conc=0.153  T=120°C
+18:32:21.390 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:32:26.539 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 45 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=45
+18:32:26.558 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:27.690 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=046  yield=19.97%  base=Cesium acetate  ligand=1268824-69-6  solvent=DMAc  conc=0.1  T=105°C
+18:32:27.697 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:32:33.750 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 46 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=46
+18:32:33.762 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:35.397 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=047  yield=89.17%  base=Cesium acetate  ligand=XPhos  solvent=DMAc  conc=0.057  T=105°C
+18:32:35.402 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:32:41.951 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 47 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=47
+18:32:41.965 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:42.701 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=048  yield=91.39%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.057  T=105°C
+18:32:42.705 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:32:49.057 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 48 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=48
+18:32:49.071 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:49.772 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=049  yield=28.40%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=p-Xylene  conc=0.057  T=90°C
+18:32:49.775 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:32:55.003 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 49 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=49
+18:32:55.017 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:32:55.586 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=050  yield=90.39%  base=Potassium pivalate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.057  T=105°C
+18:32:55.592 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:00.731 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 50 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=50
+18:33:00.743 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:01.717 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=051  yield=67.21%  base=Potassium acetate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.057  T=105°C
+18:33:01.723 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:07.359 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 51 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=51
+18:33:07.375 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:08.251 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=052  yield=91.06%  base=Cesium pivalate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.057  T=105°C
+18:33:08.257 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:13.934 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 52 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=52
+18:33:13.953 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:16.584 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=053  yield=98.49%  base=Potassium pivalate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.153  T=105°C
+18:33:16.587 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:21.877 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 53 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=53
+18:33:21.893 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:22.489 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=054  yield=100.00%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.153  T=105°C
+18:33:22.493 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:27.838 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 54 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=54
+18:33:27.849 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:28.706 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=055  yield=89.76%  base=Potassium pivalate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.1  T=105°C
+18:33:28.709 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:33.762 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 55 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=55
+18:33:33.777 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:35.246 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=056  yield=84.03%  base=Cesium pivalate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.153  T=90°C
+18:33:35.250 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:40.786 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 56 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=56
+18:33:40.800 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:41.973 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=057  yield=99.81%  base=Potassium pivalate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.153  T=120°C
+18:33:41.977 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:48.036 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 57 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=57
+18:33:48.050 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:48.471 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=058  yield=100.00%  base=Cesium pivalate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.153  T=105°C
+18:33:48.475 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:53.529 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 58 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=58
+18:33:53.543 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:33:53.963 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=059  yield=87.59%  base=Potassium pivalate  ligand=SCHEMBL15068049  solvent=DMAc  conc=0.1  T=120°C
+18:33:53.967 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:33:59.040 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → bo_generate_suggestions  reason=Campaign healthy with 59 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.  n_results=59
+18:33:59.053 POST api/api/v1/suggestions/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/generate ? batch_size='1'
+18:34:00.932 POST direct-arylation-oracle/v1/evaluate
+[RESULT] attempt=060  yield=96.38%  base=Cesium acetate  ligand=SCHEMBL15068049  solvent=Butyornitrile  conc=0.153  T=105°C
+18:34:00.936 POST api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+[EVENT] Loop finished.  attempts=60/60
+18:34:05.990 POST api/api/v1/campaigns/status/batch
+18:34:06.006 POST api/api/v1/campaigns/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a/lifecycle
+[EVENT] Paused campaign aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+18:34:07.749 GET api/api/v1/results/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+[EVENT] === FINAL REPORT for aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a ===
+[EVENT] Total results: 60
+[EVENT] Successful: 60
+[EVENT] Best yield: 100.00%
+[EVENT] Mean yield: 54.90%
+[EVENT] Worst yield: 0.00%
+[EVENT] Fetching diagnostics (may take a while)...
+18:34:07.765 GET api/api/v1/diagnostics/aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a ? use_cache='true' & verbosity='standard'
+[EVENT] Diagnostics saved.
+BO_MCP_CAMPAIGN_ID=aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a
+BO_MCP_CAMPAIGN_ID=aa78d3ac-14bf-4a9a-89ff-f8a5dff6b69a

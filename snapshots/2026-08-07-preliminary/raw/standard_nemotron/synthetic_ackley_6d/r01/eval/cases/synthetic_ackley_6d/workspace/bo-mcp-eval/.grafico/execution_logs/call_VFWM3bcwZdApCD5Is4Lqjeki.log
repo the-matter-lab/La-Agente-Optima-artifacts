@@ -1,0 +1,322 @@
+exit_code=0
+
+=== stdout (raw) ===
+"""Candidate evaluation for Ackley 6D synthetic benchmark.
+
+Deterministic evaluation of the Ackley function with the specified mapping:
+- x_i in [0,1] -> z_i = -40 + 80*x_i
+- classic = -20*exp(-0.2*sqrt(sum(z_i^2)/d)) - exp(sum(cos(2*pi*z_i))/d) + 20 + e
+- raw_response = -classic
+- surface_response = (raw_response - (-22.350402387287602)) / (0.0 - (-22.350402387287602))
+"""
+
+import math
+from typing import Any
+
+# Constants from the specification
+RAW_RESPONSE_MIN = -22.350402387287602  # minimum of raw_response (when classic is maximized)
+RAW_RESPONSE_MAX = 0.0  # maximum of raw_response (when classic = 0 at origin)
+SURFACE_DENOMINATOR = RAW_RESPONSE_MAX - RAW_RESPONSE_MIN  # = 22.350402387287602
+
+
+def ackley_classic(z: list[float]) -> float:
+    """Compute classic Ackley function value at z (unnormalized coordinates)."""
+    d = len(z)
+    sum_sq = sum(zi * zi for zi in z)
+    sum_cos = sum(math.cos(2 * math.pi * zi) for zi in z)
+    term1 = -20.0 * math.exp(-0.2 * math.sqrt(sum_sq / d))
+    term2 = -math.exp(sum_cos / d)
+    return term1 + term2 + 20.0 + math.e
+
+
+def evaluate_ackley(x: dict[str, float]) -> dict[str, Any]:
+    """Evaluate the Ackley function at normalized coordinates x_1..x_6.
+
+    Args:
+        x: Dict with keys x_1 through x_6, values in [0, 1].
+
+    Returns:
+        Dict with:
+        - raw_response: float
+        - surface_response: float (normalized to [0, 1], 1 = global optimum)
+        - z: list of unnormalized coordinates
+        - classic: float (classic Ackley value)
+    """
+    # Extract coordinates in order
+    z = [-40.0 + 80.0 * x[f"x_{i}"] for i in range(1, 7)]
+
+    classic = ackley_classic(z)
+    raw_response = -classic
+    surface_response = (raw_response - RAW_RESPONSE_MIN) / SURFACE_DENOMINATOR
+
+    return {
+        "raw_response": raw_response,
+        "surface_response": surface_response,
+        "z": z,
+        "classic": classic,
+    }
+
+
+def evaluate_candidate(
+    suggestion: dict[str, Any],
+    evaluated_cache: set[tuple[float, ...]],
+) -> dict[str, Any]:
+    """Evaluate a single candidate suggestion.
+
+    Args:
+        suggestion: BO-MCP suggestion dict with 'parameter_values' field.
+        evaluated_cache: Set of already-evaluated coordinate tuples for deduplication.
+
+    Returns:
+        Result dict with status, objective_values, parameter_values for submit_results.
+    """
+    params = suggestion.get("parameter_values", {})
+    coords = tuple(params.get(f"x_{i}", 0.0) for i in range(1, 7))
+
+    # Deduplication check
+    if coords in evaluated_cache:
+        return {
+            "suggestion_id": suggestion.get("suggestion_id"),
+            "status": "duplicate",
+            "failure_reason": "Candidate coordinates already evaluated",
+            "objective_values": {"surface_response": None},
+            "parameter_values": {f"x_{i}": coords[i - 1] for i in range(1, 7)},
+            "metadata": {"raw_response": None},
+        }
+
+    evaluated_cache.add(coords)
+
+    try:
+        result = evaluate_ackley(params)
+        return {
+            "suggestion_id": suggestion.get("suggestion_id"),
+            "status": "success",
+            "objective_values": {"surface_response": result["surface_response"]},
+            "parameter_values": {f"x_{i}": coords[i - 1] for i in range(1, 7)},
+            "metadata": {
+                "raw_response": result["raw_response"],
+                "z": result["z"],
+                "classic": result["classic"],
+            },
+        }
+    except Exception as e:
+        return {
+            "suggestion_id": suggestion.get("suggestion_id"),
+            "status": "failed",
+            "failure_reason": f"Evaluation error: {e}",
+            "objective_values": {"surface_response": None},
+            "parameter_values": {f"x_{i}": coords[i - 1] for i in range(1, 7)},
+            "metadata": {"raw_response": None},
+        }---
+"""Reporting and artifact generation for Ackley 6D campaign."""
+
+import csv
+import json
+from pathlib import Path
+from typing import Any
+
+
+def write_results_artifact(
+    results: list[dict[str, Any]], artifact_path: Path
+) -> None:
+    """Write results artifact as JSONL (one row per evaluation)."""
+    artifact_path.parent.mkdir(parents=True, exist_ok=True)
+    with artifact_path.open("w") as f:
+        for i, r in enumerate(results):
+            row = {
+                "evaluation_index": i,
+                "parameter_values": r.get("parameter_values", {}),
+                "objective_values": r.get("objective_values", {}),
+                "status": r.get("status", "unknown"),
+                "failure_reason": r.get("failure_reason"),
+                "raw_response": r.get("metadata", {}).get("raw_response"),
+            }
+            f.write(json.dumps(row) + "\n")
+
+
+def write_results_csv(
+    results: list[dict[str, Any]], csv_path: Path
+) -> None:
+    """Write results as CSV for easy viewing."""
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    fieldnames = [
+        "evaluation_index",
+        "x_1",
+        "x_2",
+        "x_3",
+        "x_4",
+        "x_5",
+        "x_6",
+        "surface_response",
+        "raw_response",
+        "status",
+        "failure_reason",
+    ]
+    with csv_path.open("w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for i, r in enumerate(results):
+            params = r.get("parameter_values", {})
+            row = {
+                "evaluation_index": i,
+                "x_1": params.get("x_1"),
+                "x_2": params.get("x_2"),
+                "x_3": params.get("x_3"),
+                "x_4": params.get("x_4"),
+                "x_5": params.get("x_5"),
+                "x_6": params.get("x_6"),
+                "surface_response": r.get("objective_values", {}).get("surface_response"),
+                "raw_response": r.get("metadata", {}).get("raw_response"),
+                "status": r.get("status", "unknown"),
+                "failure_reason": r.get("failure_reason", ""),
+            }
+            writer.writerow(row)
+
+
+def summarize_results(results: list[dict[str, Any]]) -> dict[str, Any]:
+    """Compute summary statistics from results."""
+    successful = [r for r in results if r.get("status") == "success"]
+    failed = [r for r in results if r.get("status") == "failed"]
+    duplicates = [r for r in results if r.get("status") == "duplicate"]
+
+    best = None
+    if successful:
+        best = max(successful, key=lambda r: r.get("objective_values", {}).get("surface_response", -1))
+
+    return {
+        "total_attempted": len(results),
+        "successful": len(successful),
+        "failed": len(failed),
+        "duplicates": len(duplicates),
+        "best_surface_response": best.get("objective_values", {}).get("surface_response") if best else None,
+        "best_raw_response": best.get("metadata", {}).get("raw_response") if best else None,
+        "best_coordinates": best.get("parameter_values") if best else None,
+    }
+
+
+def print_summary(summary: dict[str, Any]) -> None:
+    """Print a formatted summary to stdout."""
+    print("\n" + "=" * 60)
+    print("ACKLEY 6D OPTIMIZATION SUMMARY")
+    print("=" * 60)
+    print(f"Total attempted evaluations: {summary['total_attempted']}")
+    print(f"  Successful:                {summary['successful']}")
+    print(f"  Failed:                    {summary['failed']}")
+    print(f"  Duplicates:                {summary['duplicates']}")
+    print("-" * 60)
+    if summary["best_surface_response"] is not None:
+        print(f"Best surface_response:       {summary['best_surface_response']:.6f}")
+        raw = summary["best_raw_response"]
+        if raw is not None:
+            print(f"Best raw_response:           {raw:.6f}")
+        else:
+            print(f"Best raw_response:           N/A")
+        coords = summary["best_coordinates"]
+        if coords:
+            coord_str = ", ".join(f"{k}={v:.6f}" for k, v in coords.items())
+            print(f"Best coordinates:            {coord_str}")
+    else:
+        print("No successful evaluations.")
+    print("=" * 60 + "\n")
+
+
+def print_results_table(results: list[dict[str, Any]]) -> None:
+    """Print a table of all evaluated candidates."""
+    print("\nALL EVALUATED CANDIDATES")
+    print("-" * 100)
+    header = (
+        f"{'Idx':>4}  {'x_1':>8} {'x_2':>8} {'x_3':>8} {'x_4':>8} {'x_5':>8} {'x_6':>8}  "
+        f"{'surface':>10} {'raw':>10}  {'status':>10}"
+    )
+    print(header)
+    print("-" * 100)
+    for i, r in enumerate(results):
+        params = r.get("parameter_values", {})
+        coords = [params.get(f"x_{j}", 0.0) for j in range(1, 7)]
+        surface = r.get("objective_values", {}).get("surface_response")
+        raw = r.get("metadata", {}).get("raw_response")
+        status = r.get("status", "unknown")
+        coord_str = " ".join(f"{c:8.4f}" for c in coords)
+        surf_str = f"{surface:10.6f}" if surface is not None else "    N/A   "
+        raw_str = f"{raw:10.6f}" if raw is not None else "    N/A   "
+        print(f"{i:4d}  {coord_str}  {surf_str} {raw_str}  {status:>10}")
+    print("-" * 100 + "\n")---
+"""Search space construction for Ackley 6D optimization."""
+
+from domains.bo_mcp.client import BoMcpClient
+
+
+def build_parameters() -> list[dict]:
+    """Build the 6 continuous parameters x_1 through x_6 in [0, 1]."""
+    parameters = []
+    for i in range(1, 7):
+        parameters.append(
+            {
+                "name": f"x_{i}",
+                "type": "continuous",
+                "bounds": {"lower": 0.0, "upper": 1.0},
+                "description": f"Normalized coordinate {i} for Ackley function",
+            }
+        )
+    return parameters
+
+
+def build_objectives() -> list[dict]:
+    """Build the surface_response objective (maximize)."""
+    return [
+        {
+            "name": "surface_response",
+            "target_mode": "maximize",
+            "unit": "normalized_unitless",
+            "weight": 1.0,
+        }
+    ]
+
+
+def build_intake(
+    *,
+    name: str,
+    random_seed: int = 42,
+    initial_design_size: int = 10,
+    batch_size: int = 1,
+    max_observations: int = 60,
+    backend: str = "auto",
+    acquisition_method: str = "auto",
+) -> dict:
+    """Build the complete campaign intake payload.
+
+    Args:
+        name: Campaign name (must contain ownership marker).
+        random_seed: RNG seed for reproducibility.
+        initial_design_size: Number of Sobol initial points.
+        batch_size: Suggestions per generation call.
+        max_observations: Hard cap on total evaluations.
+        backend: "auto" | "botorch" | "baybe".
+        acquisition_method: Acquisition function (e.g., "noisy_ei", "upper_confidence_bound", "auto").
+
+    Returns:
+        Intake dict ready for BoMcpClient.validate_intake / create_campaign.
+    """
+    return {
+        "name": name,
+        "description": "Ackley 6D synthetic benchmark - maximize surface_response",
+        "parameters": build_parameters(),
+        "objectives": build_objectives(),
+        "backend": backend,
+        "acquisition_method": acquisition_method,
+        "random_seed": random_seed,
+        "initial_design_size": initial_design_size,
+        "batch_size": batch_size,
+        "max_observations": max_observations,
+        # Do not set max_iterations - leave unset per policy (CLI budgets bound invocations)
+    }
+
+
+def validate_intake(client: BoMcpClient, intake: dict) -> dict:
+    """Validate intake against BO-MCP API."""
+    return client.validate_intake(intake)
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

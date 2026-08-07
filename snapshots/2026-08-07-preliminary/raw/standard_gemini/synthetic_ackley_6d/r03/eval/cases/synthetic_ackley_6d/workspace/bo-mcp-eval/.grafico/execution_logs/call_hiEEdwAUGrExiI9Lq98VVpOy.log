@@ -1,0 +1,199 @@
+exit_code=0
+
+=== stdout (raw) ===
+# HOW TO EXECUTE CAMPAIGN: Ackley 6D Synthetic Surface Optimization
+
+This document explains how to run, monitor, and resume the Ackley 6D synthetic surface optimization campaign.
+
+- **Cache-buster Nonce**: `54354cdc-4da6-4419-86a6-f4560fc0efbe`
+- **Ownership Marker**: `akg-eval-43dcff3d628d4a86ba717e0455386a93`
+
+---
+
+## 1. Environment Requirements
+
+The campaign script requires the following environment variables to be set:
+- `BO_MCP_API_URL`: The base URL of the BO-MCP REST API (e.g., `http://api:8000`).
+- `BO_MCP_API_KEY`: The API key for authentication.
+
+Ensure `PYTHONPATH` includes `/app` so that the `grafico` and `domains` packages can be imported.
+
+---
+
+## 2. Execution Commands
+
+### Start a New Campaign
+To start a brand-new campaign, run:
+```bash
+PYTHONPATH=/app python run_ackley_6d.py --name "Ackley 6D Optimization" --seed 42 --init-size 10 --poll-s 180
+```
+
+### Resume an Existing Campaign
+If the campaign is interrupted or paused, you can resume it by passing the `--campaign-id` argument:
+```bash
+PYTHONPATH=/app python run_ackley_6d.py --campaign-id <campaign_id> --poll-s 180
+```
+
+---
+
+## 3. Monitoring and Tagged Output
+
+The script prints unbuffered tagged lines to `stdout` for real-time monitoring:
+- `[EVENT]`: State changes (e.g., campaign creation, suggestion generation, evaluation start, stop file detection).
+- `[ALERT]`: Failures, errors, and stop conditions.
+- `[RESULT]`: Full per-experiment analysis (e.g., successful evaluation results).
+- `[HEARTBEAT]`: Liveness indicator printed periodically.
+
+At completion, the script prints exactly one line:
+```
+BO_MCP_CAMPAIGN_ID=<campaign_id>
+```
+followed by a final report table.
+
+---
+
+## 4. Stop-File Behavior
+
+The script supports graceful shutdown via a stop file:
+- **Default Stop File**: `STOP` in the current working directory.
+- **Behavior**: At the top of each loop iteration (before generating a new suggestion), the script checks if the stop file exists. If detected, it:
+  1. Prints `[EVENT] Stop file 'STOP' detected. Pausing campaign and exiting.`
+  2. Deletes the stop file so subsequent resume commands are not immediately stopped.
+  3. Pauses the campaign on the BO-MCP server.
+  4. Exits gracefully.
+
+To pause the campaign, simply run:
+```bash
+touch STOP
+```
+
+---
+
+## 5. Artifacts and Provenance
+
+All results and logs are saved in the `artifacts/` directory:
+- `artifacts/results_history.json`: A JSON file containing the complete evaluation history with fields:
+  - `evaluation_index`
+  - `parameter_values` (x_1..x_6)
+  - `objective_values` (surface_response)
+  - `status`
+  - `failure_reason`
+  - `raw_response`
+
+---SCRIPT---
+#!/usr/bin/env python
+# run_ackley_6d.py
+# Cache-buster nonce: 54354cdc-4da6-4419-86a6-f4560fc0efbe
+
+import argparse
+import sys
+
+# Ensure /app is in the python path so we can import domains and grafico
+sys.path.insert(0, "/app")
+
+from ackley_6d.campaign import run_campaign
+
+def main():
+    parser = argparse.ArgumentParser(description="Run Ackley 6D Synthetic Surface Optimization Campaign via BO-MCP.")
+    
+    parser.add_argument(
+        "--campaign-id",
+        type=str,
+        default=None,
+        help="ID of an existing campaign to resume. If omitted, a new campaign is created."
+    )
+    parser.add_argument(
+        "--name",
+        type=str,
+        default="Ackley 6D Optimization",
+        help="Name of the campaign (only used when creating a new campaign)."
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for the campaign."
+    )
+    parser.add_argument(
+        "--init-size",
+        type=int,
+        default=10,
+        help="Number of initial design (warmup) points."
+    )
+    parser.add_argument(
+        "--backend",
+        type=str,
+        default="auto",
+        choices=["auto", "botorch", "baybe"],
+        help="Optimization backend to use."
+    )
+    parser.add_argument(
+        "--poll-s",
+        type=int,
+        default=180,
+        help="Polling interval in seconds between iterations."
+    )
+    parser.add_argument(
+        "--heartbeat-s",
+        type=int,
+        default=1800,
+        help="Heartbeat interval in seconds."
+    )
+    parser.add_argument(
+        "--stop-file",
+        type=str,
+        default="STOP",
+        help="Path to the stop file. If this file exists, the campaign will pause and exit."
+    )
+    parser.add_argument(
+        "--artifact-dir",
+        type=str,
+        default="artifacts",
+        help="Directory to save results and logs."
+    )
+    parser.add_argument(
+        "--max-evaluations",
+        type=int,
+        default=None,
+        help="Maximum number of evaluations to run in this invocation."
+    )
+    
+    args = parser.parse_args()
+    
+    run_campaign(
+        campaign_id=args.campaign_id,
+        campaign_name=args.name,
+        random_seed=args.seed,
+        initial_design_size=args.init_size,
+        backend=args.backend,
+        poll_s=args.poll_s,
+        heartbeat_s=args.heartbeat_s,
+        stop_file=args.stop_file,
+        artifact_dir=args.artifact_dir
+    )
+
+if __name__ == "__main__":
+    main()
+
+---MANIFEST---
+{
+  "campaign_slug": "ackley_6d",
+  "ownership_marker": "akg-eval-43dcff3d628d4a86ba717e0455386a93",
+  "cache_buster_nonce": "54354cdc-4da6-4419-86a6-f4560fc0efbe",
+  "package_modules": [
+    "ackley_6d/__init__.py",
+    "ackley_6d/search_space.py",
+    "ackley_6d/intake.py",
+    "ackley_6d/evaluator.py",
+    "ackley_6d/reporting.py",
+    "ackley_6d/campaign.py"
+  ],
+  "entrypoint": "run_ackley_6d.py",
+  "artifact_directory": "artifacts"
+}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

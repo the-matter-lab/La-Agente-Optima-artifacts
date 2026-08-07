@@ -1,0 +1,259 @@
+exit_code=0
+
+=== stdout (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+16:02:51.460 POST api/api/v1/campaigns/validate
+16:02:51.514 Validated campaign intake
+16:02:51.515 POST api/api/v1/campaigns
+16:02:52.029 Created campaign
+16:02:52.030 GET api/api/v1/results/326245ec-4618-45d3-a597-e5c0bf43d7b0
+16:02:52.076 Loaded existing BO-MCP results
+16:02:52.077 POST api/api/v1/campaigns/status/batch
+16:02:52.132 Server next_action
+16:02:52.133 POST api/api/v1/suggestions/326245ec-4618-45d3-a597-e5c0bf43d7b0/query
+16:02:52.146 POST api/api/v1/suggestions/326245ec-4618-45d3-a597-e5c0bf43d7b0/generate ? batch_size='6'
+16:02:52.270 POST api/api/v1/results/326245ec-4618-45d3-a597-e5c0bf43d7b0
+16:02:52.337 Submitted result batch
+16:02:52.337 GET api/api/v1/diagnostics/326245ec-4618-45d3-a597-e5c0bf43d7b0 ? use_cache='true' & verbosity='standard'
+16:03:23.186 GET api/api/v1/campaigns/326245ec-4618-45d3-a597-e5c0bf43d7b0
+16:03:23.197 POST api/api/v1/campaigns/326245ec-4618-45d3-a597-e5c0bf43d7b0/lifecycle
+{
+  "campaign_id": "326245ec-4618-45d3-a597-e5c0bf43d7b0",
+  "campaign_name": "ackley-6d-smoke-20260730T160251Z-akg-eval-e4b7bf86febf4353a5becc32d3e1173e",
+  "campaign_marker": "akg-eval-e4b7bf86febf4353a5becc32d3e1173e",
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "objective_unit": "normalized_unitless",
+  "backend": "botorch",
+  "batch_size": 6,
+  "initial_design_size": 12,
+  "acquisition_method": "expected_improvement",
+  "random_seed": 2132743523,
+  "attempted_evaluations": 6,
+  "successful_evaluations": 6,
+  "failed_evaluations": 0,
+  "best_record": {
+    "evaluation_index": 4,
+    "campaign_id": "326245ec-4618-45d3-a597-e5c0bf43d7b0",
+    "suggestion_id": "eddcf984-fdd7-4a40-a114-2e0fda8953ec",
+    "parameter_values": {
+      "x_1": 0.16255420446395874,
+      "x_2": 0.22815877199172974,
+      "x_3": 0.67501300573349,
+      "x_4": 0.8369668126106262,
+      "x_5": 0.9668462872505188,
+      "x_6": 0.039590634405612946
+    },
+    "objective_values": {
+      "surface_response": 0.05868843012971051
+    },
+    "status": "success",
+    "failure_reason": null,
+    "raw_response": -21.03869235841036
+  },
+  "records": [
+    {
+      "evaluation_index": 1,
+      "campaign_id": "326245ec-4618-45d3-a597-e5c0bf43d7b0",
+      "suggestion_id": "b7586e18-379d-4000-b15a-ccc00de26995",
+      "parameter_values": {
+        "x_1": 0.34008878469467163,
+        "x_2": 0.5362430214881897,
+        "x_3": 0.028721557930111885,
+        "x_4": 0.3560875356197357,
+        "x_5": 0.6200129985809326,
+        "x_6": 0.44159549474716187
+      },
+      "objective_values": {
+        "surface_response": 0.045383206773402206
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.336069454276586
+    },
+    {
+      "evaluation_index": 2,
+      "campaign_id": "326245ec-4618-45d3-a597-e5c0bf43d7b0",
+      "suggestion_id": "5d2d790a-30f6-4707-8ee7-7f0c8ec2a9c7",
+      "parameter_values": {
+        "x_1": 0.9302670955657959,
+        "x_2": 0.3832559287548065,
+        "x_3": 0.8279603719711304,
+        "x_4": 0.5835804343223572,
+        "x_5": 0.3198148310184479,
+        "x_6": 0.5674741864204407
+      },
+      "objective_values": {
+        "surface_response": 0.027743368342581325
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.730326941252173
+    },
+    {
+      "evaluation_index": 3,
+      "campaign_id": "326245ec-4618-45d3-a597-e5c0bf43d7b0",
+      "suggestion_id": "867ed4d0-1b90-463d-8171-6068df881266",
+      "parameter_values": {
+        "x_1": 0.5650761127471924,
+        "x_2": 0.8171793818473816,
+        "x_3": 0.47025832533836365,
+        "x_4": 0.09397121518850327,
+        "x_5": 0.222251296043396,
+        "x_6": 0.9156956076622009
+      },
+      "objective_values": {
+        "surface_response": 0.023640066261430948
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.82203739388248
+    },
+    {
+      "evaluation_index": 4,
+      "campaign_id": "326245ec-4618-45d3-a597-e5c0bf43d7b0",
+      "suggestion_id": "eddcf984-fdd7-4a40-a114-2e0fda8953ec",
+      "parameter_values": {
+        "x_1": 0.16255420446395874,
+        "x_2": 0.22815877199172974,
+        "x_3": 0.67501300573349,
+        "x_4": 0.8369668126106262,
+        "x_5": 0.9668462872505188,
+        "x_6": 0.039590634405612946
+      },
+      "objective_values": {
+        "surface_response": 0.05868843012971051
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.03869235841036
+    },
+    {
+      "evaluation_index": 5,
+      "campaign_id": "326245ec-4618-45d3-a597-e5c0bf43d7b0",
+      "suggestion_id": "80836d21-1d55-4e04-90f5-584e695c5f8a",
+      "parameter_values": {
+        "x_1": 0.051779743283987045,
+        "x_2": 0.9940029382705688,
+        "x_3": 0.9282951354980469,
+        "x_4": 0.9521799087524414,
+        "x_5": 0.8003159165382385,
+        "x_6": 0.2709859311580658
+      },
+      "objective_values": {
+        "surface_response": 0.03408085780880517
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.588681501556874
+    },
+    {
+      "evaluation_index": 6,
+      "campaign_id": "326245ec-4618-45d3-a597-e5c0bf43d7b0",
+      "suggestion_id": "ab83d4ae-0eea-4c3a-a016-df9654eab8ed",
+      "parameter_values": {
+        "x_1": 0.7049042582511902,
+        "x_2": 0.08271490782499313,
+        "x_3": 0.22283565998077393,
+        "x_4": 0.240463525056839,
+        "x_5": 0.013790636323392391,
+        "x_6": 0.6448793411254883
+      },
+      "objective_values": {
+        "surface_response": 0.026552302353370603
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.756947745380845
+    }
+  ],
+  "final_status": "PAUSED",
+  "diagnostics": {
+    "schema_version": 2,
+    "success": true,
+    "campaign_status": "running",
+    "iteration": 1,
+    "n_results": 6,
+    "n_pending_suggestions": 0,
+    "errors": [],
+    "warnings": [],
+    "pareto_front": null,
+    "hypervolume": null,
+    "n_pareto_points": null,
+    "best_value": 0.05868843012971051,
+    "best_parameters": {
+      "x_1": 0.16255420446395874,
+      "x_2": 0.22815877199172974,
+      "x_3": 0.67501300573349,
+      "x_4": 0.8369668126106262,
+      "x_5": 0.9668462872505188,
+      "x_6": 0.039590634405612946
+    },
+    "improvement_history": [
+      0.045383206773402206,
+      0.045383206773402206,
+      0.045383206773402206,
+      0.05868843012971051,
+      0.05868843012971051,
+      0.05868843012971051
+    ],
+    "improvement_rate": 0.29317503769050796,
+    "feature_importance": null,
+    "model_correlation": null,
+    "objective_ranges": {
+      "surface_response": {
+        "min": 0.023640066261430948,
+        "max": 0.05868843012971051,
+        "direction": "maximize"
+      }
+    },
+    "model_info": {
+      "backend": "botorch",
+      "type": "SingleTaskGP",
+      "acquisition_function": "expected_improvement",
+      "batch_strategy": "L-BFGS-B with random restarts",
+      "kernel": "RBF with automatic relevance determination (ARD)",
+      "input_warping": false
+    },
+    "health_status": "healthy",
+    "progress_status": "improving",
+    "next_action_recommendation": {
+      "action": "review_outliers",
+      "reason": "Detected 1 potential outlier(s). Verify measurements for errors.",
+      "urgency": "normal"
+    },
+    "uncertainty_trend": null,
+    "exploration_exploitation": {
+      "exploration_ratio": 0.5,
+      "diversity_score": 1.0,
+      "average_distance_to_best": 1.0153,
+      "balance_assessment": "exploration_heavy",
+      "recommendation": "Suggestions are primarily exploring new regions. If optimization is mature, consider reducing exploration."
+    },
+    "suggestion_diversity": null,
+    "constraint_satisfaction": null,
+    "outcome_constraint_calibration": null,
+    "convergence": {
+      "converged": false,
+      "convergence_score": 0.0,
+      "reason": "Insufficient history (6/10 observations required)",
+      "avg_improvement": 0.0,
+      "iterations_without_improvement": 0,
+      "recommendation": "Continue optimization to gather more data."
+    },
+    "_metadata": {
+      "backend": "botorch",
+      "backend_source": "campaign",
+      "protocol": "rest",
+      "server_version": "0.1.0"
+    }
+  }
+}
+SMOKE_LOG=logs/smoke_ackley_6d_20260730T160249Z.log
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

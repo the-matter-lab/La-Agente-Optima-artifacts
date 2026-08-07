@@ -1,0 +1,318 @@
+import os
+import time
+import logging
+from typing import Optional
+import logfire
+from grafico.core.logfire_config import configure_logfire
+
+from domains.bo_mcp.client import BoMcpClient
+from .intake import build_campaign_intake
+from .evaluation import evaluate_candidate, sync_attempts_from_server
+from .reporting import report_results
+
+# Configure logfire and instrument requests
+configure_logfire()
+logfire.instrument_requests()
+
+logger = logging.getLogger(__name__)
+
+MARKER = "akg-eval-a031fe657e2b4bd19101590d65050d1e"
+
+
+def run_campaign(
+    campaign_id: Optional[str] = None,
+    max_attempts: int = 60,
+    poll_s: int = 180,
+    heartbeat_s: int = 1800,
+    stop_file: str = "STOP",
+) -> None:
+    """Orchestrate the direct arylation BO-MCP campaign."""
+    print("[EVENT] Initializing BO-MCP Client...")
+    logger.info("Initializing BO-MCP Client...")
+    client = BoMcpClient.from_env()
+
+    # 1. Resolve or create campaign
+    if campaign_id:
+        print(f"[EVENT] Using provided campaign ID: {campaign_id}")
+        logger.info(f"Using provided campaign ID: {campaign_id}")
+        # Verify campaign exists and has the correct marker
+        try:
+            campaign = client.get_campaign(campaign_id)
+            if MARKER not in campaign.get("name", ""):
+                raise ValueError(
+                    f"Campaign {campaign_id} does not contain the required marker: {MARKER}"
+                )
+        except Exception as e:
+            print(f"[ALERT] Failed to retrieve or validate campaign {campaign_id}: {e}")
+            logger.error(f"Failed to retrieve or validate campaign {campaign_id}: {e}")
+            raise
+    else:
+        print(
+            "[EVENT] Searching for existing campaign with the required marker on the server..."
+        )
+        logger.info(
+            "Searching for existing campaign with the required marker on the server..."
+        )
+        try:
+            response = client._json_request("GET", "/api/v1/campaigns")
+            campaigns = response.get("campaigns") or []
+            matching = [c for c in campaigns if MARKER in c.get("name", "")]
+            if matching:
+                # Use the most recently updated matching campaign
+                matching.sort(key=lambda x: x.get("updated_at", ""), reverse=True)
+                campaign_id = matching[0]["id"]
+                print(
+                    f"[EVENT] Found existing campaign: {matching[0]['name']} (ID: {campaign_id})"
+                )
+                logger.info(
+                    f"Found existing campaign: {matching[0]['name']} (ID: {campaign_id})"
+                )
+            else:
+                print("[EVENT] No existing campaign found. Creating a new one...")
+                logger.info("No existing campaign found. Creating a new one...")
+                campaign_name = f"direct_arylation_{MARKER}"
+                intake = build_campaign_intake(campaign_name)
+
+                # Validate intake first
+                print("[EVENT] Validating campaign intake...")
+                logger.info("Validating campaign intake...")
+                client.validate_intake(intake)
+
+                # Create campaign
+                idempotency_key = client.make_idempotency_key("create", campaign_name)
+                create_resp = client.create_campaign(
+                    intake, idempotency_key=idempotency_key
+                )
+                campaign_id = create_resp["campaign_id"]
+                print(
+                    f"[EVENT] Created new campaign: {campaign_name} (ID: {campaign_id})"
+                )
+                logger.info(
+                    f"Created new campaign: {campaign_name} (ID: {campaign_id})"
+                )
+        except Exception as e:
+            print(f"[ALERT] Failed to resolve or create campaign: {e}")
+            logger.error(f"Failed to resolve or create campaign: {e}")
+            raise
+
+
+    # Synchronize prior attempts from server
+    try:
+        sync_attempts_from_server(client, campaign_id)
+    except Exception as e:
+        logger.warning(f"Failed to synchronize prior attempts: {e}")
+    # 2. Ensure campaign is running/resumed/reopened
+    try:
+        decision = client.next_action(campaign_id)
+        status = decision.get("status")
+        print(f"[EVENT] Campaign status: {status}")
+        logger.info(f"Campaign status: {status}")
+
+        if status == "paused":
+            print("[EVENT] Resuming paused campaign...")
+            logger.info("Resuming paused campaign...")
+            client.lifecycle(campaign_id, action="resume")
+        elif status == "completed":
+            print("[EVENT] Reopening completed campaign...")
+            logger.info("Reopening completed campaign...")
+            client.lifecycle(campaign_id, action="reopen")
+    except Exception as e:
+        print(f"[ALERT] Failed to manage campaign lifecycle: {e}")
+        logger.error(f"Failed to manage campaign lifecycle: {e}")
+        raise
+
+    # 3. Optimization Loop
+    print(f"[EVENT] Starting optimization loop. Budget: {max_attempts} attempts.")
+    logger.info(f"Starting optimization loop. Budget: {max_attempts} attempts.")
+    last_heartbeat = time.time()
+
+    try:
+        while True:
+            # Check stop file
+            if os.path.exists(stop_file):
+                print(
+                    f"[EVENT] Stop file '{stop_file}' detected. Initiating graceful shutdown."
+                )
+                logger.info(
+                    f"Stop file '{stop_file}' detected. Initiating graceful shutdown."
+                )
+                try:
+                    os.remove(stop_file)
+                except Exception as e:
+                    print(f"[ALERT] Failed to remove stop file: {e}")
+                    logger.error(f"Failed to remove stop file: {e}")
+
+                # Pause the campaign before exiting
+                print(f"[EVENT] Pausing campaign {campaign_id}...")
+                logger.info(f"Pausing campaign {campaign_id}...")
+                client.lifecycle(campaign_id, action="pause")
+                break
+
+            # Query suggestions to count attempts and find pending ones
+            try:
+                logger.debug("Querying suggestions from server...")
+                suggestions = client.query_suggestions(campaign_id)
+            except Exception as e:
+                print(f"[ALERT] Failed to query suggestions: {e}")
+                logger.error(f"Failed to query suggestions: {e}")
+                time.sleep(poll_s)
+                continue
+
+            attempts_count = sum(
+                1 for s in suggestions if s["status"] in ("completed", "rejected")
+            )
+            logger.info(f"Current attempts count: {attempts_count}/{max_attempts}")
+
+            # Print heartbeat if heartbeat interval has passed
+            now = time.time()
+            if now - last_heartbeat >= heartbeat_s:
+                print(
+                    f"[HEARTBEAT] Campaign {campaign_id} is active. Attempts: {attempts_count}/{max_attempts}"
+                )
+                logger.info(
+                    f"Heartbeat: Campaign {campaign_id} is active. Attempts: {attempts_count}/{max_attempts}"
+                )
+                last_heartbeat = now
+
+            if attempts_count >= max_attempts:
+                print(
+                    f"[ALERT] Attempt budget of {max_attempts} reached. Stopping campaign."
+                )
+                logger.info(
+                    f"Attempt budget of {max_attempts} reached. Stopping campaign."
+                )
+                break
+
+            # Check next action from server
+            try:
+                logger.debug("Checking next action from server...")
+                decision = client.next_action(campaign_id)
+            except Exception as e:
+                print(f"[ALERT] Failed to get next action: {e}")
+                logger.error(f"Failed to get next action: {e}")
+                time.sleep(poll_s)
+                continue
+
+            action = decision.get("action")
+            status = decision.get("status")
+            logger.info(f"Server next action: {action}, status: {status}")
+
+            if action != "bo_generate_suggestions":
+                print(
+                    f"[EVENT] Server returned action '{action}' (status: {status}). Stopping loop."
+                )
+                logger.info(
+                    f"Server returned action '{action}' (status: {status}). Stopping loop."
+                )
+                break
+
+            # Find or generate suggestion
+            pending = [s for s in suggestions if s["status"] == "pending"]
+            if pending:
+                suggestion = pending[0]
+                print(
+                    f"[EVENT] Reusing pending suggestion: {suggestion['suggestion_id']}"
+                )
+                logger.info(
+                    f"Reusing pending suggestion: {suggestion['suggestion_id']}"
+                )
+            else:
+                print("[EVENT] Generating new suggestion...")
+                logger.info("Generating new suggestion...")
+                try:
+                    gen_resp = client.generate_suggestions(campaign_id, batch_size=1)
+                    if not gen_resp.get("success"):
+                        print(
+                            f"[ALERT] Suggestion generation failed: {gen_resp.get('errors')}"
+                        )
+                        logger.error(
+                            f"Suggestion generation failed: {gen_resp.get('errors')}"
+                        )
+                        time.sleep(poll_s)
+                        continue
+                    suggestion = gen_resp["suggestions"][0]
+                except Exception as e:
+                    print(f"[ALERT] Failed to generate suggestions: {e}")
+                    logger.error(f"Failed to generate suggestions: {e}")
+                    time.sleep(poll_s)
+                    continue
+
+            suggestion_id = suggestion["suggestion_id"]
+            parameter_values = suggestion["parameter_values"]
+
+            # Evaluate candidate
+            print(
+                f"[EVENT] Evaluating candidate {attempts_count + 1}/{max_attempts}: {parameter_values}"
+            )
+            logger.info(
+                f"Evaluating candidate {attempts_count + 1}/{max_attempts}: {parameter_values}"
+            )
+
+            # Call evaluate_candidate
+            record = evaluate_candidate(parameter_values)
+
+            if record["status"] == "success":
+                # Submit result
+                yield_val = record["objective_values"]["yield"]
+                idempotency_key = client.make_idempotency_key("submit", suggestion_id)
+                result_payload = {
+                    "parameter_values": parameter_values,
+                    "objective_values": {"yield": yield_val},
+                    "suggestion_id": suggestion_id,
+                }
+                try:
+                    logger.info(f"Submitting result for suggestion {suggestion_id}...")
+                    client.submit_results(
+                        campaign_id,
+                        results=[result_payload],
+                        idempotency_key=idempotency_key,
+                    )
+                    print(f"[EVENT] Submitted result for suggestion {suggestion_id}")
+                    logger.info(f"Submitted result for suggestion {suggestion_id}")
+                except Exception as e:
+                    print(f"[ALERT] Failed to submit result to BO-MCP: {e}")
+                    logger.error(f"Failed to submit result to BO-MCP: {e}")
+                    time.sleep(poll_s)
+                    continue
+            else:
+                # Update suggestion status to rejected
+                try:
+                    logger.info(f"Rejecting suggestion {suggestion_id}...")
+                    client.update_suggestion_status(suggestion_id, "rejected")
+                    print(
+                        f"[EVENT] Rejected suggestion {suggestion_id} due to evaluation failure"
+                    )
+                    logger.info(
+                        f"Rejected suggestion {suggestion_id} due to evaluation failure"
+                    )
+                except Exception as e:
+                    print(f"[ALERT] Failed to reject suggestion {suggestion_id}: {e}")
+                    logger.error(f"Failed to reject suggestion {suggestion_id}: {e}")
+
+            # Sleep for poll_s before next iteration
+            logger.debug(f"Sleeping for {poll_s} seconds...")
+            time.sleep(poll_s)
+
+    except KeyboardInterrupt:
+        print("[EVENT] KeyboardInterrupt detected. Initiating graceful shutdown.")
+        logger.info("KeyboardInterrupt detected. Initiating graceful shutdown.")
+    finally:
+        # Pause the campaign at the end of the invocation if it's still running
+        try:
+            decision = client.next_action(campaign_id)
+            if decision.get("status") == "running":
+                print(f"[EVENT] Pausing campaign {campaign_id} at end of invocation...")
+                logger.info(f"Pausing campaign {campaign_id} at end of invocation...")
+                client.lifecycle(campaign_id, action="pause")
+        except Exception as e:
+            print(f"[ALERT] Failed to pause campaign at end of invocation: {e}")
+            logger.error(f"Failed to pause campaign at end of invocation: {e}")
+
+    # Synchronize final attempts from server before reporting
+    try:
+        sync_attempts_from_server(client, campaign_id)
+    except Exception as e:
+        logger.warning(f"Failed to synchronize final attempts: {e}")
+
+    # 4. Report final results
+    report_results()

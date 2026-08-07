@@ -1,0 +1,798 @@
+
+[2026-07-30T16:48:07.128882Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gemini", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--output-dir", "/app/outputs/cells/ackley_standard_gemini_r03/eval", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "ackley_standard_gemini_r03-20260730", "--subagent-model", "openrouter:google/gemini-3.5-flash"]
+ Container mx-20260730-standard-gemini-eval-run-52d61dfa4142 Creating 
+ Container mx-20260730-standard-gemini-eval-run-52d61dfa4142 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+16:48:15.665 evaluate bo_mcp_graph_eval
+16:48:15.666   case: synthetic_ackley_6d
+16:48:15.666     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+16:48:31.337       agent run
+16:48:31.343         chat gpt-5.4
+16:48:31.962           POST api.openai.com/v1/responses
+16:48:40.779         running tool: task
+16:48:40.783 agent run
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+16:48:40.789         chat gpt-5.4
+16:48:40.799           POST api.openai.com/v1/responses
+             agent run
+16:48:40.804   chat google/gemini-3.5-flash
+16:48:40.810     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+16:48:42.113         running tool: wait_tasks
+             agent run
+16:48:44.594   running tool: read_memory
+16:48:44.602   chat google/gemini-3.5-flash
+16:48:44.608     POST openrouter.ai/api/v1/chat/completions
+16:48:45.656   running tool: ls
+16:48:45.663   chat google/gemini-3.5-flash
+16:48:45.670     POST openrouter.ai/api/v1/chat/completions
+16:48:46.982   running tool: ls
+16:48:46.989   chat google/gemini-3.5-flash
+16:48:46.995     POST openrouter.ai/api/v1/chat/completions
+16:48:48.215   running tool: execute
+16:48:48.233   chat google/gemini-3.5-flash
+16:48:48.239     POST openrouter.ai/api/v1/chat/completions
+16:48:50.840   running tool: execute
+16:48:51.849   chat google/gemini-3.5-flash
+16:48:51.861     POST openrouter.ai/api/v1/chat/completions
+16:48:53.682   running tool: execute
+16:48:53.715   chat google/gemini-3.5-flash
+16:48:53.722     POST openrouter.ai/api/v1/chat/completions
+16:48:55.518   running tool: execute
+16:48:55.645   chat google/gemini-3.5-flash
+16:48:55.656     POST openrouter.ai/api/v1/chat/completions
+16:48:57.631   running tool: read_file
+16:48:57.640   chat google/gemini-3.5-flash
+16:48:57.647     POST openrouter.ai/api/v1/chat/completions
+16:48:58.996   running tool: glob
+16:48:59.003   chat google/gemini-3.5-flash
+16:48:59.013     POST openrouter.ai/api/v1/chat/completions
+16:49:00.569   running tool: glob
+16:49:00.576   chat google/gemini-3.5-flash
+16:49:00.586     POST openrouter.ai/api/v1/chat/completions
+16:49:02.079   running tool: glob
+16:49:02.086   chat google/gemini-3.5-flash
+16:49:02.096     POST openrouter.ai/api/v1/chat/completions
+16:49:03.593   running tool: execute
+16:49:03.767   chat google/gemini-3.5-flash
+16:49:03.778     POST openrouter.ai/api/v1/chat/completions
+16:49:05.921   running tool: execute
+16:49:06.082   chat google/gemini-3.5-flash
+16:49:06.093     POST openrouter.ai/api/v1/chat/completions
+16:49:07.461   running tool: read_file
+16:49:07.467   chat google/gemini-3.5-flash
+16:49:07.479     POST openrouter.ai/api/v1/chat/completions
+16:49:10.558   running tool: read_file
+16:49:10.566   chat google/gemini-3.5-flash
+16:49:10.576     POST openrouter.ai/api/v1/chat/completions
+16:49:12.400   running tool: execute
+16:49:12.417   chat google/gemini-3.5-flash
+16:49:12.427     POST openrouter.ai/api/v1/chat/completions
+16:49:13.593   running tool: read_file
+16:49:13.601   chat google/gemini-3.5-flash
+16:49:13.611     POST openrouter.ai/api/v1/chat/completions
+16:49:15.176   running tool: execute
+16:49:15.189   chat google/gemini-3.5-flash
+16:49:15.206     POST openrouter.ai/api/v1/chat/completions
+16:49:16.883   running tool: inspect_bo_mcp_openapi_overview
+16:49:16.899   chat google/gemini-3.5-flash
+16:49:16.910     POST openrouter.ai/api/v1/chat/completions
+16:49:20.872   running tool: inspect_bo_mcp_openapi_operation
+16:49:20.892   chat google/gemini-3.5-flash
+16:49:20.909     POST openrouter.ai/api/v1/chat/completions
+16:49:24.891   running tool: inspect_bo_mcp_openapi_operation
+16:49:24.911   chat google/gemini-3.5-flash
+16:49:24.923     POST openrouter.ai/api/v1/chat/completions
+16:49:29.004   running tool: inspect_bo_mcp_openapi_operation
+16:49:29.022   chat google/gemini-3.5-flash
+16:49:29.039     POST openrouter.ai/api/v1/chat/completions
+16:49:42.410   running tool: read_todos
+16:49:42.416   chat google/gemini-3.5-flash
+16:49:42.428     POST openrouter.ai/api/v1/chat/completions
+16:49:45.767   running tool: write_todos
+16:49:45.774   chat google/gemini-3.5-flash
+16:49:45.790     POST openrouter.ai/api/v1/chat/completions
+16:49:55.806   running tool: update_todo_status
+16:49:55.814   chat google/gemini-3.5-flash
+16:49:55.826     POST openrouter.ai/api/v1/chat/completions
+16:50:01.450   running tool: read_todos
+16:50:01.456   chat google/gemini-3.5-flash
+16:50:01.472     POST openrouter.ai/api/v1/chat/completions
+16:50:03.366   running tool: update_todo_status
+16:50:03.374   chat google/gemini-3.5-flash
+16:50:03.387     POST openrouter.ai/api/v1/chat/completions
+16:50:11.657   running tool: write_file
+16:50:11.668   chat google/gemini-3.5-flash
+16:50:11.683     POST openrouter.ai/api/v1/chat/completions
+16:50:16.341   running tool: write_file
+16:50:16.348   chat google/gemini-3.5-flash
+16:50:16.367     POST openrouter.ai/api/v1/chat/completions
+16:50:24.283   running tool: write_file
+16:50:24.291   chat google/gemini-3.5-flash
+16:50:24.310     POST openrouter.ai/api/v1/chat/completions
+16:50:30.202   running tool: write_file
+16:50:30.210   chat google/gemini-3.5-flash
+16:50:30.229     POST openrouter.ai/api/v1/chat/completions
+16:50:33.728   running tool: execute
+16:50:34.164   chat google/gemini-3.5-flash
+16:50:34.184     POST openrouter.ai/api/v1/chat/completions
+16:50:42.997   running tool: execute
+16:50:43.377   chat google/gemini-3.5-flash
+16:50:43.392     POST openrouter.ai/api/v1/chat/completions
+16:50:53.398   running tool: inspect_bo_mcp_openapi_operation
+16:50:53.414   chat google/gemini-3.5-flash
+16:50:53.444     POST openrouter.ai/api/v1/chat/completions
+16:50:57.039     POST openrouter.ai/api/v1/chat/completions
+16:51:01.157     POST openrouter.ai/api/v1/chat/completions
+16:51:24.891   running tool: write_file
+16:51:24.899   chat google/gemini-3.5-flash
+16:51:24.923     POST openrouter.ai/api/v1/chat/completions
+16:51:31.920   running tool: write_file
+16:51:31.927   chat google/gemini-3.5-flash
+16:51:31.949     POST openrouter.ai/api/v1/chat/completions
+16:51:40.725   running tool: update_todo_status
+16:51:40.732   chat google/gemini-3.5-flash
+16:51:40.754     POST openrouter.ai/api/v1/chat/completions
+16:51:43.041   running tool: read_todos
+16:51:43.048   chat google/gemini-3.5-flash
+16:51:43.070     POST openrouter.ai/api/v1/chat/completions
+16:51:44.938   running tool: update_todo_status
+16:51:44.944   chat google/gemini-3.5-flash
+16:51:44.967     POST openrouter.ai/api/v1/chat/completions
+16:51:54.543   running tool: write_file
+16:51:54.553   chat google/gemini-3.5-flash
+16:51:54.586     POST openrouter.ai/api/v1/chat/completions
+16:52:20.019   running tool: execute
+16:52:20.031   chat google/gemini-3.5-flash
+16:52:20.055     POST openrouter.ai/api/v1/chat/completions
+16:52:21.847   running tool: update_todo_status
+16:52:21.854   chat google/gemini-3.5-flash
+16:52:21.878     POST openrouter.ai/api/v1/chat/completions
+16:52:29.936   running tool: read_todos
+16:52:29.945   chat google/gemini-3.5-flash
+16:52:29.979     POST openrouter.ai/api/v1/chat/completions
+16:52:36.374   running tool: update_todo_status
+16:52:36.380   chat google/gemini-3.5-flash
+16:52:36.398     POST openrouter.ai/api/v1/chat/completions
+16:52:50.767   running tool: write_file
+16:52:50.776   chat google/gemini-3.5-flash
+16:52:50.795     POST openrouter.ai/api/v1/chat/completions
+16:52:55.802   running tool: update_todo_status
+16:52:55.810   chat google/gemini-3.5-flash
+16:52:55.829     POST openrouter.ai/api/v1/chat/completions
+16:52:58.789     POST openrouter.ai/api/v1/chat/completions
+16:53:01.329   running tool: read_todos
+16:53:01.335   chat google/gemini-3.5-flash
+16:53:01.355     POST openrouter.ai/api/v1/chat/completions
+16:53:09.797   running tool: update_todo_status
+16:53:09.803   chat google/gemini-3.5-flash
+16:53:09.824     POST openrouter.ai/api/v1/chat/completions
+16:53:16.015   running tool: write_file
+16:53:16.022   chat google/gemini-3.5-flash
+16:53:16.042     POST openrouter.ai/api/v1/chat/completions
+16:53:18.017     POST openrouter.ai/api/v1/chat/completions
+16:53:22.850   running tool: update_todo_status
+16:53:22.856   chat google/gemini-3.5-flash
+16:53:22.876     POST openrouter.ai/api/v1/chat/completions
+16:53:25.698     POST openrouter.ai/api/v1/chat/completions
+16:53:37.088   running tool: read_todos
+16:53:37.095   chat google/gemini-3.5-flash
+16:53:37.116     POST openrouter.ai/api/v1/chat/completions
+16:53:44.822   running tool: update_todo_status
+16:53:44.828   chat google/gemini-3.5-flash
+16:53:44.849     POST openrouter.ai/api/v1/chat/completions
+16:53:49.896   running tool: read_file
+16:53:49.903   chat google/gemini-3.5-flash
+16:53:49.924     POST openrouter.ai/api/v1/chat/completions
+16:54:00.530   running tool: read_file
+16:54:00.539   chat google/gemini-3.5-flash
+16:54:00.560     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+16:54:12.948         chat gpt-5.4
+16:54:12.960           POST api.openai.com/v1/responses
+16:54:18.440         running tool: task
+16:54:18.445         chat gpt-5.4
+16:54:18.457           POST api.openai.com/v1/responses
+16:54:45.386         running tool: task
+16:54:45.389 agent run
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+16:54:45.395         chat gpt-5.4
+16:54:45.408           POST api.openai.com/v1/responses
+             agent run
+16:54:45.412   chat google/gemini-3.5-flash
+16:54:45.417     POST openrouter.ai/api/v1/chat/completions
+16:54:46.891   running tool: read_memory
+16:54:46.899   chat google/gemini-3.5-flash
+16:54:46.904     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+16:54:48.095         running tool: wait_tasks
+             agent run
+16:54:48.139   running tool: read_todos
+16:54:48.144   chat google/gemini-3.5-flash
+16:54:48.149     POST openrouter.ai/api/v1/chat/completions
+16:54:51.381   running tool: write_todos
+16:54:51.388   chat google/gemini-3.5-flash
+16:54:51.394     POST openrouter.ai/api/v1/chat/completions
+16:54:52.572   running tool: update_todo_status
+16:54:52.580   chat google/gemini-3.5-flash
+16:54:52.585     POST openrouter.ai/api/v1/chat/completions
+16:54:53.590   running tool: read_todos
+16:54:53.596   chat google/gemini-3.5-flash
+16:54:53.602     POST openrouter.ai/api/v1/chat/completions
+16:54:54.981   running tool: update_todo_status
+16:54:54.989   chat google/gemini-3.5-flash
+16:54:54.996     POST openrouter.ai/api/v1/chat/completions
+16:54:57.754   running tool: execute
+16:54:58.425   chat google/gemini-3.5-flash
+16:54:58.431     POST openrouter.ai/api/v1/chat/completions
+16:55:00.360   running tool: read_file
+16:55:00.367   chat google/gemini-3.5-flash
+16:55:00.374     POST openrouter.ai/api/v1/chat/completions
+16:55:03.660   running tool: glob
+16:55:03.667   chat google/gemini-3.5-flash
+16:55:03.675     POST openrouter.ai/api/v1/chat/completions
+16:55:07.922   running tool: glob
+16:55:07.929   chat google/gemini-3.5-flash
+16:55:07.936     POST openrouter.ai/api/v1/chat/completions
+16:55:09.319   running tool: ls
+16:55:09.326   chat google/gemini-3.5-flash
+16:55:09.337     POST openrouter.ai/api/v1/chat/completions
+16:55:10.758   running tool: ls
+16:55:10.766   chat google/gemini-3.5-flash
+16:55:10.774     POST openrouter.ai/api/v1/chat/completions
+16:55:14.198   running tool: execute
+16:55:14.215   chat google/gemini-3.5-flash
+16:55:14.224     POST openrouter.ai/api/v1/chat/completions
+16:55:18.826   running tool: execute
+16:55:18.844   chat google/gemini-3.5-flash
+16:55:18.853     POST openrouter.ai/api/v1/chat/completions
+16:55:21.425   running tool: execute
+16:55:21.436   chat google/gemini-3.5-flash
+16:55:21.446     POST openrouter.ai/api/v1/chat/completions
+16:55:22.977   running tool: execute
+16:55:22.988   chat google/gemini-3.5-flash
+16:55:22.998     POST openrouter.ai/api/v1/chat/completions
+16:55:28.961   running tool: execute
+16:55:28.978   chat google/gemini-3.5-flash
+16:55:28.988     POST openrouter.ai/api/v1/chat/completions
+16:55:36.413   running tool: execute
+16:55:36.438   chat google/gemini-3.5-flash
+16:55:36.449     POST openrouter.ai/api/v1/chat/completions
+16:55:42.724   running tool: execute
+16:55:42.863   chat google/gemini-3.5-flash
+16:55:42.873     POST openrouter.ai/api/v1/chat/completions
+16:55:44.648   running tool: read_file
+16:55:44.658   chat google/gemini-3.5-flash
+16:55:44.668     POST openrouter.ai/api/v1/chat/completions
+16:55:46.372   running tool: execute
+16:55:46.518   chat google/gemini-3.5-flash
+16:55:46.529     POST openrouter.ai/api/v1/chat/completions
+16:55:48.764   running tool: read_file
+16:55:48.770   chat google/gemini-3.5-flash
+16:55:48.783     POST openrouter.ai/api/v1/chat/completions
+16:55:54.173   running tool: read_file
+16:55:54.181   chat google/gemini-3.5-flash
+16:55:54.193     POST openrouter.ai/api/v1/chat/completions
+16:56:05.214   running tool: execute
+16:56:05.226   chat google/gemini-3.5-flash
+16:56:05.242     POST openrouter.ai/api/v1/chat/completions
+16:56:07.718   running tool: execute
+16:56:07.731   chat google/gemini-3.5-flash
+16:56:07.747     POST openrouter.ai/api/v1/chat/completions
+16:56:09.362   running tool: read_file
+16:56:09.372   chat google/gemini-3.5-flash
+16:56:09.389     POST openrouter.ai/api/v1/chat/completions
+16:56:10.800   running tool: read_file
+16:56:10.808   chat google/gemini-3.5-flash
+16:56:10.826     POST openrouter.ai/api/v1/chat/completions
+16:56:12.600   running tool: execute
+16:56:12.611   chat google/gemini-3.5-flash
+16:56:12.628     POST openrouter.ai/api/v1/chat/completions
+16:56:14.170   running tool: inspect_bo_mcp_openapi_overview
+16:56:14.184   chat google/gemini-3.5-flash
+16:56:14.202     POST openrouter.ai/api/v1/chat/completions
+16:56:16.302   running tool: inspect_bo_mcp_openapi_operation
+16:56:16.317   chat google/gemini-3.5-flash
+16:56:16.335     POST openrouter.ai/api/v1/chat/completions
+16:56:23.867   running tool: read_file
+16:56:23.875   chat google/gemini-3.5-flash
+16:56:23.894     POST openrouter.ai/api/v1/chat/completions
+16:56:25.957     POST openrouter.ai/api/v1/chat/completions
+16:56:29.866   running tool: read_file
+16:56:29.873   chat google/gemini-3.5-flash
+16:56:29.893     POST openrouter.ai/api/v1/chat/completions
+16:56:35.052   running tool: glob
+16:56:35.060   chat google/gemini-3.5-flash
+16:56:35.079     POST openrouter.ai/api/v1/chat/completions
+16:56:43.567   running tool: read_file
+16:56:43.578   chat google/gemini-3.5-flash
+16:56:43.607     POST openrouter.ai/api/v1/chat/completions
+16:56:45.591   running tool: read_file
+16:56:45.599   chat google/gemini-3.5-flash
+16:56:45.621     POST openrouter.ai/api/v1/chat/completions
+16:56:47.147   running tool: read_file
+16:56:47.155   chat google/gemini-3.5-flash
+16:56:47.190     POST openrouter.ai/api/v1/chat/completions
+16:56:49.127   running tool: read_file
+16:56:49.136   chat google/gemini-3.5-flash
+16:56:49.164     POST openrouter.ai/api/v1/chat/completions
+16:56:56.218   running tool: read_file
+16:56:56.226   chat google/gemini-3.5-flash
+16:56:56.249     POST openrouter.ai/api/v1/chat/completions
+16:56:58.453     POST openrouter.ai/api/v1/chat/completions
+16:57:11.585   running tool: read_file
+16:57:11.593   chat google/gemini-3.5-flash
+16:57:11.643     POST openrouter.ai/api/v1/chat/completions
+16:57:19.069   running tool: read_file
+16:57:19.078   chat google/gemini-3.5-flash
+16:57:19.105     POST openrouter.ai/api/v1/chat/completions
+16:57:26.808   running tool: execute
+16:57:26.818   chat google/gemini-3.5-flash
+16:57:26.841     POST openrouter.ai/api/v1/chat/completions
+16:57:30.721   running tool: run_in_background
+16:57:30.760   chat google/gemini-3.5-flash
+16:57:30.795     POST openrouter.ai/api/v1/chat/completions
+16:57:43.721   running tool: read_output
+16:57:43.729   chat google/gemini-3.5-flash
+16:57:43.753     POST openrouter.ai/api/v1/chat/completions
+16:57:45.454   running tool: execute
+16:57:45.506   chat google/gemini-3.5-flash
+16:57:45.531     POST openrouter.ai/api/v1/chat/completions
+16:57:57.442   running tool: read_output
+16:57:57.450   chat google/gemini-3.5-flash
+16:57:57.474     POST openrouter.ai/api/v1/chat/completions
+16:57:59.398   running tool: read_output
+16:57:59.405   chat google/gemini-3.5-flash
+16:57:59.967     POST openrouter.ai/api/v1/chat/completions
+16:58:02.275     POST openrouter.ai/api/v1/chat/completions
+16:58:05.306   running tool: execute
+16:58:05.373   chat google/gemini-3.5-flash
+16:58:05.400     POST openrouter.ai/api/v1/chat/completions
+16:58:07.392   running tool: ls
+16:58:07.400   chat google/gemini-3.5-flash
+16:58:07.425     POST openrouter.ai/api/v1/chat/completions
+16:58:09.085   running tool: read_file
+16:58:09.100   chat google/gemini-3.5-flash
+16:58:09.126     POST openrouter.ai/api/v1/chat/completions
+16:58:13.753   running tool: grep
+16:58:13.766   chat google/gemini-3.5-flash
+16:58:13.785     POST openrouter.ai/api/v1/chat/completions
+16:58:15.822   running tool: read_file
+16:58:15.835   chat google/gemini-3.5-flash
+16:58:15.876     POST openrouter.ai/api/v1/chat/completions
+16:58:25.050   running tool: read_file
+16:58:25.058   chat google/gemini-3.5-flash
+16:58:25.086     POST openrouter.ai/api/v1/chat/completions
+16:58:31.587   running tool: read_file
+16:58:31.595   chat google/gemini-3.5-flash
+16:58:31.624     POST openrouter.ai/api/v1/chat/completions
+16:58:41.257   running tool: hashline_edit
+16:58:41.265   chat google/gemini-3.5-flash
+16:58:41.295     POST openrouter.ai/api/v1/chat/completions
+16:58:43.444   running tool: read_file
+16:58:43.455   chat google/gemini-3.5-flash
+16:58:43.483     POST openrouter.ai/api/v1/chat/completions
+16:58:47.522   running tool: read_file
+16:58:47.530   chat google/gemini-3.5-flash
+16:58:47.559     POST openrouter.ai/api/v1/chat/completions
+16:58:50.355     POST openrouter.ai/api/v1/chat/completions
+16:58:54.669   running tool: execute
+16:58:54.707   chat google/gemini-3.5-flash
+16:58:54.738     POST openrouter.ai/api/v1/chat/completions
+16:59:03.011   running tool: execute
+16:59:03.070   chat google/gemini-3.5-flash
+16:59:03.117     POST openrouter.ai/api/v1/chat/completions
+16:59:18.225   running tool: execute
+16:59:18.240   chat google/gemini-3.5-flash
+16:59:18.270     POST openrouter.ai/api/v1/chat/completions
+16:59:27.363   running tool: execute
+16:59:27.381   chat google/gemini-3.5-flash
+16:59:27.404     POST openrouter.ai/api/v1/chat/completions
+16:59:42.865   running tool: execute
+16:59:42.884   chat google/gemini-3.5-flash
+16:59:42.917     POST openrouter.ai/api/v1/chat/completions
+16:59:46.734   running tool: execute
+16:59:46.752   chat google/gemini-3.5-flash
+16:59:46.775     POST openrouter.ai/api/v1/chat/completions
+16:59:48.485   running tool: execute
+16:59:48.503   chat google/gemini-3.5-flash
+16:59:48.527     POST openrouter.ai/api/v1/chat/completions
+16:59:50.925   running tool: read_file
+16:59:50.934   chat google/gemini-3.5-flash
+16:59:50.961     POST openrouter.ai/api/v1/chat/completions
+16:59:56.316   running tool: execute
+16:59:56.338   chat google/gemini-3.5-flash
+16:59:56.362     POST openrouter.ai/api/v1/chat/completions
+16:59:58.309   running tool: read_file
+16:59:58.319   chat google/gemini-3.5-flash
+16:59:58.346     POST openrouter.ai/api/v1/chat/completions
+17:00:08.658   running tool: execute
+17:00:08.677   chat google/gemini-3.5-flash
+17:00:08.704     POST openrouter.ai/api/v1/chat/completions
+17:00:11.687   running tool: execute
+17:00:11.835   chat google/gemini-3.5-flash
+17:00:11.864     POST openrouter.ai/api/v1/chat/completions
+17:00:25.476   running tool: execute
+17:00:25.494   chat google/gemini-3.5-flash
+17:00:25.521     POST openrouter.ai/api/v1/chat/completions
+17:00:40.520   running tool: execute
+17:00:40.533   chat google/gemini-3.5-flash
+17:00:40.568     POST openrouter.ai/api/v1/chat/completions
+17:00:43.760   running tool: read_file
+17:00:43.768   chat google/gemini-3.5-flash
+17:00:43.804     POST openrouter.ai/api/v1/chat/completions
+17:00:45.770   running tool: execute
+17:00:45.789   chat google/gemini-3.5-flash
+17:00:45.818     POST openrouter.ai/api/v1/chat/completions
+17:00:47.535   running tool: read_todos
+17:00:47.542   chat google/gemini-3.5-flash
+17:00:47.570     POST openrouter.ai/api/v1/chat/completions
+17:00:54.965   running tool: update_todo_statuses
+17:00:54.974   chat google/gemini-3.5-flash
+17:00:55.024     POST openrouter.ai/api/v1/chat/completions
+17:00:57.337     POST openrouter.ai/api/v1/chat/completions
+17:01:13.047   running tool: write_memory
+17:01:13.058   chat google/gemini-3.5-flash
+17:01:13.111     POST openrouter.ai/api/v1/chat/completions
+17:01:28.992   running tool: update_todo_status
+17:01:28.998   chat google/gemini-3.5-flash
+17:01:29.036     POST openrouter.ai/api/v1/chat/completions
+17:01:31.728     POST openrouter.ai/api/v1/chat/completions
+17:01:35.335     POST openrouter.ai/api/v1/chat/completions
+17:01:49.168   running tool: read_todos
+17:01:49.178   chat google/gemini-3.5-flash
+17:01:49.233     POST openrouter.ai/api/v1/chat/completions
+17:01:52.261     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+17:02:02.926         chat gpt-5.4
+17:02:02.945           POST api.openai.com/v1/responses
+17:02:10.295         running tool: task
+17:02:10.299 agent run
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+17:02:10.309         chat gpt-5.4
+17:02:10.325           POST api.openai.com/v1/responses
+             agent run
+17:02:10.328   chat google/gemini-3.5-flash
+17:02:10.334     POST openrouter.ai/api/v1/chat/completions
+17:02:13.685   running tool: read_memory
+17:02:13.691   chat google/gemini-3.5-flash
+17:02:13.698     POST openrouter.ai/api/v1/chat/completions
+17:02:14.801   running tool: read_todos
+17:02:14.807   chat google/gemini-3.5-flash
+17:02:14.814     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+17:02:15.124         running tool: wait_tasks
+             agent run
+17:02:18.750   running tool: write_todos
+17:02:18.756   chat google/gemini-3.5-flash
+17:02:18.763     POST openrouter.ai/api/v1/chat/completions
+17:02:24.978   running tool: update_todo_status
+17:02:24.985   chat google/gemini-3.5-flash
+17:02:24.993     POST openrouter.ai/api/v1/chat/completions
+17:02:34.279   running tool: read_todos
+17:02:34.286   chat google/gemini-3.5-flash
+17:02:34.295     POST openrouter.ai/api/v1/chat/completions
+17:02:37.084   running tool: update_todo_status
+17:02:37.090   chat google/gemini-3.5-flash
+17:02:37.099     POST openrouter.ai/api/v1/chat/completions
+17:02:40.955   running tool: execute
+17:02:41.894   chat google/gemini-3.5-flash
+17:02:41.904     POST openrouter.ai/api/v1/chat/completions
+17:02:44.031   running tool: execute
+17:02:44.162   chat google/gemini-3.5-flash
+17:02:44.170     POST openrouter.ai/api/v1/chat/completions
+17:02:47.089   running tool: read_file
+17:02:47.095   chat google/gemini-3.5-flash
+17:02:47.106     POST openrouter.ai/api/v1/chat/completions
+17:02:48.834   running tool: glob
+17:02:48.841   chat google/gemini-3.5-flash
+17:02:48.852     POST openrouter.ai/api/v1/chat/completions
+17:02:50.137   running tool: glob
+17:02:50.145   chat google/gemini-3.5-flash
+17:02:50.153     POST openrouter.ai/api/v1/chat/completions
+17:02:51.327   running tool: glob
+17:02:51.333   chat google/gemini-3.5-flash
+17:02:51.342     POST openrouter.ai/api/v1/chat/completions
+17:02:52.624   running tool: grep
+17:02:52.631   chat google/gemini-3.5-flash
+17:02:52.643     POST openrouter.ai/api/v1/chat/completions
+17:02:55.999   running tool: ls
+17:02:56.006   chat google/gemini-3.5-flash
+17:02:56.016     POST openrouter.ai/api/v1/chat/completions
+17:02:57.428   running tool: read_file
+17:02:57.436   chat google/gemini-3.5-flash
+17:02:57.446     POST openrouter.ai/api/v1/chat/completions
+17:03:10.300   running tool: read_file
+17:03:10.307   chat google/gemini-3.5-flash
+17:03:10.317     POST openrouter.ai/api/v1/chat/completions
+17:03:12.028   running tool: ls
+17:03:12.036   chat google/gemini-3.5-flash
+17:03:12.046     POST openrouter.ai/api/v1/chat/completions
+17:03:13.515   running tool: read_file
+17:03:13.525   chat google/gemini-3.5-flash
+17:03:13.535     POST openrouter.ai/api/v1/chat/completions
+17:03:15.130   running tool: read_file
+17:03:15.141   chat google/gemini-3.5-flash
+17:03:15.151     POST openrouter.ai/api/v1/chat/completions
+17:03:19.228   running tool: read_file
+17:03:19.238   chat google/gemini-3.5-flash
+17:03:19.251     POST openrouter.ai/api/v1/chat/completions
+17:03:24.235   running tool: read_file
+17:03:24.243   chat google/gemini-3.5-flash
+17:03:24.254     POST openrouter.ai/api/v1/chat/completions
+17:03:25.978   running tool: read_file
+17:03:25.986   chat google/gemini-3.5-flash
+17:03:25.998     POST openrouter.ai/api/v1/chat/completions
+17:03:29.217   running tool: read_file
+17:03:29.225   chat google/gemini-3.5-flash
+17:03:29.237     POST openrouter.ai/api/v1/chat/completions
+17:03:36.792   running tool: execute
+17:03:36.925   chat google/gemini-3.5-flash
+17:03:36.938     POST openrouter.ai/api/v1/chat/completions
+17:03:40.207   running tool: execute
+17:03:40.342   chat google/gemini-3.5-flash
+17:03:40.354     POST openrouter.ai/api/v1/chat/completions
+17:03:41.887   running tool: execute
+17:03:42.025   chat google/gemini-3.5-flash
+17:03:42.038     POST openrouter.ai/api/v1/chat/completions
+17:03:43.569   running tool: execute
+17:03:43.712   chat google/gemini-3.5-flash
+17:03:43.729     POST openrouter.ai/api/v1/chat/completions
+17:03:45.371   running tool: execute
+17:03:45.509   chat google/gemini-3.5-flash
+17:03:45.524     POST openrouter.ai/api/v1/chat/completions
+17:03:48.051   running tool: execute
+17:03:48.185   chat google/gemini-3.5-flash
+17:03:48.199     POST openrouter.ai/api/v1/chat/completions
+17:03:49.912   running tool: execute
+17:03:50.042   chat google/gemini-3.5-flash
+17:03:50.056     POST openrouter.ai/api/v1/chat/completions
+17:03:53.513   running tool: execute
+17:03:53.647   chat google/gemini-3.5-flash
+17:03:53.661     POST openrouter.ai/api/v1/chat/completions
+17:03:56.959   running tool: execute
+17:03:57.118   chat google/gemini-3.5-flash
+17:03:57.133     POST openrouter.ai/api/v1/chat/completions
+17:04:25.312   running tool: execute
+17:04:25.329   chat google/gemini-3.5-flash
+17:04:25.344     POST openrouter.ai/api/v1/chat/completions
+17:04:32.625   running tool: read_file
+17:04:32.633   chat google/gemini-3.5-flash
+17:04:32.648     POST openrouter.ai/api/v1/chat/completions
+17:04:34.379   running tool: read_file
+17:04:34.387   chat google/gemini-3.5-flash
+17:04:34.404     POST openrouter.ai/api/v1/chat/completions
+17:04:42.375   running tool: execute
+17:04:42.411   chat google/gemini-3.5-flash
+17:04:42.427     POST openrouter.ai/api/v1/chat/completions
+17:04:44.143   running tool: execute
+17:04:44.518   chat google/gemini-3.5-flash
+17:04:44.540     POST openrouter.ai/api/v1/chat/completions
+17:04:50.639   running tool: read_file
+17:04:50.646   chat google/gemini-3.5-flash
+17:04:50.666     POST openrouter.ai/api/v1/chat/completions
+17:04:52.820   running tool: read_file
+17:04:52.827   chat google/gemini-3.5-flash
+17:04:52.849     POST openrouter.ai/api/v1/chat/completions
+17:04:55.754   running tool: read_file
+17:04:55.761   chat google/gemini-3.5-flash
+17:04:55.784     POST openrouter.ai/api/v1/chat/completions
+17:04:59.431   running tool: hashline_edit
+17:04:59.439   chat google/gemini-3.5-flash
+17:04:59.462     POST openrouter.ai/api/v1/chat/completions
+17:05:02.849   running tool: read_file
+17:05:02.856   chat google/gemini-3.5-flash
+17:05:02.880     POST openrouter.ai/api/v1/chat/completions
+17:05:05.030   running tool: read_file
+17:05:05.037   chat google/gemini-3.5-flash
+17:05:05.062     POST openrouter.ai/api/v1/chat/completions
+17:05:07.873   running tool: hashline_edit
+17:05:07.881   chat google/gemini-3.5-flash
+17:05:07.906     POST openrouter.ai/api/v1/chat/completions
+17:05:09.680   running tool: read_file
+17:05:09.687   chat google/gemini-3.5-flash
+17:05:09.715     POST openrouter.ai/api/v1/chat/completions
+17:05:12.971   running tool: hashline_edit
+17:05:12.979   chat google/gemini-3.5-flash
+17:05:13.005     POST openrouter.ai/api/v1/chat/completions
+17:05:14.507   running tool: read_file
+17:05:14.518   chat google/gemini-3.5-flash
+17:05:14.555     POST openrouter.ai/api/v1/chat/completions
+17:05:16.033   running tool: read_file
+17:05:16.041   chat google/gemini-3.5-flash
+17:05:16.062     POST openrouter.ai/api/v1/chat/completions
+17:05:56.643 agent run
+17:05:56.651   chat google/gemini-3.5-flash
+17:05:56.677     POST openrouter.ai/api/v1/chat/completions
+17:06:06.143   running tool: read_file
+17:06:06.153   chat google/gemini-3.5-flash
+17:06:06.180     POST openrouter.ai/api/v1/chat/completions
+17:06:12.487   running tool: hashline_edit
+17:06:12.495   chat google/gemini-3.5-flash
+17:06:12.522     POST openrouter.ai/api/v1/chat/completions
+17:06:20.296   running tool: read_file
+17:06:20.304   chat google/gemini-3.5-flash
+17:06:20.334     POST openrouter.ai/api/v1/chat/completions
+17:06:31.069     POST openrouter.ai/api/v1/chat/completions
+17:06:34.628     POST openrouter.ai/api/v1/chat/completions
+17:06:46.476   running tool: hashline_edit
+17:06:46.486   chat google/gemini-3.5-flash
+17:06:46.526     POST openrouter.ai/api/v1/chat/completions
+17:06:48.965   running tool: read_file
+17:06:48.976   chat google/gemini-3.5-flash
+17:06:49.017     POST openrouter.ai/api/v1/chat/completions
+17:06:51.735     POST openrouter.ai/api/v1/chat/completions
+17:06:55.422     POST openrouter.ai/api/v1/chat/completions
+17:07:00.612     POST openrouter.ai/api/v1/chat/completions
+17:07:06.273   running tool: read_file
+17:07:06.281   chat google/gemini-3.5-flash
+17:07:06.303     POST openrouter.ai/api/v1/chat/completions
+17:07:16.246   running tool: hashline_edit
+17:07:16.258   chat google/gemini-3.5-flash
+17:07:16.279     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+17:07:25.123         chat gpt-5.4
+17:07:25.143           POST api.openai.com/v1/responses
+17:07:29.639         running tool: bash_exec
+17:07:29.647 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+17:07:29.657           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+17:07:29.690         chat gpt-5.4
+17:07:29.707           POST api.openai.com/v1/responses
+17:07:33.487         running tool: bash_exec
+17:07:33.526         chat gpt-5.4
+17:07:33.550           POST api.openai.com/v1/responses
+17:07:36.429         running tool: bash_exec
+17:07:36.470         chat gpt-5.4
+17:07:36.492           POST api.openai.com/v1/responses
+17:07:38.821         running tool: bash_exec
+17:07:38.846         chat gpt-5.4
+17:07:38.868           POST api.openai.com/v1/responses
+17:07:42.265         running tool: bash_exec
+17:07:42.419         chat gpt-5.4
+17:07:42.442           POST api.openai.com/v1/responses
+17:07:46.045         running tool: bash_exec
+17:07:46.089         chat gpt-5.4
+17:07:46.113           POST api.openai.com/v1/responses
+17:07:57.201         running tool: bash_exec
+17:07:57.399         chat gpt-5.4
+17:07:57.424           POST api.openai.com/v1/responses
+17:08:05.164         running tool: bash_exec
+17:08:05.878         chat gpt-5.4
+17:08:05.909           POST api.openai.com/v1/responses
+17:08:10.204         running tool: bash_exec
+17:08:11.590         chat gpt-5.4
+17:08:11.618           POST api.openai.com/v1/responses
+17:08:14.577         running tool: bash_exec
+17:08:14.616         chat gpt-5.4
+17:08:14.652           POST api.openai.com/v1/responses
+17:08:30.157         running tool: bash_exec
+17:08:31.633         chat gpt-5.4
+17:08:31.673           POST api.openai.com/v1/responses
+17:08:36.514         running tool: bash_exec
+17:09:38.581         chat gpt-5.4
+17:09:38.614           POST api.openai.com/v1/responses
+17:09:41.673         running tool: bash_exec
+17:09:41.708         chat gpt-5.4
+17:09:41.741           POST api.openai.com/v1/responses
+17:09:48.874         running tool: bash_exec
+17:10:58.610         chat gpt-5.4
+17:10:58.644           POST api.openai.com/v1/responses
+17:11:01.373         running tool: bash_exec
+17:11:01.532         chat gpt-5.4
+17:11:01.570           POST api.openai.com/v1/responses
+17:11:09.197         running tool: bash_exec
+17:11:09.234         chat gpt-5.4
+17:11:09.270           POST api.openai.com/v1/responses
+17:11:23.983         running tool: bash_exec
+17:11:24.016         chat gpt-5.4
+17:11:24.057           POST api.openai.com/v1/responses
+17:12:01.059         running tool: bash_exec
+17:12:01.093         chat gpt-5.4
+17:12:01.133           POST api.openai.com/v1/responses
+17:12:08.932         running tool: bash_exec
+17:12:08.969         chat gpt-5.4
+17:12:09.010           POST api.openai.com/v1/responses
+17:12:14.274         running tool: python_repl
+17:12:14.313         chat gpt-5.4
+17:12:14.356           POST api.openai.com/v1/responses
+17:12:21.466         running tool: python_repl
+17:12:21.503         chat gpt-5.4
+17:12:21.545           POST api.openai.com/v1/responses
+17:12:32.259         running tool: bash_exec
+17:12:33.174         chat gpt-5.4
+17:12:33.217           POST api.openai.com/v1/responses
+17:12:39.233         running tool: python_repl
+17:12:39.268         chat gpt-5.4
+17:12:39.313           POST api.openai.com/v1/responses
+17:12:43.057         running tool: bash_exec
+17:12:43.843         chat gpt-5.4
+17:12:43.897           POST api.openai.com/v1/responses
+17:12:47.995         running tool: python_repl
+17:12:48.035         chat gpt-5.4
+17:12:48.083           POST api.openai.com/v1/responses
+17:12:52.558         running tool: bash_exec
+17:12:53.466         chat gpt-5.4
+17:12:53.515           POST api.openai.com/v1/responses
+17:13:13.553         running tool: start_monitor
+17:13:13.561         chat gpt-5.4
+17:13:13.622           POST api.openai.com/v1/responses
+17:13:16.913         running tool: list_monitors
+17:13:16.919         chat gpt-5.4
+17:13:16.989           POST api.openai.com/v1/responses
+17:13:23.316         running tool: bash_exec
+17:13:43.334         chat gpt-5.4
+17:13:43.401           POST api.openai.com/v1/responses
+17:13:47.677         running tool: list_monitors
+17:13:47.683         chat gpt-5.4
+17:13:47.735           POST api.openai.com/v1/responses
+17:13:54.061         running tool: bash_exec
+17:14:19.083         chat gpt-5.4
+17:14:19.140           POST api.openai.com/v1/responses
+17:14:21.435         running tool: list_monitors
+17:14:21.440         chat gpt-5.4
+17:14:21.499           POST api.openai.com/v1/responses
+17:14:24.561         running tool: bash_exec
+17:14:44.591         chat gpt-5.4
+17:14:44.662           POST api.openai.com/v1/responses
+17:14:46.803         running tool: list_monitors
+17:14:46.808         chat gpt-5.4
+17:14:46.876           POST api.openai.com/v1/responses
+17:14:50.940         running tool: stop_monitor
+17:14:50.946         chat gpt-5.4
+17:14:51.018           POST api.openai.com/v1/responses
+17:14:58.009         running tool: bash_exec
+17:14:58.034         chat gpt-5.4
+17:14:58.096           POST api.openai.com/v1/responses
+17:15:02.215         running tool: python_repl
+17:15:02.253         chat gpt-5.4
+17:15:02.314           POST api.openai.com/v1/responses
+17:15:06.841         running tool: bash_exec
+17:15:06.877         chat gpt-5.4
+17:15:06.946           POST api.openai.com/v1/responses
+17:15:15.923         running tool: bash_exec
+17:15:16.083         chat gpt-5.4
+17:15:16.155           POST api.openai.com/v1/responses
+17:15:21.872         running tool: bash_exec
+17:15:22.142         chat gpt-5.4
+17:15:22.210           POST api.openai.com/v1/responses
+17:15:33.026         running tool: python_repl
+17:15:33.062         chat gpt-5.4
+17:15:33.132           POST api.openai.com/v1/responses
+[2026-07-30T17:16:11.807331Z] EXIT 0

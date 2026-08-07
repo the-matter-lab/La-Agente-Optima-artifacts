@@ -1,0 +1,156 @@
+# How to Execute the Direct Arylation BO Campaign
+
+## Prerequisites
+
+The following environment variables **must** be set before running:
+
+| Variable | Description |
+|----------|-------------|
+| `BO_MCP_API_URL` | Base URL for the BO-MCP REST API (e.g., `http://api:8000`) |
+| `BO_MCP_API_KEY` | API key for BO-MCP authentication |
+| `DIRECT_ARYLATION_API_URL` | Base URL for the direct arylation oracle service (e.g., `http://oracle:8080`) |
+
+## Campaign Marker
+
+Every campaign created by this script includes the marker:
+```
+akg-eval-1dc66667d24647198d7428279470bb36
+```
+
+This marker appears in the campaign name and is used for tracking.
+
+## Execution Commands
+
+### First Run (New Campaign)
+
+```bash
+cd /app/outputs/cells/direct_arylation_standard_nemotron_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval
+uv run python run_direct_arylation.py
+```
+
+### Resume Paused Campaign
+
+```bash
+uv run python run_direct_arylation.py --campaign-id <CAMPAIGN_ID>
+```
+
+The `--campaign-id` argument allows resuming a paused or completed campaign. The script queries the BO-MCP server for current state and continues from there.
+
+### Custom Parameters
+
+```bash
+uv run python run_direct_arylation.py \
+    --poll-s 180 \
+    --heartbeat-s 1800 \
+    --stop-file STOP \
+    --artifact-dir artifacts \
+    --oracle-timeout 15.0
+```
+
+**Parameter constraints:**
+- `--poll-s`: Must be between 120 and 300 seconds (default: 180)
+- `--heartbeat-s`: Heartbeat interval in seconds (default: 1800)
+- `--stop-file`: Path to stop file (default: `STOP` in CWD)
+- `--artifact-dir`: Directory for per-attempt JSON artifacts (default: `artifacts/`)
+- `--oracle-timeout`: Oracle request timeout in seconds (default: 15.0)
+
+## Stop File Mechanism
+
+Create a file named `STOP` (or custom path via `--stop-file`) in the working directory to request a graceful pause:
+
+```bash
+touch STOP
+```
+
+The script checks for this file at the start of each BO iteration (before generating suggestions). When detected:
+1. Prints `[EVENT] Stop file detected...`
+2. Deletes the stop file (so resume isn't blocked by stale marker)
+3. Pauses the campaign via BO-MCP lifecycle API
+4. Exits cleanly
+
+**Important:** The stop file is checked *before* suggestion generation, not between evaluation and submission. Results are always submitted before pausing.
+
+## Log Tags (for Parent Monitor)
+
+The script emits structured log lines with these tags:
+
+| Tag | Meaning |
+|-----|---------|
+| `[EVENT]` | State changes: campaign create/resume, stop file, loop decisions, completion |
+| `[ALERT]` | Failures: oracle errors, submission failures, generation rejections |
+| `[RESULT]` | Per-evaluation results with yield and parameters; final summary |
+| `[HEARTBEAT]` | Liveness ping every `--heartbeat-s` seconds |
+
+All tagged lines are printed to stdout (unbuffered). Full logs also go to the run log on disk via logfire.
+
+## Artifacts
+
+Per-attempt artifacts are written to `--artifact-dir` (default: `artifacts/`) as JSON files:
+
+```
+artifacts/
+├── attempt_0001.json
+├── attempt_0002.json
+└── ...
+```
+
+Each artifact contains:
+```json
+{
+  "attempt_number": 1,
+  "parameter_values": {
+    "base": "Potassium acetate",
+    "ligand": "BrettPhos",
+    "solvent": "DMAc",
+    "concentration": 0.1,
+    "temperature_c": 90
+  },
+  "success": true,
+  "objective_values": { "yield": 42.5 }
+}
+```
+
+Failed attempts have `"success": false`, empty `"objective_values"`, and an `"error"` field.
+
+## Expected Outputs
+
+Upon completion (budget exhausted, convergence, or manual stop), the script prints a final summary:
+
+```
+[RESULT] === CAMPAIGN SUMMARY ===
+[RESULT] Campaign ID: <campaign_id>
+[RESULT] Total attempts: 60
+[RESULT] Successful evaluations: 58
+[RESULT] Best yield: 87.30%
+[RESULT] Best conditions: {"base": "Cesium pivalate", "ligand": "JackiePhos", "solvent": "Butyornitrile", "concentration": 0.153, "temperature_c": 120}
+[RESULT] ===========================
+```
+
+## Campaign Budget
+
+- **Maximum attempts**: 60 (hard limit, enforced client-side)
+- Each oracle request (success or failure) consumes one attempt
+- Failed oracle calls (non-2xx, timeout, network error) are recorded and counted
+
+## Resume Behavior
+
+When re-running with `--campaign-id`:
+1. Script fetches campaign status from BO-MCP
+2. Derives current position from server (not local files)
+3. Continues optimization loop until budget or stopping criteria
+4. Artifacts append to existing directory
+
+## Troubleshooting
+
+| Issue | Resolution |
+|-------|------------|
+| `BO_MCP_API_URL not set` | Export the BO-MCP API base URL |
+| `BO_MCP_API_KEY not set` | Export a valid BO-MCP API key |
+| `DIRECT_ARYLATION_API_URL not set` | Export the oracle service URL |
+| Oracle returns non-2xx | Recorded as failed attempt; campaign continues |
+| Campaign shows `converged` early | Normal BO behavior; use `reopen` via lifecycle if needed |
+| Stop file ignored | Only checked at iteration boundaries, not mid-evaluation |
+
+## Chat Trace ID
+
+For follow-up debugging, reference this trace ID: `63323543-f9fa-4c7e-afb7-2b2ba83f3152`

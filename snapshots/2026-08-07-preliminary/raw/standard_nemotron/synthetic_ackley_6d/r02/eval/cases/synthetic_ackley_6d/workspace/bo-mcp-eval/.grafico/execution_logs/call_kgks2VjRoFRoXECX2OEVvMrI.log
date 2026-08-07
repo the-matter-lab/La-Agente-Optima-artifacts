@@ -1,0 +1,202 @@
+exit_code=0
+
+=== stdout (raw) ===
+domains/bo_mcp/client.py relevant:
+                "BO_MCP_API_KEY is not set; it is required for BO-MCP REST calls."
+            )
+        return cls(base_url=base_url, api_key=api_key, timeout_s=timeout_s)
+
+    def validate_intake(self, intake: dict[str, Any]) -> dict[str, Any]:
+        """Dry-run a campaign intake payload against the API's own validation.
+
+        The intake schema is owned by BO-MCP, not this client: discover its
+        exact field shapes via ``inspect_bo_mcp_openapi_operation`` on
+        ``POST /api/v1/campaigns``, then validate here before creating.
+        """
+        return self._json_request(
+            "POST", "/api/v1/campaigns/validate", json={"intake": intake}
+        )
+
+    def create_campaign(
+        self, intake: dict[str, Any], *, idempotency_key: str
+    ) -> dict[str, Any]:
+        return self._json_request(
+            "POST",
+            "/api/v1/campaigns",
+            json={"intake": intake},
+            headers={"Idempotency-Key": idempotency_key},
+        )
+
+    def get_campaign(self, campaign_id: str) -> dict[str, Any]:
+        return self._json_request("GET", f"/api/v1/campaigns/{campaign_id}")
+
+    def query_suggestions(
+        self,
+        campaign_id: str,
+        *,
+        status_filter: str | None = None,
+        limit: int = 500,
+    ) -> list[dict[str, Any]]:
+        response = self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{campaign_id}/query",
+            json={
+                "status_filter": status_filter,
+                "limit": limit,
+                "verbosity": "standard",
+            },
+        )
+        return list(response.get("suggestions") or [])
+
+    def generate_suggestions(
+        self,
+        campaign_id: str,
+        *,
+        batch_size: int = 1,
+        timeout_s: float = _GENERATE_SUGGESTIONS_TIMEOUT_S,
+    ) -> dict[str, Any]:
+        """Ask the BO backend for new candidates.
+
+        Cost follows the search space's shape, not the result count: a space
+        mixing categorical/discrete with continuous parameters optimizes the
+        continuous part once per discrete configuration, so minutes are
+        normal. Raise ``timeout_s`` for a wide discrete side.
+        """
+        return self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{campaign_id}/generate",
+            params={"batch_size": batch_size},
+            timeout=timeout_s,
+        )
+
+    def submit_results(
+        self,
+        campaign_id: str,
+        *,
+        results: list[dict[str, Any]],
+        idempotency_key: str,
+        force: bool = False,
+    ) -> dict[str, Any]:
+        """Submit measurements, using ``force=True`` for an approved replicate.
+
+        A duplicate rejection is terminal and the server caches it under the
+        submitted ``idempotency_key``, with ``force`` part of the request
+        hash. A forced retry of a rejected submission must therefore use a
+        fresh key from :meth:`make_idempotency_key` — reusing the rejected
+        key returns a 409 idempotency conflict instead of submitting the
+        replicate.
+        """
+        payload: dict[str, Any] = {"results": results, "source": "api"}
+        # Sent only when requested: the server's result schema forbids extra
+        # keys, so an unconditional ``"force": false`` would 422 every
+        # ordinary submission against a server predating the field. Omission
+        # and ``false`` are equivalent, including in the idempotency hash.
+        if force:
+            payload["force"] = True
+        return self._json_request(
+            "POST",
+            f"/api/v1/results/{campaign_id}",
+            json=payload,
+            headers={"Idempotency-Key": idempotency_key},
+        )
+
+    def get_results(self, campaign_id: str) -> list[dict[str, Any]]:
+        """Return the campaign's server-persisted result rows.
+
+        For reporting and cross-checks. Progress and budget authority remain
+        with :meth:`next_action` and its ``n_results`` field — do not re-derive
+        loop position from these rows. A row matching a new suggestion is not
+        grounds for rejecting it either; see the replicate policy above.
+        """
+        response = self._json_request("GET", f"/api/v1/results/{campaign_id}")
+        if not isinstance(response, list):
+            raise BoMcpOperationError(
+                f"BO-MCP returned a non-list result payload for campaign {campaign_id}",
+                response if isinstance(response, dict) else {"response": response},
+            )
+        return response
+
+    def update_suggestion_status(
+        self, suggestion_id: str, status: str
+    ) -> dict[str, Any]:
+        return self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{suggestion_id}/status",
+            json={"status": status},
+
+--- submit schema in tests grep ---
+/app/domains/bo_mcp/client.py:43:       b. ``generate_suggestions(campaign_id, batch_size=...)`` — ask the BO
+/app/domains/bo_mcp/client.py:45:          ``query_suggestions(campaign_id, status_filter="pending")`` to reuse
+/app/domains/bo_mcp/client.py:48:          pending before retrying or stopping.
+/app/domains/bo_mcp/client.py:50:       d. ``submit_results(..., force=...)`` — report finite objective values.
+/app/domains/bo_mcp/client.py:54:          reporting or cross-checks. Not a progress source: ``next_action``
+/app/domains/bo_mcp/client.py:75:    Loop-state ownership: the BO-MCP server is the single source of truth
+/app/domains/bo_mcp/client.py:92:            if decision["action"] != "bo_generate_suggestions":
+/app/domains/bo_mcp/client.py:94:            suggestion = client.generate_suggestions(campaign_id, batch_size=1)
+/app/domains/bo_mcp/client.py:96:            client.submit_results(campaign_id, results=..., idempotency_key=...)
+/app/domains/bo_mcp/client.py:186:    def generate_suggestions(
+/app/domains/bo_mcp/client.py:207:    def submit_results(
+/app/domains/bo_mcp/client.py:224:        payload: dict[str, Any] = {"results": results, "source": "api"}
+/app/domains/bo_mcp/client.py:271:        on ``action`` (``"bo_generate_suggestions"`` means another round)
+/app/tests/domains/bo_mcp/test_client.py:96:def test_submit_results_posts_to_campaign_scoped_path():
+/app/tests/domains/bo_mcp/test_client.py:98:    client.submit_results("c1", results=[{"x": 1}], idempotency_key="idem-2")
+/app/tests/domains/bo_mcp/test_client.py:104:    assert call["json"] == {"results": [{"x": 1}], "source": "api"}
+/app/tests/domains/bo_mcp/test_client.py:107:def test_submit_results_forwards_force_override():
+/app/tests/domains/bo_mcp/test_client.py:109:    client.submit_results(
+/app/tests/domains/bo_mcp/test_client.py:154:        client.submit_results("c1", results=[], idempotency_key="idem-3")
+/app/tests/domains/bo_mcp/test_client.py:174:def test_generate_suggestions_forwards_batch_size():
+/app/tests/domains/bo_mcp/test_client.py:180:    response = client.generate_suggestions("c1", batch_size=3)
+/app/tests/domains/bo_mcp/test_client.py:187:def test_generate_suggestions_uses_own_generous_timeout():
+/app/tests/domains/bo_mcp/test_client.py:189:    client.generate_suggestions("c1")
+/app/tests/domains/bo_mcp/test_client.py:193:def test_generate_suggestions_honors_explicit_timeout():
+/app/tests/domains/bo_mcp/test_client.py:195:    client.generate_suggestions("c1", timeout_s=1800.0)
+/app/tests/domains/bo_mcp/test_client.py:202:    suggestions = client.query_suggestions("c1", status_filter="pending", limit=5)
+/app/tests/domains/bo_mcp/test_client.py:206:    assert call["json"]["status_filter"] == "pending"
+/app/tests/domains/bo_mcp/test_client.py:242:                    "action": "bo_generate_suggestions",
+/app/tests/domains/bo_mcp/test_client.py:260:    assert decision["action"] == "bo_generate_suggestions"
+/app/tests/evals/bo_mcp/test_lean_eval.py:283:        "initial_design_size_source": "botorch_default",
+/app/tests/evals/bo_mcp/test_lean_eval.py:305:        "initial_design_size_source": "botorch_default",
+/app/tests/evals/bo_mcp/test_lean_eval.py:446:            "initial_design_size_source": "botorch_default",
+/app/tests/evals/bo_mcp/test_lean_eval.py:508:    assert metrics["campaign_config"]["initial_design_size_source"] == "botorch_default"
+/app/tests/evals/bo_mcp/test_lean_eval.py:543:            {"id": "s1", "status": "pending"},
+/app/tests/evals/bo_mcp/test_lean_eval.py:751:        "_source": payload["agent"]["_source"],
+/app/tests/evals/bo_mcp/test_lean_eval.py:782:        payload["bo_mcp"]["campaign_config"]["initial_design_size_source"]
+/app/tests/evals/bo_mcp/test_lean_eval.py:797:    assert payload["agent"]["_source"]["runtime_s"].startswith("wall-clock time")
+/app/tests/evals/bo_mcp/test_lean_eval.py:798:    assert "result.usage" in payload["agent"]["_source"]["usage"]
+/app/tests/evals/bo_mcp/test_lean_eval.py:799:    assert "BO-MCP REST" in payload["bo_mcp"]["_source"]
+/app/tests/evals/bo_mcp/test_lean_eval.py:867:    assert manifest["model_settings"]["source"] == "grafico.core.http.llm_config"
+/app/tests/evals/bo_mcp/test_lean_eval.py:909:    assert manifest["model_settings"]["source"] == "grafico.core.http.llm_config"
+/app/tests/evals/bo_mcp/test_lean_eval.py:979:    assert manifest["bo_mcp_git"]["source"] == "auto:sibling-bo-mcp-clean"
+/app/tests/evals/bo_mcp/test_lean_eval.py:982:            "source": "auto:sibling-bo-mcp",
+/app/tests/evals/bo_mcp/test_lean_eval.py:1057:    assert manifest["bo_mcp_git"]["source"] == "cli"
+/app/tests/evals/bo_mcp/test_lean_eval.py:2221:                "cost_source": "test",
+/app/tests/evals/bo_mcp/test_lean_eval.py:2231:                "cost_source": "test",
+/app/tests/evals/bo_mcp/test_lean_eval.py:2401:            "message_history_source": None,
+/app/tests/evals/bo_mcp/test_lean_eval.py:2489:    assert task["message_history_source"] == "TaskHandle.message_history"
+/app/tests/evals/bo_mcp/test_lean_eval.py:2789:                "cost_source": "subagent_task_handles",
+/app/tests/evals/bo_mcp/test_lean_eval.py:2917:        in updated_metrics["agent"]["_source"]["pydantic_eval_task_duration_s"]
+/app/tests/evals/bo_mcp/test_lean_eval.py:3014:    assert manifest["bo_mcp_git"]["source"] == "cli"
+/app/tests/evals/bo_mcp/test_lean_eval.py:3759:    assert 'set top-level `source` to exactly `"api"`' not in prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3766:def test_homo_lumo_source_prompt_stays_unconstrained():
+/app/tests/evals/bo_mcp/test_lean_eval.py:3767:    source_prompt = (
+/app/tests/evals/bo_mcp/test_lean_eval.py:3774:    assert "Benchmark-only HOMO-LUMO runtime contract:" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3775:    assert "homo_lumo budget: 6" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3776:    assert "workflow_timeout_s=1800" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3777:    assert "--smoke-test" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3778:    assert "PySCFWorkflowResult" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3779:    assert "outputs[-1]" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3780:    assert 'source` to exactly `"api"`' not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3822:def test_phosphine_ligand_source_prompt_stays_unconstrained():
+/app/tests/evals/bo_mcp/test_lean_eval.py:3823:    source_prompt = (
+/app/tests/evals/bo_mcp/test_lean_eval.py:3830:    assert "Recommended substituent set:" in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3831:    assert "Use the following reduced benchmark subset" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3832:    assert "workflow_timeout_s=1800" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:3833:    assert "Benchmark-only phosphine subset:" not in source_prompt
+/app/tests/evals/bo_mcp/test_lean_eval.py:4107:    assert "BO-MCP tools and their schema as the source of truth" in contract
+/app/tests/evals/bo_mcp/test_lean_eval.py:4490:    source_case_name = None
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

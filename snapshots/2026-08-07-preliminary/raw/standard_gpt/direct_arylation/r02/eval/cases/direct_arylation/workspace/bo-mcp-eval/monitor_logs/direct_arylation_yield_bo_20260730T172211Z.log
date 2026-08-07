@@ -1,0 +1,20 @@
+17:22:11.936 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:22:11.966 starting_direct_arylation_campaign
+17:22:11.967 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:22:11.987 POST api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0/lifecycle
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+17:22:12.814 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+[EVENT] campaign-ready campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 status=running max_attempts=60 campaign_max_observations=60 artifact_dir=artifacts/direct_arylation_yield_bo/71a4c41d-c9d0-432a-b43a-20386c1447a0 | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:22:12.826 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:22:12.835 GET api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+[HEARTBEAT] campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 attempted=2/60 pid=255 | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:22:12.846 POST api/api/v1/campaigns/status/batch
+17:22:12.870 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/query
+17:22:12.885 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/generate ? batch_size='1'
+[EVENT] attempt-start campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 attempt=3/60 suggestion_id=0ba07221-8a9e-449a-8b48-bf2ec8f23fa8 candidate={'base': 'Potassium pivalate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 90} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:22:12.964 POST direct-arylation-oracle/v1/evaluate
+17:22:12.970 POST api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+[RESULT] attempt=3/60 status=submitted campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 suggestion_id=0ba07221-8a9e-449a-8b48-bf2ec8f23fa8 yield=7.1200 candidate={'base': 'Potassium pivalate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 90} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:22:13.063 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:22:13.072 GET api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0

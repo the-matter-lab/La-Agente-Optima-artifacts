@@ -1,0 +1,11 @@
+[EVENT] Creating campaign  idempotency_key=create-ackley-6d-d5a5b15d79
+05:53:29.912 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Created campaign_id=2e428cf2-3038-4266-b0d6-a6389495ba00
+[EVENT] Result log: artifacts/results.jsonl
+05:53:29.978 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=0  n_results=0  status=created
+05:53:29.988 POST api/api/v1/suggestions/2e428cf2-3038-4266-b0d6-a6389495ba00/generate ? batch_size='1'
+05:53:30.040 POST api/api/v1/results/2e428cf2-3038-4266-b0d6-a6389495ba00
+[RESULT] eval=1  surface_response=0.061092  raw_response=-20.984961  params={x_1=0.0115, x_2=0.0771, x_3=0.3377, x_4=0.3714, x_5=0.8389, x_6=0.7344}

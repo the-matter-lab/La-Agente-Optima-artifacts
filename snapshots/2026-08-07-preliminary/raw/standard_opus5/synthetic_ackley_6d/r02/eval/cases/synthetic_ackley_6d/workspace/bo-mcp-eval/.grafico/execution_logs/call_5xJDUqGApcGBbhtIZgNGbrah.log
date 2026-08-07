@@ -1,0 +1,13 @@
+exit_code=0
+
+=== stdout (raw) ===
+root         195       1  0 06:06 ?        00:00:00 sh -c bash -lc 'set -o pipefail mkdir -p logs TS=$(date +%Y%m%d_%H%M%S) LOG="logs/ackley6d_campaign_${TS}.log" export BO_MCP_API_URL="${BO_MCP_API_URL}" export BO_MCP_API_KEY="[REDACTED]}" uv run --project /app python -u run_ackley6d.py --campaign-id 95e5ca97-4cca-4c0c-9d0d-6f5c095351f6 --max-attempts 60 2>&1 | tee "$LOG" exit ${PIPESTATUS[0]}'
+root         196     195  0 06:06 ?        00:00:00 bash -lc set -o pipefail mkdir -p logs TS=$(date +%Y%m%d_%H%M%S) LOG="logs/ackley6d_campaign_${TS}.log" export BO_MCP_API_URL="${BO_MCP_API_URL}" export BO_MCP_API_KEY="[REDACTED]}" uv run --project /app python -u run_ackley6d.py --campaign-id 95e5ca97-4cca-4c0c-9d0d-6f5c095351f6 --max-attempts 60 2>&1 | tee "$LOG" exit ${PIPESTATUS[0]}
+root         201     196  0 06:06 ?        00:00:00 uv run --project /app python -u run_ackley6d.py --campaign-id 95e5ca97-4cca-4c0c-9d0d-6f5c095351f6 --max-attempts 60
+root         205     201  1 06:06 ?        00:00:01 /opt/venv/bin/python3 -u run_ackley6d.py --campaign-id 95e5ca97-4cca-4c0c-9d0d-6f5c095351f6 --max-attempts 60
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

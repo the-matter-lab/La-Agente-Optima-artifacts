@@ -1,0 +1,263 @@
+{
+  "_source": "BO-MCP REST campaign/spec read-back",
+  "campaign": {
+    "created_at": "2026-08-07T06:16:49.276583Z",
+    "description": "Controlled synthetic benchmark: deterministic 6D Ackley surface mapped to a normalized [0,1] maximize objective 'surface_response'. No chemistry/experimental evaluator is used.",
+    "id": "84ceec99-fabc-408c-a7fa-3509f9552896",
+    "iteration": 11,
+    "n_objectives": 1,
+    "n_parameters": 6,
+    "name": "ackley6d-baybe-surface-response-akg-eval-01a2bebdff8c40379a2fd4b6ab495231",
+    "spec_id": "dbb154b2-8e42-4983-8434-aba6f39110c9",
+    "status": "paused",
+    "updated_at": "2026-08-07T06:20:25.127156Z"
+  },
+  "campaign_config": {
+    "_source": "BO-MCP REST campaign/spec read-back",
+    "acknowledge_degradations": [],
+    "acquisition": {
+      "method": "upper_confidence_bound",
+      "optimization": null,
+      "saasbo_config": null,
+      "turbo_config": null,
+      "use_cost_aware": false,
+      "use_input_warping": false
+    },
+    "backend_options": null,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "batch_size": 6,
+    "campaign_id": "84ceec99-fabc-408c-a7fa-3509f9552896",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "fidelity_parameter": null,
+    "initial_design_size": 12,
+    "initial_design_size_requested": 12,
+    "initial_design_size_source": "requested",
+    "max_iterations": null,
+    "max_observations": null,
+    "missing_fields": [
+      "max_iterations",
+      "max_observations",
+      "convergence_tolerance",
+      "backend_options",
+      "fidelity_parameter",
+      "transfer_learning"
+    ],
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 20240917,
+    "spec_id": "dbb154b2-8e42-4983-8434-aba6f39110c9",
+    "transfer_learning": null
+  },
+  "spec": {
+    "acknowledge_degradations": [],
+    "acquisition_beta": 2.0,
+    "acquisition_method": "upper_confidence_bound",
+    "acquisition_optimization": null,
+    "backend_options": null,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "batch_size": 6,
+    "campaign_id": "84ceec99-fabc-408c-a7fa-3509f9552896",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "description": "Controlled synthetic benchmark: deterministic 6D Ackley surface mapped to a normalized [0,1] maximize objective 'surface_response'. No chemistry/experimental evaluator is used.",
+    "fidelity_parameter": null,
+    "initial_design_size": 12,
+    "initial_design_size_requested": 12,
+    "initial_design_size_source": "requested",
+    "iteration": 11,
+    "max_iterations": null,
+    "max_observations": null,
+    "name": "ackley6d-baybe-surface-response-akg-eval-01a2bebdff8c40379a2fd4b6ab495231",
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley input dimension in [0.0, 1.0].",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 20240917,
+    "saasbo_config": null,
+    "scalarization": "pareto",
+    "scalarizer": null,
+    "spec_id": "dbb154b2-8e42-4983-8434-aba6f39110c9",
+    "status": "paused",
+    "transfer_learning": null,
+    "turbo_config": null,
+    "use_cost_aware": false,
+    "use_input_warping": false
+  }
+}

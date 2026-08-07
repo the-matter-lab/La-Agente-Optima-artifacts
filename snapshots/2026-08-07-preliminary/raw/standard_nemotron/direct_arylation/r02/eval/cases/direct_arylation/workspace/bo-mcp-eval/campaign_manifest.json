@@ -1,0 +1,23 @@
+{
+  "campaign_slug": "direct_arylation_bo",
+  "package_path": "direct_arylation_bo",
+  "modules": [
+    "direct_arylation_bo/search_space.py",
+    "direct_arylation_bo/intake.py",
+    "direct_arylation_bo/evaluation.py",
+    "direct_arylation_bo/reporting.py",
+    "direct_arylation_bo/campaign.py"
+  ],
+  "entrypoint": "run_direct_arylation.py",
+  "manifest_version": 1,
+  "marker": "akg-eval-044a756aaa4043a8a4fab847b8851ac2",
+  "budget": {
+    "max_evaluations": 60,
+    "batch_size": 1
+  },
+  "required_env_vars": [
+    "BO_MCP_API_URL",
+    "BO_MCP_API_KEY",
+    "DIRECT_ARYLATION_API_URL"
+  ]
+}

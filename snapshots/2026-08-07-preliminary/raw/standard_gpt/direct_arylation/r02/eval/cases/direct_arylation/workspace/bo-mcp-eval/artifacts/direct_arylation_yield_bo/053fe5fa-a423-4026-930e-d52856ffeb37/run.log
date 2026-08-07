@@ -1,0 +1,16 @@
+2026-07-30 17:15:32,046 INFO Starting campaign runner nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+2026-07-30 17:15:32,115 INFO next_action={'status': 'created', 'iteration': 0, 'n_results': 0, 'action': 'bo_generate_suggestions', 'reason': 'No results yet — generate initial suggestions to start optimization.', 'urgency': 'normal'}
+2026-07-30 17:15:32,218 INFO Attempt 1 suggestion_id=6ddf0773-3c5d-4a29-97e6-c5ffa93a8152 candidate={'base': 'Potassium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120}
+2026-07-30 17:15:32,362 INFO Pausing running campaign 053fe5fa-a423-4026-930e-d52856ffeb37
+2026-07-30 17:16:15,420 INFO Starting campaign runner nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+2026-07-30 17:16:15,446 INFO Resuming paused campaign 053fe5fa-a423-4026-930e-d52856ffeb37
+2026-07-30 17:16:15,599 INFO Pausing running campaign 053fe5fa-a423-4026-930e-d52856ffeb37
+2026-07-30 17:17:24,048 INFO Starting campaign runner nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+2026-07-30 17:17:24,073 INFO Resuming paused campaign 053fe5fa-a423-4026-930e-d52856ffeb37
+2026-07-30 17:17:24,153 INFO next_action={'status': 'running', 'iteration': 1, 'n_results': 1, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 1 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-07-30 17:17:24,222 INFO Pausing running campaign 053fe5fa-a423-4026-930e-d52856ffeb37
+2026-07-30 17:21:06,263 INFO Starting campaign runner nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+2026-07-30 17:21:06,289 INFO Resuming paused campaign 053fe5fa-a423-4026-930e-d52856ffeb37
+2026-07-30 17:21:06,485 INFO next_action={'status': 'running', 'iteration': 1, 'n_results': 1, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 1 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-07-30 17:21:06,511 WARNING Suggestion generation rejected for campaign 053fe5fa-a423-4026-930e-d52856ffeb37: {'schema_version': 2, 'success': False, 'suggestions': [], 'iteration': 1, 'errors': ['Reached max_observations=1; campaign has exhausted its observation budget.'], 'idempotency_replay': False}
+2026-07-30 17:21:07,937 INFO Pausing running campaign 053fe5fa-a423-4026-930e-d52856ffeb37

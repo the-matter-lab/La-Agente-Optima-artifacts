@@ -1,0 +1,17 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+  File "<string>", line 36
+    print('duplicate_coord_pairs',dup_coords[:5], 'n=',len(dup_coords)))
+                                                                       ^
+SyntaxError: unmatched ')'
+
+
+=== stderr (model-visible) ===
+  File "<string>", line 36
+    print('duplicate_coord_pairs',dup_coords[:5], 'n=',len(dup_coords)))
+                                                                       ^
+SyntaxError: unmatched ')'

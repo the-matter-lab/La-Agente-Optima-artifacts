@@ -1,0 +1,2 @@
+## BO-MCP campaign lifecycle
+- A newly created campaign may have status `created`; treat this as an active pre-first-suggestion state. Do not call resume or reject it solely because it is not yet `running`. After evaluations, pause only when the server reports `running`.

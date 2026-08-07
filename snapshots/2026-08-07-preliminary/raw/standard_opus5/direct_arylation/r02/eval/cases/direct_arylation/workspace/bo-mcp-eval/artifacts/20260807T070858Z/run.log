@@ -1,0 +1,10 @@
+EVENT: campaign was paused -> resumed
+EVENT: campaign 4f32f613-3520-4ad8-b543-ba2dd22689e6 | artifacts artifacts/20260807T070858Z
+detail: next_action={'status': 'running', 'iteration': 1, 'n_results': 1, 'action': 'bo_submit_results', 'reason': '1 suggestion(s) awaiting results.', 'urgency': 'normal'}
+ALERT: server stops the loop: bo_submit_results (1 suggestion(s) awaiting results.)
+EVENT: === CAMPAIGN SUMMARY ===
+RESULT: attempted=1 successful=1 failed=0
+RESULT: best yield = 0.00 percent @ base=Cesium pivalate | ligand=Di-tert-butylphenylphosphine | solvent=p-Xylene | concentration=0.1 | temperature_c=105
+RESULT: #01 [success] yield=0.00 :: base=Cesium pivalate | ligand=Di-tert-butylphenylphosphine | solvent=p-Xylene | concentration=0.1 | temperature_c=105
+EVENT: campaign 4f32f613-3520-4ad8-b543-ba2dd22689e6 paused (resume with --campaign-id 4f32f613-3520-4ad8-b543-ba2dd22689e6)
+EVENT: report written to artifacts/20260807T070858Z/report.json

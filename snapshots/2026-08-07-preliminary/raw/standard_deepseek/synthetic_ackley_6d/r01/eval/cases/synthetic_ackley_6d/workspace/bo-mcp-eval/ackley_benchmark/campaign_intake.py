@@ -1,0 +1,51 @@
+"""Campaign intake payload for the Ackley-6D BayBE benchmark."""
+
+from __future__ import annotations
+
+from .search_space import build_parameters
+
+CAMPAIGN_MARKER: str = "akg-eval-b42cee6306f44fd696958bf6e0ead612"
+
+
+def build_intake(
+    *,
+    random_seed: int = 42,
+    initial_design_size: int = 24,
+    batch_size: int = 1,
+) -> dict[str, object]:
+    """Return the ``IntakeData`` dict for campaign creation.
+
+    Parameters
+    ----------
+    random_seed : int
+        Campaign-level RNG seed for reproducibility.
+    initial_design_size : int
+        Number of Sobol warm-up points (4×d for 6-D).
+    batch_size : int
+        Suggestions per generation call.
+    """
+    return {
+        "name": f"ackley-6d-baybe-{CAMPAIGN_MARKER}",
+        "description": (
+            "Synthetic Ackley-6D benchmark.  "
+            "6 continuous parameters in [0,1]; "
+            "maximise normalised surface_response.  "
+            f"Marker: {CAMPAIGN_MARKER}"
+        ),
+        "backend": "baybe",
+        "parameters": build_parameters(),
+        "objectives": [
+            {
+                "name": "surface_response",
+                "target_mode": "maximize",
+                "unit": "normalized_unitless",
+            }
+        ],
+        "batch_size": batch_size,
+        "initial_design_size": initial_design_size,
+        "random_seed": random_seed,
+        # UCB acquisition for more exploration (helps avoid local optima).
+"acquisition_method": "upper_confidence_bound",
+        "acquisition_beta": 2.0,
+        # No max_iterations / max_observations — budget is CLI-only.
+    }

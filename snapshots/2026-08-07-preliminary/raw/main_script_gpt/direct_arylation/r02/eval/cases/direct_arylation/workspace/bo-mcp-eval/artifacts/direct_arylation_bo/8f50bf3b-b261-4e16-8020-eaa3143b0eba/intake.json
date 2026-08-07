@@ -1,0 +1,73 @@
+{
+  "name": "direct_arylation_yield_akg-eval-e646b14a77fb4943a13679364402b230_4668867d-0d42-40e5-b6a7-fd20a6a68c0e",
+  "description": "Direct arylation reaction-yield optimization benchmark; owner_marker=akg-eval-e646b14a77fb4943a13679364402b230; cache_buster_nonce=4668867d-0d42-40e5-b6a7-fd20a6a68c0e; single-objective maximize yield (percent); search space: base, ligand, solvent, concentration, temperature_c; sequential batch_size=1; fully controlled oracle lookups only.",
+  "backend": "baybe",
+  "batch_size": 1,
+  "initial_design_size": 15,
+  "random_seed": 20260730,
+  "parameters": [
+    {
+      "name": "base",
+      "type": "categorical",
+      "categories": [
+        "Potassium acetate",
+        "Potassium pivalate",
+        "Cesium acetate",
+        "Cesium pivalate"
+      ]
+    },
+    {
+      "name": "ligand",
+      "type": "categorical",
+      "categories": [
+        "BrettPhos",
+        "Di-tert-butylphenylphosphine",
+        "(t-Bu)PhCPhos",
+        "Tricyclohexylphosphine",
+        "PPh3",
+        "XPhos",
+        "P(2-furyl)3",
+        "Methyldiphenylphosphine",
+        "1268824-69-6",
+        "JackiePhos",
+        "SCHEMBL15068049",
+        "Me2PPh"
+      ]
+    },
+    {
+      "name": "solvent",
+      "type": "categorical",
+      "categories": [
+        "DMAc",
+        "Butyornitrile",
+        "Butyl Ester",
+        "p-Xylene"
+      ]
+    },
+    {
+      "name": "concentration",
+      "type": "discrete",
+      "values": [
+        0.057,
+        0.1,
+        0.153
+      ]
+    },
+    {
+      "name": "temperature_c",
+      "type": "discrete",
+      "values": [
+        90,
+        105,
+        120
+      ]
+    }
+  ],
+  "objectives": [
+    {
+      "name": "yield",
+      "direction": "maximize",
+      "unit": "percent"
+    }
+  ]
+}

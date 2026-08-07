@@ -1,0 +1,625 @@
+[EVENT] Resuming existing campaign: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:13.911 GET api/api/v1/campaigns/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[EVENT] Campaign is paused; resuming on server.
+17:13:13.921 POST api/api/v1/campaigns/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/lifecycle
+[EVENT] Campaign ID: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[EVENT] Chosen settings: backend=botorch, acquisition=expected_improvement_nonlog, initialization=Sobol warm start, initial_design_size=12, batch_schedule=sequential(1), random_seed=20260730
+17:13:13.982 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:13.990 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[HEARTBEAT] campaign_id=9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba attempted=2/60 success=2 nonce=54354cdc-4da6-4419-86a6-f4560fc0efbe
+17:13:13.999 POST api/api/v1/campaigns/status/batch
+17:13:14.012 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 3/60
+17:13:14.022 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 0bfb40ee-5738-4278-9574-c40dc4635597 parameters={'x_1': 0.23624159395694733, 'x_2': 0.5615246891975403, 'x_3': 0.866454541683197, 'x_4': 0.5081057548522949, 'x_5': 0.11824995279312134, 'x_6': 0.13113398849964142}
+17:13:14.078 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=3 suggestion_id=0bfb40ee-5738-4278-9574-c40dc4635597 raw_response=-21.703075771957 surface_response=0.028962638082
+17:13:14.190 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:14.199 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:14.209 POST api/api/v1/campaigns/status/batch
+17:13:14.218 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 4/60
+17:13:14.225 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating ae5692ab-027e-4985-86eb-21f9bc2022c9 parameters={'x_1': 0.7797951102256775, 'x_2': 0.36443892121315, 'x_3': 0.4656120240688324, 'x_4': 0.3448686897754669, 'x_5': 0.9616539478302002, 'x_6': 0.7583993673324585}
+17:13:14.286 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[RESULT] evaluation=4 suggestion_id=ae5692ab-027e-4985-86eb-21f9bc2022c9 raw_response=-21.492481339029 surface_response=0.038385038148
+17:13:14.386 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:14.394 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:14.402 POST api/api/v1/campaigns/status/batch
+17:13:14.410 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 5/60
+17:13:14.418 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 23d093c1-8f43-41db-9aba-353d1036bb75 parameters={'x_1': 0.9552893042564392, 'x_2': 0.6594085097312927, 'x_3': 0.16330814361572266, 'x_4': 0.4072090983390808, 'x_5': 0.7634128928184509, 'x_6': 0.6650256514549255}
+17:13:14.469 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=5 suggestion_id=23d093c1-8f43-41db-9aba-353d1036bb75 raw_response=-21.408467685203 surface_response=0.042143970644
+17:13:14.571 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:14.581 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:14.591 POST api/api/v1/campaigns/status/batch
+17:13:14.601 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 6/60
+17:13:14.612 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 068d8590-08c4-4fd2-b016-454381690524 parameters={'x_1': 0.05992351099848747, 'x_2': 0.4776185154914856, 'x_3': 0.5125007629394531, 'x_4': 0.6968490481376648, 'x_5': 0.16803480684757233, 'x_6': 0.2872403562068939}
+17:13:14.656 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=6 suggestion_id=068d8590-08c4-4fd2-b016-454381690524 raw_response=-21.078947899607 surface_response=0.056887319774
+17:13:14.768 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:14.776 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:14.786 POST api/api/v1/campaigns/status/batch
+17:13:14.794 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 7/60
+17:13:14.803 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating db47e8bd-206c-4903-8a75-464865dda97b parameters={'x_1': 0.42237991094589233, 'x_2': 0.9957906603813171, 'x_3': 0.368409126996994, 'x_4': 0.18365240097045898, 'x_5': 0.3422031104564667, 'x_6': 0.08291389048099518}
+17:13:14.857 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=7 suggestion_id=db47e8bd-206c-4903-8a75-464865dda97b raw_response=-21.965312737807 surface_response=0.017229651744
+17:13:14.960 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:14.969 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:14.978 POST api/api/v1/campaigns/status/batch
+17:13:14.987 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 8/60
+17:13:14.995 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating a0544f5c-ef2f-4d5c-ab1f-9e37c4f14f19 parameters={'x_1': 0.5936872959136963, 'x_2': 0.17346052825450897, 'x_3': 0.9557743072509766, 'x_4': 0.958399772644043, 'x_5': 0.7497833371162415, 'x_6': 0.9631091952323914}
+17:13:15.065 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=8 suggestion_id=a0544f5c-ef2f-4d5c-ab1f-9e37c4f14f19 raw_response=-21.624833214928 surface_response=0.032463360605
+17:13:15.190 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:15.199 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:15.207 POST api/api/v1/campaigns/status/batch
+17:13:15.214 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 9/60
+17:13:15.221 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 6ef5752b-b11e-44ad-8197-2e803cef69c3 parameters={'x_1': 0.510998547077179, 'x_2': 0.610810399055481, 'x_3': 0.3072311282157898, 'x_4': 0.6644529104232788, 'x_5': 0.4516555368900299, 'x_6': 0.8704593777656555}
+17:13:15.292 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=9 suggestion_id=6ef5752b-b11e-44ad-8197-2e803cef69c3 raw_response=-20.560742440237 surface_response=0.080072828938
+17:13:15.405 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:15.416 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:15.425 POST api/api/v1/campaigns/status/batch
+17:13:15.433 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 10/60
+17:13:15.443 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 8d15cd34-3528-413e-8ee9-f19af0b5e87b parameters={'x_1': 0.4728125333786011, 'x_2': 0.3079506456851959, 'x_3': 0.892015278339386, 'x_4': 0.43853747844696045, 'x_5': 0.6092052459716797, 'x_6': 0.239775151014328}
+17:13:15.499 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=10 suggestion_id=8d15cd34-3528-413e-8ee9-f19af0b5e87b raw_response=-21.006254633570 surface_response=0.060139756342
+17:13:15.623 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:15.632 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:15.640 POST api/api/v1/campaigns/status/batch
+17:13:15.648 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 11/60
+17:13:15.656 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 0c4e791c-35ff-4086-9bc5-ccc30df31158 parameters={'x_1': 0.10345534235239029, 'x_2': 0.7909668684005737, 'x_3': 0.22351345419883728, 'x_4': 0.9263394474983215, 'x_5': 0.9039638042449951, 'x_6': 0.3820902109146118}
+17:13:15.714 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=11 suggestion_id=0c4e791c-35ff-4086-9bc5-ccc30df31158 raw_response=-21.649132734585 surface_response=0.031376153348
+17:13:15.802 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:15.811 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:15.821 POST api/api/v1/campaigns/status/batch
+17:13:15.830 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 12/60
+17:13:15.838 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 38fa445a-da37-4243-ac8f-ddc46363a014 parameters={'x_1': 0.8814544677734375, 'x_2': 0.09751928597688675, 'x_3': 0.5772325396537781, 'x_4': 0.21678143739700317, 'x_5': 0.058616235852241516, 'x_6': 0.5093861222267151}
+17:13:15.874 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=12 suggestion_id=38fa445a-da37-4243-ac8f-ddc46363a014 raw_response=-21.760624213637 surface_response=0.026387810091
+17:13:15.965 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:15.973 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:15.981 POST api/api/v1/campaigns/status/batch
+17:13:15.988 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 13/60
+17:13:15.995 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating c9ee3fb6-0b47-4abf-822e-d8f8bba3dc24 parameters={'x_1': 0.3401518746035413, 'x_2': 0.3455618746880574, 'x_3': 0.2958013384124642, 'x_4': 0.6246329808207683, 'x_5': 0.44412733499458423, 'x_6': 0.8031603183758129}
+17:13:17.719 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=13 suggestion_id=c9ee3fb6-0b47-4abf-822e-d8f8bba3dc24 raw_response=-20.794321495656 surface_response=0.069622052644
+17:13:17.809 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:17.820 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:17.830 POST api/api/v1/campaigns/status/batch
+17:13:17.840 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 14/60
+17:13:17.848 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 76f8909e-0d20-41a6-aedc-01a9c834e8fc parameters={'x_1': 0.5695688509837314, 'x_2': 0.8042256444702428, 'x_3': 0.21673602609426842, 'x_4': 0.686253115594887, 'x_5': 0.32877855156287145, 'x_6': 0.9236437839672295}
+17:13:19.979 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=14 suggestion_id=76f8909e-0d20-41a6-aedc-01a9c834e8fc raw_response=-21.541091807320 surface_response=0.036210112281
+17:13:20.033 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:20.041 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:20.049 POST api/api/v1/campaigns/status/batch
+17:13:20.057 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 15/60
+17:13:20.065 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 8277267d-f982-4df4-ae5f-4d2361e7e50c parameters={'x_1': 0.21432424973336905, 'x_2': 0.5056402790089695, 'x_3': 0.3978992126772258, 'x_4': 0.8038661508090972, 'x_5': 0.4744110865656511, 'x_6': 0.5579952179783615}
+17:13:22.203 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=15 suggestion_id=8277267d-f982-4df4-ae5f-4d2361e7e50c raw_response=-20.527446679090 surface_response=0.081562545345
+17:13:22.312 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:22.321 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:22.331 POST api/api/v1/campaigns/status/batch
+17:13:22.339 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 16/60
+17:13:22.353 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 6b09d9b6-8a3b-4b8f-b29c-c470d1e247c4 parameters={'x_1': 0.479232508130598, 'x_2': 0.5153374408092501, 'x_3': 0.5237824884326613, 'x_4': 0.5537183635757126, 'x_5': 0.46459489847609636, 'x_6': 0.8828098748502942}
+17:13:25.796 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=16 suggestion_id=6b09d9b6-8a3b-4b8f-b29c-c470d1e247c4 raw_response=-20.162315035253 surface_response=0.097899237522
+17:13:26.437 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:26.444 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:26.452 POST api/api/v1/campaigns/status/batch
+17:13:26.460 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 17/60
+17:13:26.467 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating f98a8d53-c8e7-4f81-bb50-d8e84640f301 parameters={'x_1': 0.5065622348251381, 'x_2': 0.5189920704050025, 'x_3': 0.5819502753934853, 'x_4': 0.18185899606251912, 'x_5': 0.48674632426081965, 'x_6': 1.0}
+17:13:28.048 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=17 suggestion_id=f98a8d53-c8e7-4f81-bb50-d8e84640f301 raw_response=-21.594575711642 surface_response=0.033817139510
+17:13:28.104 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:28.113 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:28.122 POST api/api/v1/campaigns/status/batch
+17:13:28.130 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 18/60
+17:13:28.138 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 67838166-665a-4e2d-9064-b9791aa5a7db parameters={'x_1': 0.4596389308135988, 'x_2': 0.5091004393251709, 'x_3': 0.611147063633123, 'x_4': 0.6392293817990841, 'x_5': 0.517185864162571, 'x_6': 0.8456105220005505}
+17:13:30.029 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=18 suggestion_id=67838166-665a-4e2d-9064-b9791aa5a7db raw_response=-20.147156834283 surface_response=0.098577444595
+17:13:30.088 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:30.097 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:30.107 POST api/api/v1/campaigns/status/batch
+17:13:30.115 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 19/60
+17:13:30.124 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating b503b98d-2a63-4f64-a98d-831b07003b81 parameters={'x_1': 0.02506655045003273, 'x_2': 0.5163491298926483, 'x_3': 0.6074033720022591, 'x_4': 0.6065799068915432, 'x_5': 0.5115637094028587, 'x_6': 0.8516734695216331}
+17:13:32.274 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=19 suggestion_id=b503b98d-2a63-4f64-a98d-831b07003b81 raw_response=-21.282005164131 surface_response=0.047802147122
+17:13:32.331 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:32.340 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:32.348 POST api/api/v1/campaigns/status/batch
+17:13:32.357 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 20/60
+17:13:32.364 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 7bf7603c-526d-4b1d-8852-b740b489d792 parameters={'x_1': 0.47276494554774057, 'x_2': 0.4981681256096506, 'x_3': 0.5033989517152654, 'x_4': 0.6729259183675922, 'x_5': 0.5061096133431627, 'x_6': 0.8157498421091247}
+17:13:35.458 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=20 suggestion_id=7bf7603c-526d-4b1d-8852-b740b489d792 raw_response=-19.768390126035 surface_response=0.115524195785
+17:13:35.590 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:35.600 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:35.610 POST api/api/v1/campaigns/status/batch
+17:13:35.619 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 21/60
+17:13:35.628 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating a8a7dfbf-b811-4125-aab0-3e37a917bcc8 parameters={'x_1': 0.5218025072028883, 'x_2': 0.4654436160839892, 'x_3': 0.487998785896899, 'x_4': 0.7759845475777004, 'x_5': 0.48503578041171863, 'x_6': 0.8948713847630894}
+17:13:38.556 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=21 suggestion_id=a8a7dfbf-b811-4125-aab0-3e37a917bcc8 raw_response=-20.610817508532 surface_response=0.077832374049
+17:13:38.905 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:38.916 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:38.926 POST api/api/v1/campaigns/status/batch
+17:13:38.936 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 22/60
+17:13:38.947 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 84e7ab12-9f45-412f-8331-8e71a6dde053 parameters={'x_1': 0.4505528730995029, 'x_2': 0.5067175476092832, 'x_3': 0.49531257686186003, 'x_4': 0.6399925902896261, 'x_5': 0.7805587352930258, 'x_6': 0.36038902496154024}
+17:13:41.571 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=22 suggestion_id=84e7ab12-9f45-412f-8331-8e71a6dde053 raw_response=-19.776349209195 surface_response=0.115168091092
+17:13:41.649 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:41.658 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:41.668 POST api/api/v1/campaigns/status/batch
+17:13:41.678 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 23/60
+17:13:41.688 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 2ea6b7f0-f735-48f4-81e4-75994f57c022 parameters={'x_1': 0.39895160767272514, 'x_2': 0.5897750351006376, 'x_3': 0.4763667947409712, 'x_4': 0.6613922703582638, 'x_5': 0.7294033721080279, 'x_6': 1.0}
+17:13:43.240 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=23 suggestion_id=2ea6b7f0-f735-48f4-81e4-75994f57c022 raw_response=-20.559233280031 surface_response=0.080140351669
+17:13:43.298 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:43.307 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:43.317 POST api/api/v1/campaigns/status/batch
+17:13:43.327 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 24/60
+17:13:43.338 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 2fb0c2db-9078-4a1f-ac6f-eca539e9204f parameters={'x_1': 0.46122452886419635, 'x_2': 0.49026109097772563, 'x_3': 0.28773332805505936, 'x_4': 0.6342001460271256, 'x_5': 0.7167434455491911, 'x_6': 0.3630804552325337}
+17:13:45.667 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=24 suggestion_id=2fb0c2db-9078-4a1f-ac6f-eca539e9204f raw_response=-19.356914129379 surface_response=0.133934423463
+17:13:45.735 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:45.747 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[HEARTBEAT] campaign_id=9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba attempted=24/60 success=24 nonce=54354cdc-4da6-4419-86a6-f4560fc0efbe
+17:13:45.757 POST api/api/v1/campaigns/status/batch
+17:13:45.767 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 25/60
+17:13:45.777 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating e7676545-f503-48c2-8b46-7933ba0952d2 parameters={'x_1': 0.45544793856695603, 'x_2': 0.49639410646130333, 'x_3': 0.19931824614806315, 'x_4': 0.6442935335544961, 'x_5': 0.5853596685526272, 'x_6': 1.0}
+17:13:48.272 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=25 suggestion_id=e7676545-f503-48c2-8b46-7933ba0952d2 raw_response=-21.292724758560 surface_response=0.047322531845
+17:13:48.329 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:48.339 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:48.349 POST api/api/v1/campaigns/status/batch
+17:13:48.357 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 26/60
+17:13:48.366 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating ce606218-8009-45f3-b75d-439a089b041d parameters={'x_1': 0.5222535127576694, 'x_2': 0.48595844208665995, 'x_3': 0.360566669902032, 'x_4': 0.6278636419008173, 'x_5': 0.22938539714296993, 'x_6': 0.4281907834945024}
+17:13:50.665 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=26 suggestion_id=ce606218-8009-45f3-b75d-439a089b041d raw_response=-19.356606223933 surface_response=0.133948199745
+17:13:50.771 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:50.781 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:50.791 POST api/api/v1/campaigns/status/batch
+17:13:50.799 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 27/60
+17:13:50.810 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating deabff4a-ce13-4263-a1be-ade65e9ad901 parameters={'x_1': 0.5620984429851862, 'x_2': 0.4695886299257725, 'x_3': 0.3398588002937197, 'x_4': 0.6565041094459583, 'x_5': 0.8849019517913144, 'x_6': 0.4362896418092522}
+17:13:52.310 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=27 suggestion_id=deabff4a-ce13-4263-a1be-ade65e9ad901 raw_response=-20.602097573789 surface_response=0.078222520705
+17:13:52.576 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:52.591 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:52.602 POST api/api/v1/campaigns/status/batch
+17:13:52.611 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 28/60
+17:13:52.621 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating f1dda738-adfe-4c09-8705-ac125bb36cea parameters={'x_1': 0.44222948806672624, 'x_2': 0.5110745966324872, 'x_3': 0.371592444503308, 'x_4': 0.6415164598071628, 'x_5': 0.41451496190629405, 'x_6': 0.4203156713118689}
+17:13:53.793 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=28 suggestion_id=f1dda738-adfe-4c09-8705-ac125bb36cea raw_response=-17.425040123593 surface_response=0.220370182977
+17:13:53.853 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:53.867 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:53.878 POST api/api/v1/campaigns/status/batch
+17:13:53.887 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 29/60
+17:13:53.897 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 04325af5-c0db-4182-b178-18c1e7dbfcd3 parameters={'x_1': 0.426659298578359, 'x_2': 0.5398132035487763, 'x_3': 0.41682236560513647, 'x_4': 0.6003717573569296, 'x_5': 0.4373049458183374, 'x_6': 0.3793562486139099}
+17:13:55.468 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=29 suggestion_id=04325af5-c0db-4182-b178-18c1e7dbfcd3 raw_response=-16.138496518168 surface_response=0.277932618907
+17:13:55.526 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:55.536 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:55.547 POST api/api/v1/campaigns/status/batch
+17:13:55.555 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 30/60
+17:13:55.564 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 0a28660e-60c7-46bd-902c-2e3cc649ef5d parameters={'x_1': 0.4242304036415253, 'x_2': 0.61174081042817, 'x_3': 0.5924931579563014, 'x_4': 0.5803782065187857, 'x_5': 0.4611616107501249, 'x_6': 0.3016811036304564}
+17:13:56.592 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=30 suggestion_id=0a28660e-60c7-46bd-902c-2e3cc649ef5d raw_response=-18.035427904243 surface_response=0.193060259421
+17:13:56.648 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:56.658 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:56.668 POST api/api/v1/campaigns/status/batch
+17:13:56.675 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 31/60
+17:13:56.684 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating ba40f99e-a558-4e3f-9b9d-112b69796794 parameters={'x_1': 0.3964140876150292, 'x_2': 0.5363346925785544, 'x_3': 0.3695750938027981, 'x_4': 0.2194315644888595, 'x_5': 0.42232684851020763, 'x_6': 0.26931026046827483}
+17:13:57.378 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=31 suggestion_id=ba40f99e-a558-4e3f-9b9d-112b69796794 raw_response=-20.614785176897 surface_response=0.077654852934
+17:13:57.435 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:57.446 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:57.456 POST api/api/v1/campaigns/status/batch
+17:13:57.465 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 32/60
+17:13:57.475 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating ff385d0d-019e-4ea7-9ab4-b82732d8734e parameters={'x_1': 0.4588075357197047, 'x_2': 0.5544318115539032, 'x_3': 0.4058860052663127, 'x_4': 0.5347860163684954, 'x_5': 0.4717598776022547, 'x_6': 0.3101405041249978}
+17:13:58.904 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=32 suggestion_id=ff385d0d-019e-4ea7-9ab4-b82732d8734e raw_response=-17.382667839347 surface_response=0.222266000489
+17:13:58.970 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:13:58.980 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:13:58.990 POST api/api/v1/campaigns/status/batch
+17:13:58.999 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 33/60
+17:13:59.011 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 05e12da9-1956-41a1-9d69-dee6d81d6a4c parameters={'x_1': 0.3795868586675957, 'x_2': 0.04731347975881922, 'x_3': 0.40131572831575224, 'x_4': 0.6001699794967579, 'x_5': 0.4317775793717472, 'x_6': 0.28908714364392224}
+17:14:00.340 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=33 suggestion_id=05e12da9-1956-41a1-9d69-dee6d81d6a4c raw_response=-20.924212126703 surface_response=0.063810495931
+17:14:00.428 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:00.444 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:00.455 POST api/api/v1/campaigns/status/batch
+17:14:00.463 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 34/60
+17:14:00.473 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 196ff11e-dee6-4c69-a3ee-f5a5d831996c parameters={'x_1': 0.3420768163451918, 'x_2': 0.6587800874208969, 'x_3': 0.26235570493803445, 'x_4': 0.5771458785221675, 'x_5': 0.42842502510716735, 'x_6': 0.3349198801747109}
+17:14:01.198 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=34 suggestion_id=196ff11e-dee6-4c69-a3ee-f5a5d831996c raw_response=-19.944412999071 surface_response=0.107648593816
+17:14:01.255 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:01.266 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:01.280 POST api/api/v1/campaigns/status/batch
+17:14:01.289 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 35/60
+17:14:01.299 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 68aaf951-98bc-446b-8152-829353568ba3 parameters={'x_1': 0.4416946449477467, 'x_2': 0.555855443189613, 'x_3': 0.0, 'x_4': 0.7057699595906556, 'x_5': 0.4479481580925057, 'x_6': 0.2914681250464829}
+17:14:02.778 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=35 suggestion_id=68aaf951-98bc-446b-8152-829353568ba3 raw_response=-21.490071988438 surface_response=0.038492837128
+17:14:02.834 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:02.845 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:02.855 POST api/api/v1/campaigns/status/batch
+17:14:02.863 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 36/60
+17:14:02.872 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 6d8476b4-eda7-4b45-a1b5-0bdf780a7104 parameters={'x_1': 0.40807108940633674, 'x_2': 0.4980032051075453, 'x_3': 0.4687054059150103, 'x_4': 0.6780162969439544, 'x_5': 0.4107022906135687, 'x_6': 0.24912900089966167}
+17:14:03.190 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=36 suggestion_id=6d8476b4-eda7-4b45-a1b5-0bdf780a7104 raw_response=-19.383592197637 surface_response=0.132740795367
+17:14:03.246 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:03.256 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:03.268 POST api/api/v1/campaigns/status/batch
+17:14:03.276 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 37/60
+17:14:03.285 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 1d2ff778-33a0-426c-8c1b-a76cdca0c6c1 parameters={'x_1': 0.5229605269724248, 'x_2': 0.5478331816615057, 'x_3': 0.44927088479943506, 'x_4': 0.5930516467927479, 'x_5': 0.4621952314268147, 'x_6': 0.4362648160304266}
+17:14:03.907 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=37 suggestion_id=1d2ff778-33a0-426c-8c1b-a76cdca0c6c1 raw_response=-13.103312706987 surface_response=0.413732581636
+17:14:04.198 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:04.211 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:04.222 POST api/api/v1/campaigns/status/batch
+17:14:04.232 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 38/60
+17:14:04.242 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating ebf3fc1f-63d9-4cbb-8890-7ba99e080d28 parameters={'x_1': 0.5686158829731569, 'x_2': 0.473076475806152, 'x_3': 0.49509439834134883, 'x_4': 0.5427935815208799, 'x_5': 0.4968792358315094, 'x_6': 0.44346473681310733}
+17:14:05.256 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=38 suggestion_id=ebf3fc1f-63d9-4cbb-8890-7ba99e080d28 raw_response=-11.877319730979 surface_response=0.468585865920
+17:14:05.333 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:05.343 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:05.353 POST api/api/v1/campaigns/status/batch
+17:14:05.361 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 39/60
+17:14:05.373 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating df726238-14d8-4ecb-8e71-5e50f078a8e7 parameters={'x_1': 0.6428181159161188, 'x_2': 0.5182188789120232, 'x_3': 0.4965221815962326, 'x_4': 0.5384258223149161, 'x_5': 0.48590863139716434, 'x_6': 0.4297062367226195}
+17:14:06.373 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=39 suggestion_id=df726238-14d8-4ecb-8e71-5e50f078a8e7 raw_response=-15.104358228166 surface_response=0.324201955453
+17:14:06.436 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:06.448 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:06.459 POST api/api/v1/campaigns/status/batch
+17:14:06.467 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 40/60
+17:14:06.477 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 7931b7fd-a530-43ea-b317-8875f93b8ab6 parameters={'x_1': 0.5442958102681819, 'x_2': 0.3342470851898741, 'x_3': 0.5914078218560246, 'x_4': 0.43678971398155364, 'x_5': 0.5144909353879616, 'x_6': 0.4468927206880253}
+17:14:07.650 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=40 suggestion_id=7931b7fd-a530-43ea-b317-8875f93b8ab6 raw_response=-16.688295618789 surface_response=0.253333549454
+17:14:08.104 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:08.116 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:08.126 POST api/api/v1/campaigns/status/batch
+17:14:08.134 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 41/60
+17:14:08.143 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating bf1f30ea-0b71-4c7a-b546-db9d9c500d9e parameters={'x_1': 0.5448611264626245, 'x_2': 0.5203102879636574, 'x_3': 0.6102546506232975, 'x_4': 0.8252450834167554, 'x_5': 0.5119206825584154, 'x_6': 0.4777836976319261}
+17:14:09.810 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=41 suggestion_id=bf1f30ea-0b71-4c7a-b546-db9d9c500d9e raw_response=-19.476516369110 surface_response=0.128583189169
+17:14:10.653 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:10.665 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:10.776 POST api/api/v1/campaigns/status/batch
+17:14:10.791 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 42/60
+17:14:10.801 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating abb0c29d-2fae-47c3-af59-dd1b51224738 parameters={'x_1': 0.5194249967963783, 'x_2': 0.5006977115257267, 'x_3': 0.5459016063003581, 'x_4': 0.5440536622290973, 'x_5': 0.5085793164589021, 'x_6': 0.4647282099214721}
+17:14:12.143 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=42 suggestion_id=abb0c29d-2fae-47c3-af59-dd1b51224738 raw_response=-9.737301000704 surface_response=0.564334420832
+17:14:12.200 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:12.216 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:12.228 POST api/api/v1/campaigns/status/batch
+17:14:12.236 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 43/60
+17:14:12.245 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 8caad903-0ad6-4ee0-87e6-d342d56622ec parameters={'x_1': 0.47987520196234007, 'x_2': 0.6253876933359871, 'x_3': 0.6665015286303203, 'x_4': 0.5421598727680426, 'x_5': 0.5319558540423792, 'x_6': 0.5080348550299005}
+17:14:12.721 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=43 suggestion_id=8caad903-0ad6-4ee0-87e6-d342d56622ec raw_response=-17.182020623195 surface_response=0.231243342940
+17:14:12.777 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:12.788 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:12.799 POST api/api/v1/campaigns/status/batch
+17:14:12.808 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 44/60
+17:14:12.817 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating e2818513-e471-451b-ab34-6c49430f4cfe parameters={'x_1': 0.4157108646065982, 'x_2': 0.46160773365047675, 'x_3': 0.8973815533988164, 'x_4': 0.5332332554763984, 'x_5': 0.49756716640500076, 'x_6': 0.5074607412788957}
+17:14:13.988 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=44 suggestion_id=e2818513-e471-451b-ab34-6c49430f4cfe raw_response=-20.324886719960 surface_response=0.090625467597
+17:14:14.044 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:14.057 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:14.076 POST api/api/v1/campaigns/status/batch
+17:14:14.085 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 45/60
+17:14:14.098 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 7090c4e3-4009-4da0-9937-bc170d61cccd parameters={'x_1': 0.4977342769122215, 'x_2': 0.4923429348747311, 'x_3': 0.5445670427685313, 'x_4': 0.518242628363263, 'x_5': 0.48087495301013033, 'x_6': 0.49647628961247736}
+17:14:15.162 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=45 suggestion_id=7090c4e3-4009-4da0-9937-bc170d61cccd raw_response=-7.961946801154 surface_response=0.643767183105
+17:14:15.218 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:15.231 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:15.250 POST api/api/v1/campaigns/status/batch
+17:14:15.260 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 46/60
+17:14:15.271 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 113acf29-d49d-42af-b6ab-d8c0435ac068 parameters={'x_1': 0.4793258335377509, 'x_2': 0.49130178637636823, 'x_3': 0.5342635073814062, 'x_4': 0.47385226456795865, 'x_5': 0.45037884548274026, 'x_6': 0.5266447104473304}
+17:14:16.521 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=46 suggestion_id=113acf29-d49d-42af-b6ab-d8c0435ac068 raw_response=-9.122465015996 surface_response=0.591843365595
+17:14:16.635 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:16.647 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[HEARTBEAT] campaign_id=9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba attempted=46/60 success=46 nonce=54354cdc-4da6-4419-86a6-f4560fc0efbe
+17:14:16.659 POST api/api/v1/campaigns/status/batch
+17:14:16.669 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 47/60
+17:14:16.679 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating ce3d5388-65aa-4937-bf88-10dccf9cd9b1 parameters={'x_1': 0.4907953403850799, 'x_2': 0.47627135309969937, 'x_3': 0.5811810747807841, 'x_4': 0.5380352762083374, 'x_5': 0.4003038514669276, 'x_6': 0.5108034915234442}
+17:14:19.260 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=47 suggestion_id=ce3d5388-65aa-4937-bf88-10dccf9cd9b1 raw_response=-13.065626793754 surface_response=0.415418721894
+17:14:19.561 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:19.573 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:19.584 POST api/api/v1/campaigns/status/batch
+17:14:19.592 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 48/60
+17:14:19.602 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 3a2613f9-c025-4004-8771-b09cf4c70244 parameters={'x_1': 0.3767118062824011, 'x_2': 0.31408298294991255, 'x_3': 0.7058762302622199, 'x_4': 0.8686788082122803, 'x_5': 0.7773265168070793, 'x_6': 0.4516118196770549}
+17:14:21.719 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=48 suggestion_id=3a2613f9-c025-4004-8771-b09cf4c70244 raw_response=-21.105319002324 surface_response=0.055707425906
+17:14:21.822 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:21.834 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:21.845 POST api/api/v1/campaigns/status/batch
+17:14:21.853 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 49/60
+17:14:21.863 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 7b99e2c2-af29-4e5b-8584-857b3196b4df parameters={'x_1': 0.4624230086940325, 'x_2': 0.48294892364854614, 'x_3': 0.53402922688488, 'x_4': 0.503248747522697, 'x_5': 0.49233104383807713, 'x_6': 0.52247682878561}
+17:14:22.724 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=49 suggestion_id=7b99e2c2-af29-4e5b-8584-857b3196b4df raw_response=-8.136826383195 surface_response=0.635942734175
+17:14:22.778 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:22.793 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:22.809 POST api/api/v1/campaigns/status/batch
+17:14:22.817 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 50/60
+17:14:22.829 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 81b678c1-80cd-4d86-b530-295365358a66 parameters={'x_1': 0.5031208593692784, 'x_2': 0.4943413736254622, 'x_3': 0.5545214488662271, 'x_4': 0.4778708904533482, 'x_5': 0.4880428942170221, 'x_6': 0.529451965679115}
+17:14:23.323 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=50 suggestion_id=81b678c1-80cd-4d86-b530-295365358a66 raw_response=-8.994510442443 surface_response=0.597568299372
+17:14:23.635 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:23.650 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:23.661 POST api/api/v1/campaigns/status/batch
+17:14:23.670 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 51/60
+17:14:23.681 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 2409cdd7-d2be-4dc8-b1d5-48025efbd412 parameters={'x_1': 0.46219191083197064, 'x_2': 0.5499933351694009, 'x_3': 0.5222831125307814, 'x_4': 0.47659786632773044, 'x_5': 0.5314005391594405, 'x_6': 0.5139296828302508}
+17:14:24.801 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=51 suggestion_id=2409cdd7-d2be-4dc8-b1d5-48025efbd412 raw_response=-9.183711438766 surface_response=0.589103082816
+17:14:24.869 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:24.888 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:24.907 POST api/api/v1/campaigns/status/batch
+17:14:24.918 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 52/60
+17:14:24.930 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 41b732b9-a65d-44a2-b4ad-53ce39518fde parameters={'x_1': 0.47638677360979303, 'x_2': 0.6269483098894302, 'x_3': 0.5288822287433737, 'x_4': 0.5396595299070109, 'x_5': 0.48571339884610115, 'x_6': 0.5262282013347611}
+17:14:26.179 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=52 suggestion_id=41b732b9-a65d-44a2-b4ad-53ce39518fde raw_response=-13.162664747401 surface_response=0.411077057168
+17:14:26.253 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:26.266 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:26.279 POST api/api/v1/campaigns/status/batch
+17:14:26.287 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 53/60
+17:14:26.296 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 8aede6e2-8998-45f1-af29-ef5dfa6fbd24 parameters={'x_1': 0.441997511279908, 'x_2': 0.4901130898962587, 'x_3': 0.5125984894019899, 'x_4': 0.46041499697940474, 'x_5': 0.5054173437818987, 'x_6': 0.4984471402150386}
+17:14:28.103 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=53 suggestion_id=8aede6e2-8998-45f1-af29-ef5dfa6fbd24 raw_response=-9.077742372235 surface_response=0.593844342713
+17:14:28.171 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:28.186 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:28.200 POST api/api/v1/campaigns/status/batch
+17:14:28.208 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 54/60
+17:14:28.219 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating b989d9f5-4394-4406-a38c-ca5e57a7dcdc parameters={'x_1': 0.48964897507867544, 'x_2': 0.489941832576241, 'x_3': 0.4925296775627008, 'x_4': 0.5019318081936787, 'x_5': 0.5183477672459221, 'x_6': 0.5478421620597087}
+17:14:29.501 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=54 suggestion_id=b989d9f5-4394-4406-a38c-ca5e57a7dcdc raw_response=-7.636541956755 surface_response=0.658326421850
+17:14:29.557 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:29.569 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:29.583 POST api/api/v1/campaigns/status/batch
+17:14:29.592 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 55/60
+17:14:29.602 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating c0f7fd18-6585-4c18-b795-628d21500ba8 parameters={'x_1': 0.48881717366389454, 'x_2': 0.4867932450716365, 'x_3': 0.48635579468634255, 'x_4': 0.5064986668305268, 'x_5': 0.5270431537894384, 'x_6': 0.5477070554500024}
+17:14:31.818 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=55 suggestion_id=c0f7fd18-6585-4c18-b795-628d21500ba8 raw_response=-7.639028736234 surface_response=0.658215158552
+17:14:31.873 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:31.885 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:31.897 POST api/api/v1/campaigns/status/batch
+17:14:31.906 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 56/60
+17:14:31.916 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 44bd4b8f-22be-42b2-8dc9-52506014a81b parameters={'x_1': 0.49832766841408893, 'x_2': 0.4995801644498877, 'x_3': 0.4636693780067444, 'x_4': 0.4874252593766308, 'x_5': 0.511181643411147, 'x_6': 0.5478823645633479}
+17:14:32.847 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=56 suggestion_id=44bd4b8f-22be-42b2-8dc9-52506014a81b raw_response=-7.209863737390 surface_response=0.677416826218
+17:14:32.923 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:32.941 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:32.954 POST api/api/v1/campaigns/status/batch
+17:14:32.963 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 57/60
+17:14:32.973 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 42a00d12-5730-4e65-b2d1-e8892322fd6e parameters={'x_1': 0.5015410010056688, 'x_2': 0.5116369318657745, 'x_3': 0.41363793064016824, 'x_4': 0.46999318214520686, 'x_5': 0.5017527625572787, 'x_6': 0.5540478693845711}
+17:14:34.426 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=57 suggestion_id=42a00d12-5730-4e65-b2d1-e8892322fd6e raw_response=-11.408234586299 surface_response=0.489573637708
+17:14:34.495 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:34.509 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:34.523 POST api/api/v1/campaigns/status/batch
+17:14:34.535 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 58/60
+17:14:34.545 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 26c3a009-1e0f-47ad-a116-ef77b998dceb parameters={'x_1': 0.5080819922232526, 'x_2': 0.4704287673923602, 'x_3': 0.5130214039926414, 'x_4': 0.46352111515801875, 'x_5': 0.5752376919471597, 'x_6': 0.5584416082395754}
+17:14:35.624 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=58 suggestion_id=26c3a009-1e0f-47ad-a116-ef77b998dceb raw_response=-11.593375371669 surface_response=0.481290082801
+17:14:35.691 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:35.703 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:35.719 POST api/api/v1/campaigns/status/batch
+17:14:35.732 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 59/60
+17:14:35.750 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating c7c24d39-3768-4236-b3a2-63676e1e6a0b parameters={'x_1': 0.5420769156900599, 'x_2': 0.5946587301738203, 'x_3': 0.2090158663357805, 'x_4': 0.5797472780030247, 'x_5': 0.02544334719265386, 'x_6': 0.24926591688812152}
+17:14:36.493 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=59 suggestion_id=c7c24d39-3768-4236-b3a2-63676e1e6a0b raw_response=-21.469262322236 surface_response=0.039423901628
+17:14:36.548 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:36.561 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+17:14:36.576 POST api/api/v1/campaigns/status/batch
+17:14:36.584 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 60/60
+17:14:36.595 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 7f24e27b-2c7b-4ffe-86ac-bf7380d1007e parameters={'x_1': 0.45114471605678047, 'x_2': 0.4710607260103616, 'x_3': 0.5044445150975893, 'x_4': 0.5526904780531056, 'x_5': 0.507183697117979, 'x_6': 0.5463046084068058}
+17:14:37.970 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=60 suggestion_id=7f24e27b-2c7b-4ffe-86ac-bf7380d1007e raw_response=-10.826747135897 surface_response=0.515590504892
+17:14:38.027 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:38.038 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Budget of 60 attempted evaluations reached.
+17:14:38.050 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:14:38.061 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Saved results history to artifacts/results_history.json
+
+================================================================================
+FINAL CAMPAIGN REPORT
+================================================================================
+Campaign ID: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+Attempted Evaluations: 60
+Successful Evaluations: 60
+Failed Evaluations: 0
+
+BEST CANDIDATE FOUND:
+  Surface Response (Normalized): 0.677417
+  Raw Response: -7.209864
+  Normalized Coordinates:
+    x_1: 0.498328
+    x_2: 0.499580
+    x_3: 0.463669
+    x_4: 0.487425
+    x_5: 0.511182
+    x_6: 0.547882
+
+EVALUATION HISTORY TABLE:
+Index  | x_1      | x_2      | x_3      | x_4      | x_5      | x_6      | Surface Resp | Status  
+----------------------------------------------------------------------------------------------------
+1      | 0.4511 | 0.4711 | 0.5044 | 0.5527 | 0.5072 | 0.5463 | 0.515591     | success 
+2      | 0.5421 | 0.5947 | 0.2090 | 0.5797 | 0.0254 | 0.2493 | 0.039424     | success 
+3      | 0.5081 | 0.4704 | 0.5130 | 0.4635 | 0.5752 | 0.5584 | 0.481290     | success 
+4      | 0.5015 | 0.5116 | 0.4136 | 0.4700 | 0.5018 | 0.5540 | 0.489574     | success 
+5      | 0.4983 | 0.4996 | 0.4637 | 0.4874 | 0.5112 | 0.5479 | 0.677417     | success 
+6      | 0.4888 | 0.4868 | 0.4864 | 0.5065 | 0.5270 | 0.5477 | 0.658215     | success 
+7      | 0.4896 | 0.4899 | 0.4925 | 0.5019 | 0.5183 | 0.5478 | 0.658326     | success 
+8      | 0.4420 | 0.4901 | 0.5126 | 0.4604 | 0.5054 | 0.4984 | 0.593844     | success 
+9      | 0.4764 | 0.6269 | 0.5289 | 0.5397 | 0.4857 | 0.5262 | 0.411077     | success 
+10     | 0.4622 | 0.5500 | 0.5223 | 0.4766 | 0.5314 | 0.5139 | 0.589103     | success 
+11     | 0.5031 | 0.4943 | 0.5545 | 0.4779 | 0.4880 | 0.5295 | 0.597568     | success 
+12     | 0.4624 | 0.4829 | 0.5340 | 0.5032 | 0.4923 | 0.5225 | 0.635943     | success 
+13     | 0.3767 | 0.3141 | 0.7059 | 0.8687 | 0.7773 | 0.4516 | 0.055707     | success 
+14     | 0.4908 | 0.4763 | 0.5812 | 0.5380 | 0.4003 | 0.5108 | 0.415419     | success 
+15     | 0.4793 | 0.4913 | 0.5343 | 0.4739 | 0.4504 | 0.5266 | 0.591843     | success 
+16     | 0.4977 | 0.4923 | 0.5446 | 0.5182 | 0.4809 | 0.4965 | 0.643767     | success 
+17     | 0.4157 | 0.4616 | 0.8974 | 0.5332 | 0.4976 | 0.5075 | 0.090625     | success 
+18     | 0.4799 | 0.6254 | 0.6665 | 0.5422 | 0.5320 | 0.5080 | 0.231243     | success 
+19     | 0.5194 | 0.5007 | 0.5459 | 0.5441 | 0.5086 | 0.4647 | 0.564334     | success 
+20     | 0.5449 | 0.5203 | 0.6103 | 0.8252 | 0.5119 | 0.4778 | 0.128583     | success 
+21     | 0.5443 | 0.3342 | 0.5914 | 0.4368 | 0.5145 | 0.4469 | 0.253334     | success 
+22     | 0.6428 | 0.5182 | 0.4965 | 0.5384 | 0.4859 | 0.4297 | 0.324202     | success 
+23     | 0.5686 | 0.4731 | 0.4951 | 0.5428 | 0.4969 | 0.4435 | 0.468586     | success 
+24     | 0.5230 | 0.5478 | 0.4493 | 0.5931 | 0.4622 | 0.4363 | 0.413733     | success 
+25     | 0.4081 | 0.4980 | 0.4687 | 0.6780 | 0.4107 | 0.2491 | 0.132741     | success 
+26     | 0.4417 | 0.5559 | 0.0000 | 0.7058 | 0.4479 | 0.2915 | 0.038493     | success 
+27     | 0.3421 | 0.6588 | 0.2624 | 0.5771 | 0.4284 | 0.3349 | 0.107649     | success 
+28     | 0.3796 | 0.0473 | 0.4013 | 0.6002 | 0.4318 | 0.2891 | 0.063810     | success 
+29     | 0.4588 | 0.5544 | 0.4059 | 0.5348 | 0.4718 | 0.3101 | 0.222266     | success 
+30     | 0.3964 | 0.5363 | 0.3696 | 0.2194 | 0.4223 | 0.2693 | 0.077655     | success 
+31     | 0.4242 | 0.6117 | 0.5925 | 0.5804 | 0.4612 | 0.3017 | 0.193060     | success 
+32     | 0.4267 | 0.5398 | 0.4168 | 0.6004 | 0.4373 | 0.3794 | 0.277933     | success 
+33     | 0.4422 | 0.5111 | 0.3716 | 0.6415 | 0.4145 | 0.4203 | 0.220370     | success 
+34     | 0.5621 | 0.4696 | 0.3399 | 0.6565 | 0.8849 | 0.4363 | 0.078223     | success 
+35     | 0.5223 | 0.4860 | 0.3606 | 0.6279 | 0.2294 | 0.4282 | 0.133948     | success 
+36     | 0.4554 | 0.4964 | 0.1993 | 0.6443 | 0.5854 | 1.0000 | 0.047323     | success 
+37     | 0.4612 | 0.4903 | 0.2877 | 0.6342 | 0.7167 | 0.3631 | 0.133934     | success 
+38     | 0.3990 | 0.5898 | 0.4764 | 0.6614 | 0.7294 | 1.0000 | 0.080140     | success 
+39     | 0.4506 | 0.5067 | 0.4953 | 0.6400 | 0.7806 | 0.3604 | 0.115168     | success 
+40     | 0.5218 | 0.4654 | 0.4880 | 0.7760 | 0.4850 | 0.8949 | 0.077832     | success 
+41     | 0.4728 | 0.4982 | 0.5034 | 0.6729 | 0.5061 | 0.8157 | 0.115524     | success 
+42     | 0.0251 | 0.5163 | 0.6074 | 0.6066 | 0.5116 | 0.8517 | 0.047802     | success 
+43     | 0.4596 | 0.5091 | 0.6111 | 0.6392 | 0.5172 | 0.8456 | 0.098577     | success 
+44     | 0.5066 | 0.5190 | 0.5820 | 0.1819 | 0.4867 | 1.0000 | 0.033817     | success 
+45     | 0.4792 | 0.5153 | 0.5238 | 0.5537 | 0.4646 | 0.8828 | 0.097899     | success 
+46     | 0.2143 | 0.5056 | 0.3979 | 0.8039 | 0.4744 | 0.5580 | 0.081563     | success 
+47     | 0.5696 | 0.8042 | 0.2167 | 0.6863 | 0.3288 | 0.9236 | 0.036210     | success 
+48     | 0.3402 | 0.3456 | 0.2958 | 0.6246 | 0.4441 | 0.8032 | 0.069622     | success 
+49     | 0.8815 | 0.0975 | 0.5772 | 0.2168 | 0.0586 | 0.5094 | 0.026388     | success 
+50     | 0.1035 | 0.7910 | 0.2235 | 0.9263 | 0.9040 | 0.3821 | 0.031376     | success 
+51     | 0.4728 | 0.3080 | 0.8920 | 0.4385 | 0.6092 | 0.2398 | 0.060140     | success 
+52     | 0.5110 | 0.6108 | 0.3072 | 0.6645 | 0.4517 | 0.8705 | 0.080073     | success 
+53     | 0.5937 | 0.1735 | 0.9558 | 0.9584 | 0.7498 | 0.9631 | 0.032463     | success 
+54     | 0.4224 | 0.9958 | 0.3684 | 0.1837 | 0.3422 | 0.0829 | 0.017230     | success 
+55     | 0.0599 | 0.4776 | 0.5125 | 0.6968 | 0.1680 | 0.2872 | 0.056887     | success 
+56     | 0.9553 | 0.6594 | 0.1633 | 0.4072 | 0.7634 | 0.6650 | 0.042144     | success 
+57     | 0.7798 | 0.3644 | 0.4656 | 0.3449 | 0.9617 | 0.7584 | 0.038385     | success 
+58     | 0.2362 | 0.5615 | 0.8665 | 0.5081 | 0.1182 | 0.1311 | 0.028963     | success 
+59     | 0.3713 | 0.0446 | 0.0026 | 0.1229 | 0.3862 | 0.4888 | 0.042320     | success 
+60     | 0.6439 | 0.8511 | 0.6653 | 0.7702 | 0.5418 | 0.6195 | 0.046528     | success 
+================================================================================
+BO_MCP_CAMPAIGN_ID=9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+================================================================================

@@ -1,0 +1,62 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/ackley_benchmark_fast_repaired_20260807T061256Z.log
+[ALERT] Duplicate suggestion detected (consecutive=3): params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+06:13:29.896 POST api/api/v1/suggestions/9c90c533-92df-4644-b5d7-cd8cc99ee94c/status
+06:13:29.923 POST api/api/v1/suggestions/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356/generate ? batch_size='1'
+[ALERT] Duplicate suggestion detected (consecutive=4): params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+06:13:30.092 POST api/api/v1/suggestions/8e48670c-6e81-439d-bf6f-aca24f2c9c18/status
+06:13:30.121 POST api/api/v1/suggestions/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356/generate ? batch_size='1'
+[ALERT] Duplicate suggestion detected (consecutive=5): params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+06:13:30.292 POST api/api/v1/suggestions/f3dc5329-8521-4daa-8d7b-45f43c2a1c62/status
+06:13:30.322 POST api/api/v1/suggestions/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356/generate ? batch_size='1'
+[ALERT] Duplicate suggestion detected (consecutive=6): params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+06:13:30.489 POST api/api/v1/suggestions/a8af0876-2be9-4360-ae87-60878a2a66be/status
+06:13:30.518 POST api/api/v1/suggestions/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356/generate ? batch_size='1'
+[ALERT] Duplicate suggestion detected (consecutive=7): params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+06:13:30.691 POST api/api/v1/suggestions/412a3a4d-88cc-44b1-92da-af10096dd919/status
+06:13:30.719 POST api/api/v1/suggestions/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356/generate ? batch_size='1'
+[ALERT] Duplicate suggestion detected (consecutive=8): params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+06:13:30.926 POST api/api/v1/suggestions/3f54557b-58a2-4187-a1a6-e4b9d8b3f81d/status
+06:13:30.953 POST api/api/v1/suggestions/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356/generate ? batch_size='1'
+[ALERT] Duplicate suggestion detected (consecutive=9): params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+06:13:31.347 POST api/api/v1/suggestions/b1c71790-8661-48f9-87f4-15e37a5c9ace/status
+06:13:31.977 POST api/api/v1/suggestions/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356/generate ? batch_size='1'
+[ALERT] Duplicate suggestion detected (consecutive=10): params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+06:13:32.190 POST api/api/v1/suggestions/dbe33cac-dd37-4f3a-b2a5-7e77c02cdd63/status
+[ALERT] Too many consecutive duplicates (10) — stopping
+[EVENT] Loop finished — fetching diagnostics
+06:13:32.216 GET api/api/v1/diagnostics/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356 ? use_cache='true' & verbosity='standard'
+[EVENT] Diagnostics saved to artifacts_run3/diagnostics.json
+06:13:37.643 POST api/api/v1/campaigns/status/batch
+06:13:37.655 POST api/api/v1/campaigns/f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356/lifecycle
+[EVENT] Campaign paused
+[EVENT] === FINAL SUMMARY ===
+[EVENT] campaign_id=f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356
+[EVENT] attempted=32  success=32  failed=0
+[EVENT] best_surface_response=0.1054617093
+[EVENT] best_raw_response=-19.99329074744195
+[EVENT] best_params={'x_1': 0.0, 'x_2': 0.0, 'x_3': 1.0, 'x_4': 0.0, 'x_5': 1.0, 'x_6': 0.0}
+[EVENT] result_log=artifacts_run3/results.jsonl
+[EVENT] BO_MCP_CAMPAIGN_ID=f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356
+[EVENT] Summary saved to artifacts_run3/summary.json
+BO_MCP_CAMPAIGN_ID=f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356
+---
+RESULT_COUNT=32
+ALERT_COUNT=11
+[EVENT] Created campaign_id=f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356
+[ALERT] Too many consecutive duplicates (10) — stopping
+[EVENT] Campaign paused
+[EVENT] attempted=32  success=32  failed=0
+[EVENT] best_surface_response=0.1054617093
+[EVENT] best_raw_response=-19.99329074744195
+[EVENT] best_params={'x_1': 0.0, 'x_2': 0.0, 'x_3': 1.0, 'x_4': 0.0, 'x_5': 1.0, 'x_6': 0.0}
+[EVENT] BO_MCP_CAMPAIGN_ID=f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356
+BO_MCP_CAMPAIGN_ID=f2f7a27b-7aa7-4da9-ba5c-0e8aa1528356
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

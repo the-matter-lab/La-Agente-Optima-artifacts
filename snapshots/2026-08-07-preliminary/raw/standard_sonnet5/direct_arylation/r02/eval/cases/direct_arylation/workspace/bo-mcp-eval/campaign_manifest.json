@@ -1,0 +1,19 @@
+{
+  "campaign_slug": "direct_arylation_bo",
+  "marker": "akg-eval-115631eb4ad043529f2b64b9751e1583",
+  "package_modules": [
+    "direct_arylation_bo/search_space.py",
+    "direct_arylation_bo/oracle.py",
+    "direct_arylation_bo/reporting.py",
+    "direct_arylation_bo/campaign.py"
+  ],
+  "run_entrypoint": "run_direct_arylation_bo.py",
+  "backend": "baybe",
+  "objective": {"name": "yield", "direction": "maximize", "unit": "%"},
+  "search_space_size": 1728,
+  "max_attempts_default": 60,
+  "smoke_test_campaign_id": "9e757580-a33b-4151-951f-1c296ffc6ffe",
+  "smoke_test_status": "paused; 3 genuine oracle attempts (all successful) plus 1 attempt where the oracle URL was deliberately pointed at a bad path to test failure handling",
+  "smoke_test_reuse": "DO NOT resume this campaign id for the real 60-attempt run -- it contains one synthetic failed attempt from the negative-path smoke test, which would corrupt the final attempted/failed evaluation counts. Run the real campaign fresh (omit --campaign-id).",
+  "latest_artifact_dir": "artifacts/direct_arylation_bo/9e757580-a33b-4151-951f-1c296ffc6ffe"
+}

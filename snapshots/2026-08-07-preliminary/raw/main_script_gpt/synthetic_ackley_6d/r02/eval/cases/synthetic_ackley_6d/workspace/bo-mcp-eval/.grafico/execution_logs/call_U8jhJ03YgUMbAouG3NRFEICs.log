@@ -1,0 +1,30 @@
+exit_code=0
+
+=== stdout (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:15:17.504 POST api/api/v1/campaigns/validate
+18:15:17.516 POST api/api/v1/campaigns
+18:15:17.738 GET api/api/v1/campaigns/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d
+18:15:17.837 Created campaign
+18:15:17.838 GET api/api/v1/results/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d
+18:15:17.898 POST api/api/v1/campaigns/status/batch
+18:15:17.998 POST api/api/v1/suggestions/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d/query
+18:15:18.012 Generating suggestions
+18:15:18.012 POST api/api/v1/suggestions/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d/generate ? batch_size='5'
+18:15:18.283 POST api/api/v1/suggestions/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d/query
+18:15:18.295 POST api/api/v1/results/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d
+18:15:18.419 Submitted synthetic Ackley batch
+18:15:18.420 GET api/api/v1/campaigns/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d
+18:15:18.428 POST api/api/v1/campaigns/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d/lifecycle
+18:15:18.457 GET api/api/v1/campaigns/8fb3959d-f585-4d02-b96f-0a6fcfb48a6d
+CAMPAIGN_ID=8fb3959d-f585-4d02-b96f-0a6fcfb48a6d
+ARTIFACT_DIR=artifacts/ackley_synth_6d_20260730T181517Z
+SUMMARY_JSON=artifacts/ackley_synth_6d_20260730T181517Z/summary.json
+LOG=smoke_20260730T181516Z.log
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

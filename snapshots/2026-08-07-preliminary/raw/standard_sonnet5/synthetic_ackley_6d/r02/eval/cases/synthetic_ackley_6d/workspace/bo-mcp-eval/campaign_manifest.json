@@ -1,0 +1,20 @@
+{
+  "campaign_slug": "ackley6d_bo",
+  "marker": "akg-eval-23a9554a4f294e68a41175bde18c362a",
+  "package_modules": [
+    "ackley6d_bo/__init__.py",
+    "ackley6d_bo/search_space.py",
+    "ackley6d_bo/objective.py",
+    "ackley6d_bo/evaluation.py",
+    "ackley6d_bo/intake.py",
+    "ackley6d_bo/reporting.py",
+    "ackley6d_bo/campaign.py",
+    "ackley6d_bo/recovery.py"
+  ],
+  "entrypoint": "run_ackley6d_bo.py",
+  "recovery_entrypoint": "recover_ackley6d_bo.py",
+  "how_to_execute": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "latest_artifact_dir": "ackley6d_bo_artifacts",
+  "known_campaign_ids": ["466765ab-f0d1-456b-b974-12e34c3d36dc"],
+  "notes": "Deterministic synthetic Ackley-6D benchmark; no chemistry/experimental evaluator. BayBE backend via BO-MCP. recovery.py/recover_ackley6d_bo.py rebuild local results.csv/results.jsonl authoritatively from server state (read-only against campaign lifecycle); campaign.run also emits an [ALERT] with the exact recovery command if local vs server row counts ever diverge again."
+}

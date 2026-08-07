@@ -1,0 +1,267 @@
+import os
+import sys
+import time
+import json
+import logging
+from typing import Any, Optional
+import logfire
+
+from domains.bo_mcp.client import BoMcpClient, BoMcpClientError, BoMcpOperationError
+from ackley_6d.intake import get_campaign_intake
+from ackley_6d.evaluator import evaluate_candidate
+
+logger = logging.getLogger(__name__)
+
+def run_campaign_loop(
+    campaign_name: str,
+    campaign_id: Optional[str] = None,
+    seed: int = 42,
+    initial_design_size: int = 10,
+    backend: str = "auto",
+    poll_s: int = 180,
+    heartbeat_s: int = 1800,
+    stop_file: str = "STOP",
+    artifact_dir: str = "artifacts",
+    budget: int = 60
+) -> str:
+    """
+    Orchestrate the BO-MCP campaign loop for 6D Ackley.
+    """
+    # Ensure artifact directory exists
+    os.makedirs(artifact_dir, exist_ok=True)
+    results_log_path = os.path.join(artifact_dir, "results.jsonl")
+
+    # 1. Determine starting evaluation index and attempts from local results log
+    attempts_made = 0
+    evaluated_coords = set()
+    if os.path.exists(results_log_path):
+        try:
+            with open(results_log_path, "r") as f:
+                for line in f:
+                    if line.strip():
+                        data = json.loads(line)
+                        attempts_made += 1
+                        # Store coordinates to prevent duplicates
+                        coords = tuple(round(data["parameter_values"][f"x_{i}"], 8) for i in range(1, 7))
+                        evaluated_coords.add(coords)
+        except Exception as e:
+            logger.warning(f"Could not read existing results log: {e}")
+
+    print(f"[EVENT] Starting/resuming campaign. Attempts made so far: {attempts_made}/{budget}", flush=True)
+
+    if attempts_made >= budget:
+        print(f"[ALERT] Budget of {budget} attempts already reached. Exiting.", flush=True)
+        return campaign_id or ""
+
+    # 2. Initialize BO-MCP Client
+    client = BoMcpClient.from_env()
+
+    # 3. Create or retrieve campaign
+    if not campaign_id:
+        intake = get_campaign_intake(
+            campaign_name=campaign_name,
+            seed=seed,
+            initial_design_size=initial_design_size,
+            backend=backend
+        )
+        idempotency_key = client.make_idempotency_key("create", campaign_name)
+        try:
+            print(f"[EVENT] Creating campaign with name: {campaign_name}", flush=True)
+            response = client.create_campaign(intake, idempotency_key=idempotency_key)
+            campaign_id = response["campaign_id"]
+            print(f"[EVENT] Campaign created successfully. BO_MCP_CAMPAIGN_ID={campaign_id}", flush=True)
+        except BoMcpOperationError as e:
+            print(f"[ALERT] Campaign creation failed: {e}", flush=True)
+            raise
+    else:
+        print(f"[EVENT] Resuming existing campaign. BO_MCP_CAMPAIGN_ID={campaign_id}", flush=True)
+        # Fetch existing results from server to populate evaluated coordinates
+        try:
+            server_results = client.get_results(campaign_id)
+            for r in server_results:
+                coords = tuple(round(r["parameter_values"][f"x_{i}"], 8) for i in range(1, 7))
+                evaluated_coords.add(coords)
+        except Exception as e:
+            logger.warning(f"Could not fetch existing results from server: {e}")
+
+    # Write campaign ID to a file for easy retrieval
+    id_file_path = os.path.join(artifact_dir, "campaign_id.txt")
+    with open(id_file_path, "w") as f:
+        f.write(campaign_id)
+
+    last_heartbeat_time = time.time()
+
+    # 4. Main Optimization Loop
+    while attempts_made < budget:
+        # Check stop file at the top of each loop iteration
+        if os.path.exists(stop_file):
+            print(f"[EVENT] Stop file '{stop_file}' detected. Cleaning up and pausing campaign.", flush=True)
+            try:
+                os.remove(stop_file)
+            except Exception as e:
+                logger.warning(f"Could not remove stop file: {e}")
+            
+            # Pause campaign on server
+            try:
+                client.lifecycle(campaign_id, action="pause")
+                print("[EVENT] Campaign paused on server.", flush=True)
+            except Exception as e:
+                print(f"[ALERT] Failed to pause campaign on server: {e}", flush=True)
+            break
+
+        # Check heartbeat
+        current_time = time.time()
+        if current_time - last_heartbeat_time >= heartbeat_s:
+            print(f"[HEARTBEAT] Liveness check. Attempts: {attempts_made}/{budget}", flush=True)
+            last_heartbeat_time = current_time
+
+        # Ask server for next action
+        try:
+            decision = client.next_action(campaign_id)
+            action = decision.get("action")
+            status = decision.get("status")
+            print(f"[EVENT] Server decision: action={action}, status={status}", flush=True)
+
+            if action != "bo_generate_suggestions":
+                print(f"[EVENT] Campaign loop finished or paused by server. Reason: {decision.get('reason')}", flush=True)
+                break
+        except Exception as e:
+            print(f"[ALERT] Failed to get next action from server: {e}", flush=True)
+            time.sleep(poll_s)
+            continue
+
+        # Generate suggestions
+        try:
+            suggestions_response = client.generate_suggestions(campaign_id, batch_size=1)
+            suggestions = suggestions_response.get("suggestions", [])
+            if not suggestions:
+                # Query pending suggestions if none generated
+                suggestions = client.query_suggestions(campaign_id, status_filter="pending")
+        except Exception as e:
+            print(f"[ALERT] Failed to generate suggestions: {e}", flush=True)
+            time.sleep(poll_s)
+            continue
+
+        if not suggestions:
+            print("[EVENT] No suggestions available. Retrying after poll interval.", flush=True)
+            time.sleep(poll_s)
+            continue
+
+        suggestion = suggestions[0]
+        suggestion_id = suggestion.get("suggestion_id")
+        parameter_values = suggestion.get("parameter_values", {})
+
+        # Check for duplicate coordinates
+        coords = tuple(round(parameter_values.get(f"x_{i}", 0.0), 8) for i in range(1, 7))
+        if coords in evaluated_coords:
+            print(f"[ALERT] Duplicate coordinates detected: {parameter_values}. Rejecting suggestion {suggestion_id}.", flush=True)
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+            except Exception as e:
+                logger.error(f"Failed to reject duplicate suggestion: {e}")
+            continue
+
+        # Evaluate candidate
+        attempts_made += 1
+        print(f"[EVENT] Evaluating candidate {attempts_made}/{budget}: {parameter_values}", flush=True)
+        eval_result = evaluate_candidate(suggestion, attempts_made)
+
+        # Record to local results log (append-only)
+        with open(results_log_path, "a") as f:
+            f.write(json.dumps(eval_result) + "\n")
+
+        # Add to evaluated coordinates set
+        evaluated_coords.add(coords)
+
+        # Submit results to BO-MCP if successful
+        if eval_result["status"] == "success":
+            result_row = {
+                "parameter_values": eval_result["parameter_values"],
+                "objective_values": eval_result["objective_values"],
+                "suggestion_id": suggestion_id
+            }
+            idempotency_key = client.make_idempotency_key("submit", campaign_id, str(attempts_made))
+            try:
+                client.submit_results(campaign_id, results=[result_row], idempotency_key=idempotency_key)
+                print(f"[RESULT] Index: {attempts_made}, Coordinates: {eval_result['parameter_values']}, Surface Response: {eval_result['objective_values']['surface_response']:.6f}, Raw Response: {eval_result['raw_response']:.6f}", flush=True)
+            except Exception as e:
+                print(f"[ALERT] Failed to submit result to server: {e}", flush=True)
+        else:
+            print(f"[ALERT] Candidate evaluation failed: {eval_result['failure_reason']}. Rejecting suggestion.", flush=True)
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+            except Exception as e:
+                logger.error(f"Failed to reject failed suggestion: {e}")
+
+    # End of run reporting
+    print("[EVENT] Campaign run completed. Generating final report.", flush=True)
+    generate_final_report(results_log_path, campaign_id)
+
+    return campaign_id
+
+def generate_final_report(results_log_path: str, campaign_id: str) -> None:
+    """
+    Generate and print the final campaign report.
+    """
+    if not os.path.exists(results_log_path):
+        print("[ALERT] No results log found to generate report.", flush=True)
+        return
+
+    successful_evals = 0
+    attempted_evals = 0
+    best_surface_response = -float("inf")
+    best_raw_response = -float("inf")
+    best_coords = None
+
+    table_rows = []
+
+    with open(results_log_path, "r") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            data = json.loads(line)
+            attempted_evals += 1
+            status = data["status"]
+            
+            if status == "success":
+                successful_evals += 1
+                surface_val = data["objective_values"]["surface_response"]
+                raw_val = data["raw_response"]
+                if surface_val > best_surface_response:
+                    best_surface_response = surface_val
+                    best_raw_response = raw_val
+                    best_coords = data["parameter_values"]
+                
+                table_rows.append({
+                    "index": data["evaluation_index"],
+                    "coords": data["parameter_values"],
+                    "surface_response": f"{surface_val:.6f}",
+                    "raw_response": f"{raw_val:.6f}",
+                    "status": "SUCCESS"
+                })
+            else:
+                table_rows.append({
+                    "index": data["evaluation_index"],
+                    "coords": data["parameter_values"],
+                    "surface_response": "N/A",
+                    "raw_response": "N/A",
+                    "status": f"FAILED ({data['failure_reason']})"
+                })
+
+    print("\n" + "="*60, flush=True)
+    print("FINAL CAMPAIGN REPORT", flush=True)
+    print("="*60, flush=True)
+    print(f"BO_MCP_CAMPAIGN_ID={campaign_id}", flush=True)
+    print(f"Attempted Evaluations: {attempted_evals}", flush=True)
+    print(f"Successful Evaluations: {successful_evals}", flush=True)
+    if best_coords:
+        print(f"Best Surface Response: {best_surface_response:.6f}", flush=True)
+        print(f"Best Raw Response: {best_raw_response:.6f}", flush=True)
+        print(f"Best Coordinates: {best_coords}", flush=True)
+    print("-"*60, flush=True)
+    print(f"{'Index':<6} | {'Coordinates':<50} | {'Surface Resp':<12} | {'Status':<10}", flush=True)
+    print("-"*60, flush=True)
+    for row in table_rows:
+        coords_str = ", ".join(f"{k}:{float(v):.4f}" for k, v in row["coords"].items())
+        print(f"{row['index']:<6} | {coords_str:<50} | {row['surface_response']:<12} | {row['status']:<10}", flush=True)
+    print("="*60 + "\n", flush=True)

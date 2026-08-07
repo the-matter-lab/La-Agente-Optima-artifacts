@@ -1,0 +1,47 @@
+exit_code=0
+
+=== stdout (raw) ===
+   168	
+   169	while True:
+   170	        # Check stop file at loop start (before generating suggestions)
+   171	        if check_stop_file(stop_file):
+   172	            log_event("Stop file detected; pausing campaign")
+   173	            client.lifecycle(campaign_id, action="pause")
+   174	            break
+   175	
+   176	        # Check total attempt budget (artifact already includes current-run attempts)
+   177	        total_attempts = count_attempts(campaign_id)
+   178	        if total_attempts >= max_attempts:
+   179	            log_event(f"Total attempt budget exhausted ({max_attempts})")
+   180	            log_alert("Budget reached; pausing campaign")
+   181	            client.lifecycle(campaign_id, action="pause")
+   182	            break
+   183	
+   184	        # Check heartbeat
+   185	        now = time.time()
+   186	        if now - state.last_heartbeat >= heartbeat_s:
+   187	            log_heartbeat(f"Campaign {campaign_id} alive; attempted={total_attempts}/{max_attempts}")
+   188	            state.last_heartbeat = now
+   189	        # Check stop file at loop start (before generating suggestions)
+   190	        if check_stop_file(stop_file):
+   191	            log_event("Stop file detected; pausing campaign")
+   192	            client.lifecycle(campaign_id, action="pause")
+   193	            break
+   194	
+   195	        # Check total attempt budget (including prior runs via artifact)
+   196	        total_attempts = count_attempts(campaign_id) + len(state.evaluated)
+   197	        if total_attempts >= max_attempts:
+   198	            log_event(f"Total attempt budget exhausted ({max_attempts})")
+   199	            log_alert("Budget reached; pausing campaign")
+   200	            client.lifecycle(campaign_id, action="pause")
+   201	            break
+   202	
+   203	        # Check heartbeat
+   204	        now = time.time()
+   205	        if now - state.last_heartbeat >= heartbeat_s:
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

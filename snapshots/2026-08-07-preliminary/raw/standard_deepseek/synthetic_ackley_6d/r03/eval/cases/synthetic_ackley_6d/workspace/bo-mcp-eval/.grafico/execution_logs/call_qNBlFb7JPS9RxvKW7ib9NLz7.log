@@ -1,0 +1,16 @@
+exit_code=0
+
+=== stdout (raw) ===
+run_ackley_benchmark.py:6:    uv run python run_ackley_benchmark.py [--campaign-id ID] [--max-evals N]
+run_ackley_benchmark.py:36:        "--max-evals",
+ackley_benchmark/evaluator.py:77:    """Linearly map raw_response → surface_response ∈ [0, 1]."""
+HOW_TO_EXECUTE_CAMPAIGN.md:15:    --max-evals 60 \
+HOW_TO_EXECUTE_CAMPAIGN.md:28:    --max-evals 60 \
+HOW_TO_EXECUTE_CAMPAIGN.md:75:1. `ackley_artifacts/evaluations.jsonl` has exactly 60 rows (or fewer if
+HOW_TO_EXECUTE_CAMPAIGN.md:76:   the campaign converged early).
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

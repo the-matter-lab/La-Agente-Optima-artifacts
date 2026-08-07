@@ -1,0 +1,40 @@
+exit_code=0
+
+=== stdout (raw) ===
+SUMMARY_JSON
+{
+  "attempted_evaluations": 60,
+  "best_normalized_coordinates": {
+    "x_1": 0.497963593554878,
+    "x_2": 0.4996192185848522,
+    "x_3": 0.4944047445016558,
+    "x_4": 0.5218224777213365,
+    "x_5": 0.5024408146683758,
+    "x_6": 0.481455644251561
+  },
+  "best_raw_response": -5.229007056713609,
+  "best_surface_response": 0.766044164838493,
+  "campaign_id": "d301bb5c-ee13-4d03-9a2b-5e2dec3acf92",
+  "objective_direction": "maximize",
+  "objective_name": "surface_response",
+  "objective_unit": "normalized_unitless",
+  "successful_evaluations": 60
+}
+
+CSV_META
+rows=60
+columns=evaluation_index,x_1,x_2,x_3,x_4,x_5,x_6,surface_response,raw_response,status,failure_reason
+FIRST3
+{"evaluation_index": "1", "failure_reason": "", "raw_response": "-20.484266296327476", "status": "success", "surface_response": "0.08349451873947206", "x_1": "0.16681654148629066", "x_2": "0.5391141023995263", "x_3": "0.5261945030108697", "x_4": "0.4295593531289237", "x_5": "0.47222053335200864", "x_6": "0.7657352406843179"}
+{"evaluation_index": "2", "failure_reason": "", "raw_response": "-21.075884162163465", "status": "success", "surface_response": "0.05702439728105538", "x_1": "0.9969031584452865", "x_2": "0.3000171065084487", "x_3": "0.6464605221780191", "x_4": "0.3877292390249525", "x_5": "0.629765749641484", "x_6": "0.6774290976559445"}
+{"evaluation_index": "3", "failure_reason": "", "raw_response": "-21.9483215257205", "status": "success", "surface_response": "0.01798987126047424", "x_1": "0.742882436286036", "x_2": "0.2864155959870892", "x_3": "0.01749692674562675", "x_4": "0.984123357741131", "x_5": "0.9810004781274605", "x_6": "0.4842656011627029"}
+LAST3
+{"evaluation_index": "58", "failure_reason": "", "raw_response": "-7.951038682459908", "status": "success", "surface_response": "0.64425523332044", "x_1": "0.4832453065804425", "x_2": "0.4518192617322161", "x_3": "0.4829902754982261", "x_4": "0.5131887205995762", "x_5": "0.5077612305233931", "x_6": "0.49041349517301136"}
+{"evaluation_index": "59", "failure_reason": "", "raw_response": "-10.549507294885828", "status": "success", "surface_response": "0.5279947487260388", "x_1": "0.47412309812248493", "x_2": "0.41128344929503985", "x_3": "0.46121009836954874", "x_4": "0.5132086873903461", "x_5": "0.49799659848452626", "x_6": "0.47780558211523955"}
+{"evaluation_index": "60", "failure_reason": "", "raw_response": "-21.362910256057244", "status": "success", "surface_response": "0.04418229766601521", "x_1": "0.45730601706900664", "x_2": "0.0033847243548404305", "x_3": "0.24341066204385112", "x_4": "0.46256754744484396", "x_5": "0.42005992849770896", "x_6": "0.449335232368364"}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

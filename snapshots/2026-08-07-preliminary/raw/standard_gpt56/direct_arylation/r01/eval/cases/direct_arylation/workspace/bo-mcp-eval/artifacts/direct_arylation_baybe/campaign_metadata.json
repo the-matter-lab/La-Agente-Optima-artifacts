@@ -1,0 +1,141 @@
+{
+  "campaign": {
+    "created_at": "2026-08-05T03:11:01.388384Z",
+    "description": "BayBE optimization of measured direct arylation yield. Ownership marker: akg-eval-c5b8d1ef58b7491e871349ed99f9483b. Cache-buster nonce: 84b0bae8-8245-4434-aa84-be3c9ca05210.",
+    "id": "7b909c35-cd07-4330-b908-e636f4fe7152",
+    "iteration": 1,
+    "n_objectives": 1,
+    "n_parameters": 5,
+    "name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b",
+    "spec_id": "098005db-d41c-4db6-a245-6e1966b0ede1",
+    "status": "running",
+    "updated_at": "2026-08-05T03:13:10.643643Z"
+  },
+  "config": {
+    "acknowledge_degradations": [],
+    "acquisition_beta": null,
+    "acquisition_method": "auto",
+    "acquisition_optimization": null,
+    "backend_options": null,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "batch_size": 1,
+    "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "description": "BayBE optimization of measured direct arylation yield. Ownership marker: akg-eval-c5b8d1ef58b7491e871349ed99f9483b. Cache-buster nonce: 84b0bae8-8245-4434-aa84-be3c9ca05210.",
+    "fidelity_parameter": null,
+    "initial_design_size": null,
+    "initial_design_size_requested": null,
+    "initial_design_size_source": null,
+    "iteration": 1,
+    "max_iterations": 60,
+    "max_observations": null,
+    "name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b",
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "yield",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "percent",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": null,
+        "categories": [
+          "Potassium acetate",
+          "Potassium pivalate",
+          "Cesium acetate",
+          "Cesium pivalate"
+        ],
+        "description": "",
+        "name": "base",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": [
+          "BrettPhos",
+          "Di-tert-butylphenylphosphine",
+          "(t-Bu)PhCPhos",
+          "Tricyclohexylphosphine",
+          "PPh3",
+          "XPhos",
+          "P(2-furyl)3",
+          "Methyldiphenylphosphine",
+          "1268824-69-6",
+          "JackiePhos",
+          "SCHEMBL15068049",
+          "Me2PPh"
+        ],
+        "description": "",
+        "name": "ligand",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": [
+          "DMAc",
+          "Butyornitrile",
+          "Butyl Ester",
+          "p-Xylene"
+        ],
+        "description": "",
+        "name": "solvent",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": null,
+        "description": "",
+        "name": "concentration",
+        "parameter_options": null,
+        "type": "discrete",
+        "values": [
+          0.057,
+          0.1,
+          0.153
+        ]
+      },
+      {
+        "bounds": null,
+        "categories": null,
+        "description": "",
+        "name": "temperature_c",
+        "parameter_options": null,
+        "type": "discrete",
+        "values": [
+          90.0,
+          105.0,
+          120.0
+        ]
+      }
+    ],
+    "random_seed": 20260805,
+    "saasbo_config": null,
+    "scalarization": "pareto",
+    "scalarizer": null,
+    "spec_id": "098005db-d41c-4db6-a245-6e1966b0ede1",
+    "status": "paused",
+    "transfer_learning": null,
+    "turbo_config": null,
+    "use_cost_aware": false,
+    "use_input_warping": false
+  },
+  "nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210"
+}

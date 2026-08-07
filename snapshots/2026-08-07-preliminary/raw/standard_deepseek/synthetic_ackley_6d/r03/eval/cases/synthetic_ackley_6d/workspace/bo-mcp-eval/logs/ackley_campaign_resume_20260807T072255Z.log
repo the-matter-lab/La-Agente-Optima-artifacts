@@ -1,0 +1,177 @@
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] starting ackley benchmark max_evals=32
+[EVENT] BO-MCP client initialised
+07:22:57.169 GET api/api/v1/campaigns/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+[EVENT] found campaign 25d4e9fc-2138-4025-a401-e4a09cfc1e6f status=paused
+07:22:57.178 POST api/api/v1/campaigns/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/lifecycle
+[EVENT] resumed campaign 25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:22:57.203 GET api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+[EVENT] seeded dedup cache with 28 prior results
+07:22:57.215 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=159 n_results=28 — ignoring, budget remains 0/32
+07:22:57.233 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=1 surface_response=0.071737 x_1=0.0000 x_2=1.0000 x_3=1.0000 x_4=0.1233 x_5=0.0330 x_6=1.0000
+07:22:58.485 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:22:58.836 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=160 n_results=29 — ignoring, budget remains 1/32
+07:22:58.846 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=2 surface_response=0.059133 x_1=0.0000 x_2=0.9969 x_3=0.7428 x_4=0.3506 x_5=0.0000 x_6=1.0000
+07:23:01.355 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:01.428 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=161 n_results=30 — ignoring, budget remains 2/32
+07:23:01.440 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=3 surface_response=0.071634 x_1=0.0266 x_2=0.9967 x_3=1.0000 x_4=0.2227 x_5=0.0000 x_6=1.0000
+07:23:03.099 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:03.156 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=162 n_results=31 — ignoring, budget remains 3/32
+07:23:03.168 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=4 surface_response=0.076851 x_1=0.0000 x_2=1.0000 x_3=0.9831 x_4=0.0000 x_5=0.0374 x_6=1.0000
+07:23:04.263 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:04.326 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=163 n_results=32 — ignoring, budget remains 4/32
+07:23:04.337 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=5 surface_response=0.102235 x_1=0.0000 x_2=1.0000 x_3=1.0000 x_4=0.2613 x_5=0.0000 x_6=1.0000
+07:23:05.573 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:05.643 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=164 n_results=33 — ignoring, budget remains 5/32
+07:23:05.653 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=6 surface_response=0.069475 x_1=0.0007 x_2=0.8919 x_3=1.0000 x_4=0.0000 x_5=0.3733 x_6=0.9989
+07:23:06.318 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:06.381 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=165 n_results=34 — ignoring, budget remains 6/32
+07:23:06.397 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=7 surface_response=0.071440 x_1=0.0000 x_2=1.0000 x_3=1.0000 x_4=0.0000 x_5=0.1067 x_6=1.0000
+07:23:07.643 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:07.710 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=166 n_results=35 — ignoring, budget remains 7/32
+07:23:07.722 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=8 surface_response=0.080824 x_1=0.2988 x_2=1.0000 x_3=1.0000 x_4=0.2536 x_5=0.0000 x_6=1.0000
+07:23:08.335 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:08.392 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=167 n_results=36 — ignoring, budget remains 8/32
+07:23:08.403 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=9 surface_response=0.089494 x_1=0.0024 x_2=0.9999 x_3=1.0000 x_4=0.0000 x_5=0.0763 x_6=1.0000
+07:23:09.281 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:09.337 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=168 n_results=37 — ignoring, budget remains 9/32
+07:23:09.367 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=10 surface_response=0.074896 x_1=0.0000 x_2=1.0000 x_3=1.0000 x_4=0.2535 x_5=0.0000 x_6=0.8102
+07:23:11.012 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:11.069 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=169 n_results=38 — ignoring, budget remains 10/32
+07:23:11.079 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=11 surface_response=0.074560 x_1=0.7885 x_2=1.0000 x_3=1.0000 x_4=0.0000 x_5=0.5957 x_6=0.4887
+07:23:12.306 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:12.375 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=170 n_results=39 — ignoring, budget remains 11/32
+07:23:12.388 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=12 surface_response=0.040480 x_1=0.2037 x_2=1.0000 x_3=0.5455 x_4=0.1577 x_5=0.0006 x_6=1.0000
+07:23:13.266 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:13.324 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=171 n_results=40 — ignoring, budget remains 12/32
+07:23:13.347 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=13 surface_response=0.042467 x_1=0.2409 x_2=0.9577 x_3=1.0000 x_4=0.2273 x_5=0.9630 x_6=0.2717
+07:23:13.823 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:13.893 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=172 n_results=41 — ignoring, budget remains 13/32
+07:23:13.906 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=14 surface_response=0.087190 x_1=1.0000 x_2=1.0000 x_3=1.0000 x_4=0.0000 x_5=0.6371 x_6=0.1219
+07:23:14.739 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:14.807 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=173 n_results=42 — ignoring, budget remains 14/32
+07:23:14.817 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=15 surface_response=0.019593 x_1=0.4837 x_2=0.9825 x_3=0.6178 x_4=0.4031 x_5=0.0000 x_6=0.9925
+07:23:16.074 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:16.160 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=174 n_results=43 — ignoring, budget remains 15/32
+07:23:16.172 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=16 surface_response=0.072142 x_1=0.0000 x_2=0.7123 x_3=0.8194 x_4=0.0000 x_5=0.0000 x_6=1.0000
+07:23:17.402 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:17.488 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=175 n_results=44 — ignoring, budget remains 16/32
+07:23:17.498 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=17 surface_response=0.074292 x_1=0.0119 x_2=0.9890 x_3=1.0000 x_4=0.0143 x_5=0.0158 x_6=1.0000
+07:23:18.649 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:18.706 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=176 n_results=45 — ignoring, budget remains 17/32
+07:23:18.716 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=18 surface_response=0.069830 x_1=0.5137 x_2=1.0000 x_3=0.9445 x_4=0.0000 x_5=0.0000 x_6=1.0000
+07:23:20.516 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:20.587 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=177 n_results=46 — ignoring, budget remains 18/32
+07:23:20.597 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=19 surface_response=0.032159 x_1=0.3303 x_2=0.9568 x_3=0.9999 x_4=0.0972 x_5=0.0000 x_6=0.7719
+07:23:21.190 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:21.246 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=178 n_results=47 — ignoring, budget remains 19/32
+07:23:21.257 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=20 surface_response=0.052694 x_1=0.0000 x_2=0.8456 x_3=1.0000 x_4=0.3960 x_5=0.0770 x_6=0.6757
+07:23:21.774 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:21.832 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=179 n_results=48 — ignoring, budget remains 20/32
+07:23:21.842 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=21 surface_response=0.056548 x_1=0.3131 x_2=0.9752 x_3=1.0000 x_4=0.0000 x_5=0.3422 x_6=0.8041
+07:23:22.659 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:22.716 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=180 n_results=49 — ignoring, budget remains 21/32
+07:23:22.726 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=22 surface_response=0.089229 x_1=0.0000 x_2=0.7766 x_3=0.9648 x_4=0.0001 x_5=0.0000 x_6=1.0000
+07:23:23.909 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:23.967 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=181 n_results=50 — ignoring, budget remains 22/32
+07:23:23.976 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=23 surface_response=0.039848 x_1=0.2903 x_2=0.7703 x_3=0.9985 x_4=0.2682 x_5=0.0000 x_6=1.0000
+07:23:25.411 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:25.547 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=182 n_results=51 — ignoring, budget remains 23/32
+07:23:25.558 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=24 surface_response=0.091384 x_1=0.0012 x_2=0.9891 x_3=1.0000 x_4=0.9999 x_5=0.0000 x_6=0.0485
+07:23:27.001 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:27.084 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=183 n_results=52 — ignoring, budget remains 24/32
+07:23:27.098 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=25 surface_response=0.024178 x_1=0.0648 x_2=0.8277 x_3=0.6983 x_4=0.0584 x_5=0.1052 x_6=0.0824
+07:23:27.541 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:27.599 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=184 n_results=53 — ignoring, budget remains 25/32
+07:23:27.615 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=26 surface_response=0.076000 x_1=0.2754 x_2=1.0000 x_3=1.0000 x_4=1.0000 x_5=0.0000 x_6=0.0546
+07:23:28.414 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:28.508 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=185 n_results=54 — ignoring, budget remains 26/32
+07:23:28.518 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=27 surface_response=0.076023 x_1=0.1079 x_2=1.0000 x_3=1.0000 x_4=0.0000 x_5=0.0000 x_6=1.0000
+07:23:29.036 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:29.115 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=186 n_results=55 — ignoring, budget remains 27/32
+07:23:29.126 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=28 surface_response=0.081137 x_1=0.0000 x_2=0.7903 x_3=0.9229 x_4=0.0000 x_5=0.0000 x_6=1.0000
+07:23:29.666 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:29.785 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=187 n_results=56 — ignoring, budget remains 28/32
+07:23:29.796 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=29 surface_response=0.047690 x_1=0.0000 x_2=0.7792 x_3=0.9557 x_4=0.0000 x_5=0.1895 x_6=1.0000
+07:23:30.850 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:30.969 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=188 n_results=57 — ignoring, budget remains 29/32
+07:23:30.982 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=30 surface_response=0.045798 x_1=0.0000 x_2=0.7712 x_3=0.9551 x_4=0.8280 x_5=0.0000 x_6=1.0000
+07:23:33.212 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:33.294 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=189 n_results=58 — ignoring, budget remains 30/32
+07:23:33.308 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=31 surface_response=0.079413 x_1=0.9883 x_2=1.0000 x_3=1.0000 x_4=0.5605 x_5=0.3484 x_6=0.9725
+07:23:33.730 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:33.808 POST api/api/v1/campaigns/status/batch
+[EVENT] server action=bo_submit_results reason=1 suggestion(s) awaiting results. iteration=190 n_results=59 — ignoring, budget remains 31/32
+07:23:33.819 POST api/api/v1/suggestions/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/generate ? batch_size='1'
+[RESULT] eval=32 surface_response=0.052566 x_1=0.5883 x_2=1.0000 x_3=0.9798 x_4=0.1765 x_5=0.0000 x_6=0.9836
+07:23:34.473 POST api/api/v1/results/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+[EVENT] loop finished — 32 evaluations attempted
+07:23:34.530 GET api/api/v1/campaigns/25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+07:23:34.538 POST api/api/v1/campaigns/25d4e9fc-2138-4025-a401-e4a09cfc1e6f/lifecycle
+[EVENT] paused campaign 25d4e9fc-2138-4025-a401-e4a09cfc1e6f
+[EVENT] campaign_id=25d4e9fc-2138-4025-a401-e4a09cfc1e6f — done
+
+BO_MCP_CAMPAIGN_ID=25d4e9fc-2138-4025-a401-e4a09cfc1e6f

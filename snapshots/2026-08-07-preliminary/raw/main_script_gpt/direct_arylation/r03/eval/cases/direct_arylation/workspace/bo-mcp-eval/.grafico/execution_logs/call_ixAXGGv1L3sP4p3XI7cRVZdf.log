@@ -1,0 +1,31 @@
+exit_code=0
+
+=== stdout (raw) ===
+18:51:53.648 POST api/api/v1/campaigns/validate
+18:51:53.657 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:51:54.926 GET api/api/v1/campaigns/598c5ca5-f5fe-4ca7-9540-a48427dfef92
+18:51:54.942 Created campaign
+18:51:54.943 POST api/api/v1/campaigns/status/batch
+18:51:54.962 Next action
+18:51:54.963 POST api/api/v1/suggestions/598c5ca5-f5fe-4ca7-9540-a48427dfef92/generate ? batch_size='1'
+18:51:55.054 POST direct-arylation-oracle/v1/evaluate
+18:51:55.059 POST api/api/v1/results/598c5ca5-f5fe-4ca7-9540-a48427dfef92
+attempt 1/1: success yield=82.09% params={'base': 'Potassium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120}
+18:51:55.186 GET api/api/v1/diagnostics/598c5ca5-f5fe-4ca7-9540-a48427dfef92 ? use_cache='true' & verbosity='standard'
+18:51:55.212 GET api/api/v1/results/598c5ca5-f5fe-4ca7-9540-a48427dfef92
+18:51:55.223 GET api/api/v1/campaigns/598c5ca5-f5fe-4ca7-9540-a48427dfef92
+18:51:55.234 POST api/api/v1/campaigns/598c5ca5-f5fe-4ca7-9540-a48427dfef92/lifecycle
+18:51:55.303 Paused campaign
+campaign_id=598c5ca5-f5fe-4ca7-9540-a48427dfef92
+artifact_dir=artifacts/direct_arylation_20260730
+attempts_recorded=1
+successful_attempts=1
+best=yield=82.09% params={'base': 'Potassium acetate', 'concentration': 0.1, 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'temperature_c': 120}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

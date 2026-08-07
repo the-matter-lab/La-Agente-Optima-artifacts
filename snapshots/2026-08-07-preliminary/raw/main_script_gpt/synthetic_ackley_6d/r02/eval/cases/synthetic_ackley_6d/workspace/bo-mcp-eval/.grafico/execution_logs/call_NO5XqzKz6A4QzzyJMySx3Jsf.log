@@ -1,0 +1,39 @@
+exit_code=0
+
+=== stdout (raw) ===
+drwxr-xr-x 20 root root 4096 Jul 30 05:39 /app
+drwxr-xr-x  2 root root 4096 Jul 30 05:33 /app/grafico.egg-info
+drwxr-xr-x root:root /app
+drwxr-xr-x root:root /app/grafico.egg-info
+root
+uid=0(root) gid=0(root) groups=0(root)
+Imported via plain python, docstring starts:
+REST client for the BO-MCP campaign API.
+
+    Campaign lifecycle, in call order:
+
+    1. ``validate_intake(intake)`` — dry-run the campaign intake payload; a
+       rejected intake raises ``BoMcpOperationError`` with ``field_errors``
+       in the payload.
+    2. ``create_campaign(intake, idempotency_key=...)`` — returns ``campaign_id``.
+    3. Optimization loop:
+       a. ``next_action(campaign_id)`` — ask the server whether another
+          round is warranted; act on its ``action`` field instead of any
+          client-side progress bookkeeping.
+       b. ``generate_suggestions(campaign_id, batch_size=...)`` — ask the BO
+          backend for new candidate suggestions, or
+          ``query_suggestions(campaign_id, status_filter="pending")`` to reuse
+          suggestions that already exist. Generation can run for minutes; a
+          read timeout does not prove nothing was produced, so re-query
+          pending before retrying or stopping.
+       c. Evaluate the suggested candidates externally.
+       d. ``submit_results(..., force=...)`` — report finite objective values.
+       e. ``update_suggestion_status(suggestion_id, status)`` — reject
+          unexecutable suggestions.
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

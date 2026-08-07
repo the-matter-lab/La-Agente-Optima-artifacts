@@ -1,0 +1,27 @@
+{
+  "campaign_slug": "direct_arylation_bo",
+  "campaign_name": "direct-arylation-yield-akg-eval-1c094af49d534fef9861377f221f0f69",
+  "marker": "akg-eval-1c094af49d534fef9861377f221f0f69",
+  "backend": "baybe",
+  "objective": {"name": "yield", "direction": "maximize", "unit": "percent"},
+  "entrypoint": "run_direct_arylation_bo.py",
+  "modules": {
+    "search_space": "direct_arylation_bo/space.py",
+    "campaign_intake": "direct_arylation_bo/intake.py",
+    "candidate_evaluation": "direct_arylation_bo/evaluation.py",
+    "objective_extraction_and_reporting": "direct_arylation_bo/artifacts.py",
+    "orchestration": "direct_arylation_bo/campaign.py"
+  },
+  "artifact_dir": "artifacts",
+  "artifacts": {
+    "attempts_jsonl": "artifacts/attempts.jsonl",
+    "attempts_json": "artifacts/attempts.json",
+    "final_report_glob": "artifacts/final_report_*.json"
+  },
+  "log_dir": "logs",
+  "stop_file": "STOP",
+  "smoke_test_campaign_id": "e310a3b3-a78d-4a67-bfd5-489e87b9fd87",
+  "smoke_test_attempts_recorded": 4,
+  "recommended_command": "uv run --project /app python -u run_direct_arylation_bo.py --campaign-id e310a3b3-a78d-4a67-bfd5-489e87b9fd87 --max-attempts 56",
+  "docs": "HOW_TO_EXECUTE_CAMPAIGN.md"
+}

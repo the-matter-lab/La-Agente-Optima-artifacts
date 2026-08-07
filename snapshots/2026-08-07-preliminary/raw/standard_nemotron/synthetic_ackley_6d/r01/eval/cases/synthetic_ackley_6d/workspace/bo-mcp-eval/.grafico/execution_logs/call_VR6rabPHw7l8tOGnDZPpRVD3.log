@@ -1,0 +1,53 @@
+exit_code=0
+
+=== stdout (raw) ===
+usage: run_ackley_opt.py [-h] [--campaign-id CAMPAIGN_ID]
+                         [--random-seed RANDOM_SEED]
+                         [--initial-design-size INITIAL_DESIGN_SIZE]
+                         [--batch-size BATCH_SIZE]
+                         [--max-observations MAX_OBSERVATIONS]
+                         [--backend {auto,botorch,baybe}]
+                         [--acquisition-method ACQUISITION_METHOD]
+                         [--artifact-dir ARTIFACT_DIR] [--poll-s POLL_S]
+                         [--heartbeat-s HEARTBEAT_S] [--stop-file STOP_FILE]
+
+Ackley 6D synthetic benchmark optimization via BO-MCP
+
+options:
+  -h, --help            show this help message and exit
+  --campaign-id CAMPAIGN_ID
+                        Resume existing campaign by ID (must contain ownership
+                        marker) (default: None)
+  --random-seed RANDOM_SEED
+                        RNG seed for reproducible initialization (default: 42)
+  --initial-design-size INITIAL_DESIGN_SIZE
+                        Number of Sobol initial design points (default: 10)
+  --batch-size BATCH_SIZE
+                        Number of suggestions per generation call (default: 1)
+  --max-observations MAX_OBSERVATIONS
+                        Total evaluation budget (attempted evaluations)
+                        (default: 60)
+  --backend {auto,botorch,baybe}
+                        BO backend to use (default: auto)
+  --acquisition-method ACQUISITION_METHOD
+                        Acquisition function (e.g., noisy_ei,
+                        upper_confidence_bound, auto) (default: auto)
+  --artifact-dir ARTIFACT_DIR
+                        Directory for output artifacts (default: artifacts)
+  --poll-s POLL_S       Poll interval in seconds (kept for compatibility)
+                        (default: 180)
+  --heartbeat-s HEARTBEAT_S
+                        Heartbeat log interval in seconds (default: 1800)
+  --stop-file STOP_FILE
+                        Path to stop file; create to request graceful pause
+                        (default: STOP)
+
+
+=== stderr (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+
+
+=== stderr (model-visible) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn

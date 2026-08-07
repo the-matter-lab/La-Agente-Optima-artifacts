@@ -1,0 +1,199 @@
+"""Main campaign orchestration — BO-MCP loop for direct arylation yield optimization."""
+
+from __future__ import annotations
+
+import os
+import sys
+import time
+import uuid
+from pathlib import Path
+
+from domains.bo_mcp.client import BoMcpClient
+
+from direct_arylation_bo.intake import build_intake, BUDGET, CAMPAIGN_MARKER
+from direct_arylation_bo.evaluator import evaluate_candidate
+from direct_arylation_bo.reporting import ResultTracker
+from direct_arylation_bo.search_space import PARAM_NAMES
+
+
+def _tagged(tag: str, msg: str) -> None:
+    """Print a tagged unbuffered line."""
+    sys.stdout.write(f"[{tag}] {msg}\n")
+    sys.stdout.flush()
+
+
+def run_campaign(
+    *,
+    campaign_id: str | None = None,
+    artifacts_dir: Path,
+    stop_file: Path | None = None,
+    poll_s: float = 180,
+    heartbeat_s: float = 1800,
+) -> str:
+    """Run the BO-MCP campaign loop. Returns the campaign_id."""
+
+    client = BoMcpClient.from_env(timeout_s=300)
+    tracker = ResultTracker(artifacts_dir)
+
+    # ── Create or resume campaign ──────────────────────────────────
+    if campaign_id is None:
+        intake = build_intake()
+        idem_key = BoMcpClient.make_idempotency_key("create", CAMPAIGN_MARKER)
+        resp = client.create_campaign(intake, idempotency_key=idem_key)
+        if not resp.get("success", False):
+            _tagged("ALERT", f"Campaign creation failed: {resp.get('errors')}")
+            raise RuntimeError(f"Campaign creation failed: {resp}")
+        campaign_id = resp["campaign_id"]
+        _tagged("EVENT", f"Campaign created: {campaign_id}")
+    else:
+        # Resume: ensure campaign is running
+        decision = client.next_action(campaign_id)
+        status = decision.get("status", "unknown")
+        _tagged("EVENT", f"Resuming campaign {campaign_id} (status={status})")
+        if status == "paused":
+            client.lifecycle(campaign_id, action="resume")
+            _tagged("EVENT", "Campaign resumed")
+        elif status == "completed":
+            client.lifecycle(campaign_id, action="reopen")
+            _tagged("EVENT", "Campaign reopened")
+
+    # Write campaign ID to artifacts
+    (artifacts_dir / "campaign_id.txt").write_text(campaign_id)
+
+    # ── Main BO loop ───────────────────────────────────────────────
+    last_heartbeat = time.monotonic()
+    attempt_count = 0
+
+    while attempt_count < BUDGET:
+        # Stop-file check (before generating a suggestion)
+        if stop_file and stop_file.exists():
+            _tagged("EVENT", "Stop file detected — pausing gracefully")
+            stop_file.unlink()
+            # Pause campaign so it can be resumed later
+            try:
+                client.lifecycle(campaign_id, action="pause")
+                _tagged("EVENT", "Campaign paused via stop file")
+            except Exception:
+                pass
+            break
+
+        # Heartbeat
+        now = time.monotonic()
+        if now - last_heartbeat >= heartbeat_s:
+            _tagged("HEARTBEAT", f"alive | attempts={attempt_count}/{BUDGET} | {tracker.format_summary_line()}")
+            last_heartbeat = now
+
+        # Ask server what to do next
+        decision = client.next_action(campaign_id)
+        action = decision.get("action")
+        reason = decision.get("reason", "")
+
+        if action != "bo_generate_suggestions":
+            _tagged("EVENT", f"Server recommends stop: action={action} reason={reason}")
+            break
+
+        # Generate a suggestion
+        try:
+            gen_resp = client.generate_suggestions(campaign_id, batch_size=1, timeout_s=300)
+        except Exception as exc:
+            _tagged("ALERT", f"Suggestion generation failed: {exc}")
+            # Re-query pending suggestions before retrying
+            pending = client.query_suggestions(campaign_id, status_filter="pending")
+            if pending:
+                suggestion = pending[0]
+                _tagged("EVENT", f"Recovered pending suggestion {suggestion['suggestion_id']}")
+            else:
+                _tagged("ALERT", "No pending suggestions and generation failed — stopping")
+                break
+        else:
+            if not gen_resp.get("success", False):
+                _tagged("ALERT", f"Suggestion generation rejected: {gen_resp.get('errors')}")
+                break
+            suggestions = gen_resp.get("suggestions", [])
+            if not suggestions:
+                _tagged("ALERT", "No suggestions returned — stopping")
+                break
+            suggestion = suggestions[0]
+
+        suggestion_id = suggestion["suggestion_id"]
+        parameter_values = suggestion["parameter_values"]
+
+        # ── Evaluate candidate ─────────────────────────────────────
+        attempt_count += 1
+        _tagged("EVENT", f"Attempt {attempt_count}/{BUDGET}: evaluating {parameter_values}")
+
+        evaluation = evaluate_candidate(parameter_values)
+        tracker.record(evaluation)
+
+        if evaluation["success"]:
+            yield_val = evaluation["yield"]
+            _tagged("RESULT", f"yield={yield_val:.2f}% | {parameter_values}")
+
+            # Submit result to BO-MCP
+            result_row = {
+                "parameter_values": {k: parameter_values[k] for k in PARAM_NAMES},
+                "objective_values": {"yield": yield_val},
+                "suggestion_id": suggestion_id,
+            }
+            idem_key = BoMcpClient.make_idempotency_key("result", campaign_id, suggestion_id)
+            try:
+                submit_resp = client.submit_results(
+                    campaign_id,
+                    results=[result_row],
+                    idempotency_key=idem_key,
+                )
+                if not submit_resp.get("success", False):
+                    # Duplicate? Try with force
+                    if "duplicate" in str(submit_resp.get("errors", [])).lower():
+                        _tagged("EVENT", "Duplicate result — retrying with force=True")
+                        idem_key2 = BoMcpClient.make_idempotency_key("result-force", campaign_id, suggestion_id)
+                        client.submit_results(
+                            campaign_id,
+                            results=[result_row],
+                            idempotency_key=idem_key2,
+                            force=True,
+                        )
+                    else:
+                        _tagged("ALERT", f"Result submission failed: {submit_resp.get('errors')}")
+            except Exception as exc:
+                _tagged("ALERT", f"Result submission exception: {exc}")
+        else:
+            _tagged("ALERT", f"Oracle call failed (attempt {attempt_count}): {evaluation.get('raw_response', '')[:200]}")
+            # Mark suggestion as rejected so BO doesn't wait for it
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+            except Exception:
+                pass
+
+    # ── End-of-invocation ──────────────────────────────────────────
+    _tagged("EVENT", f"Loop ended after {attempt_count} attempts ({tracker.n_successful} successful)")
+
+    # Fetch diagnostics (generous timeout)
+    try:
+        diag = client.get_diagnostics(campaign_id, timeout_s=600)
+        diag_path = artifacts_dir / "diagnostics.json"
+        import json
+        with open(diag_path, "w", encoding="utf-8") as f:
+            json.dump(diag, f, indent=2, default=str)
+        _tagged("EVENT", f"Diagnostics saved to {diag_path}")
+    except Exception as exc:
+        _tagged("ALERT", f"Diagnostics fetch failed: {exc}")
+
+    # Write summary
+    summary_path = tracker.write_summary(campaign_id)
+    _tagged("EVENT", f"Summary saved to {summary_path}")
+
+    # Print final summary
+    _tagged("RESULT", f"FINAL | {tracker.format_summary_line()}")
+    _tagged("RESULT", f"BO_MCP_CAMPAIGN_ID={campaign_id}")
+
+    # Pause campaign (not terminate) so it can be resumed
+    try:
+        decision = client.next_action(campaign_id)
+        if decision.get("status") == "running":
+            client.lifecycle(campaign_id, action="pause")
+            _tagged("EVENT", "Campaign paused for potential resume")
+    except Exception:
+        pass
+
+    return campaign_id

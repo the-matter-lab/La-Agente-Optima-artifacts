@@ -1,0 +1,1458 @@
+{
+  "case_id": "synthetic_ackley_6d",
+  "cache_buster_nonce": "1dd0337f-b641-4123-b200-52863ef5f9ce",
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "objective_unit": "normalized_unitless",
+  "dimensions": 6,
+  "search_space": {
+    "x_1": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_2": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_3": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_4": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_5": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_6": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    }
+  },
+  "backend": "local_python_gp_bo",
+  "random_seed": 20260730,
+  "initialization_strategy": "sobol",
+  "initial_design_size": 11,
+  "acquisition_strategy": "expected_improvement",
+  "candidate_pool_size": 8192,
+  "attempted_evaluations": 60,
+  "completed_evaluations": 60,
+  "successful_evaluations": 60,
+  "failed_evaluations": 0,
+  "best_objective_value": 0.38617547059295654,
+  "best_parameters": {
+    "x_1": 0.5130284242331982,
+    "x_2": 0.5327437436208129,
+    "x_3": 0.4523993572220206,
+    "x_4": 0.5396371418610215,
+    "x_5": 0.5973099749535322,
+    "x_6": 0.4120269138365984
+  },
+  "best_raw_response": -13.719225227434872,
+  "results": [
+    {
+      "evaluation_index": 0,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.11533508729189634,
+        "x_2": 0.5647132471203804,
+        "x_3": 0.9150678385049105,
+        "x_4": 0.578064096160233,
+        "x_5": 0.7605154225602746,
+        "x_6": 0.6796284941956401
+      },
+      "objective_values": {
+        "surface_response": 0.04655493754474671
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.30988080004747,
+      "classic": 21.30988080004747,
+      "surface_response": 0.04655493754474671,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 1,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.8897710805758834,
+        "x_2": 0.22663035709410906,
+        "x_3": 0.010555206798017025,
+        "x_4": 0.29539379943162203,
+        "x_5": 0.10046305600553751,
+        "x_6": 0.2213125377893448
+      },
+      "objective_values": {
+        "surface_response": 0.045864109903538654
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.32532107580873,
+      "classic": 21.32532107580873,
+      "surface_response": 0.045864109903538654,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 2,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.6669553108513355,
+        "x_2": 0.8487273314967752,
+        "x_3": 0.5714176865294576,
+        "x_4": 0.9159334832802415,
+        "x_5": 0.3300390737131238,
+        "x_6": 0.37971664126962423
+      },
+      "objective_values": {
+        "surface_response": 0.03378075457573907
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.595388929573627,
+      "classic": 21.595388929573627,
+      "surface_response": 0.03378075457573907,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 3,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.33183320611715317,
+        "x_2": 0.45244309678673744,
+        "x_3": 0.4794036000967026,
+        "x_4": 0.19568552169948816,
+        "x_5": 0.5604801895096898,
+        "x_6": 0.9548157639801502
+      },
+      "objective_values": {
+        "surface_response": 0.0360749354490917
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.544113063904977,
+      "classic": 21.544113063904977,
+      "surface_response": 0.0360749354490917,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 4,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.4577838350087404,
+        "x_2": 0.9077395666390657,
+        "x_3": 0.2249914314597845,
+        "x_4": 0.032405126839876175,
+        "x_5": 0.7315444154664874,
+        "x_6": 0.5321601470932364
+      },
+      "objective_values": {
+        "surface_response": 0.018077887957883353
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.946354317116608,
+      "classic": 21.946354317116608,
+      "surface_response": 0.018077887957883353,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 5,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.5449182074517012,
+        "x_2": 0.2615490322932601,
+        "x_3": 0.8180440617725253,
+        "x_4": 0.8131311200559139,
+        "x_5": 0.3759870110079646,
+        "x_6": 0.11475324258208275
+      },
+      "objective_values": {
+        "surface_response": 0.05263191478373717
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.174057913457645,
+      "classic": 21.174057913457645,
+      "surface_response": 0.05263191478373717,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 6,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.7579707326367497,
+        "x_2": 0.6316930754110217,
+        "x_3": 0.25611155573278666,
+        "x_4": 0.4445369243621826,
+        "x_5": 0.1778897037729621,
+        "x_6": 0.2693269057199359
+      },
+      "objective_values": {
+        "surface_response": 0.02958429968271384
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.689181385032843,
+      "classic": 21.689181385032843,
+      "surface_response": 0.02958429968271384,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 7,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.2354249069467187,
+        "x_2": 0.0435160081833601,
+        "x_3": 0.6616646535694599,
+        "x_4": 0.6628381982445717,
+        "x_5": 0.9630887573584914,
+        "x_6": 0.8189893886446953
+      },
+      "objective_values": {
+        "surface_response": 0.04445872094359627
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.356732084574094,
+      "classic": 21.356732084574094,
+      "surface_response": 0.04445872094359627,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 8,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.1616437053307891,
+        "x_2": 0.7524700136855245,
+        "x_3": 0.3308820342645049,
+        "x_4": 0.7647314621135592,
+        "x_5": 0.027149097993969917,
+        "x_6": 0.8901613187044859
+      },
+      "objective_values": {
+        "surface_response": 0.04447287930944659
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.356415639400193,
+      "classic": 21.356415639400193,
+      "surface_response": 0.04447287930944659,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 9,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.8405749453231692,
+        "x_2": 0.4148655906319618,
+        "x_3": 0.7354576233774424,
+        "x_4": 0.1080264626070857,
+        "x_5": 0.867033937945962,
+        "x_6": 0.46378034073859453
+      },
+      "objective_values": {
+        "surface_response": 0.04190995814359921
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.41369795874378,
+      "classic": 21.41369795874378,
+      "surface_response": 0.04190995814359921,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 10,
+      "batch_index": 0,
+      "batch_size": 11,
+      "parameter_values": {
+        "x_1": 0.6185679212212563,
+        "x_2": 0.5369702614843845,
+        "x_3": 0.1747608408331871,
+        "x_4": 0.7275990983471274,
+        "x_5": 0.5634678062051535,
+        "x_6": 0.18421379663050175
+      },
+      "objective_values": {
+        "surface_response": 0.07505310221021373
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.6729353524751,
+      "classic": 20.6729353524751,
+      "surface_response": 0.07505310221021373,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 11,
+      "batch_index": 11,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.7517387783154845,
+        "x_2": 0.9059003964066505,
+        "x_3": 0.44631566386669874,
+        "x_4": 0.7031909208744764,
+        "x_5": 0.515628281980753,
+        "x_6": 0.46116180904209614
+      },
+      "objective_values": {
+        "surface_response": 0.05852811205998002
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.042275531778788,
+      "classic": 21.042275531778788,
+      "surface_response": 0.05852811205998002,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 7.675414026648571e-05
+    },
+    {
+      "evaluation_index": 12,
+      "batch_index": 12,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5453299107030034,
+        "x_2": 0.9426042782142758,
+        "x_3": 0.4438685877248645,
+        "x_4": 0.6963871484622359,
+        "x_5": 0.8367065880447626,
+        "x_6": 0.026689454913139343
+      },
+      "objective_values": {
+        "surface_response": 0.026444045586508806
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.759367327681353,
+      "classic": 21.759367327681353,
+      "surface_response": 0.026444045586508806,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 7.331424728335129e-05
+    },
+    {
+      "evaluation_index": 13,
+      "batch_index": 13,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.6917245760560036,
+        "x_2": 0.8054313436150551,
+        "x_3": 0.7794696586206555,
+        "x_4": 0.7505723927170038,
+        "x_5": 0.5397448539733887,
+        "x_6": 0.28502426110208035
+      },
+      "objective_values": {
+        "surface_response": 0.04807740379025151
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.275853066839375,
+      "classic": 21.275853066839375,
+      "surface_response": 0.04807740379025151,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 7.723053738467822e-05
+    },
+    {
+      "evaluation_index": 14,
+      "batch_index": 14,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5897016450762749,
+        "x_2": 0.03084010537713766,
+        "x_3": 0.07400551531463861,
+        "x_4": 0.7460956424474716,
+        "x_5": 0.5335262240841985,
+        "x_6": 0.9054837450385094
+      },
+      "objective_values": {
+        "surface_response": 0.0240099547011946
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.813770238415355,
+      "classic": 21.813770238415355,
+      "surface_response": 0.0240099547011946,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 6.0132831113767014e-05
+    },
+    {
+      "evaluation_index": 15,
+      "batch_index": 15,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.13285442721098661,
+        "x_2": 0.428950784727931,
+        "x_3": 0.17511778604239225,
+        "x_4": 0.6989059848710895,
+        "x_5": 0.5367589946836233,
+        "x_6": 0.24190517887473106
+      },
+      "objective_values": {
+        "surface_response": 0.05563897044387206
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.10684900945266,
+      "classic": 21.10684900945266,
+      "surface_response": 0.05563897044387206,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 9.04011940582154e-05
+    },
+    {
+      "evaluation_index": 16,
+      "batch_index": 16,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.6450104843825102,
+        "x_2": 0.5490800831466913,
+        "x_3": 0.03300691209733486,
+        "x_4": 0.7316737687215209,
+        "x_5": 0.5168404867872596,
+        "x_6": 0.18674894701689482
+      },
+      "objective_values": {
+        "surface_response": 0.03523248995875163
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.562942059603433,
+      "classic": 21.562942059603433,
+      "surface_response": 0.03523248995875163,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 6.66068901118553e-05
+    },
+    {
+      "evaluation_index": 17,
+      "batch_index": 17,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.9267525235190988,
+        "x_2": 0.45380409341305494,
+        "x_3": 0.16448775120079517,
+        "x_4": 0.7009733701124787,
+        "x_5": 0.38988239876925945,
+        "x_6": 0.16612793784588575
+      },
+      "objective_values": {
+        "surface_response": 0.054956938763201506
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.122092691956524,
+      "classic": 21.122092691956524,
+      "surface_response": 0.054956938763201506,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 6.312578660966302e-05
+    },
+    {
+      "evaluation_index": 18,
+      "batch_index": 18,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.9498489629477262,
+        "x_2": 0.879471043124795,
+        "x_3": 0.20319098606705666,
+        "x_4": 0.735089342109859,
+        "x_5": 0.8382003866136074,
+        "x_6": 0.07373236026614904
+      },
+      "objective_values": {
+        "surface_response": 0.053376094777712525
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.157425191143727,
+      "classic": 21.157425191143727,
+      "surface_response": 0.053376094777712525,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 5.319061214629502e-05
+    },
+    {
+      "evaluation_index": 19,
+      "batch_index": 19,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.9374343045055866,
+        "x_2": 0.17708665691316128,
+        "x_3": 0.17194295022636652,
+        "x_4": 0.7367903534322977,
+        "x_5": 0.09137253277003765,
+        "x_6": 0.19514899887144566
+      },
+      "objective_values": {
+        "surface_response": 0.042988541098009966
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.38959119570463,
+      "classic": 21.38959119570463,
+      "surface_response": 0.042988541098009966,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 4.736726521766292e-05
+    },
+    {
+      "evaluation_index": 20,
+      "batch_index": 20,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.010334990918636322,
+        "x_2": 0.427150534465909,
+        "x_3": 0.18725687079131603,
+        "x_4": 0.7421115403994918,
+        "x_5": 0.4472529161721468,
+        "x_6": 0.09603356942534447
+      },
+      "objective_values": {
+        "surface_response": 0.04315220175437045
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.385933314180004,
+      "classic": 21.385933314180004,
+      "surface_response": 0.04315220175437045,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.052639779724283e-05
+    },
+    {
+      "evaluation_index": 21,
+      "batch_index": 21,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5675788493826985,
+        "x_2": 0.7499993732199073,
+        "x_3": 0.16205474082380533,
+        "x_4": 0.7938976734876633,
+        "x_5": 0.5440586917102337,
+        "x_6": 0.25263400189578533
+      },
+      "objective_values": {
+        "surface_response": 0.04494377161040385
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.345891006992723,
+      "classic": 21.345891006992723,
+      "surface_response": 0.04494377161040385,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 3.682929761252983e-05
+    },
+    {
+      "evaluation_index": 22,
+      "batch_index": 22,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.3285360783338547,
+        "x_2": 0.6018595090135932,
+        "x_3": 0.17044715583324432,
+        "x_4": 0.6355744618922472,
+        "x_5": 0.29758739098906517,
+        "x_6": 0.1727783028036356
+      },
+      "objective_values": {
+        "surface_response": 0.06008529472808105
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.00747187255622,
+      "classic": 21.00747187255622,
+      "surface_response": 0.06008529472808105,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.474732760865403e-05
+    },
+    {
+      "evaluation_index": 23,
+      "batch_index": 23,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.282477599568665,
+        "x_2": 0.7620264887809753,
+        "x_3": 0.18027619644999504,
+        "x_4": 0.2188924066722393,
+        "x_5": 0.7677645357325673,
+        "x_6": 0.2145907236263156
+      },
+      "objective_values": {
+        "surface_response": 0.026201521812829906
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.76478783161156,
+      "classic": 21.76478783161156,
+      "surface_response": 0.026201521812829906,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 1.7104028069640732e-05
+    },
+    {
+      "evaluation_index": 24,
+      "batch_index": 24,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.7455357667058706,
+        "x_2": 0.5490444591268897,
+        "x_3": 0.1786395963281393,
+        "x_4": 0.6861962294206023,
+        "x_5": 0.6727449167519808,
+        "x_6": 0.2187694637104869
+      },
+      "objective_values": {
+        "surface_response": 0.05360963110158258
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.152205560333183,
+      "classic": 21.152205560333183,
+      "surface_response": 0.05360963110158258,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 1.0133116904869309e-05
+    },
+    {
+      "evaluation_index": 25,
+      "batch_index": 25,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.16185441054403782,
+        "x_2": 0.7227095775306225,
+        "x_3": 0.17796964664012194,
+        "x_4": 0.7669590972363949,
+        "x_5": 0.4736132565885782,
+        "x_6": 0.09920245409011841
+      },
+      "objective_values": {
+        "surface_response": 0.06021651899778802
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.00453895732529,
+      "classic": 21.00453895732529,
+      "surface_response": 0.06021651899778802,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 3.222101562725207e-06
+    },
+    {
+      "evaluation_index": 26,
+      "batch_index": 26,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.9422874944284558,
+        "x_2": 0.06054084375500679,
+        "x_3": 0.17014391999691725,
+        "x_4": 0.9585714004933834,
+        "x_5": 0.7545918356627226,
+        "x_6": 0.1754178674891591
+      },
+      "objective_values": {
+        "surface_response": 0.023125376400359735
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.833540919382077,
+      "classic": 21.833540919382077,
+      "surface_response": 0.023125376400359735,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 1.1986746362079945e-05
+    },
+    {
+      "evaluation_index": 27,
+      "batch_index": 27,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.8454616665840149,
+        "x_2": 0.7718963269144297,
+        "x_3": 0.1721836570650339,
+        "x_4": 0.7679385999217629,
+        "x_5": 0.4255210366100073,
+        "x_6": 0.14591476507484913
+      },
+      "objective_values": {
+        "surface_response": 0.030717999694060465
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.663842733592773,
+      "classic": 21.663842733592773,
+      "surface_response": 0.030717999694060465,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.3398605271369993e-05
+    },
+    {
+      "evaluation_index": 28,
+      "batch_index": 28,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.747623922303319,
+        "x_2": 0.5414808662608266,
+        "x_3": 0.17632992379367352,
+        "x_4": 0.8283723974600434,
+        "x_5": 0.9466828042641282,
+        "x_6": 0.18922570627182722
+      },
+      "objective_values": {
+        "surface_response": 0.04424816828122067
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.361438021301904,
+      "classic": 21.361438021301904,
+      "surface_response": 0.04424816828122067,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 3.954654427976151e-05
+    },
+    {
+      "evaluation_index": 29,
+      "batch_index": 29,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.4266483085229993,
+        "x_2": 0.5601537404581904,
+        "x_3": 0.18142536748200655,
+        "x_4": 0.6984801320359111,
+        "x_5": 0.43676277808845043,
+        "x_6": 0.2316284840926528
+      },
+      "objective_values": {
+        "surface_response": 0.07422758565970068
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.691385979556433,
+      "classic": 20.691385979556433,
+      "surface_response": 0.07422758565970068,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 6.896113916517041e-05
+    },
+    {
+      "evaluation_index": 30,
+      "batch_index": 30,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5358629440888762,
+        "x_2": 0.5768192410469055,
+        "x_3": 0.15270753111690283,
+        "x_4": 0.8398541221395135,
+        "x_5": 0.48534588329494,
+        "x_6": 0.5587529484182596
+      },
+      "objective_values": {
+        "surface_response": 0.08120893915171157
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.535349919802094,
+      "classic": 20.535349919802094,
+      "surface_response": 0.08120893915171157,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 9.846330646301102e-05
+    },
+    {
+      "evaluation_index": 31,
+      "batch_index": 31,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.39162024203687906,
+        "x_2": 0.563758846372366,
+        "x_3": 0.15871325880289078,
+        "x_4": 0.9217828679829836,
+        "x_5": 0.4953954955562949,
+        "x_6": 0.23705968726426363
+      },
+      "objective_values": {
+        "surface_response": 0.04622049683155597
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.317355684561974,
+      "classic": 21.317355684561974,
+      "surface_response": 0.04622049683155597,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 5.6191709172581964e-05
+    },
+    {
+      "evaluation_index": 32,
+      "batch_index": 32,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.602981454692781,
+        "x_2": 0.5879615526646376,
+        "x_3": 0.16266982164233923,
+        "x_4": 0.7331810873001814,
+        "x_5": 0.4954969361424446,
+        "x_6": 0.8159776423126459
+      },
+      "objective_values": {
+        "surface_response": 0.06064517956901106
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.994958221070892,
+      "classic": 20.994958221070892,
+      "surface_response": 0.06064517956901106,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 0.00011924991826557521
+    },
+    {
+      "evaluation_index": 33,
+      "batch_index": 33,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.46866095438599586,
+        "x_2": 0.5441115144640207,
+        "x_3": 0.15625416953116655,
+        "x_4": 0.7837585685774684,
+        "x_5": 0.30194773990660906,
+        "x_6": 0.5723927859216928
+      },
+      "objective_values": {
+        "surface_response": 0.048209646338854786
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.27289739266537,
+      "classic": 21.27289739266537,
+      "surface_response": 0.048209646338854786,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 7.591054447070105e-05
+    },
+    {
+      "evaluation_index": 34,
+      "batch_index": 34,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.29912010580301285,
+        "x_2": 0.5844605751335621,
+        "x_3": 0.14696803875267506,
+        "x_4": 0.7246757717803121,
+        "x_5": 0.5834803208708763,
+        "x_6": 0.37519373651593924
+      },
+      "objective_values": {
+        "surface_response": 0.08712531516281959
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.403116535279334,
+      "classic": 20.403116535279334,
+      "surface_response": 0.08712531516281959,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 6.555879586499626e-05
+    },
+    {
+      "evaluation_index": 35,
+      "batch_index": 35,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.3874310329556465,
+        "x_2": 0.5644999323412776,
+        "x_3": 0.1780437920242548,
+        "x_4": 0.7135052131488919,
+        "x_5": 0.6396515658125281,
+        "x_6": 0.4138512033969164
+      },
+      "objective_values": {
+        "surface_response": 0.11718195869628881
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -19.73133845789503,
+      "classic": 19.73133845789503,
+      "surface_response": 0.11718195869628881,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.7977819483051045e-05
+    },
+    {
+      "evaluation_index": 36,
+      "batch_index": 36,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.3586645061150193,
+        "x_2": 0.6619961597025394,
+        "x_3": 0.18027440831065178,
+        "x_4": 0.780245553702116,
+        "x_5": 0.6483622528612614,
+        "x_6": 0.5351650975644588
+      },
+      "objective_values": {
+        "surface_response": 0.06184248606307579
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.968197939147633,
+      "classic": 20.968197939147633,
+      "surface_response": 0.06184248606307579,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.8879826767863527e-06
+    },
+    {
+      "evaluation_index": 37,
+      "batch_index": 37,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.29268012661486864,
+        "x_2": 0.5839262017980218,
+        "x_3": 0.1647401675581932,
+        "x_4": 0.6796073038130999,
+        "x_5": 0.7654977012425661,
+        "x_6": 0.25245845038443804
+      },
+      "objective_values": {
+        "surface_response": 0.043234648508022104
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.384090596060364,
+      "classic": 21.384090596060364,
+      "surface_response": 0.043234648508022104,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.6557999970097256e-06
+    },
+    {
+      "evaluation_index": 38,
+      "batch_index": 38,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.7122805062681437,
+        "x_2": 0.5772531367838383,
+        "x_3": 0.17875862587243319,
+        "x_4": 0.7155913691967726,
+        "x_5": 0.6020284900441766,
+        "x_6": 0.36415635608136654
+      },
+      "objective_values": {
+        "surface_response": 0.08852138242548796
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.371913870198977,
+      "classic": 20.371913870198977,
+      "surface_response": 0.08852138242548796,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 1.754155889922512e-05
+    },
+    {
+      "evaluation_index": 39,
+      "batch_index": 39,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5228411061689258,
+        "x_2": 0.596504625864327,
+        "x_3": 0.22235579043626785,
+        "x_4": 0.7175286067649722,
+        "x_5": 0.9367106826975942,
+        "x_6": 0.379788625985384
+      },
+      "objective_values": {
+        "surface_response": 0.04733377183518422
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.292473540263174,
+      "classic": 21.292473540263174,
+      "surface_response": 0.04733377183518422,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 3.5057311564726316e-05
+    },
+    {
+      "evaluation_index": 40,
+      "batch_index": 40,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.4512528358027339,
+        "x_2": 0.5454031517729163,
+        "x_3": 0.1963705075904727,
+        "x_4": 0.6534557705745101,
+        "x_5": 0.6821358185261488,
+        "x_6": 0.5427429163828492
+      },
+      "objective_values": {
+        "surface_response": 0.08355733045233546
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.482862429270345,
+      "classic": 20.482862429270345,
+      "surface_response": 0.08355733045233546,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 6.027876128987544e-06
+    },
+    {
+      "evaluation_index": 41,
+      "batch_index": 41,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.3091991990804672,
+        "x_2": 0.5578804416581988,
+        "x_3": 0.2516282722353935,
+        "x_4": 0.7337727369740605,
+        "x_5": 0.7023706706240773,
+        "x_6": 0.4213153552263975
+      },
+      "objective_values": {
+        "surface_response": 0.0732320111443925
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.7136374705801,
+      "classic": 20.7136374705801,
+      "surface_response": 0.0732320111443925,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.759549800769133e-07
+    },
+    {
+      "evaluation_index": 42,
+      "batch_index": 42,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.36938935704529285,
+        "x_2": 0.5571846263483167,
+        "x_3": 0.16294310614466667,
+        "x_4": 0.8002971615642309,
+        "x_5": 0.7315806485712528,
+        "x_6": 0.3751944825053215
+      },
+      "objective_values": {
+        "surface_response": 0.05530599957996784
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.11429104224416,
+      "classic": 21.11429104224416,
+      "surface_response": 0.05530599957996784,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 8.951102772332433e-07
+    },
+    {
+      "evaluation_index": 43,
+      "batch_index": 43,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.41074984427541494,
+        "x_2": 0.5681731719523668,
+        "x_3": 0.19156594201922417,
+        "x_4": 0.596490622498095,
+        "x_5": 0.5744121065363288,
+        "x_6": 0.40670634992420673
+      },
+      "objective_values": {
+        "surface_response": 0.10541898339132313
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -19.99424568923274,
+      "classic": 19.99424568923274,
+      "surface_response": 0.10541898339132313,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 3.4435378530763475e-06
+    },
+    {
+      "evaluation_index": 44,
+      "batch_index": 44,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.09930951055139303,
+        "x_2": 0.5485865855589509,
+        "x_3": 0.1972460513934493,
+        "x_4": 0.5594512512907386,
+        "x_5": 0.5994379827752709,
+        "x_6": 0.27990463469177485
+      },
+      "objective_values": {
+        "surface_response": 0.06975676030778918
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.79131072517494,
+      "classic": 20.79131072517494,
+      "surface_response": 0.06975676030778918,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 3.956779091046628e-06
+    },
+    {
+      "evaluation_index": 45,
+      "batch_index": 45,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.29601849149912596,
+        "x_2": 0.5826043533161283,
+        "x_3": 0.15758086182177067,
+        "x_4": 0.8169266609475017,
+        "x_5": 0.6255898401141167,
+        "x_6": 0.4547887509688735
+      },
+      "objective_values": {
+        "surface_response": 0.04121556066446294
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.429218021819192,
+      "classic": 21.429218021819192,
+      "surface_response": 0.04121556066446294,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 1.3321139580650474e-06
+    },
+    {
+      "evaluation_index": 46,
+      "batch_index": 46,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.459393709897995,
+        "x_2": 0.5090854503214359,
+        "x_3": 0.12870600074529648,
+        "x_4": 0.7158169979229569,
+        "x_5": 0.5499264029785991,
+        "x_6": 0.47126361168920994
+      },
+      "objective_values": {
+        "surface_response": 0.0817269940963336
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.523771183331068,
+      "classic": 20.523771183331068,
+      "surface_response": 0.0817269940963336,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 5.844692724954459e-06
+    },
+    {
+      "evaluation_index": 47,
+      "batch_index": 47,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.746403532102704,
+        "x_2": 0.5692723477259278,
+        "x_3": 0.15606234408915043,
+        "x_4": 0.5752666937187314,
+        "x_5": 0.579136474058032,
+        "x_6": 0.34550732374191284
+      },
+      "objective_values": {
+        "surface_response": 0.05581706541452276
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.102868515195464,
+      "classic": 21.102868515195464,
+      "surface_response": 0.05581706541452276,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.704748860991372e-06
+    },
+    {
+      "evaluation_index": 48,
+      "batch_index": 48,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5015262113884091,
+        "x_2": 0.49919611494988203,
+        "x_3": 0.2077896809205413,
+        "x_4": 0.5569126307964325,
+        "x_5": 0.5725141754373908,
+        "x_6": 0.33344587218016386
+      },
+      "objective_values": {
+        "surface_response": 0.11884696021537128
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -19.694125003968093,
+      "classic": 19.694125003968093,
+      "surface_response": 0.11884696021537128,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.0517947544085763e-06
+    },
+    {
+      "evaluation_index": 49,
+      "batch_index": 49,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.3156376723200083,
+        "x_2": 0.5642513111233711,
+        "x_3": 0.24360704142600298,
+        "x_4": 0.6507157711312175,
+        "x_5": 0.593870242126286,
+        "x_6": 0.481842371635139
+      },
+      "objective_values": {
+        "surface_response": 0.09972601337972654
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.121485859770686,
+      "classic": 20.121485859770686,
+      "surface_response": 0.09972601337972654,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 2.9188014820029812e-05
+    },
+    {
+      "evaluation_index": 50,
+      "batch_index": 50,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5935019981116056,
+        "x_2": 0.45873849373310804,
+        "x_3": 0.18324076477438211,
+        "x_4": 0.5659017357975245,
+        "x_5": 0.5256202099844813,
+        "x_6": 0.5683104135096073
+      },
+      "objective_values": {
+        "surface_response": 0.10828075904064854
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -19.930283851928177,
+      "classic": 19.930283851928177,
+      "surface_response": 0.10828075904064854,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 1.3239401440142182e-05
+    },
+    {
+      "evaluation_index": 51,
+      "batch_index": 51,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5552018480375409,
+        "x_2": 0.16186389699578285,
+        "x_3": 0.24539568834006786,
+        "x_4": 0.5639056004583836,
+        "x_5": 0.5168771268799901,
+        "x_6": 0.16274256259202957
+      },
+      "objective_values": {
+        "surface_response": 0.0577161814057101
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.060422508612294,
+      "classic": 21.060422508612294,
+      "surface_response": 0.0577161814057101,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 0.00019829079635770618
+    },
+    {
+      "evaluation_index": 52,
+      "batch_index": 52,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.41464142967015505,
+        "x_2": 0.545928817242384,
+        "x_3": 0.2961461991071701,
+        "x_4": 0.5834359247237444,
+        "x_5": 0.6178838759660721,
+        "x_6": 0.3226051777601242
+      },
+      "objective_values": {
+        "surface_response": 0.12897066761583117
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -19.467856069916653,
+      "classic": 19.467856069916653,
+      "surface_response": 0.12897066761583117,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 6.395554891559064e-05
+    },
+    {
+      "evaluation_index": 53,
+      "batch_index": 53,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.3376828683540225,
+        "x_2": 0.2886811690405011,
+        "x_3": 0.609570574015379,
+        "x_4": 0.6317384438589215,
+        "x_5": 0.6105157155543566,
+        "x_6": 0.21982397977262735
+      },
+      "objective_values": {
+        "surface_response": 0.0847869479463728
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -20.45537998349616,
+      "classic": 20.45537998349616,
+      "surface_response": 0.0847869479463728,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 0.00017296176001290278
+    },
+    {
+      "evaluation_index": 54,
+      "batch_index": 54,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5191831924021244,
+        "x_2": 0.3719253186136484,
+        "x_3": 0.3056570887565613,
+        "x_4": 0.5969279753044248,
+        "x_5": 0.6300099473446608,
+        "x_6": 0.3120531961321831
+      },
+      "objective_values": {
+        "surface_response": 0.11372613576674809
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -19.80857749094948,
+      "classic": 19.80857749094948,
+      "surface_response": 0.11372613576674809,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 0.00014862632573026352
+    },
+    {
+      "evaluation_index": 55,
+      "batch_index": 55,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.4723437801003456,
+        "x_2": 0.6310076452791691,
+        "x_3": 0.8932884037494659,
+        "x_4": 0.6314099598675966,
+        "x_5": 0.5940555734559894,
+        "x_6": 0.1943411948159337
+      },
+      "objective_values": {
+        "surface_response": 0.03028090387718812
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.67361200098167,
+      "classic": 21.67361200098167,
+      "surface_response": 0.03028090387718812,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 0.00013736196245247678
+    },
+    {
+      "evaluation_index": 56,
+      "batch_index": 56,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.5130284242331982,
+        "x_2": 0.5327437436208129,
+        "x_3": 0.4523993572220206,
+        "x_4": 0.5396371418610215,
+        "x_5": 0.5973099749535322,
+        "x_6": 0.4120269138365984
+      },
+      "objective_values": {
+        "surface_response": 0.38617547059295654
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -13.719225227434872,
+      "classic": 13.719225227434872,
+      "surface_response": 0.38617547059295654,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 0.00010810445775421326
+    },
+    {
+      "evaluation_index": 57,
+      "batch_index": 57,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.7842049319297075,
+        "x_2": 0.3758503068238497,
+        "x_3": 0.4380537187680602,
+        "x_4": 0.5391435557976365,
+        "x_5": 0.5996971307322383,
+        "x_6": 0.463031810708344
+      },
+      "objective_values": {
+        "surface_response": 0.17666200403656268
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -18.4019355105258,
+      "classic": 18.4019355105258,
+      "surface_response": 0.17666200403656268,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 0.0006194714677131641
+    },
+    {
+      "evaluation_index": 58,
+      "batch_index": 58,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.3345507802441716,
+        "x_2": 0.5448476197198033,
+        "x_3": 0.4535629730671644,
+        "x_4": 0.4670134065672755,
+        "x_5": 0.5181235065683722,
+        "x_6": 0.5314147491008043
+      },
+      "objective_values": {
+        "surface_response": 0.27680174872071894
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -16.163771921874662,
+      "classic": 16.163771921874662,
+      "surface_response": 0.27680174872071894,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 0.0005836435677978081
+    },
+    {
+      "evaluation_index": 59,
+      "batch_index": 59,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.43219563737511635,
+        "x_2": 0.6242537898942828,
+        "x_3": 0.4213038505986333,
+        "x_4": 0.5581113761290908,
+        "x_5": 0.6180414436385036,
+        "x_6": 0.6534560434520245
+      },
+      "objective_values": {
+        "surface_response": 0.18073701959532743
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -18.31085727305295,
+      "classic": 18.31085727305295,
+      "surface_response": 0.18073701959532743,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 5.694877952718396e-06
+    }
+  ],
+  "config": {
+    "case_id": "synthetic_ackley_6d",
+    "cache_buster_nonce": "1dd0337f-b641-4123-b200-52863ef5f9ce",
+    "objective_name": "surface_response",
+    "objective_direction": "maximize",
+    "objective_unit": "normalized_unitless",
+    "dimensions": 6,
+    "lower_bound": 0.0,
+    "upper_bound": 1.0,
+    "budget": 60,
+    "initial_design_size": 11,
+    "candidate_pool_size": 8192,
+    "seed": 20260730,
+    "acquisition": "expected_improvement",
+    "output_path": "local_results.json"
+  }
+}

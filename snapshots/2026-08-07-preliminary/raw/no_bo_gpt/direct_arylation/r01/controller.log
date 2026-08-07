@@ -1,0 +1,51 @@
+
+[2026-07-30T18:30:53.263033Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "direct_arylation", "--output-dir", "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval", "--architecture-mode", "main_agent_script_no_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "direct_arylation_no_bo_gpt_r01-20260730"]
+ Container mx-20260730-no-bo-gpt-eval-run-d70ad5bdc7c7 Creating 
+ Container mx-20260730-no-bo-gpt-eval-run-d70ad5bdc7c7 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:31:02.511 evaluate bo_mcp_graph_eval
+18:31:02.512   case: direct_arylation
+18:31:02.513     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+18:31:20.058       agent run
+18:31:20.063         chat gpt-5.4
+18:31:20.747           POST api.openai.com/v1/responses
+18:31:36.282         running tool: bash_exec
+18:31:36.292 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+18:31:36.304           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+18:31:36.532         chat gpt-5.4
+18:31:36.544           POST api.openai.com/v1/responses
+18:32:24.396         running tool: bash_exec
+18:32:24.474         chat gpt-5.4
+18:32:24.486           POST api.openai.com/v1/responses
+18:32:28.709         running tool: bash_exec
+18:32:29.337         chat gpt-5.4
+18:32:29.348           POST api.openai.com/v1/responses
+18:32:32.766         running tool: bash_exec
+18:32:32.817         chat gpt-5.4
+18:32:32.830           POST api.openai.com/v1/responses
+18:32:41.648         running tool: bash_exec
+18:32:41.740         chat gpt-5.4
+18:32:41.754           POST api.openai.com/v1/responses
+18:32:44.863         running tool: bash_exec
+18:32:45.394         chat gpt-5.4
+18:32:45.409           POST api.openai.com/v1/responses
+18:32:50.474         running tool: bash_exec
+18:32:52.481         chat gpt-5.4
+18:32:52.514           POST api.openai.com/v1/responses
+18:32:57.136         running tool: bash_exec
+18:32:57.184         chat gpt-5.4
+18:32:57.217           POST api.openai.com/v1/responses
+18:33:03.582         running tool: bash_exec
+18:33:03.631         chat gpt-5.4
+18:33:03.649           POST api.openai.com/v1/responses
+[2026-07-30T18:33:26.465310Z] EXIT 0

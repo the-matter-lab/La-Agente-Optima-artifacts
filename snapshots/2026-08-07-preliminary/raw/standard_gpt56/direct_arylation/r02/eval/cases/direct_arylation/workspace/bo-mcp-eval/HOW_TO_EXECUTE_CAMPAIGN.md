@@ -1,0 +1,100 @@
+# Direct Arylation BO-MCP Campaign
+
+This package runs a **BayBE-backed BO-MCP campaign** that maximizes measured direct arylation reaction yield. The live run targets exactly **60 attempted oracle evaluations**; both successful measurements and failed oracle calls count. The campaign name always contains the ownership marker `akg-eval-5089117b4fee448dbfcb264fbba1cae7`.
+
+## Environment
+
+Required environment variables:
+
+- `BO_MCP_API_URL`: BO-MCP API base URL.
+- `BO_MCP_API_KEY`: BO-MCP API key.
+- `DIRECT_ARYLATION_API_URL`: direct arylation oracle base URL. The evaluator calls only `${DIRECT_ARYLATION_API_URL}/v1/evaluate`.
+
+The active environment must be able to import the repository packages under `/app`. In this container, use `PYTHONPATH=/app` with `uv run --no-sync` as shown below.
+
+## Live command
+
+Run from this workspace directory:
+
+```bash
+PYTHONPATH=/app uv run --no-sync python -u run_direct_arylation_bo.py \
+  --poll-s 180 \
+  --heartbeat-s 1800 \
+  --stop-file STOP
+```
+
+Do not use `--smoke-test` against the live oracle. The normal command has a fixed target of 60 total attempts and generates one BO-MCP suggestion at a time, preventing the script from scheduling beyond the remaining budget.
+
+## Monitor tags
+
+Stdout is unbuffered and uses these tags:
+
+- `[EVENT]`: campaign creation/resume, campaign id, suggestion generation, stop/pause events.
+- `[ALERT]`: failed oracle calls or BO-MCP stop/error conditions.
+- `[RESULT]`: one complete JSON record per attempted experiment and a final summary.
+- `[HEARTBEAT]`: periodic liveness and attempt-count message.
+
+The campaign id is surfaced as:
+
+```text
+[EVENT] CAMPAIGN_ID=<campaign-id>
+```
+
+The same id is written to:
+
+```text
+artifacts/direct_arylation_bo/<campaign-id>/campaign_id.txt
+```
+
+The main agent should extract the id from the tagged stdout line and retain it for resume commands. It must verify that the associated campaign name contains `akg-eval-5089117b4fee448dbfcb264fbba1cae7`; the script also enforces this before resuming or reporting.
+
+## Outputs
+
+For campaign `<campaign-id>`, outputs are under:
+
+```text
+artifacts/direct_arylation_bo/<campaign-id>/
+```
+
+Files:
+
+- `campaign_id.txt`: BO-MCP campaign id.
+- `run.log`: tagged run output copied to disk.
+- `attempts.jsonl`: append-only oracle attempt provenance, including failures.
+- `final_report.json`: best conditions, best measured yield, successful/attempted/failed counts, and every evaluated candidate with status and objective value.
+- `evaluated_candidates.csv`: tabular version of all evaluated candidates; failed attempts have a blank yield.
+
+The cache-buster nonce `98bbe2bd-bb9d-4442-bcb5-0e5f610ca86d` is preserved in the campaign description and successful-result metadata.
+
+## Stop and resume
+
+To request a clean stop, create the workspace-relative stop file:
+
+```bash
+touch STOP
+```
+
+The script checks it at the top of each loop before generating a new suggestion, prints `[EVENT]`, deletes the marker, writes current reports, and pauses the campaign when its status permits.
+
+Resume the same campaign without replaying prior results:
+
+```bash
+PYTHONPATH=/app uv run --no-sync python -u run_direct_arylation_bo.py \
+  --campaign-id <campaign-id> \
+  --poll-s 180 \
+  --heartbeat-s 1800 \
+  --stop-file STOP
+```
+
+On resume, BO-MCP remains the source of campaign progress. Completed suggestions and oracle-failed/rejected suggestions determine the number of attempts already consumed. Existing pending suggestions are reused before requesting a new one. A paused campaign is resumed and a completed campaign is reopened; a campaign without the required ownership marker is refused.
+
+## Optional isolated smoke test
+
+Only with a disposable, non-live oracle that implements the same endpoint and response schema:
+
+```bash
+DIRECT_ARYLATION_API_URL=http://127.0.0.1:<test-port> \
+PYTHONPATH=/app uv run --no-sync python -u run_direct_arylation_bo.py --smoke-test
+```
+
+This creates a separately named ownership-marked smoke campaign and performs exactly one test attempt. Never point this command at the live benchmark oracle.

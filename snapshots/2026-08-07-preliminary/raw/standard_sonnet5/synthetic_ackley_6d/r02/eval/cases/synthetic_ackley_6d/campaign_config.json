@@ -1,0 +1,263 @@
+{
+  "_source": "BO-MCP REST campaign/spec read-back",
+  "campaign": {
+    "created_at": "2026-08-07T05:53:32.664685Z",
+    "description": "Deterministic synthetic Ackley-6D benchmark, BayBE backend, marker=akg-eval-23a9554a4f294e68a41175bde18c362a.",
+    "id": "466765ab-f0d1-456b-b974-12e34c3d36dc",
+    "iteration": 60,
+    "n_objectives": 1,
+    "n_parameters": 6,
+    "name": "ackley6d-baybe-akg-eval-23a9554a4f294e68a41175bde18c362a",
+    "spec_id": "fa5a579e-37ba-4cbf-bbe1-5dd2798b22ef",
+    "status": "paused",
+    "updated_at": "2026-08-07T06:06:29.085844Z"
+  },
+  "campaign_config": {
+    "_source": "BO-MCP REST campaign/spec read-back",
+    "acknowledge_degradations": [],
+    "acquisition": {
+      "method": "auto",
+      "optimization": null,
+      "saasbo_config": null,
+      "turbo_config": null,
+      "use_cost_aware": false,
+      "use_input_warping": false
+    },
+    "backend_options": null,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "batch_size": 1,
+    "campaign_id": "466765ab-f0d1-456b-b974-12e34c3d36dc",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "fidelity_parameter": null,
+    "initial_design_size": 14,
+    "initial_design_size_requested": 14,
+    "initial_design_size_source": "requested",
+    "max_iterations": null,
+    "max_observations": null,
+    "missing_fields": [
+      "max_iterations",
+      "max_observations",
+      "convergence_tolerance",
+      "backend_options",
+      "fidelity_parameter",
+      "transfer_learning"
+    ],
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 42,
+    "spec_id": "fa5a579e-37ba-4cbf-bbe1-5dd2798b22ef",
+    "transfer_learning": null
+  },
+  "spec": {
+    "acknowledge_degradations": [],
+    "acquisition_beta": null,
+    "acquisition_method": "auto",
+    "acquisition_optimization": null,
+    "backend_options": null,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "batch_size": 1,
+    "campaign_id": "466765ab-f0d1-456b-b974-12e34c3d36dc",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "description": "Deterministic synthetic Ackley-6D benchmark, BayBE backend, marker=akg-eval-23a9554a4f294e68a41175bde18c362a.",
+    "fidelity_parameter": null,
+    "initial_design_size": 14,
+    "initial_design_size_requested": 14,
+    "initial_design_size_source": "requested",
+    "iteration": 60,
+    "max_iterations": null,
+    "max_observations": null,
+    "name": "ackley6d-baybe-akg-eval-23a9554a4f294e68a41175bde18c362a",
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 42,
+    "saasbo_config": null,
+    "scalarization": "pareto",
+    "scalarizer": null,
+    "spec_id": "fa5a579e-37ba-4cbf-bbe1-5dd2798b22ef",
+    "status": "paused",
+    "transfer_learning": null,
+    "turbo_config": null,
+    "use_cost_aware": false,
+    "use_input_warping": false
+  }
+}

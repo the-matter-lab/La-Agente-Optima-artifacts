@@ -1,0 +1,21 @@
+{
+  "campaign_slug": "ackley6d",
+  "ownership_marker": "akg-eval-3135b72daeac4d50bbb8b8b099a7fc02",
+  "cache_buster_nonce": "f62806c2-a95a-4a49-80eb-993714a47ac6",
+  "package_modules": [
+    "ackley6d_bo/__init__.py",
+    "ackley6d_bo/search_space.py",
+    "ackley6d_bo/objective.py",
+    "ackley6d_bo/intake.py",
+    "ackley6d_bo/reporting.py",
+    "ackley6d_bo/campaign.py"
+  ],
+  "run_entrypoint": "run_ackley6d.py",
+  "how_to_execute": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "latest_artifact_dir": "artifacts",
+  "smoke_tested_campaign_id": "20856160-5d59-4b24-8d3a-089687dfee21",
+  "smoke_tested_campaign_status": "paused",
+  "smoke_tested_evaluations_attempted": 6,
+  "total_evaluation_budget": 60,
+  "notes": "smoke_tested_campaign_id already carries the ownership marker and 6 real (non-fabricated) evaluations submitted via the production code path; resuming it with --campaign-id continues toward the 60-evaluation budget instead of spending a fresh 60 on a brand-new campaign."
+}

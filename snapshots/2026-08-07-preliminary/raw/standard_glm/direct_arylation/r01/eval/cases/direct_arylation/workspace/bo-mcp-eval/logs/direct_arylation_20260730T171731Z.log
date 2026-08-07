@@ -1,0 +1,377 @@
+Attempting to instrument while already instrumented
+17:17:31.464 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Campaign created: 55d907a4-a09e-4ab6-8db1-a51535c83fd5
+[EVENT] BO_MCP_CAMPAIGN_ID=55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:32.451 POST api/api/v1/campaigns/status/batch
+17:17:32.464 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 1/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 105.0}
+17:17:32.902 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=49.22% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 105.0}
+17:17:32.907 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:33.587 POST api/api/v1/campaigns/status/batch
+17:17:33.602 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 2/60: {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 90.0}
+17:17:33.860 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=0.00% | {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 90.0}
+17:17:33.863 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:33.916 POST api/api/v1/campaigns/status/batch
+17:17:33.929 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 3/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 120.0}
+17:17:34.228 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=36.18% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 120.0}
+17:17:34.232 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:34.795 POST api/api/v1/campaigns/status/batch
+17:17:34.811 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 4/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:35.098 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=61.94% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:35.101 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:35.156 POST api/api/v1/campaigns/status/batch
+17:17:35.173 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 5/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:35.500 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=28.74% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:35.503 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:35.568 POST api/api/v1/campaigns/status/batch
+17:17:35.585 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 6/60: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:35.979 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=3.04% | {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:35.983 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:37.264 POST api/api/v1/campaigns/status/batch
+17:17:37.279 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 7/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 90.0}
+17:17:37.766 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=30.95% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 90.0}
+17:17:37.771 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:37.845 POST api/api/v1/campaigns/status/batch
+17:17:37.867 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 8/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 105.0}
+17:17:39.266 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=48.88% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 105.0}
+17:17:39.270 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:39.344 POST api/api/v1/campaigns/status/batch
+17:17:39.360 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 9/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:39.903 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=0.00% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:39.909 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:41.077 POST api/api/v1/campaigns/status/batch
+17:17:41.096 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 10/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:41.560 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=43.18% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:41.566 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:41.639 POST api/api/v1/campaigns/status/batch
+17:17:41.659 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 11/60: {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:42.255 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=17.54% | {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:42.260 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:42.340 POST api/api/v1/campaigns/status/batch
+17:17:42.355 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 12/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:43.793 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=22.92% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:43.798 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:43.870 POST api/api/v1/campaigns/status/batch
+17:17:43.893 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 13/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:45.984 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=51.99% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:45.987 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:46.170 POST api/api/v1/campaigns/status/batch
+17:17:46.187 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 14/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 120.0}
+17:17:46.747 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=25.67% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 120.0}
+17:17:46.752 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:46.826 POST api/api/v1/campaigns/status/batch
+17:17:46.844 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 15/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+17:17:48.386 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=33.65% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+17:17:48.391 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:48.860 POST api/api/v1/campaigns/status/batch
+17:17:48.877 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 16/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 105.0}
+17:17:49.576 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=27.48% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 105.0}
+17:17:49.582 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:49.679 POST api/api/v1/campaigns/status/batch
+17:17:49.692 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 17/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:51.828 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=35.91% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:51.956 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:52.509 POST api/api/v1/campaigns/status/batch
+17:17:52.525 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 18/60: {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:53.210 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=25.86% | {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:53.214 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:53.302 POST api/api/v1/campaigns/status/batch
+17:17:53.324 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 19/60: {'base': 'Cesium pivalate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:54.624 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=0.00% | {'base': 'Cesium pivalate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:54.629 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:54.744 POST api/api/v1/campaigns/status/batch
+17:17:54.760 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 20/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:55.433 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=37.36% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.1, 'temperature_c': 120.0}
+17:17:55.438 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:55.535 POST api/api/v1/campaigns/status/batch
+17:17:55.548 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 21/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:56.033 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=38.68% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:56.036 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:56.603 POST api/api/v1/campaigns/status/batch
+17:17:56.621 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 22/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:58.288 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=29.57% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 90.0}
+17:17:58.292 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:17:58.844 POST api/api/v1/campaigns/status/batch
+17:17:58.865 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 23/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:00.585 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=25.35% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:00.590 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:00.677 POST api/api/v1/campaigns/status/batch
+17:18:00.696 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 24/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:01.392 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=50.79% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:01.396 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:01.485 POST api/api/v1/campaigns/status/batch
+17:18:01.504 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 25/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 105.0}
+17:18:02.309 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=56.05% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 105.0}
+17:18:02.315 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:02.401 POST api/api/v1/campaigns/status/batch
+17:18:02.423 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 26/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:03.880 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=58.95% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:03.886 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:04.070 POST api/api/v1/campaigns/status/batch
+17:18:04.084 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 27/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:05.096 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=58.48% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:05.101 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:05.674 POST api/api/v1/campaigns/status/batch
+17:18:05.694 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 28/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:06.962 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=46.53% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:06.966 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:07.054 POST api/api/v1/campaigns/status/batch
+17:18:07.071 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 29/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:08.768 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=69.03% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:08.775 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:08.861 POST api/api/v1/campaigns/status/batch
+17:18:08.881 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 30/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:10.450 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=73.08% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:10.454 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:10.541 POST api/api/v1/campaigns/status/batch
+17:18:10.563 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 31/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 105.0}
+17:18:11.252 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=64.48% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 105.0}
+17:18:11.256 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:11.351 POST api/api/v1/campaigns/status/batch
+17:18:11.371 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 32/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:12.141 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=69.13% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:12.147 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:12.245 POST api/api/v1/campaigns/status/batch
+17:18:12.262 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 33/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 90.0}
+17:18:12.827 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=28.02% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 90.0}
+17:18:12.834 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:12.932 POST api/api/v1/campaigns/status/batch
+17:18:12.951 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 34/60: {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:15.407 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=25.77% | {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:15.414 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:15.567 POST api/api/v1/campaigns/status/batch
+17:18:15.586 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 35/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:16.444 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=56.50% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:16.449 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:16.549 POST api/api/v1/campaigns/status/batch
+17:18:16.564 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 36/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:18.623 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=53.81% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:18.628 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:18.726 POST api/api/v1/campaigns/status/batch
+17:18:18.741 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 37/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:19.453 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=54.26% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:19.459 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:19.558 POST api/api/v1/campaigns/status/batch
+17:18:19.578 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 38/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:20.936 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=44.16% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:20.941 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:21.623 POST api/api/v1/campaigns/status/batch
+17:18:21.642 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 39/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:22.907 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=40.76% | {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 105.0}
+17:18:22.912 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:22.986 POST api/api/v1/campaigns/status/batch
+17:18:23.004 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 40/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:23.661 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=43.90% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:23.665 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:25.047 POST api/api/v1/campaigns/status/batch
+17:18:25.066 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 41/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:25.859 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=7.43% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:25.862 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:25.936 POST api/api/v1/campaigns/status/batch
+17:18:25.951 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 42/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:27.600 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=36.14% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:27.607 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:27.677 POST api/api/v1/campaigns/status/batch
+17:18:27.692 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 43/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 105.0}
+17:18:29.230 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=55.41% | {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 105.0}
+17:18:29.236 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:29.308 POST api/api/v1/campaigns/status/batch
+17:18:29.324 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 44/60: {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:30.094 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=6.00% | {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:30.099 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:30.171 POST api/api/v1/campaigns/status/batch
+17:18:30.185 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 45/60: {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:31.027 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=27.41% | {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:31.032 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:31.107 POST api/api/v1/campaigns/status/batch
+17:18:31.127 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 46/60: {'base': 'Cesium acetate', 'ligand': 'Me2PPh', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:32.514 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=0.00% | {'base': 'Cesium acetate', 'ligand': 'Me2PPh', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:32.519 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:32.609 POST api/api/v1/campaigns/status/batch
+17:18:32.627 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 47/60: {'base': 'Potassium pivalate', 'ligand': 'Methyldiphenylphosphine', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:33.487 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=0.00% | {'base': 'Potassium pivalate', 'ligand': 'Methyldiphenylphosphine', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:33.493 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:33.567 POST api/api/v1/campaigns/status/batch
+17:18:33.587 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 48/60: {'base': 'Potassium acetate', 'ligand': 'JackiePhos', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:34.366 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=7.88% | {'base': 'Potassium acetate', 'ligand': 'JackiePhos', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:34.370 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:34.444 POST api/api/v1/campaigns/status/batch
+17:18:34.464 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 49/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:35.987 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=45.11% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:35.991 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:36.081 POST api/api/v1/campaigns/status/batch
+17:18:36.098 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 50/60: {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:37.717 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=39.57% | {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:18:37.722 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:37.790 POST api/api/v1/campaigns/status/batch
+17:18:37.805 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 51/60: {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:39.198 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=81.48% | {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:39.202 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:39.276 POST api/api/v1/campaigns/status/batch
+17:18:39.293 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 52/60: {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:39.943 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=71.97% | {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:39.949 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:40.035 POST api/api/v1/campaigns/status/batch
+17:18:40.053 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 53/60: {'base': 'Cesium pivalate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:40.833 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=22.07% | {'base': 'Cesium pivalate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:40.837 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:40.940 POST api/api/v1/campaigns/status/batch
+17:18:40.956 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 54/60: {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:42.027 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=67.63% | {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:42.032 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:42.352 POST api/api/v1/campaigns/status/batch
+17:18:42.371 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 55/60: {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+17:18:43.227 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=41.00% | {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+17:18:43.232 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:43.318 POST api/api/v1/campaigns/status/batch
+17:18:43.336 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 56/60: {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:44.268 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=66.84% | {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:44.272 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:44.405 POST api/api/v1/campaigns/status/batch
+17:18:44.427 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 57/60: {'base': 'Cesium acetate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:45.815 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=1.62% | {'base': 'Cesium acetate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:45.820 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:45.916 POST api/api/v1/campaigns/status/batch
+17:18:45.931 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 58/60: {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:47.371 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=78.60% | {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:47.376 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:47.462 POST api/api/v1/campaigns/status/batch
+17:18:47.479 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 59/60: {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:48.949 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=44.25% | {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:48.952 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:49.052 POST api/api/v1/campaigns/status/batch
+17:18:49.069 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 60/60: {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:49.819 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=29.06% | {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:49.825 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+[EVENT] Loop ended after 60 attempts
+[RESULT] Best yield: 81.48%
+[RESULT] Best conditions: {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Successful: 60 | Failed: 0 | Total attempted: 60
+[RESULT] BO_MCP_CAMPAIGN_ID=55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:50.737 POST api/api/v1/campaigns/status/batch
+17:18:50.758 POST api/api/v1/campaigns/55d907a4-a09e-4ab6-8db1-a51535c83fd5/lifecycle
+[EVENT] Campaign paused for resumability
+BO_MCP_CAMPAIGN_ID=55d907a4-a09e-4ab6-8db1-a51535c83fd5

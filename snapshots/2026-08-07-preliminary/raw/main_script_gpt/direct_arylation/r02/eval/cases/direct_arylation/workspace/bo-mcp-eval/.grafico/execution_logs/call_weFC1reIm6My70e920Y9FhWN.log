@@ -1,0 +1,12 @@
+exit_code=0
+
+=== stdout (raw) ===
+BACKEND auto VALID {'schema_version': 2, 'valid': True, 'errors': [], 'warnings': [], 'spec_summary': {'name': 'direct_arylation_yield_akg-eval-e646b14a77fb4943a13679364402b230_4668867d-0d42-40e5-b6a7-fd20a6a68c0e', 'n_parameters': 5, 'n_objectives': 1, 'n_constraints': 0, 'batch_size': 1}}
+BACKEND baybe VALID {'schema_version': 2, 'valid': True, 'errors': [], 'warnings': [], 'spec_summary': {'name': 'direct_arylation_yield_akg-eval-e646b14a77fb4943a13679364402b230_4668867d-0d42-40e5-b6a7-fd20a6a68c0e', 'n_parameters': 5, 'n_objectives': 1, 'n_constraints': 0, 'batch_size': 1}}
+BACKEND botorch VALID {'schema_version': 2, 'valid': False, 'errors': ['parameters: Mixed spaces with more than 100 categorical combinations are not yet supported by BoTorch acquisition (this space has 192). Consider reducing the number of categories or selecting another backend.'], 'warnings': [], 'spec_summary': None}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

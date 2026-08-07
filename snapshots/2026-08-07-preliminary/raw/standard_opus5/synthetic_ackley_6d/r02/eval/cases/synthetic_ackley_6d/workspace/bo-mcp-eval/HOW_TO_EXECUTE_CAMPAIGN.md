@@ -1,0 +1,111 @@
+# Ackley-6D Synthetic Surface — BO-MCP (BayBE) Campaign
+
+Marker for this invocation: `akg-eval-50bfa115c6354334be7d31cab8784f14`
+Campaign name: `ackley-6d-synthetic-surface-akg-eval-50bfa115c6354334be7d31cab8784f14`
+
+Purely synthetic benchmark: **no PySCF / CREST / MOF / experimental evaluator is called.**
+All Bayesian optimization is done by BO-MCP (BayBE backend); the script only evaluates the
+closed-form Ackley surface and submits results.
+
+## What it does
+
+- Search space: `x_1..x_6`, continuous, `[0.0, 1.0]` (already normalized).
+- Objective: `surface_response`, **maximize**, unit `normalized_unitless`.
+  For each candidate: `z_i = -40 + 80*x_i`,
+  `classic = -20*exp(-0.2*sqrt(sum(z_i^2)/6)) - exp(sum(cos(2*pi*z_i))/6) + 20 + e`,
+  `raw_response = -classic`,
+  `surface_response = (raw_response + 22.350402387287602) / 22.350402387287602`.
+  Noiseless; no other negation/rescaling. Global optimum is `x_i = 0.5` → `surface_response = 1.0`.
+- BO settings chosen for this campaign: backend `baybe`, acquisition `expected_improvement`,
+  `random_seed=913477`, initial space-filling design `12`, then model-driven batches of `4`.
+- Budget: **60 attempted objective evaluations** (`--max-attempts`, a per-invocation CLI budget;
+  `max_iterations` is deliberately NOT set in the immutable intake).
+- Duplicate protection: an exactly-repeated coordinate vector is never evaluated twice — the
+  suggestion is marked `rejected` and an `[ALERT]` line is printed.
+- Failure handling: an evaluation error is recorded (`status=failed`, `failure_reason`), the
+  suggestion is marked `failed`, the loop continues inside the same budget. No penalty value is
+  invented for a failure.
+
+## Prerequisites
+
+- Run inside this container from **this workspace directory** (the package `ackley6d/` must be
+  importable from the CWD).
+- Environment (already present in this container): `BO_MCP_API_URL`, `BO_MCP_API_KEY`.
+  The client is `BoMcpClient.from_env()` and fails fast if they are missing.
+- Python environment: `uv run --project /app python ...` (provides `domains.bo_mcp.client`,
+  `grafico.core.logfire_config`). No GPU, no chemistry stack needed.
+
+## Execution command (recommended — reuses the smoke-test campaign)
+
+The smoke test already created the marked campaign `95e5ca97-4cca-4c0c-9d0d-6f5c095351f6`
+(paused, 4 successful evaluations). Resuming it completes the same 60-evaluation budget:
+
+```bash
+uv run --project /app python -u run_ackley6d.py \
+  --campaign-id 95e5ca97-4cca-4c0c-9d0d-6f5c095351f6 \
+  --max-attempts 60
+```
+
+Fresh campaign instead (creates a new campaign that also carries the marker):
+
+```bash
+uv run --project /app python -u run_ackley6d.py --max-attempts 60
+```
+
+Optional flags: `--poll-s 180` (wait between retries when the server returns no suggestions),
+`--heartbeat-s 1800`, `--stop-file STOP`, `--artifacts-root artifacts`,
+`--init-size`, `--batch-size`, `--seed`, `--acquisition`.
+
+Suggested monitor regex: `\[EVENT\]|\[ALERT\]|\[RESULT\]|\[HEARTBEAT\]|BO_MCP_CAMPAIGN_ID`.
+
+## Stdout tags
+
+| Tag | Meaning |
+| --- | --- |
+| `[EVENT]` | state changes: campaign created/reused/resumed, generation, submission, budget reached, pause, stop |
+| `[ALERT]` | evaluation failures, duplicate rejections, empty suggestion batches, server telling the loop to stop |
+| `[RESULT]` | per-evaluation line (status, `surface_response`, `raw_response`, coordinates) and the final report/table |
+| `[HEARTBEAT]` | liveness (only if an iteration gap exceeds `--heartbeat-s`) |
+
+Everything else (raw `next_action` payloads, HTTP tracing, summaries) goes to the run log on disk.
+
+## Interrupting and resuming
+
+- Stop request: `touch STOP` in this directory. The loop checks it at the top of each iteration
+  (before generating suggestions), prints `[EVENT] stop file STOP found`, deletes the marker so
+  the resume command is not blocked by it, pauses the campaign, writes artifacts, and exits.
+- Resume/continue: re-run the same command with `--campaign-id <id>`. The loop re-derives its
+  position from the server (`next_action` + persisted results); no loop state is kept on disk.
+
+## Artifacts (per campaign)
+
+`artifacts/akg-eval-50bfa115c6354334be7d31cab8784f14_<campaign_id>/`
+
+| File | Contents |
+| --- | --- |
+| `results.jsonl` | one row per evaluated candidate: `evaluation_index`, `parameter_values` (`x_1..x_6`), `objective_values` (`surface_response`), `status`, `failure_reason`, `raw_response`, `suggestion_id` |
+| `results_table.txt` | rendered table of all evaluated candidates |
+| `summary.json` | campaign_id, attempted/successful/failed counts, best coordinates, best `raw_response`, best `surface_response` |
+| `diagnostics.json` | BO-MCP diagnostics, fetched once at the end |
+| `run.log` | full detailed log (every tagged line plus detail lines) |
+
+## Validating a run
+
+1. Last stdout line is `BO_MCP_CAMPAIGN_ID=<campaign_id>` (also printed as a `[RESULT]` line
+   `campaign_id=...`). Include exactly this one line in the final answer.
+2. `[RESULT] evaluations: attempted=60 successful=<n> failed=<60-n>`.
+3. `wc -l artifacts/.../results.jsonl` equals the number of evaluated candidates for that campaign.
+4. `python -c "import json;print(json.load(open('artifacts/.../summary.json'))['best'])"` shows the
+   best coordinates, `raw_response`, and `surface_response`.
+5. `[EVENT] campaign paused` — the campaign is paused, not terminated, so it can be continued.
+
+## Files
+
+- `run_ackley6d.py` — CLI/config wiring only.
+- `ackley6d/space.py` — parameter definitions.
+- `ackley6d/intake.py` — campaign intake (name carries the marker).
+- `ackley6d/objective.py` — Ackley surface / `surface_response` mapping.
+- `ackley6d/harness.py` — campaign-agnostic evaluation harness (failure capture).
+- `ackley6d/reporting.py` — tagged stdout, artifacts, final report.
+- `ackley6d/campaign.py` — BO-MCP loop orchestration.
+- `campaign_manifest.json` — module map, entrypoint, latest artifacts dir.

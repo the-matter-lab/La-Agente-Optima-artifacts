@@ -1,0 +1,136 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Direct Arylation BO-MCP Campaign
+
+This workspace contains a BO-MCP-only benchmark runner for the fixed 1,728-point direct arylation search space.
+
+Ownership marker required in every created campaign name:
+- `akg-eval-d41fdff5899e4d9285ea23b6eba50ccd`
+
+Cache-buster nonce carried in artifacts and recommended command label:
+- `c40d694a-460e-4bea-92a6-eab07cd2f46d`
+
+## Required environment variables
+
+Set all of these before running:
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+- `DIRECT_ARYLATION_API_URL`
+
+Optional:
+- normal Logfire environment variables, if you want telemetry beyond local files
+
+The oracle is called only at:
+- `${DIRECT_ARYLATION_API_URL}/v1/evaluate`
+
+with POST JSON shaped exactly like:
+```json
+{"base":"Potassium acetate","ligand":"(t-Bu)PhCPhos","solvent":"DMAc","concentration":0.1,"temperature_c":105}
+```
+
+## Exact execution command
+
+Run from this workspace directory:
+
+```bash
+PYTHONPATH=/app python3 -u run_direct_arylation_campaign.py --campaign-label run-c40d694a-460e-4bea-92a6-eab07cd2f46d
+```
+
+Defaults used by that command:
+- attempted-evaluation budget: `60`
+- `--poll-s 180`
+- `--heartbeat-s 1800`
+- `--stop-file STOP`
+- artifact root: `artifacts/direct_arylation`
+
+## Resume command
+
+If the process stops and you want to continue the same campaign, reuse the campaign id from stdout or the artifact directory name:
+
+```bash
+PYTHONPATH=/app python3 -u run_direct_arylation_campaign.py --campaign-id <campaign_id>
+```
+
+The script refuses to resume or report on campaigns whose names do not contain the exact ownership marker.
+
+## What the runner does
+
+- creates a BO-MCP campaign if `--campaign-id` is not supplied
+- uses the exact parameter names:
+  - `base`
+  - `ligand`
+  - `solvent`
+  - `concentration`
+  - `temperature_c`
+- optimizes objective metadata:
+  - `objective_name = yield`
+  - `objective_direction = maximize`
+  - `units = percent`
+- evaluates exactly one candidate at a time
+- never exceeds 60 attempted oracle evaluations for the campaign
+- treats non-2xx oracle responses as failed attempted evaluations that still consume budget
+- records failed attempts locally and retires the corresponding BO suggestion
+- preserves the intentional spelling `Butyornitrile`
+
+## Stdout tags
+
+The entrypoint emits only tagged status lines:
+- `[EVENT]` campaign lifecycle and state changes
+- `[RESULT]` one full line per successful experiment
+- `[ALERT]` failed attempted evaluations or other stop-worthy problems
+- `[HEARTBEAT]` liveness
+
+## Stop-file behavior
+
+Default stop file: `STOP` in the current working directory.
+
+Behavior:
+1. the runner checks for the stop file at the top of each loop iteration, before asking BO-MCP for a new suggestion
+2. if present, it prints an `[EVENT]` line
+3. it deletes the stop file immediately to avoid stale-stop reuse on resume
+4. it exits cleanly and pauses the campaign if the campaign is still running
+
+Create the stop file with, for example:
+
+```bash
+touch STOP
+```
+
+## Artifacts written
+
+For a real run, artifacts are written under:
+- `artifacts/direct_arylation/<campaign_id>/`
+
+Files:
+- `artifacts/direct_arylation/<campaign_id>/run.log`
+  - detailed file log
+- `artifacts/direct_arylation/<campaign_id>/attempts.jsonl`
+  - one JSON record per attempted evaluation
+  - successful records use:
+    - `parameter_values` with exact lowercase names
+    - `objective_values` exactly `{"yield": <number>}`
+  - failed records still include `status` and `parameter_values`
+- `artifacts/direct_arylation/<campaign_id>/summary.json`
+  - current best conditions
+  - current best measured yield
+  - successful and attempted evaluation counts
+  - all evaluated candidates with statuses and objective values
+
+## Validation already performed here
+
+Bounded local smoke test completed successfully with a mock oracle service and one BO iteration.
+
+Smoke-test campaign id:
+- `f3d0d91d-10db-4c32-825a-8aeb49a599e3`
+
+Smoke-test artifact directory:
+- `artifacts/direct_arylation/f3d0d91d-10db-4c32-825a-8aeb49a599e3`
+
+That smoke test used a mock oracle, so it is not benchmark data and should not be resumed for the real run.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

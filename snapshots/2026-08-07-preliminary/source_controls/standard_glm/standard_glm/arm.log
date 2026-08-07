@@ -1,0 +1,158 @@
+
+[2026-07-30T15:46:15.737787Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Network mx-20260730-standard-glm_default Creating 
+ Network mx-20260730-standard-glm_default Created 
+ Volume mx-20260730-standard-glm_postgres-data Creating 
+ Volume mx-20260730-standard-glm_postgres-data Created 
+ Container mx-20260730-standard-glm-db-1 Creating 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Creating 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Created 
+ Container mx-20260730-standard-glm-db-1 Created 
+ Container mx-20260730-standard-glm-api-1 Creating 
+ Container mx-20260730-standard-glm-api-1 Created 
+ Container mx-20260730-standard-glm-mcp-1 Creating 
+ Container mx-20260730-standard-glm-mcp-1 Created 
+ Container mx-20260730-standard-glm-db-1 Starting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Started 
+ Container mx-20260730-standard-glm-db-1 Started 
+ Container mx-20260730-standard-glm-db-1 Waiting 
+ Container mx-20260730-standard-glm-db-1 Error dependency db failed to start
+dependency failed to start: container mx-20260730-standard-glm-db-1 is unhealthy
+[2026-07-30T15:47:59.373983Z] EXIT 1
+
+[2026-07-30T15:48:00.277144Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-standard-glm-mcp-1 Stopping 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-standard-glm-mcp-1 Stopped 
+ Container mx-20260730-standard-glm-api-1 Stopping 
+ Container mx-20260730-standard-glm-api-1 Stopped 
+ Container mx-20260730-standard-glm-db-1 Stopping 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-standard-glm-db-1 Stopped 
+[2026-07-30T15:48:17.515947Z] EXIT 0
+
+[2026-07-30T15:50:53.797102Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-standard-glm-db-1 Recreate 
+ Container mx-20260730-standard-glm-db-1 Recreated 
+ Container mx-20260730-standard-glm-db-1 Starting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-standard-glm-db-1 Started 
+ Container mx-20260730-standard-glm-db-1 Waiting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Started 
+ Container mx-20260730-standard-glm-db-1 Healthy 
+ Container mx-20260730-standard-glm-api-1 Starting 
+ Container mx-20260730-standard-glm-api-1 Started 
+ Container mx-20260730-standard-glm-api-1 Waiting 
+ Container mx-20260730-standard-glm-api-1 Healthy 
+ Container mx-20260730-standard-glm-mcp-1 Starting 
+ Container mx-20260730-standard-glm-mcp-1 Started 
+ Container mx-20260730-standard-glm-db-1 Waiting 
+ Container mx-20260730-standard-glm-api-1 Waiting 
+ Container mx-20260730-standard-glm-mcp-1 Waiting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-standard-glm-api-1 Healthy 
+ Container mx-20260730-standard-glm-db-1 Healthy 
+ Container mx-20260730-standard-glm-mcp-1 Healthy 
+[2026-07-30T15:53:31.770006Z] EXIT 0
+
+[2026-07-30T15:53:32.848505Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--dry-run", "--output-dir", "/app/outputs/control/preflight", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "preflight-standard_glm-20260730", "--subagent-model", "openrouter:z-ai/glm-5.1"]
+ Container mx-20260730-standard-glm-eval-run-3476531df4ed Creating 
+ Container mx-20260730-standard-glm-eval-run-3476531df4ed Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+15:54:35.556 evaluate bo_mcp_graph_eval
+15:54:35.557   case: synthetic_ackley_6d
+15:54:35.557     execute _run_case
+[2026-07-30T15:55:06.062475Z] EXIT 0
+
+[2026-07-30T16:13:06.539915Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-07-30T16:13:07.963445Z] EXIT 0
+
+[2026-07-30T16:13:08.828606Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-standard-glm-mcp-1 Stopping 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-standard-glm-mcp-1 Stopped 
+ Container mx-20260730-standard-glm-api-1 Stopping 
+ Container mx-20260730-standard-glm-api-1 Stopped 
+ Container mx-20260730-standard-glm-db-1 Stopping 
+ Container mx-20260730-standard-glm-db-1 Stopped 
+[2026-07-30T16:13:21.411349Z] EXIT 0
+
+[2026-07-30T16:31:41.303162Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-standard-glm-db-1 Starting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Started 
+ Container mx-20260730-standard-glm-db-1 Started 
+ Container mx-20260730-standard-glm-db-1 Waiting 
+ Container mx-20260730-standard-glm-db-1 Healthy 
+ Container mx-20260730-standard-glm-api-1 Starting 
+ Container mx-20260730-standard-glm-api-1 Started 
+ Container mx-20260730-standard-glm-api-1 Waiting 
+ Container mx-20260730-standard-glm-api-1 Healthy 
+ Container mx-20260730-standard-glm-mcp-1 Starting 
+ Container mx-20260730-standard-glm-mcp-1 Started 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-standard-glm-db-1 Waiting 
+ Container mx-20260730-standard-glm-api-1 Waiting 
+ Container mx-20260730-standard-glm-mcp-1 Waiting 
+ Container mx-20260730-standard-glm-api-1 Healthy 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-standard-glm-db-1 Healthy 
+ Container mx-20260730-standard-glm-mcp-1 Healthy 
+[2026-07-30T16:34:11.463842Z] EXIT 0
+
+[2026-07-30T17:43:24.305114Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-07-30T17:43:24.793778Z] EXIT 0
+
+[2026-07-30T17:43:25.478214Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-standard-glm-mcp-1 Stopping 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-standard-glm-mcp-1 Stopped 
+ Container mx-20260730-standard-glm-api-1 Stopping 
+ Container mx-20260730-standard-glm-api-1 Stopped 
+ Container mx-20260730-standard-glm-db-1 Stopping 
+ Container mx-20260730-standard-glm-db-1 Stopped 
+[2026-07-30T17:43:34.042110Z] EXIT 0
+
+[2026-07-30T17:52:35.706867Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-standard-glm-db-1 Starting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Started 
+ Container mx-20260730-standard-glm-db-1 Started 
+ Container mx-20260730-standard-glm-db-1 Waiting 
+ Container mx-20260730-standard-glm-db-1 Healthy 
+ Container mx-20260730-standard-glm-api-1 Starting 
+ Container mx-20260730-standard-glm-api-1 Started 
+ Container mx-20260730-standard-glm-api-1 Waiting 
+ Container mx-20260730-standard-glm-api-1 Healthy 
+ Container mx-20260730-standard-glm-mcp-1 Starting 
+ Container mx-20260730-standard-glm-mcp-1 Started 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-standard-glm-db-1 Waiting 
+ Container mx-20260730-standard-glm-api-1 Waiting 
+ Container mx-20260730-standard-glm-mcp-1 Waiting 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-standard-glm-api-1 Healthy 
+ Container mx-20260730-standard-glm-db-1 Healthy 
+ Container mx-20260730-standard-glm-mcp-1 Healthy 
+[2026-07-30T17:53:19.650246Z] EXIT 0
+
+[2026-07-30T18:06:18.362392Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-07-30T18:06:20.051673Z] EXIT 0
+
+[2026-07-30T18:06:20.673248Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-standard-glm-mcp-1 Stopping 
+ Container mx-20260730-standard-glm-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-standard-glm-mcp-1 Stopped 
+ Container mx-20260730-standard-glm-api-1 Stopping 
+ Container mx-20260730-standard-glm-api-1 Stopped 
+ Container mx-20260730-standard-glm-db-1 Stopping 
+ Container mx-20260730-standard-glm-db-1 Stopped 
+[2026-07-30T18:06:34.304145Z] EXIT 0

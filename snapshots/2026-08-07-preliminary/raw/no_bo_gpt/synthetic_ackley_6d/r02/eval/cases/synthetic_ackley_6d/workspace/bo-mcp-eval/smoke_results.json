@@ -1,0 +1,154 @@
+{
+  "case_id": "synthetic_ackley_6d_smoke",
+  "cache_buster_nonce": "3d4bb0a3-149f-4c0e-abd3-ab2bb235913e",
+  "generated_at": "2026-07-30T18:23:57.829521+00:00",
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "objective_unit": "normalized_unitless",
+  "attempted_evaluations": 6,
+  "successful_evaluations": 6,
+  "failed_evaluations": 0,
+  "completed_evaluations": 6,
+  "best_objective_value": 0.05997479198030291,
+  "best_parameters": {
+    "x_1": 0.32438257063176434,
+    "x_2": 0.986608411017649,
+    "x_3": 0.7794326833345364,
+    "x_4": 0.8017073058679156,
+    "x_5": 0.7032270383445509,
+    "x_6": 0.439438528961809
+  },
+  "best_raw_response": -21.009941653433962,
+  "settings": {
+    "case_id": "synthetic_ackley_6d_smoke",
+    "objective_name": "surface_response",
+    "objective_direction": "maximize",
+    "objective_unit": "normalized_unitless",
+    "dimensions": 6,
+    "total_budget": 6,
+    "init_size": 4,
+    "batch_schedule": [
+      2
+    ],
+    "random_seed": 20260731,
+    "candidate_pool_size": 512,
+    "gp_restarts": 1,
+    "results_path": "smoke_results.json"
+  },
+  "results": [
+    {
+      "evaluation_index": 1,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.32438257063176434,
+        "x_2": 0.986608411017649,
+        "x_3": 0.7794326833345364,
+        "x_4": 0.8017073058679156,
+        "x_5": 0.7032270383445509,
+        "x_6": 0.439438528961809
+      },
+      "objective_values": {
+        "surface_response": 0.05997479198030291
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.009941653433962
+    },
+    {
+      "evaluation_index": 2,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.07967395800839774,
+        "x_2": 0.6812442611504993,
+        "x_3": 0.27572705983596923,
+        "x_4": 0.319613190014744,
+        "x_5": 0.8729242838189171,
+        "x_6": 0.046244651914849916
+      },
+      "objective_values": {
+        "surface_response": 0.02334357295807022
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.828664138517727
+    },
+    {
+      "evaluation_index": 3,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.7494528601426795,
+        "x_2": 0.1266293196710367,
+        "x_3": 0.13219077099576898,
+        "x_4": 0.07167721084657563,
+        "x_5": 0.1915665417469818,
+        "x_6": 0.8717275868282974
+      },
+      "objective_values": {
+        "surface_response": 0.03231505858808658
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.628147824675093
+    },
+    {
+      "evaluation_index": 4,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.8801627776812854,
+        "x_2": 0.34102854655439097,
+        "x_3": 0.6061783282355667,
+        "x_4": 0.5618504033132461,
+        "x_5": 0.4712436911298068,
+        "x_6": 0.7307786989660772
+      },
+      "objective_values": {
+        "surface_response": 0.05029587326531738
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.226269381387738
+    },
+    {
+      "evaluation_index": 5,
+      "batch_index": 1,
+      "batch_size": 2,
+      "parameter_values": {
+        "x_1": 0.28367244975691785,
+        "x_2": 0.08339059736890131,
+        "x_3": 0.9918619755541823,
+        "x_4": 0.04397146208543212,
+        "x_5": 0.028342837107247054,
+        "x_6": 0.8860248933964602
+      },
+      "objective_values": {
+        "surface_response": 0.017997372646550817
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.948153866723228
+    },
+    {
+      "evaluation_index": 6,
+      "batch_index": 1,
+      "batch_size": 2,
+      "parameter_values": {
+        "x_1": 0.9831437494180565,
+        "x_2": 0.22239018356941387,
+        "x_3": 0.8942233844303418,
+        "x_4": 0.8930271652025992,
+        "x_5": 0.7635278356302547,
+        "x_6": 0.020823214342092
+      },
+      "objective_values": {
+        "surface_response": 0.0180306131946728
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.947410927097128
+    }
+  ]
+}

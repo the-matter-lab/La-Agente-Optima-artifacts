@@ -1,0 +1,17 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+  File "<stdin>", line 9
+    y= if r[yield] is None else f"{r[yield]:.2f}"
+       ^^
+SyntaxError: invalid syntax
+
+
+=== stderr (model-visible) ===
+  File "<stdin>", line 9
+    y= if r[yield] is None else f"{r[yield]:.2f}"
+       ^^
+SyntaxError: invalid syntax

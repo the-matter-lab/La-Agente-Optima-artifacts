@@ -1,0 +1,92 @@
+# Direct arylation BayBE campaign
+
+## What it does
+
+`run_direct_arylation_baybe.py` creates or resumes a BO-MCP campaign pinned to the **BayBE** backend. It maximizes measured `yield` in percent over the specified 1,728-point crossed space. The intake uses single-candidate sequential batches, 12 initial-design measurements, expected improvement, and a fixed random seed. It never reads a benchmark CSV or result table and calls only the documented objective oracle for BO-MCP-selected candidates.
+
+Every created campaign is named with the required ownership marker:
+
+`akg-eval-e8a9b391b1564f8f980c0080973e4d66`
+
+Cache-buster / chat trace ID: `46a801bd-6a04-4619-85af-c43ea27b8591`.
+
+## Required environment
+
+- `BO_MCP_API_URL`: BO-MCP API base URL.
+- `BO_MCP_API_KEY`: BO-MCP API key.
+- `DIRECT_ARYLATION_API_URL`: objective-oracle base URL. The script only posts to `${DIRECT_ARYLATION_API_URL}/v1/evaluate`.
+
+Run from this workspace with the active `uv` environment. No local-results-only mode exists.
+
+## Exact command
+
+Start or idempotently recover the campaign:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_baybe.py
+```
+
+Under a monitor, use the same command and match the tagged output:
+
+```text
+\[EVENT\]|\[ALERT\]|\[RESULT\]|\[HEARTBEAT\]
+```
+
+The benchmark has a hard lifetime target of exactly 60 attempted oracle evaluations. `--invocation-attempts` is only a per-process cap (default 60); the script derives the lifetime attempt count from BO-MCP completed/rejected suggestions and will not pass 60. It leaves immutable `max_iterations`/`max_observations` unset so pause/reopen semantics remain usable.
+
+## Stop and resume
+
+At the top of each loop, before generating a suggestion, the script checks `STOP` in the current working directory. To request a clean stop:
+
+```bash
+touch STOP
+```
+
+It emits `[EVENT]`, deletes the marker, writes the current report, and pauses the campaign if it is running. It does not pause between an oracle evaluation and BO-MCP result submission.
+
+Resume using the campaign ID printed in `[EVENT] campaign ready ...`:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_baybe.py --campaign-id <CAMPAIGN_ID>
+```
+
+A paused campaign is resumed; a completed campaign is reopened. The script refuses to resume any campaign whose BO-MCP name lacks the ownership marker. A pending suggestion left by interruption is reused rather than replaced. Campaign progress comes only from BO-MCP, not artifact files.
+
+Useful controls:
+
+- `--poll-s 180` (allowed operational range should remain 120–300 seconds)
+- `--heartbeat-s 1800`
+- `--oracle-timeout-s 60`
+- `--artifact-dir direct_arylation_artifacts`
+- `--stop-file STOP`
+
+## Oracle and failures
+
+Each request contains exactly the five candidate fields. Every request, including a timeout or non-2xx response, consumes one attempt. There are no HTTP retries. Successful responses must be exactly `{"yield": <number>}` with a finite percentage from 0 to 100. Failed suggestions are recorded and marked `rejected` in BO-MCP; they are not assigned artificial penalty yields. The campaign continues only inside the same 60-attempt budget.
+
+## Output tags
+
+- `[EVENT]`: campaign lifecycle, recovery, stop-file handling, and clean shutdown.
+- `[ALERT]`: oracle failures or BO-MCP stop conditions.
+- `[RESULT]`: one full JSON record per attempted evaluation and a current summary.
+- `[HEARTBEAT]`: periodic liveness message during long runs.
+
+All other Python logging is written to `direct_arylation_artifacts/run.log`.
+
+## Produced artifacts
+
+- `direct_arylation_artifacts/attempts.jsonl`: append-only per-request provenance, including failures.
+- `direct_arylation_artifacts/final_report.json`: standardized report containing campaign ID, objective metadata, successful/attempted counts, best measured yield and reaction conditions, and every BO-MCP completed/rejected attempt with parameter/objective structures.
+- `direct_arylation_artifacts/run.log`: execution log.
+
+At 60 attempts, validate that `final_report.json` has `attempted_evaluations: 60`; inspect `successful_evaluations`, `best_reaction_conditions`, `best_measured_yield`, and all 60 entries in `attempts`. Failed entries have `status: "failed"` and a null yield. Successful entries have `status: "success"` and their measured yield.
+
+## Bounded smoke test
+
+To perform only one attempted evaluation:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_baybe.py --invocation-attempts 1 --heartbeat-s 120
+```
+
+Reuse the emitted campaign ID with the resume command above; the completed smoke measurement counts toward the final 60 and is not discarded.

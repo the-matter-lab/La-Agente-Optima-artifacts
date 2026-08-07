@@ -1,0 +1,289 @@
+
+[2026-07-30T15:55:08.163195Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-glm", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--output-dir", "/app/outputs/cells/ackley_standard_glm_r01/eval", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "ackley_standard_glm_r01-20260730", "--subagent-model", "openrouter:z-ai/glm-5.1"]
+ Container mx-20260730-standard-glm-eval-run-c9409b9f377d Creating 
+ Container mx-20260730-standard-glm-eval-run-c9409b9f377d Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+15:55:29.522 evaluate bo_mcp_graph_eval
+15:55:29.523   case: synthetic_ackley_6d
+15:55:29.524     execute _run_case
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+15:58:08.285       agent run
+15:58:08.293         chat gpt-5.4
+15:58:17.543           POST api.openai.com/v1/responses
+15:58:30.416         running tool: task
+15:58:30.420 agent run
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+15:58:30.427         chat gpt-5.4
+15:58:30.438           POST api.openai.com/v1/responses
+             agent run
+15:58:30.443   chat z-ai/glm-5.1
+15:58:30.452     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+15:58:36.195         running tool: wait_tasks
+             agent run
+15:58:38.078   running tool: read_memory
+15:58:38.079   running tool: read_todos
+15:58:38.087   chat z-ai/glm-5.1
+15:58:38.097     POST openrouter.ai/api/v1/chat/completions
+15:58:47.458   running tool: write_todos
+15:58:47.465   chat z-ai/glm-5.1
+15:58:47.471     POST openrouter.ai/api/v1/chat/completions
+15:58:51.484   running tool: execute
+15:58:51.486   running tool: inspect_bo_mcp_openapi_overview
+15:59:06.755   chat z-ai/glm-5.1
+15:59:06.766     POST openrouter.ai/api/v1/chat/completions
+15:59:11.457   running tool: inspect_bo_mcp_openapi_operation
+15:59:11.458   running tool: inspect_bo_mcp_openapi_operation
+15:59:11.458   running tool: inspect_bo_mcp_openapi_operation
+15:59:11.481   chat z-ai/glm-5.1
+15:59:11.487     POST openrouter.ai/api/v1/chat/completions
+15:59:17.710   running tool: inspect_bo_mcp_openapi_operation
+15:59:17.710   running tool: execute
+15:59:17.906   chat z-ai/glm-5.1
+15:59:17.913     POST openrouter.ai/api/v1/chat/completions
+15:59:22.652   running tool: execute
+15:59:22.705   chat z-ai/glm-5.1
+15:59:22.714     POST openrouter.ai/api/v1/chat/completions
+15:59:28.019   running tool: execute
+15:59:28.033   chat z-ai/glm-5.1
+15:59:28.042     POST openrouter.ai/api/v1/chat/completions
+15:59:31.830   running tool: update_todo_status
+15:59:31.839   chat z-ai/glm-5.1
+15:59:31.853     POST openrouter.ai/api/v1/chat/completions
+15:59:34.783   running tool: read_todos
+15:59:34.789   chat z-ai/glm-5.1
+15:59:34.800     POST openrouter.ai/api/v1/chat/completions
+15:59:39.895   running tool: update_todo_statuses
+15:59:39.902   chat z-ai/glm-5.1
+15:59:39.912     POST openrouter.ai/api/v1/chat/completions
+15:59:44.899   running tool: execute
+15:59:44.919   chat z-ai/glm-5.1
+15:59:44.928     POST openrouter.ai/api/v1/chat/completions
+15:59:48.654   running tool: write_file
+15:59:48.660   chat z-ai/glm-5.1
+15:59:48.669     POST openrouter.ai/api/v1/chat/completions
+15:59:56.442   running tool: write_file
+15:59:56.450   chat z-ai/glm-5.1
+15:59:56.477     POST openrouter.ai/api/v1/chat/completions
+16:00:09.652   running tool: write_file
+16:00:09.661   chat z-ai/glm-5.1
+16:00:09.691     POST openrouter.ai/api/v1/chat/completions
+16:00:25.635   running tool: write_file
+16:00:25.647   chat z-ai/glm-5.1
+16:00:25.682     POST openrouter.ai/api/v1/chat/completions
+16:00:51.317   running tool: write_file
+16:00:51.326   chat z-ai/glm-5.1
+16:00:51.341     POST openrouter.ai/api/v1/chat/completions
+16:01:28.693   running tool: write_file
+16:01:28.701   chat z-ai/glm-5.1
+16:01:28.755     POST openrouter.ai/api/v1/chat/completions
+16:01:42.691   running tool: write_file
+16:01:42.700   chat z-ai/glm-5.1
+16:01:42.723     POST openrouter.ai/api/v1/chat/completions
+16:02:05.306   running tool: write_file
+16:02:05.313   chat z-ai/glm-5.1
+16:02:05.336     POST openrouter.ai/api/v1/chat/completions
+16:02:12.726   running tool: write_file
+16:02:12.737   chat z-ai/glm-5.1
+16:02:12.788     POST openrouter.ai/api/v1/chat/completions
+16:02:20.583   running tool: update_todo_statuses
+16:02:20.591   chat z-ai/glm-5.1
+16:02:20.634     POST openrouter.ai/api/v1/chat/completions
+16:02:26.851   running tool: execute
+16:02:28.723   chat z-ai/glm-5.1
+16:02:28.741     POST openrouter.ai/api/v1/chat/completions
+16:02:36.252   running tool: execute
+16:02:36.585   chat z-ai/glm-5.1
+16:02:36.619     POST openrouter.ai/api/v1/chat/completions
+16:02:41.301   running tool: execute
+16:02:41.356   chat z-ai/glm-5.1
+16:02:41.376     POST openrouter.ai/api/v1/chat/completions
+16:02:47.566   running tool: execute
+16:02:47.649   chat z-ai/glm-5.1
+16:02:47.686     POST openrouter.ai/api/v1/chat/completions
+16:02:56.335   running tool: execute
+16:02:56.684   chat z-ai/glm-5.1
+16:02:56.706     POST openrouter.ai/api/v1/chat/completions
+16:03:00.965   running tool: execute
+16:03:01.074   chat z-ai/glm-5.1
+16:03:01.129     POST openrouter.ai/api/v1/chat/completions
+16:03:09.868   running tool: execute
+16:03:10.375   chat z-ai/glm-5.1
+16:03:10.405     POST openrouter.ai/api/v1/chat/completions
+16:03:16.671   running tool: execute
+16:03:17.290   chat z-ai/glm-5.1
+16:03:17.353     POST openrouter.ai/api/v1/chat/completions
+16:03:23.299   running tool: execute
+16:03:23.347   chat z-ai/glm-5.1
+16:03:23.393     POST openrouter.ai/api/v1/chat/completions
+16:03:29.131   running tool: execute
+16:03:29.523   chat z-ai/glm-5.1
+16:03:29.556     POST openrouter.ai/api/v1/chat/completions
+16:03:33.805   running tool: execute
+16:03:33.854   chat z-ai/glm-5.1
+16:03:33.892     POST openrouter.ai/api/v1/chat/completions
+16:03:41.078   running tool: execute
+16:03:41.126   chat z-ai/glm-5.1
+16:03:41.155     POST openrouter.ai/api/v1/chat/completions
+16:03:46.533   running tool: execute
+16:03:48.065   chat z-ai/glm-5.1
+16:03:48.127     POST openrouter.ai/api/v1/chat/completions
+16:03:53.250   running tool: execute
+16:03:53.383   chat z-ai/glm-5.1
+16:03:53.424     POST openrouter.ai/api/v1/chat/completions
+16:03:59.259   running tool: read_file
+16:03:59.278   chat z-ai/glm-5.1
+16:03:59.335     POST openrouter.ai/api/v1/chat/completions
+16:04:08.816   running tool: hashline_edit
+16:04:08.829   chat z-ai/glm-5.1
+16:04:08.849     POST openrouter.ai/api/v1/chat/completions
+16:04:14.206   running tool: read_file
+16:04:14.214   chat z-ai/glm-5.1
+16:04:14.237     POST openrouter.ai/api/v1/chat/completions
+16:04:21.724   running tool: hashline_edit
+16:04:21.733   chat z-ai/glm-5.1
+16:04:21.750     POST openrouter.ai/api/v1/chat/completions
+16:04:28.710   running tool: execute
+16:04:28.749   chat z-ai/glm-5.1
+16:04:28.772     POST openrouter.ai/api/v1/chat/completions
+16:04:37.639   running tool: read_file
+16:04:37.647   chat z-ai/glm-5.1
+16:04:37.671     POST openrouter.ai/api/v1/chat/completions
+16:04:52.121   running tool: write_file
+16:04:52.163   chat z-ai/glm-5.1
+16:04:52.186     POST openrouter.ai/api/v1/chat/completions
+16:04:58.109   running tool: execute
+16:05:01.581   chat z-ai/glm-5.1
+16:05:01.621     POST openrouter.ai/api/v1/chat/completions
+16:05:08.883   running tool: read_file
+16:05:08.896   chat z-ai/glm-5.1
+16:05:08.956     POST openrouter.ai/api/v1/chat/completions
+16:05:48.561   running tool: write_file
+16:05:48.570   chat z-ai/glm-5.1
+16:05:48.595     POST openrouter.ai/api/v1/chat/completions
+16:05:54.493   running tool: execute
+16:05:57.130   chat z-ai/glm-5.1
+16:05:57.157     POST openrouter.ai/api/v1/chat/completions
+16:06:03.969   running tool: execute
+16:06:03.986   chat z-ai/glm-5.1
+16:06:04.012     POST openrouter.ai/api/v1/chat/completions
+16:06:14.452   running tool: execute
+16:06:14.529   chat z-ai/glm-5.1
+16:06:14.579     POST openrouter.ai/api/v1/chat/completions
+16:06:22.863   running tool: execute
+16:06:23.046   chat z-ai/glm-5.1
+16:06:23.664     POST openrouter.ai/api/v1/chat/completions
+16:06:28.636   running tool: execute
+16:06:28.719   chat z-ai/glm-5.1
+16:06:28.765     POST openrouter.ai/api/v1/chat/completions
+16:06:32.701   running tool: read_file
+16:06:32.709   chat z-ai/glm-5.1
+16:06:32.737     POST openrouter.ai/api/v1/chat/completions
+16:06:59.768   running tool: write_file
+16:06:59.776   chat z-ai/glm-5.1
+16:06:59.805     POST openrouter.ai/api/v1/chat/completions
+16:07:06.859   running tool: execute
+16:07:07.938   chat z-ai/glm-5.1
+16:07:07.959     POST openrouter.ai/api/v1/chat/completions
+16:07:14.192   running tool: execute
+16:07:14.208   chat z-ai/glm-5.1
+16:07:14.249     POST openrouter.ai/api/v1/chat/completions
+16:07:17.766   running tool: update_todo_statuses
+16:07:17.777   chat z-ai/glm-5.1
+16:07:17.820     POST openrouter.ai/api/v1/chat/completions
+16:07:32.568   running tool: write_memory
+16:07:32.576   chat z-ai/glm-5.1
+16:07:32.606     POST openrouter.ai/api/v1/chat/completions
+16:07:39.668   running tool: execute
+16:07:39.702   chat z-ai/glm-5.1
+16:07:39.727     POST openrouter.ai/api/v1/chat/completions
+16:07:47.868   running tool: execute
+16:07:48.109   chat z-ai/glm-5.1
+16:07:48.134     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+16:08:07.617         chat gpt-5.4
+16:08:07.628           POST api.openai.com/v1/responses
+16:08:10.394         running tool: bash_exec
+16:08:10.400 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+16:08:10.410           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+16:08:10.448         chat gpt-5.4
+16:08:10.462           POST api.openai.com/v1/responses
+16:08:12.442         running tool: bash_exec
+16:08:12.906         chat gpt-5.4
+16:08:12.919           POST api.openai.com/v1/responses
+16:08:23.186         running tool: start_monitor
+16:08:23.193         chat gpt-5.4
+16:08:23.208           POST api.openai.com/v1/responses
+16:08:25.199         running tool: list_monitors
+16:08:25.204         chat gpt-5.4
+16:08:25.226           POST api.openai.com/v1/responses
+16:08:28.539         running tool: bash_exec
+16:08:38.719         chat gpt-5.4
+16:08:38.742           POST api.openai.com/v1/responses
+16:08:41.765         running tool: list_monitors
+16:08:41.771         chat gpt-5.4
+16:08:41.794           POST api.openai.com/v1/responses
+16:08:43.876         running tool: bash_exec
+16:09:03.894         chat gpt-5.4
+16:09:03.920           POST api.openai.com/v1/responses
+16:09:05.179         running tool: list_monitors
+16:09:05.185         chat gpt-5.4
+16:09:05.211           POST api.openai.com/v1/responses
+16:09:07.257         running tool: bash_exec
+16:09:37.274         chat gpt-5.4
+16:09:37.303           POST api.openai.com/v1/responses
+16:09:42.459         running tool: list_monitors
+16:09:42.469         chat gpt-5.4
+16:09:42.537           POST api.openai.com/v1/responses
+16:09:44.460         running tool: bash_exec
+16:10:24.518         chat gpt-5.4
+16:10:24.566           POST api.openai.com/v1/responses
+16:10:26.519         running tool: list_monitors
+16:10:26.536         chat gpt-5.4
+16:10:26.589           POST api.openai.com/v1/responses
+16:10:29.986         running tool: bash_exec
+16:11:10.056         chat gpt-5.4
+16:11:10.100           POST api.openai.com/v1/responses
+16:11:11.494         running tool: list_monitors
+16:11:11.500         chat gpt-5.4
+16:11:11.536           POST api.openai.com/v1/responses
+16:11:14.441         running tool: bash_exec
+16:12:04.503         chat gpt-5.4
+16:12:04.541           POST api.openai.com/v1/responses
+16:12:08.012         running tool: list_monitors
+16:12:08.017         chat gpt-5.4
+16:12:08.045           POST api.openai.com/v1/responses
+16:12:11.402         running tool: stop_monitor
+16:12:11.408         chat gpt-5.4
+16:12:11.449           POST api.openai.com/v1/responses
+16:12:16.593         running tool: bash_exec
+16:12:16.624         chat gpt-5.4
+16:12:16.683           POST api.openai.com/v1/responses
+16:12:21.760         running tool: bash_exec
+16:12:21.991         chat gpt-5.4
+16:12:22.025           POST api.openai.com/v1/responses
+16:12:25.897         running tool: bash_exec
+16:12:25.959         chat gpt-5.4
+16:12:25.992           POST api.openai.com/v1/responses
+16:12:34.114         running tool: python_repl
+16:12:34.155         chat gpt-5.4
+16:12:34.203           POST api.openai.com/v1/responses
+[2026-07-30T16:13:06.108833Z] EXIT 0

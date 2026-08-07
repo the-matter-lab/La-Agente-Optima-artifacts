@@ -1,0 +1,29 @@
+{
+  "campaign_slug": "direct_arylation_yield",
+  "nonce": "63564e1a-5ca5-4172-97e2-374479e19e77",
+  "campaign_marker": "akg-eval-2805014a05614c938643d467cfb9d6ff",
+  "campaign_name": "direct-arylation-yield akg-eval-2805014a05614c938643d467cfb9d6ff",
+  "backend": "baybe",
+  "objective": {"name": "yield", "direction": "maximize", "units": "percent"},
+  "run_entrypoint": "run_direct_arylation_yield.py",
+  "package_modules": {
+    "search_space": "direct_arylation_yield/search_space.py",
+    "intake": "direct_arylation_yield/intake.py",
+    "evaluation": "direct_arylation_yield/evaluation.py",
+    "reporting": "direct_arylation_yield/reporting.py",
+    "orchestration": "direct_arylation_yield/campaign.py"
+  },
+  "smoke_test_campaign_id": "1c52ea2a-2442-43ea-bc9e-cb017b5d9697",
+  "attempted_evaluations_consumed_by_smoke_tests": 3,
+  "remaining_attempt_budget": 57,
+  "total_attempt_budget": 60,
+  "latest_artifact_dir": "artifacts/1c52ea2a-2442-43ea-bc9e-cb017b5d9697",
+  "artifacts": {
+    "attempts_jsonl": "artifacts/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/attempts.jsonl",
+    "attempts_json": "artifacts/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/attempts.json",
+    "final_report_json": "artifacts/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/final_report.json"
+  },
+  "run_log": "direct_arylation_yield_run.log",
+  "stop_file": "STOP",
+  "env_required": ["BO_MCP_API_URL", "BO_MCP_API_KEY", "DIRECT_ARYLATION_API_URL"]
+}

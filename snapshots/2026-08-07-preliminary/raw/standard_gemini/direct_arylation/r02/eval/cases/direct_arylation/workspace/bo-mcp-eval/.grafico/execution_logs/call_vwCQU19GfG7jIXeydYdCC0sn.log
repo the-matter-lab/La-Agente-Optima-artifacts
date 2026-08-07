@@ -1,0 +1,50 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/direct_arylation_20260730_174800.log
+---TAIL---
+[EVENT] Resuming existing campaign: 0f26e119-ef44-4a92-b970-7d97eed33f3d
+17:48:01.209 POST api/api/v1/campaigns/status/batch
+17:48:01.229 POST api/api/v1/campaigns/0f26e119-ef44-4a92-b970-7d97eed33f3d/lifecycle
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Campaign resumed on server.
+17:48:01.518 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+[EVENT] Campaign state: 4/60 attempts completed (4 successful, 0 failed).
+17:48:01.537 POST api/api/v1/campaigns/status/batch
+17:48:01.551 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:48:01.568 Generating new suggestion...
+17:48:01.568 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:48:01.925 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105}
+17:48:01.925 POST direct-arylation-oracle/v1/evaluate
+17:48:01.928 Evaluation succeeded: {'yield': 13.11}
+17:48:01.928 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=DMAc, concentration=0.1, temperature_c=105.0 -> Yield: 13.11%
+17:48:03.002 POST api/api/v1/campaigns/status/batch
+17:48:03.021 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:48:03.033 Generating new suggestion...
+17:48:03.034 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:48:04.215 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120}
+17:48:04.217 POST direct-arylation-oracle/v1/evaluate
+17:48:04.222 Evaluation succeeded: {'yield': 13.87}
+17:48:04.223 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=DMAc, concentration=0.057, temperature_c=120.0 -> Yield: 13.87%
+17:48:05.295 POST api/api/v1/campaigns/status/batch
+17:48:05.314 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:48:05.326 Generating new suggestion...
+17:48:05.326 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:48:07.012 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': '1268824-69-6', 'solvent': 'p-Xylene', 'concentration': 0.1, 'temperature_c': 120}
+17:48:07.012 POST direct-arylation-oracle/v1/evaluate
+17:48:07.015 Evaluation succeeded: {'yield': 7.43}
+17:48:07.015 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=p-Xylene, concentration=0.1, temperature_c=120.0 -> Yield: 7.43%
+17:48:08.093 POST api/api/v1/campaigns/status/batch
+17:48:08.121 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:48:08.136 Generating new suggestion...
+17:48:08.136 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,63 @@
+exit_code=0
+
+=== stdout (raw) ===
+[EVENT] Resuming existing campaign: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:12:52.914 GET api/api/v1/campaigns/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[EVENT] Campaign ID: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[EVENT] Chosen settings: backend=botorch, acquisition=expected_improvement_nonlog, initialization=Sobol warm start, initial_design_size=12, batch_schedule=sequential(1), random_seed=20260730
+17:12:52.937 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:12:52.951 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[HEARTBEAT] campaign_id=9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba attempted=1/60 success=1 nonce=54354cdc-4da6-4419-86a6-f4560fc0efbe
+17:12:52.960 POST api/api/v1/campaigns/status/batch
+17:12:52.976 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 2/60
+17:12:52.984 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating 0ad39ccf-21bb-4395-9a6f-3613ed1339e3 parameters={'x_1': 0.37128299474716187, 'x_2': 0.04457108676433563, 'x_3': 0.0026363609358668327, 'x_4': 0.12286869436502457, 'x_5': 0.38616055250167847, 'x_6': 0.4887802004814148}
+17:12:53.156 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[RESULT] evaluation=2 suggestion_id=0ad39ccf-21bb-4395-9a6f-3613ed1339e3 raw_response=-21.404538940179 surface_response=0.042319750254
+17:12:53.214 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:12:53.223 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Invocation budget of 2 attempted evaluations reached. Pausing campaign.
+17:12:53.232 POST api/api/v1/campaigns/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/lifecycle
+[EVENT] Campaign paused on server.
+17:12:53.254 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:12:53.261 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Saved results history to artifacts_smoke/results_history.json
+
+================================================================================
+FINAL CAMPAIGN REPORT
+================================================================================
+Campaign ID: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+Attempted Evaluations: 2
+Successful Evaluations: 2
+Failed Evaluations: 0
+
+BEST CANDIDATE FOUND:
+  Surface Response (Normalized): 0.046528
+  Raw Response: -21.310489
+  Normalized Coordinates:
+    x_1: 0.643899
+    x_2: 0.851117
+    x_3: 0.665305
+    x_4: 0.770237
+    x_5: 0.541751
+    x_6: 0.619495
+
+EVALUATION HISTORY TABLE:
+Index  | x_1      | x_2      | x_3      | x_4      | x_5      | x_6      | Surface Resp | Status  
+----------------------------------------------------------------------------------------------------
+1      | 0.3713 | 0.0446 | 0.0026 | 0.1229 | 0.3862 | 0.4888 | 0.042320     | success 
+2      | 0.6439 | 0.8511 | 0.6653 | 0.7702 | 0.5418 | 0.6195 | 0.046528     | success 
+================================================================================
+BO_MCP_CAMPAIGN_ID=9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+================================================================================
+
+
+=== stderr (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+
+
+=== stderr (model-visible) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn

@@ -1,0 +1,25 @@
+{
+  "campaign_slug": "direct_arylation_yield",
+  "benchmark_marker": "akg-eval-87b85822029643db89946580a5362018",
+  "cache_buster_nonce": "2a734689-189a-4fcd-9345-42f6d8dad2f8",
+  "package_modules": [
+    "direct_arylation_yield/__init__.py",
+    "direct_arylation_yield/search_space.py",
+    "direct_arylation_yield/oracle.py",
+    "direct_arylation_yield/reporting.py",
+    "direct_arylation_yield/campaign.py"
+  ],
+  "run_entrypoint": "run_direct_arylation_yield.py",
+  "how_to_execute": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "latest_artifact_dir": "direct_arylation_yield_artifacts",
+  "artifact_files": {
+    "results_jsonl": "direct_arylation_yield_artifacts/results.jsonl",
+    "summary_json": "direct_arylation_yield_artifacts/summary.json",
+    "run_log": "direct_arylation_yield_artifacts/run.log"
+  },
+  "backend": "baybe",
+  "objective_name": "yield",
+  "objective_direction": "maximize",
+  "objective_units": "percent",
+  "attempt_budget": 60
+}

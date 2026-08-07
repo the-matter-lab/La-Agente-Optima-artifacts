@@ -1,0 +1,105 @@
+# Direct arylation BayBE campaign
+
+This workspace contains a BO-MCP campaign for maximizing measured direct arylation `yield` in **percent**. Its owned campaign name is exactly:
+
+`direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b`
+
+The cache-buster nonce `84b0bae8-8245-4434-aa84-be3c9ca05210` is preserved in campaign metadata, attempt records, and logs.
+
+## Required environment
+
+- `BO_MCP_API_URL`: BO-MCP REST API base URL.
+- `BO_MCP_API_KEY`: BO-MCP API key.
+- `DIRECT_ARYLATION_API_URL`: direct arylation oracle base URL. The evaluator reads this variable only and sends only `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate`.
+- `PYTHONPATH=/app`: needed in this container so the canonical `domains.bo_mcp.client.BoMcpClient` and Grafico Logfire configuration are importable.
+
+Do not provide source tables, prior results, or any other oracle endpoint. The script never uses them.
+
+## Execution
+
+From this workspace, run:
+
+```bash
+PYTHONPATH=/app /opt/venv/bin/python -u run_direct_arylation_baybe.py
+```
+
+The entrypoint automatically reuses `artifacts/direct_arylation_baybe/campaign_id.txt` when present. An explicit resume is also supported:
+
+```bash
+PYTHONPATH=/app /opt/venv/bin/python -u run_direct_arylation_baybe.py \
+  --campaign-id "<campaign-id>"
+```
+
+The immutable BO-MCP intake pins `backend=baybe`, `batch_size=1`, and `max_iterations=60`. The script permits at most 60 oracle calls in one process invocation and refuses to continue if BO-MCP has more than 60 suggestions. With a partially completed owned campaign, the default command resumes it and stops at the campaign-wide 60-attempt cap. Do not launch two copies concurrently.
+
+`--attempt-budget` is only a per-process budget, used for bounded tests or deliberate partial runs. It does not replace or enlarge the immutable 60-iteration campaign cap. Defaults: `--attempt-budget 60`, `--poll-s 180`, `--heartbeat-s 1800`, `--stop-file STOP`, and `--oracle-timeout-s 120`.
+
+## Exact behavior
+
+1. Validate the fixed intake, then create a campaign only if no campaign ID is supplied or recorded.
+2. Refuse to create, resume, or report a campaign unless its name exactly matches the owned name and contains `akg-eval-c5b8d1ef58b7491e871349ed99f9483b`.
+3. Verify from BO-MCP config that the requested and resolved backend are BayBE, the objective is `yield`/maximize/percent, the batch and 60-iteration cap are exact, and every search-space name/value matches the benchmark.
+4. Use BO-MCP `next_action` for the continue/stop decision and request one candidate at a time.
+5. Make exactly one documented oracle request per evaluated suggestion. A non-2xx response or invalid response is a failed attempted evaluation, is appended to `attempts.jsonl`, and causes that BO-MCP suggestion to be rejected. No synthetic penalty is submitted.
+6. Submit every finite successful yield to BO-MCP with its `suggestion_id` and an idempotency key.
+7. Pause a running campaign on normal shutdown. A completed campaign is not paused. Paused campaigns resume in place; existing campaigns are never rebuilt from results.
+
+## Stop file and monitoring
+
+At the top of every loop iteration, before generating a suggestion, the script checks the configured stop file. With the default, request a normal stop using:
+
+```bash
+touch STOP
+```
+
+The script prints `[EVENT]`, deletes the marker so it cannot cause a stale stop on resume, submits any already-completed evaluation before shutdown, and pauses only if the campaign is still running.
+
+Stdout is unbuffered and uses these monitor tags:
+
+- `[EVENT]`: campaign lifecycle, budget, stop-file, and artifact events.
+- `[ALERT]`: oracle failures or an early BO-MCP stop condition.
+- `[RESULT]`: complete machine-readable JSON for each successful attempted evaluation.
+- `[HEARTBEAT]`: periodic liveness.
+
+Detailed operational logging is written to `artifacts/direct_arylation_baybe/run.log`.
+
+## Artifacts and validation
+
+Artifact directory: `artifacts/direct_arylation_baybe/`
+
+- `campaign_id.txt`: owned campaign identity for resume.
+- `campaign_metadata.json`: BO-MCP campaign and sanitized config snapshot, including the nonce.
+- `attempts.jsonl`: append-only authoritative oracle-attempt provenance; every oracle request gets one row, including failed/non-2xx attempts.
+- `evaluated_candidates.csv`: flattened table of all attempted candidates, statuses, objective values, HTTP statuses, and errors.
+- `progress_summary.json`: current machine-readable report.
+- `final_summary.json`: written only when exactly 60 attempted evaluations have been recorded.
+- `bo_results.json`: successful results persisted by BO-MCP.
+- `run.log`: detailed log.
+
+After final execution, validate:
+
+```bash
+PYTHONPATH=/app /opt/venv/bin/python - <<'PY'
+import json
+from pathlib import Path
+p = Path("artifacts/direct_arylation_baybe/final_summary.json")
+s = json.loads(p.read_text())
+assert s["required_marker"] == "akg-eval-c5b8d1ef58b7491e871349ed99f9483b"
+assert s["backend_requested"] == s["backend_resolved"] == "baybe"
+assert s["objective_name"] == "yield"
+assert s["objective_direction"] == "maximize"
+assert s["objective_units"] == "percent"
+assert s["attempted_evaluations"] == 60
+assert len(s["all_evaluated_candidates"]) == 60
+assert s["successful_evaluations"] + s["failed_evaluations"] == 60
+print(json.dumps({
+    "campaign_id": s["campaign_id"],
+    "best_reaction_conditions": s["best_reaction_conditions"],
+    "best_measured_yield": s["best_measured_yield"],
+    "successful_evaluations": s["successful_evaluations"],
+    "attempted_evaluations": s["attempted_evaluations"],
+}, indent=2))
+PY
+```
+
+If an interruption occurs after an oracle request but before its attempt record/status/result is durably written, stop and request repair rather than blindly re-running; this protects the strict one-request/one-attempt budget.

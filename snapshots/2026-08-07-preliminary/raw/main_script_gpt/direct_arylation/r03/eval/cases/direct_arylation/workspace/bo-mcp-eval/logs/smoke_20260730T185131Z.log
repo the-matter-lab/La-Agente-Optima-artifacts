@@ -1,0 +1,15 @@
+18:51:32.295 POST api/api/v1/campaigns/validate
+Traceback (most recent call last):
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_bo.py", line 70, in <module>
+    main()
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_bo.py", line 49, in main
+    outcome = run_campaign(
+              ^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py", line 134, in run_campaign
+    active_campaign_id = _create_or_resume_campaign(client, campaign_id, random_seed)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py", line 110, in _create_or_resume_campaign
+    raise RuntimeError(f"Campaign intake invalid: {validation}")
+RuntimeError: Campaign intake invalid: {'schema_version': 2, 'valid': False, 'errors': ['parameters: Mixed spaces with more than 100 categorical combinations are not yet supported by BoTorch acquisition (this space has 192). Consider reducing the number of categories or selecting another backend.'], 'warnings': [], 'spec_summary': None}
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn

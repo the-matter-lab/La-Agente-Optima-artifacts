@@ -1,0 +1,44 @@
+[EVENT] Starting 6D Ackley BO-MCP campaign
+  BO_MCP_API_URL: http://api:8000
+  Campaign ID: (new)
+  Poll interval: 180.0s
+  Heartbeat interval: 1800.0s
+  Stop file: STOP
+  Artifact dir: artifacts
+[EVENT] Creating new campaign: ackley_6d_akg-eval-33269dad0b2d4893af291cb6d2b01f22
+19:13:59.344 Creating campaign
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Campaign created: e2311138-639c-4b1a-9d87-ce71ecda9385
+BO_MCP_CAMPAIGN_ID=e2311138-639c-4b1a-9d87-ce71ecda9385
+[EVENT] Starting optimization loop (max 60 evaluations)
+BO_MCP_CAMPAIGN_ID=e2311138-639c-4b1a-9d87-ce71ecda9385
+
+[EVENT] === Iteration 1 ===
+[EVENT] Generating suggestions (attempted: 0/60)
+19:13:59.692 Generating suggestions
+[EVENT] Received 1 suggestion(s)
+19:13:59.870 Evaluating suggestion
+[RESULT] eval=1 suggestion=ad77b613-bd76-439f-ba38-ac1d0b8fe50a surface_response=0.023741 raw_response=-21.819780 params={'x_1': 0.13253508508205414, 'x_2': 0.05688749626278877, 'x_3': 0.373386025428772, 'x_4': 0.8964589238166809, 'x_5': 0.34754079580307007, 'x_6': 0.5064781904220581}
+19:13:59.871 Submitting results
+19:13:59.877 Iteration failed
+             │ httpx.HTTPStatusError: Client error '422 Unprocessable Content' for url 'http://api:8000/api/v1/results/e2311138-639c-4b1a-9d87-ce71ecda9385'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422
+             │ Traceback (most recent call last):
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_campaign/campaign/orchestrator.py", line 239, in run
+             │     continue_campaign = self.run_iteration()
+             │                         ^^^^^^^^^^^^^^^^^^^^
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_campaign/campaign/orchestrator.py", line 197, in run_iteration
+             │     self._submit_results(results_to_submit)
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_campaign/campaign/orchestrator.py", line 116, in _submit_results
+             │     response = self.client.submit_results(self.campaign_id, payload)
+             │                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_campaign/campaign/bo_client.py", line 168, in submit_results
+             │     response.raise_for_status()
+             │   File "/opt/venv/lib/python3.12/site-packages/httpx/_models.py", line 829, in raise_for_status
+             │     raise HTTPStatusError(message, request=request, response=self)
+             │ httpx.HTTPStatusError: Client error '422 Unprocessable Content' for url 'http://api:8000/api/v1/results/e2311138-639c-4b1a-9d87-ce71ecda9385'
+             │ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422
+
+[ALERT] Iteration failed: Client error '422 Unprocessable Content' for url 'http://api:8000/api/v1/results/e2311138-639c-4b1a-9d87-ce71ecda9385'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/422

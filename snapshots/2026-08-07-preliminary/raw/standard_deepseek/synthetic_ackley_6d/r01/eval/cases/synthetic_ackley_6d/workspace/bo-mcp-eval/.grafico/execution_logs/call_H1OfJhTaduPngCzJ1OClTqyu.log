@@ -1,0 +1,242 @@
+exit_code=0
+
+=== stdout (raw) ===
+                            parameter_values=pv,
+                            objective_values=None,
+                            status="submit_rejected",
+                            failure_reason=str(submit_resp.get("errors", "")),
+                            raw_response=raw_resp,
+                        )
+                else:
+                    failure_reason = str(eval_result.get("error", "unknown"))
+                    alert(
+                        f"eval={evaluation_index} FAILED: {failure_reason}"
+                    )
+                    try:
+                        client.update_suggestion_status(psug_id, "rejected")
+                    except Exception:
+                        pass
+                    _append_result_row(
+                        result_log,
+                        evaluation_index=evaluation_index,
+                        parameter_values=pv,
+                        objective_values=None,
+                        status="failed",
+                        failure_reason=failure_reason,
+                    )
+            time.sleep(poll_s)
+            continue
+
+        if action != "bo_generate_suggestions":
+            reason = decision.get("reason", "no reason given")
+            event(f"Server says stop: {reason}")
+            break
+
+        # --- generate + deduplicate (retry loop) -------------------
+        consecutive_duplicates = 0
+        while True:
+            gen_resp = client.generate_suggestions(campaign_id, batch_size=1)
+            if not gen_resp.get("success"):
+                errors = gen_resp.get("errors", [])
+                alert(f"Suggestion generation failed: {errors}")
+                break
+
+            suggestions = gen_resp.get("suggestions") or []
+            if not suggestions:
+                alert("No suggestions returned — stopping")
+                break
+
+            sug = suggestions[0]
+            suggestion_id = sug["suggestion_id"]
+            param_values = {
+                k: float(v) for k, v in sug["parameter_values"].items()
+            }
+            pkey = _param_key(param_values)
+
+            if pkey in seen_param_keys:
+                consecutive_duplicates += 1
+                alert(
+                    f"Duplicate suggestion detected (consecutive={consecutive_duplicates}): "
+                    f"params={{{', '.join(f'{k}={v:.4f}' for k, v in param_values.items())}}}"
+                )
+                try:
+                    client.update_suggestion_status(suggestion_id, "rejected")
+                except Exception:
+                    pass
+                if consecutive_duplicates >= _MAX_CONSECUTIVE_DUPLICATES:
+                    alert(
+                        f"Too many consecutive duplicates ({consecutive_duplicates}) — stopping"
+                    )
+                    break
+                continue  # retry generation
+
+            # Not a duplicate — proceed to evaluate.
+            consecutive_duplicates = 0
+            break
+
+        # If the inner loop broke without a valid suggestion, exit outer loop.
+        if consecutive_duplicates >= _MAX_CONSECUTIVE_DUPLICATES:
+            break
+        if not suggestions:
+            break
+
+        # --- evaluate ----------------------------------------------
+        evaluation_index += 1
+        seen_param_keys.add(pkey)
+        try:
+            eval_result = evaluate(param_values)
+            status = str(eval_result.get("status", "success"))
+        except Exception as exc:
+            eval_result = {"status": "failed", "error": str(exc)}
+            status = "failed"
+
+        if status == "success":
+            obj_vals = extract_objective_values(eval_result)
+            raw_resp = extract_raw_response(eval_result)
+            # submit
+            idem_key = BoMcpClient.make_idempotency_key(
+                "submit", campaign_id, f"eval{evaluation_index}"
+            )
+            submit_resp = client.submit_results(
+                campaign_id,
+                results=[
+                    {
+                        "suggestion_id": suggestion_id,
+                        "parameter_values": param_values,
+                        "objective_values": obj_vals,
+                    }
+                ],
+                idempotency_key=idem_key,
+            )
+            if not submit_resp.get("success"):
+                alert(
+                    f"Submit rejected for eval {evaluation_index}: "
+                    f"{submit_resp.get('errors')}  "
+                    f"field_errors={submit_resp.get('field_errors')}"
+                )
+                # Still log the failure row
+                _append_result_row(
+                    result_log,
+                    evaluation_index=evaluation_index,
+                    parameter_values=param_values,
+                    objective_values=None,
+                    status="submit_rejected",
+                    failure_reason=str(submit_resp.get("errors", "")),
+                    raw_response=raw_resp,
+                )
+            else:
+                result(
+                    f"eval={evaluation_index}  "
+                    f"surface_response={obj_vals['surface_response']:.6f}  "
+                    f"raw_response={raw_resp:.6f}  "
+                    f"params={{{', '.join(f'{k}={v:.4f}' for k, v in param_values.items())}}}"
+                )
+                _append_result_row(
+                    result_log,
+                    evaluation_index=evaluation_index,
+                    parameter_values=param_values,
+                    objective_values=obj_vals,
+                    status="success",
+                    raw_response=raw_resp,
+                )
+        else:
+            # Failed evaluation — mark suggestion as rejected
+            failure_reason = str(eval_result.get("error", "unknown"))
+            alert(
+                f"eval={evaluation_index} FAILED: {failure_reason}  "
+                f"params={{{', '.join(f'{k}={v:.4f}' for k, v in param_values.items())}}}"
+            )
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+            except Exception:
+                pass
+            _append_result_row(
+                result_log,
+                evaluation_index=evaluation_index,
+                parameter_values=param_values,
+                objective_values=None,
+                status="failed",
+                failure_reason=failure_reason,
+            )
+
+        # --- poll delay --------------------------------------------
+        time.sleep(poll_s)
+
+    # ── post-loop: diagnostics & pause ─────────────────────────────
+    event("Loop finished — fetching diagnostics")
+    try:
+        diag = client.get_diagnostics(campaign_id, verbosity="standard", timeout_s=300)
+        diag_path = os.path.join(artifact_dir, "diagnostics.json")
+        with open(diag_path, "w") as fh:
+            json.dump(diag, fh, indent=2, default=str)
+        event(f"Diagnostics saved to {diag_path}")
+    except Exception as exc:
+        alert(f"Diagnostics fetch failed: {exc}")
+
+    # Pause (don't terminate) so the campaign can be resumed later.
+    try:
+        status_check = client.next_action(campaign_id)
+        if status_check.get("status") == "running":
+            client.lifecycle(campaign_id, action="pause")
+            event("Campaign paused")
+    except Exception as exc:
+        alert(f"Pause failed (campaign may already be stopped): {exc}")
+
+    # ── final summary ──────────────────────────────────────────────
+    _print_summary(result_log, campaign_id, artifact_dir)
+
+    return campaign_id
+
+
+def _print_summary(result_log: str, campaign_id: str, artifact_dir: str) -> None:
+    """Print a human-readable summary and write a summary JSON."""
+    rows: list[dict[str, object]] = []
+    if os.path.exists(result_log):
+        with open(result_log) as fh:
+            for line in fh:
+                line = line.strip()
+                if line:
+                    rows.append(json.loads(line))
+
+    n_attempted = len(rows)
+    n_success = sum(1 for r in rows if r.get("status") == "success")
+    n_failed = n_attempted - n_success
+
+    best_row: dict[str, object] | None = None
+    best_sr = -float("inf")
+    for r in rows:
+        if r.get("status") == "success" and r.get("objective_values"):
+            sr = float(r["objective_values"]["surface_response"])
+            if sr > best_sr:
+                best_sr = sr
+                best_row = r
+
+    event(f"=== FINAL SUMMARY ===")
+    event(f"campaign_id={campaign_id}")
+    event(f"attempted={n_attempted}  success={n_success}  failed={n_failed}")
+    if best_row:
+        event(f"best_surface_response={best_sr:.10f}")
+        event(f"best_raw_response={best_row.get('raw_response', 'N/A')}")
+        event(f"best_params={best_row['parameter_values']}")
+    event(f"result_log={result_log}")
+    event(f"BO_MCP_CAMPAIGN_ID={campaign_id}")
+
+    summary_path = os.path.join(artifact_dir, "summary.json")
+    summary: dict[str, object] = {
+        "campaign_id": campaign_id,
+        "n_attempted": n_attempted,
+        "n_success": n_success,
+        "n_failed": n_failed,
+        "best_surface_response": best_sr if best_row else None,
+        "best_raw_response": best_row.get("raw_response") if best_row else None,
+        "best_parameter_values": best_row["parameter_values"] if best_row else None,
+        "result_log": result_log,
+    }
+    with open(summary_path, "w") as fh:
+        json.dump(summary, fh, indent=2, default=str)
+    event(f"Summary saved to {summary_path}")
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,54 @@
+exit_code=0
+
+=== stdout (raw) ===
+   460	                duration_s = round(time.time() - started_at, 3)
+   461	                logger.exception("Submission or transport failure for suggestion %s", suggestion["suggestion_id"])
+   462	                record = {
+   463	                    "cache_buster_nonce": CACHE_BUSTER_NONCE,
+   464	                    "attempt_number": attempt_number,
+   465	                    "campaign_id": campaign_id,
+   466	                    "suggestion_id": suggestion["suggestion_id"],
+   467	                    "candidate": candidate,
+   468	                    "candidate_signature": signature,
+   469	                    "status": "submission_failed",
+   470	                    "duration_s": duration_s,
+   471	                    "error": str(exc),
+   472	                }
+   473	                attempts = _record_attempt(paths=paths, attempts=attempts, record=record)
+   474	                attempted += 1
+   475	                _alert(
+   476	                    f"attempt={attempt_number}/{config.max_attempts} status=submission_failed campaign_id={campaign_id} suggestion_id={suggestion['suggestion_id']} candidate={candidate}"
+   477	                )
+   478	                _result(
+   479	                    f"attempt={attempt_number}/{config.max_attempts} status=submission_failed campaign_id={campaign_id} suggestion_id={suggestion['suggestion_id']} candidate={candidate} error={exc}"
+   480	                )
+   481	            _persist_snapshot(client=client, campaign_id=campaign_id, paths=paths, attempts=attempts, logger=logger)
+   482	            if attempted < config.max_attempts:
+   483	                time.sleep(config.poll_s)
+   484	    finally:
+   485	        _persist_snapshot(client=client, campaign_id=campaign_id, paths=paths, attempts=attempts, logger=logger)
+   486	        _write_diagnostics(client, campaign_id, paths, logger)
+   487	        campaign = _pause_if_running(client, campaign_id, logger)
+   488	        write_json(paths.campaign_json, campaign)
+   489	        try:
+   490	            write_json(paths.bo_results_json, client.get_results(campaign_id))
+   491	        except Exception as exc:  # pragma: no cover - nonfatal artifact refresh
+   492	            logger.warning("Unable to refresh BO results after pause: %s", exc)
+   493	        summary = summarize_attempts(campaign_id, attempts)
+   494	        write_json(paths.summary_json, summary)
+   495	        _result(
+   496	            "campaign-summary "
+   497	            f"campaign_id={campaign_id} status={campaign.get('status')} attempted={summary['attempted_evaluations']} "
+   498	            f"successful={summary['successful_evaluations']} best_yield={summary['best_measured_yield']} "
+   499	            f"best_conditions={summary['best_conditions']} artifact_dir={paths.artifact_dir}"
+   500	        )
+   501	        _event(
+   502	            f"shutdown campaign_id={campaign_id} final_status={campaign.get('status')} artifact_dir={paths.artifact_dir}"
+   503	        )
+   504	    return 0
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

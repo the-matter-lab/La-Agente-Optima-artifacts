@@ -1,0 +1,23 @@
+17:23:56.954 Starting direct arylation campaign loop. Nonce: bc27a984-bcee-47bd-8b53-bbd5d03f3b3f
+[EVENT] Resuming existing campaign with ID: 1073006d-864a-460a-9cf4-1b3aaa77152d
+17:23:56.955 GET api/api/v1/campaigns/1073006d-864a-460a-9cf4-1b3aaa77152d
+17:23:56.983 Loaded 1 existing local results.
+17:23:56.983 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+17:23:57.018 Current attempts count: 1/60
+17:23:57.019 POST api/api/v1/campaigns/status/batch
+17:23:57.045 Server next action: review_campaign_status, status: paused
+[EVENT] Server returned action 'review_campaign_status' (status: paused). Stopping loop.
+
+=== CAMPAIGN SUMMARY ===
+Campaign ID: 1073006d-864a-460a-9cf4-1b3aaa77152d
+Attempted evaluations: 1
+Successful evaluations: 1
+Failed evaluations: 0
+Best measured yield: 4.3%
+Best reaction conditions: {'base': 'Potassium acetate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+========================
+
+17:23:57.046 POST api/api/v1/campaigns/1073006d-864a-460a-9cf4-1b3aaa77152d/lifecycle
+[EVENT] Paused campaign 1073006d-864a-460a-9cf4-1b3aaa77152d

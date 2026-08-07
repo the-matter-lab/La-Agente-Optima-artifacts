@@ -1,0 +1,70 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- summary.json
+{
+  "attempted_evaluations": 60,
+  "best_attempt": {
+    "attempt_index": 43,
+    "campaign_id": "598c5ca5-f5fe-4ca7-9540-a48427dfef92",
+    "finished_at": "2026-07-30T18:52:40.893149+00:00",
+    "objective_values": {
+      "yield": 99.81
+    },
+    "oracle_status": "success",
+    "parameter_values": {
+      "base": "Potassium pivalate",
+      "concentration": 0.153,
+      "ligand": "SCHEMBL15068049",
+      "solvent": "DMAc",
+      "temperature_c": 120
+    },
+    "started_at": "2026-07-30T18:52:40.815176+00:00",
+    "status": "success",
+    "submit_response": {
+      "result_ids": [
+        "bd7cb50e-f9a6-452b-bb81-e378a5f3f642"
+      ],
+      "success": true,
+      "warnings": []
+    },
+    "submitted_to_bo_mcp": true,
+    "suggestion_id": "5c67b3e2-9111-433f-97e5-5132c5731589"
+  },
+  "campaign_id": "598c5ca5-f5fe-4ca7-9540-a48427dfef92",
+  "diagnostics_present": true,
+  "failed_evaluations": 0,
+  "successful_evaluations": 60,
+  "updated_at": "2026-07-30T18:54:24.232195+00:00"
+}
+
+--- run_metadata.json
+{
+  "cache_buster_nonce": "781f35d8-caf8-4056-b13b-b664a37b1fc8",
+  "campaign_id": "598c5ca5-f5fe-4ca7-9540-a48427dfef92",
+  "invocation_marker": "akg-eval-b39a08cc7a4346709f3b2b030751f55c",
+  "max_attempts_this_invocation": 59,
+  "random_seed": 20260730,
+  "started_at": "2026-07-30T18:52:04.115150+00:00"
+}
+
+--- campaign_record.json
+{
+  "created_at": "2026-07-30T18:51:54.404331Z",
+  "description": "Direct arylation reaction-yield optimization over fixed fully crossed benchmark space; invocation_marker=akg-eval-b39a08cc7a4346709f3b2b030751f55c; cache_buster_nonce=781f35d8-caf8-4056-b13b-b664a37b1fc8",
+  "id": "598c5ca5-f5fe-4ca7-9540-a48427dfef92",
+  "iteration": 60,
+  "n_objectives": 1,
+  "n_parameters": 5,
+  "name": "direct-arylation-akg-eval-b39a08cc7a4346709f3b2b030751f55c-781f35d8-20260730T185153Z",
+  "spec_id": "f5b9cf7d-9de9-42fb-a6dd-0ceb45effdf8",
+  "status": "running",
+  "updated_at": "2026-07-30T18:53:08.742339Z"
+}
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

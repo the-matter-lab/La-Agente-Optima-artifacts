@@ -1,0 +1,49 @@
+exit_code=0
+
+=== stdout (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:11:24.329 POST api/api/v1/campaigns/status/batch
+[EVENT] Resuming campaign 6908297d-9d82-4c78-8996-23b422b46575 (status=paused)
+18:11:24.350 POST api/api/v1/campaigns/6908297d-9d82-4c78-8996-23b422b46575/lifecycle
+[EVENT] Resumed paused campaign
+18:11:24.500 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 1  results=1  action=bo_generate_suggestions  reason=Campaign healthy with 1 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:11:24.519 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 9e13de79-b741-40d6-a70b-71b3585cfa61: base='Potassium pivalate' | ligand='Methyldiphenylphosphine' | solvent='Butyornitrile' | concentration=0.1 | temperature_c=105.0
+18:11:24.627 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 1/60  yield=0.00%
+18:11:24.666 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:11:25.751 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 2  results=2  action=bo_generate_suggestions  reason=Campaign healthy with 2 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:11:25.774 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 9b1881e9-cfa5-4456-8ef8-3c456999c0eb: base='Potassium pivalate' | ligand='SCHEMBL15068049' | solvent='Butyornitrile' | concentration=0.153 | temperature_c=120.0
+18:11:25.839 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 2/60  yield=80.65%
+18:11:25.843 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:11:26.920 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 3  results=3  action=bo_generate_suggestions  reason=Campaign healthy with 3 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:11:26.942 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion bc5d853a-466f-476d-be70-cde4671e98d7: base='Cesium pivalate' | ligand='BrettPhos' | solvent='Butyornitrile' | concentration=0.153 | temperature_c=90.0
+18:11:27.012 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 3/60  yield=54.55%
+18:11:27.015 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:11:28.081 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 4  results=4  action=bo_generate_suggestions  reason=Campaign healthy with 4 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:11:28.103 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion ebda639f-e385-4b40-9da0-6c36c652aad4: base='Potassium pivalate' | ligand='SCHEMBL15068049' | solvent='Butyornitrile' | concentration=0.1 | temperature_c=90.0
+18:11:29.464 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 4/60  yield=57.18%
+18:11:29.467 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:11:30.809 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 5  results=5  action=bo_generate_suggestions  reason=Campaign healthy with 5 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:11:30.835 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 2e22da14-a0d1-4743-8d14-0ed263e75f22: base='Potassium pivalate' | ligand='Me2PPh' | solvent='Butyornitrile' | concentration=0.153 | temperature_c=120.0
+18:11:32.095 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 5/60  yield=0.00%
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

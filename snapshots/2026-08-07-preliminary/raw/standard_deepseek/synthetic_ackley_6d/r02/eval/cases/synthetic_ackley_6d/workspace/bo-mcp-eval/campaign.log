@@ -1,0 +1,233 @@
+2026-08-07 06:21:06,840 INFO campaign start  max_attempted=60  campaign_id=None
+2026-08-07 06:21:06,842 DEBUG Starting new HTTP connection (1): api:8000
+2026-08-07 06:21:06,849 DEBUG http://api:8000 "POST /api/v1/campaigns/validate HTTP/1.1" 200 204
+2026-08-07 06:21:06,860 DEBUG Starting new HTTPS connection (1): logfire-us.pydantic.dev:443
+2026-08-07 06:21:06,909 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:06,960 DEBUG http://api:8000 "POST /api/v1/campaigns HTTP/1.1" 201 190
+2026-08-07 06:21:06,960 INFO created campaign_id=43c0d331-e4f4-4bd7-8de4-e2f947b19be6
+2026-08-07 06:21:06,973 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 502
+2026-08-07 06:21:06,973 DEBUG next_action: {'status': 'created', 'iteration': 0, 'n_results': 0, 'action': 'bo_generate_suggestions', 'reason': 'No results yet — generate initial suggestions to start optimization.', 'urgency': 'normal'}
+2026-08-07 06:21:07,044 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:07,049 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2230
+2026-08-07 06:21:07,107 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:07,118 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 569
+2026-08-07 06:21:07,119 DEBUG next_action: {'status': 'running', 'iteration': 1, 'n_results': 3, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 3 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:07,180 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2237
+2026-08-07 06:21:07,182 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:07,248 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:07,259 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 569
+2026-08-07 06:21:07,260 DEBUG next_action: {'status': 'running', 'iteration': 2, 'n_results': 6, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 6 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:07,310 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2224
+2026-08-07 06:21:07,367 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:07,379 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 569
+2026-08-07 06:21:07,379 DEBUG next_action: {'status': 'running', 'iteration': 3, 'n_results': 9, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 9 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:07,429 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2227
+2026-08-07 06:21:07,556 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:07,567 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:21:07,568 DEBUG next_action: {'status': 'running', 'iteration': 4, 'n_results': 12, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 12 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:07,719 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:10,050 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2207
+2026-08-07 06:21:10,256 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:10,374 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:10,504 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:21:10,504 DEBUG next_action: {'status': 'running', 'iteration': 5, 'n_results': 15, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 15 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:10,792 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:13,510 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2207
+2026-08-07 06:21:13,578 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:13,593 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:21:13,594 DEBUG next_action: {'status': 'running', 'iteration': 6, 'n_results': 18, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 18 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:13,828 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:27,895 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2210
+2026-08-07 06:21:27,975 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:27,986 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:21:27,987 DEBUG next_action: {'status': 'running', 'iteration': 7, 'n_results': 21, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 21 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:28,369 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:33,491 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2205
+2026-08-07 06:21:33,558 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:33,569 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:21:33,569 DEBUG next_action: {'status': 'running', 'iteration': 8, 'n_results': 24, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 24 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:33,908 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:36,884 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2202
+2026-08-07 06:21:36,943 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:37,527 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:37,543 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:21:37,544 DEBUG next_action: {'status': 'running', 'iteration': 9, 'n_results': 27, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 27 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:37,978 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:42,499 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2212
+2026-08-07 06:21:42,595 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:42,607 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:21:42,608 DEBUG next_action: {'status': 'running', 'iteration': 10, 'n_results': 30, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 30 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:43,013 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:46,020 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2206
+2026-08-07 06:21:46,549 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:21:46,674 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:21:46,711 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:21:46,712 DEBUG next_action: {'status': 'running', 'iteration': 11, 'n_results': 33, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 33 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:21:47,086 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:22:05,879 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2209
+2026-08-07 06:22:05,960 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:22:05,973 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:22:05,973 DEBUG next_action: {'status': 'running', 'iteration': 12, 'n_results': 36, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 36 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:22:06,127 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:22:06,794 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/metrics HTTP/1.1" 200 2
+2026-08-07 06:22:33,507 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2206
+2026-08-07 06:22:33,670 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:22:35,137 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:22:35,149 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:22:35,149 DEBUG next_action: {'status': 'running', 'iteration': 13, 'n_results': 39, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 39 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:22:35,210 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:23:06,830 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/metrics HTTP/1.1" 200 2
+2026-08-07 06:28:26,901 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2207
+2026-08-07 06:28:27,030 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:28:27,043 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:28:27,044 DEBUG next_action: {'status': 'running', 'iteration': 14, 'n_results': 42, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 42 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:28:27,060 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:28:27,598 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:29:06,867 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/metrics HTTP/1.1" 200 2
+2026-08-07 06:30:00,712 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2210
+2026-08-07 06:30:00,801 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:30:01,107 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:30:01,122 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:30:01,123 DEBUG next_action: {'status': 'running', 'iteration': 15, 'n_results': 45, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 45 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:30:01,336 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:30:06,902 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/metrics HTTP/1.1" 200 2
+2026-08-07 06:30:12,780 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2206
+2026-08-07 06:30:12,890 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:30:12,901 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:30:12,913 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:30:12,914 DEBUG next_action: {'status': 'running', 'iteration': 16, 'n_results': 48, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 48 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:30:13,426 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:31:06,938 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/metrics HTTP/1.1" 200 2
+2026-08-07 06:32:23,434 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2210
+2026-08-07 06:32:23,498 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:32:23,612 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:32:23,624 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:32:23,624 DEBUG next_action: {'status': 'running', 'iteration': 17, 'n_results': 51, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 51 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:32:24,035 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:33:06,974 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/metrics HTTP/1.1" 200 2
+2026-08-07 06:50:21,274 INFO campaign start  max_attempted=60  campaign_id=None
+2026-08-07 06:50:21,278 DEBUG https://logfire-us.pydantic.dev:443 "GET /v1/info HTTP/1.1" 200 None
+2026-08-07 06:50:21,303 DEBUG Starting new HTTP connection (1): api:8000
+2026-08-07 06:50:21,311 DEBUG Starting new HTTPS connection (1): logfire-us.pydantic.dev:443
+2026-08-07 06:50:21,318 DEBUG http://api:8000 "POST /api/v1/campaigns/validate HTTP/1.1" 200 204
+2026-08-07 06:50:21,367 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:21,480 DEBUG http://api:8000 "POST /api/v1/campaigns HTTP/1.1" 201 190
+2026-08-07 06:50:21,481 INFO created campaign_id=f2910b33-0898-451d-a6f8-7171a4cca814
+2026-08-07 06:50:21,492 DEBUG http://api:8000 "GET /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 200 2
+2026-08-07 06:50:21,502 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:21,509 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 502
+2026-08-07 06:50:21,510 DEBUG next_action: {'status': 'created', 'iteration': 0, 'n_results': 0, 'action': 'bo_generate_suggestions', 'reason': 'No results yet — generate initial suggestions to start optimization.', 'urgency': 'normal'}
+2026-08-07 06:50:21,617 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2230
+2026-08-07 06:50:21,640 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:22,179 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:22,389 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:22,400 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 569
+2026-08-07 06:50:22,401 DEBUG next_action: {'status': 'running', 'iteration': 1, 'n_results': 3, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 3 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:22,553 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2237
+2026-08-07 06:50:22,697 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:22,710 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 569
+2026-08-07 06:50:22,710 DEBUG next_action: {'status': 'running', 'iteration': 2, 'n_results': 6, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 6 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:22,715 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:22,782 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2224
+2026-08-07 06:50:22,850 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:22,863 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 569
+2026-08-07 06:50:22,863 DEBUG next_action: {'status': 'running', 'iteration': 3, 'n_results': 9, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 9 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:23,003 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2227
+2026-08-07 06:50:23,181 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:23,191 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:50:23,192 DEBUG next_action: {'status': 'running', 'iteration': 4, 'n_results': 12, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 12 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:23,249 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:24,524 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2207
+2026-08-07 06:50:24,746 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:24,759 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:50:24,760 DEBUG next_action: {'status': 'running', 'iteration': 5, 'n_results': 15, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 15 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:24,783 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:25,321 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:27,477 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2207
+2026-08-07 06:50:27,588 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:27,600 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:50:27,600 DEBUG next_action: {'status': 'running', 'iteration': 6, 'n_results': 18, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 18 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:27,856 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:29,898 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2210
+2026-08-07 06:50:29,988 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:30,005 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:50:30,005 DEBUG next_action: {'status': 'running', 'iteration': 7, 'n_results': 21, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 21 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:30,390 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:33,412 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2205
+2026-08-07 06:50:33,927 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:33,952 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:33,966 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:50:33,967 DEBUG next_action: {'status': 'running', 'iteration': 8, 'n_results': 24, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 24 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:34,460 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:36,075 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2202
+2026-08-07 06:50:36,197 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:36,207 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 571
+2026-08-07 06:50:36,208 DEBUG next_action: {'status': 'running', 'iteration': 9, 'n_results': 27, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 27 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:36,497 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:39,921 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2212
+2026-08-07 06:50:40,035 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:40,066 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:40,079 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:50:40,079 DEBUG next_action: {'status': 'running', 'iteration': 10, 'n_results': 30, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 30 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:40,570 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:43,262 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2206
+2026-08-07 06:50:43,331 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:43,343 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:50:43,343 DEBUG next_action: {'status': 'running', 'iteration': 11, 'n_results': 33, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 33 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:43,604 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:47,651 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2209
+2026-08-07 06:50:47,971 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:47,987 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:50:47,987 DEBUG next_action: {'status': 'running', 'iteration': 12, 'n_results': 36, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 36 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:48,142 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:50,576 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2206
+2026-08-07 06:50:50,679 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:50,713 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:50,730 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:50:50,730 DEBUG next_action: {'status': 'running', 'iteration': 13, 'n_results': 39, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 39 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:51,213 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:56,999 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2207
+2026-08-07 06:50:57,110 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:57,124 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:50:57,125 DEBUG next_action: {'status': 'running', 'iteration': 14, 'n_results': 42, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 42 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:57,248 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:50:59,278 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2210
+2026-08-07 06:50:59,403 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:50:59,419 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:50:59,419 DEBUG next_action: {'status': 'running', 'iteration': 15, 'n_results': 45, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 45 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:50:59,786 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:51:03,773 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2206
+2026-08-07 06:51:03,822 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:51:04,893 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:51:04,907 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:51:04,907 DEBUG next_action: {'status': 'running', 'iteration': 16, 'n_results': 48, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 48 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:51:05,356 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:51:08,751 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2210
+2026-08-07 06:51:08,862 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:51:08,875 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:51:08,875 DEBUG next_action: {'status': 'running', 'iteration': 17, 'n_results': 51, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 51 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:51:08,895 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:51:09,429 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:51:11,055 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2208
+2026-08-07 06:51:11,220 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:51:11,232 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:51:11,233 DEBUG next_action: {'status': 'running', 'iteration': 18, 'n_results': 54, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 54 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:51:11,464 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:51:17,520 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2209
+2026-08-07 06:51:17,654 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:51:17,672 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:51:17,673 DEBUG next_action: {'status': 'running', 'iteration': 19, 'n_results': 57, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 57 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:51:18,002 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:51:21,244 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/metrics HTTP/1.1" 200 2
+2026-08-07 06:51:29,810 DEBUG http://api:8000 "POST /api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate?batch_size=3 HTTP/1.1" 201 2208
+2026-08-07 06:51:29,918 DEBUG http://api:8000 "POST /api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814 HTTP/1.1" 201 281
+2026-08-07 06:51:29,932 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:51:29,968 DEBUG http://api:8000 "POST /api/v1/campaigns/f2910b33-0898-451d-a6f8-7171a4cca814/lifecycle HTTP/1.1" 200 249
+2026-08-07 06:51:29,973 DEBUG Starting new HTTP connection (1): api:8000
+2026-08-07 06:51:30,038 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0
+2026-08-07 06:51:43,849 DEBUG http://api:8000 "GET /api/v1/diagnostics/f2910b33-0898-451d-a6f8-7171a4cca814?verbosity=standard&use_cache=true HTTP/1.1" 200 2913
+2026-08-07 06:51:43,850 INFO campaign end  attempted=60  campaign_id=f2910b33-0898-451d-a6f8-7171a4cca814
+2026-08-07 06:51:43,853 DEBUG Starting new HTTPS connection (1): logfire-us.pydantic.dev:443
+2026-08-07 06:51:43,902 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/metrics HTTP/1.1" 200 2
+2026-08-07 06:51:43,906 DEBUG Starting new HTTPS connection (1): logfire-us.pydantic.dev:443
+2026-08-07 06:51:43,960 DEBUG https://logfire-us.pydantic.dev:443 "POST /v1/traces HTTP/1.1" 200 0

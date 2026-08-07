@@ -1,0 +1,33 @@
+exit_code=0
+
+=== stdout (raw) ===
+
+--- ls ---
+total 28
+drwxr-xr-x 4 root root 4096 Jul 30 16:40 .
+drwxr-xr-x 3 root root 4096 Jul 30 16:34 ..
+-rw-r--r-- 1 root root 3231 Jul 30 16:39 HOW_TO_EXECUTE_CAMPAIGN.md
+drwxr-xr-x 3 root root 4096 Jul 30 16:40 ackley_6d
+drwxr-xr-x 2 root root 4096 Jul 30 16:40 artifacts
+-rw-r--r-- 1 root root  392 Jul 30 16:39 campaign_manifest.json
+-rwxr-xr-x 1 root root 3366 Jul 30 16:39 run_ackley_6d.py
+
+--- find ackley_6d ---
+ackley_6d/__init__.py
+ackley_6d/__pycache__/__init__.cpython-312.pyc
+ackley_6d/__pycache__/campaign.cpython-312.pyc
+ackley_6d/__pycache__/evaluator.cpython-312.pyc
+ackley_6d/__pycache__/intake.cpython-312.pyc
+ackley_6d/__pycache__/objective.cpython-312.pyc
+ackley_6d/__pycache__/search_space.cpython-312.pyc
+ackley_6d/campaign.py
+ackley_6d/evaluator.py
+ackley_6d/intake.py
+ackley_6d/objective.py
+ackley_6d/search_space.py
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

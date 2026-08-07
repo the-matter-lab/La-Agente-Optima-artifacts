@@ -1,0 +1,258 @@
+exit_code=0
+
+=== stdout (raw) ===
+06:50:21.302 POST api/api/v1/campaigns/validate
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Intake validated
+06:50:21.319 POST api/api/v1/campaigns
+[EVENT] Campaign created: f2910b33-0898-451d-a6f8-7171a4cca814
+06:50:21.482 GET api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+06:50:21.493 POST api/api/v1/campaigns/status/batch
+06:50:21.510 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=1
+[RESULT] idx=  1  surface_response=0.182714  raw_response=-18.266680
+[RESULT] idx=  2  surface_response=0.147199  raw_response=-19.060441
+[RESULT] idx=  3  surface_response=0.144647  raw_response=-19.117486
+06:50:21.619 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:22.390 POST api/api/v1/campaigns/status/batch
+06:50:22.401 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=2
+[RESULT] idx=  4  surface_response=0.163059  raw_response=-18.705959
+[RESULT] idx=  5  surface_response=0.174401  raw_response=-18.452461
+[RESULT] idx=  6  surface_response=0.154675  raw_response=-18.893362
+06:50:22.555 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:22.698 POST api/api/v1/campaigns/status/batch
+06:50:22.711 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=3
+[RESULT] idx=  7  surface_response=0.141804  raw_response=-19.181016
+[RESULT] idx=  8  surface_response=0.137468  raw_response=-19.277947
+[RESULT] idx=  9  surface_response=0.197321  raw_response=-17.940203
+06:50:22.784 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:22.852 POST api/api/v1/campaigns/status/batch
+06:50:22.864 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=4
+[RESULT] idx= 10  surface_response=0.147639  raw_response=-19.050616
+[RESULT] idx= 11  surface_response=0.159825  raw_response=-18.778251
+[RESULT] idx= 12  surface_response=0.165748  raw_response=-18.645876
+06:50:23.006 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:23.182 POST api/api/v1/campaigns/status/batch
+06:50:23.192 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=5
+[RESULT] idx= 13  surface_response=0.165865  raw_response=-18.643243
+[RESULT] idx= 14  surface_response=0.171699  raw_response=-18.512858
+[RESULT] idx= 15  surface_response=0.232006  raw_response=-17.164982
+06:50:24.526 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:24.748 POST api/api/v1/campaigns/status/batch
+06:50:24.760 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=6
+[RESULT] idx= 16  surface_response=0.252713  raw_response=-16.702157
+[RESULT] idx= 17  surface_response=0.183623  raw_response=-18.246355
+[RESULT] idx= 18  surface_response=0.286932  raw_response=-15.937347
+06:50:27.479 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:27.590 POST api/api/v1/campaigns/status/batch
+06:50:27.601 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=7
+[RESULT] idx= 19  surface_response=0.278794  raw_response=-16.119242
+[RESULT] idx= 20  surface_response=0.265527  raw_response=-16.415766
+[RESULT] idx= 21  surface_response=0.306905  raw_response=-15.490944
+06:50:29.899 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:29.991 POST api/api/v1/campaigns/status/batch
+06:50:30.006 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=8
+[RESULT] idx= 22  surface_response=0.311888  raw_response=-15.379577
+[RESULT] idx= 23  surface_response=0.386128  raw_response=-13.720295
+[RESULT] idx= 24  surface_response=0.246800  raw_response=-16.834332
+06:50:33.415 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:33.955 POST api/api/v1/campaigns/status/batch
+06:50:33.967 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=9
+[RESULT] idx= 25  surface_response=0.405485  raw_response=-13.287652
+[RESULT] idx= 26  surface_response=0.454330  raw_response=-12.195939
+[RESULT] idx= 27  surface_response=0.301076  raw_response=-15.621225
+06:50:36.077 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:36.198 POST api/api/v1/campaigns/status/batch
+06:50:36.208 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=10
+[RESULT] idx= 28  surface_response=0.385874  raw_response=-13.725967
+[RESULT] idx= 29  surface_response=0.543365  raw_response=-10.205981
+[RESULT] idx= 30  surface_response=0.302876  raw_response=-15.580999
+06:50:39.922 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:40.069 POST api/api/v1/campaigns/status/batch
+06:50:40.080 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=11
+[RESULT] idx= 31  surface_response=0.530516  raw_response=-10.493147
+[RESULT] idx= 32  surface_response=0.435735  raw_response=-12.611551
+[RESULT] idx= 33  surface_response=0.466522  raw_response=-11.923442
+06:50:43.264 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:43.334 POST api/api/v1/campaigns/status/batch
+06:50:43.343 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=12
+[RESULT] idx= 34  surface_response=0.461483  raw_response=-12.036066
+[RESULT] idx= 35  surface_response=0.468883  raw_response=-11.870670
+[RESULT] idx= 36  surface_response=0.618943  raw_response=-8.516784
+06:50:47.655 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:47.974 POST api/api/v1/campaigns/status/batch
+06:50:47.988 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=13
+[RESULT] idx= 37  surface_response=0.612595  raw_response=-8.658661
+[RESULT] idx= 38  surface_response=0.461937  raw_response=-12.025915
+[RESULT] idx= 39  surface_response=0.463475  raw_response=-11.991551
+06:50:50.578 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:50.716 POST api/api/v1/campaigns/status/batch
+06:50:50.730 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=14
+[RESULT] idx= 40  surface_response=0.620150  raw_response=-8.489799
+[RESULT] idx= 41  surface_response=0.483739  raw_response=-11.538632
+[RESULT] idx= 42  surface_response=0.743221  raw_response=-5.739115
+06:50:57.001 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:57.114 POST api/api/v1/campaigns/status/batch
+06:50:57.125 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=15
+[RESULT] idx= 43  surface_response=0.748187  raw_response=-5.628132
+[RESULT] idx= 44  surface_response=0.611223  raw_response=-8.689327
+[RESULT] idx= 45  surface_response=0.786614  raw_response=-4.769272
+06:50:59.279 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:50:59.407 POST api/api/v1/campaigns/status/batch
+06:50:59.419 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=16
+[RESULT] idx= 46  surface_response=0.834228  raw_response=-3.705075
+[RESULT] idx= 47  surface_response=0.180821  raw_response=-18.308989
+[RESULT] idx= 48  surface_response=0.622094  raw_response=-8.446351
+06:51:03.775 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:51:04.896 POST api/api/v1/campaigns/status/batch
+06:51:04.908 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=17
+[RESULT] idx= 49  surface_response=0.852113  raw_response=-3.305333
+[RESULT] idx= 50  surface_response=0.232308  raw_response=-17.158233
+[RESULT] idx= 51  surface_response=0.692297  raw_response=-6.877296
+06:51:08.754 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:51:08.865 POST api/api/v1/campaigns/status/batch
+06:51:08.875 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=18
+[RESULT] idx= 52  surface_response=0.869436  raw_response=-2.918166
+[RESULT] idx= 53  surface_response=0.757135  raw_response=-5.428127
+[RESULT] idx= 54  surface_response=0.257616  raw_response=-16.592589
+06:51:11.056 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:51:11.221 POST api/api/v1/campaigns/status/batch
+06:51:11.234 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=19
+[RESULT] idx= 55  surface_response=0.901640  raw_response=-2.198382
+[RESULT] idx= 56  surface_response=0.790998  raw_response=-4.671277
+[RESULT] idx= 57  surface_response=0.947595  raw_response=-1.171262
+06:51:17.523 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+06:51:17.658 POST api/api/v1/campaigns/status/batch
+06:51:17.673 POST api/api/v1/suggestions/f2910b33-0898-451d-a6f8-7171a4cca814/generate ? batch_size='3'
+[EVENT] Got 3 suggestion(s)  iteration=20
+[RESULT] idx= 58  surface_response=0.782722  raw_response=-4.856257
+[RESULT] idx= 59  surface_response=0.655910  raw_response=-7.690555
+[RESULT] idx= 60  surface_response=0.783667  raw_response=-4.835134
+06:51:29.812 POST api/api/v1/results/f2910b33-0898-451d-a6f8-7171a4cca814
+[EVENT] Submitted 3 result(s)
+[EVENT] Loop finished  attempted=60  campaign=f2910b33-0898-451d-a6f8-7171a4cca814
+06:51:29.921 POST api/api/v1/campaigns/status/batch
+06:51:29.932 POST api/api/v1/campaigns/f2910b33-0898-451d-a6f8-7171a4cca814/lifecycle
+[EVENT] Campaign f2910b33-0898-451d-a6f8-7171a4cca814 paused
+[EVENT] Results artifact: artifacts/results_20260807T065129Z.jsonl
+[RESULT] ====== FINAL REPORT ======
+[RESULT] Attempted evaluations : 60
+[RESULT] Successful evaluations: 60
+[RESULT] Failed evaluations     : 0
+[RESULT] Best surface_response : 0.947595
+[RESULT] Best raw_response     : -1.171262
+[RESULT] Best normalized coordinates:
+[RESULT]   x_1 = 0.504026
+[RESULT]   x_2 = 0.498019
+[RESULT]   x_3 = 0.512489
+[RESULT]   x_4 = 0.492781
+[RESULT]   x_5 = 0.496511
+[RESULT]   x_6 = 0.505438
+[RESULT] ====== ALL EVALUATIONS =====
+[RESULT]  idx  surface_response    raw_response        status
+[RESULT]    1          0.182714      -18.266680     completed
+[RESULT]    2          0.147199      -19.060441     completed
+[RESULT]    3          0.144647      -19.117486     completed
+[RESULT]    4          0.163059      -18.705959     completed
+[RESULT]    5          0.174401      -18.452461     completed
+[RESULT]    6          0.154675      -18.893362     completed
+[RESULT]    7          0.141804      -19.181016     completed
+[RESULT]    8          0.137468      -19.277947     completed
+[RESULT]    9          0.197321      -17.940203     completed
+[RESULT]   10          0.147639      -19.050616     completed
+[RESULT]   11          0.159825      -18.778251     completed
+[RESULT]   12          0.165748      -18.645876     completed
+[RESULT]   13          0.165865      -18.643243     completed
+[RESULT]   14          0.171699      -18.512858     completed
+[RESULT]   15          0.232006      -17.164982     completed
+[RESULT]   16          0.252713      -16.702157     completed
+[RESULT]   17          0.183623      -18.246355     completed
+[RESULT]   18          0.286932      -15.937347     completed
+[RESULT]   19          0.278794      -16.119242     completed
+[RESULT]   20          0.265527      -16.415766     completed
+[RESULT]   21          0.306905      -15.490944     completed
+[RESULT]   22          0.311888      -15.379577     completed
+[RESULT]   23          0.386128      -13.720295     completed
+[RESULT]   24          0.246800      -16.834332     completed
+[RESULT]   25          0.405485      -13.287652     completed
+[RESULT]   26          0.454330      -12.195939     completed
+[RESULT]   27          0.301076      -15.621225     completed
+[RESULT]   28          0.385874      -13.725967     completed
+[RESULT]   29          0.543365      -10.205981     completed
+[RESULT]   30          0.302876      -15.580999     completed
+[RESULT]   31          0.530516      -10.493147     completed
+[RESULT]   32          0.435735      -12.611551     completed
+[RESULT]   33          0.466522      -11.923442     completed
+[RESULT]   34          0.461483      -12.036066     completed
+[RESULT]   35          0.468883      -11.870670     completed
+[RESULT]   36          0.618943       -8.516784     completed
+[RESULT]   37          0.612595       -8.658661     completed
+[RESULT]   38          0.461937      -12.025915     completed
+[RESULT]   39          0.463475      -11.991551     completed
+[RESULT]   40          0.620150       -8.489799     completed
+[RESULT]   41          0.483739      -11.538632     completed
+[RESULT]   42          0.743221       -5.739115     completed
+[RESULT]   43          0.748187       -5.628132     completed
+[RESULT]   44          0.611223       -8.689327     completed
+[RESULT]   45          0.786614       -4.769272     completed
+[RESULT]   46          0.834228       -3.705075     completed
+[RESULT]   47          0.180821      -18.308989     completed
+[RESULT]   48          0.622094       -8.446351     completed
+[RESULT]   49          0.852113       -3.305333     completed
+[RESULT]   50          0.232308      -17.158233     completed
+[RESULT]   51          0.692297       -6.877296     completed
+[RESULT]   52          0.869436       -2.918166     completed
+[RESULT]   53          0.757135       -5.428127     completed
+[RESULT]   54          0.257616      -16.592589     completed
+[RESULT]   55          0.901640       -2.198382     completed
+[RESULT]   56          0.790998       -4.671277     completed
+[RESULT]   57          0.947595       -1.171262     completed
+[RESULT]   58          0.782722       -4.856257     completed
+[RESULT]   59          0.655910       -7.690555     completed
+[RESULT]   60          0.783667       -4.835134     completed
+06:51:29.972 GET api/api/v1/diagnostics/f2910b33-0898-451d-a6f8-7171a4cca814 ? use_cache='true' & verbosity='standard'
+[EVENT] Diagnostics saved: artifacts/diagnostics_20260807T065143Z.json
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

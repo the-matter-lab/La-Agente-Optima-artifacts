@@ -1,0 +1,143 @@
+{
+  "bo_mcp_git": {
+    "available": true,
+    "branch": "",
+    "dirty": true,
+    "repo_path": "/bo-mcp-source",
+    "sha": "716d75c7e82dd5dcd014c55fecab327fcd92a579",
+    "source": "cli"
+  },
+  "cli": {
+    "argv": [
+      "--case",
+      "synthetic_ackley_6d",
+      "--dry-run",
+      "--output-dir",
+      "/app/outputs/control/preflight",
+      "--architecture-mode",
+      "standard_subagent_script_bo_mcp",
+      "--bo-api-url",
+      "http://api:8000",
+      "--bo-mcp-repo-path",
+      "/bo-mcp-source",
+      "--tool-registry-config",
+      "tool_registry.gpu4pyscf.toml",
+      "--request-limit",
+      "80",
+      "--agent-timeout-seconds",
+      "3600",
+      "--model",
+      "openai-responses:gpt-5.4",
+      "--repeats",
+      "1",
+      "--repeat-cache-buster",
+      "uuid",
+      "--run-id",
+      "preflight-standard_gpt-20260730",
+      "--subagent-model",
+      "openai-responses:gpt-5.4"
+    ],
+    "command": "--case synthetic_ackley_6d --dry-run --output-dir /app/outputs/control/preflight --architecture-mode standard_subagent_script_bo_mcp --bo-api-url http://api:8000 --bo-mcp-repo-path /bo-mcp-source --tool-registry-config tool_registry.gpu4pyscf.toml --request-limit 80 --agent-timeout-seconds 3600 --model openai-responses:gpt-5.4 --repeats 1 --repeat-cache-buster uuid --run-id preflight-standard_gpt-20260730 --subagent-model openai-responses:gpt-5.4"
+  },
+  "environment": {
+    "env_file": null,
+    "env_file_values": {},
+    "process_env": {
+      "BO_API_URL": "http://api:8000",
+      "BO_MCP_API_KEY": "[REDACTED]",
+      "BO_MCP_API_URL": "http://api:8000",
+      "BO_MCP_REPO_PATH": "/bo-mcp-source",
+      "BO_MCP_URL": "http://mcp:8001/mcp",
+      "DIRECT_ARYLATION_API_URL": "http://direct-arylation-oracle:8000",
+      "GOOGLE_API_KEY": "<redacted:set>",
+      "GRAPHCHAT_DEEP_MEMORY_ROOT": "/app/outputs/cells/preflight/memory",
+      "LOGFIRE_TOKEN": "<redacted:set>",
+      "OPENAI_API_KEY": "[REDACTED]",
+      "OPENROUTER_API_KEY": "[REDACTED]",
+      "SPARQL_ENDPOINT": "http://localhost:27149/blazegraph/namespace/kb/sparql"
+    }
+  },
+  "eval": {
+    "agent_timeout_s": 3600.0,
+    "architecture_mode": "standard_subagent_script_bo_mcp",
+    "bo_api_url": "http://api:8000",
+    "case_configs": [
+      {
+        "evaluation_budget": 60,
+        "hypervolume_reference_point": null,
+        "id": "synthetic_ackley_6d",
+        "name": "Ackley synthetic surface optimization (6D)",
+        "objective_direction": "maximize",
+        "objective_name": "surface_response",
+        "objective_unit": "normalized_unitless",
+        "objective_verifier": "ackley_6d",
+        "objectives": [
+          {
+            "direction": "maximize",
+            "name": "surface_response",
+            "unit": "normalized_unitless"
+          }
+        ]
+      }
+    ],
+    "case_ids": [
+      "synthetic_ackley_6d"
+    ],
+    "dry_run": true,
+    "max_concurrency": 1,
+    "output_dir": "/app/outputs/control/preflight",
+    "request_limit": 80,
+    "selector": "synthetic_ackley_6d",
+    "tool_registry_config": "tool_registry.gpu4pyscf.toml"
+  },
+  "git": {
+    "available": true,
+    "branch": "ackley-direct-arylation-evidence-20260729",
+    "dirty": false,
+    "repo_path": "/app",
+    "sha": "4212ac2d7ceaedfd4d5896502e1af2bd2360486a"
+  },
+  "model": {
+    "model_id": "openai-responses:gpt-5.4",
+    "model_name": "gpt-5.4",
+    "provider": "openai-responses"
+  },
+  "model_settings": {
+    "settings": {
+      "openai_reasoning_effort": "medium",
+      "openai_reasoning_summary": "detailed",
+      "temperature": 1.0
+    },
+    "source": "grafico.core.http.llm_config"
+  },
+  "prompt_cache": {
+    "enabled": true,
+    "nonce": "b706446c-be1e-40bb-8db0-8ef886ba43c6",
+    "policy": "uuid"
+  },
+  "repeat": {
+    "repeat_count": 1,
+    "repeat_id": "repeat_001",
+    "repeat_index": 1
+  },
+  "run_id": "preflight-standard_gpt-20260730",
+  "schema_version": 1,
+  "subagent_model": {
+    "inherits_main_model": false,
+    "requested_model_id": "openai-responses:gpt-5.4",
+    "resolved_model": {
+      "model_id": "openai-responses:gpt-5.4",
+      "model_name": "gpt-5.4",
+      "provider": "openai-responses"
+    },
+    "resolved_model_settings": {
+      "settings": {
+        "openai_reasoning_effort": "medium",
+        "openai_reasoning_summary": "detailed",
+        "temperature": 1.0
+      },
+      "source": "grafico.core.http.llm_config"
+    }
+  },
+  "timestamp": "2026-07-30T15:55:23+00:00"
+}

@@ -1,0 +1,76 @@
+# HOW TO EXECUTE CAMPAIGN: 6D Ackley Synthetic Benchmark
+
+This document describes how to run, resume, and validate the 6D Ackley synthetic benchmark campaign.
+
+## Cache-Buster Nonce
+`392f1d3e-02b4-4859-8135-58e0621c6746`
+
+## Campaign Ownership Marker
+The exact campaign ownership marker is:
+`akg-eval-27628e9ae55a42e593594b0d8d0efe48`
+
+Every campaign created by this script will have this marker in its name.
+
+---
+
+## Environment Setup
+
+Ensure the following environment variables are set before running the script:
+```bash
+export BO_MCP_API_URL="http://api:8000"  # Or your live BO-MCP API URL
+export BO_MCP_API_KEY="[REDACTED]"     # Your BO-MCP API Key
+```
+
+---
+
+## Execution Commands
+
+### 1. Start a New Campaign
+To start a brand-new campaign with a budget of 60 attempted evaluations:
+```bash
+python run_ackley_6d.py --campaign-name "ackley_6d_benchmark_akg-eval-27628e9ae55a42e593594b0d8d0efe48" --budget 60
+```
+
+### 2. Resume an Existing Campaign
+If the campaign is interrupted or paused, you can resume it by passing the `--campaign-id` argument:
+```bash
+python run_ackley_6d.py --campaign-id "<campaign_id>" --budget 60
+```
+
+---
+
+## Budget Enforcement & Duplicate Prevention
+
+- **60-Attempt Budget**: The script reads the local append-only results log (`artifacts/results.jsonl`) at startup to count the number of attempted evaluations. If the count is already 60 or more, it exits immediately. Otherwise, it continues until exactly 60 attempts have been made.
+- **Duplicate Prevention**: The script maintains a set of evaluated coordinates. At startup, it populates this set from both the local results log and the server-persisted results (via `get_results`). Before evaluating any new suggestion, it checks if the coordinates have already been evaluated. If they have, it rejects the suggestion on the server and requests a new one, ensuring no point is evaluated more than once.
+
+---
+
+## Graceful Shutdown (Stop File)
+
+- **Stop File**: The script checks for the presence of a file named `STOP` (configurable via `--stop-file`) in the current working directory at the top of each loop iteration.
+- **Behavior**: If the `STOP` file is detected, the script prints `[EVENT]`, deletes the `STOP` file (so subsequent runs are not immediately stopped), pauses the campaign on the server, and exits gracefully.
+
+---
+
+## Output Tags & Logging
+
+The script prints unbuffered tagged lines to `stdout` for monitoring:
+- `[EVENT]`: State changes (e.g., campaign creation, loop start, pause, completion).
+- `[ALERT]`: Failures, duplicate detections, or stop conditions.
+- `[RESULT]`: Full per-experiment analysis (index, coordinates, surface response, raw response).
+- `[HEARTBEAT]`: Periodic liveness checks.
+
+All detailed logs are written to `artifacts/run.log`.
+
+---
+
+## Expected Outputs & Artifacts
+
+All artifacts are written to the `artifacts/` directory:
+- `artifacts/campaign_id.txt`: Contains the active `campaign_id` for easy retrieval.
+- `artifacts/results.jsonl`: Append-only JSON lines file containing one row per attempted evaluation.
+- `artifacts/run.log`: Detailed execution logs.
+
+### Final Report
+At the end of the run, a comprehensive table of all evaluated candidates and objective values is printed to `stdout`.

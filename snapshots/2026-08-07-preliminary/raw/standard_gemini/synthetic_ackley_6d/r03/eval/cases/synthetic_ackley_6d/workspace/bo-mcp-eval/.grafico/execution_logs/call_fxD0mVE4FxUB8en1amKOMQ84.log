@@ -1,0 +1,209 @@
+exit_code=0
+
+=== stdout (raw) ===
+/app/domains/bo_mcp/openapi.py:16:# (POST /api/v1/campaigns, components incl. all backend_options knobs) runs
+/app/domains/bo_mcp/client.py:43:       b. ``generate_suggestions(campaign_id, batch_size=...)`` — ask the BO
+/app/domains/bo_mcp/client.py:44:          backend for new candidate suggestions, or
+/app/domains/bo_mcp/client.py:68:       campaign by replaying its results as seeds — resume or reopen it.
+/app/domains/bo_mcp/client.py:94:            suggestion = client.generate_suggestions(campaign_id, batch_size=1)
+/app/domains/bo_mcp/client.py:190:        batch_size: int = 1,
+/app/domains/bo_mcp/client.py:193:        """Ask the BO backend for new candidates.
+/app/domains/bo_mcp/client.py:203:            params={"batch_size": batch_size},
+/app/pyproject.toml:3:build-backend = "setuptools.build_meta"
+/app/evals/bo_mcp/README.md:155:checks. For real Stage 1 eval runs, prefer the Docker backend path below so the
+/app/evals/bo_mcp/README.md:157:and startup prompt composition as the normal Grafico backend container.
+/app/evals/bo_mcp/README.md:518:with a larger budget when candidate-level timeouts or a faster chemistry backend
+/app/evals/bo_mcp/README.md:621:gpu4pyscf stacks and run the eval in a one-off `backend` service container. This
+/app/evals/bo_mcp/README.md:622:uses the same backend image, Docker network, `/app` repository layout, system
+/app/evals/bo_mcp/README.md:654:BO-MCP containers should be on the same Docker network as the backend and expose
+/app/evals/bo_mcp/README.md:658:Before running the one-off eval container, check that the already-running backend
+/app/evals/bo_mcp/README.md:662:docker exec "akg4pyscf-gpu-s${SLOT}-backend-1" getent hosts api mcp
+/app/evals/bo_mcp/README.md:663:docker exec "akg4pyscf-gpu-s${SLOT}-backend-1" \
+/app/evals/bo_mcp/README.md:665:docker exec "akg4pyscf-gpu-s${SLOT}-backend-1" \
+/app/evals/bo_mcp/README.md:669:Then run the toy eval in a one-off backend service container. Create the host
+/app/evals/bo_mcp/README.md:677:  backend python -m evals.bo_mcp.cli \
+/app/evals/bo_mcp/README.md:684:`/app/eval-output` inside the one-off backend container.
+/app/evals/bo_mcp/README.md:696:project environment used by the compose backend. Mounting outputs outside
+/app/evals/bo_mcp/README.md:706:read the campaign/results through REST. The compose `backend` service already
+/app/evals/bo_mcp/README.md:711:The command leans on the `backend` service defaults from
+/app/evals/bo_mcp/README.md:733:The extra `evals` and `examples` mounts are needed because the normal backend
+/app/evals/bo_mcp/README.md:736:backend environment but exposes this eval package and the canonical BO-MCP
+/app/evals/bo_mcp/README.md:751:To run the five established real benchmark examples from the compose backend,
+/app/evals/bo_mcp/README.md:819:`outputs/bo_mcp_evals/<case>_<timestamp>`; compose-backend runs should mount the
+/app/evals/bo_mcp/runner.py:174:def _build_eval_backend(workspace_path: Path):
+/app/evals/bo_mcp/runner.py:175:    """Build the eval workspace backend, mirroring ``chat.run_room``."""
+/app/evals/bo_mcp/runner.py:178:    return chat.build_workspace_backend(
+/app/evals/bo_mcp/runner.py:277:            backend = _build_eval_backend(workspace_path)
+/app/evals/bo_mcp/runner.py:305:                backend=backend,
+/app/evals/bo_mcp/runner.py:324:                backend=backend,
+/app/evals/bo_mcp/cases.py:308:Choose the backend, random seed, initialization strategy and size, batch
+/app/evals/bo_mcp/cases.py:309:schedule, and acquisition strategy yourself. Do not copy settings from prior
+/app/evals/bo_mcp/metrics.py:126:    "backend_requested",
+/app/evals/bo_mcp/metrics.py:127:    "backend_resolved",
+/app/evals/bo_mcp/metrics.py:128:    "batch_size",
+/app/evals/bo_mcp/metrics.py:131:    "initial_design_size",
+/app/evals/bo_mcp/metrics.py:132:    "random_seed",
+/app/evals/bo_mcp/metrics.py:138:    "acquisition",
+/app/evals/bo_mcp/metrics.py:139:    "backend_options",
+/app/evals/bo_mcp/metrics.py:244:def _backend_from_state(campaign: dict[str, Any]) -> Any:
+/app/evals/bo_mcp/metrics.py:245:    state = campaign.get("backend_state")
+/app/evals/bo_mcp/metrics.py:247:        backend = state.get("backend")
+/app/evals/bo_mcp/metrics.py:248:        if backend is not None:
+/app/evals/bo_mcp/metrics.py:249:            return backend
+/app/evals/bo_mcp/metrics.py:252:            return payload.get("backend")
+/app/evals/bo_mcp/metrics.py:264:    backend_requested = _first_present(
+/app/evals/bo_mcp/metrics.py:265:        spec.get("backend_requested"),
+/app/evals/bo_mcp/metrics.py:266:        spec.get("requested_backend"),
+/app/evals/bo_mcp/metrics.py:267:        spec.get("backend"),
+/app/evals/bo_mcp/metrics.py:268:        campaign.get("backend_requested"),
+/app/evals/bo_mcp/metrics.py:269:        campaign.get("requested_backend"),
+/app/evals/bo_mcp/metrics.py:271:    backend_resolved = _first_present(
+/app/evals/bo_mcp/metrics.py:272:        spec.get("backend_resolved"),
+/app/evals/bo_mcp/metrics.py:273:        spec.get("resolved_backend"),
+/app/evals/bo_mcp/metrics.py:274:        campaign.get("backend_resolved"),
+/app/evals/bo_mcp/metrics.py:275:        campaign.get("resolved_backend"),
+/app/evals/bo_mcp/metrics.py:276:        campaign.get("backend"),
+/app/evals/bo_mcp/metrics.py:277:        _backend_from_state(campaign),
+/app/evals/bo_mcp/metrics.py:279:    acquisition = {
+/app/evals/bo_mcp/metrics.py:281:            spec.get("acquisition_method"),
+/app/evals/bo_mcp/metrics.py:282:            spec.get("acquisition"),
+/app/evals/bo_mcp/metrics.py:283:            campaign.get("acquisition_method"),
+/app/evals/bo_mcp/metrics.py:287:                spec.get("acquisition_optimization"),
+/app/evals/bo_mcp/metrics.py:288:                campaign.get("acquisition_optimization"),
+/app/evals/bo_mcp/metrics.py:308:        "backend_requested": sanitized_campaign_payload(backend_requested),
+/app/evals/bo_mcp/metrics.py:309:        "backend_resolved": sanitized_campaign_payload(backend_resolved),
+/app/evals/bo_mcp/metrics.py:310:        "batch_size": _first_present(
+/app/evals/bo_mcp/metrics.py:311:            spec.get("batch_size"), campaign.get("batch_size")
+/app/evals/bo_mcp/metrics.py:319:        "initial_design_size_requested": _first_present(
+/app/evals/bo_mcp/metrics.py:320:            spec.get("initial_design_size_requested"),
+/app/evals/bo_mcp/metrics.py:321:            campaign.get("initial_design_size_requested"),
+/app/evals/bo_mcp/metrics.py:323:        "initial_design_size": _first_present(
+/app/evals/bo_mcp/metrics.py:324:            spec.get("initial_design_size"), campaign.get("initial_design_size")
+/app/evals/bo_mcp/metrics.py:326:        "initial_design_size_source": _first_present(
+/app/evals/bo_mcp/metrics.py:327:            spec.get("initial_design_size_source"),
+/app/evals/bo_mcp/metrics.py:328:            campaign.get("initial_design_size_source"),
+/app/evals/bo_mcp/metrics.py:330:        "random_seed": _first_present(
+/app/evals/bo_mcp/metrics.py:331:            spec.get("random_seed"), campaign.get("random_seed")
+/app/evals/bo_mcp/metrics.py:350:        "acquisition": acquisition,
+/app/evals/bo_mcp/metrics.py:351:        "backend_options": _dict_or_none(
+/app/evals/bo_mcp/metrics.py:352:            _first_present(spec.get("backend_options"), campaign.get("backend_options"))
+/app/evals/bo_mcp/metrics.py:395:        "backend_requested": config.get("backend_requested"),
+/app/evals/bo_mcp/metrics.py:396:        "backend_resolved": config.get("backend_resolved"),
+/app/evals/bo_mcp/metrics.py:397:        "campaign_batch_size": config.get("batch_size"),
+/app/evals/bo_mcp/metrics.py:400:        "campaign_initial_design_size": config.get("initial_design_size"),
+/app/evals/bo_mcp/metrics.py:401:        "campaign_random_seed": config.get("random_seed"),
+/app/evals/bo_mcp/architectures.py:349:also include `evaluation_index`, `batch_index`, and `batch_size` so its
+/app/domains/mofs/mlff/mlff_calculator.py:54:        prefer_gpu (bool): When True and device is None, pick an available GPU backend if possible.
+/app/domains/mofs/mof_graph.py:330:    Perform geometry optimization using a machine-learned force field backend
+/app/domains/mofs/mof_graph.py:338:        description="Name of the MLFF backend to use (e.g. 'MatterSim', 'Orb', 'MACE-MOF', 'MACE-OMOL').",
+/app/domains/mofs/mof_graph.py:359:        description="If True, prefer running on GPU when the backend supports it.",
+/app/domains/browser_automation/README.md:63:The browser automation runtime belongs to the backend environment that runs
+/app/domains/browser_automation/README.md:107:Set the backend environment to extension mode:
+/app/domains/composite/bo_agent_prompt_parts.py:52:    "existing campaign by replaying its results as seeds. Do not assign strong "
+/app/domains/composite/bo_agent_prompt_parts.py:147:    "resume, seeding, budgets) in the delegation — those decisions belong to "
+/app/domains/pyscf/graph/pyscf_graph.py:6:calculation seeds downstream tasks. Molecular analysis can run directly from the
+/app/domains/bo_mcp/openapi.py:16:# (POST /api/v1/campaigns, components incl. all backend_options knobs) runs
+/app/domains/bo_mcp/client.py:43:       b. ``generate_suggestions(campaign_id, batch_size=...)`` — ask the BO
+/app/domains/bo_mcp/client.py:44:          backend for new candidate suggestions, or
+/app/domains/bo_mcp/client.py:68:       campaign by replaying its results as seeds — resume or reopen it.
+/app/domains/bo_mcp/client.py:94:            suggestion = client.generate_suggestions(campaign_id, batch_size=1)
+/app/domains/bo_mcp/client.py:190:        batch_size: int = 1,
+/app/domains/bo_mcp/client.py:193:        """Ask the BO backend for new candidates.
+/app/domains/bo_mcp/client.py:203:            params={"batch_size": batch_size},
+/app/README.md:103:2. **[On cluster]** Start backend + frontend (monorepo subdirectory):
+/app/README.md:106:pnpm --dir graphchat dev # starts backend (crdt) + frontend concurrently
+/app/README.md:109:You might need to collect the port numbers for both backend and frontend to be used for port forwarding.
+/app/README.md:122:For Trillium-style single-user UI launches, pin the backend worker to one
+/app/README.md:149:> NOTE: here we assume you have port 3012 for backend and 5173 for frontend. For actual ports please refer to the one you collected in step 2 in [`Running GraphChat and Gráfico on a cluster node`](#running-graphchat-and-gráfico-on-a-cluster-node).
+/app/README.md:274:- `GRAPHCHAT_SERVICE_TOKEN`: shared service token between GraphChat backend and `chat.py`
+/app/README.md:276:- `ELAGENTE_ADMIN_URL`: external `elagente-admin` base URL used by GraphChat backend. This repo does not run that service.
+/app/README.md:281:- `AKG_PYSCF_MODAL_DOCKERFILE`: Dockerfile for the PySCF Modal image (default `Dockerfile.backend.gpu`)
+/app/README.md:416:We integrate with the [graphchat](https://github.com/EvoEvolver/graphchat) repository to connect our backend agent graph with the user interface.
+/app/tests/evals/bo_mcp/test_lean_eval.py:94:    _build_eval_backend,
+/app/tests/evals/bo_mcp/test_lean_eval.py:272:        "backend": "baybe",
+/app/tests/evals/bo_mcp/test_lean_eval.py:278:        "batch_size": 2,
+/app/tests/evals/bo_mcp/test_lean_eval.py:281:        "initial_design_size": 3,
+/app/tests/evals/bo_mcp/test_lean_eval.py:282:        "initial_design_size_requested": None,
+/app/tests/evals/bo_mcp/test_lean_eval.py:283:        "initial_design_size_source": "botorch_default",
+/app/tests/evals/bo_mcp/test_lean_eval.py:284:        "random_seed": 20260224,
+/app/tests/evals/bo_mcp/test_lean_eval.py:285:        "acquisition_method": "auto",
+/app/tests/evals/bo_mcp/test_lean_eval.py:286:        "backend_options": {"baybe": {"encoding": "one-hot"}},
+/app/tests/evals/bo_mcp/test_lean_eval.py:295:        "backend_requested": "baybe",
+/app/tests/evals/bo_mcp/test_lean_eval.py:296:        "backend_resolved": "baybe",
+/app/tests/evals/bo_mcp/test_lean_eval.py:300:        "batch_size": 2,
+/app/tests/evals/bo_mcp/test_lean_eval.py:303:        "initial_design_size": 3,
+/app/tests/evals/bo_mcp/test_lean_eval.py:304:        "initial_design_size_requested": None,
+/app/tests/evals/bo_mcp/test_lean_eval.py:305:        "initial_design_size_source": "botorch_default",
+/app/tests/evals/bo_mcp/test_lean_eval.py:306:        "random_seed": 20260224,
+/app/tests/evals/bo_mcp/test_lean_eval.py:307:        "acquisition_method": "auto",
+/app/tests/evals/bo_mcp/test_lean_eval.py:308:        "backend_options": {"baybe": {"encoding": "one-hot"}},
+/app/tests/evals/bo_mcp/test_lean_eval.py:441:            "backend": "baybe",
+/app/tests/evals/bo_mcp/test_lean_eval.py:442:            "batch_size": 2,
+/app/tests/evals/bo_mcp/test_lean_eval.py:444:            "initial_design_size": 3,
+/app/tests/evals/bo_mcp/test_lean_eval.py:445:            "initial_design_size_requested": None,
+/app/tests/evals/bo_mcp/test_lean_eval.py:446:            "initial_design_size_source": "botorch_default",
+/app/tests/evals/bo_mcp/test_lean_eval.py:447:            "random_seed": 20260224,
+/app/tests/evals/bo_mcp/test_lean_eval.py:450:            "backend_options": {"baybe": {"encoding": "one-hot"}},
+/app/tests/evals/bo_mcp/test_lean_eval.py:502:    assert metrics["campaign_config"]["backend_requested"] == "baybe"
+/app/tests/evals/bo_mcp/test_lean_eval.py:503:    assert metrics["campaign_config"]["backend_resolved"] is None
+/app/tests/evals/bo_mcp/test_lean_eval.py:504:    assert metrics["campaign_config"]["batch_size"] == 2
+/app/tests/evals/bo_mcp/test_lean_eval.py:506:    assert metrics["campaign_config"]["initial_design_size"] == 3
+/app/tests/evals/bo_mcp/test_lean_eval.py:507:    assert metrics["campaign_config"]["initial_design_size_requested"] is None
+/app/tests/evals/bo_mcp/test_lean_eval.py:508:    assert metrics["campaign_config"]["initial_design_size_source"] == "botorch_default"
+/app/tests/evals/bo_mcp/test_lean_eval.py:509:    assert metrics["campaign_config"]["random_seed"] == 20260224
+/app/tests/evals/bo_mcp/test_lean_eval.py:516:    assert metrics["backend_requested"] == "baybe"
+/app/tests/evals/bo_mcp/test_lean_eval.py:517:    assert metrics["backend_resolved"] is None
+/app/tests/evals/bo_mcp/test_lean_eval.py:518:    assert metrics["campaign_batch_size"] == 2
+/app/tests/evals/bo_mcp/test_lean_eval.py:520:    assert metrics["campaign_initial_design_size"] == 3
+/app/tests/evals/bo_mcp/test_lean_eval.py:521:    assert metrics["campaign_random_seed"] == 20260224
+/app/tests/evals/bo_mcp/test_lean_eval.py:579:            "backend_state": {"backend": "baybe"},
+/app/tests/evals/bo_mcp/test_lean_eval.py:584:            "backend": "baybe",
+/app/tests/evals/bo_mcp/test_lean_eval.py:593:            "batch_size": 2,
+/app/tests/evals/bo_mcp/test_lean_eval.py:594:            "backend_options": {"baybe": {"api_token": "secret-value"}},
+/app/tests/evals/bo_mcp/test_lean_eval.py:599:    assert config["backend_requested"] == "baybe"
+/app/tests/evals/bo_mcp/test_lean_eval.py:600:    assert config["backend_resolved"] == "baybe"
+/app/tests/evals/bo_mcp/test_lean_eval.py:601:    assert config["batch_size"] == 2
+/app/tests/evals/bo_mcp/test_lean_eval.py:603:    assert artifact["spec"]["backend_options"]["baybe"]["api_token"] == "[REDACTED]"
+/app/tests/evals/bo_mcp/test_lean_eval.py:604:    assert config["backend_options"]["baybe"]["api_token"] == "[REDACTED]"
+/app/tests/evals/bo_mcp/test_lean_eval.py:774:    assert payload["bo_mcp"]["campaign_config"]["backend_requested"] == "baybe"
+/app/tests/evals/bo_mcp/test_lean_eval.py:775:    assert payload["bo_mcp"]["campaign_config"]["backend_resolved"] == "baybe"
+/app/tests/evals/bo_mcp/test_lean_eval.py:776:    assert payload["bo_mcp"]["campaign_config"]["batch_size"] == 2
+/app/tests/evals/bo_mcp/test_lean_eval.py:779:    assert payload["bo_mcp"]["campaign_config"]["initial_design_size"] == 3
+/app/tests/evals/bo_mcp/test_lean_eval.py:780:    assert payload["bo_mcp"]["campaign_config"]["initial_design_size_requested"] is None
+/app/tests/evals/bo_mcp/test_lean_eval.py:782:        payload["bo_mcp"]["campaign_config"]["initial_design_size_source"]
+/app/tests/evals/bo_mcp/test_lean_eval.py:785:    assert payload["bo_mcp"]["campaign_config"]["random_seed"] == 20260224
+/app/tests/evals/bo_mcp/test_lean_eval.py:786:    assert payload["bo_mcp"]["backend_requested"] == "baybe"
+/app/tests/evals/bo_mcp/test_lean_eval.py:787:    assert payload["bo_mcp"]["campaign_batch_size"] == 2
+/app/tests/evals/bo_mcp/test_lean_eval.py:788:    assert payload["bo_mcp"]["campaign_initial_design_size"] == 3
+/app/tests/evals/bo_mcp/test_lean_eval.py:796:    assert config_payload["spec"]["backend_resolved"] == "baybe"
+/app/tests/evals/bo_mcp/test_lean_eval.py:3503:    monkeypatch.setattr(runner, "_build_eval_backend", lambda _: object())
+/app/tests/evals/bo_mcp/test_lean_eval.py:4164:        field in contract for field in ("evaluation_index", "batch_index", "batch_size")
+/app/tests/evals/bo_mcp/test_lean_eval.py:4199:def test_eval_backend_allows_writing_to_deep_memory_dir(tmp_path, monkeypatch):
+/app/tests/evals/bo_mcp/test_lean_eval.py:4201:    eval backend must allow-list it. Without that, the LocalBackend path guard
+/app/tests/evals/bo_mcp/test_lean_eval.py:4211:    backend = _build_eval_backend(workspace_path)
+/app/tests/evals/bo_mcp/test_lean_eval.py:4214:    result = backend.write(memory_file, "hello-123")
+/app/tests/domains/mofs/test_mlff_calculator_and_ase_utils.py:32:def get_perturbed_cu_fcc(a=3.6, perturbation_scale=0.5, seed=42):
+/app/tests/domains/mofs/test_mlff_calculator_and_ase_utils.py:33:    # Set random seed for reproducibility if provided
+/app/tests/domains/mofs/test_mlff_calculator_and_ase_utils.py:34:    if seed is not None:
+/app/tests/domains/mofs/test_mlff_calculator_and_ase_utils.py:35:        np.random.seed(seed)
+/app/tests/domains/mofs/test_mlff_calculator_and_ase_utils.py:121:        pytest.skip("PyTorch MPS backend not available")
+/app/tests/domains/mofs/conftest.py:34:    """Suppress JAX backend initialization messages."""
+/app/tests/domains/bo_mcp/test_client.py:174:def test_generate_suggestions_forwards_batch_size():
+/app/tests/domains/bo_mcp/test_client.py:180:    response = client.generate_suggestions("c1", batch_size=3)
+/app/tests/domains/bo_mcp/test_client.py:184:    assert call["params"] == {"batch_size": 3}
+/app/tests/test_docker_compose_gpu4pyscf.py:49:        "graphchat-backend-node-modules:/app/packages/backend/node_modules" in volumes
+/app/tests/test_docker_compose_gpu4pyscf.py:57:    assert "graphchat-backend-node-modules" in declared_volumes
+/app/tests/test_docker_compose_gpu4pyscf.py:61:def test_gpu4pyscf_backend_persists_local_chat_history_on_host():
+/app/tests/test_docker_compose_gpu4pyscf.py:64:    backend_volumes = compose["services"]["backend"]["volumes"]
+/app/tests/test_docker_compose_gpu4pyscf.py:66:    assert "./.chat_history:/app/.chat_history" in backend_volumes
+/app/tests/test_docker_compose_gpu4pyscf.py:69:def test_gpu4pyscf_backend_reaches_host_raise_broker_via_host_gateway():
+/app/tests/test_docker_compose_gpu4pyscf.py:72:    backend = compose["services"]["backend"]
+/app/tests/test_docker_compose_gpu4pyscf.py:73:    backend_env = backend["environment"]
+/app/tests/test_docker_compose_gpu4pyscf.py:75:    assert "host.docker.internal:host-gateway" in backend["extra_hosts"]
+/app/tests/test_docker_compose_gpu4pyscf.py:76:    assert backend_env["RAISE_PLATFORM_MQTT_HOSTNAME"] == "host.docker.internal"
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

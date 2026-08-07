@@ -1,0 +1,52 @@
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Starting 6D Ackley BO-MCP campaign
+  BO_MCP_API_URL: http://api:8000
+  Campaign ID: e2311138-639c-4b1a-9d87-ce71ecda9385
+  Poll interval: 15.0s
+  Heartbeat interval: 300.0s
+  Stop file: STOP
+  Artifact dir: artifacts
+19:14:46.944 Loaded existing results
+[EVENT] Resuming campaign e2311138-639c-4b1a-9d87-ce71ecda9385
+19:14:46.957 Campaign failed
+             │ pydantic_core._pydantic_core.ValidationError: 2 validation errors for CampaignResponse
+campaign_id
+  Field required [type=missing, input_value={'id': 'e2311138-639c-4b1...': 6, 'n_objectives': 1}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+intake
+  Field required [type=missing, input_value={'id': 'e2311138-639c-4b1...': 6, 'n_objectives': 1}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+             │ Traceback (most recent call last):
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 101, in main
+             │     campaign_id = run_campaign(
+             │                   ^^^^^^^^^^^^^
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_campaign/campaign/orchestrator.py", line 279, in run_campaign
+             │     return campaign.run()
+             │            ^^^^^^^^^^^^^^
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_campaign/campaign/orchestrator.py", line 222, in run
+             │     self.initialize_campaign()
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_campaign/campaign/orchestrator.py", line 200, in initialize_campaign
+             │     campaign = self.client.get_campaign(self.campaign_id)
+             │                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             │   File "/app/outputs/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_campaign/campaign/bo_client.py", line 127, in get_campaign
+             │     return CampaignResponse(**response.json())
+             │            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             │   File "/opt/venv/lib/python3.12/site-packages/pydantic/main.py", line 250, in __init__
+             │     validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+             │                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+             │ pydantic_core._pydantic_core.ValidationError: 2 validation errors for CampaignResponse
+             │ campaign_id
+             │   Field required [type=missing, input_value={'id': 'e2311138-639c-4b1...': 6, 'n_objectives': 1}, input_type=dict]
+             │     For further information visit https://errors.pydantic.dev/2.12/v/missing
+             │ intake
+             │   Field required [type=missing, input_value={'id': 'e2311138-639c-4b1...': 6, 'n_objectives': 1}, input_type=dict]
+             │     For further information visit https://errors.pydantic.dev/2.12/v/missing
+
+[ALERT] Campaign failed: 2 validation errors for CampaignResponse
+campaign_id
+  Field required [type=missing, input_value={'id': 'e2311138-639c-4b1...': 6, 'n_objectives': 1}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+intake
+  Field required [type=missing, input_value={'id': 'e2311138-639c-4b1...': 6, 'n_objectives': 1}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing

@@ -1,0 +1,419 @@
+exit_code=0
+
+=== stdout (raw) ===
+# direct_arylation/campaign.py
+
+import os
+import time
+import logfire
+from domains.bo_mcp.client import BoMcpClient, BoMcpOperationError
+from .intake import create_campaign_intake
+from .evaluator import evaluate_candidate
+from .reporting import print_final_summary
+
+def get_next_suggestion(client: BoMcpClient, campaign_id: str) -> dict | None:
+    """Get the next suggestion, reusing pending ones if available, or generating a new one."""
+    try:
+        pending = client.query_suggestions(campaign_id, status_filter="pending")
+        if pending:
+            logfire.info("Reusing pending suggestion: {suggestion_id}", suggestion_id=pending[0]["suggestion_id"])
+            return pending[0]
+    except Exception as e:
+        logfire.warning("Failed to query pending suggestions: {error}", error=str(e))
+        
+    try:
+        logfire.info("Generating new suggestion...")
+        resp = client.generate_suggestions(campaign_id, batch_size=1)
+        if resp.get("success") and resp.get("suggestions"):
+            return resp["suggestions"][0]
+    except BoMcpOperationError as e:
+        logfire.error("Operation error during suggestion generation: {error}", error=str(e))
+    except Exception as e:
+        logfire.error("Unexpected error during suggestion generation: {error}", error=str(e))
+        
+    return None
+
+def run_campaign(
+    campaign_id: str | None = None,
+    budget: int = 60,
+    stop_file: str = "STOP",
+    poll_s: int = 180,
+    heartbeat_s: int = 1800
+) -> str:
+    """Orchestrate the direct arylation optimization campaign."""
+    client = BoMcpClient.from_env()
+    
+    # 1. Create or resume campaign
+    if not campaign_id:
+        intake = create_campaign_intake()
+        campaign_name = intake["name"]
+        idempotency_key = client.make_idempotency_key("create", campaign_name)
+        
+        print(f"[EVENT] Creating new campaign: {campaign_name}")
+        try:
+            resp = client.create_campaign(intake, idempotency_key=idempotency_key)
+            campaign_id = resp["campaign_id"]
+            print(f"[EVENT] Campaign created successfully. ID: {campaign_id}")
+        except BoMcpOperationError as e:
+            print(f"[ALERT] Failed to create campaign: {e}")
+            raise
+    else:
+        print(f"[EVENT] Resuming existing campaign: {campaign_id}")
+        # Ensure campaign is resumed/reopened if needed
+        try:
+            decision = client.next_action(campaign_id)
+            status = decision.get("status")
+            if status == "paused":
+                client.lifecycle(campaign_id, action="resume")
+                print("[EVENT] Campaign resumed on server.")
+            elif status == "completed":
+                client.lifecycle(campaign_id, action="reopen")
+                print("[EVENT] Campaign reopened on server.")
+        except Exception as e:
+            print(f"[ALERT] Failed to check/resume campaign status: {e}")
+            raise
+
+    # 2. Initialize counts from server state
+    try:
+        all_suggestions = client.query_suggestions(campaign_id)
+        completed_count = sum(1 for s in all_suggestions if s.get("status") == "completed")
+        rejected_count = sum(1 for s in all_suggestions if s.get("status") == "rejected")
+        attempted_count = completed_count + rejected_count
+        successful_count = completed_count
+    except Exception as e:
+        print(f"[ALERT] Failed to query suggestions for initialization: {e}")
+        # Fallback to results count
+        try:
+            results = client.get_results(campaign_id)
+            successful_count = len(results)
+            attempted_count = successful_count
+            rejected_count = 0
+        except Exception:
+            successful_count = 0
+            attempted_count = 0
+            rejected_count = 0
+
+    print(f"[EVENT] Campaign state: {attempted_count}/{budget} attempts completed ({successful_count} successful, {attempted_count - successful_count} failed).")
+    
+    last_heartbeat = time.time()
+    failed_candidates = []
+    
+    # 3. Optimization loop
+    while attempted_count < budget:
+        # Check stop file
+        if os.path.exists(stop_file):
+            print(f"[EVENT] Stop file '{stop_file}' detected. Pausing campaign and exiting.")
+            try:
+                os.remove(stop_file)
+            except Exception as e:
+                print(f"[ALERT] Failed to remove stop file: {e}")
+            
+            try:
+                client.lifecycle(campaign_id, action="pause")
+                print("[EVENT] Campaign paused on server.")
+            except Exception as e:
+                print(f"[ALERT] Failed to pause campaign on server: {e}")
+            break
+            
+        # Check heartbeat
+        now = time.time()
+        if now - last_heartbeat >= heartbeat_s:
+            print(f"[HEARTBEAT] Liveness check. Attempted: {attempted_count}/{budget}, Successful: {successful_count}")
+            last_heartbeat = now
+            
+        # Check next action
+        try:
+            decision = client.next_action(campaign_id)
+            status = decision.get("status")
+            action = decision.get("action")
+            
+            if status == "paused":
+                client.lifecycle(campaign_id, action="resume")
+                continue
+            elif status == "completed":
+                client.lifecycle(campaign_id, action="reopen")
+                continue
+                
+            if action != "bo_generate_suggestions":
+                print(f"[EVENT] Server next action is '{action}'. Stopping loop.")
+                break
+        except Exception as e:
+            print(f"[ALERT] Failed to get next action from server: {e}")
+            time.sleep(10)
+            continue
+            
+        # Get next suggestion
+        suggestion = get_next_suggestion(client, campaign_id)
+        if not suggestion:
+            print("[ALERT] Failed to get or generate suggestion. Retrying in 10s...")
+            time.sleep(10)
+            continue
+            
+        candidate = suggestion["parameter_values"]
+        suggestion_id = suggestion["suggestion_id"]
+        
+        # Evaluate candidate
+        attempted_count += 1
+        result = evaluate_candidate(candidate)
+        
+        if result is not None:
+            successful_count += 1
+            yield_val = result["yield"]
+            
+            result_row = {
+                "parameter_values": candidate,
+                "objective_values": {"yield": yield_val},
+                "suggestion_id": suggestion_id
+            }
+            
+            idempotency_key = client.make_idempotency_key("submit", campaign_id, suggestion_id)
+            try:
+                client.submit_results(campaign_id, results=[result_row], idempotency_key=idempotency_key)
+                print(f"[RESULT] SUCCESS | base={candidate['base']}, ligand={candidate['ligand']}, solvent={candidate['solvent']}, concentration={candidate['concentration']}, temperature_c={candidate['temperature_c']} -> Yield: {yield_val:.2f}%")
+            except Exception as e:
+                print(f"[ALERT] Failed to submit result to BO-MCP: {e}")
+                successful_count -= 1
+        else:
+            # Record failure
+            failed_candidates.append({
+                "parameter_values": candidate,
+                "status": "failed"
+            })
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+                print(f"[RESULT] FAILED  | base={candidate['base']}, ligand={candidate['ligand']}, solvent={candidate['solvent']}, concentration={candidate['concentration']}, temperature_c={candidate['temperature_c']}")
+            except Exception as e:
+                print(f"[ALERT] Failed to reject suggestion: {e}")
+                
+        # Small sleep to prevent tight loops if things are fast
+        time.sleep(1.0)
+
+    # 4. Pause campaign at the end of invocation
+    try:
+        client.lifecycle(campaign_id, action="pause")
+        print("[EVENT] Campaign paused at the end of invocation.")
+    except Exception as e:
+        print(f"[ALERT] Failed to pause campaign on server: {e}")
+
+    # 5. Print final summary
+    try:
+        results = client.get_results(campaign_id)
+        print_final_summary(results, attempted_count, successful_count, failed_candidates)
+    except Exception as e:
+        print(f"[ALERT] Failed to fetch results for final summary: {e}")
+        
+    return campaign_id
+\n===== evaluator =====\n
+# direct_arylation/evaluator.py
+
+import os
+import requests
+import logfire
+
+def evaluate_candidate(candidate: dict, timeout_s: float = 30.0) -> dict | None:
+    """Evaluate a single candidate against the direct arylation oracle.
+    
+    Reads the base URL from the environment variable DIRECT_ARYLATION_API_URL.
+    Returns a dict with the measured objective value, e.g., {"yield": 78.95},
+    or None if the evaluation failed (non-2xx response or connection error).
+    """
+    base_url = os.getenv("DIRECT_ARYLATION_API_URL")
+    if not base_url:
+        raise ValueError("DIRECT_ARYLATION_API_URL environment variable is not set.")
+        
+    url = f"{base_url.rstrip('/')}/v1/evaluate"
+    
+    # Ensure correct types for discrete parameters
+    payload = {
+        "base": str(candidate["base"]),
+        "ligand": str(candidate["ligand"]),
+        "solvent": str(candidate["solvent"]),
+        "concentration": float(candidate["concentration"]),
+        "temperature_c": int(candidate["temperature_c"])
+    }
+    
+    logfire.info("Evaluating candidate: {payload}", payload=payload)
+    
+    try:
+        response = requests.post(url, json=payload, timeout=timeout_s)
+        if response.status_code >= 200 and response.status_code < 300:
+            result = response.json()
+            logfire.info("Evaluation succeeded: {result}", result=result)
+            return result
+        else:
+            logfire.error(
+                "Evaluation failed with status code {status_code}: {text}",
+                status_code=response.status_code,
+                text=response.text
+            )
+            return None
+    except Exception as e:
+        logfire.error("Evaluation failed with exception: {error}", error=str(e))
+        return None
+\n===== reporting =====\n
+# direct_arylation/reporting.py
+
+import logfire
+
+def extract_best_result(results: list[dict]) -> dict | None:
+    """Extract the best result (highest yield) from a list of results.
+    
+    Each result is expected to have 'parameter_values' and 'objective_values'.
+    """
+    best_result = None
+    best_yield = -float("inf")
+    
+    for r in results:
+        obj = r.get("objective_values", {})
+        y = obj.get("yield")
+        if y is not None and y > best_yield:
+            best_yield = y
+            best_result = r
+            
+    return best_result
+
+def print_final_summary(
+    results: list[dict],
+    attempted_count: int,
+    successful_count: int,
+    failed_candidates: list[dict]
+) -> None:
+    """Print a concise, readable, and UI-friendly final summary of the campaign."""
+    best_res = extract_best_result(results)
+    
+    print("\n" + "="*60)
+    print(" DIRECT ARYLATION OPTIMIZATION CAMPAIGN SUMMARY")
+    print("="*60)
+    print(f"Attempted Evaluations:  {attempted_count}")
+    print(f"Successful Evaluations: {successful_count}")
+    print(f"Failed Evaluations:     {len(failed_candidates)}")
+    
+    if best_res:
+        best_params = best_res["parameter_values"]
+        best_yield = best_res["objective_values"]["yield"]
+        print("\n[RESULT] BEST REACTION CONDITIONS FOUND:")
+        for k, v in best_params.items():
+            print(f"  - {k}: {v}")
+        print(f"  - [RESULT] Best Measured Yield: {best_yield:.2f}%")
+    else:
+        print("\n[ALERT] No successful evaluations were recorded.")
+        
+    print("\n" + "-"*60)
+    print(" ALL EVALUATED CANDIDATES:")
+    print("-"*60)
+    
+    # Print successful ones
+    for idx, r in enumerate(results, 1):
+        params = r["parameter_values"]
+        y = r["objective_values"]["yield"]
+        param_str = ", ".join(f"{k}={v}" for k, v in params.items())
+        print(f"[{idx:02d}] SUCCESS | {param_str} -> Yield: {y:.2f}%")
+        
+    # Print failed ones
+    for idx, f in enumerate(failed_candidates, len(results) + 1):
+        params = f.get("parameter_values") or f
+        param_str = ", ".join(f"{k}={v}" for k, v in params.items())
+        print(f"[{idx:02d}] FAILED  | {param_str}")
+        
+    print("="*60 + "\n")
+    
+    # Logfire logging
+    if best_res:
+        logfire.info(
+            "Campaign completed. Best yield: {best_yield}% with conditions {best_params}",
+            best_yield=best_res["objective_values"]["yield"],
+            best_params=best_res["parameter_values"]
+        )
+\n===== intake =====\n
+# direct_arylation/intake.py
+
+from .search_space import get_parameters
+
+def create_campaign_intake(campaign_name: str | None = None) -> dict:
+    """Create the campaign intake payload.
+    
+    The campaign name must include the exact marker:
+    akg-eval-3032662cf5a04c1a98983c411654768c
+    """
+    marker = "akg-eval-3032662cf5a04c1a98983c411654768c"
+    if campaign_name:
+        if marker not in campaign_name:
+            name = f"{campaign_name}_{marker}"
+        else:
+            name = campaign_name
+    else:
+        name = f"direct_arylation_optimization_{marker}"
+        
+    return {
+        "name": name,
+        "description": "Direct arylation reaction-yield optimization benchmark",
+        "backend": "auto",
+        "objectives": [
+            {
+                "name": "yield",
+                "direction": "maximize"
+            }
+        ],
+        "parameters": get_parameters()
+    }
+\n===== search_space =====\n
+# direct_arylation/search_space.py
+
+def get_parameters() -> list[dict]:
+    """Return the list of input parameters for the direct arylation campaign."""
+    return [
+        {
+            "name": "base",
+            "type": "categorical",
+            "categories": [
+                "Potassium acetate",
+                "Potassium pivalate",
+                "Cesium acetate",
+                "Cesium pivalate"
+            ]
+        },
+        {
+            "name": "ligand",
+            "type": "categorical",
+            "categories": [
+                "BrettPhos",
+                "Di-tert-butylphenylphosphine",
+                "(t-Bu)PhCPhos",
+                "Tricyclohexylphosphine",
+                "PPh3",
+                "XPhos",
+                "P(2-furyl)3",
+                "Methyldiphenylphosphine",
+                "1268824-69-6",
+                "JackiePhos",
+                "SCHEMBL15068049",
+                "Me2PPh"
+            ]
+        },
+        {
+            "name": "solvent",
+            "type": "categorical",
+            "categories": [
+                "DMAc",
+                "Butyornitrile",
+                "Butyl Ester",
+                "p-Xylene"
+            ]
+        },
+        {
+            "name": "concentration",
+            "type": "discrete",
+            "values": [0.057, 0.1, 0.153]
+        },
+        {
+            "name": "temperature_c",
+            "type": "discrete",
+            "values": [90, 105, 120]
+        }
+    ]
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,171 @@
+
+[2026-07-30T15:46:16.240245Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Network mx-20260730-no-bo-gpt_default Creating 
+ Network mx-20260730-no-bo-gpt_default Created 
+ Volume mx-20260730-no-bo-gpt_postgres-data Creating 
+ Volume mx-20260730-no-bo-gpt_postgres-data Created 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Creating 
+ Container mx-20260730-no-bo-gpt-db-1 Creating 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Created 
+ Container mx-20260730-no-bo-gpt-db-1 Created 
+ Container mx-20260730-no-bo-gpt-api-1 Creating 
+ Container mx-20260730-no-bo-gpt-api-1 Created 
+ Container mx-20260730-no-bo-gpt-mcp-1 Creating 
+ Container mx-20260730-no-bo-gpt-mcp-1 Created 
+ Container mx-20260730-no-bo-gpt-db-1 Starting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Waiting 
+ Container mx-20260730-no-bo-gpt-db-1 Healthy 
+ Container mx-20260730-no-bo-gpt-api-1 Starting 
+ Container mx-20260730-no-bo-gpt-api-1 Started 
+ Container mx-20260730-no-bo-gpt-api-1 Waiting 
+ Container mx-20260730-no-bo-gpt-api-1 Healthy 
+ Container mx-20260730-no-bo-gpt-mcp-1 Starting 
+ Container mx-20260730-no-bo-gpt-mcp-1 Started 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-no-bo-gpt-db-1 Waiting 
+ Container mx-20260730-no-bo-gpt-api-1 Waiting 
+ Container mx-20260730-no-bo-gpt-mcp-1 Waiting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-no-bo-gpt-db-1 Healthy 
+ Container mx-20260730-no-bo-gpt-api-1 Healthy 
+ Container mx-20260730-no-bo-gpt-mcp-1 Healthy 
+[2026-07-30T15:49:33.110169Z] EXIT 0
+
+[2026-07-30T15:49:33.813480Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--dry-run", "--output-dir", "/app/outputs/control/preflight", "--architecture-mode", "main_agent_script_no_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "preflight-no_bo_gpt-20260730"]
+ Container mx-20260730-no-bo-gpt-eval-run-b8b32ef055e0 Creating 
+ Container mx-20260730-no-bo-gpt-eval-run-b8b32ef055e0 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+15:49:57.478 evaluate bo_mcp_graph_eval
+15:49:57.479   case: synthetic_ackley_6d
+15:49:57.480     execute _run_case
+[2026-07-30T15:50:10.380208Z] EXIT 0
+
+[2026-07-30T15:50:11.951103Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-no-bo-gpt-mcp-1 Stopping 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-no-bo-gpt-mcp-1 Stopped 
+ Container mx-20260730-no-bo-gpt-api-1 Stopping 
+ Container mx-20260730-no-bo-gpt-api-1 Stopped 
+ Container mx-20260730-no-bo-gpt-db-1 Stopping 
+ Container mx-20260730-no-bo-gpt-db-1 Stopped 
+[2026-07-30T15:50:26.983354Z] EXIT 0
+
+[2026-07-30T15:50:54.199594Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-no-bo-gpt-db-1 Recreate 
+ Container mx-20260730-no-bo-gpt-db-1 Recreated 
+ Container mx-20260730-no-bo-gpt-db-1 Starting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Waiting 
+ Container mx-20260730-no-bo-gpt-db-1 Healthy 
+ Container mx-20260730-no-bo-gpt-api-1 Starting 
+ Container mx-20260730-no-bo-gpt-api-1 Started 
+ Container mx-20260730-no-bo-gpt-api-1 Waiting 
+ Container mx-20260730-no-bo-gpt-api-1 Healthy 
+ Container mx-20260730-no-bo-gpt-mcp-1 Starting 
+ Container mx-20260730-no-bo-gpt-mcp-1 Started 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-no-bo-gpt-db-1 Waiting 
+ Container mx-20260730-no-bo-gpt-api-1 Waiting 
+ Container mx-20260730-no-bo-gpt-mcp-1 Waiting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-no-bo-gpt-db-1 Healthy 
+ Container mx-20260730-no-bo-gpt-api-1 Healthy 
+ Container mx-20260730-no-bo-gpt-mcp-1 Healthy 
+[2026-07-30T15:53:33.999368Z] EXIT 0
+
+[2026-07-30T16:05:03.690755Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-07-30T16:05:05.763752Z] EXIT 0
+
+[2026-07-30T16:05:08.788644Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-no-bo-gpt-mcp-1 Stopping 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-no-bo-gpt-mcp-1 Stopped 
+ Container mx-20260730-no-bo-gpt-api-1 Stopping 
+ Container mx-20260730-no-bo-gpt-api-1 Stopped 
+ Container mx-20260730-no-bo-gpt-db-1 Stopping 
+ Container mx-20260730-no-bo-gpt-db-1 Stopped 
+[2026-07-30T16:05:24.717762Z] EXIT 0
+
+[2026-07-30T17:40:01.995479Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-no-bo-gpt-db-1 Starting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-no-bo-gpt-db-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Waiting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Healthy 
+ Container mx-20260730-no-bo-gpt-api-1 Starting 
+ Container mx-20260730-no-bo-gpt-api-1 Started 
+ Container mx-20260730-no-bo-gpt-api-1 Waiting 
+ Container mx-20260730-no-bo-gpt-api-1 Healthy 
+ Container mx-20260730-no-bo-gpt-mcp-1 Starting 
+ Container mx-20260730-no-bo-gpt-mcp-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Waiting 
+ Container mx-20260730-no-bo-gpt-api-1 Waiting 
+ Container mx-20260730-no-bo-gpt-mcp-1 Waiting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-no-bo-gpt-api-1 Healthy 
+ Container mx-20260730-no-bo-gpt-db-1 Healthy 
+ Container mx-20260730-no-bo-gpt-mcp-1 Healthy 
+[2026-07-30T17:41:11.762670Z] EXIT 0
+
+[2026-07-30T17:41:12.561345Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-07-30T17:41:12.904992Z] EXIT 0
+
+[2026-07-30T17:41:13.147833Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-no-bo-gpt-mcp-1 Stopping 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-no-bo-gpt-mcp-1 Stopped 
+ Container mx-20260730-no-bo-gpt-api-1 Stopping 
+ Container mx-20260730-no-bo-gpt-api-1 Stopped 
+ Container mx-20260730-no-bo-gpt-db-1 Stopping 
+ Container mx-20260730-no-bo-gpt-db-1 Stopped 
+[2026-07-30T17:41:21.283769Z] EXIT 0
+
+[2026-07-30T18:20:50.938234Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-no-bo-gpt-db-1 Starting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Waiting 
+ Container mx-20260730-no-bo-gpt-db-1 Healthy 
+ Container mx-20260730-no-bo-gpt-api-1 Starting 
+ Container mx-20260730-no-bo-gpt-api-1 Started 
+ Container mx-20260730-no-bo-gpt-api-1 Waiting 
+ Container mx-20260730-no-bo-gpt-api-1 Healthy 
+ Container mx-20260730-no-bo-gpt-mcp-1 Starting 
+ Container mx-20260730-no-bo-gpt-mcp-1 Started 
+ Container mx-20260730-no-bo-gpt-db-1 Waiting 
+ Container mx-20260730-no-bo-gpt-api-1 Waiting 
+ Container mx-20260730-no-bo-gpt-mcp-1 Waiting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-no-bo-gpt-api-1 Healthy 
+ Container mx-20260730-no-bo-gpt-db-1 Healthy 
+ Container mx-20260730-no-bo-gpt-mcp-1 Healthy 
+[2026-07-30T18:22:13.664130Z] EXIT 0
+
+[2026-07-30T18:40:33.955485Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-07-30T18:40:39.500770Z] EXIT 0
+
+[2026-07-30T18:40:39.834821Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-no-bo-gpt-mcp-1 Stopping 
+ Container mx-20260730-no-bo-gpt-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-no-bo-gpt-mcp-1 Stopped 
+ Container mx-20260730-no-bo-gpt-api-1 Stopping 
+ Container mx-20260730-no-bo-gpt-api-1 Stopped 
+ Container mx-20260730-no-bo-gpt-db-1 Stopping 
+ Container mx-20260730-no-bo-gpt-db-1 Stopped 
+[2026-07-30T18:40:48.018324Z] EXIT 0

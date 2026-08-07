@@ -1,0 +1,68 @@
+exit_code=0
+
+=== stdout (raw) ===
+### AcquisitionMethod
+{
+  "type": "string",
+  "enum": [
+    "auto",
+    "noisy_expected_improvement",
+    "expected_improvement",
+    "hypervolume_improvement",
+    "scalarized_multi_objective",
+    "cost_weighted_ei",
+    "multi_fidelity_kg",
+    "upper_confidence_bound",
+    "probability_of_improvement",
+    "simple_regret",
+    "posterior_mean",
+    "posterior_standard_deviation",
+    "thompson_sampling",
+    "knowledge_gradient",
+    "active_learning",
+    "expected_improvement_nonlog",
+    "noisy_expected_improvement_nonlog",
+    "hypervolume_improvement_nonlog"
+  ],
+  "title": "AcquisitionMethod",
+  "description": "Acquisition function method.\n\nValues are backend-agnostic semantic names. The mapping to concrete\nBoTorch classes lives inside ``bo_engine.acquisition``; the BayBE\nmapping lives in ``bo_engine_baybe.converters``. Not every member is\nexpressible on every backend \u2014 each backend's\n``validate_capabilities`` classifies unmappable members as\n``UNSUPPORTED`` so ``backend=\"auto\"`` routes to a backend that honors\nthe request and a pinned incompatible backend fails loudly.\n\nSemantic families:\n\n* Improvement-based: ``NOISY_EI`` / ``EXPECTED_IMPROVEMENT`` (log\n  variants, the defaults) and their explicit non-log siblings\n  ``*_NONLOG`` for callers that need the classic formulation.\n* Exploration: ``UPPER_CONFIDENCE_BOUND`` (tunable ``acquisition_beta``)\n  and ``POSTERIOR_STANDARD_DEVIATION`` (pure exploration).\n* Exploitation: ``POSTERIOR_MEAN`` and ``SIMPLE_REGRET`` (its\n  Monte-Carlo counterpart).\n* Active learning: ``ACTIVE_LEARNING`` (negated integrated posterior\n  variance, qNIPV).\n* Lookahead / randomized: ``KNOWLEDGE_GRADIENT``, ``THOMPSON_SAMPLING``.\n* Multi-objective: ``HYPERVOLUME_IMPROVEMENT`` (+ ``_NONLOG``) and\n  ``SCALARIZED_MULTI_OBJ``."
+}
+### ParameterType
+{
+  "type": "string",
+  "enum": [
+    "continuous",
+    "discrete",
+    "categorical"
+  ],
+  "title": "ParameterType",
+  "description": "Type of input parameter."
+}
+### TargetMode
+{
+  "type": "string",
+  "enum": [
+    "minimize",
+    "maximize",
+    "match"
+  ],
+  "title": "TargetMode",
+  "description": "Optimization direction / goal of a single objective.\n\n``MATCH`` targets a specific value (``ObjectiveSpec.target_value``)\ninstead of a direction \u2014 the common lab ask \"hit pH 7.4\" \u2014 with the\ndistance-to-target shape selected by :class:`MatchShape`."
+}
+### VerbosityLevel
+{
+  "type": "string",
+  "enum": [
+    "minimal",
+    "standard",
+    "detailed"
+  ],
+  "title": "VerbosityLevel",
+  "description": "Verbosity levels for MCP tool responses.\n\nAttributes:\n    MINIMAL: ~50 tokens - success + key metric only\n    STANDARD: ~200 tokens - current default (excludes debug fields)\n    DETAILED: ~500+ tokens - all fields including debug info"
+}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

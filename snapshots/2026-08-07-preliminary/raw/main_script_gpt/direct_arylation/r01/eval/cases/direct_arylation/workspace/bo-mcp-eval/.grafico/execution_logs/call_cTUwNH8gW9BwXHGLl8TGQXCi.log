@@ -1,0 +1,26 @@
+exit_code=0
+
+=== stdout (raw) ===
+18:37:07.725 POST api/api/v1/campaigns/validate
+18:37:07.742 validated intake
+18:37:07.742 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:37:07.990 created campaign
+18:37:07.991 GET api/api/v1/campaigns/8aa011e1-ff2f-41ca-94c4-83ebd78e96e6
+18:37:08.001 POST api/api/v1/campaigns/status/batch
+18:37:08.014 POST api/api/v1/suggestions/8aa011e1-ff2f-41ca-94c4-83ebd78e96e6/query
+18:37:08.023 POST api/api/v1/suggestions/8aa011e1-ff2f-41ca-94c4-83ebd78e96e6/generate ? batch_size='1'
+18:37:08.155 GET api/api/v1/campaigns/8aa011e1-ff2f-41ca-94c4-83ebd78e96e6
+18:37:08.167 POST api/api/v1/campaigns/8aa011e1-ff2f-41ca-94c4-83ebd78e96e6/lifecycle
+18:37:08.225 GET api/api/v1/campaigns/8aa011e1-ff2f-41ca-94c4-83ebd78e96e6
+18:37:08.239 GET api/api/v1/campaigns/8aa011e1-ff2f-41ca-94c4-83ebd78e96e6/export ? format='csv'
+campaign_id=8aa011e1-ff2f-41ca-94c4-83ebd78e96e6
+artifact_dir=artifacts/direct_arylation_bo_smoke_20260730T183707Z
+mode=smoke_test
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

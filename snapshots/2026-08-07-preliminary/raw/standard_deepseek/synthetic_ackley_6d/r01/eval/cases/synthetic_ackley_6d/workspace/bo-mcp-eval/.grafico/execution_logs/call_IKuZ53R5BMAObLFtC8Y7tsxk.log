@@ -1,0 +1,33 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/ackley_benchmark_fast_20260807T055423Z.log
+05:54:27.663 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=12  surface_response=0.038449  raw_response=-21.491043  params={x_1=0.8682, x_2=0.4138, x_3=0.4024, x_4=0.9147, x_5=0.0156, x_6=0.6034}
+05:54:27.721 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=12  n_results=12  status=running
+05:54:27.732 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:32.989 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=13  surface_response=0.045042  raw_response=-21.343685  params={x_1=0.1169, x_2=0.0991, x_3=0.3103, x_4=0.5112, x_5=0.9381, x_6=0.8686}
+05:54:33.235 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=13  n_results=13  status=running
+05:54:33.246 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:40.035 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=14  surface_response=0.029244  raw_response=-21.696777  params={x_1=0.0000, x_2=0.0692, x_3=0.3142, x_4=0.2962, x_5=0.7423, x_6=0.6838}
+05:54:40.325 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=14  n_results=14  status=running
+05:54:40.345 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:58.736 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=15  surface_response=0.074553  raw_response=-20.684113  params={x_1=0.0493, x_2=0.0899, x_3=0.3743, x_4=0.3776, x_5=0.8603, x_6=0.6491}
+05:54:58.811 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=15  n_results=15  status=running
+05:54:58.823 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+---
+15
+[EVENT] Created campaign_id=f4d1a084-d330-4e72-acfa-87fcacae7dc5
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

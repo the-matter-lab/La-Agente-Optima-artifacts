@@ -1,0 +1,86 @@
+{
+  "schema_version": 2,
+  "success": true,
+  "campaign_status": "running",
+  "iteration": 10,
+  "n_results": 10,
+  "n_pending_suggestions": 0,
+  "errors": [],
+  "warnings": [
+    "Optimization has not improved in 5 iterations. Consider: reviewing constraints, expanding search space, or stopping."
+  ],
+  "best_value": 0.06109245544691621,
+  "best_parameters": {
+    "x_1": 0.011508367029078204,
+    "x_2": 0.07707386283324358,
+    "x_3": 0.3376625706386377,
+    "x_4": 0.3714016592200554,
+    "x_5": 0.8389281414975566,
+    "x_6": 0.7343809126810502
+  },
+  "improvement_history": [
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621
+  ],
+  "improvement_rate": 0.0,
+  "pareto_front": null,
+  "hypervolume": null,
+  "n_pareto_points": null,
+  "feature_importance": null,
+  "model_correlation": null,
+  "objective_ranges": {
+    "surface_response": {
+      "min": 0.020183269876788423,
+      "max": 0.06109245544691621,
+      "direction": "maximize"
+    }
+  },
+  "model_info": {
+    "backend": "baybe",
+    "type": "none (space-filling)",
+    "acquisition_function": "none (space-filling)",
+    "batch_strategy": "RandomRecommender (space-filling, no surrogate)",
+    "kernel": "Matern 5/2 (BayBE default GP surrogate)",
+    "input_warping": false
+  },
+  "health_status": "critical",
+  "progress_status": "stable",
+  "next_action_recommendation": {
+    "action": "investigate_issues",
+    "reason": "Campaign health is critical. Issues: ['Optimization has not improved in 5 iterations. Consider: reviewing constraints, expanding search space, or stopping.']",
+    "urgency": "high"
+  },
+  "uncertainty_trend": null,
+  "exploration_exploitation": {
+    "exploration_ratio": 0.5,
+    "diversity_score": 1.0,
+    "average_distance_to_best": 0.9401,
+    "balance_assessment": "exploration_heavy",
+    "recommendation": "Suggestions are primarily exploring new regions. If optimization is mature, consider reducing exploration."
+  },
+  "suggestion_diversity": null,
+  "constraint_satisfaction": null,
+  "outcome_constraint_calibration": null,
+  "convergence": {
+    "converged": true,
+    "convergence_score": 1.0,
+    "reason": "No improvement in 9 consecutive iterations",
+    "avg_improvement": 0.0,
+    "iterations_without_improvement": 9,
+    "recommendation": "Optimization stagnant for 9 iterations. Consider stopping or trying different acquisition parameters."
+  },
+  "_metadata": {
+    "backend": "baybe",
+    "backend_source": "campaign",
+    "protocol": "rest",
+    "server_version": "0.1.0"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "campaign_id": "e310a3b3-a78d-4a67-bfd5-489e87b9fd87",
+  "objective": {
+    "name": "yield",
+    "direction": "maximize",
+    "unit": "percent"
+  },
+  "attempted_evaluations": 3,
+  "successful_evaluations": 3,
+  "failed_evaluations": 0,
+  "best_yield_percent": 78.44,
+  "best_conditions": {
+    "base": "Cesium pivalate",
+    "ligand": "XPhos",
+    "solvent": "Butyornitrile",
+    "concentration": 0.153,
+    "temperature_c": 120
+  },
+  "evaluated_candidates": [
+    {
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "Di-tert-butylphenylphosphine",
+        "solvent": "p-Xylene",
+        "concentration": 0.057,
+        "temperature_c": 120
+      },
+      "status": "success",
+      "http_status": 200,
+      "objective_values": {
+        "yield": 0.0
+      },
+      "duration_s": 0.006,
+      "suggestion_id": "5e857316-d8ac-44ac-9e3a-8bbd49d2ad69",
+      "attempt": 1,
+      "attempt_budget": 1,
+      "iteration": 1,
+      "successes": 1,
+      "best_yield": 0.0
+    },
+    {
+      "parameter_values": {
+        "base": "Cesium pivalate",
+        "ligand": "XPhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "status": "success",
+      "http_status": 200,
+      "objective_values": {
+        "yield": 78.44
+      },
+      "duration_s": 0.003,
+      "suggestion_id": "a9947dcd-ab28-4a2c-bb2f-e3fd211fb642",
+      "attempt": 1,
+      "attempt_budget": 2,
+      "iteration": 2,
+      "successes": 1,
+      "best_yield": 78.44
+    },
+    {
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "status": "success",
+      "http_status": 200,
+      "objective_values": {
+        "yield": 56.57
+      },
+      "duration_s": 0.003,
+      "suggestion_id": "2eb9455c-6cf0-49bd-9932-2788761142e9",
+      "attempt": 2,
+      "attempt_budget": 2,
+      "iteration": 3,
+      "successes": 2,
+      "best_yield": 78.44
+    }
+  ]
+}

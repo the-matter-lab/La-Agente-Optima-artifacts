@@ -1,0 +1,269 @@
+exit_code=0
+
+=== stdout (raw) ===
+[EVENT] Initializing BO-MCP Client...
+[EVENT] Using provided campaign ID: 2dde2d06-a539-41d2-94b8-42978fbc326a
+18:13:47.486 GET api/api/v1/campaigns/2dde2d06-a539-41d2-94b8-42978fbc326a
+18:13:47.499 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:13:47.514 GET api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+18:13:47.525 POST api/api/v1/campaigns/status/batch
+[EVENT] Campaign status: paused
+[EVENT] Resuming paused campaign...
+18:13:47.542 POST api/api/v1/campaigns/2dde2d06-a539-41d2-94b8-42978fbc326a/lifecycle
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Starting optimization loop. Budget: 60 attempts.
+18:13:48.543 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:13:48.560 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:13:48.577 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 3/60: {'base': 'Cesium pivalate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 8.24%
+18:13:49.140 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion d71eaad8-1414-487e-bf6b-73d2327edea7
+18:13:50.227 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:13:50.244 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:13:50.260 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 4/60: {'base': 'Cesium pivalate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 90.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 90} -> yield: 0.0%
+18:13:51.283 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 6747b073-e537-4e1f-b4da-84733e44c371
+18:13:52.370 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:13:52.390 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:13:52.410 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 5/60: {'base': 'Cesium pivalate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 90.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 90} -> yield: 4.89%
+18:13:53.143 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 532bea09-d531-472a-9a86-3824c1e5b982
+18:13:54.290 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:13:54.309 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:13:54.329 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 6/60: {'base': 'Cesium pivalate', 'ligand': '1268824-69-6', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': '1268824-69-6', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90} -> yield: 11.0%
+18:13:55.494 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion bb4062f3-bde1-413c-8a95-8ae005c092fe
+18:13:56.571 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:13:56.592 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:13:56.605 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 7/60: {'base': 'Cesium pivalate', 'ligand': 'Methyldiphenylphosphine', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': 'Methyldiphenylphosphine', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90} -> yield: 0.0%
+18:13:57.184 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 78be2612-9883-4b50-9992-ffe9baf8141d
+18:13:58.337 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:13:58.356 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:13:58.369 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 8/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 90} -> yield: 28.74%
+18:13:59.039 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 7c09bccf-c1a9-44be-8326-00e43a992589
+18:14:00.105 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:00.125 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:00.138 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 9/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 105.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 105} -> yield: 49.23%
+18:14:00.988 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion d28acfb3-85f1-4a29-8b4b-8776823881ce
+18:14:02.138 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:02.159 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:02.172 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 10/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 33.65%
+18:14:05.357 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 3f3e0945-ee8e-4217-aa93-95c504e8f9db
+18:14:06.981 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:06.995 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:07.011 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 11/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 105.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 105} -> yield: 27.48%
+18:14:07.572 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion d73853da-87b1-487c-a11d-b5ffabc28b1b
+18:14:08.649 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:08.668 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:08.682 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 12/60: {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 105.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 105} -> yield: 16.39%
+18:14:10.321 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 1360882a-2d09-4106-b255-4c94b4fdd529
+18:14:11.393 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:11.415 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:11.428 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 13/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105} -> yield: 0.0%
+18:14:12.582 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion d98cc879-77b7-472c-b855-081e4e5a6a76
+18:14:13.666 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:13.683 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:13.696 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 14/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 105.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 105} -> yield: 48.88%
+18:14:14.482 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 30eb8651-385e-478d-8f31-29480af00792
+18:14:15.556 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:15.627 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:15.644 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 15/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 66.9%
+18:14:16.528 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 5b7dfc0e-f300-4a2e-b08c-626523f774ef
+18:14:17.601 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:17.627 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:17.641 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 16/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120} -> yield: 43.18%
+18:14:18.250 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion c6d299a0-0d6d-4bf2-a1f5-354ced4e36f9
+18:14:19.326 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+[HEARTBEAT] Campaign 2dde2d06-a539-41d2-94b8-42978fbc326a is active. Attempts: 16/60
+18:14:19.342 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:19.355 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 17/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 30.02%
+18:14:20.069 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 295ec591-62e3-40cc-9131-269259fee08a
+18:14:21.145 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:21.164 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:21.180 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 18/60: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 38.63%
+18:14:22.064 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion b742673a-b70a-47d6-ab6d-679c4458405b
+18:14:23.161 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:23.180 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:23.196 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 19/60: {'base': 'Potassium pivalate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 0.0%
+18:14:24.553 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 9f000972-7d16-435c-af5d-656ceaa822b1
+18:14:25.639 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:25.658 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:25.675 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 20/60: {'base': 'Potassium pivalate', 'ligand': 'JackiePhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'JackiePhos', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 3.96%
+18:14:27.166 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 864bf046-ce34-4238-9411-301b58e02f09
+18:14:28.242 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:28.259 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:28.275 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 21/60: {'base': 'Potassium pivalate', 'ligand': 'Me2PPh', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'Me2PPh', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 0.0%
+18:14:29.610 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 822ad30c-e6ef-4b7e-8c13-b899ccd9768b
+18:14:32.137 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:32.154 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:32.171 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 22/60: {'base': 'Potassium pivalate', 'ligand': 'P(2-furyl)3', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'P(2-furyl)3', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 14.81%
+18:14:33.092 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 8694d5d0-01c5-4433-8602-59e60bfff668
+18:14:34.158 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:34.176 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:34.192 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 23/60: {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120} -> yield: 3.07%
+18:14:35.791 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion beb2f9d5-8f19-4826-9220-ddc808d929a6
+18:14:36.900 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:36.918 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:36.936 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 24/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120} -> yield: 50.55%
+18:14:37.918 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 72bcdeed-bd46-4f24-8fc6-9a180fb9224d
+18:14:39.791 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:39.808 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:39.823 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 25/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 120} -> yield: 43.05%
+18:14:40.855 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 25bc3941-cb94-408b-8cd0-a3cfa503addb
+18:14:42.407 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:42.426 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:42.443 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 26/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 105.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 105} -> yield: 29.14%
+18:14:43.326 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 5123b860-2036-4069-ba32-1bb2beda3238
+18:14:44.402 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:44.420 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:44.437 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 27/60: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 105.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium pivalate', 'ligand': 'BrettPhos', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 105} -> yield: 23.53%
+18:14:46.009 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 7f16dceb-38da-45e7-8409-03987cba20e9
+18:14:47.075 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:47.093 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:47.110 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 28/60: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 120} -> yield: 4.02%
+18:14:49.225 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 844ede5a-c24e-4177-aec7-f22ccd6324fd
+18:14:50.372 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+[HEARTBEAT] Campaign 2dde2d06-a539-41d2-94b8-42978fbc326a is active. Attempts: 28/60
+18:14:50.394 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:50.415 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 29/60: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Potassium pivalate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120} -> yield: 50.79%
+18:14:51.268 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion a8d98f17-2c17-4dd0-9fa6-fef10c9ec3a1
+18:14:52.356 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:52.378 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:52.399 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 30/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120} -> yield: 69.13%
+18:14:54.274 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion b7c35f4a-6b66-49a6-8665-e81e6a1774d8
+18:14:55.786 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:55.805 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:55.822 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 31/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120} -> yield: 54.26%
+18:14:57.622 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion b649d2ea-bc77-4369-b97d-564e50b295cb
+18:14:58.796 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:14:58.818 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:14:58.831 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 32/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120} -> yield: 69.03%
+18:14:59.621 POST api/api/v1/results/2dde2d06-a539-41d2-94b8-42978fbc326a
+[EVENT] Submitted result for suggestion 70065a14-de9b-4a60-83fb-e1a2bbd82055
+18:15:00.698 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/query
+18:15:00.716 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating new suggestion...
+18:15:00.728 POST api/api/v1/suggestions/2dde2d06-a539-41d2-94b8-42978fbc326a/generate ? batch_size='1'
+[EVENT] Evaluating candidate 33/60: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+[RESULT] Evaluated candidate: {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105} -> yield: 73.08%
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,68 @@
+{
+  "_metadata": {
+    "backend": "baybe",
+    "backend_source": "campaign",
+    "protocol": "rest",
+    "server_version": "0.1.0"
+  },
+  "best_parameters": {
+    "base": "Potassium acetate",
+    "concentration": 0.1,
+    "ligand": "(t-Bu)PhCPhos",
+    "solvent": "DMAc",
+    "temperature_c": 120
+  },
+  "best_value": 82.09,
+  "campaign_status": "running",
+  "constraint_satisfaction": null,
+  "convergence": {
+    "converged": false,
+    "convergence_score": 0.0,
+    "reason": "Insufficient data for convergence detection",
+    "recommendation": "Continue optimization to gather more data."
+  },
+  "errors": [],
+  "exploration_exploitation": null,
+  "feature_importance": null,
+  "health_status": "healthy",
+  "hypervolume": null,
+  "improvement_history": [
+    82.09
+  ],
+  "improvement_rate": 0.0,
+  "iteration": 1,
+  "model_correlation": null,
+  "model_info": {
+    "acquisition_function": "none (space-filling)",
+    "backend": "baybe",
+    "batch_strategy": "RandomRecommender (space-filling, no surrogate)",
+    "input_warping": false,
+    "kernel": "Matern 5/2 (BayBE default GP surrogate)",
+    "type": "none (space-filling)"
+  },
+  "n_pareto_points": null,
+  "n_pending_suggestions": 0,
+  "n_results": 1,
+  "next_action_recommendation": {
+    "action": "bo_generate_suggestions",
+    "reason": "Campaign healthy with 1 results. Ready for next batch of suggestions.",
+    "urgency": "normal"
+  },
+  "objective_ranges": {
+    "yield": {
+      "direction": "maximize",
+      "max": 82.09,
+      "min": 82.09
+    }
+  },
+  "outcome_constraint_calibration": null,
+  "pareto_front": null,
+  "progress_status": "stable",
+  "schema_version": 2,
+  "success": true,
+  "suggestion_diversity": null,
+  "uncertainty_trend": null,
+  "warnings": [
+    "Collecting initial data - diagnostics will improve with more results"
+  ]
+}

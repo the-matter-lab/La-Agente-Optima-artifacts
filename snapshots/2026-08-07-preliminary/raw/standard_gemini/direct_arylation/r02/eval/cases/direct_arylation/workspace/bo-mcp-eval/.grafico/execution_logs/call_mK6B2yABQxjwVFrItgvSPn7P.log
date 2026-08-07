@@ -1,0 +1,158 @@
+exit_code=0
+
+=== stdout (raw) ===
+#!/usr/bin/env python
+# run_direct_arylation.py
+
+import sys
+from pathlib import Path
+
+# Find the repository root dynamically by looking for 'domains' in parent directories
+current_dir = Path(__file__).resolve().parent
+repo_root = None
+for parent in [current_dir] + list(current_dir.parents):
+    if (parent / "domains" / "bo_mcp" / "client.py").exists():
+        repo_root = parent
+        break
+
+if repo_root and str(repo_root) not in sys.path:
+    sys.path.insert(0, str(repo_root))
+
+import argparse
+import logfire
+
+# Configure Logfire and instrument requests
+try:
+    from grafico.core.logfire_config import configure_logfire
+    configure_logfire()
+except ImportError:
+    logfire.configure()
+
+logfire.instrument_requests()
+
+# Ensure stdout is unbuffered for tagged lines
+sys.stdout.reconfigure(line_buffering=True)
+
+from direct_arylation.campaign import run_campaign
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Direct Arylation Reaction-Yield Optimization Campaign"
+    )
+    parser.add_argument(
+        "--campaign-id",
+        type=str,
+        default=None,
+        help="Optional campaign ID to resume/reopen."
+    )
+    parser.add_argument(
+        "--budget",
+        type=int,
+        default=60,
+        help="Maximum number of attempted evaluations (default: 60)."
+    )
+    parser.add_argument(
+        "--stop-file",
+        type=str,
+        default="STOP",
+        help="Path to the stop file (default: STOP)."
+    )
+    parser.add_argument(
+        "--poll-s",
+        type=int,
+        default=180,
+        help="Polling interval in seconds (default: 180)."
+    )
+    parser.add_argument(
+        "--heartbeat-s",
+        type=int,
+        default=1800,
+        help="Heartbeat interval in seconds (default: 1800)."
+    )
+    
+    args = parser.parse_args()
+    
+    try:
+        campaign_id = run_campaign(
+            campaign_id=args.campaign_id,
+            budget=args.budget,
+            stop_file=args.stop_file,
+            poll_s=args.poll_s,
+            heartbeat_s=args.heartbeat_s
+        )
+        
+        # Print the required final line
+        print(f"BO_MCP_CAMPAIGN_ID={campaign_id}")
+        
+    except Exception as e:
+        print(f"[ALERT] Campaign execution failed: {e}", file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+\n--- HOW_TO_EXECUTE_CAMPAIGN.md ---\n
+# How to Execute the Direct Arylation Optimization Campaign
+
+This campaign optimizes the reaction yield of a direct arylation reaction using the BO-MCP architecture.
+
+## Required Environment Variables
+
+Before running the campaign, ensure the following environment variables are set:
+
+- `BO_MCP_API_URL`: The base URL of the BO-MCP REST API (e.g., `http://api:8000`).
+- `BO_MCP_API_KEY`: The API key for authenticating with the BO-MCP REST API.
+- `DIRECT_ARYLATION_API_URL`: The base URL of the direct arylation reaction-yield oracle service.
+
+## Execution Commands
+
+### 1. Start a New Campaign
+To start a new campaign with a budget of 60 attempted evaluations:
+```bash
+PYTHONPATH=. python run_direct_arylation.py --budget 60
+```
+
+### 2. Resume an Existing Campaign
+To resume a paused or interrupted campaign, pass the campaign ID:
+```bash
+PYTHONPATH=. python run_direct_arylation.py --campaign-id <campaign_id> --budget 60
+```
+
+## Stop-File Behavior
+
+The campaign supports graceful interruption via a stop file.
+- By default, the script checks for a file named `STOP` in the current working directory at the start of each iteration.
+- If the `STOP` file is detected, the script will:
+  1. Print `[EVENT] Stop file 'STOP' detected. Pausing campaign and exiting.`
+  2. Delete the `STOP` file so that subsequent resume commands are not immediately stopped.
+  3. Pause the campaign on the BO-MCP server.
+  4. Exit gracefully.
+
+To trigger a graceful stop:
+```bash
+touch STOP
+```
+
+## Output and Logging Tags
+
+The script prints unbuffered tagged lines to `stdout` for monitoring:
+
+- `[EVENT]`: State changes (e.g., campaign creation, resuming, pausing, reopening).
+- `[ALERT]`: Failures, errors, and stop conditions.
+- `[RESULT]`: Full per-experiment analysis and final summary results.
+- `[HEARTBEAT]`: Liveness checks printed periodically.
+
+At the very end of a successful run, the script prints:
+```
+BO_MCP_CAMPAIGN_ID=<campaign_id>
+```
+
+## Expected Artifacts
+
+- `campaign_manifest.json`: Lists the package modules, entrypoint, and artifact directory.
+- Logfire logs: Detailed request instrumentation and execution logs are sent to Logfire.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

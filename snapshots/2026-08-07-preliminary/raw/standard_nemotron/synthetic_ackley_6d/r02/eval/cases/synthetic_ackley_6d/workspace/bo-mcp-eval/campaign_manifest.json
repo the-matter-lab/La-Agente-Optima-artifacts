@@ -1,0 +1,27 @@
+{
+  "campaign_slug": "ackley_6d",
+  "marker": "akg-eval-33269dad0b2d4893af291cb6d2b01f22",
+  "package_modules": [
+    "ackley_6d_campaign/search_space/__init__.py",
+    "ackley_6d_campaign/search_space/intake.py",
+    "ackley_6d_campaign/evaluation/__init__.py",
+    "ackley_6d_campaign/evaluation/objective.py",
+    "ackley_6d_campaign/campaign/__init__.py",
+    "ackley_6d_campaign/campaign/bo_client.py",
+    "ackley_6d_campaign/campaign/orchestrator.py",
+    "ackley_6d_campaign/results/__init__.py",
+    "ackley_6d_campaign/results/artifact.py"
+  ],
+  "entrypoint": "run_ackley_6d.py",
+  "artifact_dir": "artifacts",
+  "max_observations": 60,
+  "search_space": {
+    "parameters": ["x_1", "x_2", "x_3", "x_4", "x_5", "x_6"],
+    "bounds": [0.0, 1.0]
+  },
+  "objective": {
+    "name": "surface_response",
+    "direction": "maximize",
+    "unit": "normalized_unitless"
+  }
+}

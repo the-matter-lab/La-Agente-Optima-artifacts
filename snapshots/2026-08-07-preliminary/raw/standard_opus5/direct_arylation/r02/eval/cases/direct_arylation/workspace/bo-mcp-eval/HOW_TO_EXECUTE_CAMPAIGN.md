@@ -1,0 +1,105 @@
+# Direct-arylation yield BO campaign — how to execute
+
+Maximizes direct-arylation reaction `yield` (percent) with **BO-MCP** (BayBE backend) over the
+fixed, fully crossed 4 x 12 x 4 x 3 x 3 = 1728-point condition grid. Every yield value comes from
+the documented oracle only: `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate` with the exact
+candidate as JSON. No result table, CSV, export, prior campaign, or other endpoint is read, and
+the search space is never enumerated.
+
+## Exact execution command
+
+```bash
+cd <this workspace directory>
+uv run --project /app python -u run_direct_arylation_yield.py 2>/dev/null | tee -a campaign_stdout.log
+```
+
+That single invocation performs the full budget: **60 attempted evaluations** (one BO iteration
+each, batch size 1). Nothing else needs to be run.
+
+Resume / continue an interrupted run (same command plus the id printed at startup):
+
+```bash
+uv run --project /app python -u run_direct_arylation_yield.py --campaign-id <CAMPAIGN_ID>
+```
+
+`2>/dev/null` only drops Logfire/OTEL transport chatter on stderr; all campaign output is on
+stdout, unbuffered (`-u`, plus `flush=True` on every tagged line).
+
+## Environment variables
+
+| Variable | Purpose |
+| --- | --- |
+| `DIRECT_ARYLATION_API_URL` | Oracle base URL; the script appends `/v1/evaluate`. Required. |
+| `BO_MCP_API_URL`, `BO_MCP_API_KEY` | BO-MCP REST API (read by `BoMcpClient.from_env()`). Required. |
+
+All three are already set in this container.
+
+## CLI options
+
+| Flag | Default | Meaning |
+| --- | --- | --- |
+| `--campaign-id` | none | Resume (paused) / reopen (completed) an existing campaign instead of creating one. |
+| `--total-budget` | `60` | Campaign-wide cap on **attempted** evaluations (successes + oracle failures). Never exceeded. |
+| `--max-attempts` | `60` | Per-invocation attempt budget. |
+| `--poll-s` | `180` | Wait before re-querying pending suggestions after a generation timeout. |
+| `--heartbeat-s` | `1800` | Liveness cadence for `[HEARTBEAT]`. |
+| `--oracle-timeout-s` | `120` | Per-candidate oracle HTTP timeout; a timeout counts as a failed attempt. |
+| `--stop-file` | `STOP` | Graceful-interrupt marker file (see below). |
+| `--artifacts-dir` | `artifacts` | Root for per-invocation artifact directories. |
+
+## Loop behavior
+
+Per iteration: check stop file -> re-derive attempt count from the BO-MCP server
+(results + rejected suggestions) -> `next_action` -> generate one suggestion (or pick up a
+suggestion an earlier run generated but never reported) -> snap it onto the exact grid values ->
+call the oracle -> submit the result (with `force=True` on an intentional replicate) or mark the
+suggestion `rejected` when the oracle call fails.
+
+* Budget: **failed oracle calls consume budget and are recorded** as rejected suggestions, so the
+  attempted count is always server-derived and survives restarts. No loop state is written to disk.
+* Failures are not penalized with a fake yield — nothing is submitted for them.
+* The campaign is **paused**, never terminated, at the end of an invocation.
+* Campaign name always contains the marker `akg-eval-6d0e0c6f27e643e281edfabe22ebe90e`.
+
+## Stdout tags (monitor-friendly)
+
+| Tag | Content |
+| --- | --- |
+| `[EVENT]` | Campaign created/resumed/paused, artifact dir, budget reached, stop-file shutdown, report path. |
+| `[ALERT]` | Failed oracle call, server-side stop decision, no suggestion available, no success yet. |
+| `[RESULT]` | Per-attempt yield + running best, and the final summary: attempted/successful counts, best conditions + best measured yield, and every evaluated candidate with status and yield. |
+| `[HEARTBEAT]` | Liveness ping. |
+
+Suggested monitor regex: `^\[(EVENT|ALERT|RESULT|HEARTBEAT)\]`.
+
+## Stop / resume
+
+```bash
+touch STOP     # in this workspace directory
+```
+
+Checked at the top of each iteration, before a suggestion is generated (never between evaluation
+and submission). The script prints `[EVENT] stop file ... found`, deletes the marker, prints the
+full summary, pauses the campaign, and exits 0. Re-run the same command with
+`--campaign-id <CAMPAIGN_ID>` to continue with the remaining budget.
+
+## Outputs / artifacts
+
+Per invocation, `artifacts/<UTC timestamp>/`:
+
+* `run.log` — every tagged line plus verbose detail (next_action decisions, retry notes).
+* `attempts.jsonl` — append-only provenance: one row per attempted candidate with status/value/error.
+* `report.json` — objective metadata, attempted/successful/failed counts, best conditions, best
+  measured yield, and all evaluated candidates with status + objective value.
+
+Artifacts are provenance only; they are never read back to make loop decisions.
+
+## Validation already performed
+
+* One-iteration smoke run (create -> generate -> oracle -> submit -> pause -> report).
+* Resume of a paused campaign, orphaned-suggestion pickup, forced-replicate submission.
+* Oracle-failure path (unreachable oracle): attempts counted, suggestions rejected, `[ALERT]` shown.
+* Stop-file interrupt (marker deleted, clean shutdown) and `[HEARTBEAT]` emission.
+
+Smoke-test campaigns (listed in `campaign_manifest.json`) are throwaway. Start the real run
+**without** `--campaign-id` so a fresh marker-tagged campaign gets the full 60-attempt budget.

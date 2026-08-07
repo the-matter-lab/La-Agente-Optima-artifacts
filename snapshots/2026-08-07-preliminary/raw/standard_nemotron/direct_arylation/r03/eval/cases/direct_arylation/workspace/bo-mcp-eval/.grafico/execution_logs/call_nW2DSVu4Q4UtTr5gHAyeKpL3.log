@@ -1,0 +1,70 @@
+exit_code=0
+
+=== stdout (raw) ===
+#!/usr/bin/env python3
+"""
+Entry point for Direct Arylation BO-MCP campaign.
+
+Usage:
+    python run_direct_arylation.py [--campaign-id CAMPAIGN_ID] [--max-attempts N] [--poll-s N] [--heartbeat-s N] [--stop-file PATH]
+
+Environment variables required:
+    BO_MCP_API_URL      - BO-MCP REST API base URL
+    BO_MCP_API_KEY      - BO-MCP API key
+    DIRECT_ARYLATION_API_URL - Oracle API base URL for yield evaluations
+
+The campaign optimizes direct arylation reaction yield over a fixed search space
+of 1,728 measured reactions with a budget of exactly 60 total attempted
+oracle evaluations (including failures) across all runs/resumes.
+
+Marker: akg-eval-0c360b08e6684de0b0ed04f50bde3b2c
+Nonce: 16e7e684-7bf5-4a9b-af93-fae14403be06
+
+Attempt tracking artifact: artifacts/<campaign_id>/attempts.jsonl
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+
+# Ensure /app is on sys.path for `domains` package (contains bo_mcp client)
+APP_ROOT = "/app"
+if APP_ROOT not in sys.path:
+    sys.path.insert(0, APP_ROOT)
+
+from direct_arylation_campaign.campaign import run_campaign
+
+import argparse
+import os
+import sys
+
+from direct_arylation_campaign.campaign import run_campaign
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Direct Arylation Yield Optimization via BO-MCP",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--campaign-id",
+        type=str,
+        default=None,
+        help="Resume existing campaign by ID (must contain marker akg-eval-0c360b08e6684de0b0ed04f50bde3b2c)",
+    )
+    parser.add_argument(
+        "--max-attempts",
+        type=int,
+        default=60,
+        help="Maximum total oracle evaluation attempts (including failures) for the campaign lifetime",
+    )
+    parser.add_argument(
+OK
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

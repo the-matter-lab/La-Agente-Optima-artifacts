@@ -1,0 +1,210 @@
+exit_code=0
+
+=== stdout (raw) ===
+LOG=direct_arylation_20260730_181123.log
+18:12:59.628 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 43/60  yield=59.05%
+18:12:59.632 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:00.707 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 44  results=44  action=bo_generate_suggestions  reason=Campaign healthy with 44 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:00.726 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 1c37148f-7c44-4135-94e7-0f3ee0cd0f82: base='Potassium pivalate' | ligand='SCHEMBL15068049' | solvent='DMAc' | concentration=0.1 | temperature_c=120.0
+18:13:01.642 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 44/60  yield=87.59%
+18:13:01.648 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:02.731 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 45  results=45  action=bo_generate_suggestions  reason=Campaign healthy with 45 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:02.755 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 0172216d-41c8-4d46-97cd-da8a881a3ac0: base='Potassium acetate' | ligand='SCHEMBL15068049' | solvent='Butyl Ester' | concentration=0.057 | temperature_c=120.0
+18:13:03.696 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 45/60  yield=46.42%
+18:13:03.699 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:04.776 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 46  results=46  action=bo_generate_suggestions  reason=Campaign healthy with 46 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:04.796 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion b866c4a1-f4ef-4bfe-adf6-3e261e5996a0: base='Potassium acetate' | ligand='BrettPhos' | solvent='Butyl Ester' | concentration=0.153 | temperature_c=120.0
+18:13:05.658 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 46/60  yield=18.26%
+18:13:05.662 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:06.738 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 47  results=47  action=bo_generate_suggestions  reason=Campaign healthy with 47 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:06.757 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 7e02a0ed-995e-47d8-81d5-53c0ccb1bd04: base='Potassium acetate' | ligand='XPhos' | solvent='DMAc' | concentration=0.153 | temperature_c=120.0
+18:13:07.737 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 47/60  yield=84.67%
+18:13:07.741 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:08.817 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 48  results=48  action=bo_generate_suggestions  reason=Campaign healthy with 48 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:08.834 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 589051fa-0b47-4213-8ebd-f5dde2a988d0: base='Cesium acetate' | ligand='XPhos' | solvent='DMAc' | concentration=0.153 | temperature_c=120.0
+18:13:10.385 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 48/60  yield=84.49%
+18:13:10.388 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:11.665 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 49  results=49  action=bo_generate_suggestions  reason=Campaign healthy with 49 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:11.682 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 10354e26-a692-40dd-906c-662d6868bbf2: base='Potassium pivalate' | ligand='XPhos' | solvent='DMAc' | concentration=0.153 | temperature_c=120.0
+18:13:13.184 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 49/60  yield=80.39%
+18:13:13.187 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:15.162 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 50  results=50  action=bo_generate_suggestions  reason=Campaign healthy with 50 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:15.180 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion c84b59df-3d34-41c3-9150-119f7a3867a0: base='Cesium pivalate' | ligand='XPhos' | solvent='DMAc' | concentration=0.1 | temperature_c=120.0
+18:13:17.161 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 50/60  yield=48.15%
+18:13:17.164 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:18.240 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 51  results=51  action=bo_generate_suggestions  reason=Campaign healthy with 51 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:18.258 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion fb606ccd-5754-402e-a182-1e45af217d3b: base='Potassium acetate' | ligand='XPhos' | solvent='Butyornitrile' | concentration=0.153 | temperature_c=120.0
+18:13:20.942 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 51/60  yield=78.60%
+18:13:20.945 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:22.032 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 52  results=52  action=bo_generate_suggestions  reason=Campaign healthy with 52 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:22.052 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 8bde4c35-c7b9-4735-9088-e395f283fad7: base='Cesium acetate' | ligand='XPhos' | solvent='p-Xylene' | concentration=0.153 | temperature_c=120.0
+18:13:24.089 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 52/60  yield=70.80%
+18:13:24.092 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:25.163 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 53  results=53  action=bo_generate_suggestions  reason=Campaign healthy with 53 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:25.180 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion b85b70f7-68c5-40ca-ba2e-d4983cf1c9fb: base='Cesium acetate' | ligand='XPhos' | solvent='Butyornitrile' | concentration=0.153 | temperature_c=120.0
+18:13:26.582 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 53/60  yield=77.01%
+18:13:26.585 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+[HEARTBEAT] Alive — 53/60 attempts used
+18:13:27.661 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 54  results=54  action=bo_generate_suggestions  reason=Campaign healthy with 54 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:27.679 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion ad6d0713-c342-4b08-9e92-2a855c77e007: base='Cesium acetate' | ligand='XPhos' | solvent='DMAc' | concentration=0.153 | temperature_c=90.0
+18:13:28.775 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 54/60  yield=86.14%
+18:13:28.779 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:29.884 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 55  results=55  action=bo_generate_suggestions  reason=Campaign healthy with 55 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:29.902 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion d02aaff3-4388-44ea-b6ba-f59df837b804: base='Potassium acetate' | ligand='XPhos' | solvent='DMAc' | concentration=0.153 | temperature_c=90.0
+18:13:31.000 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 55/60  yield=38.79%
+18:13:31.004 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:32.843 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 56  results=56  action=bo_generate_suggestions  reason=Campaign healthy with 56 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:32.863 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion f0a1781e-db9c-4851-bc2f-c9ab3afc43b0: base='Cesium acetate' | ligand='XPhos' | solvent='Butyl Ester' | concentration=0.153 | temperature_c=105.0
+18:13:34.983 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 56/60  yield=81.66%
+18:13:34.987 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:36.103 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 57  results=57  action=bo_generate_suggestions  reason=Campaign healthy with 57 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:36.121 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion bef82f61-ea71-41ae-8c60-be5f7b9534a2: base='Cesium acetate' | ligand='XPhos' | solvent='Butyornitrile' | concentration=0.153 | temperature_c=90.0
+18:13:38.096 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 57/60  yield=0.00%
+18:13:38.100 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:39.175 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 58  results=58  action=bo_generate_suggestions  reason=Campaign healthy with 58 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:39.192 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 9f127399-48e0-4e51-81c1-135fb7acbed8: base='Cesium acetate' | ligand='XPhos' | solvent='Butyl Ester' | concentration=0.153 | temperature_c=120.0
+18:13:40.822 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 58/60  yield=6.23%
+18:13:40.825 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:41.913 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 59  results=59  action=bo_generate_suggestions  reason=Campaign healthy with 59 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:41.932 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 731909a8-49f2-43fc-a5ae-3850259c6091: base='Cesium acetate' | ligand='XPhos' | solvent='DMAc' | concentration=0.153 | temperature_c=105.0
+18:13:43.912 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 59/60  yield=84.48%
+18:13:43.916 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:45.005 POST api/api/v1/campaigns/status/batch
+[EVENT] Iter 60  results=60  action=bo_generate_suggestions  reason=Campaign healthy with 60 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.
+18:13:45.025 POST api/api/v1/suggestions/6908297d-9d82-4c78-8996-23b422b46575/generate ? batch_size='1'
+[EVENT] Suggestion 9714a824-5d6c-40b5-ba0b-30e00809025a: base='Cesium pivalate' | ligand='SCHEMBL15068049' | solvent='DMAc' | concentration=0.153 | temperature_c=105.0
+18:13:46.930 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 60/60  yield=100.00%
+18:13:46.934 POST api/api/v1/results/6908297d-9d82-4c78-8996-23b422b46575
+18:13:48.021 POST api/api/v1/campaigns/status/batch
+18:13:48.038 POST api/api/v1/campaigns/6908297d-9d82-4c78-8996-23b422b46575/lifecycle
+[EVENT] Campaign paused for later resume
+[EVENT] Campaign ID: 6908297d-9d82-4c78-8996-23b422b46575
+[RESULT] === Final Report ===
+[RESULT] Attempted evaluations : 60
+[RESULT] Successful evaluations: 60
+[RESULT] Failed evaluations     : 0
+[RESULT] Best yield             : 100.00%
+[RESULT] Best conditions:
+[RESULT]   base: Cesium acetate
+[RESULT]   ligand: SCHEMBL15068049
+[RESULT]   solvent: DMAc
+[RESULT]   concentration: 0.153
+[RESULT]   temperature_c: 105.0
+[RESULT] === All evaluated candidates ===
+[RESULT]   1. base='Potassium pivalate'  ligand='Methyldiphenylphosphine'  solvent='Butyornitrile'  conc=0.1  T=105.0°C  → success  yield=0.00%
+[RESULT]   2. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.153  T=120.0°C  → success  yield=80.65%
+[RESULT]   3. base='Cesium pivalate'  ligand='BrettPhos'  solvent='Butyornitrile'  conc=0.153  T=90.0°C  → success  yield=54.55%
+[RESULT]   4. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.1  T=90.0°C  → success  yield=57.18%
+[RESULT]   5. base='Potassium pivalate'  ligand='Me2PPh'  solvent='Butyornitrile'  conc=0.153  T=120.0°C  → success  yield=0.00%
+[RESULT]   6. base='Potassium acetate'  ligand='XPhos'  solvent='Butyl Ester'  conc=0.1  T=120.0°C  → success  yield=73.71%
+[RESULT]   7. base='Cesium acetate'  ligand='(t-Bu)PhCPhos'  solvent='p-Xylene'  conc=0.153  T=120.0°C  → success  yield=22.08%
+[RESULT]   8. base='Potassium acetate'  ligand='1268824-69-6'  solvent='p-Xylene'  conc=0.153  T=90.0°C  → success  yield=0.18%
+[RESULT]   9. base='Cesium pivalate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.153  T=90.0°C  → success  yield=36.73%
+[RESULT]  10. base='Cesium acetate'  ligand='JackiePhos'  solvent='p-Xylene'  conc=0.153  T=90.0°C  → success  yield=6.77%
+[RESULT]  11. base='Potassium acetate'  ligand='Tricyclohexylphosphine'  solvent='p-Xylene'  conc=0.1  T=120.0°C  → success  yield=0.00%
+[RESULT]  12. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.1  T=120.0°C  → success  yield=70.51%
+[RESULT]  13. base='Potassium acetate'  ligand='XPhos'  solvent='Butyl Ester'  conc=0.057  T=90.0°C  → success  yield=32.71%
+[RESULT]  14. base='Potassium acetate'  ligand='XPhos'  solvent='Butyl Ester'  conc=0.153  T=120.0°C  → success  yield=76.24%
+[RESULT]  15. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='Butyl Ester'  conc=0.153  T=120.0°C  → success  yield=45.73%
+[RESULT]  16. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.153  T=105.0°C  → success  yield=69.20%
+[RESULT]  17. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.153  T=120.0°C  → success  yield=99.81%
+[RESULT]  18. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.153  T=105.0°C  → success  yield=98.49%
+[RESULT]  19. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.057  T=120.0°C  → success  yield=89.95%
+[RESULT]  20. base='Potassium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.153  T=120.0°C  → success  yield=98.38%
+[RESULT]  21. base='Potassium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.153  T=90.0°C  → success  yield=28.90%
+[RESULT]  22. base='Potassium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.057  T=120.0°C  → success  yield=96.64%
+[RESULT]  23. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.153  T=120.0°C  → success  yield=99.22%
+[RESULT]  24. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.057  T=120.0°C  → success  yield=95.48%
+[RESULT]  25. base='Cesium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.153  T=120.0°C  → success  yield=92.19%
+[RESULT]  26. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.153  T=120.0°C  → success  yield=99.98%
+[RESULT]  27. base='Potassium acetate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.153  T=120.0°C  → success  yield=80.86%
+[RESULT]  28. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='p-Xylene'  conc=0.153  T=120.0°C  → success  yield=91.19%
+[RESULT]  29. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='p-Xylene'  conc=0.153  T=120.0°C  → success  yield=44.47%
+[RESULT]  30. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.057  T=120.0°C  → success  yield=50.74%
+[RESULT]  31. base='Cesium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.057  T=120.0°C  → success  yield=92.03%
+[RESULT]  32. base='Potassium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.1  T=120.0°C  → success  yield=83.22%
+[RESULT]  33. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.1  T=105.0°C  → success  yield=89.76%
+[RESULT]  34. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.1  T=120.0°C  → success  yield=81.63%
+[RESULT]  35. base='Cesium pivalate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.153  T=120.0°C  → success  yield=71.81%
+[RESULT]  36. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.057  T=105.0°C  → success  yield=91.39%
+[RESULT]  37. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='p-Xylene'  conc=0.057  T=120.0°C  → success  yield=59.82%
+[RESULT]  38. base='Cesium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.057  T=105.0°C  → success  yield=91.06%
+[RESULT]  39. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.057  T=90.0°C  → success  yield=62.75%
+[RESULT]  40. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.153  T=105.0°C  → success  yield=100.00%
+[RESULT]  41. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='Butyornitrile'  conc=0.153  T=105.0°C  → success  yield=96.38%
+[RESULT]  42. base='Cesium acetate'  ligand='SCHEMBL15068049'  solvent='p-Xylene'  conc=0.153  T=105.0°C  → success  yield=80.69%
+[RESULT]  43. base='Cesium pivalate'  ligand='XPhos'  solvent='Butyl Ester'  conc=0.153  T=120.0°C  → success  yield=59.05%
+[RESULT]  44. base='Potassium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.1  T=120.0°C  → success  yield=87.59%
+[RESULT]  45. base='Potassium acetate'  ligand='SCHEMBL15068049'  solvent='Butyl Ester'  conc=0.057  T=120.0°C  → success  yield=46.42%
+[RESULT]  46. base='Potassium acetate'  ligand='BrettPhos'  solvent='Butyl Ester'  conc=0.153  T=120.0°C  → success  yield=18.26%
+[RESULT]  47. base='Potassium acetate'  ligand='XPhos'  solvent='DMAc'  conc=0.153  T=120.0°C  → success  yield=84.67%
+[RESULT]  48. base='Cesium acetate'  ligand='XPhos'  solvent='DMAc'  conc=0.153  T=120.0°C  → success  yield=84.49%
+[RESULT]  49. base='Potassium pivalate'  ligand='XPhos'  solvent='DMAc'  conc=0.153  T=120.0°C  → success  yield=80.39%
+[RESULT]  50. base='Cesium pivalate'  ligand='XPhos'  solvent='DMAc'  conc=0.1  T=120.0°C  → success  yield=48.15%
+[RESULT]  51. base='Potassium acetate'  ligand='XPhos'  solvent='Butyornitrile'  conc=0.153  T=120.0°C  → success  yield=78.60%
+[RESULT]  52. base='Cesium acetate'  ligand='XPhos'  solvent='p-Xylene'  conc=0.153  T=120.0°C  → success  yield=70.80%
+[RESULT]  53. base='Cesium acetate'  ligand='XPhos'  solvent='Butyornitrile'  conc=0.153  T=120.0°C  → success  yield=77.01%
+[RESULT]  54. base='Cesium acetate'  ligand='XPhos'  solvent='DMAc'  conc=0.153  T=90.0°C  → success  yield=86.14%
+[RESULT]  55. base='Potassium acetate'  ligand='XPhos'  solvent='DMAc'  conc=0.153  T=90.0°C  → success  yield=38.79%
+[RESULT]  56. base='Cesium acetate'  ligand='XPhos'  solvent='Butyl Ester'  conc=0.153  T=105.0°C  → success  yield=81.66%
+[RESULT]  57. base='Cesium acetate'  ligand='XPhos'  solvent='Butyornitrile'  conc=0.153  T=90.0°C  → success  yield=0.00%
+[RESULT]  58. base='Cesium acetate'  ligand='XPhos'  solvent='Butyl Ester'  conc=0.153  T=120.0°C  → success  yield=6.23%
+[RESULT]  59. base='Cesium acetate'  ligand='XPhos'  solvent='DMAc'  conc=0.153  T=105.0°C  → success  yield=84.48%
+[RESULT]  60. base='Cesium pivalate'  ligand='SCHEMBL15068049'  solvent='DMAc'  conc=0.153  T=105.0°C  → success  yield=100.00%
+[EVENT] Wrote campaign_manifest.json
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

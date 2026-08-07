@@ -1,0 +1,38 @@
+exit_code=1
+
+=== stdout (raw) ===
+/app/outputs/cells/ackley_main_script_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval
+total 8
+drwxr-xr-x 2 root root 4096 Jul 30 18:08 .
+drwxr-xr-x 3 root root 4096 Jul 30 18:08 ..
+
+
+=== stderr (raw) ===
+   Building grafico @ file:///app
+  × Failed to build `grafico @ file:///app`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_editable` failed (exit status: 1)
+
+      [stdout]
+      running egg_info
+
+      [stderr]
+      error: Cannot update time stamp of directory 'grafico.egg-info'
+
+
+hint: Build failures usually indicate a problem with the package or the build environment
+
+=== stderr (model-visible) ===
+   Building grafico @ file:///app
+  × Failed to build `grafico @ file:///app`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_editable` failed (exit status: 1)
+
+      [stdout]
+      running egg_info
+
+      [stderr]
+      error: Cannot update time stamp of directory 'grafico.egg-info'
+
+
+hint: Build failures usually indicate a problem with the package or the build environment

@@ -1,0 +1,172 @@
+exit_code=0
+
+=== stdout (raw) ===
+   240	        log_event(f"Received suggestion {suggestion_id}: {param_values}")
+   241	
+   242	        # Validate suggestion
+   243	        if not validate_candidate(param_values):
+   244	            log_alert(f"Invalid suggestion from BO: {param_values}")
+   245	            client.update_suggestion_status(suggestion_id, "rejected")
+   246	            continue
+   247	
+   248	        # Evaluate candidate via oracle
+   249	        log_event(f"Evaluating candidate via oracle API...")
+   250	        eval_results = evaluate_batch([param_values])
+   251	        eval_result = eval_results[0]
+   252	        state.evaluated.append(eval_result)
+   253	
+   254	        # Record attempt in artifact (for budget tracking across resumes)
+   255	        attempt_record = {
+   256	            "suggestion_id": suggestion_id,
+   257	            "candidate": param_values,
+   258	            "yield": eval_result["yield"],
+   259	            "status": eval_result["status"],
+   260	            "error": eval_result["error"],
+   261	            "elapsed_s": eval_result["elapsed_s"],
+   262	            "timestamp": time.time(),
+   263	        }
+   264	        append_attempt(campaign_id, attempt_record)
+   265	
+   266	        # Log result
+   267	        if eval_result["status"] == "success":
+   268	            log_result(f"Yield: {eval_result['yield']:.2f}% | {param_values}")
+   269	        else:
+   270	            log_alert(f"Evaluation failed: {eval_result['error']} | {param_values}")
+   271	
+   272	        # Submit successful results to BO-MCP
+   273	        if eval_result["status"] == "success":
+   274	            try:
+   275	                submit_results(client, campaign_id, [eval_result])
+   276	                state.submitted_suggestion_ids.add(suggestion_id)
+   277	            except (BoMcpClientError, BoMcpOperationError) as e:
+   278	                log_alert(f"Result submission failed: {e}")
+   279	                # Don't mark suggestion as rejected; let server handle it
+   280	        else:
+   281	            # Mark failed suggestion as rejected so BO doesn't retry same point
+   282	            try:
+   283	                client.update_suggestion_status(suggestion_id, "rejected")
+   284	                log_event(f"Marked suggestion {suggestion_id} as rejected")
+   285	            except (BoMcpClientError, BoMcpOperationError) as e:
+   286	                log_alert(f"Failed to update suggestion status: {e}")
+   287	
+   288	        # Brief pause to avoid hammering the oracle
+   289	        time.sleep(1.0)
+   290	
+   291	
+   292	def create_or_resume_campaign(
+   293	    client: BoMcpClient,
+   294	    campaign_id: str | None = None,
+   295	) -> str:
+   296	    """Create a new campaign or return existing campaign ID."""
+   297	    if campaign_id:
+   298	        # Verify campaign exists and has our marker
+   299	        try:
+   300	            campaign = client.get_campaign(campaign_id)
+   301	            if MARKER not in campaign.get("name", ""):
+   302	                log_alert(f"Campaign {campaign_id} does not have required marker {MARKER}")
+   303	            log_event(f"Resuming existing campaign: {campaign_id}")
+   304	            return campaign_id
+   305	        except (BoMcpClientError, BoMcpOperationError) as e:
+   306	            log_alert(f"Failed to get campaign {campaign_id}: {e}")
+   307	            raise
+   308	
+   309	    # Create new campaign
+   310	    intake = build_intake()
+   311	    validate_intake(intake)
+   312	
+   313	    idempotency_key = make_idempotency_key("create", MARKER, NONCE)
+   314	    try:
+   315	        response = client.create_campaign(intake, idempotency_key=idempotency_key)
+   316	        new_campaign_id = response.get("campaign_id")
+   317	        if not new_campaign_id:
+   318	            raise BoMcpOperationError("No campaign_id in response", response)
+   319	        log_event(f"Created new campaign: {new_campaign_id}")
+   320	        return new_campaign_id
+   321	    except BoMcpOperationError as e:
+   322	        if e.payload.get("idempotency_replay"):
+   323	            # Campaign already exists, find it
+   324	            log_event("Campaign creation replayed; querying for existing campaign")
+   325	            # We'd need to query campaigns to find it, but for simplicity error out
+   326	            raise BoMcpClientError("Idempotency replay but no campaign_id returned")
+   327	        raise
+   328	
+   329	
+   330	def run_campaign(
+   331	    campaign_id: str | None = None,
+   332	    *,
+   333	    max_attempts: int = MAX_ATTEMPTS,
+   334	    poll_s: int = DEFAULT_POLL_S,
+   335	    heartbeat_s: int = DEFAULT_HEARTBEAT_S,
+   336	    stop_file: str = DEFAULT_STOP_FILE,
+   337	) -> tuple[str, list[dict[str, Any]]]:
+   338	    """
+   339	    Run the direct arylation BO campaign.
+   340	
+   341	    Enforces exactly 60 total attempted oracle evaluations (including failures) across all runs/resumes.
+   342	    Returns complete attempt history from artifact for final reporting.
+   343	
+   344	    Returns:
+   345	        Tuple of (campaign_id, all_attempts)
+   346	    """
+   347	    # Initialize Logfire
+   348	    try:
+   349	        from grafico.core.logfire_config import configure_logfire
+   350	        configure_logfire()
+   351	        logfire.instrument_requests()
+   352	    except Exception:
+   353	        pass  # Logfire optional
+   354	
+   355	    log_event(f"Direct Arylation BO Campaign starting (marker={MARKER}, nonce={NONCE})")
+   356	
+   357	    # Initialize BO-MCP client
+   358	    try:
+   359	        client = BoMcpClient.from_env()
+   360	    except BoMcpClientError as e:
+   361	        log_alert(f"Failed to initialize BO-MCP client: {e}")
+   362	        raise
+   363	
+   364	    # Create or resume campaign
+   365	    final_campaign_id = create_or_resume_campaign(client, campaign_id)
+   366	    state = CampaignState(final_campaign_id)
+   367	
+   368	    # If resuming, load existing attempt history from artifact
+   369	    if campaign_id:
+   370	        prior_attempts = get_attempt_history(final_campaign_id)
+   371	        log_event(f"Loaded {len(prior_attempts)} prior attempts from artifact")
+   372	        # Note: We track these separately from state.evaluated (which is this run only)
+   373	        # The budget check uses count_attempts() which reads from artifact
+   374	
+   375	    # Run optimization loop
+   376	    stop_path = Path(stop_file).resolve()
+   377	    run_optimization_loop(
+   378	        client,
+   379	        final_campaign_id,
+   380	        state,
+   381	        max_attempts=max_attempts,
+   382	        poll_s=poll_s,
+   383	        heartbeat_s=heartbeat_s,
+   384	        stop_file=stop_path,
+   385	    )
+   386	
+   387	    # Final report: use complete attempt history from artifact
+   388	    all_attempts = get_attempt_history(final_campaign_id)
+   389	    summary = compute_summary(all_attempts)
+   390	    print_campaign_report(final_campaign_id, all_attempts, summary)
+   391	    print_final_summary_line(final_campaign_id, summary)
+   392	
+   393	    # Pause campaign at end (don't terminate)
+   394	    try:
+   395	        current_status = client.get_campaign(final_campaign_id).get("status")
+   396	        if current_status == "running":
+   397	            client.lifecycle(final_campaign_id, action="pause")
+   398	            log_event("Campaign paused for resumption")
+   399	    except (BoMcpClientError, BoMcpOperationError) as e:
+   400	        log_alert(f"Failed to pause campaign: {e}")
+   401	
+   402	    return final_campaign_id, all_attempts
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

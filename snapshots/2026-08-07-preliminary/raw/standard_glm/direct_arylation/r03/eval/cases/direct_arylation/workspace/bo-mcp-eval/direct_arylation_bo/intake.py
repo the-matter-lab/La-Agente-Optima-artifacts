@@ -1,0 +1,28 @@
+"""Campaign intake construction for the direct arylation BO campaign."""
+
+from direct_arylation_bo.search_space import build_parameters
+
+CAMPAIGN_MARKER = "akg-eval-a9d88670aa904fcb95a87e64a470e6bf"
+
+BUDGET = 60  # maximum attempted evaluations
+
+
+def build_intake() -> dict:
+    """Return the BO-MCP campaign intake dict."""
+    return {
+        "name": f"direct-arylation-{CAMPAIGN_MARKER}",
+        "description": (
+            "Bayesian optimization of direct arylation reaction yield "
+            f"over a fully crossed 1728-reaction space. Budget: {BUDGET} attempts. "
+            f"Marker: {CAMPAIGN_MARKER}"
+        ),
+        "parameters": build_parameters(),
+        "objectives": [
+            {
+                "name": "yield",
+                "direction": "maximize",
+                "unit": "percent",
+            }
+        ],
+        "batch_size": 1,
+    }

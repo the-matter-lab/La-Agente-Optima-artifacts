@@ -1,0 +1,1 @@
+- BO/PySCF campaign-script validation caveat: in this container, `uv run python ...` can fail during editable build with `error: Cannot update time stamp of directory 'grafico.egg-info'`. For local smoke tests and imports, `python` with `sys.path.insert(0, '/app')` is a working fallback while still using the repository's canonical client/modules.

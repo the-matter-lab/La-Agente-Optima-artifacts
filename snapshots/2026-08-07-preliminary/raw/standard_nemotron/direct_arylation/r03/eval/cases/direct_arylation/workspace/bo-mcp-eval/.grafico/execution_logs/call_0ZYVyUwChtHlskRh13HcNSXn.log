@@ -1,0 +1,61 @@
+exit_code=0
+
+=== stdout (raw) ===
+   165	    """
+   166	    log_event(f"Starting optimization loop for campaign {campaign_id}")
+   167	    log_event(f"Total attempt budget: {max_attempts}, Poll: {poll_s}s, Heartbeat: {heartbeat_s}s")
+   168	
+   169	while True:
+   170	        # Check stop file at loop start (before generating suggestions)
+   171	        if check_stop_file(stop_file):
+   172	            log_event("Stop file detected; pausing campaign")
+   173	            client.lifecycle(campaign_id, action="pause")
+   174	            break
+   175	
+   176	        # Check total attempt budget (artifact already includes current-run attempts)
+   177	        total_attempts = count_attempts(campaign_id)
+   178	        if total_attempts >= max_attempts:
+   179	            log_event(f"Total attempt budget exhausted ({max_attempts})")
+   180	            log_alert("Budget reached; pausing campaign")
+   181	            client.lifecycle(campaign_id, action="pause")
+   182	            break
+   183	
+   184	        # Check heartbeat
+   185	        now = time.time()
+   186	        if now - state.last_heartbeat >= heartbeat_s:
+   187	            log_heartbeat(f"Campaign {campaign_id} alive; attempted={total_attempts}/{max_attempts}")
+   188	            state.last_heartbeat = now
+   189	
+   190	        # Ask server for next action
+   191	        try:
+   192	            decision = client.next_action(campaign_id)
+   193	        except (BoMcpClientError, BoMcpOperationError) as e:
+   194	            log_alert(f"Failed to get next action: {e}")
+   195	            time.sleep(poll_s)
+   196	            continue
+   197	
+   198	        action = decision.get("action")
+   199	        reason = decision.get("reason", "")
+   200	        status = decision.get("status", "unknown")
+   201	        n_results = decision.get("n_results", 0)
+   202	        iteration = decision.get("iteration", 0)
+   203	
+   204	        log_event(f"Server decision: action={action}, reason={reason}, status={status}, iter={iteration}, results={n_results}")
+   205	
+   206	        # Auto-resume if campaign is paused
+   207	        if status == "paused" and action == "review_campaign_status":
+   208	            log_event("Campaign is paused; resuming automatically")
+   209	            client.lifecycle(campaign_id, action="resume")
+   210	            time.sleep(2.0)  # Give server time to process resume
+   211	            continue
+   212	
+   213	        # Check if server recommends stop
+   214	        if action != "bo_generate_suggestions":
+   215	            log_event(f"Server recommends stop: {action} ({reason})")
+OK
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

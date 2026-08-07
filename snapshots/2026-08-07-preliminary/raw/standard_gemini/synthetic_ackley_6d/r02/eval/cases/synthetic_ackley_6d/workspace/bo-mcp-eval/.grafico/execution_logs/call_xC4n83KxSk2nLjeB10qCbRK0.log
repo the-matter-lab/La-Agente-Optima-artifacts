@@ -1,0 +1,131 @@
+exit_code=0
+
+=== stdout (raw) ===
+
+--- run_ackley_6d.py ---
+#!/usr/bin/env python
+import argparse
+import logging
+import sys
+import os
+
+# Add Logfire request instrumentation near the script header
+import logfire
+from grafico.core.logfire_config import configure_logfire
+
+try:
+    configure_logfire()
+    logfire.instrument_requests()
+except Exception as e:
+    # Fallback if logfire is not fully configured or available
+    pass
+
+# Ensure the current directory is in the python path
+sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
+
+from ackley_6d.campaign import run_campaign_loop
+
+def main():
+    parser = argparse.ArgumentParser(description="Run 6D Ackley BO-MCP Campaign")
+    parser.add_argument(
+        "--campaign-id",
+        type=str,
+        default=None,
+        help="Optional campaign ID to resume an existing campaign."
+    )
+    parser.add_argument(
+        "--campaign-name",
+        type=str,
+        default="ackley_6d_benchmark",
+        help="Name of the campaign to create (will be appended with ownership marker if not present)."
+    )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=42,
+        help="Random seed for the campaign."
+    )
+    parser.add_argument(
+        "--init-size",
+        type=int,
+        default=10,
+        help="Initial design size (number of warmup points)."
+    )
+    parser.add_argument(
+        "--backend",
+        type=str,
+        default="auto",
+        help="BO backend to use (auto, botorch, baybe)."
+    )
+    parser.add_argument(
+        "--poll-s",
+        type=int,
+        default=180,
+        help="Polling interval in seconds when waiting for suggestions or actions."
+    )
+    parser.add_argument(
+        "--heartbeat-s",
+        type=int,
+        default=1800,
+        help="Heartbeat interval in seconds for printing liveness."
+    )
+    parser.add_argument(
+        "--stop-file",
+        type=str,
+        default="STOP",
+        help="Path to the stop file that triggers a graceful pause."
+    )
+    parser.add_argument(
+        "--artifact-dir",
+        type=str,
+        default="artifacts",
+        help="Directory to write results and campaign metadata."
+    )
+    parser.add_argument(
+        "--budget",
+        type=int,
+        default=60,
+        help="Total budget of attempted evaluations."
+    )
+
+    args = parser.parse_args()
+
+    # Configure logging to file only, keeping stdout clean for tagged lines
+    os.makedirs(args.artifact_dir, exist_ok=True)
+    log_path = os.path.join(args.artifact_dir, "run.log")
+    
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+        handlers=[
+            logging.FileHandler(log_path),
+        ]
+    )
+
+    # Run the campaign loop
+    try:
+        run_campaign_loop(
+            campaign_name=args.campaign_name,
+            campaign_id=args.campaign_id,
+            seed=args.seed,
+            initial_design_size=args.init_size,
+            backend=args.backend,
+            poll_s=args.poll_s,
+            heartbeat_s=args.heartbeat_s,
+            stop_file=args.stop_file,
+            artifact_dir=args.artifact_dir,
+            budget=args.budget
+        )
+    except Exception as e:
+        print(f"[ALERT] Campaign execution failed with error: {e}", flush=True)
+        logging.exception("Campaign execution failed")
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

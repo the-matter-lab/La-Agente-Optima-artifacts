@@ -1,0 +1,193 @@
+{
+  "case_id": "synthetic_ackley_6d",
+  "cache_buster_nonce": "1dd0337f-b641-4123-b200-52863ef5f9ce",
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "objective_unit": "normalized_unitless",
+  "dimensions": 6,
+  "search_space": {
+    "x_1": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_2": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_3": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_4": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_5": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    },
+    "x_6": {
+      "type": "continuous",
+      "lower": 0.0,
+      "upper": 1.0
+    }
+  },
+  "backend": "local_python_gp_bo",
+  "random_seed": 20260730,
+  "initialization_strategy": "sobol",
+  "initial_design_size": 4,
+  "acquisition_strategy": "expected_improvement",
+  "candidate_pool_size": 2048,
+  "attempted_evaluations": 5,
+  "completed_evaluations": 5,
+  "successful_evaluations": 5,
+  "failed_evaluations": 0,
+  "best_objective_value": 0.04655493754474671,
+  "best_parameters": {
+    "x_1": 0.11533508729189634,
+    "x_2": 0.5647132471203804,
+    "x_3": 0.9150678385049105,
+    "x_4": 0.578064096160233,
+    "x_5": 0.7605154225602746,
+    "x_6": 0.6796284941956401
+  },
+  "best_raw_response": -21.30988080004747,
+  "results": [
+    {
+      "evaluation_index": 0,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.11533508729189634,
+        "x_2": 0.5647132471203804,
+        "x_3": 0.9150678385049105,
+        "x_4": 0.578064096160233,
+        "x_5": 0.7605154225602746,
+        "x_6": 0.6796284941956401
+      },
+      "objective_values": {
+        "surface_response": 0.04655493754474671
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.30988080004747,
+      "classic": 21.30988080004747,
+      "surface_response": 0.04655493754474671,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 1,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.8897710805758834,
+        "x_2": 0.22663035709410906,
+        "x_3": 0.010555206798017025,
+        "x_4": 0.29539379943162203,
+        "x_5": 0.10046305600553751,
+        "x_6": 0.2213125377893448
+      },
+      "objective_values": {
+        "surface_response": 0.045864109903538654
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.32532107580873,
+      "classic": 21.32532107580873,
+      "surface_response": 0.045864109903538654,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 2,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.6669553108513355,
+        "x_2": 0.8487273314967752,
+        "x_3": 0.5714176865294576,
+        "x_4": 0.9159334832802415,
+        "x_5": 0.3300390737131238,
+        "x_6": 0.37971664126962423
+      },
+      "objective_values": {
+        "surface_response": 0.03378075457573907
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.595388929573627,
+      "classic": 21.595388929573627,
+      "surface_response": 0.03378075457573907,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 3,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.33183320611715317,
+        "x_2": 0.45244309678673744,
+        "x_3": 0.4794036000967026,
+        "x_4": 0.19568552169948816,
+        "x_5": 0.5604801895096898,
+        "x_6": 0.9548157639801502
+      },
+      "objective_values": {
+        "surface_response": 0.0360749354490917
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.544113063904977,
+      "classic": 21.544113063904977,
+      "surface_response": 0.0360749354490917,
+      "candidate_source": "sobol_initial",
+      "acquisition_value": null
+    },
+    {
+      "evaluation_index": 4,
+      "batch_index": 4,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.3107879487797618,
+        "x_2": 0.5293024480342865,
+        "x_3": 0.9075315920636058,
+        "x_4": 0.6718602161854506,
+        "x_5": 0.0219721719622612,
+        "x_6": 0.7290635323151946
+      },
+      "objective_values": {
+        "surface_response": 0.02897893373215725
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.702711557619345,
+      "classic": 21.702711557619345,
+      "surface_response": 0.02897893373215725,
+      "candidate_source": "gp_expected_improvement",
+      "acquisition_value": 4.520831390916287e-06
+    }
+  ],
+  "config": {
+    "case_id": "synthetic_ackley_6d",
+    "cache_buster_nonce": "1dd0337f-b641-4123-b200-52863ef5f9ce",
+    "objective_name": "surface_response",
+    "objective_direction": "maximize",
+    "objective_unit": "normalized_unitless",
+    "dimensions": 6,
+    "lower_bound": 0.0,
+    "upper_bound": 1.0,
+    "budget": 5,
+    "initial_design_size": 4,
+    "candidate_pool_size": 2048,
+    "seed": 20260730,
+    "acquisition": "expected_improvement",
+    "output_path": "smoke_local_results.json"
+  }
+}

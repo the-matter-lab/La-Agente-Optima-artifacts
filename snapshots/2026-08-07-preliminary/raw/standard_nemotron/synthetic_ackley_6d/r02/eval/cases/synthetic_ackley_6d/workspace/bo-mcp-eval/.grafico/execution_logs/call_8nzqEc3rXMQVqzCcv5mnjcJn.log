@@ -1,0 +1,42 @@
+exit_code=0
+
+=== stdout (raw) ===
+/app/docs/modal-function-experiments.md:39:source ../akg4pyscf/.venv/bin/activate
+/app/docs/modal-function-experiments.md:46:source ../akg4pyscf/.venv/bin/activate
+/app/docs/modal-function-experiments.md:53:source ../akg4pyscf/.venv/bin/activate
+/app/docs/modal-function-experiments.md:106:Do not run Modal apps from stdin for source-upload tests. With default
+/app/docs/modal-function-experiments.md:107:`include_source=True`, Modal tried to upload a non-existent `<stdin>` path and
+/app/docs/bo-mcp-canonical-client-plan.md:49:source is recoverable from Logfire (trace
+/app/docs/bo-mcp-canonical-client-plan.md:61:| `update_suggestion_status(suggestion_id, status)` | `POST /api/v1/suggestions/{suggestion_id}/status` |
+/app/docs/modal-worker-image-caching.md:24:- remote Modal resources:
+/app/docs/modal-worker-image-caching.md:130:- ordinary Python source edits in `grafico/`
+/app/docs/modal-worker-image-caching.md:138:layers are invalidated only by dependency metadata, not by normal source edits.
+/app/docs/modal-worker-image-caching.md:176:### 3. Application source layer
+/app/docs/modal-worker-image-caching.md:178:Copy the runtime source code after dependencies are already installed.
+/app/docs/modal-worker-image-caching.md:195:- avoid invalidating the dependency layer for unrelated source edits when
+/app/docs/persistence-boundaries.md:47:- transcript files as a second source of truth
+/app/docs/persistence-boundaries.md:179:- papers or sources
+/app/docs/modal-pyscf-function-design.md:154:If the Modal lookup API differs, use the local package as source of truth.
+/app/docs/modal-pyscf-function-design.md:186:Keep explicit source attachment:
+/app/docs/modal-pyscf-function-design.md:202:source. Explicit source attachment keeps Modal workers aligned with Railway
+/app/docs/modal-pyscf-function-design.md:203:source.
+/app/docs/graphchat-message-queue-roadmap.md:145:source = "user"
+/app/docs/graphchat-message-queue-roadmap.md:300:- source: user or monitor
+/app/tests/domains/bo_mcp/test_client.py:104:    assert call["json"] == {"results": [{"x": 1}], "source": "api"}
+/app/tests/domains/bo_mcp/test_client.py:177:            payload={"success": True, "suggestions": [{"suggestion_id": "s1", "x": 1}]}
+/app/tests/domains/bo_mcp/test_client.py:181:    assert response["suggestions"] == [{"suggestion_id": "s1", "x": 1}]
+/app/tests/domains/bo_mcp/test_client.py:200:    payload = {"success": True, "suggestions": [{"suggestion_id": "s1"}]}
+/app/tests/domains/bo_mcp/test_client.py:203:    assert suggestions == [{"suggestion_id": "s1"}]
+/app/tests/domains/bo_mcp/test_client_contract.py:20:    ("post", "/api/v1/suggestions/{suggestion_id}/status"),
+/app/domains/bo_mcp/client.py:51:       e. ``update_suggestion_status(suggestion_id, status)`` — reject
+/app/domains/bo_mcp/client.py:54:          reporting or cross-checks. Not a progress source: ``next_action``
+/app/domains/bo_mcp/client.py:75:    Loop-state ownership: the BO-MCP server is the single source of truth
+/app/domains/bo_mcp/client.py:224:        payload: dict[str, Any] = {"results": results, "source": "api"}
+/app/domains/bo_mcp/client.py:255:        self, suggestion_id: str, status: str
+/app/domains/bo_mcp/client.py:259:            f"/api/v1/suggestions/{suggestion_id}/status",
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

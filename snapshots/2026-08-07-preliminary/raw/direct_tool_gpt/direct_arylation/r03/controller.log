@@ -1,0 +1,314 @@
+
+[2026-07-30T18:51:52.935418Z] COMMAND ["docker", "compose", "-p", "mx-20260730-direct-tool-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "direct_arylation", "--output-dir", "/app/outputs/cells/direct_arylation_direct_tool_gpt_r03/eval", "--architecture-mode", "main_agent_tool_passing_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "direct_arylation_direct_tool_gpt_r03-20260730"]
+ Container mx-20260730-direct-tool-gpt-eval-run-9e9b91f6f7e5 Creating 
+ Container mx-20260730-direct-tool-gpt-eval-run-9e9b91f6f7e5 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:52:03.053 evaluate bo_mcp_graph_eval
+18:52:03.054   case: direct_arylation
+18:52:03.054     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+18:52:18.951       POST mcp/mcp
+18:52:18.961       POST mcp/mcp
+18:52:18.962       GET mcp/mcp
+18:52:18.996       agent run
+18:52:19.002         tools/list
+18:52:19.003       POST mcp/mcp
+                   agent run
+18:52:19.048         chat gpt-5.4
+18:52:19.674           POST api.openai.com/v1/responses
+18:52:32.573         running tool: bo_health_check
+18:52:32.574         running tool: bo_list_capabilities
+18:52:32.574         running tool: bo_list_capabilities
+18:52:32.575         running tool: bo_list_capabilities
+                     running tool: bo_health_check
+18:52:32.576           tools/call bo_health_check
+                     running tool: bo_list_capabilities
+18:52:32.576           tools/call bo_list_capabilities
+                     running tool: bo_list_capabilities
+18:52:32.577           tools/call bo_list_capabilities
+                     running tool: bo_list_capabilities
+18:52:32.577           tools/call bo_list_capabilities
+18:52:32.578       POST mcp/mcp
+18:52:32.579       POST mcp/mcp
+18:52:32.579       POST mcp/mcp
+18:52:32.581       POST mcp/mcp
+                   agent run
+18:52:33.466         chat gpt-5.4
+18:52:33.490           POST api.openai.com/v1/responses
+18:52:47.623         running tool: bo_validate_intake
+18:52:47.623           tools/call bo_validate_intake
+18:52:47.624       POST mcp/mcp
+                   agent run
+18:52:47.932         chat gpt-5.4
+18:52:47.962           POST api.openai.com/v1/responses
+18:52:56.585         running tool: bo_create_campaign
+18:52:56.585           tools/call bo_create_campaign
+18:52:56.586       POST mcp/mcp
+                   agent run
+18:52:57.371         chat gpt-5.4
+18:52:57.405           POST api.openai.com/v1/responses
+18:53:04.644         running tool: bo_validate_intake
+18:53:04.644           tools/call bo_validate_intake
+18:53:04.645       POST mcp/mcp
+                   agent run
+18:53:05.758         chat gpt-5.4
+18:53:05.787           POST api.openai.com/v1/responses
+18:53:11.328         running tool: bo_create_campaign
+18:53:11.328           tools/call bo_create_campaign
+18:53:11.329       POST mcp/mcp
+                   agent run
+18:53:12.360         chat gpt-5.4
+18:53:12.417           POST api.openai.com/v1/responses
+18:53:18.189         running tool: bo_generate_suggestions
+18:53:18.190           tools/call bo_generate_suggestions
+18:53:18.191       POST mcp/mcp
+                   agent run
+18:53:19.472         chat gpt-5.4
+18:53:19.513           POST api.openai.com/v1/responses
+18:53:24.894         running tool: evaluate_direct_arylation_yield
+18:53:24.895         running tool: evaluate_direct_arylation_yield
+18:53:24.895         running tool: evaluate_direct_arylation_yield
+18:53:24.896         running tool: evaluate_direct_arylation_yield
+18:53:24.897         running tool: evaluate_direct_arylation_yield
+18:53:24.897         running tool: evaluate_direct_arylation_yield
+18:53:24.921         chat gpt-5.4
+18:53:24.968           POST api.openai.com/v1/responses
+18:53:40.707         running tool: bo_submit_results
+18:53:40.708           tools/call bo_submit_results
+18:53:40.709       POST mcp/mcp
+                   agent run
+18:53:42.051         chat gpt-5.4
+18:53:42.124           POST api.openai.com/v1/responses
+18:53:46.594         running tool: bo_generate_suggestions
+18:53:46.594           tools/call bo_generate_suggestions
+18:53:46.595       POST mcp/mcp
+                   agent run
+18:53:47.303         chat gpt-5.4
+18:53:47.355           POST api.openai.com/v1/responses
+18:53:52.333         running tool: evaluate_direct_arylation_yield
+18:53:52.333         running tool: evaluate_direct_arylation_yield
+18:53:52.334         running tool: evaluate_direct_arylation_yield
+18:53:52.334         running tool: evaluate_direct_arylation_yield
+18:53:52.335         running tool: evaluate_direct_arylation_yield
+18:53:52.335         running tool: evaluate_direct_arylation_yield
+18:53:52.366         chat gpt-5.4
+18:53:52.451           POST api.openai.com/v1/responses
+18:53:57.847         running tool: bo_submit_results
+18:53:57.848           tools/call bo_submit_results
+18:53:57.849       POST mcp/mcp
+                   agent run
+18:53:58.008         chat gpt-5.4
+18:53:58.101           POST api.openai.com/v1/responses
+18:54:03.014         running tool: bo_generate_suggestions
+18:54:03.015           tools/call bo_generate_suggestions
+18:54:03.016       POST mcp/mcp
+                   agent run
+18:54:05.440         chat gpt-5.4
+18:54:05.501           POST api.openai.com/v1/responses
+18:54:23.338         running tool: evaluate_direct_arylation_yield
+18:54:23.339         running tool: evaluate_direct_arylation_yield
+18:54:23.339         running tool: evaluate_direct_arylation_yield
+18:54:23.340         running tool: evaluate_direct_arylation_yield
+18:54:23.341         running tool: evaluate_direct_arylation_yield
+18:54:23.341         running tool: evaluate_direct_arylation_yield
+18:54:23.361         chat gpt-5.4
+18:54:23.434           POST api.openai.com/v1/responses
+18:54:30.174         running tool: bo_submit_results
+18:54:30.174           tools/call bo_submit_results
+18:54:30.175       POST mcp/mcp
+                   agent run
+18:54:30.423         chat gpt-5.4
+18:54:30.475           POST api.openai.com/v1/responses
+18:54:34.839         running tool: bo_generate_suggestions
+18:54:34.839           tools/call bo_generate_suggestions
+18:54:34.840       POST mcp/mcp
+                   agent run
+18:54:36.614         chat gpt-5.4
+18:54:36.674           POST api.openai.com/v1/responses
+18:54:41.369         running tool: evaluate_direct_arylation_yield
+18:54:41.369         running tool: evaluate_direct_arylation_yield
+18:54:41.370         running tool: evaluate_direct_arylation_yield
+18:54:41.371         running tool: evaluate_direct_arylation_yield
+18:54:41.371         running tool: evaluate_direct_arylation_yield
+18:54:41.371         running tool: evaluate_direct_arylation_yield
+18:54:41.391         chat gpt-5.4
+18:54:41.456           POST api.openai.com/v1/responses
+18:54:47.706         running tool: bo_submit_results
+18:54:47.706           tools/call bo_submit_results
+18:54:47.707       POST mcp/mcp
+                   agent run
+18:54:48.393         chat gpt-5.4
+18:54:48.463           POST api.openai.com/v1/responses
+18:54:56.745         running tool: bo_generate_suggestions
+18:54:56.746           tools/call bo_generate_suggestions
+18:54:56.746       POST mcp/mcp
+                   agent run
+18:54:58.210         chat gpt-5.4
+18:54:58.271           POST api.openai.com/v1/responses
+18:55:03.980         running tool: evaluate_direct_arylation_yield
+18:55:03.981         running tool: evaluate_direct_arylation_yield
+18:55:03.981         running tool: evaluate_direct_arylation_yield
+18:55:03.982         running tool: evaluate_direct_arylation_yield
+18:55:03.982         running tool: evaluate_direct_arylation_yield
+18:55:03.983         running tool: evaluate_direct_arylation_yield
+18:55:04.006         chat gpt-5.4
+18:55:04.080           POST api.openai.com/v1/responses
+18:55:17.016         running tool: bo_submit_results
+18:55:17.017           tools/call bo_submit_results
+18:55:17.017       POST mcp/mcp
+                   agent run
+18:55:17.435         chat gpt-5.4
+18:55:17.523           POST api.openai.com/v1/responses
+18:55:22.043         running tool: bo_get_diagnostics
+18:55:22.043           tools/call bo_get_diagnostics
+18:55:22.044       POST mcp/mcp
+                   agent run
+18:55:22.536         chat gpt-5.4
+18:55:22.627           POST api.openai.com/v1/responses
+18:55:30.003         running tool: bo_generate_suggestions
+18:55:30.006           tools/call bo_generate_suggestions
+18:55:30.007       POST mcp/mcp
+                   agent run
+18:55:33.068         chat gpt-5.4
+18:55:33.205           POST api.openai.com/v1/responses
+18:55:37.378         running tool: evaluate_direct_arylation_yield
+18:55:37.378         running tool: evaluate_direct_arylation_yield
+18:55:37.379         running tool: evaluate_direct_arylation_yield
+18:55:37.913         running tool: evaluate_direct_arylation_yield
+18:55:37.914         running tool: evaluate_direct_arylation_yield
+18:55:37.915         running tool: evaluate_direct_arylation_yield
+18:55:37.944         chat gpt-5.4
+18:55:38.086           POST api.openai.com/v1/responses
+18:55:46.561         running tool: bo_submit_results
+18:55:46.561           tools/call bo_submit_results
+18:55:46.563       POST mcp/mcp
+                   agent run
+18:55:47.106         chat gpt-5.4
+18:55:47.257           POST api.openai.com/v1/responses
+18:55:54.765         running tool: bo_generate_suggestions
+18:55:54.766           tools/call bo_generate_suggestions
+18:55:54.767       POST mcp/mcp
+                   agent run
+18:55:57.459         chat gpt-5.4
+18:55:57.566           POST api.openai.com/v1/responses
+18:56:02.624         running tool: evaluate_direct_arylation_yield
+18:56:02.625         running tool: evaluate_direct_arylation_yield
+18:56:02.625         running tool: evaluate_direct_arylation_yield
+18:56:02.626         running tool: evaluate_direct_arylation_yield
+18:56:02.626         running tool: evaluate_direct_arylation_yield
+18:56:02.626         running tool: evaluate_direct_arylation_yield
+18:56:02.649         chat gpt-5.4
+18:56:02.758           POST api.openai.com/v1/responses
+18:56:16.420         running tool: bo_submit_results
+18:56:16.420           tools/call bo_submit_results
+18:56:16.421       POST mcp/mcp
+                   agent run
+18:56:16.887         chat gpt-5.4
+18:56:16.999           POST api.openai.com/v1/responses
+18:56:20.551         running tool: bo_generate_suggestions
+18:56:20.552           tools/call bo_generate_suggestions
+18:56:20.553       POST mcp/mcp
+                   agent run
+18:56:23.654         chat gpt-5.4
+18:56:23.774           POST api.openai.com/v1/responses
+18:56:31.387         running tool: evaluate_direct_arylation_yield
+18:56:31.388         running tool: evaluate_direct_arylation_yield
+18:56:31.388         running tool: evaluate_direct_arylation_yield
+18:56:31.389         running tool: evaluate_direct_arylation_yield
+18:56:31.389         running tool: evaluate_direct_arylation_yield
+18:56:31.390         running tool: evaluate_direct_arylation_yield
+18:56:31.413         chat gpt-5.4
+18:56:31.503           POST api.openai.com/v1/responses
+18:56:37.874         running tool: bo_submit_results
+18:56:37.874           tools/call bo_submit_results
+18:56:37.875       POST mcp/mcp
+                   agent run
+18:56:38.188         chat gpt-5.4
+18:56:38.279           POST api.openai.com/v1/responses
+18:56:41.927         running tool: bo_generate_suggestions
+18:56:41.928           tools/call bo_generate_suggestions
+18:56:41.928       POST mcp/mcp
+                   agent run
+18:56:44.005         chat gpt-5.4
+18:56:44.097           POST api.openai.com/v1/responses
+18:56:50.039         running tool: evaluate_direct_arylation_yield
+18:56:50.039         running tool: evaluate_direct_arylation_yield
+18:56:50.039         running tool: evaluate_direct_arylation_yield
+18:56:50.040         running tool: evaluate_direct_arylation_yield
+18:56:50.040         running tool: evaluate_direct_arylation_yield
+18:56:50.041         running tool: evaluate_direct_arylation_yield
+18:56:50.069         chat gpt-5.4
+18:56:50.165           POST api.openai.com/v1/responses
+18:56:56.566         running tool: bo_submit_results
+18:56:56.566           tools/call bo_submit_results
+18:56:56.567       POST mcp/mcp
+                   agent run
+18:56:57.176         chat gpt-5.4
+18:56:57.286           POST api.openai.com/v1/responses
+18:57:02.236         running tool: bo_generate_suggestions
+18:57:02.236           tools/call bo_generate_suggestions
+18:57:02.237       POST mcp/mcp
+                   agent run
+18:57:04.498         chat gpt-5.4
+18:57:04.594           POST api.openai.com/v1/responses
+18:57:10.655         running tool: evaluate_direct_arylation_yield
+18:57:10.655         running tool: evaluate_direct_arylation_yield
+18:57:10.656         running tool: evaluate_direct_arylation_yield
+18:57:10.656         running tool: evaluate_direct_arylation_yield
+18:57:10.657         running tool: evaluate_direct_arylation_yield
+18:57:10.657         running tool: evaluate_direct_arylation_yield
+18:57:10.676         chat gpt-5.4
+18:57:10.778           POST api.openai.com/v1/responses
+18:57:19.154         running tool: bo_submit_results
+18:57:19.154           tools/call bo_submit_results
+18:57:19.155       POST mcp/mcp
+                   agent run
+18:57:19.465         chat gpt-5.4
+18:57:19.570           POST api.openai.com/v1/responses
+18:57:24.903         running tool: bo_get_diagnostics
+18:57:24.904         running tool: bo_get_diagnostics
+                     running tool: bo_get_diagnostics
+18:57:24.904           tools/call bo_get_diagnostics
+                     running tool: bo_get_diagnostics
+18:57:24.904           tools/call bo_get_diagnostics
+18:57:24.905       POST mcp/mcp
+18:57:24.906       POST mcp/mcp
+                   agent run
+18:57:25.192         chat gpt-5.4
+18:57:25.298           POST api.openai.com/v1/responses
+18:57:30.646         running tool: bo_validate_intake
+18:57:30.646           tools/call bo_validate_intake
+18:57:30.647       POST mcp/mcp
+                   agent run
+18:57:30.723         chat gpt-5.4
+18:57:30.840           POST api.openai.com/v1/responses
+18:57:34.713         running tool: bo_generate_suggestions
+18:57:34.713           tools/call bo_generate_suggestions
+18:57:34.714       POST mcp/mcp
+                   agent run
+18:57:35.795         chat gpt-5.4
+18:57:35.915           POST api.openai.com/v1/responses
+18:57:44.595         running tool: bo_create_campaign
+18:57:44.595           tools/call bo_create_campaign
+18:57:44.596       POST mcp/mcp
+                   agent run
+18:57:44.737         chat gpt-5.4
+18:57:44.857           POST api.openai.com/v1/responses
+18:57:53.283         running tool: bo_list_capabilities
+18:57:53.283           tools/call bo_list_capabilities
+18:57:53.284       POST mcp/mcp
+                   agent run
+18:57:54.133         chat gpt-5.4
+18:57:54.243           POST api.openai.com/v1/responses
+18:58:01.009         running tool: bo_terminate_campaign
+18:58:01.010           tools/call bo_terminate_campaign
+18:58:01.010       POST mcp/mcp
+                   agent run
+18:58:02.270         chat gpt-5.4
+18:58:02.389           POST api.openai.com/v1/responses
+18:58:34.517       DELETE mcp/mcp
+[2026-07-30T18:59:23.629442Z] EXIT 0

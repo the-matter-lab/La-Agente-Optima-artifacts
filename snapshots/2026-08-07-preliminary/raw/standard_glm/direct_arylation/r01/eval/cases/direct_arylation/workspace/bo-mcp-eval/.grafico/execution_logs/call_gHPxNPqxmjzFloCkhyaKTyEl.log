@@ -1,0 +1,176 @@
+exit_code=0
+
+=== stdout (raw) ===
+# HOW TO EXECUTE CAMPAIGN — Direct-Arylation BO-MCP Benchmark
+
+## Overview
+
+This campaign optimizes direct-arylation reaction yield using Bayesian
+optimization via the BO-MCP service.  The search space has 1,728 fully
+crossed conditions (4 bases × 12 ligands × 4 solvents × 3 concentrations
+× 3 temperatures).  The budget is **60 attempted evaluations**.
+
+**Ownership marker:** `akg-eval-a2227614c6494db5ad4327686c34e5d2`
+— all campaign names created by this script include this marker.
+
+**Cache-buster nonce:** `d4e35d2c-ff8a-4f7d-9157-69d7e6a5f71f`
+
+---
+
+## Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `BO_MCP_API_URL` | **Yes** | BO-MCP REST API base URL |
+| `BO_MCP_API_KEY` | **Yes** | BO-MCP API key |
+| `DIRECT_ARYLATION_API_URL` | **Yes** | Oracle base URL (e.g. `http://oracle:8000`) |
+| `ARTIFACT_DIR` | No | Directory for artifacts (default: `./artifacts`) |
+
+---
+
+## Execution Command
+
+```bash
+# From the workspace directory containing run_direct_arylation.py
+export BO_MCP_API_URL="<your BO-MCP URL>"
+export BO_MCP_API_KEY="[REDACTED] BO-MCP key>"
+export DIRECT_ARYLATION_API_URL="<your oracle URL>"
+
+python -u run_direct_arylation.py --budget 60
+```
+
+The `-u` flag ensures unbuffered output for monitoring.
+
+### Resume a paused/killed campaign
+
+```bash
+python -u run_direct_arylation.py --campaign-id <CAMPAIGN_ID> --budget 60
+```
+
+The script auto-detects campaign status (paused → resume, completed → reopen).
+
+---
+
+## Stop-File Behavior
+
+Create a file named `STOP` (or the path passed to `--stop-file`) in the
+working directory to request a graceful pause:
+
+```bash
+touch STOP
+```
+
+The script checks for the stop file **before** each suggestion generation.
+When detected, it:
+
+1. Prints `[EVENT] Stop file detected — pausing gracefully`
+2. Deletes the stop file (so a resume command is not blocked by a stale marker)
+3. Pauses the campaign via the BO-MCP lifecycle API
+4. Exits normally
+
+**Important:** The stop file is checked only at the top of each loop
+iteration, never between evaluation and result submission.
+
+---
+
+## Output Tags
+
+The script prints tagged lines suitable for `start_monitor` filtering:
+
+| Tag | Meaning |
+|---|---|
+| `[EVENT]` | State changes (campaign created, resumed, stopped) |
+| `[ALERT]` | Failures (evaluation failed, submission error) |
+| `[RESULT]` | Per-experiment analysis and final summary |
+| `[HEARTBEAT]` | Liveness check (every `--heartbeat-s` seconds) |
+
+---
+
+## Artifacts
+
+All artifacts are written to `ARTIFACT_DIR` (default: `./artifacts`):
+
+| File | Description |
+|---|---|
+| `attempts.jsonl` | One JSON line per attempt with `parameter_values`, `objective_values`, `status`, `suggestion_id` |
+| `final_report.json` | Summary with best yield, best conditions, counts, and all attempts |
+
+### Attempt Record Schema
+
+```json
+{
+  "attempt_index": 1,
+  "suggestion_id": "...",
+  "parameter_values": {
+    "base": "Cesium acetate",
+    "ligand": "BrettPhos",
+    "solvent": "DMAc",
+    "concentration": 0.1,
+    "temperature_c": 105
+  },
+  "status": "success",
+  "objective_values": {"yield": 72.5}
+}
+```
+
+Failed evaluations have `"status": "failed"` and `"objective_values": null`.
+
+### Final Report Schema
+
+```json
+{
+  "campaign_id": "...",
+  "total_attempted": 60,
+  "successful_evaluations": 58,
+  "failed_evaluations": 2,
+  "best_yield": 95.3,
+  "best_conditions": { ... },
+  "all_attempts": [ ... ],
+  "timestamp_utc": "..."
+}
+```
+
+---
+
+## Campaign Design
+
+| Choice | Value | Rationale |
+|---|---|---|
+| Backend | `baybe` | Supports 192 categorical combos (BoTorch caps at 100); native mixed-space handling |
+| Acquisition | BayBE default (Bayesian recommender) | Automatic model-driven acquisition after first measurement |
+| Batch size | 1 | Sequential evaluation maximises information per eval under tight budget |
+| `max_iterations` | Unset | CLI budget controls invocation; campaign stays resumable |
+
+---
+
+## Final Answer Extraction
+
+The script always prints exactly one line:
+
+```
+BO_MCP_CAMPAIGN_ID=<campaign_id>
+```
+
+This is also available in `final_report.json` under the `campaign_id` key.
+
+---
+
+## File Inventory
+
+| Path | Purpose |
+|---|---|
+| `run_direct_arylation.py` | CLI entrypoint |
+| `direct_arylation_bo/__init__.py` | Package marker |
+| `direct_arylation_bo/search_space.py` | Parameter definitions |
+| `direct_arylation_bo/campaign_intake.py` | Campaign intake construction |
+| `direct_arylation_bo/evaluator.py` | Oracle evaluation |
+| `direct_arylation_bo/reporting.py` | Artifact writing and reporting |
+| `direct_arylation_bo/campaign.py` | Core BO loop orchestration |
+| `campaign_manifest.json` | Package metadata |
+| `HOW_TO_EXECUTE_CAMPAIGN.md` | This file |
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

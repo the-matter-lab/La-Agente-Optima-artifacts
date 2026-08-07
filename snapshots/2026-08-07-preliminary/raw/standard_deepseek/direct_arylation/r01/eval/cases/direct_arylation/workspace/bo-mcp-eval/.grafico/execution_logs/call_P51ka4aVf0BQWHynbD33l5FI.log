@@ -1,0 +1,103 @@
+exit_code=0
+
+=== stdout (raw) ===
+# HOW_TO_EXECUTE_CAMPAIGN.md
+
+## Direct Arylation Yield Optimisation — BO-MCP Campaign
+
+Cache-buster: `234c0ae1-e4bc-485b-86ef-343a06547aab`
+
+### Overview
+
+Bayesian optimisation of measured yield for a direct arylation reaction over a
+fully crossed 5-parameter search space (1,728 candidates). The campaign uses
+BO-MCP with the BayBE backend (required — the 192 categorical combinations exceed
+BoTorch's 100-category limit for mixed-space acquisition), sequential
+(batch_size=1) suggestions, and a 12-point initial design.
+
+### Search Space
+
+| Parameter       | Type        | Values |
+|-----------------|-------------|--------|
+| `base`          | categorical | Potassium acetate, Potassium pivalate, Cesium acetate, Cesium pivalate |
+| `ligand`        | categorical | BrettPhos, Di-tert-butylphenylphosphine, (t-Bu)PhCPhos, Tricyclohexylphosphine, PPh3, XPhos, P(2-furyl)3, Methyldiphenylphosphine, 1268824-69-6, JackiePhos, SCHEMBL15068049, Me2PPh |
+| `solvent`       | categorical | DMAc, Butyornitrile, Butyl Ester, p-Xylene |
+| `concentration` | discrete    | 0.057, 0.1, 0.153 |
+| `temperature_c` | discrete    | 90, 105, 120 |
+
+### Required Environment Variables
+
+| Variable                  | Purpose |
+|---------------------------|---------|
+| `BO_MCP_API_URL`          | BO-MCP REST API base URL |
+| `BO_MCP_API_KEY`          | BO-MCP API key |
+| `DIRECT_ARYLATION_API_URL`| Oracle evaluator base URL |
+
+### Execution Command
+
+```bash
+PYTHONPATH=/app python3 run_direct_arylation_bo.py \
+  --max-attempts 60 \
+  --poll-s 180 \
+  --heartbeat-s 1800 \
+  --stop-file STOP \
+  --artifact-dir artifacts
+```
+
+### Resume After Interruption
+
+If the process is killed or the stop file is touched, re-run with the same
+`--campaign-id` from the final report:
+
+```bash
+PYTHONPATH=/app python3 run_direct_arylation_bo.py \
+  --campaign-id <CAMPAIGN_ID> \
+  --max-attempts <REMAINING_BUDGET>
+```
+
+The script auto-detects the campaign status (paused/completed/running) and
+issues the correct lifecycle action (resume/reopen). The intake is immutable
+and never rebuilt — the campaign continues from where it left off.
+
+### Stop File
+
+Create a file named `STOP` (or the path given to `--stop-file`) in the
+workspace to request a clean shutdown at the next loop iteration boundary.
+The script deletes the file on detection so a stale marker does not block
+the resume command.
+
+### Tagged Output Lines
+
+The script emits unbuffered tagged lines for monitoring:
+
+| Tag           | Meaning |
+|---------------|---------|
+| `[EVENT]`     | State changes, campaign creation, loop start/stop, best-yield updates, final report |
+| `[ALERT]`     | Failures, API errors, rejected submissions, stop conditions |
+| `[RESULT]`    | Full per-experiment analysis (yield, candidate parameters) |
+| `[HEARTBEAT]` | Periodic liveness (attempted/successful/failed counts, best yield) |
+
+### Output Artifacts
+
+- `artifacts/attempts_<campaign_id>.jsonl` — append-only log of every
+  attempted evaluation with candidate, status, yield, and error (if any).
+  This file is the authoritative record for the full attempt list.
+
+### Campaign Ownership Marker
+
+Every BO-MCP campaign created by this script includes the exact marker
+`akg-eval-d3d9f204a8d647dab3dc82339c33dc70` in its name.
+
+### Constraints Preserved
+
+- Exactly 60 attempted objective evaluations (governed by `--max-attempts`).
+- Oracle queried only for BO-selected candidates — no full-space enumeration.
+- Failed evaluations are recorded and the loop continues within the same budget.
+- Solvent spelling `Butyornitrile` is preserved exactly.
+- Campaign is resumable (paused, not terminated, at invocation end).
+- Full attempt list with statuses and objective values is in the JSONL log.
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

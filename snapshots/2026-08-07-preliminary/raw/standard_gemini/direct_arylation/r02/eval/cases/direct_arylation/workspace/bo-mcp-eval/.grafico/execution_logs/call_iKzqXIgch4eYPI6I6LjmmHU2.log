@@ -1,0 +1,151 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/direct_arylation_20260730_174800.log
+--- SUMMARY TAIL ---
+17:49:50.333 POST api/api/v1/campaigns/status/batch
+17:49:50.353 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:49:50.366 Generating new suggestion...
+17:49:50.366 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:49:51.439 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105}
+17:49:51.441 POST direct-arylation-oracle/v1/evaluate
+17:49:51.446 Evaluation succeeded: {'yield': 48.86}
+17:49:51.446 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=DMAc, concentration=0.153, temperature_c=105.0 -> Yield: 48.86%
+17:49:52.518 POST api/api/v1/campaigns/status/batch
+17:49:52.540 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:49:52.552 Generating new suggestion...
+17:49:52.553 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:49:53.332 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120}
+17:49:53.333 POST direct-arylation-oracle/v1/evaluate
+17:49:53.336 Evaluation succeeded: {'yield': 88.41}
+17:49:53.336 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=DMAc, concentration=0.1, temperature_c=120.0 -> Yield: 88.41%
+17:49:54.401 POST api/api/v1/campaigns/status/batch
+17:49:54.420 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:49:54.434 Generating new suggestion...
+17:49:54.435 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:49:55.324 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120}
+17:49:55.325 POST direct-arylation-oracle/v1/evaluate
+17:49:55.331 Evaluation succeeded: {'yield': 77.58}
+17:49:55.333 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=DMAc, concentration=0.057, temperature_c=120.0 -> Yield: 77.58%
+17:49:56.430 POST api/api/v1/campaigns/status/batch
+17:49:56.453 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:49:56.465 Generating new suggestion...
+17:49:56.465 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:49:57.412 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120}
+17:49:57.413 POST direct-arylation-oracle/v1/evaluate
+17:49:57.419 Evaluation succeeded: {'yield': 80.39}
+17:49:57.420 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium pivalate, ligand=XPhos, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 80.39%
+17:49:58.498 POST api/api/v1/campaigns/status/batch
+17:49:58.522 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:49:58.537 Generating new suggestion...
+17:49:58.538 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:49:59.845 Evaluating candidate: {'base': 'Cesium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120}
+17:49:59.846 POST direct-arylation-oracle/v1/evaluate
+17:49:59.852 Evaluation succeeded: {'yield': 48.34}
+17:49:59.852 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Cesium pivalate, ligand=XPhos, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 48.34%
+17:50:00.924 POST api/api/v1/campaigns/status/batch
+17:50:00.947 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:50:00.959 Generating new suggestion...
+17:50:00.959 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:50:01.800 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120}
+17:50:01.800 POST direct-arylation-oracle/v1/evaluate
+17:50:01.803 Evaluation succeeded: {'yield': 80.61}
+17:50:01.803 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium pivalate, ligand=XPhos, solvent=DMAc, concentration=0.1, temperature_c=120.0 -> Yield: 80.61%
+17:50:02.870 POST api/api/v1/campaigns/0f26e119-ef44-4a92-b970-7d97eed33f3d/lifecycle
+[EVENT] Campaign paused at the end of invocation.
+17:50:02.928 GET api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+
+============================================================
+ DIRECT ARYLATION OPTIMIZATION CAMPAIGN SUMMARY
+============================================================
+Attempted Evaluations:  60
+Successful Evaluations: 60
+Failed Evaluations:     0
+
+[RESULT] BEST REACTION CONDITIONS FOUND:
+  - base: Potassium acetate
+  - ligand: XPhos
+  - solvent: DMAc
+  - concentration: 0.1
+  - temperature_c: 120.0
+  - [RESULT] Best Measured Yield: 88.41%
+
+------------------------------------------------------------
+ ALL EVALUATED CANDIDATES:
+------------------------------------------------------------
+[01] SUCCESS | base=Cesium pivalate, ligand=Tricyclohexylphosphine, solvent=Butyl Ester, concentration=0.057, temperature_c=105.0 -> Yield: 0.00%
+[02] SUCCESS | base=Cesium acetate, ligand=(t-Bu)PhCPhos, solvent=Butyornitrile, concentration=0.153, temperature_c=90.0 -> Yield: 0.00%
+[03] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 14.06%
+[04] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=DMAc, concentration=0.1, temperature_c=120.0 -> Yield: 15.42%
+[05] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=DMAc, concentration=0.1, temperature_c=105.0 -> Yield: 13.11%
+[06] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=DMAc, concentration=0.057, temperature_c=120.0 -> Yield: 13.87%
+[07] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=p-Xylene, concentration=0.1, temperature_c=120.0 -> Yield: 7.43%
+[08] SUCCESS | base=Potassium acetate, ligand=BrettPhos, solvent=DMAc, concentration=0.1, temperature_c=120.0 -> Yield: 5.03%
+[09] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=DMAc, concentration=0.1, temperature_c=120.0 -> Yield: 49.17%
+[10] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 61.33%
+[11] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=DMAc, concentration=0.153, temperature_c=105.0 -> Yield: 72.45%
+[12] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=DMAc, concentration=0.153, temperature_c=90.0 -> Yield: 30.03%
+[13] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=DMAc, concentration=0.1, temperature_c=105.0 -> Yield: 38.15%
+[14] SUCCESS | base=Potassium pivalate, ligand=Di-tert-butylphenylphosphine, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 0.00%
+[15] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=Butyl Ester, concentration=0.153, temperature_c=105.0 -> Yield: 13.22%
+[16] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.153, temperature_c=120.0 -> Yield: 45.37%
+[17] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=p-Xylene, concentration=0.153, temperature_c=105.0 -> Yield: 4.92%
+[18] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.153, temperature_c=105.0 -> Yield: 30.77%
+[19] SUCCESS | base=Cesium pivalate, ligand=1268824-69-6, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 54.83%
+[20] SUCCESS | base=Cesium pivalate, ligand=1268824-69-6, solvent=DMAc, concentration=0.153, temperature_c=105.0 -> Yield: 76.34%
+[21] SUCCESS | base=Cesium acetate, ligand=1268824-69-6, solvent=DMAc, concentration=0.153, temperature_c=105.0 -> Yield: 59.83%
+[22] SUCCESS | base=Cesium acetate, ligand=1268824-69-6, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 40.26%
+[23] SUCCESS | base=Cesium pivalate, ligand=1268824-69-6, solvent=DMAc, concentration=0.1, temperature_c=105.0 -> Yield: 40.43%
+[24] SUCCESS | base=Cesium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.153, temperature_c=120.0 -> Yield: 39.20%
+[25] SUCCESS | base=Cesium pivalate, ligand=JackiePhos, solvent=DMAc, concentration=0.153, temperature_c=105.0 -> Yield: 2.84%
+[26] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.057, temperature_c=120.0 -> Yield: 64.48%
+[27] SUCCESS | base=Cesium acetate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.057, temperature_c=120.0 -> Yield: 49.09%
+[28] SUCCESS | base=Cesium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.057, temperature_c=120.0 -> Yield: 58.13%
+[29] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.057, temperature_c=105.0 -> Yield: 49.19%
+[30] SUCCESS | base=Potassium acetate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.057, temperature_c=120.0 -> Yield: 20.95%
+[31] SUCCESS | base=Potassium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.1, temperature_c=120.0 -> Yield: 56.45%
+[32] SUCCESS | base=Cesium pivalate, ligand=1268824-69-6, solvent=Butyl Ester, concentration=0.057, temperature_c=120.0 -> Yield: 13.52%
+[33] SUCCESS | base=Potassium pivalate, ligand=Me2PPh, solvent=Butyornitrile, concentration=0.057, temperature_c=120.0 -> Yield: 0.00%
+[34] SUCCESS | base=Cesium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.057, temperature_c=105.0 -> Yield: 46.17%
+[35] SUCCESS | base=Potassium acetate, ligand=Methyldiphenylphosphine, solvent=p-Xylene, concentration=0.057, temperature_c=90.0 -> Yield: 0.00%
+[36] SUCCESS | base=Cesium acetate, ligand=P(2-furyl)3, solvent=p-Xylene, concentration=0.057, temperature_c=120.0 -> Yield: 11.72%
+[37] SUCCESS | base=Potassium acetate, ligand=P(2-furyl)3, solvent=Butyornitrile, concentration=0.153, temperature_c=120.0 -> Yield: 3.04%
+[38] SUCCESS | base=Cesium acetate, ligand=1268824-69-6, solvent=p-Xylene, concentration=0.057, temperature_c=120.0 -> Yield: 21.94%
+[39] SUCCESS | base=Cesium acetate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.057, temperature_c=90.0 -> Yield: 21.15%
+[40] SUCCESS | base=Cesium acetate, ligand=PPh3, solvent=Butyornitrile, concentration=0.057, temperature_c=120.0 -> Yield: 11.19%
+[41] SUCCESS | base=Cesium acetate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.153, temperature_c=120.0 -> Yield: 36.46%
+[42] SUCCESS | base=Cesium pivalate, ligand=1268824-69-6, solvent=Butyornitrile, concentration=0.1, temperature_c=120.0 -> Yield: 48.15%
+[43] SUCCESS | base=Potassium acetate, ligand=SCHEMBL15068049, solvent=Butyl Ester, concentration=0.153, temperature_c=90.0 -> Yield: 16.83%
+[44] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyl Ester, concentration=0.153, temperature_c=120.0 -> Yield: 76.24%
+[45] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyl Ester, concentration=0.1, temperature_c=120.0 -> Yield: 73.71%
+[46] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyl Ester, concentration=0.153, temperature_c=105.0 -> Yield: 53.49%
+[47] SUCCESS | base=Potassium pivalate, ligand=XPhos, solvent=Butyl Ester, concentration=0.153, temperature_c=120.0 -> Yield: 48.91%
+[48] SUCCESS | base=Cesium acetate, ligand=XPhos, solvent=Butyl Ester, concentration=0.057, temperature_c=120.0 -> Yield: 7.02%
+[49] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyl Ester, concentration=0.057, temperature_c=120.0 -> Yield: 61.86%
+[50] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=p-Xylene, concentration=0.153, temperature_c=120.0 -> Yield: 61.67%
+[51] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyornitrile, concentration=0.153, temperature_c=120.0 -> Yield: 78.60%
+[52] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyornitrile, concentration=0.1, temperature_c=120.0 -> Yield: 56.57%
+[53] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyornitrile, concentration=0.153, temperature_c=105.0 -> Yield: 75.39%
+[54] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 84.67%
+[55] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=DMAc, concentration=0.153, temperature_c=105.0 -> Yield: 48.86%
+[56] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=DMAc, concentration=0.1, temperature_c=120.0 -> Yield: 88.41%
+[57] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=DMAc, concentration=0.057, temperature_c=120.0 -> Yield: 77.58%
+[58] SUCCESS | base=Potassium pivalate, ligand=XPhos, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 80.39%
+[59] SUCCESS | base=Cesium pivalate, ligand=XPhos, solvent=DMAc, concentration=0.153, temperature_c=120.0 -> Yield: 48.34%
+[60] SUCCESS | base=Potassium pivalate, ligand=XPhos, solvent=DMAc, concentration=0.1, temperature_c=120.0 -> Yield: 80.61%
+============================================================
+
+17:50:02.949 Campaign completed. Best yield: 88.41% with conditions {'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+BO_MCP_CAMPAIGN_ID=0f26e119-ef44-4a92-b970-7d97eed33f3d
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

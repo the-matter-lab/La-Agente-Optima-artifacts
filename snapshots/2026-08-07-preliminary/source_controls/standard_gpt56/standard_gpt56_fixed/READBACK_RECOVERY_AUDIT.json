@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "cell_id": "direct_arylation_standard_gpt56_fixed_r03",
+  "campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063",
+  "original_terminal_status": "FAIL",
+  "original_failure_class": "benchmark_infrastructure",
+  "original_failure": "The evaluator's GET /api/v1/diagnostics request exceeded the former 120-second readback timeout after the campaign and request ledger had completed.",
+  "agent_campaign_rerun": false,
+  "recovery": "Metrics were recomputed from the preserved PostgreSQL database through the same BO-MCP API after assigning the diagnostics endpoint a 600-second timeout.",
+  "selected_status": {
+    "scientific_pass": true,
+    "global_budget_pass": true,
+    "architecture_pass": true,
+    "protocol_pass": true,
+    "attempted_objective_evaluations": 60,
+    "completed_objective_evaluations": 60,
+    "unique_parameter_evaluations": 60,
+    "backend_resolved": "baybe",
+    "best_objective_value": 89.17,
+    "normalized_auc_60": 0.8337016666666667,
+    "cost_status": "exact_calculated",
+    "combined_list_cost_usd": 2.784237249999999
+  },
+  "evidence": {
+    "output": {
+      "path": "cells/direct_arylation_standard_gpt56_fixed_r03/eval/cases/direct_arylation/output.json",
+      "sha256": "2e56b8b0ba74c6d97eb388a240c43efb2a138054753ab391676dfabbcf360563"
+    },
+    "recovered_metrics": {
+      "path": "cells/direct_arylation_standard_gpt56_fixed_r03/eval/cases/direct_arylation/metrics_recovered.json",
+      "sha256": "d8cfe3c6be5a3be67440e67be83542e431361cbb1c5bd0d075ee00b18e6e40d8"
+    },
+    "original_terminal": {
+      "path": "control/cells/direct_arylation_standard_gpt56_fixed_r03.terminal.json",
+      "sha256": "ed343e7062ee8592e6c736e9168e6841cf6a8e13fc4e674c8222e14849cd9feb"
+    },
+    "database_dump": {
+      "path": "control/final.dump",
+      "sha256": "ef26ed5cc7b4421d8803ad48787028fca80e9f37d6b48987960dfd2a50e0b34c"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+[EVENT] Starting Direct Arylation BO campaign
+[EVENT] Total attempt budget: 60
+[EVENT] Poll interval: 5s, Heartbeat: 60s
+[EVENT] Stop file: STOP
+[EVENT] Resuming campaign: f3f77b9e-2bb3-4bdc-bd4d-683981dc86aa
+[EVENT] Direct Arylation BO Campaign starting (marker=akg-eval-0c360b08e6684de0b0ed04f50bde3b2c, nonce=16e7e684-7bf5-4a9b-af93-fae14403be06)
+20:37:21.429 Direct Arylation BO Campaign starting (marker=akg-eval-0c360b0...0b0ed04f50bde3b2c, nonce=16e7e684-7bf5-4a9b-af93-fae14403be06)
+20:37:21.430 GET api/api/v1/campaigns/f3f77b9e-2bb3-4bdc-bd4d-683981dc86aa
+[EVENT] Resuming existing campaign: f3f77b9e-2bb3-4bdc-bd4d-683981dc86aa
+20:37:21.445 Resuming existing campaign: f3f77b9e-2bb3-4bdc-bd4d-683981dc86aa
+[EVENT] Loaded 1 prior attempts from artifact
+20:37:21.445 Loaded 1 prior attempts from artifact
+[EVENT] Starting optimization loop for campaign f3f77b9e-2bb3-4bdc-bd4d-683981dc86aa
+20:37:21.445 Starting optimization loop for campaign f3f77b9e-2bb3-4bdc-bd4d-683981dc86aa
+[EVENT] Total attempt budget: 60, Poll: 5s, Heartbeat: 60s
+20:37:21.445 Total attempt budget: 60, Poll: 5s, Heartbeat: 60s
+20:37:21.446 POST api/api/v1/campaigns/status/batch
+[EVENT] Server decision: action=review_campaign_status, reason=Campaign is paused; resume it to continue, or terminate it., status=paused, iter=1, results=1
+20:37:21.465 Server decision: action=review_campaign_status, reason=Campaig...o continue, or terminate it., status=paused, iter=1, results=1
+[EVENT] Campaign is paused; resuming automatically
+20:37:21.465 Campaign is paused; resuming automatically
+20:37:21.466 POST api/api/v1/campaigns/f3f77b9e-2bb3-4bdc-bd4d-683981dc86aa/lifecycle
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+20:37:24.056 POST api/api/v1/campaigns/status/batch
+[EVENT] Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+20:37:24.080 Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+[EVENT] Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:24.080 Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:29.081 POST api/api/v1/campaigns/status/batch
+[EVENT] Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+20:37:29.099 Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+[EVENT] Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:29.099 Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:34.101 POST api/api/v1/campaigns/status/batch
+[EVENT] Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+20:37:34.124 Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+[EVENT] Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:34.124 Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:39.126 POST api/api/v1/campaigns/status/batch
+[EVENT] Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+20:37:39.144 Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+[EVENT] Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:39.144 Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:44.145 POST api/api/v1/campaigns/status/batch
+[EVENT] Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+20:37:44.168 Server decision: action=bo_submit_results, reason=1 suggestion(s) awaiting results., status=running, iter=1, results=1
+[EVENT] Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)
+20:37:44.169 Server recommends stop: bo_submit_results (1 suggestion(s) awaiting results.)

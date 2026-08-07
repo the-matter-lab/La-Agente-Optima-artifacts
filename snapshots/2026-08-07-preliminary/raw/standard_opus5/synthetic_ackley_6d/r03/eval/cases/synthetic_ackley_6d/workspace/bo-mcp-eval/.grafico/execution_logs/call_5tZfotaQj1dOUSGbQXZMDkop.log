@@ -1,0 +1,139 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Ackley-6 synthetic BO-MCP campaign — execution guide
+
+Campaign marker (must be in every campaign name): `akg-eval-2a04c50f6e2f4a42952ebc5cbc96b431`
+Traceability nonce: `c02de9f3-c0fa-4590-bebf-d77d7aa55ad1`
+
+Synthetic benchmark only — no PySCF / CREST / MOF / chemistry evaluator is involved.
+Optimization is done entirely through BO-MCP (BayBE backend); the evaluator is the
+deterministic Ackley function in `ackley6_bo/objective.py`.
+
+## 1. Exact execution command (recommended: finish the existing campaign)
+
+The smoke test already created the campaign and submitted **18 of the 60** attempted
+evaluations. `--max-evals` is the **campaign-wide** attempted-evaluation budget: the
+script reads the number of results already on the server and only evaluates the
+remainder, so the command below completes the campaign at exactly 60.
+
+```bash
+cd <this workspace>
+uv run python -u run_ackley6_bo.py \
+  --campaign-id 7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace \
+  --max-evals 60 \
+  --poll-s 180 --heartbeat-s 1800
+```
+
+Under a monitor, forward lines matching:
+
+```
+\[(EVENT|ALERT|RESULT|HEARTBEAT)\]
+```
+
+Expected runtime: a few minutes (BayBE model fits dominate; the evaluator is instant).
+
+### Alternative: start a brand-new campaign from scratch
+
+```bash
+uv run python -u run_ackley6_bo.py --max-evals 60 --poll-s 180 --heartbeat-s 1800
+```
+
+Omitting `--campaign-id` creates a *new* campaign (name always carries the marker) and
+performs all 60 attempted evaluations there. Use one path or the other, not both, so the
+reported campaign contains exactly 60 attempted evaluations.
+
+## 2. Environment requirements
+
+- Run from this workspace with `uv run python` (repo env at `/app`).
+- `BO_MCP_API_URL` and `BO_MCP_API_KEY` must be set (`BoMcpClient.from_env()` fails fast
+  otherwise). Present in this container: `http://api:8000`.
+- No GPU, no chemistry stack, no network beyond the BO-MCP API.
+- Logfire request instrumentation is configured in the entrypoint header.
+
+## 3. Campaign configuration (specialist-chosen; do not edit for this run)
+
+| item | value |
+| --- | --- |
+| campaign name | `ackley6-surface-response akg-eval-2a04c50f6e2f4a42952ebc5cbc96b431` |
+| backend | `baybe` (pinned) |
+| parameters | `x_1..x_6`, continuous `[0.0, 1.0]` |
+| objective | `surface_response`, maximize, `normalized_unitless` |
+| random seed | 31337 |
+| initial design | 12 space-filling points (`initial_design_size=12`) |
+| batch schedule | 6 per batch during warmup (2×6=12), then 4 per batch (12×4=48) |
+| acquisition | `upper_confidence_bound`, `acquisition_beta=2.0` |
+| budget caps | `max_iterations` / `max_observations` deliberately unset (immutable intake); budget is the CLI flag |
+
+Objective math (`ackley6_bo/objective.py`), applied exactly as specified:
+`z_i = -40 + 80*x_i`, `d=6`,
+`classic = -20*exp(-0.2*sqrt(sum(z_i^2)/d)) - exp(sum(cos(2*pi*z_i))/d) + 20 + e`,
+`raw_response = -classic`,
+`surface_response = (raw_response + 22.350402387287602) / 22.350402387287602`.
+Verified: `x = (0.5,...,0.5)` → `raw_response = 0`, `surface_response = 1.0`.
+
+Duplicate protection: every point evaluated in the campaign is keyed (9-decimal rounding)
+from the server's result rows; a suggestion matching a known point is `rejected` via
+`update_suggestion_status` and **not** evaluated, so it does not consume budget.
+
+## 4. Expected stdout tags
+
+| tag | meaning |
+| --- | --- |
+| `[EVENT]` | campaign create/continue, lifecycle changes, budget line, stop-file honoured, final summary, pause |
+| `[ALERT]` | duplicate suggestion rejected, submission rejected, no suggestions available, diagnostics failure, no successful evaluation |
+| `[RESULT]` | one line per attempted evaluation (`x`, `surface_response`, `raw_response`, best-so-far) plus the final `BEST …` lines |
+| `[HEARTBEAT]` | liveness, at most every `--heartbeat-s` seconds |
+
+Everything else (per-request logs, `next_action` decisions, validation payloads) goes to
+the run log on disk, not stdout.
+
+## 5. Artifacts
+
+Each invocation creates `artifacts/ackley6_bo/run-<UTC timestamp>/` containing:
+
+- `results.jsonl` — append-only, one JSON row per attempted evaluation of *this*
+  invocation: `evaluation_index`, `parameter_values{x_1..x_6}`, `objective_values{surface_response}`,
+  `raw_response`, `status`, `failure_reason`, `suggestion_id`, `submitted_to_bo_mcp`, `timestamp`.
+- `results_table.csv` — the **campaign-wide** table (all server-persisted successes plus
+  every recorded failure from all invocations), one row per evaluated candidate.
+- `final_report.json` — best point, best `raw_response`, best `surface_response`,
+  attempted/successful/failed counts, the full evaluation list, and BO-MCP diagnostics.
+- `run.log` — verbose per-iteration log.
+
+Artifacts are provenance only; the loop never reads them to decide what to do next
+(the `STOP` file is the one exception, and it is an interrupt request, not progress).
+
+## 6. Stop / resume behaviour
+
+- Graceful stop: `touch STOP` in this workspace (path configurable with `--stop-file`).
+  The file is checked at the top of each iteration *before* a suggestion is generated,
+  never between evaluation and submission. The script prints `[EVENT] stop file found …`,
+  deletes the marker, writes artifacts, and pauses the campaign.
+- The campaign is **paused** (never terminated) at the end of every invocation.
+- Resume/continue after a stop, kill, or pause with the exact same command including
+  `--campaign-id <id>`; a paused campaign is resumed and a completed one reopened
+  automatically. Progress is re-derived from BO-MCP, never from local files.
+
+## 7. How to report the final answer
+
+1. **Campaign id** — from stdout `[EVENT] created campaign <id>` /
+   `[EVENT] continuing campaign <id>` and `[EVENT] campaign_id=<id>`, or from
+   `final_report.json → campaign_id`. Expected here (resume path):
+   `7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace`.
+2. **Best point / values** — `final_report.json → best_parameters`,
+   `best_raw_response`, `best_surface_response` (also the `[RESULT] BEST …` stdout lines).
+3. **Counts** — `final_report.json → attempted_evaluations`, `successful_evaluations`,
+   `failed_evaluations` (attempted must be 60).
+4. **Evaluation table** — `results_table.csv` (or `final_report.json → evaluations`):
+   one row per candidate with `evaluation_index`, `x_1..x_6`, `surface_response`,
+   `raw_response`, `status`, `failure_reason`.
+
+Cross-check against the server if desired:
+`uv run python -c "from domains.bo_mcp.client import BoMcpClient; c=BoMcpClient.from_env(); print(len(c.get_results('<campaign_id>')))"`.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

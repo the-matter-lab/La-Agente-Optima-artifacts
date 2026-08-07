@@ -1,0 +1,106 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Execute the owned 6D Ackley BayBE campaign
+
+## Ownership and fixed benchmark definition
+
+Every campaign created or resumed by this package must contain the exact ownership marker `akg-eval-5a18fcbd34154c7bbe05fc17c80f2044` in its BO-MCP campaign name. The entrypoint refuses to resume any campaign whose name lacks that marker.
+
+The immutable intake pins `backend: baybe`, six continuous parameters `x_1` through `x_6` on `[0.0, 1.0]`, and one objective `surface_response` with direction `maximize` and unit `normalized_unitless`.
+
+For each candidate, the evaluator computes exactly:
+
+- `z_i = -40 + 80*x_i`
+- `classic = -20*exp(-0.2*sqrt(sum(z_i^2)/6)) - exp(sum(cos(2*pi*z_i))/6) + 20 + e`
+- `raw_response = -classic`
+- `surface_response = (raw_response - (-22.350402387287602)) / (0.0 - (-22.350402387287602))`
+
+There is no noise and no additional negation, transformation, or rescaling.
+
+## Chosen BO settings
+
+- Campaign seed: `816271`
+- BayBE initial design size: `12`
+- Acquisition: `expected_improvement`
+- Batch schedule: up to 6 suggestions while BO-MCP reports fewer than 12 successful results, then up to 4; the final batch is truncated to the remaining invocation budget.
+- Evaluation budget: `--max-attempts 60` for a fresh production run. Failed objective calculations are written to the artifact and consume the same budget. Duplicate suggestions are rejected without evaluation and do not consume the objective-calculation budget.
+
+The BO-MCP server remains the source of campaign status and next-action decisions. The script has no local campaign-state file.
+
+## Environment and exact fresh-run command
+
+`BO_MCP_API_URL` and `BO_MCP_API_KEY` must be set. From this workspace, run:
+
+```bash
+PYTHONPATH=/app:. PYTHONUNBUFFERED=1 uv run --project /app --no-sync python run_ackley_6d_baybe.py --max-attempts 60 --poll-s 180 --heartbeat-s 1800 --stop-file STOP
+```
+
+The required bounded smoke test created the owned campaign `d301bb5c-ee13-4d03-9a2b-5e2dec3acf92` and completed one successful attempted evaluation. Reuse it and execute exactly the remaining 59 attempts (for 60 total) with:
+
+```bash
+PYTHONPATH=/app:. PYTHONUNBUFFERED=1 uv run --project /app --no-sync python run_ackley_6d_baybe.py --campaign-id d301bb5c-ee13-4d03-9a2b-5e2dec3acf92 --max-attempts 59 --poll-s 180 --heartbeat-s 1800 --stop-file STOP
+```
+
+## Monitoring output
+
+The entrypoint emits unbuffered tagged lines:
+
+- `[EVENT]`: campaign creation/resume/pause, generation, duplicate rejection, and stop-file handling.
+- `[RESULT]`: the complete JSON row for each attempted evaluation and the final summary.
+- `[ALERT]`: failed evaluations, server stop conditions, or export failures.
+- `[HEARTBEAT]`: liveness when the configured heartbeat interval elapses.
+
+Detailed messages are appended to `<artifact-root>/<campaign-id>/run.log`. Default artifacts are under `artifacts/ackley_6d_baybe/<campaign-id>/`.
+
+## Safe stop and resume
+
+Create the stop marker from another shell:
+
+```bash
+touch STOP
+```
+
+At the top of the next loop iteration, the script announces the stop, deletes `STOP`, writes reports, and pauses a running campaign. It never checks the marker between evaluation and result submission.
+
+Resume only an owned campaign:
+
+```bash
+PYTHONPATH=/app:. PYTHONUNBUFFERED=1 uv run --project /app --no-sync python run_ackley_6d_baybe.py --campaign-id <owned-campaign-id> --max-attempts <remaining-invocation-budget> --poll-s 180 --heartbeat-s 1800 --stop-file STOP
+```
+
+Paused campaigns are resumed and completed campaigns are reopened. Terminated or marker-mismatched campaigns are refused.
+
+## Results and validation
+
+For campaign `<campaign-id>`, the script writes:
+
+- `artifacts/ackley_6d_baybe/<campaign-id>/evaluations.jsonl`: canonical append-only result artifact, one row per attempted objective evaluation. Fields include `evaluation_index`, `parameter_values`, `objective_values`, `status`, `failure_reason`, `raw_response`, and `suggestion_id`.
+- `evaluations.csv`: flat table of every evaluated candidate.
+- `summary.json`: best normalized coordinates, best raw and normalized response, and successful/attempted counts.
+- `report.md`: end-user summary plus a complete Markdown table.
+- `bo_mcp_export.csv`: BO-MCP campaign export of submitted successful results.
+- `run.log`: detailed local run log.
+
+Validate after completion:
+
+```bash
+python - <<'PY'
+import json
+from pathlib import Path
+p = Path("artifacts/ackley_6d_baybe/<campaign-id>")
+rows = [json.loads(line) for line in (p / "evaluations.jsonl").read_text().splitlines() if line]
+summary = json.loads((p / "summary.json").read_text())
+assert len(rows) == 60, len(rows)
+assert summary["attempted_evaluations"] == 60
+assert all(set(row["parameter_values"]) == {f"x_{i}" for i in range(1, 7)} for row in rows)
+assert len({tuple(row["parameter_values"][f"x_{i}"] for i in range(1, 7)) for row in rows}) == 60
+print(summary)
+PY
+```
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

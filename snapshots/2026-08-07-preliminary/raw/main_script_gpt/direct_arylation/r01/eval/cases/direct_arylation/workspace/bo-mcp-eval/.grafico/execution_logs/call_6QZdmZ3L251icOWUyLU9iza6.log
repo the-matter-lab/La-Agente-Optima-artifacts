@@ -1,0 +1,35 @@
+exit_code=1
+
+=== stdout (raw) ===
+18:36:00.800 POST api/api/v1/campaigns/validate
+18:36:00.817 validated intake
+18:36:00.817 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+Traceback (most recent call last):
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_bo.py", line 61, in <module>
+    main()
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_bo.py", line 37, in main
+    summary = run_campaign(
+              ^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py", line 275, in run_campaign
+    campaign = ensure_campaign(
+               ^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py", line 190, in ensure_campaign
+    created = client.create_campaign(intake, idempotency_key=str(uuid.uuid4()))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 158, in create_campaign
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 338, in _json_request
+    response = self._request(method, path, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 361, in _request
+    raise BoMcpClientError(
+domains.bo_mcp.client.BoMcpClientError: BO-MCP POST /api/v1/campaigns failed with 500: {"schema_version":2,"success":false,"error":{"code":"E199","message":"An internal server error occurred","recovery_action":"Retry the request once to confirm the failure is reproducible. If it persists, report the issue and quote the request_id from details — the server log records the full exception under that id.","retryable":false,"retry_after":null,"details":{"request_id":"c486c071-5f05-4a03-804c-dfd939cc9410"}},"errors":["An internal server error occurred"]}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

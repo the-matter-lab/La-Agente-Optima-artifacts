@@ -1,0 +1,34 @@
+exit_code=1
+
+=== stdout (raw) ===
+Traceback (most recent call last):
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_bo.py", line 92, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_bo.py", line 70, in main
+    summary = run_campaign(config)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py", line 105, in run_campaign
+    candidates = model.suggest_batch(seen_keys=seen_keys, batch_size=current_batch_size)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/bo.py", line 83, in suggest_batch
+    scores = self.sample_scores(pool)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/bo.py", line 67, in sample_scores
+    sampled_weights = self.rng.multivariate_normal(self._posterior_mean, self._posterior_cov)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "numpy/random/_generator.pyx", line 3920, in numpy.random._generator.Generator.multivariate_normal
+  File "/opt/venv/lib/python3.12/site-packages/numpy/linalg/_linalg.py", line 1812, in svd
+    u, s, vh = gufunc(a, signature=signature)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/numpy/linalg/_linalg.py", line 113, in _raise_linalgerror_svd_nonconvergence
+    raise LinAlgError("SVD did not converge")
+numpy.linalg.LinAlgError: SVD did not converge
+
+LOG_PATH=logs/direct_arylation_bo_20260730_183617.log
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

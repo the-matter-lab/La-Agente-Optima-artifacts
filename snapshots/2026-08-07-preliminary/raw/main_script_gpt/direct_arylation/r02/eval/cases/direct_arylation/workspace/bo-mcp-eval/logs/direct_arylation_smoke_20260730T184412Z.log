@@ -1,0 +1,156 @@
+18:44:12.821 starting_direct_arylation_campaign
+18:44:12.822 POST api/api/v1/campaigns/validate
+18:44:12.830 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:44:12.913 GET api/api/v1/campaigns/8f50bf3b-b261-4e16-8020-eaa3143b0eba
+[optima] campaign_id=8f50bf3b-b261-4e16-8020-eaa3143b0eba status=created
+[optima] invocation_budget=1 backend=baybe initial_design_size=15 batch_size=1
+18:44:12.922 POST api/api/v1/suggestions/8f50bf3b-b261-4e16-8020-eaa3143b0eba/query
+18:44:12.936 POST api/api/v1/campaigns/status/batch
+[optima] next_action=bo_generate_suggestions status=created iteration=0 n_results=0
+18:44:12.947 POST api/api/v1/suggestions/8f50bf3b-b261-4e16-8020-eaa3143b0eba/generate ? batch_size='1'
+[optima] attempt=1 suggestion_id=88ad7368-144e-4f4c-8018-1e15fbb4ef4a params={"base": "Potassium acetate", "concentration": 0.1, "ligand": "(t-Bu)PhCPhos", "solvent": "DMAc", "temperature_c": 120.0}
+18:44:13.018 POST direct-arylation-oracle/v1/evaluate
+18:44:13.020 POST api/api/v1/results/8f50bf3b-b261-4e16-8020-eaa3143b0eba
+[optima] submitted attempt=1 yield=82.09
+18:44:13.087 GET api/api/v1/campaigns/8f50bf3b-b261-4e16-8020-eaa3143b0eba
+18:44:13.101 POST api/api/v1/campaigns/8f50bf3b-b261-4e16-8020-eaa3143b0eba/lifecycle
+18:44:13.802 GET api/api/v1/campaigns/8f50bf3b-b261-4e16-8020-eaa3143b0eba
+18:44:13.814 GET api/api/v1/diagnostics/8f50bf3b-b261-4e16-8020-eaa3143b0eba ? use_cache='true' & verbosity='standard'
+[optima] summary attempted=1 successful=1 best_yield=82.09
+{
+  "campaign_id": "8f50bf3b-b261-4e16-8020-eaa3143b0eba",
+  "campaign_name": "direct_arylation_yield_akg-eval-e646b14a77fb4943a13679364402b230_4668867d-0d42-40e5-b6a7-fd20a6a68c0e",
+  "campaign_status": "paused",
+  "attempted_evaluations": 1,
+  "successful_evaluations": 1,
+  "invocation_attempt_budget": 1,
+  "objective_name": "yield",
+  "objective_direction": "maximize",
+  "objective_unit": "percent",
+  "best": {
+    "parameter_values": {
+      "base": "Potassium acetate",
+      "concentration": 0.1,
+      "ligand": "(t-Bu)PhCPhos",
+      "solvent": "DMAc",
+      "temperature_c": 120.0
+    },
+    "objective_values": {
+      "yield": 82.09
+    },
+    "attempt_index": 1,
+    "suggestion_id": "88ad7368-144e-4f4c-8018-1e15fbb4ef4a"
+  },
+  "attempts": [
+    {
+      "attempt_index": 1,
+      "campaign_id": "8f50bf3b-b261-4e16-8020-eaa3143b0eba",
+      "idempotency_key": "submit-8f50bf3b-b261-4e16-8020-eaa3143b0eba-88ad7368-144e-4f4c-8018-1e15fbb4ef4a-7014dc7ae9",
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "objective_values": {
+        "yield": 82.09
+      },
+      "oracle": {
+        "http_status": 200,
+        "response_json": {
+          "yield": 82.09
+        },
+        "response_text": "{\"yield\":82.09}"
+      },
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "concentration": 0.1,
+        "ligand": "(t-Bu)PhCPhos",
+        "solvent": "DMAc",
+        "temperature_c": 120.0
+      },
+      "status": "succeeded",
+      "submit_response": {
+        "duplicates_detected": [],
+        "error_code": null,
+        "errors": [],
+        "field_errors": {},
+        "idempotency_replay": false,
+        "result_ids": [
+          "b321b19a-a104-4fcb-8eae-71949a68d870"
+        ],
+        "schema_version": 2,
+        "success": true,
+        "warnings": []
+      },
+      "suggestion_id": "88ad7368-144e-4f4c-8018-1e15fbb4ef4a",
+      "timestamp_utc": "2026-07-30T18:44:13+00:00"
+    }
+  ],
+  "diagnostics": {
+    "schema_version": 2,
+    "success": true,
+    "campaign_status": "paused",
+    "iteration": 1,
+    "n_results": 1,
+    "n_pending_suggestions": 0,
+    "errors": [],
+    "warnings": [
+      "Collecting initial data - diagnostics will improve with more results"
+    ],
+    "best_value": 82.09,
+    "best_parameters": {
+      "base": "Potassium acetate",
+      "ligand": "(t-Bu)PhCPhos",
+      "solvent": "DMAc",
+      "concentration": 0.1,
+      "temperature_c": 120.0
+    },
+    "improvement_history": [
+      82.09
+    ],
+    "improvement_rate": 0.0,
+    "pareto_front": null,
+    "hypervolume": null,
+    "n_pareto_points": null,
+    "feature_importance": null,
+    "model_correlation": null,
+    "objective_ranges": {
+      "yield": {
+        "min": 82.09,
+        "max": 82.09,
+        "direction": "maximize"
+      }
+    },
+    "model_info": {
+      "backend": "baybe",
+      "type": "none (space-filling)",
+      "acquisition_function": "none (space-filling)",
+      "batch_strategy": "RandomRecommender (space-filling, no surrogate)",
+      "kernel": "Matern 5/2 (BayBE default GP surrogate)",
+      "input_warping": false
+    },
+    "health_status": "healthy",
+    "progress_status": "stable",
+    "next_action_recommendation": {
+      "action": "review_campaign_status",
+      "reason": "Campaign is paused. Resume it to continue.",
+      "urgency": "low"
+    },
+    "uncertainty_trend": null,
+    "exploration_exploitation": null,
+    "suggestion_diversity": null,
+    "constraint_satisfaction": null,
+    "outcome_constraint_calibration": null,
+    "convergence": {
+      "converged": false,
+      "convergence_score": 0.0,
+      "reason": "Insufficient data for convergence detection",
+      "recommendation": "Continue optimization to gather more data."
+    },
+    "_metadata": {
+      "backend": "baybe",
+      "backend_source": "campaign",
+      "protocol": "rest",
+      "server_version": "0.1.0"
+    }
+  }
+}

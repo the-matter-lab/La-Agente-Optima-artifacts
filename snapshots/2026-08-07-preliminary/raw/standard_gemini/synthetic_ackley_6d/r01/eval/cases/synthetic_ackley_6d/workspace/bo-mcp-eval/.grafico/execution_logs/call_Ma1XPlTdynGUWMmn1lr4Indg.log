@@ -1,0 +1,25 @@
+exit_code=0
+
+=== stdout (raw) ===
+20:def is_duplicate(p1: dict, p2: dict, tol: float = 1e-7) -> bool:
+24:        if not math.isclose(float(p1[k]), float(p2[k]), rel_tol=tol, abs_tol=tol):
+28:def has_duplicate(suggested_params: dict, evaluated_list: list, tol: float = 1e-7) -> bool:
+30:        if is_duplicate(suggested_params, eval_item, tol):
+176:            server_results = client.get_results(campaign_id)
+179:                if not has_duplicate(params, evaluated_points):
+182:            logfire.warning("Failed to fetch results from server for duplicate check", error=str(e))
+184:        # Check for duplicates
+185:        if has_duplicate(parameter_values, evaluated_points):
+186:            print(f"[ALERT] Suggested candidate is a duplicate of an already evaluated point. Rejecting suggestion {suggestion_id}.")
+188:                client.update_suggestion_status(suggestion_id, "rejected")
+189:                logfire.info("Duplicate suggestion rejected successfully", suggestion_id=suggestion_id)
+191:                logfire.error("Failed to reject duplicate suggestion", error=str(e))
+192:                print(f"[ALERT] Failed to reject duplicate suggestion {suggestion_id}: {e}")
+239:                client.update_suggestion_status(suggestion_id, "rejected")
+240:                logfire.info("Suggestion rejected successfully", suggestion_id=suggestion_id)
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

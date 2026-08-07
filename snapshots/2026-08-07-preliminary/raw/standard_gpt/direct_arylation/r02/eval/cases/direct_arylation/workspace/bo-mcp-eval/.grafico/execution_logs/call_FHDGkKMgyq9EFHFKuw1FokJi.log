@@ -1,0 +1,52 @@
+exit_code=0
+
+=== stdout (raw) ===
+monitor_logs/direct_arylation_yield_bo_20260730T171723Z.log
+17:17:24.038 GET api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37
+17:17:24.063 starting_direct_arylation_campaign
+17:17:24.063 GET api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37
+17:17:24.073 POST api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37/lifecycle
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+17:17:24.114 GET api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37
+[EVENT] campaign-ready campaign_id=053fe5fa-a423-4026-930e-d52856ffeb37 status=running max_attempts=60 artifact_dir=artifacts/direct_arylation_yield_bo/053fe5fa-a423-4026-930e-d52856ffeb37 | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:17:24.123 GET api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37
+17:17:24.131 GET api/api/v1/results/053fe5fa-a423-4026-930e-d52856ffeb37
+[HEARTBEAT] campaign_id=053fe5fa-a423-4026-930e-d52856ffeb37 attempted=1/60 pid=193 | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:17:24.140 POST api/api/v1/campaigns/status/batch
+17:17:24.154 POST api/api/v1/suggestions/053fe5fa-a423-4026-930e-d52856ffeb37/query
+17:17:24.167 POST api/api/v1/suggestions/053fe5fa-a423-4026-930e-d52856ffeb37/generate ? batch_size='1'
+17:17:24.182 GET api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37
+17:17:24.190 GET api/api/v1/results/053fe5fa-a423-4026-930e-d52856ffeb37
+17:17:24.200 GET api/api/v1/diagnostics/053fe5fa-a423-4026-930e-d52856ffeb37 ? use_cache='true' & verbosity='standard'
+17:17:24.214 GET api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37
+17:17:24.222 POST api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37/lifecycle
+17:17:24.260 GET api/api/v1/campaigns/053fe5fa-a423-4026-930e-d52856ffeb37
+17:17:24.271 GET api/api/v1/results/053fe5fa-a423-4026-930e-d52856ffeb37
+[RESULT] campaign-summary campaign_id=053fe5fa-a423-4026-930e-d52856ffeb37 status=paused attempted=1 successful=1 best_yield=82.09 best_conditions={'base': 'Potassium acetate', 'concentration': 0.1, 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'temperature_c': 120} artifact_dir=artifacts/direct_arylation_yield_bo/053fe5fa-a423-4026-930e-d52856ffeb37 | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+[EVENT] shutdown campaign_id=053fe5fa-a423-4026-930e-d52856ffeb37 final_status=paused artifact_dir=artifacts/direct_arylation_yield_bo/053fe5fa-a423-4026-930e-d52856ffeb37 | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+Traceback (most recent call last):
+  File "/app/outputs/cells/direct_arylation_standard_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_yield_bo.py", line 104, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/app/outputs/cells/direct_arylation_standard_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_yield_bo.py", line 100, in main
+    return run_campaign(config)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_standard_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_yield_bo/campaign.py", line 371, in run_campaign
+    suggestion = _pending_or_new_suggestion(client, campaign_id, logger)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_standard_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_yield_bo/campaign.py", line 213, in _pending_or_new_suggestion
+    generated = client.generate_suggestions(campaign_id, batch_size=1, timeout_s=900.0)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 200, in generate_suggestions
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 348, in _json_request
+    raise BoMcpOperationError(
+domains.bo_mcp.client.BoMcpOperationError: BO-MCP POST /api/v1/suggestions/053fe5fa-a423-4026-930e-d52856ffeb37/generate rejected the operation: ['Reached max_observations=1; campaign has exhausted its observation budget.']
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

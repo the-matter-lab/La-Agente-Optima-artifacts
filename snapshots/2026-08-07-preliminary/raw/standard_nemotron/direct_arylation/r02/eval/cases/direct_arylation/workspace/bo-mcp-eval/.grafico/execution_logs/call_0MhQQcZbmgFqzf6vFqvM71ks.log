@@ -1,0 +1,62 @@
+exit_code=0
+
+=== stdout (raw) ===
+"""Campaign intake construction for the direct arylation benchmark."""
+
+from typing import Any
+
+from .search_space import get_search_space_parameters
+
+
+MARKER = "akg-eval-044a756aaa4043a8a4fab847b8851ac2"
+
+
+def build_intake(*, batch_size: int = 1, random_seed: int | None = 42) -> dict[str, Any]:
+    """Construct the BO-MCP campaign intake payload.
+
+    Args:
+        batch_size: Number of suggestions per BO iteration.
+        random_seed: Campaign-level RNG seed for reproducibility.
+
+    Returns:
+        Intake dictionary ready for BO-MCP campaign creation.
+    """
+    return {
+        "name": f"direct-arylation-yield-opt-{MARKER}",
+        "description": "Direct arylation reaction yield optimization over 1728-condition benchmark. Maximize yield (%).",
+        "parameters": get_search_space_parameters(),
+        "objectives": [
+            {
+                "name": "yield",
+                "target_mode": "maximize",
+                "unit": "percent",
+            }
+        ],
+        "backend": "auto",
+        "batch_size": batch_size,
+        "initial_design_size": 10,  # Sobol warmup points
+        "random_seed": random_seed,
+        "max_observations": 60,  # Hard cap on total evaluations
+        # No max_iterations: let the 60-observation cap control budget
+    }
+
+
+def validate_intake_structure(intake: dict[str, Any]) -> None:
+    """Basic structural validation of the intake payload."""
+    required_keys = {"name", "parameters", "objectives", "backend"}
+    missing = required_keys - set(intake.keys())
+    if missing:
+        raise ValueError(f"Intake missing required keys: {missing}")
+
+    if not any(obj.get("name") == "yield" for obj in intake.get("objectives", [])):
+        raise ValueError("Objective 'yield' not found in intake")
+
+    param_names = {p["name"] for p in intake.get("parameters", [])}
+    expected = {"base", "ligand", "solvent", "concentration", "temperature_c"}
+    if param_names != expected:
+        raise ValueError(f"Parameter names mismatch. Expected {expected}, got {param_names}")
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

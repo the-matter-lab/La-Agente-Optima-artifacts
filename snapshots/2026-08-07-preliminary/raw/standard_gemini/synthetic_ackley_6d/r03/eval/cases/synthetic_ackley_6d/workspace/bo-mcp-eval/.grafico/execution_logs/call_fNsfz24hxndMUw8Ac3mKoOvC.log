@@ -1,0 +1,44 @@
+exit_code=1
+
+=== stdout (raw) ===
+[EVENT] Resuming existing campaign: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:12:43.408 GET api/api/v1/campaigns/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[EVENT] Campaign ID: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[EVENT] Chosen settings: backend=botorch, acquisition=expected_improvement_nonlog, initialization=Sobol warm start, initial_design_size=12, batch_schedule=sequential(1), random_seed=20260730
+17:12:43.424 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:12:43.430 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[HEARTBEAT] campaign_id=9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba attempted=0/60 success=0 nonce=54354cdc-4da6-4419-86a6-f4560fc0efbe
+17:12:43.446 POST api/api/v1/campaigns/status/batch
+17:12:43.463 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+[EVENT] Generating new suggestion for evaluation 1/60
+17:12:43.472 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/generate ? batch_size='1'
+[EVENT] Evaluating ba0a34b6-fe2c-45c3-bd0d-907b2574bda1 parameters={'x_1': 0.6438993215560913, 'x_2': 0.8511167168617249, 'x_3': 0.6653047204017639, 'x_4': 0.7702366709709167, 'x_5': 0.5417513847351074, 'x_6': 0.6194949150085449}
+17:12:43.567 POST api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+
+
+=== stderr (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 50, in <module>
+    main()
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 35, in main
+    run_campaign(
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d/campaign.py", line 232, in run_campaign
+    f"[RESULT] evaluation={attempted_evaluations + 1} suggestion_id={suggestion_id} raw_response={values[raw_response]:.12f} surface_response={values[surface_response]:.12f}"
+                                                                                                         ^^^^^^^^^^^^
+NameError: name 'raw_response' is not defined
+
+
+=== stderr (model-visible) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 50, in <module>
+    main()
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 35, in main
+    run_campaign(
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d/campaign.py", line 232, in run_campaign
+    f"[RESULT] evaluation={attempted_evaluations + 1} suggestion_id={suggestion_id} raw_response={values[raw_response]:.12f} surface_response={values[surface_response]:.12f}"
+                                                                                                         ^^^^^^^^^^^^
+NameError: name 'raw_response' is not defined

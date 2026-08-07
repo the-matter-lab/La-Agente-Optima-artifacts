@@ -1,0 +1,117 @@
+{
+  "case_id": "direct_arylation_reaction_yield_optimization",
+  "cache_buster_nonce": "bcfd05d8-4059-43a6-ba4c-41bf9f34854f",
+  "objective_name": "yield",
+  "objective_direction": "maximize",
+  "objective_unit": "percent",
+  "attempted_evaluations": 6,
+  "successful_evaluations": 6,
+  "completed_evaluations": 6,
+  "failed_evaluations": 0,
+  "best_objective_value": 68.0,
+  "best_parameters": {
+    "base": "Cesium acetate",
+    "ligand": "1268824-69-6",
+    "solvent": "DMAc",
+    "concentration": 0.1,
+    "temperature_c": 120
+  },
+  "results": [
+    {
+      "evaluation_index": 1,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "base": "Cesium pivalate",
+        "ligand": "Me2PPh",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 90
+      },
+      "status": "success",
+      "objective_values": {
+        "yield": 50.5
+      }
+    },
+    {
+      "evaluation_index": 2,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "1268824-69-6",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "status": "success",
+      "objective_values": {
+        "yield": 68.0
+      }
+    },
+    {
+      "evaluation_index": 3,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "(t-Bu)PhCPhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.1,
+        "temperature_c": 90
+      },
+      "status": "success",
+      "objective_values": {
+        "yield": 56.5
+      }
+    },
+    {
+      "evaluation_index": 4,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "base": "Cesium pivalate",
+        "ligand": "Me2PPh",
+        "solvent": "Butyornitrile",
+        "concentration": 0.057,
+        "temperature_c": 90
+      },
+      "status": "success",
+      "objective_values": {
+        "yield": 48.5
+      }
+    },
+    {
+      "evaluation_index": 5,
+      "batch_index": 1,
+      "batch_size": 2,
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "PPh3",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 90
+      },
+      "status": "success",
+      "objective_values": {
+        "yield": 38.0
+      }
+    },
+    {
+      "evaluation_index": 6,
+      "batch_index": 1,
+      "batch_size": 2,
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "Butyl Ester",
+        "concentration": 0.057,
+        "temperature_c": 120
+      },
+      "status": "success",
+      "objective_values": {
+        "yield": 41.5
+      }
+    }
+  ]
+}

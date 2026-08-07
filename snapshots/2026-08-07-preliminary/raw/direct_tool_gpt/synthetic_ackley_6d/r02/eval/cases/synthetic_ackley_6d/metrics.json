@@ -1,0 +1,1407 @@
+{
+  "agent": {
+    "_source": {
+      "cost_usd": "Pydantic Evals ReportCase.metrics['cost'] when available; main-agent estimated cost is reported under usage_split.main.cost_usd",
+      "pydantic_eval_task_duration_s": "Pydantic Evals ReportCase.task_duration when available",
+      "pydantic_eval_total_duration_s": "Pydantic Evals ReportCase.total_duration when available",
+      "runtime_s": "wall-clock time around agent.run(...) in evals.bo_mcp.runner",
+      "usage": "Pydantic AI result.usage"
+    },
+    "cache_read_tokens": 2093568,
+    "cache_write_tokens": 0,
+    "campaign_id_present": true,
+    "campaign_verified": true,
+    "cost_usd": 1.505197,
+    "final_answer_present": true,
+    "input_tokens": 2320228,
+    "output_tokens": 27677,
+    "pydantic_eval_task_duration_s": 674.116850249,
+    "pydantic_eval_total_duration_s": 674.118047913,
+    "reasoning_tokens": 4009,
+    "request_count": 39,
+    "runtime_s": 637.2967759473249,
+    "success": true,
+    "tool_call_count": 93,
+    "total_tokens": null
+  },
+  "architecture": {
+    "_source": "best-effort architecture compliance derived from selected eval mode, main-agent tool calls, subagent task handles, and generated workspace files",
+    "architecture_contract_satisfied": true,
+    "architecture_mode": "main_agent_tool_passing_bo_mcp",
+    "architecture_restrictions": {
+      "allow_bash": false,
+      "allow_bo_mcp_openapi_tools": false,
+      "allow_bo_mcp_tools": true,
+      "allow_python_repl": false,
+      "allow_subagents": false,
+      "execution_style": "main agent calls tools directly without script execution",
+      "require_campaign_id": true,
+      "require_script_artifact": false,
+      "workflow_owner": "main-agent"
+    },
+    "bo_mcp_artifact_reference_count": 0,
+    "bo_mcp_verification_status": "verified",
+    "campaign_id_present": true,
+    "campaign_id_required": true,
+    "delegated_subagent_names": [],
+    "mode_violation_reasons": [],
+    "script_artifact_count": 0,
+    "script_artifact_hashes": [],
+    "script_artifact_required": false,
+    "subagent_delegation_count": 0,
+    "tool_call_counts_by_name": {
+      "bo_create_campaign": 1,
+      "bo_export_campaign": 1,
+      "bo_generate_suggestions": 8,
+      "bo_get_diagnostics": 1,
+      "bo_health_check": 1,
+      "bo_list_capabilities": 1,
+      "bo_list_results": 10,
+      "bo_list_suggestions": 1,
+      "bo_submit_results": 8,
+      "bo_validate_intake": 1,
+      "evaluate_ackley_6d": 60
+    },
+    "used_bo_mcp_tools": true,
+    "used_python_or_bash": false
+  },
+  "benchmark": {
+    "benchmark_clean": true,
+    "clean_failure_reasons": [],
+    "expected_evaluation_budget": 60,
+    "expected_hypervolume_reference_point": null,
+    "expected_objective_metadata": [
+      {
+        "direction": "maximize",
+        "name": "surface_response",
+        "unit": "normalized_unitless"
+      }
+    ],
+    "objective_direction": "maximize",
+    "objective_name": "surface_response",
+    "objective_unit": "normalized_unitless",
+    "run_success": true
+  },
+  "bo_mcp": {
+    "_source": "BO-MCP REST read-back of campaign, spec, results, and diagnostics endpoints",
+    "attempted_objective_evaluations": 60,
+    "backend_requested": "botorch",
+    "backend_resolved": "botorch",
+    "best_objective_evaluation_index": 22,
+    "best_objective_value": 0.10219765769511699,
+    "best_parameters": {
+      "x_1": 0.7612584690197921,
+      "x_2": 0.7373198710053824,
+      "x_3": 0.0,
+      "x_4": 1.0,
+      "x_5": 0.0,
+      "x_6": 1.0
+    },
+    "best_so_far": 0.10219765769511699,
+    "best_so_far_by_evaluation": [
+      0.03653140543464813,
+      0.04404391059742933,
+      0.044523811317895255,
+      0.044523811317895255,
+      0.05872983024737499,
+      0.05872983024737499,
+      0.05872983024737499,
+      0.07901701860927321,
+      0.07901701860927321,
+      0.07901701860927321,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699
+    ],
+    "bo_mcp_reported_hypervolume": null,
+    "bo_mcp_reported_improvement_history": [
+      0.03653140543464813,
+      0.04404391059742933,
+      0.044523811317895255,
+      0.044523811317895255,
+      0.05872983024737499,
+      0.05872983024737499,
+      0.05872983024737499,
+      0.07901701860927321,
+      0.07901701860927321,
+      0.07901701860927321,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699
+    ],
+    "bo_mcp_reported_n_pareto_points": null,
+    "bo_mcp_reported_pareto_front": null,
+    "campaign_batch_size": 5,
+    "campaign_config": {
+      "_source": "BO-MCP REST campaign/spec read-back",
+      "acknowledge_degradations": [],
+      "acquisition": {
+        "method": "expected_improvement",
+        "optimization": null,
+        "saasbo_config": null,
+        "turbo_config": {
+          "failure_tolerance": null,
+          "initial_length": 0.8,
+          "length_max": 1.6,
+          "length_min": 0.0078125,
+          "success_tolerance": 5
+        },
+        "use_cost_aware": false,
+        "use_input_warping": false
+      },
+      "backend_options": null,
+      "backend_requested": "botorch",
+      "backend_resolved": "botorch",
+      "batch_size": 5,
+      "campaign_id": "e10610ea-057f-4c89-9eb3-6e8bc7670397",
+      "constraints": [],
+      "convergence_tolerance": null,
+      "fidelity_parameter": null,
+      "initial_design_size": 15,
+      "initial_design_size_requested": 15,
+      "initial_design_size_source": "requested",
+      "max_iterations": null,
+      "max_observations": 60,
+      "missing_fields": [
+        "max_iterations",
+        "convergence_tolerance",
+        "backend_options",
+        "fidelity_parameter",
+        "transfer_learning"
+      ],
+      "objectives": [
+        {
+          "direction": "maximize",
+          "log_transform": false,
+          "match_scale": null,
+          "match_shape": null,
+          "name": "surface_response",
+          "normalization_bounds": null,
+          "target": null,
+          "target_mode": null,
+          "transform": null,
+          "unit": "normalized_unitless",
+          "weight": null
+        }
+      ],
+      "outcome_constraints": [],
+      "parameters": [
+        {
+          "bounds": {
+            "lower": 0.0,
+            "upper": 1.0
+          },
+          "categories": null,
+          "description": "",
+          "name": "x_1",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": 0.0,
+            "upper": 1.0
+          },
+          "categories": null,
+          "description": "",
+          "name": "x_2",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": 0.0,
+            "upper": 1.0
+          },
+          "categories": null,
+          "description": "",
+          "name": "x_3",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": 0.0,
+            "upper": 1.0
+          },
+          "categories": null,
+          "description": "",
+          "name": "x_4",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": 0.0,
+            "upper": 1.0
+          },
+          "categories": null,
+          "description": "",
+          "name": "x_5",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": 0.0,
+            "upper": 1.0
+          },
+          "categories": null,
+          "description": "",
+          "name": "x_6",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        }
+      ],
+      "random_seed": 102345,
+      "spec_id": "8b57b6ed-a9ab-4b0c-84d4-4d381b59391d",
+      "transfer_learning": null
+    },
+    "campaign_config_artifact": "/app/outputs/cells/ackley_direct_tool_gpt_r02/eval/cases/synthetic_ackley_6d/campaign_config.json",
+    "campaign_config_endpoint_retrieved": true,
+    "campaign_id": "e10610ea-057f-4c89-9eb3-6e8bc7670397",
+    "campaign_initial_design_size": 15,
+    "campaign_iteration": 8,
+    "campaign_max_iterations": null,
+    "campaign_max_observations": 60,
+    "campaign_random_seed": 102345,
+    "campaign_retrieved": true,
+    "campaign_spec_id": "8b57b6ed-a9ab-4b0c-84d4-4d381b59391d",
+    "campaign_spec_retrieved": true,
+    "campaign_status": "running",
+    "completed_evaluations": 60,
+    "completed_objective_evaluations": 60,
+    "converged": true,
+    "diagnostics_retrieved": true,
+    "duplicate_evaluations": 0,
+    "duplicate_rate": 0.0,
+    "eval_best_so_far_auc": 5.405153279695838,
+    "eval_best_so_far_curve": [
+      0.03653140543464813,
+      0.04404391059742933,
+      0.044523811317895255,
+      0.044523811317895255,
+      0.05872983024737499,
+      0.05872983024737499,
+      0.05872983024737499,
+      0.07901701860927321,
+      0.07901701860927321,
+      0.07901701860927321,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.08235869781030415,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699,
+      0.10219765769511699
+    ],
+    "evaluation_budget_adherence": "matched",
+    "evaluation_budget_delta": 0,
+    "expected_evaluation_budget": 60,
+    "expected_objective_metadata": [
+      {
+        "direction": "maximize",
+        "name": "surface_response",
+        "unit": "normalized_unitless"
+      }
+    ],
+    "failed_evaluation_rate": 0.0,
+    "failed_evaluations": 0,
+    "final_objective_value": 0.030696145378779547,
+    "hypervolume": null,
+    "hypervolume_reference_point": null,
+    "incomplete_objective_evaluations": 0,
+    "n_pareto_points": null,
+    "objective_metadata": [
+      {
+        "direction": "maximize",
+        "name": "surface_response"
+      }
+    ],
+    "objective_reducer": "single_objective_best_so_far",
+    "objective_schema_matches_expected": true,
+    "objective_schema_status": "matched",
+    "objective_vector_count": 60,
+    "objective_vectors": [
+      {
+        "evaluation_index": 1,
+        "objective_values": {
+          "surface_response": 0.03653140543464813
+        },
+        "parameter_values": {
+          "x_1": 0.1205163225531578,
+          "x_2": 0.9145140647888184,
+          "x_3": 0.0987301915884018,
+          "x_4": 0.528416097164154,
+          "x_5": 0.4246165454387665,
+          "x_6": 0.007037780247628689
+        }
+      },
+      {
+        "evaluation_index": 2,
+        "objective_values": {
+          "surface_response": 0.04404391059742933
+        },
+        "parameter_values": {
+          "x_1": 0.6355940699577332,
+          "x_2": 0.2642478942871094,
+          "x_3": 0.615845263004303,
+          "x_4": 0.0032202033326029778,
+          "x_5": 0.7605348825454712,
+          "x_6": 0.9165645837783813
+        }
+      },
+      {
+        "evaluation_index": 3,
+        "objective_values": {
+          "surface_response": 0.044523811317895255
+        },
+        "parameter_values": {
+          "x_1": 0.7526496052742004,
+          "x_2": 0.7434313893318176,
+          "x_3": 0.35740163922309875,
+          "x_4": 0.9864302277565002,
+          "x_5": 0.672136127948761,
+          "x_6": 0.5876242518424988
+        }
+      },
+      {
+        "evaluation_index": 4,
+        "objective_values": {
+          "surface_response": 0.03548806633443518
+        },
+        "parameter_values": {
+          "x_1": 0.487331748008728,
+          "x_2": 0.09340938180685043,
+          "x_3": 0.8733027577400208,
+          "x_4": 0.4807736873626709,
+          "x_5": 0.008069946430623531,
+          "x_6": 0.4882856011390686
+        }
+      },
+      {
+        "evaluation_index": 5,
+        "objective_values": {
+          "surface_response": 0.05872983024737499
+        },
+        "parameter_values": {
+          "x_1": 0.3389020264148712,
+          "x_2": 0.5578396916389465,
+          "x_3": 0.631413996219635,
+          "x_4": 0.3423915505409241,
+          "x_5": 0.2488766610622406,
+          "x_6": 0.13882602751255035
+        }
+      },
+      {
+        "evaluation_index": 6,
+        "objective_values": {
+          "surface_response": 0.024242383731727775
+        },
+        "parameter_values": {
+          "x_1": 0.9167201519012451,
+          "x_2": 0.15415555238723755,
+          "x_3": 0.14566335082054138,
+          "x_4": 0.8132890462875366,
+          "x_5": 0.5692083835601807,
+          "x_6": 0.784741997718811
+        }
+      },
+      {
+        "evaluation_index": 7,
+        "objective_values": {
+          "surface_response": 0.036084829757119574
+        },
+        "parameter_values": {
+          "x_1": 0.534023642539978,
+          "x_2": 0.8535541296005249,
+          "x_3": 0.8891080021858215,
+          "x_4": 0.17343229055404663,
+          "x_5": 0.9964117407798767,
+          "x_6": 0.7037608027458191
+        }
+      },
+      {
+        "evaluation_index": 8,
+        "objective_values": {
+          "surface_response": 0.07901701860927321
+        },
+        "parameter_values": {
+          "x_1": 0.20644611120224,
+          "x_2": 0.4501141607761383,
+          "x_3": 0.4040982723236084,
+          "x_4": 0.6716806888580322,
+          "x_5": 0.3167279362678528,
+          "x_6": 0.3721833825111389
+        }
+      },
+      {
+        "evaluation_index": 9,
+        "objective_values": {
+          "surface_response": 0.030703363046203816
+        },
+        "parameter_values": {
+          "x_1": 0.18200695514678955,
+          "x_2": 0.6837706565856934,
+          "x_3": 0.9785315990447998,
+          "x_4": 0.7593756914138794,
+          "x_5": 0.8533642292022705,
+          "x_6": 0.375288724899292
+        }
+      },
+      {
+        "evaluation_index": 10,
+        "objective_values": {
+          "surface_response": 0.05346130173276598
+        },
+        "parameter_values": {
+          "x_1": 0.5740414261817932,
+          "x_2": 0.026180241256952286,
+          "x_3": 0.4938872754573822,
+          "x_4": 0.27324289083480835,
+          "x_5": 0.4549535810947418,
+          "x_6": 0.5448637008666992
+        }
+      },
+      {
+        "evaluation_index": 11,
+        "objective_values": {
+          "surface_response": 0.08235869781030415
+        },
+        "parameter_values": {
+          "x_1": 0.7225332260131836,
+          "x_2": 0.6233600378036499,
+          "x_3": 0.0014033718034625053,
+          "x_4": 0.4112279415130615,
+          "x_5": 0.2883515954017639,
+          "x_6": 0.8357923626899719
+        }
+      },
+      {
+        "evaluation_index": 12,
+        "objective_values": {
+          "surface_response": 0.04163503574181415
+        },
+        "parameter_values": {
+          "x_1": 0.8551636934280396,
+          "x_2": 0.38428857922554016,
+          "x_3": 0.7755944728851318,
+          "x_4": 0.5823288559913635,
+          "x_5": 0.1540849506855011,
+          "x_6": 0.6610574722290039
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "surface_response": 0.05782187584699342
+        },
+        "parameter_values": {
+          "x_1": 0.40039652585983276,
+          "x_2": 0.7962735295295715,
+          "x_3": 0.2593262791633606,
+          "x_4": 0.07236945629119873,
+          "x_5": 0.5369242429733276,
+          "x_6": 0.2591216564178467
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "surface_response": 0.054996574099315305
+        },
+        "parameter_values": {
+          "x_1": 0.2988879978656769,
+          "x_2": 0.32421380281448364,
+          "x_3": 0.23571257293224335,
+          "x_4": 0.24297767877578735,
+          "x_5": 0.7063809037208557,
+          "x_6": 0.11278720200061798
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "surface_response": 0.017555507349784664
+        },
+        "parameter_values": {
+          "x_1": 0.9411553740501404,
+          "x_2": 0.9815600514411926,
+          "x_3": 0.7215844392776489,
+          "x_4": 0.7251970767974854,
+          "x_5": 0.1048070639371872,
+          "x_6": 0.9675500988960266
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "surface_response": 0.0407858079104445
+        },
+        "parameter_values": {
+          "x_1": 0.2799746997194332,
+          "x_2": 0.5453801610801661,
+          "x_3": 0.11892313888379054,
+          "x_4": 0.49443937880445266,
+          "x_5": 0.23844168352594758,
+          "x_6": 0.6159360178851692
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "surface_response": 0.05279112322508285
+        },
+        "parameter_values": {
+          "x_1": 0.6009988294351518,
+          "x_2": 0.5481574492460223,
+          "x_3": 0.09660829453664191,
+          "x_4": 0.5402529847997269,
+          "x_5": 0.19724629503307956,
+          "x_6": 0.034424878164936216
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "surface_response": 0.047617594388558726
+        },
+        "parameter_values": {
+          "x_1": 0.3540637422305581,
+          "x_2": 0.5574911109673988,
+          "x_3": 0.15479918953964658,
+          "x_4": 0.36226740080505826,
+          "x_5": 0.6239987779097328,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "surface_response": 0.044459912583882655
+        },
+        "parameter_values": {
+          "x_1": 0.27031119176853163,
+          "x_2": 0.5411856772120348,
+          "x_3": 0.16651483437139591,
+          "x_4": 0.5886370893946463,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 20,
+        "objective_values": {
+          "surface_response": 0.04693920336148292
+        },
+        "parameter_values": {
+          "x_1": 0.4110599901522469,
+          "x_2": 0.5702803094333897,
+          "x_3": 0.052040110922801294,
+          "x_4": 0.0925070004939828,
+          "x_5": 0.0,
+          "x_6": 0.4114901884558627
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "surface_response": 0.0392571883210954
+        },
+        "parameter_values": {
+          "x_1": 0.7815486514271216,
+          "x_2": 0.7675369155477983,
+          "x_3": 0.0,
+          "x_4": 0.2785998786418887,
+          "x_5": 0.37446869730793075,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "surface_response": 0.10219765769511699
+        },
+        "parameter_values": {
+          "x_1": 0.7612584690197921,
+          "x_2": 0.7373198710053824,
+          "x_3": 0.0,
+          "x_4": 1.0,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "surface_response": 0.05606571071399373
+        },
+        "parameter_values": {
+          "x_1": 0.7703092209742759,
+          "x_2": 0.6708972936371357,
+          "x_3": 0.0,
+          "x_4": 0.0,
+          "x_5": 1.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "surface_response": 0.06455436562681402
+        },
+        "parameter_values": {
+          "x_1": 0.8152715622702871,
+          "x_2": 0.670389937321161,
+          "x_3": 0.0,
+          "x_4": 0.0,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 25,
+        "objective_values": {
+          "surface_response": 0.03583838375089256
+        },
+        "parameter_values": {
+          "x_1": 0.7203067900205985,
+          "x_2": 0.7956743481091009,
+          "x_3": 0.0,
+          "x_4": 0.618705754926461,
+          "x_5": 1.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 26,
+        "objective_values": {
+          "surface_response": 0.0981546704617823
+        },
+        "parameter_values": {
+          "x_1": 0.7627244149983873,
+          "x_2": 0.8253042448041008,
+          "x_3": 0.0,
+          "x_4": 0.035700510205217535,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 27,
+        "objective_values": {
+          "surface_response": 0.04198627695052337
+        },
+        "parameter_values": {
+          "x_1": 0.8570839538275583,
+          "x_2": 0.7653749395091238,
+          "x_3": 0.0,
+          "x_4": 0.1768388383369977,
+          "x_5": 0.0,
+          "x_6": 0.37091219475825565
+        }
+      },
+      {
+        "evaluation_index": 28,
+        "objective_values": {
+          "surface_response": 0.057404310434676996
+        },
+        "parameter_values": {
+          "x_1": 0.7584352914538326,
+          "x_2": 0.6544475587483286,
+          "x_3": 0.0,
+          "x_4": 1.0,
+          "x_5": 1.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "surface_response": 0.027921945375842777
+        },
+        "parameter_values": {
+          "x_1": 0.8792972561119725,
+          "x_2": 0.7529202299949623,
+          "x_3": 0.0,
+          "x_4": 1.0,
+          "x_5": 0.8067173748358407,
+          "x_6": 0.6057409628061529
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "surface_response": 0.04781040983218523
+        },
+        "parameter_values": {
+          "x_1": 0.7764594071408346,
+          "x_2": 0.8310698336232094,
+          "x_3": 0.0,
+          "x_4": 0.0,
+          "x_5": 1.0,
+          "x_6": 0.7796428484817018
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "surface_response": 0.02904250860937251
+        },
+        "parameter_values": {
+          "x_1": 0.741459592323355,
+          "x_2": 0.6320346626213705,
+          "x_3": 0.004320552138772851,
+          "x_4": 1.0,
+          "x_5": 0.0,
+          "x_6": 0.9284737343070757
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "surface_response": 0.05181359367659649
+        },
+        "parameter_values": {
+          "x_1": 0.7490901834254318,
+          "x_2": 0.6684285049942441,
+          "x_3": 0.44566095819964147,
+          "x_4": 1.0,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 33,
+        "objective_values": {
+          "surface_response": 0.07774304007565967
+        },
+        "parameter_values": {
+          "x_1": 0.7500852958729416,
+          "x_2": 0.6782053694639059,
+          "x_3": 0.0,
+          "x_4": 1.0,
+          "x_5": 0.0,
+          "x_6": 0.47262095519188624
+        }
+      },
+      {
+        "evaluation_index": 34,
+        "objective_values": {
+          "surface_response": 0.07157287658223335
+        },
+        "parameter_values": {
+          "x_1": 0.7510382363068379,
+          "x_2": 0.43290337022519765,
+          "x_3": 0.0,
+          "x_4": 0.13890285816962036,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 35,
+        "objective_values": {
+          "surface_response": 0.08809743344073433
+        },
+        "parameter_values": {
+          "x_1": 0.7358244843538082,
+          "x_2": 0.8736119804051323,
+          "x_3": 0.0,
+          "x_4": 1.0,
+          "x_5": 0.014299087293802415,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 36,
+        "objective_values": {
+          "surface_response": 0.048593793670474054
+        },
+        "parameter_values": {
+          "x_1": 0.7388635546947614,
+          "x_2": 0.7714275321710197,
+          "x_3": 0.4749379189465212,
+          "x_4": 1.0,
+          "x_5": 0.009229406704134493,
+          "x_6": 0.679573778476533
+        }
+      },
+      {
+        "evaluation_index": 37,
+        "objective_values": {
+          "surface_response": 0.06506271994075329
+        },
+        "parameter_values": {
+          "x_1": 0.7594880079225031,
+          "x_2": 1.0,
+          "x_3": 0.0,
+          "x_4": 1.0,
+          "x_5": 0.0,
+          "x_6": 0.6792297929812819
+        }
+      },
+      {
+        "evaluation_index": 38,
+        "objective_values": {
+          "surface_response": 0.051212108132851715
+        },
+        "parameter_values": {
+          "x_1": 0.7585187805609297,
+          "x_2": 0.7888023012783085,
+          "x_3": 0.4784795505349239,
+          "x_4": 1.0,
+          "x_5": 0.0,
+          "x_6": 0.6716943514777596
+        }
+      },
+      {
+        "evaluation_index": 39,
+        "objective_values": {
+          "surface_response": 0.0613221215602896
+        },
+        "parameter_values": {
+          "x_1": 0.736228823475283,
+          "x_2": 0.5079307865771259,
+          "x_3": 0.034686267680854574,
+          "x_4": 0.21142282491765255,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 40,
+        "objective_values": {
+          "surface_response": 0.084250655957307
+        },
+        "parameter_values": {
+          "x_1": 0.7598733569221486,
+          "x_2": 0.4014073696164492,
+          "x_3": 0.3516539180382656,
+          "x_4": 0.6510281878045006,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 41,
+        "objective_values": {
+          "surface_response": 0.05825994857949461
+        },
+        "parameter_values": {
+          "x_1": 0.69243985463482,
+          "x_2": 0.028483873714594488,
+          "x_3": 0.0,
+          "x_4": 0.0,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 42,
+        "objective_values": {
+          "surface_response": 0.03878712173608957
+        },
+        "parameter_values": {
+          "x_1": 0.820611279943506,
+          "x_2": 1.0,
+          "x_3": 0.20392597049139347,
+          "x_4": 1.0,
+          "x_5": 0.21699071150930466,
+          "x_6": 0.760740697536217
+        }
+      },
+      {
+        "evaluation_index": 43,
+        "objective_values": {
+          "surface_response": 0.03898148313907539
+        },
+        "parameter_values": {
+          "x_1": 0.820617299125735,
+          "x_2": 1.0,
+          "x_3": 0.20387587331151044,
+          "x_4": 1.0,
+          "x_5": 0.21700086522396955,
+          "x_6": 0.7607412254490594
+        }
+      },
+      {
+        "evaluation_index": 44,
+        "objective_values": {
+          "surface_response": 0.03900922703442746
+        },
+        "parameter_values": {
+          "x_1": 0.8205982706282117,
+          "x_2": 1.0,
+          "x_3": 0.20381602287930436,
+          "x_4": 1.0,
+          "x_5": 0.21695644032232864,
+          "x_6": 0.7606535983174535
+        }
+      },
+      {
+        "evaluation_index": 45,
+        "objective_values": {
+          "surface_response": 0.07431792891418783
+        },
+        "parameter_values": {
+          "x_1": 0.69243985463482,
+          "x_2": 1.0,
+          "x_3": 0.0,
+          "x_4": 0.0,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 46,
+        "objective_values": {
+          "surface_response": 0.05058222151785648
+        },
+        "parameter_values": {
+          "x_1": 0.8174500242369375,
+          "x_2": 0.995345137955412,
+          "x_3": 0.23748777912543964,
+          "x_4": 1.0,
+          "x_5": 0.2118868333676742,
+          "x_6": 0.7610316583564343
+        }
+      },
+      {
+        "evaluation_index": 47,
+        "objective_values": {
+          "surface_response": 0.04079381067982596
+        },
+        "parameter_values": {
+          "x_1": 0.8119387621067113,
+          "x_2": 1.0,
+          "x_3": 0.17631632280191917,
+          "x_4": 0.9059270003675544,
+          "x_5": 0.20435317168433523,
+          "x_6": 0.7906146679943291
+        }
+      },
+      {
+        "evaluation_index": 48,
+        "objective_values": {
+          "surface_response": 0.035589116607753546
+        },
+        "parameter_values": {
+          "x_1": 0.7500448656387383,
+          "x_2": 0.919367689768076,
+          "x_3": 0.001633321097144992,
+          "x_4": 0.5216955692927183,
+          "x_5": 0.2931056529120062,
+          "x_6": 0.9110974373458828
+        }
+      },
+      {
+        "evaluation_index": 49,
+        "objective_values": {
+          "surface_response": 0.0685063529574453
+        },
+        "parameter_values": {
+          "x_1": 0.69243985463482,
+          "x_2": 0.48945025594317493,
+          "x_3": 0.0,
+          "x_4": 0.0,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 50,
+        "objective_values": {
+          "surface_response": 0.052279116393721
+        },
+        "parameter_values": {
+          "x_1": 0.7708602143546686,
+          "x_2": 0.32208178877672355,
+          "x_3": 0.3279109171770325,
+          "x_4": 1.0,
+          "x_5": 0.18513954645465958,
+          "x_6": 0.4107037217629563
+        }
+      },
+      {
+        "evaluation_index": 51,
+        "objective_values": {
+          "surface_response": 0.04534745172559416
+        },
+        "parameter_values": {
+          "x_1": 0.7197181042537348,
+          "x_2": 0.9449405696680754,
+          "x_3": 0.0,
+          "x_4": 0.3354871037962197,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 52,
+        "objective_values": {
+          "surface_response": 0.07316849366425991
+        },
+        "parameter_values": {
+          "x_1": 0.7197181042537348,
+          "x_2": 0.43791540470892365,
+          "x_3": 0.0,
+          "x_4": 1.0,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 53,
+        "objective_values": {
+          "surface_response": 0.06773824577908123
+        },
+        "parameter_values": {
+          "x_1": 0.7197181042537348,
+          "x_2": 0.43791540470892365,
+          "x_3": 0.0,
+          "x_4": 0.3354871037962197,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 54,
+        "objective_values": {
+          "surface_response": 0.0729122906782562
+        },
+        "parameter_values": {
+          "x_1": 0.7197181042537348,
+          "x_2": 1.0,
+          "x_3": 0.0,
+          "x_4": 1.0,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 55,
+        "objective_values": {
+          "surface_response": 0.05871960600557314
+        },
+        "parameter_values": {
+          "x_1": 0.7197181042537348,
+          "x_2": 1.0,
+          "x_3": 0.0,
+          "x_4": 0.3354871037962197,
+          "x_5": 0.0,
+          "x_6": 0.6349552444929689
+        }
+      },
+      {
+        "evaluation_index": 56,
+        "objective_values": {
+          "surface_response": 0.08892758154354241
+        },
+        "parameter_values": {
+          "x_1": 0.7895525177982167,
+          "x_2": 0.43791540470892365,
+          "x_3": 0.0,
+          "x_4": 0.3354871037962197,
+          "x_5": 0.0,
+          "x_6": 1.0
+        }
+      },
+      {
+        "evaluation_index": 57,
+        "objective_values": {
+          "surface_response": 0.06197908699594103
+        },
+        "parameter_values": {
+          "x_1": 0.7197181042537348,
+          "x_2": 0.43791540470892365,
+          "x_3": 0.0,
+          "x_4": 0.3354871037962197,
+          "x_5": 0.0,
+          "x_6": 0.6349552444929689
+        }
+      },
+      {
+        "evaluation_index": 58,
+        "objective_values": {
+          "surface_response": 0.057956734079262634
+        },
+        "parameter_values": {
+          "x_1": 0.7255200861601546,
+          "x_2": 0.8349461478246057,
+          "x_3": 0.0,
+          "x_4": 0.3354871037962197,
+          "x_5": 0.0,
+          "x_6": 0.9321996553184395
+        }
+      },
+      {
+        "evaluation_index": 59,
+        "objective_values": {
+          "surface_response": 0.05920547767461771
+        },
+        "parameter_values": {
+          "x_1": 0.7197181042537348,
+          "x_2": 1.0,
+          "x_3": 0.0,
+          "x_4": 0.3354871037962197,
+          "x_5": 0.0,
+          "x_6": 0.9977454867510805
+        }
+      },
+      {
+        "evaluation_index": 60,
+        "objective_values": {
+          "surface_response": 0.030696145378779547
+        },
+        "parameter_values": {
+          "x_1": 0.7443935731249183,
+          "x_2": 0.7799778627185373,
+          "x_3": 0.0,
+          "x_4": 0.3354871037962197,
+          "x_5": 0.0,
+          "x_6": 0.6807716357920374
+        }
+      }
+    ],
+    "pareto_front": null,
+    "results_retrieved": true,
+    "submitted_results_count": 60,
+    "successful_objective_evaluations": 60,
+    "suggestions_generated": 60,
+    "unresolved_suggestions": 0,
+    "verification_status": "verified"
+  },
+  "metric_notes": [
+    "Token and cost fields are reported only when exposed by the runtime or derivable from recorded message metadata.",
+    "Subagent metrics use TaskHandle observability fields when the installed subagent runtime exposes them, with older-runtime fallbacks."
+  ],
+  "objective_oracle": {
+    "checked_evaluations": 60,
+    "mismatch_count": 0,
+    "mismatches": [],
+    "verification_status": "verified"
+  },
+  "usage_split": {
+    "_source": {
+      "combined": "sum of available main/subagent counters; cost may be incomplete when subagent cost is unavailable",
+      "main": "Pydantic AI result.usage plus result.all_messages() for message-level cost metadata",
+      "subagents": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+    },
+    "combined": {
+      "_source": {
+        "cost_usd": "main plus subagent cost only when all required cost components are available",
+        "usage": "sum of available main/subagent counters"
+      },
+      "cache_read_tokens": 2093568,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "main_plus_subagent_cost_breakdown",
+      "cost_usd": 1.505197,
+      "input_tokens": 2320228,
+      "output_tokens": 27677,
+      "reasoning_tokens": 4009,
+      "request_count": 39,
+      "tool_call_count": 93,
+      "total_tokens": 2347905
+    },
+    "limitations": [
+      "nested subagents are not captured",
+      "subagent usage is read from top-level pydantic-deep task handles",
+      "combined assumes parent AgentRunResult.usage excludes subagent TaskHandle.usage; this assumption should be retested after dependency changes",
+      "per-task subagent tool-call counts require TaskHandle.tool_call_counts or TaskHandle.message_history"
+    ],
+    "main": {
+      "_source": {
+        "cost_usd": "genai-prices estimate from main-agent response message usage/model metadata",
+        "messages": "Pydantic AI result.all_messages()",
+        "usage": "Pydantic AI result.usage"
+      },
+      "cache_read_tokens": 2093568,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "genai_prices_from_main_response_messages",
+      "cost_usd": 1.505197,
+      "input_tokens": 2320228,
+      "model_names": [
+        "gpt-5.4-2026-03-05"
+      ],
+      "output_tokens": 27677,
+      "priced_response_count": 39,
+      "provider_names": [
+        "openai"
+      ],
+      "reasoning_tokens": 4009,
+      "request_count": 39,
+      "tool_call_count": 93,
+      "total_tokens": null,
+      "unpriced_response_count": 0
+    },
+    "method": "main_result_usage_plus_subagent_task_handle_usage",
+    "scope": "top_level_pydantic_deep_subagents",
+    "subagents": {
+      "_source": {
+        "cost_usd": "TaskHandle.cost when exposed, otherwise genai-prices estimate from task-handle usage and model/provider metadata",
+        "messages": "TaskHandle.message_history when exposed by the installed subagent runtime",
+        "tool_call_counts": "TaskHandle.tool_call_counts when exposed, otherwise counts derived from TaskHandle.message_history tool-call parts",
+        "usage": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+      },
+      "available": false,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_available": false,
+      "cost_source": "subagent_task_handles",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "priced_task_count": 0,
+      "reasoning_tokens": 0,
+      "request_count": 0,
+      "tasks": [],
+      "total_tokens": 0,
+      "unpriced_task_count": 0
+    }
+  }
+}

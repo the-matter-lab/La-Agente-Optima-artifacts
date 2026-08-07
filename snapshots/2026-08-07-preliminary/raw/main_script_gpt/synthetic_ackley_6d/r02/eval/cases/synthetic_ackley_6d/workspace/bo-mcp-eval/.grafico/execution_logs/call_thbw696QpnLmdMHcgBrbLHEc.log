@@ -1,0 +1,55 @@
+exit_code=0
+
+=== stdout (raw) ===
+['create_campaign', 'export_campaign', 'from_env', 'generate_suggestions', 'get_campaign', 'get_diagnostics', 'get_results', 'lifecycle', 'make_idempotency_key', 'next_action', 'query_suggestions', 'submit_results', 'update_suggestion_status', 'validate_intake']
+
+ validate_intake (self, intake: 'dict[str, Any]') -> 'dict[str, Any]'
+Dry-run a campaign intake payload against the API's own validation.
+
+The intake schema is owned by BO-MCP, not this client: discover its
+exact field shapes via ``inspect_bo_mcp_openapi_operation`` on
+``POST /api/v1/campaigns``, then validate here before creating.
+
+ create_campaign (self, intake: 'dict[str, Any]', *, idempotency_key: 'str') -> 'dict[str, Any]'
+
+
+ next_action (self, campaign_id: 'str') -> 'dict[str, Any]'
+Return the server's loop decision for one campaign, flattened.
+
+Thin projection of ``POST /api/v1/campaigns/status/batch`` for a
+single id: the returned dict carries the campaign's ``status``,
+``iteration``, ``n_results``, and the server-computed
+recommendation flattened to ``action``/``reason``/``urgency``.
+The continue/stop decision belongs to the server — callers branch
+on ``action`` (``"bo_generate_suggestions"`` means another round)
+and must not re-derive it from local state.
+
+ generate_suggestions (self, campaign_id: 'str', *, batch_size: 'int' = 1, timeout_s: 'float' = 900.0) -> 'dict[str, Any]'
+Ask the BO backend for new candidates.
+
+Cost follows the search space's shape, not the result count: a space
+mixing categorical/discrete with continuous parameters optimizes the
+continuous part once per discrete configuration, so minutes are
+normal. Raise ``timeout_s`` for a wide discrete side.
+
+ submit_results (self, campaign_id: 'str', *, results: 'list[dict[str, Any]]', idempotency_key: 'str', force: 'bool' = False) -> 'dict[str, Any]'
+Submit measurements, using ``force=True`` for an approved replicate.
+
+A duplicate rejection is terminal and the server caches it under the
+submitted ``idempotency_key``, with ``force`` part of the request
+hash. A forced retry of a rejected submission must therefore use a
+fresh key from :meth:`make_idempotency_key` — reusing the rejected
+key returns a 409 idempotency conflict instead of submitting the
+replicate.
+
+ query_suggestions (self, campaign_id: 'str', *, status_filter: 'str | None' = None, limit: 'int' = 500) -> 'list[dict[str, Any]]'
+
+
+ get_campaign (self, campaign_id: 'str') -> 'dict[str, Any]'
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

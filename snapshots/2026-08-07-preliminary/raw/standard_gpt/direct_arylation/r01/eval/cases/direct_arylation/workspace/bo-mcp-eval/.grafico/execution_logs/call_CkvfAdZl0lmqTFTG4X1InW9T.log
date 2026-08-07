@@ -1,0 +1,17 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+  File "<stdin>", line 18
+    print(f"{i:02d}|{c.get(status)}|{pv[base]}|{pv[ligand]}|{pv[solvent]}|{pv[concentration]}|{pv[temperature_c]}|{ if y is None else y}")
+                                                                                                                    ^^
+SyntaxError: f-string: expecting a valid expression after '{'
+
+
+=== stderr (model-visible) ===
+  File "<stdin>", line 18
+    print(f"{i:02d}|{c.get(status)}|{pv[base]}|{pv[ligand]}|{pv[solvent]}|{pv[concentration]}|{pv[temperature_c]}|{ if y is None else y}")
+                                                                                                                    ^^
+SyntaxError: f-string: expecting a valid expression after '{'

@@ -1,0 +1,21 @@
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+06:50:06.130 ackley6_bo start {'campaign_id': '7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace', 'max_e..._bo', 'eval_timeout_s': 60.0, 'diagnostics_verbosity': 'none'}
+[EVENT] continuing campaign 7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace
+06:50:06.131 POST api/api/v1/campaigns/status/batch
+06:50:06.157 POST api/api/v1/campaigns/7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace/lifecycle
+[EVENT] campaign paused -> resume
+06:50:06.246 POST api/api/v1/campaigns/status/batch
+[EVENT] budget: 60 campaign-wide, 60 already on server, 0 to evaluate now
+06:50:06.257 GET api/api/v1/results/7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace
+[EVENT] campaign-wide budget of 60 already satisfied; reporting only
+06:50:06.282 GET api/api/v1/results/7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace
+[EVENT] campaign_id=7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace
+[EVENT] evaluations attempted=60 successful=60 failed=0
+[RESULT] BEST surface_response=0.679176
+[RESULT] BEST raw_response=-7.170553
+[RESULT] BEST x=[0.501971 0.509094 0.478009 0.509131 0.538869 0.477339]
+[EVENT] artifacts=artifacts/ackley6_bo/run-20260807T065006Z/ (results.jsonl, results_table.csv, final_report.json, run.log)
+06:50:06.298 POST api/api/v1/campaigns/status/batch
+06:50:06.314 POST api/api/v1/campaigns/7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace/lifecycle
+[EVENT] campaign paused (resume with --campaign-id)

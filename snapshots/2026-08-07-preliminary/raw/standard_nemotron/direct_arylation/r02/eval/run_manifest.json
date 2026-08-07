@@ -1,0 +1,148 @@
+{
+  "bo_mcp_git": {
+    "available": true,
+    "branch": "",
+    "dirty": true,
+    "repo_path": "/bo-mcp-source",
+    "sha": "716d75c7e82dd5dcd014c55fecab327fcd92a579",
+    "source": "cli"
+  },
+  "cli": {
+    "argv": [
+      "--case",
+      "direct_arylation",
+      "--output-dir",
+      "/app/outputs/cells/direct_arylation_standard_nemotron_r02/eval",
+      "--architecture-mode",
+      "standard_subagent_script_bo_mcp",
+      "--bo-api-url",
+      "http://api:8000",
+      "--bo-mcp-repo-path",
+      "/bo-mcp-source",
+      "--tool-registry-config",
+      "tool_registry.gpu4pyscf.toml",
+      "--request-limit",
+      "80",
+      "--agent-timeout-seconds",
+      "3600",
+      "--model",
+      "openai-responses:gpt-5.4",
+      "--repeats",
+      "1",
+      "--repeat-cache-buster",
+      "uuid",
+      "--run-id",
+      "direct_arylation_standard_nemotron_r02-20260803",
+      "--subagent-model",
+      "nvidia:nvidia/nemotron-3-ultra-550b-a55b"
+    ],
+    "command": "--case direct_arylation --output-dir /app/outputs/cells/direct_arylation_standard_nemotron_r02/eval --architecture-mode standard_subagent_script_bo_mcp --bo-api-url http://api:8000 --bo-mcp-repo-path /bo-mcp-source --tool-registry-config tool_registry.gpu4pyscf.toml --request-limit 80 --agent-timeout-seconds 3600 --model openai-responses:gpt-5.4 --repeats 1 --repeat-cache-buster uuid --run-id direct_arylation_standard_nemotron_r02-20260803 --subagent-model nvidia:nvidia/nemotron-3-ultra-550b-a55b"
+  },
+  "environment": {
+    "env_file": null,
+    "env_file_values": {},
+    "process_env": {
+      "BO_API_URL": "http://api:8000",
+      "BO_MCP_API_KEY": "[REDACTED]",
+      "BO_MCP_API_URL": "http://api:8000",
+      "BO_MCP_REPO_PATH": "/bo-mcp-source",
+      "BO_MCP_URL": "http://mcp:8001/mcp",
+      "DIRECT_ARYLATION_API_URL": "http://direct-arylation-oracle:8000",
+      "GOOGLE_API_KEY": "<redacted:set>",
+      "GRAPHCHAT_DEEP_MEMORY_ROOT": "/app/outputs/cells/direct_arylation_standard_nemotron_r02/memory",
+      "LOGFIRE_TOKEN": "<redacted:set>",
+      "NVIDIA_API_KEY": "[REDACTED]",
+      "OPENAI_API_KEY": "[REDACTED]",
+      "OPENROUTER_API_KEY": "[REDACTED]",
+      "SPARQL_ENDPOINT": "http://localhost:27149/blazegraph/namespace/kb/sparql"
+    }
+  },
+  "eval": {
+    "agent_timeout_s": 3600.0,
+    "architecture_mode": "standard_subagent_script_bo_mcp",
+    "bo_api_url": "http://api:8000",
+    "case_configs": [
+      {
+        "evaluation_budget": 60,
+        "hypervolume_reference_point": null,
+        "id": "direct_arylation",
+        "name": "Direct arylation reaction-yield optimization",
+        "objective_direction": "maximize",
+        "objective_name": "yield",
+        "objective_unit": "percent",
+        "objective_verifier": "direct_arylation",
+        "objectives": [
+          {
+            "direction": "maximize",
+            "name": "yield",
+            "unit": "percent"
+          }
+        ]
+      }
+    ],
+    "case_ids": [
+      "direct_arylation"
+    ],
+    "dry_run": false,
+    "max_concurrency": 1,
+    "output_dir": "/app/outputs/cells/direct_arylation_standard_nemotron_r02/eval",
+    "request_limit": 80,
+    "selector": "direct_arylation",
+    "tool_registry_config": "tool_registry.gpu4pyscf.toml"
+  },
+  "git": {
+    "available": true,
+    "branch": "ackley-direct-arylation-evidence-20260729",
+    "dirty": false,
+    "repo_path": "/app",
+    "sha": "4212ac2d7ceaedfd4d5896502e1af2bd2360486a"
+  },
+  "model": {
+    "model_id": "openai-responses:gpt-5.4",
+    "model_name": "gpt-5.4",
+    "provider": "openai-responses"
+  },
+  "model_settings": {
+    "settings": {
+      "openai_reasoning_effort": "medium",
+      "openai_reasoning_summary": "detailed",
+      "temperature": 1.0
+    },
+    "source": "grafico.core.http.llm_config"
+  },
+  "prompt_cache": {
+    "enabled": true,
+    "nonce": "e1df1700-31da-4565-af52-7fd2cff7d03c",
+    "policy": "uuid"
+  },
+  "repeat": {
+    "repeat_count": 1,
+    "repeat_id": "repeat_001",
+    "repeat_index": 1
+  },
+  "run_id": "direct_arylation_standard_nemotron_r02-20260803",
+  "schema_version": 1,
+  "subagent_model": {
+    "inherits_main_model": false,
+    "requested_model_id": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "resolved_model": {
+      "model_id": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+      "model_name": "nvidia/nemotron-3-ultra-550b-a55b",
+      "provider": "nvidia"
+    },
+    "resolved_model_settings": {
+      "settings": {
+        "extra_body": {
+          "chat_template_kwargs": {
+            "enable_thinking": true
+          },
+          "reasoning_budget": 16384
+        },
+        "parallel_tool_calls": true,
+        "temperature": 1.0
+      },
+      "source": "grafico.core.http.llm_config"
+    }
+  },
+  "timestamp": "2026-08-03T19:37:51+00:00"
+}

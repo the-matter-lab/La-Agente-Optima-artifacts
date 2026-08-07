@@ -1,0 +1,33 @@
+exit_code=0
+
+=== stdout (raw) ===
+Case: synthetic_ackley_6d
+Objective: surface_response (maximize, normalized_unitless)
+Seed: 20260730
+Attempted evaluations: 5
+Successful evaluations: 5
+Best normalized coordinates:
+{
+  "x_1": 0.49044440843059584,
+  "x_2": 0.4445925862918303,
+  "x_3": 0.5625842338113919,
+  "x_4": 0.6775214775943964,
+  "x_5": 0.5234492039054847,
+  "x_6": 0.6565253444262631
+}
+Best raw_response: -17.835504247316
+Best surface_response: 0.202005228440
+All evaluated candidates:
+eval | status | surface_response | raw_response | x_1 | x_2 | x_3 | x_4 | x_5 | x_6
+--- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+0 | success | 0.032966 | -21.613590 | 0.877682 | 0.133573 | 0.165006 | 0.240356 | 0.658921 | 0.228827
+1 | success | 0.044452 | -21.356883 | 0.559253 | 0.501033 | 0.954918 | 0.490220 | 0.293424 | 0.124323
+2 | success | 0.158837 | -18.800342 | 0.423429 | 0.447121 | 0.611951 | 0.703762 | 0.502059 | 0.702406
+3 | success | 0.030739 | -21.663380 | 0.205257 | 0.778521 | 0.727429 | 0.587753 | 0.480790 | 0.991559
+4 | success | 0.202005 | -17.835504 | 0.490444 | 0.444593 | 0.562584 | 0.677521 | 0.523449 | 0.656525
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

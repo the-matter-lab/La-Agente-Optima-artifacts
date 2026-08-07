@@ -1,0 +1,49 @@
+exit_code=0
+
+=== stdout (raw) ===
+run_ackley6d.py:14:import argparse
+run_ackley6d.py:34:    parser = argparse.ArgumentParser(
+run_ackley6d.py:35:        description=f"6D Ackley BO-MCP campaign  marker={MARKER}"
+run_ackley6d.py:63:        nonce=NONCE,
+run_ackley6d.py:64:        marker=MARKER,
+run_ackley6d.py:67:        campaign_id=args.campaign_id,
+run_ackley6d.py:73:        campaign_id=args.campaign_id,
+run_ackley6d.py:80:    logfire.info("ackley6d campaign finished", campaign_id=cid)
+ackley6d/campaign.py:38:            f"nonce={NONCE}"
+ackley6d/campaign.py:82:            "nonce": NONCE,
+ackley6d/campaign.py:85:        with open(self._path, "a") as f:
+ackley6d/campaign.py:92:    campaign_id: str | None = None,
+ackley6d/campaign.py:100:    Returns the campaign_id.
+ackley6d/campaign.py:104:    artifact_path = artifact_dir / "ackley6d_results.jsonl"
+ackley6d/campaign.py:108:    if campaign_id is None:
+ackley6d/campaign.py:127:        campaign_id = resp["campaign_id"]
+ackley6d/campaign.py:128:        print(f"[EVENT] Campaign created: {campaign_id}", flush=True)
+ackley6d/campaign.py:131:        camp = client.get_campaign(campaign_id)
+ackley6d/campaign.py:133:        print(f"[EVENT] Resuming campaign {campaign_id} (status={status})", flush=True)
+ackley6d/campaign.py:135:            client.lifecycle(campaign_id, action="resume")
+ackley6d/campaign.py:138:            client.lifecycle(campaign_id, action="reopen")
+ackley6d/campaign.py:149:            stop_file.unlink(missing_ok=True)
+ackley6d/campaign.py:152:                client.lifecycle(campaign_id, action="pause")
+ackley6d/campaign.py:161:            print(f"[HEARTBEAT] campaign={campaign_id} evaluated={eval_count}/{TOTAL_BUDGET}", flush=True)
+ackley6d/campaign.py:165:        decision = client.next_action(campaign_id)
+ackley6d/campaign.py:176:            "suggest", campaign_id, str(eval_count)
+ackley6d/campaign.py:180:                campaign_id, batch_size=batch, timeout_s=poll_s
+ackley6d/campaign.py:185:            pending = client.query_suggestions(campaign_id, status_filter="pending")
+ackley6d/campaign.py:243:                    "result", campaign_id, str(eval_count)
+ackley6d/campaign.py:247:                        campaign_id,
+ackley6d/campaign.py:255:                                "result-force", campaign_id, str(eval_count)
+ackley6d/campaign.py:258:                                campaign_id,
+ackley6d/campaign.py:287:    _print_final_report(campaign_id, artifact_path, client)
+ackley6d/campaign.py:291:        client.lifecycle(campaign_id, action="pause")
+ackley6d/campaign.py:292:        print(f"[EVENT] Campaign {campaign_id} paused.", flush=True)
+ackley6d/campaign.py:296:    return campaign_id
+ackley6d/campaign.py:300:    campaign_id: str, artifact_path: Path, client: BoMcpClient
+ackley6d/campaign.py:305:        with open(artifact_path) as f:
+ackley6d/campaign.py:309:                    rows.append(json.loads(line))
+ackley6d/campaign.py:326:        f"[RESULT] SUMMARY campaign_id={campaign_id} "
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

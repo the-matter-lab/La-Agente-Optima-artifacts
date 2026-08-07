@@ -1,0 +1,59 @@
+exit_code=0
+
+=== stdout (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+06:19:01.371 GET api/api/v1/campaigns/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:01.450 POST api/api/v1/campaigns/84ceec99-fabc-408c-a7fa-3509f9552896/lifecycle
+[EVENT] resumed paused campaign 84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:01.557 ackley6d_baybe campaign start
+[EVENT] poll_s=180.0 heartbeat_s=60.0 stop_file=STOP
+06:19:01.558 GET api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:01.575 POST api/api/v1/campaigns/status/batch
+06:19:01.597 POST api/api/v1/suggestions/84ceec99-fabc-408c-a7fa-3509f9552896/generate ? batch_size='6'
+[RESULT] candidate={'x_1': 0.7182497917963359, 'x_2': 0.5408207349288102, 'x_3': 0.346389200834063, 'x_4': 0.14879214518242623, 'x_5': 0.9823984685314264, 'x_6': 0.44006158004607154} raw_response=-21.605762 surface_response=0.033317 status=success
+[RESULT] candidate={'x_1': 0.038237093575096415, 'x_2': 0.040759178759045445, 'x_3': 0.5012872487680227, 'x_4': 0.5249288919249845, 'x_5': 0.6343987746354823, 'x_6': 0.7970811104367161} raw_response=-20.958334 surface_response=0.062284 status=success
+[RESULT] candidate={'x_1': 0.045740765774906045, 'x_2': 0.9699508710012535, 'x_3': 0.753287223745957, 'x_4': 0.07560256468770044, 'x_5': 0.72072500611801, 'x_6': 0.8921744200239652} raw_response=-21.925309 surface_response=0.019019 status=success
+[RESULT] candidate={'x_1': 0.36860073614872524, 'x_2': 0.6228481346990135, 'x_3': 0.5949381781153821, 'x_4': 0.9412422604195703, 'x_5': 0.9729534243714648, 'x_6': 0.926650828326846} raw_response=-21.686639 surface_response=0.029698 status=success
+[RESULT] candidate={'x_1': 0.11730990785202877, 'x_2': 0.9305026916510156, 'x_3': 0.35043791356823095, 'x_4': 0.16478829825135333, 'x_5': 0.6671270498022519, 'x_6': 0.5771950498262416} raw_response=-21.605917 surface_response=0.033310 status=success
+[RESULT] candidate={'x_1': 0.8088731100966775, 'x_2': 0.4438805948238035, 'x_3': 0.34662066691292914, 'x_4': 0.3406286647349691, 'x_5': 0.6277657172567966, 'x_6': 0.6794851776211286} raw_response=-20.871648 surface_response=0.066162 status=success
+06:19:01.677 POST api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:01.767 GET api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:01.787 POST api/api/v1/campaigns/status/batch
+06:19:01.800 POST api/api/v1/suggestions/84ceec99-fabc-408c-a7fa-3509f9552896/generate ? batch_size='6'
+[RESULT] candidate={'x_1': 0.26906991360691723, 'x_2': 0.8648651695883083, 'x_3': 0.2745636833499988, 'x_4': 0.7726913500371053, 'x_5': 0.9089187588871525, 'x_6': 0.7790699387462483} raw_response=-21.552659 surface_response=0.035693 status=success
+[RESULT] candidate={'x_1': 0.4959512604867393, 'x_2': 0.036053498950323615, 'x_3': 0.38030120432888503, 'x_4': 0.822154099712726, 'x_5': 0.12215820828509383, 'x_6': 0.4948235570277457} raw_response=-21.674255 surface_response=0.030252 status=success
+[RESULT] candidate={'x_1': 0.23502315145602437, 'x_2': 0.6261527756093576, 'x_3': 0.016317113657922433, 'x_4': 0.43650814957834605, 'x_5': 0.7325894803223628, 'x_6': 0.07264733647104804} raw_response=-21.328054 surface_response=0.045742 status=success
+[RESULT] candidate={'x_1': 0.44389425839162555, 'x_2': 0.7309420993897088, 'x_3': 0.2132506797963054, 'x_4': 0.4063378904367716, 'x_5': 0.5932290251888851, 'x_6': 0.6844935375062782} raw_response=-20.949523 surface_response=0.062678 status=success
+[RESULT] candidate={'x_1': 0.5809806858408012, 'x_2': 0.7029229711658642, 'x_3': 0.03831909651227938, 'x_4': 0.19504222780266944, 'x_5': 0.7679480289442645, 'x_6': 0.0732962799813548} raw_response=-21.753709 surface_response=0.026697 status=success
+[RESULT] candidate={'x_1': 0.3095411094987419, 'x_2': 0.9900930303464914, 'x_3': 0.13186814109653155, 'x_4': 0.12497149136652985, 'x_5': 0.23509601548451475, 'x_6': 0.9894585264152551} raw_response=-21.429264 surface_response=0.041214 status=success
+06:19:01.891 POST api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:01.958 GET api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:01.969 POST api/api/v1/campaigns/status/batch
+06:19:02.004 POST api/api/v1/suggestions/84ceec99-fabc-408c-a7fa-3509f9552896/generate ? batch_size='6'
+[RESULT] candidate={'x_1': 0.5541479803032092, 'x_2': 0.28563036681149184, 'x_3': 0.36342044820517844, 'x_4': 0.44388171140461496, 'x_5': 0.5823800403471838, 'x_6': 0.7014470915979837} raw_response=-19.615021 surface_response=0.122386 status=success
+[RESULT] candidate={'x_1': 0.6079743179390735, 'x_2': 0.4661313809947998, 'x_3': 0.42670046631253933, 'x_4': 0.4604418743188331, 'x_5': 0.8486070074029022, 'x_6': 0.7041925855347781} raw_response=-20.403931 surface_response=0.087089 status=success
+[RESULT] candidate={'x_1': 0.5868576642805035, 'x_2': 0.4048736883578231, 'x_3': 0.388575482952084, 'x_4': 0.4347808924191142, 'x_5': 0.3977137470191973, 'x_6': 1.0} raw_response=-20.583428 surface_response=0.079058 status=success
+[RESULT] candidate={'x_1': 0.43535340544879364, 'x_2': 0.36606549434537794, 'x_3': 0.4452847686386766, 'x_4': 0.4292042305286649, 'x_5': 0.39896066661052054, 'x_6': 0.41487706401676017} raw_response=-16.863964 surface_response=0.245474 status=success
+[RESULT] candidate={'x_1': 0.45467058476656014, 'x_2': 0.0, 'x_3': 0.17201606932620414, 'x_4': 0.438246311018332, 'x_5': 0.560709213429673, 'x_6': 0.7518423621627399} raw_response=-20.920449 surface_response=0.063979 status=success
+[RESULT] candidate={'x_1': 1.0, 'x_2': 0.4983277792384797, 'x_3': 0.3427797607159609, 'x_4': 0.48418518008147887, 'x_5': 0.5023711421452526, 'x_6': 0.5217582890386426} raw_response=-20.888080 surface_response=0.065427 status=success
+06:19:14.602 POST api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:14.865 GET api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:14.876 POST api/api/v1/campaigns/status/batch
+06:19:14.888 POST api/api/v1/suggestions/84ceec99-fabc-408c-a7fa-3509f9552896/generate ? batch_size='6'
+[RESULT] candidate={'x_1': 0.3550013755153707, 'x_2': 0.37379617331860754, 'x_3': 0.5244484828375511, 'x_4': 0.40829563033435795, 'x_5': 0.3427547131480535, 'x_6': 0.37650284099695724} raw_response=-18.718141 surface_response=0.162514 status=success
+[RESULT] candidate={'x_1': 0.3764470216289755, 'x_2': 0.3641291122269132, 'x_3': 0.3092506268722103, 'x_4': 0.3839345310041332, 'x_5': 0.27514963077353005, 'x_6': 0.3644247563776839} raw_response=-19.586631 surface_response=0.123656 status=success
+[RESULT] candidate={'x_1': 0.4414738405087148, 'x_2': 0.33904014792970066, 'x_3': 0.5431187091543356, 'x_4': 0.4505205995794555, 'x_5': 0.4159972061961663, 'x_6': 0.2397707176012291} raw_response=-19.294851 surface_response=0.136711 status=success
+[RESULT] candidate={'x_1': 0.38577318305252684, 'x_2': 0.41821091291830675, 'x_3': 0.5007690284137314, 'x_4': 0.5470038085733085, 'x_5': 0.2765366376908692, 'x_6': 0.3965472369450887} raw_response=-18.431028 surface_response=0.175360 status=success
+[RESULT] candidate={'x_1': 0.4448529288836529, 'x_2': 0.3855701289894382, 'x_3': 0.5897590664001844, 'x_4': 0.319058330159349, 'x_5': 0.22192546909596883, 'x_6': 0.4027949809574124} raw_response=-20.141298 surface_response=0.098840 status=success
+[RESULT] candidate={'x_1': 0.24140972743374703, 'x_2': 0.3604126024510566, 'x_3': 0.44149042882735334, 'x_4': 0.3386431509379696, 'x_5': 0.42676419153049233, 'x_6': 0.428198344344021} raw_response=-19.549468 surface_response=0.125319 status=success
+06:19:52.224 POST api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:52.309 GET api/api/v1/results/84ceec99-fabc-408c-a7fa-3509f9552896
+06:19:52.321 POST api/api/v1/campaigns/status/batch
+06:19:52.333 POST api/api/v1/suggestions/84ceec99-fabc-408c-a7fa-3509f9552896/generate ? batch_size='6'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

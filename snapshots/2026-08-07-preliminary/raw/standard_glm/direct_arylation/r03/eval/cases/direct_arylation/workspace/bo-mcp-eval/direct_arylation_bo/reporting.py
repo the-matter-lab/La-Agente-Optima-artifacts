@@ -1,0 +1,82 @@
+"""Result tracking and reporting for the direct arylation BO campaign."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from datetime import datetime
+
+
+class ResultTracker:
+    """Append-only record of all attempted evaluations."""
+
+    def __init__(self, artifacts_dir: Path) -> None:
+        self.artifacts_dir = artifacts_dir
+        self.artifacts_dir.mkdir(parents=True, exist_ok=True)
+        self.records: list[dict] = []
+        self._jsonl_path = artifacts_dir / "evaluations.jsonl"
+
+    def record(self, evaluation: dict) -> None:
+        """Append one evaluation record (success or failure)."""
+        entry = {
+            "timestamp": datetime.utcnow().isoformat(),
+            "parameter_values": evaluation["parameter_values"],
+            "status": evaluation["status"],
+        }
+        if evaluation["success"]:
+            entry["objective_values"] = {"yield": evaluation["yield"]}
+        else:
+            entry["objective_values"] = None
+            entry["raw_response"] = evaluation.get("raw_response", "")
+        self.records.append(entry)
+        # Append-only JSONL
+        with open(self._jsonl_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(entry) + "\n")
+
+    @property
+    def n_attempted(self) -> int:
+        return len(self.records)
+
+    @property
+    def n_successful(self) -> int:
+        return sum(1 for r in self.records if r["status"] == "success")
+
+    @property
+    def best_yield(self) -> float | None:
+        successful = [r for r in self.records if r["status"] == "success"]
+        if not successful:
+            return None
+        return max(r["objective_values"]["yield"] for r in successful)
+
+    @property
+    def best_conditions(self) -> dict | None:
+        successful = [r for r in self.records if r["status"] == "success"]
+        if not successful:
+            return None
+        best = max(successful, key=lambda r: r["objective_values"]["yield"])
+        return best["parameter_values"]
+
+    def write_summary(self, campaign_id: str) -> Path:
+        """Write a final summary JSON to the artifacts directory."""
+        summary = {
+            "campaign_id": campaign_id,
+            "n_attempted": self.n_attempted,
+            "n_successful": self.n_successful,
+            "best_yield": self.best_yield,
+            "best_conditions": self.best_conditions,
+            "all_records": self.records,
+        }
+        path = self.artifacts_dir / "summary.json"
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(summary, f, indent=2, default=str)
+        return path
+
+    def format_summary_line(self) -> str:
+        """Return a concise one-line summary for tagged output."""
+        by = self.best_yield
+        bc = self.best_conditions
+        return (
+            f"attempted={self.n_attempted} successful={self.n_successful} "
+            f"best_yield={by:.2f}% "
+            f"best_conditions={bc}"
+        )

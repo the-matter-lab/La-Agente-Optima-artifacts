@@ -1,0 +1,455 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- ackley_6d/search_space.py ---
+# ackley_6d/search_space.py
+# Cache-buster nonce: 54354cdc-4da6-4419-86a6-f4560fc0efbe
+
+def get_parameters():
+    """
+    Returns the search space parameters for the 6D Ackley optimization.
+    Each parameter x_i is continuous on [0.0, 1.0].
+    """
+    return [
+        {
+            "name": f"x_{i}",
+            "type": "continuous",
+            "bounds": {"lower": 0.0, "upper": 1.0}
+        }
+        for i in range(1, 7)
+    ]
+
+--- ackley_6d/evaluator.py ---
+# ackley_6d/evaluator.py
+# Cache-buster nonce: 54354cdc-4da6-4419-86a6-f4560fc0efbe
+
+import math
+from typing import Dict, Any, Tuple
+
+def evaluate_ackley_6d(parameter_values: Dict[str, Any]) -> Tuple[bool, Dict[str, Any], str]:
+    """
+    Evaluates the Ackley synthetic surface in 6 normalized dimensions.
+    
+    Args:
+        parameter_values: Dict containing keys 'x_1' through 'x_6' with float values in [0.0, 1.0].
+        
+    Returns:
+        Tuple of (success, results_dict, failure_reason)
+        where results_dict contains 'surface_response' and 'raw_response' if success is True.
+    """
+    try:
+        # Extract and validate parameters
+        z_list = []
+        for i in range(1, 7):
+            key = f"x_{i}"
+            if key not in parameter_values:
+                return False, {}, f"Missing parameter {key}"
+            
+            val = parameter_values[key]
+            if not isinstance(val, (int, float)):
+                return False, {}, f"Parameter {key} is not a number: {val}"
+            
+            if not (0.0 <= val <= 1.0):
+                return False, {}, f"Parameter {key} is out of bounds [0.0, 1.0]: {val}"
+            
+            # Map normalized x_i to z_i = -40 + 80 * x_i
+            z_i = -40.0 + 80.0 * val
+            z_list.append(z_i)
+            
+        d = 6.0
+        sum_z_sq = sum(z ** 2 for z in z_list)
+        sum_cos_z = sum(math.cos(2.0 * math.pi * z) for z in z_list)
+        
+        # Classic Ackley formula
+        term1 = -20.0 * math.exp(-0.2 * math.sqrt(sum_z_sq / d))
+        term2 = -math.exp(sum_cos_z / d)
+        classic = term1 + term2 + 20.0 + math.e
+        
+        raw_response = -classic
+        
+        # Normalize surface_response
+        # surface_response = (raw_response - (-22.350402387287602)) / (0.0 - (-22.350402387287602))
+        min_raw = -22.350402387287602
+        max_raw = 0.0
+        surface_response = (raw_response - min_raw) / (max_raw - min_raw)
+        
+        return True, {
+            "surface_response": surface_response,
+            "raw_response": raw_response
+        }, ""
+        
+    except Exception as e:
+        return False, {}, f"Unexpected error during evaluation: {str(e)}"
+
+--- ackley_6d/reporting.py ---
+# ackley_6d/reporting.py
+# Cache-buster nonce: 54354cdc-4da6-4419-86a6-f4560fc0efbe
+
+import json
+import os
+from typing import List, Dict, Any
+
+def save_results_artifact(filepath: str, history: List[Dict[str, Any]]):
+    """
+    Saves the evaluation history to a JSON file.
+    Each row contains:
+      - evaluation_index
+      - parameter_values (x_1..x_6)
+      - objective_values (surface_response)
+      - status
+      - failure_reason
+      - raw_response
+    """
+    with open(filepath, "w") as f:
+        json.dump(history, f, indent=2)
+
+def print_final_report(campaign_id: str, history: List[Dict[str, Any]]):
+    """
+    Prints the final report of the campaign.
+    """
+    successful_evals = [h for h in history if h["status"] == "success"]
+    attempted_evals = len(history)
+    successful_count = len(successful_evals)
+    
+    print("\n" + "="*80)
+    print("FINAL CAMPAIGN REPORT")
+    print("="*80)
+    print(f"Campaign ID: {campaign_id}")
+    print(f"Attempted Evaluations: {attempted_evals}")
+    print(f"Successful Evaluations: {successful_count}")
+    print(f"Failed Evaluations: {attempted_evals - successful_count}")
+    
+    if successful_evals:
+        # Find the best candidate (maximizing surface_response)
+        best_candidate = max(successful_evals, key=lambda x: x["objective_values"]["surface_response"])
+        print("\nBEST CANDIDATE FOUND:")
+        print(f"  Surface Response (Normalized): {best_candidate['objective_values']['surface_response']:.6f}")
+        print(f"  Raw Response: {best_candidate['raw_response']:.6f}")
+        print("  Normalized Coordinates:")
+        for k, v in sorted(best_candidate["parameter_values"].items()):
+            print(f"    {k}: {v:.6f}")
+    else:
+        print("\n[ALERT] No successful evaluations recorded.")
+        
+    print("\nEVALUATION HISTORY TABLE:")
+    print(f"{'Index':<6} | {'x_1':<8} | {'x_2':<8} | {'x_3':<8} | {'x_4':<8} | {'x_5':<8} | {'x_6':<8} | {'Surface Resp':<12} | {'Status':<8}")
+    print("-" * 100)
+    for h in history:
+        idx = h["evaluation_index"]
+        p = h["parameter_values"]
+        obj = h["objective_values"].get("surface_response", float('nan')) if h["status"] == "success" else float('nan')
+        status = h["status"]
+        
+        p_str = " | ".join(f"{p.get(f'x_{i}', float('nan')):.4f}" for i in range(1, 7))
+        obj_str = f"{obj:.6f}" if not math_isnan(obj) else "N/A"
+        print(f"{idx:<6} | {p_str} | {obj_str:<12} | {status:<8}")
+        
+    print("="*80)
+    print(f"BO_MCP_CAMPAIGN_ID={campaign_id}")
+    print("="*80)
+
+def math_isnan(val: float) -> bool:
+    try:
+        import math
+        return math.isnan(val)
+    except:
+        return False
+
+--- ackley_6d/campaign.py ---
+# ackley_6d/campaign.py
+# Cache-buster nonce: 54354cdc-4da6-4419-86a6-f4560fc0efbe
+
+import os
+import time
+import sys
+from typing import Optional, Dict, Any
+
+import logfire
+from grafico.core.logfire_config import configure_logfire
+
+# Configure logfire and instrument requests
+configure_logfire()
+logfire.instrument_requests()
+
+from domains.bo_mcp.client import BoMcpClient, BoMcpClientError, BoMcpOperationError
+from .intake import get_intake
+from .evaluator import evaluate_ackley_6d
+from .reporting import save_results_artifact, print_final_report
+
+def run_campaign(
+    campaign_id: Optional[str] = None,
+    campaign_name: str = "Ackley 6D Optimization",
+    random_seed: int = 42,
+    initial_design_size: int = 10,
+    backend: str = "auto",
+    poll_s: int = 180,
+    heartbeat_s: int = 1800,
+    stop_file: str = "STOP",
+    artifact_dir: str = "artifacts",
+    max_evaluations: Optional[int] = None
+):
+    """
+    Orchestrates the Ackley 6D optimization campaign using BO-MCP.
+    """
+    # Initialize client
+    client = BoMcpClient.from_env()
+    
+    # Ensure artifact directory exists
+    os.makedirs(artifact_dir, exist_ok=True)
+    results_path = os.path.join(artifact_dir, "results_history.json")
+    
+    # 1. Create or Resume Campaign
+    if campaign_id:
+        print(f"[EVENT] Resuming existing campaign: {campaign_id}")
+        logfire.info("Resuming campaign", campaign_id=campaign_id)
+        # Verify campaign exists
+        try:
+            campaign = client.get_campaign(campaign_id)
+            # If campaign is paused, resume it
+            if campaign.get("status") == "paused":
+                print(f"[EVENT] Campaign is paused. Resuming on server...")
+                client.lifecycle(campaign_id, action="resume")
+        except BoMcpClientError as e:
+            print(f"[ALERT] Failed to retrieve campaign {campaign_id}: {e}")
+            sys.exit(1)
+    else:
+        # Create new campaign
+        ownership_marker = "akg-eval-43dcff3d628d4a86ba717e0455386a93"
+        full_name = f"{campaign_name} - {ownership_marker}"
+        print(f"[EVENT] Creating new campaign: {full_name}")
+        logfire.info("Creating new campaign", campaign_name=full_name)
+        
+        intake = get_intake(full_name, random_seed, initial_design_size, backend)
+        idempotency_key = client.make_idempotency_key("create", full_name)
+        
+        try:
+            resp = client.create_campaign(intake, idempotency_key=idempotency_key)
+            campaign_id = resp["campaign_id"]
+            print(f"[EVENT] Campaign created successfully. ID: {campaign_id}")
+            logfire.info("Campaign created", campaign_id=campaign_id)
+        except BoMcpClientError as e:
+            print(f"[ALERT] Failed to create campaign: {e}")
+            sys.exit(1)
+            
+    # Print the campaign ID as an event
+    print(f"[EVENT] Campaign ID: {campaign_id}")
+    sys.stdout.flush()
+    
+    # 2. Optimization Loop
+    last_heartbeat = time.time()
+    budget = 60
+    evaluations_this_invocation = 0
+    
+    while True:
+        # Check stop file
+        if os.path.exists(stop_file):
+            print(f"[EVENT] Stop file '{stop_file}' detected. Pausing campaign and exiting.")
+            logfire.info("Stop file detected, pausing campaign")
+            try:
+                os.remove(stop_file)
+            except Exception as e:
+                print(f"[ALERT] Failed to remove stop file: {e}")
+            
+            # Pause campaign on server
+            try:
+                client.lifecycle(campaign_id, action="pause")
+                print("[EVENT] Campaign paused on server.")
+            except Exception as e:
+                print(f"[ALERT] Failed to pause campaign on server: {e}")
+            break
+
+        # Check per-invocation budget
+        if max_evaluations is not None and evaluations_this_invocation >= max_evaluations:
+            print(f"[EVENT] Per-invocation budget of {max_evaluations} reached. Pausing campaign and exiting.")
+            try:
+                client.lifecycle(campaign_id, action="pause")
+                print("[EVENT] Campaign paused on server.")
+            except Exception as e:
+                print(f"[ALERT] Failed to pause campaign on server: {e}")
+            break
+            
+        # Check heartbeat
+        now = time.time()
+        if now - last_heartbeat >= heartbeat_s:
+            print(f"[HEARTBEAT] Campaign {campaign_id} is active. Time: {time.strftime('%Y-%m-%d %H:%M:%S')}")
+            sys.stdout.flush()
+            last_heartbeat = now
+            
+        # Query suggestions to count attempted evaluations
+        try:
+            all_suggestions = client.query_suggestions(campaign_id)
+            attempted_count = len(all_suggestions)
+        except BoMcpClientError as e:
+            print(f"[ALERT] Failed to query suggestions: {e}")
+            time.sleep(10)
+            continue
+            
+        if attempted_count >= budget:
+            print(f"[EVENT] Budget of {budget} attempted evaluations reached.")
+            logfire.info("Budget reached", budget=budget)
+            break
+            
+        # Get next action decision from server
+        try:
+            decision = client.next_action(campaign_id)
+        except BoMcpClientError as e:
+            print(f"[ALERT] Failed to get next action: {e}")
+            time.sleep(10)
+            continue
+            
+        if decision["action"] != "bo_generate_suggestions":
+            print(f"[EVENT] Server recommended action: {decision['action']}. Reason: {decision['reason']}")
+            break
+            
+        # Check for pending suggestions to reuse
+        pending_suggestions = [s for s in all_suggestions if s["status"] == "pending"]
+        
+        if pending_suggestions:
+            suggestion = pending_suggestions[0]
+            suggestion_id = suggestion["suggestion_id"]
+            parameter_values = suggestion["parameter_values"]
+            print(f"[EVENT] Reusing pending suggestion {suggestion_id}")
+        else:
+            # Generate new suggestion
+            print(f"[EVENT] Generating new suggestion (Attempt {attempted_count + 1}/{budget})...")
+            try:
+                gen_resp = client.generate_suggestions(campaign_id, batch_size=1)
+                if not gen_resp.get("success"):
+                    print(f"[ALERT] Failed to generate suggestions: {gen_resp.get('errors')}")
+                    time.sleep(10)
+                    continue
+                suggestion = gen_resp["suggestions"][0]
+                suggestion_id = suggestion["suggestion_id"]
+                parameter_values = suggestion["parameter_values"]
+            except BoMcpClientError as e:
+                print(f"[ALERT] Error generating suggestions: {e}")
+                time.sleep(10)
+                continue
+                
+
+        # Check for duplicate evaluations
+        is_duplicate = False
+        for s in all_suggestions:
+            if s["status"] == "completed" and s["suggestion_id"] != suggestion_id:
+                diff = sum((s["parameter_values"][f"x_{i}"] - parameter_values[f"x_{i}"])**2 for i in range(1, 7))
+                if diff < 1e-10:
+                    is_duplicate = True
+                    break
+        
+        if is_duplicate:
+            print(f"[ALERT] Duplicate suggestion detected: {suggestion_id}. Rejecting to prevent duplicate evaluation.")
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+                print(f"[EVENT] Suggestion {suggestion_id} marked as rejected.")
+            except BoMcpClientError as e:
+                print(f"[ALERT] Failed to reject suggestion {suggestion_id}: {e}")
+            continue
+        # Evaluate candidate
+        print(f"[EVENT] Evaluating candidate {suggestion_id} with parameters: {parameter_values}")
+        success, results_dict, failure_reason = evaluate_ackley_6d(parameter_values)
+        
+        if success:
+            # Submit result
+            result_row = {
+                "objective_values": {"surface_response": results_dict["surface_response"]},
+                "parameter_values": parameter_values,
+                "suggestion_id": suggestion_id
+            }
+            idempotency_key = client.make_idempotency_key("submit", suggestion_id)
+            print(f"[EVENT] Submitting successful result for {suggestion_id}...")
+            try:
+                client.submit_results(campaign_id, results=[result_row], idempotency_key=idempotency_key)
+                print(f"[RESULT] Candidate {suggestion_id} evaluated successfully. Surface response: {results_dict['surface_response']:.6f}, Raw response: {results_dict['raw_response']:.6f}")
+                logfire.info("Candidate evaluated successfully", suggestion_id=suggestion_id, surface_response=results_dict['surface_response'])
+            except BoMcpClientError as e:
+                print(f"[ALERT] Failed to submit result for {suggestion_id}: {e}")
+        else:
+            # Reject suggestion
+            print(f"[ALERT] Candidate {suggestion_id} evaluation failed: {failure_reason}")
+            logfire.warning("Candidate evaluation failed", suggestion_id=suggestion_id, reason=failure_reason)
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+                print(f"[EVENT] Suggestion {suggestion_id} marked as rejected.")
+            except BoMcpClientError as e:
+                print(f"[ALERT] Failed to reject suggestion {suggestion_id}: {e}")
+                
+
+        # Increment evaluations count for this invocation
+        evaluations_this_invocation += 1
+        # Flush stdout to ensure logs are captured immediately
+        sys.stdout.flush()
+        
+        # Sleep before next iteration
+        time.sleep(poll_s)
+        
+    # 3. Finalize and Report
+    print("[EVENT] Campaign execution finished. Fetching final results...")
+    try:
+        # Fetch all results from server
+        server_results = client.get_results(campaign_id)
+        # Fetch all suggestions to reconstruct full history (including failures)
+        all_suggestions = client.query_suggestions(campaign_id)
+        
+        # Reconstruct history
+        history = []
+        # Map results by suggestion_id for easy lookup
+        results_by_s_id = {r["suggestion_id"]: r for r in server_results if r.get("suggestion_id")}
+        
+        for idx, s in enumerate(all_suggestions):
+            s_id = s["suggestion_id"]
+            p_vals = s["parameter_values"]
+            
+            if s_id in results_by_s_id:
+                r = results_by_s_id[s_id]
+                surf_resp = r["objective_values"]["surface_response"]
+                # Re-evaluate to get raw_response
+                _, eval_res, _ = evaluate_ackley_6d(p_vals)
+                raw_resp = eval_res.get("raw_response", float('nan'))
+                
+                history.append({
+                    "evaluation_index": idx + 1,
+                    "parameter_values": p_vals,
+                    "objective_values": {"surface_response": surf_resp},
+                    "status": "success",
+                    "failure_reason": "",
+                    "raw_response": raw_resp
+                })
+            elif s["status"] == "rejected":
+                history.append({
+
+--- ackley_6d/intake.py ---
+# ackley_6d/intake.py
+# Cache-buster nonce: 54354cdc-4da6-4419-86a6-f4560fc0efbe
+
+from .search_space import get_parameters
+
+def get_intake(campaign_name: str, random_seed: int = 42, initial_design_size: int = 10, backend: str = "auto"):
+    """
+    Constructs the campaign intake payload for BO-MCP.
+    """
+    # Ensure the ownership marker is in the campaign name
+    ownership_marker = "akg-eval-43dcff3d628d4a86ba717e0455386a93"
+    if ownership_marker not in campaign_name:
+        campaign_name = f"{campaign_name} - {ownership_marker}"
+
+    return {
+        "name": campaign_name,
+        "backend": backend,
+        "random_seed": random_seed,
+        "initial_design_size": initial_design_size,
+        "parameters": get_parameters(),
+        "objectives": [
+            {
+                "name": "surface_response",
+                "direction": "maximize",
+                "unit": "normalized_unitless"
+            }
+        ]
+    }
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,38 @@
+import math
+from typing import Dict, Any, Tuple
+
+def evaluate_ackley_6d(parameters: Dict[str, Any]) -> Tuple[float, float]:
+    """
+    Evaluates the 6D Ackley synthetic objective function.
+    
+    Parameters:
+        parameters: Dict containing keys 'x_1' through 'x_6' with float values in [0.0, 1.0].
+        
+    Returns:
+        A tuple of (surface_response, raw_response).
+    """
+    d = 6.0
+    z = []
+    for i in range(1, 7):
+        key = f"x_{i}"
+        if key not in parameters:
+            raise ValueError(f"Missing parameter {key}")
+        val = float(parameters[key])
+        if not (0.0 <= val <= 1.0):
+            raise ValueError(f"Parameter {key} value {val} is out of bounds [0.0, 1.0]")
+        # Map to z_i = -40 + 80 * x_i
+        z_i = -40.0 + 80.0 * val
+        z.append(z_i)
+        
+    sum_sq = sum(z_i ** 2 for z_i in z)
+    sum_cos = sum(math.cos(2.0 * math.pi * z_i) for z_i in z)
+    
+    classic = -20.0 * math.exp(-0.2 * math.sqrt(sum_sq / d)) - math.exp(sum_cos / d) + 20.0 + math.e
+    raw_response = -classic
+    
+    # Normalize surface_response
+    # surface_response = (raw_response - (-22.350402387287602)) / ((0.0) - (-22.350402387287602))
+    denom = 22.350402387287602
+    surface_response = (raw_response + denom) / denom
+    
+    return surface_response, raw_response

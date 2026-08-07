@@ -1,0 +1,40 @@
+{
+  "campaign_slug": "ackley_opt",
+  "package_modules": [
+    "ackley_opt/search_space.py",
+    "ackley_opt/evaluate.py",
+    "ackley_opt/report.py",
+    "ackley_opt/campaign.py"
+  ],
+  "run_entrypoint": "run_ackley_opt.py",
+  "artifact_dir": "artifacts",
+  "ownership_marker": "akg-eval-fd1886f5b43b4509a3ee02d638497312",
+  "objective": {
+    "name": "surface_response",
+    "direction": "maximize",
+    "unit": "normalized_unitless"
+  },
+  "search_space": {
+    "parameters": [
+      {"name": "x_1", "type": "continuous", "bounds": [0.0, 1.0]},
+      {"name": "x_2", "type": "continuous", "bounds": [0.0, 1.0]},
+      {"name": "x_3", "type": "continuous", "bounds": [0.0, 1.0]},
+      {"name": "x_4", "type": "continuous", "bounds": [0.0, 1.0]},
+      {"name": "x_5", "type": "continuous", "bounds": [0.0, 1.0]},
+      {"name": "x_6", "type": "continuous", "bounds": [0.0, 1.0]}
+    ]
+  },
+  "budget": {
+    "max_observations": 60,
+    "initial_design_size": 10,
+    "batch_size": 1
+  },
+  "default_settings": {
+    "random_seed": 42,
+    "backend": "auto",
+    "acquisition_method": "auto",
+    "poll_s": 180,
+    "heartbeat_s": 1800,
+    "stop_file": "STOP"
+  }
+}

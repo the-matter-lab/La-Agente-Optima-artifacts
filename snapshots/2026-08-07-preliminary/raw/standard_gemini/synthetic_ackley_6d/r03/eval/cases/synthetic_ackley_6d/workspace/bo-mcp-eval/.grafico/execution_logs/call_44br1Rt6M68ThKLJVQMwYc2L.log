@@ -1,0 +1,27 @@
+exit_code=0
+
+=== stdout (raw) ===
+                    "evaluation_index": idx + 1,
+                    "parameter_values": p_vals,
+                    "objective_values": {},
+                    "status": "failed",
+                    "failure_reason": "Evaluation failed",
+                    "raw_response": float('nan')
+                })
+                
+        # Save results artifact
+        save_results_artifact(results_path, history)
+        print(f"[EVENT] Saved results history to {results_path}")
+        
+        # Print final report
+        print_final_report(campaign_id, history)
+        
+    except Exception as e:
+        print(f"[ALERT] Error during final reporting: {e}")
+        logfire.exception("Error during final reporting")
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

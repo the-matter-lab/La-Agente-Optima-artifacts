@@ -1,0 +1,61 @@
+exit_code=1
+
+=== stdout (raw) ===
+[EVENT] Creating new campaign: Ackley 6D Optimization akg-eval-43dcff3d628d4a86ba717e0455386a93 smoke - akg-eval-43dcff3d628d4a86ba717e0455386a93
+17:12:32.607 POST api/api/v1/campaigns/validate
+17:12:32.618 POST api/api/v1/campaigns
+[EVENT] Campaign created successfully. ID: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[EVENT] Campaign ID: 9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+[EVENT] Chosen settings: backend=botorch, acquisition=expected_improvement_nonlog, initialization=Sobol warm start, initial_design_size=12, batch_schedule=sequential(1), random_seed=20260730
+17:12:32.979 GET api/api/v1/results/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba
+17:12:33.003 POST api/api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query
+
+
+=== stderr (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 50, in <module>
+    main()
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 35, in main
+    run_campaign(
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d/campaign.py", line 149, in run_campaign
+    history = _reconstruct_history(client, campaign_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d/campaign.py", line 32, in _reconstruct_history
+    all_suggestions = client.query_suggestions(campaign_id, limit=1000)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 175, in query_suggestions
+    response = self._json_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 338, in _json_request
+    response = self._request(method, path, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 361, in _request
+    raise BoMcpClientError(
+domains.bo_mcp.client.BoMcpClientError: BO-MCP POST /api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query failed with 422: {"detail":[{"type":"less_than_equal","loc":["body","limit"],"msg":"Input should be less than or equal to 500","input":1000,"ctx":{"le":500}}]}
+
+
+=== stderr (model-visible) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 50, in <module>
+    main()
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 35, in main
+    run_campaign(
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d/campaign.py", line 149, in run_campaign
+    history = _reconstruct_history(client, campaign_id)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_standard_gemini_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d/campaign.py", line 32, in _reconstruct_history
+    all_suggestions = client.query_suggestions(campaign_id, limit=1000)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 175, in query_suggestions
+    response = self._json_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 338, in _json_request
+    response = self._request(method, path, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 361, in _request
+    raise BoMcpClientError(
+domains.bo_mcp.client.BoMcpClientError: BO-MCP POST /api/v1/suggestions/9bce6c7a-ea1d-452b-a9f3-7a5ae972bcba/query failed with 422: {"detail":[{"type":"less_than_equal","loc":["body","limit"],"msg":"Input should be less than or equal to 500","input":1000,"ctx":{"le":500}}]}

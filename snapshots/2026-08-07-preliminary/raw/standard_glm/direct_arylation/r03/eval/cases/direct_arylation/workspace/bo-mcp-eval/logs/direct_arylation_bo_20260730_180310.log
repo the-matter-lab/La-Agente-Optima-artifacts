@@ -1,0 +1,376 @@
+18:03:12.787 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Campaign created: 228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:12.856 POST api/api/v1/campaigns/status/batch
+18:03:12.874 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 1/60: evaluating {'base': 'Potassium acetate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+18:03:12.962 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=28.15% | {'base': 'Potassium acetate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+18:03:12.966 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:13.058 POST api/api/v1/campaigns/status/batch
+18:03:13.075 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 2/60: evaluating {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 90.0}
+18:03:13.768 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=7.74% | {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 90.0}
+18:03:13.772 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:13.836 POST api/api/v1/campaigns/status/batch
+18:03:13.852 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 3/60: evaluating {'base': 'Potassium acetate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:14.252 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=51.83% | {'base': 'Potassium acetate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:14.255 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:14.353 POST api/api/v1/campaigns/status/batch
+18:03:14.369 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 4/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:15.303 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=58.40% | {'base': 'Cesium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:15.307 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:15.437 POST api/api/v1/campaigns/status/batch
+18:03:15.454 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 5/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:17.105 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=79.10% | {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:17.108 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:17.179 POST api/api/v1/campaigns/status/batch
+18:03:17.194 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 6/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:03:18.840 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=86.46% | {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:03:18.844 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:18.930 POST api/api/v1/campaigns/status/batch
+18:03:18.946 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 7/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:20.685 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=91.27% | {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:20.688 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:21.583 POST api/api/v1/campaigns/status/batch
+18:03:21.599 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 8/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+18:03:22.646 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=63.61% | {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+18:03:22.650 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:22.843 POST api/api/v1/campaigns/status/batch
+18:03:22.860 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 9/60: evaluating {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:23.348 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=36.29% | {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:23.352 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:23.427 POST api/api/v1/campaigns/status/batch
+18:03:23.442 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 10/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:23.916 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=12.19% | {'base': 'Potassium pivalate', 'ligand': 'PPh3', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:23.919 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:23.985 POST api/api/v1/campaigns/status/batch
+18:03:24.001 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 11/60: evaluating {'base': 'Cesium acetate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:25.436 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=89.71% | {'base': 'Cesium acetate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:25.439 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:25.540 POST api/api/v1/campaigns/status/batch
+18:03:25.556 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 12/60: evaluating {'base': 'Cesium acetate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:27.209 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=78.19% | {'base': 'Cesium acetate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:27.239 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:27.336 POST api/api/v1/campaigns/status/batch
+18:03:27.354 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 13/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:28.970 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=95.48% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:28.973 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:29.049 POST api/api/v1/campaigns/status/batch
+18:03:29.066 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 14/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:30.041 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=89.95% | {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:30.045 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:30.163 POST api/api/v1/campaigns/status/batch
+18:03:30.180 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 15/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:31.085 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=99.22% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:31.090 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:31.154 POST api/api/v1/campaigns/status/batch
+18:03:31.167 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 16/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+18:03:31.973 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=100.00% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+18:03:31.976 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:32.065 POST api/api/v1/campaigns/status/batch
+18:03:32.081 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 17/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+18:03:34.205 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=83.25% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+18:03:34.208 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:34.286 POST api/api/v1/campaigns/status/batch
+18:03:34.303 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 18/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:36.067 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=99.81% | {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:36.071 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:36.158 POST api/api/v1/campaigns/status/batch
+18:03:36.175 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 19/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+18:03:37.312 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=98.49% | {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+18:03:37.316 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:37.404 POST api/api/v1/campaigns/status/batch
+18:03:37.423 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 20/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:38.003 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=92.19% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:38.006 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:38.084 POST api/api/v1/campaigns/status/batch
+18:03:38.101 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 21/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+18:03:38.763 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=100.00% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+18:03:38.767 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:38.856 POST api/api/v1/campaigns/status/batch
+18:03:38.872 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 22/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 90.0}
+18:03:40.375 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=84.03% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 90.0}
+18:03:40.378 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:40.594 POST api/api/v1/campaigns/status/batch
+18:03:40.612 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 23/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:43.063 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=92.03% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:43.068 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:43.278 POST api/api/v1/campaigns/status/batch
+18:03:43.296 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 24/60: evaluating {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:03:44.052 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=4.08% | {'base': 'Cesium acetate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:03:44.056 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:44.156 POST api/api/v1/campaigns/status/batch
+18:03:44.173 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 25/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:45.898 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=98.38% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:45.901 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:45.990 POST api/api/v1/campaigns/status/batch
+18:03:46.008 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 26/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+18:03:47.553 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=87.00% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+18:03:47.556 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:47.777 POST api/api/v1/campaigns/status/batch
+18:03:47.793 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 27/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:49.352 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=96.64% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:49.358 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:49.465 POST api/api/v1/campaigns/status/batch
+18:03:49.483 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 28/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:03:51.173 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=83.22% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:03:51.176 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:51.265 POST api/api/v1/campaigns/status/batch
+18:03:51.283 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 29/60: evaluating {'base': 'Cesium acetate', 'ligand': 'Methyldiphenylphosphine', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:53.212 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=18.16% | {'base': 'Cesium acetate', 'ligand': 'Methyldiphenylphosphine', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:03:53.217 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:53.293 POST api/api/v1/campaigns/status/batch
+18:03:53.306 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 30/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:55.597 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=91.19% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:55.601 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:55.696 POST api/api/v1/campaigns/status/batch
+18:03:55.714 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 31/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:57.751 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=60.29% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:57.755 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:58.009 POST api/api/v1/campaigns/status/batch
+18:03:58.028 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 32/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:59.117 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=62.33% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 120.0}
+18:03:59.120 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:03:59.233 POST api/api/v1/campaigns/status/batch
+18:03:59.253 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 33/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:00.995 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=59.82% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:01.001 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:01.117 POST api/api/v1/campaigns/status/batch
+18:04:01.136 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 34/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 90.0}
+18:04:03.139 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=44.22% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 90.0}
+18:04:03.143 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:03.246 POST api/api/v1/campaigns/status/batch
+18:04:03.263 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 35/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:04.522 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=19.13% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:04.526 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:04.638 POST api/api/v1/campaigns/status/batch
+18:04:04.655 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 36/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+18:04:05.340 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=91.11% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+18:04:05.344 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:05.445 POST api/api/v1/campaigns/status/batch
+18:04:05.461 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 37/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:06.788 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=99.98% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:06.794 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:06.965 POST api/api/v1/campaigns/status/batch
+18:04:06.984 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 38/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:08.261 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=80.65% | {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:08.265 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:08.377 POST api/api/v1/campaigns/status/batch
+18:04:08.394 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 39/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+18:04:10.222 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=88.82% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 120.0}
+18:04:10.254 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:11.149 POST api/api/v1/campaigns/status/batch
+18:04:11.168 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 40/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+18:04:12.580 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=96.38% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+18:04:12.583 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:12.667 POST api/api/v1/campaigns/status/batch
+18:04:12.686 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 41/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:14.762 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=80.86% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:14.801 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:14.898 POST api/api/v1/campaigns/status/batch
+18:04:14.915 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 42/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 90.0}
+18:04:16.893 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=43.84% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 90.0}
+18:04:16.900 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:17.030 POST api/api/v1/campaigns/status/batch
+18:04:17.050 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 43/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:04:18.558 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=81.63% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:04:18.562 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:18.626 POST api/api/v1/campaigns/status/batch
+18:04:18.642 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 44/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+18:04:19.602 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=67.21% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+18:04:19.605 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:19.692 POST api/api/v1/campaigns/status/batch
+18:04:19.711 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 45/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 105.0}
+18:04:21.010 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=82.33% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.1, 'temperature_c': 105.0}
+18:04:21.014 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:21.089 POST api/api/v1/campaigns/status/batch
+18:04:21.106 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 46/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+18:04:22.662 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=69.20% | {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+18:04:22.680 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:22.763 POST api/api/v1/campaigns/status/batch
+18:04:22.781 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 47/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:04:24.236 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=83.85% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+18:04:24.239 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:24.326 POST api/api/v1/campaigns/status/batch
+18:04:24.345 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 48/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+18:04:26.396 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=53.52% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+18:04:26.400 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:26.464 POST api/api/v1/campaigns/status/batch
+18:04:26.480 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 49/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+18:04:28.127 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=91.06% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+18:04:28.130 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:28.215 POST api/api/v1/campaigns/status/batch
+18:04:28.234 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 50/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:29.920 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=84.64% | {'base': 'Cesium pivalate', 'ligand': 'PPh3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:29.924 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:30.000 POST api/api/v1/campaigns/status/batch
+18:04:30.018 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 51/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 90.0}
+18:04:31.442 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=65.32% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 90.0}
+18:04:31.448 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:31.511 POST api/api/v1/campaigns/status/batch
+18:04:31.525 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 52/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:32.846 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=76.66% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:32.849 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:32.949 POST api/api/v1/campaigns/status/batch
+18:04:32.967 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 53/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:35.332 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=46.42% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyl Ester', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:35.338 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:35.423 POST api/api/v1/campaigns/status/batch
+18:04:35.439 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 54/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+18:04:37.542 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=90.39% | {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+18:04:37.545 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:37.727 POST api/api/v1/campaigns/status/batch
+18:04:37.744 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 55/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+18:04:39.560 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=89.76% | {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+18:04:39.564 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:39.855 POST api/api/v1/campaigns/status/batch
+18:04:39.872 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 56/60: evaluating {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:41.801 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=77.52% | {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:41.808 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:42.315 POST api/api/v1/campaigns/status/batch
+18:04:42.333 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 57/60: evaluating {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+18:04:44.741 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=50.75% | {'base': 'Potassium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 105.0}
+18:04:44.744 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:44.879 POST api/api/v1/campaigns/status/batch
+18:04:44.896 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 58/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:47.006 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=0.00% | {'base': 'Cesium pivalate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+18:04:47.009 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:47.184 POST api/api/v1/campaigns/status/batch
+18:04:47.202 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 59/60: evaluating {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 90.0}
+18:04:49.368 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=31.58% | {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 90.0}
+18:04:49.373 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+18:04:49.446 POST api/api/v1/campaigns/status/batch
+18:04:49.463 POST api/api/v1/suggestions/228e9877-7226-4c23-99dd-3bcb9504ba88/generate ? batch_size='1'
+[EVENT] Attempt 60/60: evaluating {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:51.220 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=75.46% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.057, 'temperature_c': 120.0}
+18:04:51.225 POST api/api/v1/results/228e9877-7226-4c23-99dd-3bcb9504ba88
+[EVENT] Loop ended after 60 attempts (60 successful)
+18:04:51.300 GET api/api/v1/diagnostics/228e9877-7226-4c23-99dd-3bcb9504ba88 ? use_cache='true' & verbosity='standard'
+[EVENT] Diagnostics saved to artifacts/diagnostics.json
+[EVENT] Summary saved to artifacts/summary.json
+[RESULT] FINAL | attempted=60 successful=60 best_yield=100.00% best_conditions={'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+[RESULT] BO_MCP_CAMPAIGN_ID=228e9877-7226-4c23-99dd-3bcb9504ba88
+18:05:32.117 POST api/api/v1/campaigns/status/batch
+18:05:32.132 POST api/api/v1/campaigns/228e9877-7226-4c23-99dd-3bcb9504ba88/lifecycle
+[EVENT] Campaign paused for potential resume
+
+Campaign complete. ID: 228e9877-7226-4c23-99dd-3bcb9504ba88
+Artifacts: /app/outputs/cells/direct_arylation_standard_glm_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/artifacts

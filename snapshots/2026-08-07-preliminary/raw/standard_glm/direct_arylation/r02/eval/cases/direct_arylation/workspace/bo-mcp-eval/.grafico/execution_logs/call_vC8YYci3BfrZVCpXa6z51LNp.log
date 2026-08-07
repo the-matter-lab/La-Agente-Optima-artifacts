@@ -1,0 +1,637 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- run_direct_arylation.py ---
+#!/usr/bin/env python3
+"""Entrypoint for the direct arylation BO campaign.
+
+Usage
+-----
+  # Fresh run (creates a new campaign):
+  uv run python run_direct_arylation.py
+
+  # Resume an existing campaign:
+  uv run python run_direct_arylation.py --campaign-id <ID>
+
+  # Custom budget and artifact directory:
+  uv run python run_direct_arylation.py --max-attempts 60 --artifact-dir ./artifacts
+
+Environment variables (required):
+  BO_MCP_API_URL          — BO-MCP REST API base URL
+  BO_MCP_API_KEY          — BO-MCP API key
+  DIRECT_ARYLATION_API_URL — Oracle base URL
+
+Cache-buster nonce: a375b9bd-ae19-499a-9006-4ecc7a3bc68d
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+
+# Logfire instrumentation
+import logfire
+from grafico.core.logfire_config import configure_logfire
+
+configure_logfire()
+logfire.instrument_requests()
+
+from domains.bo_mcp.client import BoMcpClient
+
+from direct_arylation_campaign.campaign import run_campaign
+from direct_arylation_campaign.search_space import MARKER
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Direct arylation BO campaign (60-attempt budget)"
+    )
+    parser.add_argument(
+        "--campaign-id",
+        default=None,
+        help="Existing campaign ID to resume (omit to create a new campaign)",
+    )
+    parser.add_argument(
+        "--max-attempts",
+        type=int,
+        default=60,
+        help="Maximum attempted objective evaluations (default: 60)",
+    )
+    parser.add_argument(
+        "--artifact-dir",
+        default="./artifacts",
+        help="Directory for evaluation log and diagnostics (default: ./artifacts)",
+    )
+    parser.add_argument(
+        "--stop-file",
+        default="STOP",
+        help="File whose existence triggers a graceful pause (default: STOP)",
+    )
+    parser.add_argument(
+        "--poll-s",
+        type=float,
+        default=5.0,
+        help="Seconds to sleep between iterations (default: 5.0)",
+    )
+    parser.add_argument(
+        "--heartbeat-s",
+        type=float,
+        default=1800.0,
+        help="Seconds between [HEARTBEAT] lines (default: 1800)",
+    )
+    args = parser.parse_args()
+
+    # Validate required environment variables early
+    missing = []
+    if not os.getenv("BO_MCP_API_URL"):
+        missing.append("BO_MCP_API_URL")
+    if not os.getenv("BO_MCP_API_KEY"):
+        missing.append("BO_MCP_API_KEY")
+    if not os.getenv("DIRECT_ARYLATION_API_URL"):
+        missing.append("DIRECT_ARYLATION_API_URL")
+    if missing:
+        print(f"[ALERT] Missing environment variables: {', '.join(missing)}", flush=True)
+        sys.exit(1)
+
+    # Build the BO-MCP client
+    client = BoMcpClient.from_env()
+
+    # Ensure artifact directory exists
+    os.makedirs(args.artifact_dir, exist_ok=True)
+
+    print(f"[EVENT] Campaign marker: {MARKER}", flush=True)
+    print(f"[EVENT] Budget: {args.max_attempts} attempted evaluations", flush=True)
+    print(f"[EVENT] Artifact dir: {args.artifact_dir}", flush=True)
+
+    campaign_id = run_campaign(
+        client=client,
+        campaign_id=args.campaign_id,
+        max_attempts=args.max_attempts,
+        artifact_dir=args.artifact_dir,
+        stop_file=args.stop_file,
+        poll_s=args.poll_s,
+        heartbeat_s=args.heartbeat_s,
+    )
+
+    print(f"[EVENT] Campaign ID: {campaign_id}", flush=True)
+
+
+if __name__ == "__main__":
+    main()
+--- direct_arylation_campaign/search_space.py ---
+"""Search-space definition for the direct arylation benchmark.
+
+All five parameters are declared as categorical (string-valued) to
+preserve exact spelling and avoid floating-point encoding issues.
+Concentration and temperature are represented as string categories
+matching the oracle's expected values.
+"""
+
+MARKER = "akg-eval-d9613e26762c4c47a426799e86b370f2"
+NONCE = "a375b9bd-ae19-499a-9006-4ecc7a3bc68d"
+
+# Exact parameter names and values as required by the oracle.
+PARAMETER_DEFS = {
+    "base": [
+        "Potassium acetate",
+        "Potassium pivalate",
+        "Cesium acetate",
+        "Cesium pivalate",
+    ],
+    "ligand": [
+        "BrettPhos",
+        "Di-tert-butylphenylphosphine",
+        "(t-Bu)PhCPhos",
+        "Tricyclohexylphosphine",
+        "PPh3",
+        "XPhos",
+        "P(2-furyl)3",
+        "Methyldiphenylphosphine",
+        "1268824-69-6",
+        "JackiePhos",
+        "SCHEMBL15068049",
+        "Me2PPh",
+    ],
+    "solvent": [
+        "DMAc",
+        "Butyornitrile",
+        "Butyl Ester",
+        "p-Xylene",
+    ],
+    "concentration": [
+        "0.057",
+        "0.1",
+        "0.153",
+    ],
+    "temperature_c": [
+        "90",
+        "105",
+        "120",
+    ],
+}
+
+# Total search-space size: 4 * 12 * 4 * 3 * 3 = 1728
+TOTAL_SPACE_SIZE = 1
+for _k, v in PARAMETER_DEFS.items():
+    TOTAL_SPACE_SIZE *= len(v)
+
+
+def build_parameters() -> list[dict]:
+    """Return the BO-MCP intake ``parameters`` list.
+
+    Every parameter is declared as ``categorical`` so the exact string
+    values are preserved through the BO-MCP → oracle round-trip.
+    """
+    params = []
+    for name, categories in PARAMETER_DEFS.items():
+        params.append(
+            {
+                "name": name,
+                "type": "categorical",
+                "categories": categories,
+            }
+        )
+    return params
+--- direct_arylation_campaign/reporting.py ---
+"""Result recording and reporting for the direct arylation campaign.
+
+All per-attempt records are appended to a local JSON artifact.
+The BO-MCP server is the authority for campaign progress; this file
+is append-only provenance for analysis and the final report.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+from datetime import datetime, timezone
+from typing import Any
+
+
+def _artifact_path(artifact_dir: str) -> str:
+    os.makedirs(artifact_dir, exist_ok=True)
+    return os.path.join(artifact_dir, "evaluation_log.jsonl")
+
+
+def record_attempt(
+    artifact_dir: str,
+    *,
+    attempt_index: int,
+    parameter_values: dict[str, Any],
+    status: str,
+    objective_values: dict[str, float] | None = None,
+    error: str | None = None,
+    suggestion_id: str | None = None,
+) -> dict:
+    """Append one attempt record to the JSONL artifact and return it."""
+    rec = {
+        "attempt_index": attempt_index,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "parameter_values": parameter_values,
+        "status": status,
+    }
+    if objective_values is not None:
+        rec["objective_values"] = objective_values
+    if error is not None:
+        rec["error"] = error
+    if suggestion_id is not None:
+        rec["suggestion_id"] = suggestion_id
+
+    path = _artifact_path(artifact_dir)
+    with open(path, "a") as f:
+        f.write(json.dumps(rec) + "\n")
+    return rec
+
+
+def load_all_attempts(artifact_dir: str) -> list[dict]:
+    """Read back all attempt records from the JSONL artifact."""
+    path = _artifact_path(artifact_dir)
+    if not os.path.exists(path):
+        return []
+    records = []
+    with open(path) as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                records.append(json.loads(line))
+    return records
+
+
+def print_summary(artifact_dir: str) -> str:
+    """Print and return a human-readable summary of all attempts."""
+    records = load_all_attempts(artifact_dir)
+    total = len(records)
+    successes = [r for r in records if r["status"] == "success"]
+    failures = [r for r in records if r["status"] == "failed"]
+
+    best_yield = None
+    best_params = None
+    for r in successes:
+        y = r.get("objective_values", {}).get("yield")
+        if y is not None and (best_yield is None or y > best_yield):
+            best_yield = y
+            best_params = r["parameter_values"]
+
+    lines = [
+        f"=== Campaign Summary ===",
+        f"Total attempts: {total}",
+        f"Successful:     {len(successes)}",
+        f"Failed:         {len(failures)}",
+    ]
+    if best_yield is not None:
+        lines.append(f"Best yield:     {best_yield:.2f}%")
+        lines.append(f"Best params:    {best_params}")
+    else:
+        lines.append("Best yield:     N/A (no successful evaluations)")
+
+    summary = "\n".join(lines)
+    print(summary)
+    return summary
+--- direct_arylation_campaign/evaluation.py ---
+"""Oracle evaluation for the direct arylation benchmark.
+
+Calls the external oracle at ``DIRECT_ARYLATION_API_URL`` and returns
+the measured yield.  A non-2xx response counts as a failed attempt.
+"""
+
+from __future__ import annotations
+
+import os
+from typing import Any
+
+import requests
+
+_ORACLE_TIMEOUT_S = 30.0
+
+
+def _oracle_base_url() -> str:
+    url = os.getenv("DIRECT_ARYLATION_API_URL")
+    if not url:
+        raise RuntimeError("DIRECT_ARYLATION_API_URL is not set")
+    return url.rstrip("/")
+
+
+def evaluate_candidate(parameter_values: dict[str, Any]) -> dict:
+    """Evaluate a single candidate against the direct-arylation oracle.
+
+    Returns a dict with keys:
+      ``parameter_values`` — the exact five-name dict sent to the oracle
+      ``status``           — ``"success"`` or ``"failed"``
+      ``objective_values`` — ``{"yield": <float>}`` on success, absent on failure
+      ``error``            — error detail string on failure, absent on success
+    """
+    # Build the payload with exact parameter names and values.
+    # BO-MCP may return categories as strings already, but be defensive.
+    payload = {}
+    for key in ("base", "ligand", "solvent", "concentration", "temperature_c"):
+        val = parameter_values.get(key)
+        if val is None:
+            return {
+                "parameter_values": parameter_values,
+                "status": "failed",
+                "error": f"Missing parameter: {key}",
+            }
+        payload[key] = str(val)
+
+    base_url = _oracle_base_url()
+    url = f"{base_url}/v1/evaluate"
+
+    try:
+        resp = requests.post(url, json=payload, timeout=_ORACLE_TIMEOUT_S)
+    except requests.RequestException as exc:
+        return {
+            "parameter_values": parameter_values,
+            "status": "failed",
+            "error": f"Request exception: {exc}",
+        }
+
+    if resp.status_code < 200 or resp.status_code >= 300:
+        return {
+            "parameter_values": parameter_values,
+            "status": "failed",
+            "error": f"HTTP {resp.status_code}: {resp.text[:200]}",
+        }
+
+    try:
+        body = resp.json()
+    except ValueError:
+        return {
+            "parameter_values": parameter_values,
+            "status": "failed",
+            "error": f"Non-JSON response: {resp.text[:200]}",
+        }
+
+    # The oracle returns {"yield": <float>}.  Use explicit key check
+    # (not ``or``) because 0.0 is a valid yield value.
+    yield_val = None
+    if isinstance(body, dict) and "yield" in body:
+        yield_val = body["yield"]
+    elif isinstance(body, dict) and "yield_percent" in body:
+        yield_val = body["yield_percent"]
+    elif isinstance(body, dict) and "result" in body:
+        yield_val = body["result"]
+    elif isinstance(body, (int, float)):
+        yield_val = float(body)
+
+    if yield_val is None:
+        return {
+            "parameter_values": parameter_values,
+            "status": "failed",
+            "error": f"No yield in response: {str(body)[:200]}",
+        }
+
+    return {
+        "parameter_values": parameter_values,
+        "status": "success",
+        "objective_values": {"yield": float(yield_val)},
+    }
+--- direct_arylation_campaign/campaign.py ---
+"""Campaign orchestration — the core BO loop.
+
+This module owns the iteration logic: generate suggestions, evaluate
+candidates, submit results, and respect the CLI budget.  It delegates
+to the other package modules for search-space, intake, evaluation,
+and reporting concerns.
+"""
+
+from __future__ import annotations
+
+import os
+import time
+import uuid
+from typing import Any
+
+from domains.bo_mcp.client import BoMcpClient, BoMcpClientError, BoMcpOperationError
+
+from direct_arylation_campaign.evaluation import evaluate_candidate
+from direct_arylation_campaign.intake import build_intake
+from direct_arylation_campaign.reporting import print_summary, record_attempt
+from direct_arylation_campaign.search_space import MARKER
+
+
+def _tag(tag: str, msg: str) -> None:
+    """Print a tagged, unbuffered line for the monitor."""
+    print(f"[{tag}] {msg}", flush=True)
+
+
+def run_campaign(
+    *,
+    client: BoMcpClient,
+    campaign_id: str | None,
+    max_attempts: int = 60,
+    artifact_dir: str,
+    stop_file: str = "STOP",
+    poll_s: float = 5.0,
+    heartbeat_s: float = 1800.0,
+) -> str:
+    """Execute the BO loop and return the campaign_id.
+
+    Parameters
+    ----------
+    client : BoMcpClient
+        Authenticated BO-MCP REST client.
+    campaign_id : str | None
+        Existing campaign to resume, or ``None`` to create a new one.
+    max_attempts : int
+        Per-invocation budget for attempted objective evaluations.
+    artifact_dir : str
+        Directory for the JSONL evaluation log.
+    stop_file : str
+        Path checked at the top of each iteration; if present, pause.
+    poll_s : float
+        Seconds to sleep between iterations (rate-limit padding).
+    heartbeat_s : float
+        Seconds between [HEARTBEAT] lines.
+    """
+    # ── Create or resume ──────────────────────────────────────────
+    if campaign_id is None:
+        intake = build_intake(campaign_label="run")
+        _tag("EVENT", f"Creating campaign: {intake['name']}")
+        idem_key = f"create-{uuid.uuid4().hex[:12]}"
+        try:
+            resp = client.create_campaign(intake, idempotency_key=idem_key)
+            campaign_id = resp.get("campaign_id")
+        except BoMcpOperationError as exc:
+            # success=false from the server
+            _tag("ALERT", f"Campaign creation rejected: {exc}")
+            raise
+        if not campaign_id:
+            _tag("ALERT", f"No campaign_id in response: {resp}")
+            raise RuntimeError(f"No campaign_id returned: {resp}")
+        _tag("EVENT", f"Campaign created: {campaign_id}")
+    else:
+        _tag("EVENT", f"Resuming campaign: {campaign_id}")
+        # If the campaign is paused or completed, resume/reopen it.
+        try:
+            status_info = client.next_action(campaign_id)
+        except (BoMcpClientError, BoMcpOperationError):
+            _tag("ALERT", f"Cannot query campaign {campaign_id}")
+            raise
+        status = status_info.get("status", "")
+        if status == "paused":
+            _tag("EVENT", "Campaign is paused — resuming")
+            client.lifecycle(campaign_id, action="resume")
+        elif status == "completed":
+            _tag("EVENT", "Campaign is completed — reopening")
+            client.lifecycle(campaign_id, action="reopen")
+
+    # ── Main loop ─────────────────────────────────────────────────
+    attempt_count = 0
+    last_heartbeat = time.monotonic()
+
+    while attempt_count < max_attempts:
+        # Stop-file check (before generating a suggestion)
+        if os.path.exists(stop_file):
+            _tag("EVENT", f"Stop file detected ({stop_file}) — pausing campaign")
+            try:
+                os.remove(stop_file)
+            except OSError:
+                pass
+            try:
+                client.lifecycle(campaign_id, action="pause")
+            except Exception:
+                pass
+            _tag("EVENT", "Campaign paused. Resume by re-running with --campaign-id")
+            break
+
+        # Heartbeat
+        now = time.monotonic()
+        if now - last_heartbeat >= heartbeat_s:
+            _tag("HEARTBEAT", f"attempt {attempt_count}/{max_attempts}, campaign {campaign_id}")
+            last_heartbeat = now
+
+        # Ask the server what to do next
+        try:
+            decision = client.next_action(campaign_id)
+        except (BoMcpClientError, BoMcpOperationError) as exc:
+            _tag("ALERT", f"next_action failed: {exc}")
+            time.sleep(poll_s)
+            continue
+
+        action = decision.get("action")
+        if action not in ("bo_generate_suggestions", "bo_submit_results"):
+            reason = decision.get("reason", "unknown")
+            _tag("EVENT", f"Server recommends stop: action={action}, reason={reason}")
+            break
+
+        # Get a suggestion: either query pending ones or generate new ones.
+        suggestion = None
+        if action == "bo_submit_results":
+            # There are pending suggestions — pick one up.
+            _tag("EVENT", "Pending suggestions found — evaluating one")
+            try:
+                pending = client.query_suggestions(
+                    campaign_id, status_filter="pending"
+                )
+            except (BoMcpClientError, BoMcpOperationError) as exc:
+                _tag("ALERT", f"Query pending suggestions failed: {exc}")
+                time.sleep(poll_s)
+                continue
+            if pending:
+                suggestion = pending[0]
+
+        if suggestion is None:
+            # Generate a new suggestion
+            _tag("EVENT", f"Generating suggestion (attempt {attempt_count + 1}/{max_attempts})")
+            try:
+                gen_resp = client.generate_suggestions(campaign_id, batch_size=1)
+            except (BoMcpClientError, BoMcpOperationError) as exc:
+                _tag("ALERT", f"Suggestion generation failed: {exc}")
+                time.sleep(poll_s)
+                continue
+
+            suggestions = gen_resp.get("suggestions", [])
+            if not suggestions:
+                errors = gen_resp.get("errors", [])
+                _tag("ALERT", f"No suggestions returned: {errors}")
+                time.sleep(poll_s)
+                continue
+            suggestion = suggestions[0]
+
+        suggestion_id = suggestion.get("suggestion_id", "")
+        param_vals = suggestion.get("parameter_values", {})
+
+        # Evaluate the candidate
+        attempt_count += 1
+        _tag("EVENT", f"Evaluating attempt {attempt_count}: {param_vals}")
+        eval_result = evaluate_candidate(param_vals)
+
+        # Record the attempt locally
+        record_attempt(
+            artifact_dir,
+            attempt_index=attempt_count,
+            parameter_values=eval_result["parameter_values"],
+            status=eval_result["status"],
+            objective_values=eval_result.get("objective_values"),
+            error=eval_result.get("error"),
+            suggestion_id=suggestion_id,
+        )
+
+        if eval_result["status"] == "success":
+            yield_val = eval_result["objective_values"]["yield"]
+            _tag("RESULT", f"Attempt {attempt_count}: yield={yield_val:.2f}% | {param_vals}")
+
+            # Submit result to BO-MCP
+            result_payload = {
+                "suggestion_id": suggestion_id,
+                "parameter_values": eval_result["parameter_values"],
+                "objective_values": eval_result["objective_values"],
+            }
+            idem_key = BoMcpClient.make_idempotency_key(
+                "result", campaign_id, str(attempt_count)
+            )
+            try:
+                client.submit_results(
+                    campaign_id,
+                    results=[result_payload],
+                    idempotency_key=idem_key,
+                )
+            except (BoMcpClientError, BoMcpOperationError) as exc:
+                _tag("ALERT", f"Result submission failed: {exc}")
+        else:
+            _tag("ALERT", f"Attempt {attempt_count} FAILED: {eval_result.get('error', 'unknown')} | {param_vals}")
+
+            # Mark the suggestion as failed so BO-MCP knows
+            try:
+                client.update_suggestion_status(suggestion_id, status="failed")
+            except (BoMcpClientError, BoMcpOperationError) as exc:
+                _tag("ALERT", f"Suggestion status update failed: {exc}")
+
+        time.sleep(poll_s)
+
+    # ── End-of-invocation ─────────────────────────────────────────
+    _tag("EVENT", f"Invocation complete: {attempt_count} attempts made")
+
+    # Print summary
+    print_summary(artifact_dir)
+
+    # Fetch diagnostics (generous timeout for a grown campaign)
+    _tag("EVENT", "Fetching campaign diagnostics")
+    try:
+        diag = client.get_diagnostics(campaign_id, timeout_s=300.0)
+        diag_path = os.path.join(artifact_dir, "diagnostics.json")
+        import json
+        with open(diag_path, "w") as f:
+            json.dump(diag, f, indent=2, default=str)
+        _tag("EVENT", f"Diagnostics saved to {diag_path}")
+    except Exception as exc:
+        _tag("ALERT", f"Diagnostics fetch failed: {exc}")
+
+    # Pause the campaign (not terminate — allows resume)
+    try:
+        client.lifecycle(campaign_id, action="pause")
+        _tag("EVENT", "Campaign paused for potential resume")
+    except Exception as exc:
+        _tag("ALERT", f"Pause failed: {exc}")
+
+    # Print the campaign ID for the main agent
+    print(f"BO_MCP_CAMPAIGN_ID={campaign_id}", flush=True)
+
+    return campaign_id
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

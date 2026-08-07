@@ -1,0 +1,83 @@
+2026-08-07T05:50:52.629602+00:00 [EVENT] created campaign f36d19dc-5f95-4b71-82f7-c82867261e06 (backend=baybe)
+2026-08-07T05:50:52.629752+00:00 [EVENT] BO_MCP_CAMPAIGN_ID=f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:50:52.651177+00:00 [EVENT] budget 0/4 evaluations already stored
+2026-08-07T05:50:52.678487+00:00 next_action: {'status': 'created', 'iteration': 0, 'n_results': 0, 'action': 'bo_generate_suggestions', 'reason': 'No results yet — generate initial suggestions to start optimization.', 'urgency': 'normal'}
+2026-08-07T05:50:52.777402+00:00 [RESULT] eval #01 | x_1=0.5304 x_2=0.0322 x_3=0.7986 x_4=0.4745 x_5=0.6149 x_6=0.9759 | raw_response=-21.335790 | surface_response=0.045396 [normalized_unitless] | status=success
+2026-08-07T05:50:52.777468+00:00 [RESULT] eval #02 | x_1=0.2819 x_2=0.4779 x_3=0.6302 x_4=0.2146 x_5=0.7420 x_6=0.1426 | raw_response=-21.615329 | surface_response=0.032889 [normalized_unitless] | status=success
+2026-08-07T05:50:52.777518+00:00 [RESULT] eval #03 | x_1=0.4293 x_2=0.5520 x_3=0.7244 x_4=0.2399 x_5=0.3747 x_6=0.4917 | raw_response=-19.662030 | surface_response=0.120283 [normalized_unitless] | status=success
+2026-08-07T05:50:52.777560+00:00 [RESULT] eval #04 | x_1=0.4426 x_2=0.3159 x_3=0.3898 x_4=0.7180 x_5=0.4985 x_6=0.1096 | raw_response=-21.057723 | surface_response=0.057837 [normalized_unitless] | status=success
+2026-08-07T05:50:52.924429+00:00 [EVENT] submitted 4 results (4/4 attempted)
+2026-08-07T05:50:52.997996+00:00 [EVENT] campaign paused (resume by re-running with --campaign-id)
+2026-08-07T05:50:53.009254+00:00 [EVENT] campaign summary
+2026-08-07T05:50:53.009304+00:00   campaign_id            : f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:50:53.009330+00:00   attempted evaluations  : 4
+2026-08-07T05:50:53.009355+00:00   successful evaluations : 4
+2026-08-07T05:50:53.009391+00:00   failed evaluations     : 0
+2026-08-07T05:50:53.009426+00:00   best coordinates       : x_1=0.429311, x_2=0.551996, x_3=0.724391, x_4=0.239891, x_5=0.374668, x_6=0.491689
+2026-08-07T05:50:53.009452+00:00   best raw_response      : -19.662030
+2026-08-07T05:50:53.009477+00:00   best surface_response  : 0.120283 [normalized_unitless]
+2026-08-07T05:50:53.009501+00:00 [EVENT] evaluated candidates
+2026-08-07T05:50:53.009536+00:00   idx |      x_1 |      x_2 |      x_3 |      x_4 |      x_5 |      x_6 |     raw_response |  surface_response | status
+2026-08-07T05:50:53.009579+00:00     1 |   0.5304 |   0.0322 |   0.7986 |   0.4745 |   0.6149 |   0.9759 |       -21.335790 |          0.045396 | success
+2026-08-07T05:50:53.009622+00:00     2 |   0.2819 |   0.4779 |   0.6302 |   0.2146 |   0.7420 |   0.1426 |       -21.615329 |          0.032889 | success
+2026-08-07T05:50:53.009659+00:00     3 |   0.4293 |   0.5520 |   0.7244 |   0.2399 |   0.3747 |   0.4917 |       -19.662030 |          0.120283 | success
+2026-08-07T05:50:53.009691+00:00     4 |   0.4426 |   0.3159 |   0.3898 |   0.7180 |   0.4985 |   0.1096 |       -21.057723 |          0.057837 | success
+2026-08-07T05:50:53.009725+00:00 [EVENT] artifacts: artifacts/smoke/results.jsonl | log: artifacts/smoke/run.log
+2026-08-07T05:50:53.009750+00:00 BO_MCP_CAMPAIGN_ID=f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:24.855388+00:00 [EVENT] resumed campaign f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:24.855511+00:00 [EVENT] BO_MCP_CAMPAIGN_ID=f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:24.865499+00:00 [EVENT] budget 4/8 evaluations already stored
+2026-08-07T05:51:24.879002+00:00 next_action: {'status': 'running', 'iteration': 1, 'n_results': 4, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 4 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07T05:51:24.950402+00:00 [RESULT] eval #05 | x_1=0.5360 x_2=0.9251 x_3=0.4230 x_4=0.7665 x_5=0.8149 x_6=0.0184 | raw_response=-21.353044 | surface_response=0.044624 [normalized_unitless] | status=success
+2026-08-07T05:51:24.950462+00:00 [RESULT] eval #06 | x_1=0.3785 x_2=0.4541 x_3=0.0074 x_4=0.6617 x_5=0.5115 x_6=0.4589 | raw_response=-21.104825 | surface_response=0.055730 [normalized_unitless] | status=success
+2026-08-07T05:51:24.950517+00:00 [RESULT] eval #07 | x_1=0.9345 x_2=0.1682 x_3=0.7455 x_4=0.0248 x_5=0.2479 x_6=0.1964 | raw_response=-21.693598 | surface_response=0.029387 [normalized_unitless] | status=success
+2026-08-07T05:51:24.950559+00:00 [RESULT] eval #08 | x_1=0.3285 x_2=0.6852 x_3=0.9532 x_4=0.5544 x_5=0.5681 x_6=0.4819 | raw_response=-21.398678 | surface_response=0.042582 [normalized_unitless] | status=success
+2026-08-07T05:51:25.017158+00:00 [EVENT] submitted 4 results (8/8 attempted)
+2026-08-07T05:51:25.057812+00:00 [EVENT] campaign paused (resume by re-running with --campaign-id)
+2026-08-07T05:51:25.067261+00:00 [EVENT] campaign summary
+2026-08-07T05:51:25.067302+00:00   campaign_id            : f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:25.067323+00:00   attempted evaluations  : 8
+2026-08-07T05:51:25.067342+00:00   successful evaluations : 8
+2026-08-07T05:51:25.067360+00:00   failed evaluations     : 0
+2026-08-07T05:51:25.067387+00:00   best coordinates       : x_1=0.429311, x_2=0.551996, x_3=0.724391, x_4=0.239891, x_5=0.374668, x_6=0.491689
+2026-08-07T05:51:25.067406+00:00   best raw_response      : -19.662030
+2026-08-07T05:51:25.067424+00:00   best surface_response  : 0.120283 [normalized_unitless]
+2026-08-07T05:51:25.067441+00:00 [EVENT] evaluated candidates
+2026-08-07T05:51:25.067462+00:00   idx |      x_1 |      x_2 |      x_3 |      x_4 |      x_5 |      x_6 |     raw_response |  surface_response | status
+2026-08-07T05:51:25.067486+00:00     1 |   0.5304 |   0.0322 |   0.7986 |   0.4745 |   0.6149 |   0.9759 |       -21.335790 |          0.045396 | success
+2026-08-07T05:51:25.067510+00:00     2 |   0.2819 |   0.4779 |   0.6302 |   0.2146 |   0.7420 |   0.1426 |       -21.615329 |          0.032889 | success
+2026-08-07T05:51:25.067532+00:00     3 |   0.4293 |   0.5520 |   0.7244 |   0.2399 |   0.3747 |   0.4917 |       -19.662030 |          0.120283 | success
+2026-08-07T05:51:25.067553+00:00     4 |   0.4426 |   0.3159 |   0.3898 |   0.7180 |   0.4985 |   0.1096 |       -21.057723 |          0.057837 | success
+2026-08-07T05:51:25.067573+00:00     5 |   0.5360 |   0.9251 |   0.4230 |   0.7665 |   0.8149 |   0.0184 |       -21.353044 |          0.044624 | success
+2026-08-07T05:51:25.067594+00:00     6 |   0.3785 |   0.4541 |   0.0074 |   0.6617 |   0.5115 |   0.4589 |       -21.104825 |          0.055730 | success
+2026-08-07T05:51:25.067614+00:00     7 |   0.9345 |   0.1682 |   0.7455 |   0.0248 |   0.2479 |   0.1964 |       -21.693598 |          0.029387 | success
+2026-08-07T05:51:25.067635+00:00     8 |   0.3285 |   0.6852 |   0.9532 |   0.5544 |   0.5681 |   0.4819 |       -21.398678 |          0.042582 | success
+2026-08-07T05:51:25.067657+00:00 [EVENT] artifacts: artifacts/smoke/results.jsonl | log: artifacts/smoke/run.log
+2026-08-07T05:51:25.067676+00:00 [EVENT] final BO_MCP_CAMPAIGN_ID=f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:25.067693+00:00 BO_MCP_CAMPAIGN_ID=f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:32.196926+00:00 [EVENT] resumed campaign f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:32.197051+00:00 [EVENT] BO_MCP_CAMPAIGN_ID=f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:32.207667+00:00 [EVENT] budget 8/60 evaluations already stored
+2026-08-07T05:51:32.207839+00:00 [EVENT] stop file found -> shutting down after this point
+2026-08-07T05:51:32.284051+00:00 [EVENT] campaign paused (resume by re-running with --campaign-id)
+2026-08-07T05:51:32.294412+00:00 [EVENT] campaign summary
+2026-08-07T05:51:32.294451+00:00   campaign_id            : f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:32.294471+00:00   attempted evaluations  : 8
+2026-08-07T05:51:32.294490+00:00   successful evaluations : 8
+2026-08-07T05:51:32.294509+00:00   failed evaluations     : 0
+2026-08-07T05:51:32.294536+00:00   best coordinates       : x_1=0.429311, x_2=0.551996, x_3=0.724391, x_4=0.239891, x_5=0.374668, x_6=0.491689
+2026-08-07T05:51:32.294556+00:00   best raw_response      : -19.662030
+2026-08-07T05:51:32.294582+00:00   best surface_response  : 0.120283 [normalized_unitless]
+2026-08-07T05:51:32.294600+00:00 [EVENT] evaluated candidates
+2026-08-07T05:51:32.294621+00:00   idx |      x_1 |      x_2 |      x_3 |      x_4 |      x_5 |      x_6 |     raw_response |  surface_response | status
+2026-08-07T05:51:32.294647+00:00     1 |   0.5304 |   0.0322 |   0.7986 |   0.4745 |   0.6149 |   0.9759 |       -21.335790 |          0.045396 | success
+2026-08-07T05:51:32.294669+00:00     2 |   0.2819 |   0.4779 |   0.6302 |   0.2146 |   0.7420 |   0.1426 |       -21.615329 |          0.032889 | success
+2026-08-07T05:51:32.294690+00:00     3 |   0.4293 |   0.5520 |   0.7244 |   0.2399 |   0.3747 |   0.4917 |       -19.662030 |          0.120283 | success
+2026-08-07T05:51:32.294711+00:00     4 |   0.4426 |   0.3159 |   0.3898 |   0.7180 |   0.4985 |   0.1096 |       -21.057723 |          0.057837 | success
+2026-08-07T05:51:32.294732+00:00     5 |   0.5360 |   0.9251 |   0.4230 |   0.7665 |   0.8149 |   0.0184 |       -21.353044 |          0.044624 | success
+2026-08-07T05:51:32.294753+00:00     6 |   0.3785 |   0.4541 |   0.0074 |   0.6617 |   0.5115 |   0.4589 |       -21.104825 |          0.055730 | success
+2026-08-07T05:51:32.294774+00:00     7 |   0.9345 |   0.1682 |   0.7455 |   0.0248 |   0.2479 |   0.1964 |       -21.693598 |          0.029387 | success
+2026-08-07T05:51:32.294795+00:00     8 |   0.3285 |   0.6852 |   0.9532 |   0.5544 |   0.5681 |   0.4819 |       -21.398678 |          0.042582 | success
+2026-08-07T05:51:32.294838+00:00 [EVENT] artifacts: artifacts/smoke/results.jsonl | log: artifacts/smoke/run.log
+2026-08-07T05:51:32.294856+00:00 [EVENT] final BO_MCP_CAMPAIGN_ID=f36d19dc-5f95-4b71-82f7-c82867261e06
+2026-08-07T05:51:32.294873+00:00 BO_MCP_CAMPAIGN_ID=f36d19dc-5f95-4b71-82f7-c82867261e06

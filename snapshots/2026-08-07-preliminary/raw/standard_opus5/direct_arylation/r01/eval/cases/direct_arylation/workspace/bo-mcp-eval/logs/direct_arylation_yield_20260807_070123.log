@@ -1,0 +1,419 @@
+07:01:25.065 direct arylation campaign invocationLogfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+
+[EVENT] reusing campaign 1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[EVENT] budget=57 attempted evaluations | artifacts=artifacts/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+07:01:25.069 GET api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+07:01:25.082 POST api/api/v1/campaigns/status/batch
+[EVENT] campaign is paused; sending lifecycle action 'resume'
+07:01:25.096 POST api/api/v1/campaigns/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/lifecycle
+07:01:25.515 POST api/api/v1/campaigns/status/batch
+07:01:25.534 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:25.546 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:25.618 POST direct-arylation-oracle/v1/evaluate
+07:01:25.623 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 1/57 status=success yield=0.00 percent best_so_far=32.36 percent
+          conditions: base=Potassium pivalate | ligand=Di-tert-butylphenylphosphine | solvent=Butyornitrile | concentration=0.057 | temperature_c=105.0
+07:01:25.728 POST api/api/v1/campaigns/status/batch
+07:01:25.745 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:25.759 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:25.827 POST direct-arylation-oracle/v1/evaluate
+07:01:25.831 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 2/57 status=success yield=37.36 percent best_so_far=37.36 percent
+          conditions: base=Potassium pivalate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.1 | temperature_c=120.0
+07:01:25.898 POST api/api/v1/campaigns/status/batch
+07:01:25.921 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:25.934 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:26.004 POST direct-arylation-oracle/v1/evaluate
+07:01:26.011 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 3/57 status=success yield=14.06 percent best_so_far=37.36 percent
+          conditions: base=Potassium acetate | ligand=1268824-69-6 | solvent=DMAc | concentration=0.153 | temperature_c=120.0
+07:01:26.082 POST api/api/v1/campaigns/status/batch
+07:01:26.097 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:26.108 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:26.499 POST direct-arylation-oracle/v1/evaluate
+07:01:26.502 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 4/57 status=success yield=43.05 percent best_so_far=43.05 percent
+          conditions: base=Potassium pivalate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.057 | temperature_c=120.0
+07:01:26.569 POST api/api/v1/campaigns/status/batch
+07:01:26.588 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:26.606 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:27.042 POST direct-arylation-oracle/v1/evaluate
+07:01:27.046 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 5/57 status=success yield=29.85 percent best_so_far=43.05 percent
+          conditions: base=Potassium pivalate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.057 | temperature_c=105.0
+07:01:27.121 POST api/api/v1/campaigns/status/batch
+07:01:27.141 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:27.153 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:27.548 POST direct-arylation-oracle/v1/evaluate
+07:01:27.555 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 6/57 status=success yield=38.44 percent best_so_far=43.05 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.057 | temperature_c=120.0
+07:01:27.627 POST api/api/v1/campaigns/status/batch
+07:01:27.644 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:27.656 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:28.147 POST direct-arylation-oracle/v1/evaluate
+07:01:28.152 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 7/57 status=success yield=8.69 percent best_so_far=43.05 percent
+          conditions: base=Potassium acetate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.057 | temperature_c=120.0
+07:01:28.226 POST api/api/v1/campaigns/status/batch
+07:01:28.244 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:28.256 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:28.630 POST direct-arylation-oracle/v1/evaluate
+07:01:28.635 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 8/57 status=success yield=1.68 percent best_so_far=43.05 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=DMAc | concentration=0.057 | temperature_c=120.0
+07:01:29.793 POST api/api/v1/campaigns/status/batch
+07:01:29.811 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:29.825 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:30.955 POST direct-arylation-oracle/v1/evaluate
+07:01:30.962 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 9/57 status=success yield=43.90 percent best_so_far=43.90 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.153 | temperature_c=120.0
+07:01:31.048 POST api/api/v1/campaigns/status/batch
+07:01:31.063 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:31.076 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:31.768 POST direct-arylation-oracle/v1/evaluate
+07:01:31.771 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 10/57 status=success yield=44.16 percent best_so_far=44.16 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.153 | temperature_c=105.0
+07:01:31.860 POST api/api/v1/campaigns/status/batch
+07:01:31.876 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:31.888 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:32.467 POST direct-arylation-oracle/v1/evaluate
+07:01:32.471 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 11/57 status=success yield=40.03 percent best_so_far=44.16 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.1 | temperature_c=105.0
+07:01:32.545 POST api/api/v1/campaigns/status/batch
+07:01:32.559 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:32.572 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:33.103 POST direct-arylation-oracle/v1/evaluate
+07:01:33.111 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 12/57 status=success yield=25.35 percent best_so_far=44.16 percent
+          conditions: base=Cesium pivalate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.1 | temperature_c=120.0
+07:01:33.181 POST api/api/v1/campaigns/status/batch
+07:01:33.195 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:33.206 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:33.719 POST direct-arylation-oracle/v1/evaluate
+07:01:33.724 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 13/57 status=success yield=41.03 percent best_so_far=44.16 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=p-Xylene | concentration=0.153 | temperature_c=90.0
+07:01:33.787 POST api/api/v1/campaigns/status/batch
+07:01:33.802 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:33.814 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:34.326 POST direct-arylation-oracle/v1/evaluate
+07:01:34.331 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 14/57 status=success yield=13.71 percent best_so_far=44.16 percent
+          conditions: base=Cesium acetate | ligand=PPh3 | solvent=p-Xylene | concentration=0.153 | temperature_c=105.0
+07:01:35.341 POST api/api/v1/campaigns/status/batch
+07:01:35.354 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:35.365 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:35.940 POST direct-arylation-oracle/v1/evaluate
+07:01:35.943 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 15/57 status=success yield=20.35 percent best_so_far=44.16 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=Butyl Ester | concentration=0.153 | temperature_c=105.0
+07:01:36.031 POST api/api/v1/campaigns/status/batch
+07:01:36.047 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:36.060 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:36.701 POST direct-arylation-oracle/v1/evaluate
+07:01:36.707 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 16/57 status=success yield=69.03 percent best_so_far=69.03 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:01:37.555 POST api/api/v1/campaigns/status/batch
+07:01:37.576 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:37.587 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:38.213 POST direct-arylation-oracle/v1/evaluate
+07:01:38.218 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 17/57 status=success yield=73.08 percent best_so_far=73.08 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:01:38.305 POST api/api/v1/campaigns/status/batch
+07:01:38.323 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:38.338 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:38.924 POST direct-arylation-oracle/v1/evaluate
+07:01:38.929 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 18/57 status=success yield=64.48 percent best_so_far=73.08 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.1 | temperature_c=105.0
+07:01:39.014 POST api/api/v1/campaigns/status/batch
+07:01:39.027 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:39.040 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:39.582 POST direct-arylation-oracle/v1/evaluate
+07:01:39.590 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 19/57 status=success yield=28.02 percent best_so_far=73.08 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=90.0
+07:01:41.457 POST api/api/v1/campaigns/status/batch
+07:01:41.473 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:41.485 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:42.108 POST direct-arylation-oracle/v1/evaluate
+07:01:42.112 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 20/57 status=success yield=69.13 percent best_so_far=73.08 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.1 | temperature_c=120.0
+07:01:42.201 POST api/api/v1/campaigns/status/batch
+07:01:42.217 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:42.231 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:42.815 POST direct-arylation-oracle/v1/evaluate
+07:01:42.818 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 21/57 status=success yield=50.79 percent best_so_far=73.08 percent
+          conditions: base=Potassium pivalate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.1 | temperature_c=120.0
+07:01:42.936 POST api/api/v1/campaigns/status/batch
+07:01:42.955 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:42.968 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:44.424 POST direct-arylation-oracle/v1/evaluate
+07:01:44.431 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 22/57 status=success yield=53.81 percent best_so_far=73.08 percent
+          conditions: base=Cesium pivalate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:01:44.917 POST api/api/v1/campaigns/status/batch
+07:01:44.937 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:44.950 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:45.929 POST direct-arylation-oracle/v1/evaluate
+07:01:45.936 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 23/57 status=success yield=56.50 percent best_so_far=73.08 percent
+          conditions: base=Cesium pivalate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:01:46.529 POST api/api/v1/campaigns/status/batch
+07:01:46.546 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:46.558 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:48.625 POST direct-arylation-oracle/v1/evaluate
+07:01:48.694 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 24/57 status=success yield=58.95 percent best_so_far=73.08 percent
+          conditions: base=Potassium pivalate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:01:48.841 POST api/api/v1/campaigns/status/batch
+07:01:48.860 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:48.872 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:50.337 POST direct-arylation-oracle/v1/evaluate
+07:01:50.342 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 25/57 status=success yield=22.30 percent best_so_far=73.08 percent
+          conditions: base=Potassium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:01:50.480 POST api/api/v1/campaigns/status/batch
+07:01:50.504 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:50.516 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:51.864 POST direct-arylation-oracle/v1/evaluate
+07:01:51.871 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 26/57 status=success yield=54.26 percent best_so_far=73.08 percent
+          conditions: base=Cesium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.057 | temperature_c=120.0
+07:01:52.128 POST api/api/v1/campaigns/status/batch
+07:01:52.143 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:52.155 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:52.967 POST direct-arylation-oracle/v1/evaluate
+07:01:52.972 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 27/57 status=success yield=39.86 percent best_so_far=73.08 percent
+          conditions: base=Cesium pivalate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.057 | temperature_c=105.0
+07:01:53.187 POST api/api/v1/campaigns/status/batch
+07:01:53.203 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:53.216 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:53.915 POST direct-arylation-oracle/v1/evaluate
+07:01:53.922 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 28/57 status=success yield=77.01 percent best_so_far=77.01 percent
+          conditions: base=Cesium acetate | ligand=XPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:01:54.839 POST api/api/v1/campaigns/status/batch
+07:01:54.862 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:54.876 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:55.657 POST direct-arylation-oracle/v1/evaluate
+07:01:55.664 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 29/57 status=success yield=84.62 percent best_so_far=84.62 percent
+          conditions: base=Cesium acetate | ligand=XPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:01:56.567 POST api/api/v1/campaigns/status/batch
+07:01:56.588 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:56.601 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:57.527 POST direct-arylation-oracle/v1/evaluate
+07:01:57.533 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 30/57 status=success yield=83.83 percent best_so_far=84.62 percent
+          conditions: base=Cesium acetate | ligand=XPhos | solvent=Butyornitrile | concentration=0.1 | temperature_c=105.0
+07:01:58.465 POST api/api/v1/campaigns/status/batch
+07:01:58.487 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:58.501 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:01:59.385 POST direct-arylation-oracle/v1/evaluate
+07:01:59.390 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 31/57 status=success yield=73.33 percent best_so_far=84.62 percent
+          conditions: base=Potassium pivalate | ligand=XPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:01:59.477 POST api/api/v1/campaigns/status/batch
+07:01:59.496 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:01:59.508 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:00.399 POST direct-arylation-oracle/v1/evaluate
+07:02:00.405 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 32/57 status=success yield=79.76 percent best_so_far=84.62 percent
+          conditions: base=Cesium pivalate | ligand=XPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:02:00.490 POST api/api/v1/campaigns/status/batch
+07:02:00.506 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:00.518 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:01.351 POST direct-arylation-oracle/v1/evaluate
+07:02:01.356 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 33/57 status=success yield=78.44 percent best_so_far=84.62 percent
+          conditions: base=Cesium pivalate | ligand=XPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:01.441 POST api/api/v1/campaigns/status/batch
+07:02:01.455 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:01.469 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:02.044 POST direct-arylation-oracle/v1/evaluate
+07:02:02.050 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 34/57 status=success yield=68.53 percent best_so_far=84.62 percent
+          conditions: base=Cesium pivalate | ligand=XPhos | solvent=Butyornitrile | concentration=0.1 | temperature_c=105.0
+07:02:02.143 POST api/api/v1/campaigns/status/batch
+07:02:02.167 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:02.180 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:02.890 POST direct-arylation-oracle/v1/evaluate
+07:02:02.897 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 35/57 status=success yield=71.43 percent best_so_far=84.62 percent
+          conditions: base=Potassium pivalate | ligand=XPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:02.996 POST api/api/v1/campaigns/status/batch
+07:02:03.019 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:03.031 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:04.168 POST direct-arylation-oracle/v1/evaluate
+07:02:04.176 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 36/57 status=success yield=84.17 percent best_so_far=84.62 percent
+          conditions: base=Cesium acetate | ligand=XPhos | solvent=Butyornitrile | concentration=0.1 | temperature_c=120.0
+07:02:04.296 POST api/api/v1/campaigns/status/batch
+07:02:04.312 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:04.324 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:05.190 POST direct-arylation-oracle/v1/evaluate
+07:02:05.195 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 37/57 status=success yield=36.46 percent best_so_far=84.62 percent
+          conditions: base=Cesium acetate | ligand=1268824-69-6 | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:05.893 POST api/api/v1/campaigns/status/batch
+07:02:05.909 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:05.920 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:07.006 POST direct-arylation-oracle/v1/evaluate
+07:02:07.011 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 38/57 status=success yield=8.82 percent best_so_far=84.62 percent
+          conditions: base=Cesium acetate | ligand=(t-Bu)PhCPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:08.571 POST api/api/v1/campaigns/status/batch
+07:02:08.588 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:08.605 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:09.993 POST direct-arylation-oracle/v1/evaluate
+07:02:10.001 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 39/57 status=success yield=72.21 percent best_so_far=84.62 percent
+          conditions: base=Cesium acetate | ligand=XPhos | solvent=Butyornitrile | concentration=0.057 | temperature_c=120.0
+07:02:10.097 POST api/api/v1/campaigns/status/batch
+07:02:10.118 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:10.130 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:11.343 POST direct-arylation-oracle/v1/evaluate
+07:02:11.351 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 40/57 status=success yield=32.74 percent best_so_far=84.62 percent
+          conditions: base=Cesium acetate | ligand=JackiePhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:02:11.490 POST api/api/v1/campaigns/status/batch
+07:02:11.510 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:11.523 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:12.878 POST direct-arylation-oracle/v1/evaluate
+07:02:12.884 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 41/57 status=success yield=0.00 percent best_so_far=84.62 percent
+          conditions: base=Cesium acetate | ligand=Methyldiphenylphosphine | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:02:13.040 POST api/api/v1/campaigns/status/batch
+07:02:13.059 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:13.072 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:14.056 POST direct-arylation-oracle/v1/evaluate
+07:02:14.061 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 42/57 status=success yield=99.98 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:14.667 POST api/api/v1/campaigns/status/batch
+07:02:14.685 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:14.698 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:15.618 POST direct-arylation-oracle/v1/evaluate
+07:02:15.622 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 43/57 status=success yield=96.38 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:02:15.723 POST api/api/v1/campaigns/status/batch
+07:02:15.741 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:15.759 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:16.853 POST direct-arylation-oracle/v1/evaluate
+07:02:16.857 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 44/57 status=success yield=88.82 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.1 | temperature_c=120.0
+07:02:16.958 POST api/api/v1/campaigns/status/batch
+07:02:16.976 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:16.988 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:17.871 POST direct-arylation-oracle/v1/evaluate
+07:02:17.876 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 45/57 status=success yield=71.81 percent best_so_far=99.98 percent
+          conditions: base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:18.647 POST api/api/v1/campaigns/status/batch
+07:02:18.667 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:18.680 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:20.010 POST direct-arylation-oracle/v1/evaluate
+07:02:20.014 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 46/57 status=success yield=69.20 percent best_so_far=99.98 percent
+          conditions: base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.153 | temperature_c=105.0
+07:02:20.737 POST api/api/v1/campaigns/status/batch
+07:02:20.754 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:20.767 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:22.064 POST direct-arylation-oracle/v1/evaluate
+07:02:22.068 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 47/57 status=success yield=82.33 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.1 | temperature_c=105.0
+07:02:22.185 POST api/api/v1/campaigns/status/batch
+07:02:22.202 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:22.214 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:23.590 POST direct-arylation-oracle/v1/evaluate
+07:02:23.594 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 48/57 status=success yield=1.89 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=Tricyclohexylphosphine | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:24.959 POST api/api/v1/campaigns/status/batch
+07:02:24.976 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:24.987 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:27.186 POST direct-arylation-oracle/v1/evaluate
+07:02:27.242 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 49/57 status=success yield=30.17 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=P(2-furyl)3 | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:28.158 POST api/api/v1/campaigns/status/batch
+07:02:28.176 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:28.189 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:29.402 POST direct-arylation-oracle/v1/evaluate
+07:02:29.410 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 50/57 status=success yield=19.64 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=PPh3 | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+07:02:29.556 POST api/api/v1/campaigns/status/batch
+07:02:29.573 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:29.586 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:31.698 POST direct-arylation-oracle/v1/evaluate
+07:02:31.702 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 51/57 status=success yield=80.69 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=p-Xylene | concentration=0.153 | temperature_c=105.0
+07:02:31.874 POST api/api/v1/campaigns/status/batch
+07:02:31.895 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:31.907 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:34.431 POST direct-arylation-oracle/v1/evaluate
+07:02:34.435 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 52/57 status=success yield=91.19 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=p-Xylene | concentration=0.153 | temperature_c=120.0
+07:02:35.130 POST api/api/v1/campaigns/status/batch
+07:02:35.148 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:35.160 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:36.489 POST direct-arylation-oracle/v1/evaluate
+07:02:36.494 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 53/57 status=success yield=62.73 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=p-Xylene | concentration=0.1 | temperature_c=120.0
+07:02:36.605 POST api/api/v1/campaigns/status/batch
+07:02:36.623 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:36.635 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:37.748 POST direct-arylation-oracle/v1/evaluate
+07:02:37.757 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 54/57 status=success yield=44.47 percent best_so_far=99.98 percent
+          conditions: base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=p-Xylene | concentration=0.153 | temperature_c=120.0
+07:02:37.928 POST api/api/v1/campaigns/status/batch
+07:02:37.945 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:37.957 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:39.434 POST direct-arylation-oracle/v1/evaluate
+07:02:39.439 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 55/57 status=success yield=76.63 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=XPhos | solvent=p-Xylene | concentration=0.153 | temperature_c=105.0
+07:02:39.541 POST api/api/v1/campaigns/status/batch
+07:02:39.558 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:39.570 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:41.143 POST direct-arylation-oracle/v1/evaluate
+07:02:41.149 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 56/57 status=success yield=70.80 percent best_so_far=99.98 percent
+          conditions: base=Cesium acetate | ligand=XPhos | solvent=p-Xylene | concentration=0.153 | temperature_c=120.0
+07:02:41.333 POST api/api/v1/campaigns/status/batch
+07:02:41.351 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/query
+07:02:41.362 POST api/api/v1/suggestions/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/generate ? batch_size='1'
+07:02:42.767 POST direct-arylation-oracle/v1/evaluate
+07:02:42.773 POST api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[RESULT] attempt 57/57 status=success yield=73.93 percent best_so_far=99.98 percent
+          conditions: base=Cesium pivalate | ligand=XPhos | solvent=p-Xylene | concentration=0.153 | temperature_c=105.0
+[EVENT] invocation budget of 57 attempted evaluations exhausted
+07:02:44.034 POST api/api/v1/campaigns/status/batch
+07:02:44.049 POST api/api/v1/campaigns/1c52ea2a-2442-43ea-bc9e-cb017b5d9697/lifecycle
+[EVENT] campaign 1c52ea2a-2442-43ea-bc9e-cb017b5d9697 paused (resume with --campaign-id 1c52ea2a-2442-43ea-bc9e-cb017b5d9697)
+07:02:44.314 GET api/api/v1/results/1c52ea2a-2442-43ea-bc9e-cb017b5d9697
+[EVENT] campaign 1c52ea2a-2442-43ea-bc9e-cb017b5d9697 — final report
+[RESULT] best yield = 99.98 percent
+          best conditions: base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.153 | temperature_c=120.0
+          attempted this invocation: 57 | successful: 57 | failed: 0
+          campaign totals: attempted=60 successful=60
+          artifacts: artifacts/1c52ea2a-2442-43ea-bc9e-cb017b5d9697

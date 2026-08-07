@@ -1,0 +1,26 @@
+exit_code=0
+
+=== stdout (raw) ===
+LATEST_LOG=artifacts/run_20260730_173508.log
+RESULT_LINES=60
+ALERT_LINES=0
+17:41:18.771 POST api/api/v1/results/61ad202d-9835-4d49-87b8-8312f155d135
+[EVENT] Invocation complete: 60 attempts made
+=== Campaign Summary ===
+Total attempts: 60
+Successful:     60
+Failed:         0
+Best yield:     100.00%
+Best params:    {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+[EVENT] Fetching campaign diagnostics
+17:41:23.836 GET api/api/v1/diagnostics/61ad202d-9835-4d49-87b8-8312f155d135 ? use_cache='true' & verbosity='standard'
+265 sh -c bash -lc 'set -o pipefail; cd /app/outputs/cells/direct_arylation_standard_glm_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval; mkdir -p artifacts; export PYTHONUNBUFFERED=1 PYTHONPATH=/app:. BO_MCP_API_URL="${BO_MCP_API_URL}" BO_MCP_API_KEY="[REDACTED]}" DIRECT_ARYLATION_API_URL="${DIRECT_ARYLATION_API_URL}"; LOG=./artifacts/run_$(date +%Y%m%d_%H%M%S).log; echo "[EVENT] Logging to $LOG"; /opt/venv/bin/python3 run_direct_arylation.py --max-attempts 60 --artifact-dir ./artifacts 2>&1 | tee "$LOG"; exit ${PIPESTATUS[0]}'
+266 bash -lc set -o pipefail; cd /app/outputs/cells/direct_arylation_standard_glm_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval; mkdir -p artifacts; export PYTHONUNBUFFERED=1 PYTHONPATH=/app:. BO_MCP_API_URL="${BO_MCP_API_URL}" BO_MCP_API_KEY="[REDACTED]}" DIRECT_ARYLATION_API_URL="${DIRECT_ARYLATION_API_URL}"; LOG=./artifacts/run_$(date +%Y%m%d_%H%M%S).log; echo "[EVENT] Logging to $LOG"; /opt/venv/bin/python3 run_direct_arylation.py --max-attempts 60 --artifact-dir ./artifacts 2>&1 | tee "$LOG"; exit ${PIPESTATUS[0]}
+271 /opt/venv/bin/python3 run_direct_arylation.py --max-attempts 60 --artifact-dir ./artifacts
+289 bash -lc cd /app/outputs/cells/direct_arylation_standard_glm_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval && latest=$(ls -1t artifacts/run_*.log 2>/dev/null | head -n1); echo "LATEST_LOG=$latest"; if [ -n "$latest" ]; then echo "RESULT_LINES=$(grep -c "^\[RESULT\]" "$latest" || true)"; echo "ALERT_LINES=$(grep -c "^\[ALERT\]" "$latest" || true)"; tail -n 10 "$latest"; fi; pgrep -af "run_direct_arylation.py|direct-arylation-bo|python3 run_direct_arylation.py" || true
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

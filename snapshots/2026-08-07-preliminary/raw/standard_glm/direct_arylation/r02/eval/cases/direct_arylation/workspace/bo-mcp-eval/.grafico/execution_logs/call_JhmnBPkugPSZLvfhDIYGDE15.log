@@ -1,0 +1,35 @@
+exit_code=0
+
+=== stdout (raw) ===
+LATEST_LOG=artifacts/run_20260730_173508.log
+[EVENT] Evaluating attempt 59: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:41:12.202 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 59: yield=61.33% | {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:41:12.206 POST api/api/v1/results/61ad202d-9835-4d49-87b8-8312f155d135
+17:41:17.281 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating suggestion (attempt 60/60)
+17:41:17.298 POST api/api/v1/suggestions/61ad202d-9835-4d49-87b8-8312f155d135/generate ? batch_size='1'
+[EVENT] Evaluating attempt 60: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:41:18.767 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 60: yield=36.29% | {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:41:18.771 POST api/api/v1/results/61ad202d-9835-4d49-87b8-8312f155d135
+[EVENT] Invocation complete: 60 attempts made
+=== Campaign Summary ===
+Total attempts: 60
+Successful:     60
+Failed:         0
+Best yield:     100.00%
+Best params:    {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+[EVENT] Fetching campaign diagnostics
+17:41:23.836 GET api/api/v1/diagnostics/61ad202d-9835-4d49-87b8-8312f155d135 ? use_cache='true' & verbosity='standard'
+--- PGREP ---
+265 sh -c bash -lc 'set -o pipefail; cd /app/outputs/cells/direct_arylation_standard_glm_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval; mkdir -p artifacts; export PYTHONUNBUFFERED=1 PYTHONPATH=/app:. BO_MCP_API_URL="${BO_MCP_API_URL}" BO_MCP_API_KEY="[REDACTED]}" DIRECT_ARYLATION_API_URL="${DIRECT_ARYLATION_API_URL}"; LOG=./artifacts/run_$(date +%Y%m%d_%H%M%S).log; echo "[EVENT] Logging to $LOG"; /opt/venv/bin/python3 run_direct_arylation.py --max-attempts 60 --artifact-dir ./artifacts 2>&1 | tee "$LOG"; exit ${PIPESTATUS[0]}'
+266 bash -lc set -o pipefail; cd /app/outputs/cells/direct_arylation_standard_glm_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval; mkdir -p artifacts; export PYTHONUNBUFFERED=1 PYTHONPATH=/app:. BO_MCP_API_URL="${BO_MCP_API_URL}" BO_MCP_API_KEY="[REDACTED]}" DIRECT_ARYLATION_API_URL="${DIRECT_ARYLATION_API_URL}"; LOG=./artifacts/run_$(date +%Y%m%d_%H%M%S).log; echo "[EVENT] Logging to $LOG"; /opt/venv/bin/python3 run_direct_arylation.py --max-attempts 60 --artifact-dir ./artifacts 2>&1 | tee "$LOG"; exit ${PIPESTATUS[0]}
+271 /opt/venv/bin/python3 run_direct_arylation.py --max-attempts 60 --artifact-dir ./artifacts
+303 bash -lc sleep 15; cd /app/outputs/cells/direct_arylation_standard_glm_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval && latest=$(ls -1t artifacts/run_*.log 2>/dev/null | head -n1); echo "LATEST_LOG=$latest"; tail -n 20 "$latest"; echo "--- PGREP ---"; pgrep -af "run_direct_arylation.py|direct-arylation-bo|python3 run_direct_arylation.py" || true
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

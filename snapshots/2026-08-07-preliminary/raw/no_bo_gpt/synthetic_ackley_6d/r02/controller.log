@@ -1,0 +1,57 @@
+
+[2026-07-30T18:22:14.213218Z] COMMAND ["docker", "compose", "-p", "mx-20260730-no-bo-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--output-dir", "/app/outputs/cells/ackley_no_bo_gpt_r02/eval", "--architecture-mode", "main_agent_script_no_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "ackley_no_bo_gpt_r02-20260730"]
+ Container mx-20260730-no-bo-gpt-eval-run-c1656d1a0faa Creating 
+ Container mx-20260730-no-bo-gpt-eval-run-c1656d1a0faa Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:22:23.658 evaluate bo_mcp_graph_eval
+18:22:23.659   case: synthetic_ackley_6d
+18:22:23.659     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+18:22:41.251       agent run
+18:22:41.257         chat gpt-5.4
+18:22:41.922           POST api.openai.com/v1/responses
+18:22:50.337         running tool: bash_exec
+18:22:50.344 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+18:22:50.354           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+18:22:50.376         chat gpt-5.4
+18:22:50.385           POST api.openai.com/v1/responses
+18:22:53.708         running tool: bash_exec
+18:22:55.174         chat gpt-5.4
+18:22:55.183           POST api.openai.com/v1/responses
+18:23:31.681         running tool: bash_exec
+18:23:31.774         chat gpt-5.4
+18:23:31.787           POST api.openai.com/v1/responses
+18:23:34.513         running tool: bash_exec
+18:23:34.983         chat gpt-5.4
+18:23:34.995           POST api.openai.com/v1/responses
+18:23:39.122         running tool: bash_exec
+18:23:39.210         chat gpt-5.4
+18:23:39.223           POST api.openai.com/v1/responses
+18:23:43.011         running tool: bash_exec
+18:23:45.415         chat gpt-5.4
+18:23:45.429           POST api.openai.com/v1/responses
+18:23:51.187         running tool: bash_exec
+18:23:51.287         chat gpt-5.4
+18:23:51.307           POST api.openai.com/v1/responses
+18:23:55.824         running tool: bash_exec
+18:23:58.108         chat gpt-5.4
+18:23:58.125           POST api.openai.com/v1/responses
+18:24:02.059         running tool: bash_exec
+18:24:18.376         chat gpt-5.4
+18:24:18.395           POST api.openai.com/v1/responses
+18:24:25.018         running tool: python_repl
+18:24:25.066         chat gpt-5.4
+18:24:25.096           POST api.openai.com/v1/responses
+18:24:32.330         running tool: python_repl
+18:24:32.370         chat gpt-5.4
+18:24:32.390           POST api.openai.com/v1/responses
+[2026-07-30T18:25:01.379295Z] EXIT 0

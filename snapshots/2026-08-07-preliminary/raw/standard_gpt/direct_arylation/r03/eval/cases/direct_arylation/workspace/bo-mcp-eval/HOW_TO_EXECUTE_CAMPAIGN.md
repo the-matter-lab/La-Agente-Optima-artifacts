@@ -1,0 +1,85 @@
+# Direct Arylation BO-MCP Campaign
+
+Chat Trace ID: `direct-arylation-akg-eval-0fa0b2610ead45b79dc92d6969687f65-f95202f9`
+
+## Behavior
+- Uses **BO-MCP only** for campaign creation, suggestion generation, result submission, and resume/pause lifecycle handling.
+- Optimizes measured `yield` (maximize, units `percent`) for the fixed direct arylation search space.
+- Queries the oracle only at `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate` with the exact lowercase fields `base`, `ligand`, `solvent`, `concentration`, and `temperature_c`.
+- Enforces the **global 60-attempt budget** by counting:
+  - successful submitted BO results, plus
+  - failed oracle attempts whose suggestions are marked `rejected`.
+- Also sets BO-MCP `max_observations=60` so successful submissions alone cannot exceed the ceiling.
+- On shutdown, the script pauses a running campaign instead of terminating it.
+
+## Required environment variables
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+- `DIRECT_ARYLATION_API_URL`
+- `PYTHONPATH=/app` for importing the canonical BO-MCP client and grafico modules from the repository checkout.
+
+## Exact command to run
+Fresh campaign:
+```bash
+PYTHONPATH=/app python -u run_direct_arylation_akg_eval_0fa0b2610ead45b79dc92d6969687f65.py
+```
+
+Resume an existing campaign:
+```bash
+PYTHONPATH=/app python -u run_direct_arylation_akg_eval_0fa0b2610ead45b79dc92d6969687f65.py --campaign-id <campaign_id>
+```
+
+Run only a bounded number of new attempts in one invocation:
+```bash
+PYTHONPATH=/app python -u run_direct_arylation_akg_eval_0fa0b2610ead45b79dc92d6969687f65.py --campaign-id <campaign_id> --max-new-attempts 10
+```
+
+## Resume if interrupted
+Re-run the same command with `--campaign-id <campaign_id>`. The script will:
+- resume a paused campaign,
+- reopen a completed campaign,
+- reuse any still-pending BO suggestions before generating new ones.
+
+## Stop file
+- Default stop file: `STOP` in the current working directory.
+- To request a clean stop, create that file:
+  ```bash
+  touch STOP
+  ```
+- The script checks it at the **top of each loop iteration before generating a suggestion**, prints an `[EVENT]` line, deletes the file, submits no partial work, and exits normally.
+
+## Tagged stdout lines
+The entrypoint prints only tagged monitor-friendly lines:
+- `[EVENT]` state changes, campaign id, artifact paths, shutdown notices
+- `[ALERT]` failed attempted evaluations and budget-stop conditions
+- `[RESULT]` per-attempt analysis and final best result
+- `[HEARTBEAT]` liveness updates
+
+Useful options:
+- `--poll-s` (default `180`)
+- `--heartbeat-s` (default `1800`)
+- `--oracle-timeout-s` (default `60`)
+- `--artifact-dir` (default `artifacts/direct_arylation_akg_eval_0fa0b2610ead45b79dc92d6969687f65`)
+
+## Outputs / artifacts
+Default artifact directory:
+- `artifacts/direct_arylation_akg_eval_0fa0b2610ead45b79dc92d6969687f65/attempts.jsonl`
+- `artifacts/direct_arylation_akg_eval_0fa0b2610ead45b79dc92d6969687f65/summary.json`
+- `artifacts/direct_arylation_akg_eval_0fa0b2610ead45b79dc92d6969687f65/run.log`
+
+Artifact contents:
+- `attempts.jsonl`: append-only record of every attempted evaluation with candidate values, status, and `objective_values` for successes.
+- `summary.json`: machine-readable final/latest snapshot with:
+  - best reaction conditions,
+  - best measured yield,
+  - numbers of attempted/successful/failed evaluations,
+  - all evaluated candidates with statuses and objective values when successful.
+- `run.log`: detailed file log for debugging.
+
+## Validation checklist
+1. Confirm tagged stdout appears.
+2. Confirm `summary.json` contains `campaign_id`, `attempted_evaluations`, `best`, and `attempts`.
+3. Confirm every successful entry stores:
+   - `parameter_values` with exact lowercase names
+   - `objective_values` as `{ "yield": <measured value> }`
+4. Confirm total attempted evaluations never exceeds `60`.

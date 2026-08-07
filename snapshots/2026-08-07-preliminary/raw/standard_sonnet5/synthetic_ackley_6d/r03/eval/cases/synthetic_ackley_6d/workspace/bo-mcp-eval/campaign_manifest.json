@@ -1,0 +1,17 @@
+{
+  "campaign_slug": "ackley6d_baybe",
+  "ownership_marker": "akg-eval-01a2bebdff8c40379a2fd4b6ab495231",
+  "package_modules": [
+    "ackley6d_baybe/__init__.py",
+    "ackley6d_baybe/search_space.py",
+    "ackley6d_baybe/objective.py",
+    "ackley6d_baybe/intake.py",
+    "ackley6d_baybe/evaluate.py",
+    "ackley6d_baybe/reporting.py",
+    "ackley6d_baybe/campaign.py"
+  ],
+  "run_entrypoint": "run_ackley6d_baybe.py",
+  "latest_artifact_dir": "artifacts/84ceec99-fabc-408c-a7fa-3509f9552896",
+  "smoke_test_campaign_id": "84ceec99-fabc-408c-a7fa-3509f9552896",
+  "notes": "smoke_test_ackley6d_baybe.py is an ephemeral, non-deliverable helper used only to validate the package during authoring (ran with a monkeypatched TOTAL_EVALUATION_BUDGET=4). It created and left paused the real, marker-bearing campaign above with 4/60 successful evaluations already submitted. The parent may continue it to the full 60-evaluation budget via: python run_ackley6d_baybe.py --campaign-id 84ceec99-fabc-408c-a7fa-3509f9552896 -- or start a fresh campaign by omitting --campaign-id."
+}

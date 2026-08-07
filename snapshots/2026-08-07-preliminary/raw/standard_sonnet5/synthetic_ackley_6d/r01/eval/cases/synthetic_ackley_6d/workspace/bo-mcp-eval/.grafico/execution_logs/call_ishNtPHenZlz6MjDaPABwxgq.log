@@ -1,0 +1,50 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/ackley6d_20260807_054600.log
+[EVENT] eval#48 success surface_response=0.161317
+[HEARTBEAT] attempted=48/60
+05:47:02.543 POST api/api/v1/campaigns/status/batch
+05:47:02.557 POST api/api/v1/suggestions/20856160-5d59-4b24-8d3a-089687dfee21/generate ? batch_size='6'
+05:47:08.134 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#49 success surface_response=0.428812
+05:47:08.332 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#50 success surface_response=0.363790
+05:47:08.477 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#51 success surface_response=0.361491
+05:47:08.567 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#52 success surface_response=0.365548
+05:47:08.635 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#53 success surface_response=0.241215
+05:47:08.760 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#54 success surface_response=0.462814
+[HEARTBEAT] attempted=54/60
+05:47:08.871 POST api/api/v1/campaigns/status/batch
+05:47:08.881 POST api/api/v1/suggestions/20856160-5d59-4b24-8d3a-089687dfee21/generate ? batch_size='6'
+05:47:13.418 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#55 success surface_response=0.431778
+05:47:13.475 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#56 success surface_response=0.183648
+05:47:14.484 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#57 success surface_response=0.175383
+05:47:14.562 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#58 success surface_response=0.267719
+05:47:14.629 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#59 success surface_response=0.252808
+05:47:14.685 POST api/api/v1/results/20856160-5d59-4b24-8d3a-089687dfee21
+[EVENT] eval#60 success surface_response=0.276272
+[HEARTBEAT] attempted=60/60
+[RESULT] campaign_id=20856160-5d59-4b24-8d3a-089687dfee21 attempted=60 success=60 failed=0
+[RESULT] best_surface_response=0.462814 best_raw_response=-12.006323
+[RESULT] best_coordinates: x_1=0.4353, x_2=0.4297, x_3=0.5404, x_4=0.4927, x_5=0.5089, x_6=0.4797
+[EVENT] budget of 60 attempted evaluations reached
+05:47:14.743 GET api/api/v1/campaigns/20856160-5d59-4b24-8d3a-089687dfee21
+05:47:14.750 POST api/api/v1/campaigns/20856160-5d59-4b24-8d3a-089687dfee21/lifecycle
+[EVENT] campaign_id=20856160-5d59-4b24-8d3a-089687dfee21 paused (or already terminal); rerun with --campaign-id 20856160-5d59-4b24-8d3a-089687dfee21 to resume
+BO_MCP_CAMPAIGN_ID=20856160-5d59-4b24-8d3a-089687dfee21
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

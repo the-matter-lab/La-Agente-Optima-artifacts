@@ -1,0 +1,187 @@
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Creating campaign  idempotency_key=create-ackley-6d-d01df30b9f
+05:54:24.922 POST api/api/v1/campaigns
+[EVENT] Created campaign_id=f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[EVENT] Result log: artifacts_run2/results.jsonl
+05:54:25.034 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=0  n_results=0  status=created
+05:54:25.059 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:25.148 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=1  surface_response=0.061092  raw_response=-20.984961  params={x_1=0.0115, x_2=0.0771, x_3=0.3377, x_4=0.3714, x_5=0.8389, x_6=0.7344}
+05:54:25.204 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=1  n_results=1  status=running
+05:54:25.216 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:25.283 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=2  surface_response=0.041438  raw_response=-21.424241  params={x_1=0.7690, x_2=0.2118, x_3=0.1396, x_4=0.7527, x_5=0.8099, x_6=0.0028}
+05:54:25.340 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=2  n_results=2  status=running
+05:54:25.352 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:25.402 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=3  surface_response=0.020183  raw_response=-21.899298  params={x_1=0.6671, x_2=0.1668, x_3=0.8449, x_4=0.5175, x_5=0.0362, x_6=0.2830}
+05:54:25.470 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=3  n_results=3  status=running
+05:54:25.484 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:25.543 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=4  surface_response=0.026018  raw_response=-21.768898  params={x_1=0.5344, x_2=0.0547, x_3=0.9270, x_4=0.8596, x_5=0.3568, x_6=0.1221}
+05:54:25.599 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=4  n_results=4  status=running
+05:54:25.611 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:25.737 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=5  surface_response=0.045192  raw_response=-21.340333  params={x_1=0.9837, x_2=0.3459, x_3=0.4721, x_4=0.4597, x_5=0.9749, x_6=0.1004}
+05:54:26.632 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=5  n_results=5  status=running
+05:54:26.644 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:26.718 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=6  surface_response=0.049359  raw_response=-21.247211  params={x_1=0.1024, x_2=0.4998, x_3=0.0081, x_4=0.4941, x_5=0.5258, x_6=0.8996}
+05:54:26.812 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=6  n_results=6  status=running
+05:54:26.823 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:26.880 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=7  surface_response=0.042794  raw_response=-21.393932  params={x_1=0.9400, x_2=0.6569, x_3=0.0152, x_4=0.6982, x_5=0.8998, x_6=0.1903}
+05:54:26.937 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=7  n_results=7  status=running
+05:54:26.948 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:27.010 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=8  surface_response=0.046408  raw_response=-21.313157  params={x_1=0.2706, x_2=0.3942, x_3=0.8866, x_4=0.6224, x_5=0.5111, x_6=0.8203}
+05:54:27.078 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=8  n_results=8  status=running
+05:54:27.089 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:27.152 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=9  surface_response=0.024910  raw_response=-21.793661  params={x_1=0.0222, x_2=0.8729, x_3=0.3947, x_4=0.0735, x_5=0.3055, x_6=0.3822}
+05:54:27.209 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=9  n_results=9  status=running
+05:54:27.220 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:27.281 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=10  surface_response=0.039646  raw_response=-21.464293  params={x_1=0.0212, x_2=0.2781, x_3=0.7226, x_4=0.0634, x_5=0.7420, x_6=0.0611}
+05:54:27.340 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=10  n_results=10  status=running
+05:54:27.351 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:27.511 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=11  surface_response=0.029369  raw_response=-21.693992  params={x_1=0.7337, x_2=0.8430, x_3=0.0281, x_4=0.3511, x_5=0.7263, x_6=0.1063}
+05:54:27.579 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=11  n_results=11  status=running
+05:54:27.590 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:27.663 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=12  surface_response=0.038449  raw_response=-21.491043  params={x_1=0.8682, x_2=0.4138, x_3=0.4024, x_4=0.9147, x_5=0.0156, x_6=0.6034}
+05:54:27.721 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=12  n_results=12  status=running
+05:54:27.732 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:32.989 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=13  surface_response=0.045042  raw_response=-21.343685  params={x_1=0.1169, x_2=0.0991, x_3=0.3103, x_4=0.5112, x_5=0.9381, x_6=0.8686}
+05:54:33.235 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=13  n_results=13  status=running
+05:54:33.246 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:40.035 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=14  surface_response=0.029244  raw_response=-21.696777  params={x_1=0.0000, x_2=0.0692, x_3=0.3142, x_4=0.2962, x_5=0.7423, x_6=0.6838}
+05:54:40.325 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=14  n_results=14  status=running
+05:54:40.345 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:54:58.736 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=15  surface_response=0.074553  raw_response=-20.684113  params={x_1=0.0493, x_2=0.0899, x_3=0.3743, x_4=0.3776, x_5=0.8603, x_6=0.6491}
+05:54:58.811 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=15  n_results=15  status=running
+05:54:58.823 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:56:03.864 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=16  surface_response=0.044107  raw_response=-21.364590  params={x_1=0.0780, x_2=0.0999, x_3=0.4112, x_4=0.3718, x_5=0.8720, x_6=0.5563}
+[HEARTBEAT] evaluation_index=16/60  campaign_id=f4d1a084-d330-4e72-acfa-87fcacae7dc5
+05:56:03.971 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=16  n_results=16  status=running
+05:56:03.984 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:56:22.195 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=17  surface_response=0.045403  raw_response=-21.335631  params={x_1=0.0496, x_2=0.0903, x_3=0.3703, x_4=0.3926, x_5=0.8734, x_6=0.6746}
+05:56:22.437 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=17  n_results=17  status=running
+05:56:22.448 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:56:25.170 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=18  surface_response=0.047605  raw_response=-21.286408  params={x_1=0.1372, x_2=0.1058, x_3=0.2043, x_4=0.2264, x_5=0.4985, x_6=0.8732}
+05:56:25.232 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=18  n_results=18  status=running
+05:56:25.244 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:56:42.078 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=19  surface_response=0.037977  raw_response=-21.501597  params={x_1=0.0423, x_2=0.0877, x_3=0.3612, x_4=0.3791, x_5=0.8545, x_6=0.6771}
+05:56:42.152 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=19  n_results=19  status=running
+05:56:42.164 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:56:46.867 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=20  surface_response=0.034079  raw_response=-21.588722  params={x_1=0.0000, x_2=0.0618, x_3=0.3443, x_4=0.3451, x_5=0.8281, x_6=0.7343}
+05:56:46.931 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=20  n_results=20  status=running
+05:56:46.944 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:56:55.101 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=21  surface_response=0.035676  raw_response=-21.553029  params={x_1=0.0322, x_2=0.2605, x_3=0.2642, x_4=0.6218, x_5=0.8677, x_6=0.6523}
+05:56:55.172 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=21  n_results=21  status=running
+05:56:55.183 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:56:57.808 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=22  surface_response=0.043812  raw_response=-21.371190  params={x_1=0.1577, x_2=0.0355, x_3=0.3767, x_4=0.2775, x_5=0.9016, x_6=0.7785}
+05:56:57.897 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=22  n_results=22  status=running
+05:56:57.913 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:22.629 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=23  surface_response=0.041475  raw_response=-21.423412  params={x_1=0.2974, x_2=0.0226, x_3=0.3878, x_4=0.2453, x_5=0.9395, x_6=0.8913}
+[HEARTBEAT] evaluation_index=23/60  campaign_id=f4d1a084-d330-4e72-acfa-87fcacae7dc5
+05:57:22.697 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=23  n_results=23  status=running
+05:57:22.707 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:23.872 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=24  surface_response=0.041253  raw_response=-21.428386  params={x_1=0.2139, x_2=0.1905, x_3=0.4084, x_4=0.4191, x_5=0.8649, x_6=0.8026}
+05:57:23.958 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=24  n_results=24  status=running
+05:57:23.969 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:25.492 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=25  surface_response=0.035215  raw_response=-21.563327  params={x_1=0.0993, x_2=0.3097, x_3=0.3946, x_4=0.3298, x_5=0.5201, x_6=0.8202}
+05:57:25.548 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=25  n_results=25  status=running
+05:57:25.559 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:27.723 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=26  surface_response=0.035903  raw_response=-21.547957  params={x_1=0.0000, x_2=0.0000, x_3=0.3849, x_4=0.2821, x_5=0.8585, x_6=0.6040}
+05:57:27.780 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=26  n_results=26  status=running
+05:57:27.790 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:31.132 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=27  surface_response=0.060930  raw_response=-20.988600  params={x_1=0.2367, x_2=0.4091, x_3=0.0249, x_4=0.4788, x_5=0.9736, x_6=0.8235}
+05:57:32.883 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=27  n_results=27  status=running
+05:57:32.893 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:34.066 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=28  surface_response=0.097883  raw_response=-20.162686  params={x_1=0.0113, x_2=0.0000, x_3=1.0000, x_4=0.0013, x_5=1.0000, x_6=0.0000}
+05:57:34.123 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=28  n_results=28  status=running
+05:57:34.134 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:35.013 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=29  surface_response=0.099412  raw_response=-20.128495  params={x_1=0.0109, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+05:57:35.091 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=29  n_results=29  status=running
+05:57:35.104 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:35.756 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=30  surface_response=0.105462  raw_response=-19.993291  params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+05:57:35.813 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=30  n_results=30  status=running
+05:57:35.824 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:36.374 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=31  surface_response=0.102960  raw_response=-20.049211  params={x_1=0.1615, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+05:57:36.444 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=31  n_results=31  status=running
+05:57:36.455 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:36.872 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=32  surface_response=0.086155  raw_response=-20.424795  params={x_1=0.2343, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+05:57:36.930 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=32  n_results=32  status=running
+05:57:36.943 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:37.436 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_benchmark.py", line 113, in <module>
+    main()
+  File "/app/outputs/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_benchmark.py", line 93, in main
+    campaign_id = run_campaign(
+                  ^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_benchmark/campaign.py", line 196, in run_campaign
+    submit_resp = client.submit_results(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 231, in submit_results
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 348, in _json_request
+    raise BoMcpOperationError(
+domains.bo_mcp.client.BoMcpOperationError: BO-MCP POST /api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5 rejected the operation: ['Exact duplicate results detected. Use force=True to override.']

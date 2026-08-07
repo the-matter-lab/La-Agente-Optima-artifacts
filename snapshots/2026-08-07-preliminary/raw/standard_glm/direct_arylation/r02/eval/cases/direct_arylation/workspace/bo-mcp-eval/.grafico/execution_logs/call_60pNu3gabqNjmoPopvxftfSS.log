@@ -1,0 +1,121 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- intake.py ---
+"""Campaign intake construction for the direct arylation benchmark."""
+
+from direct_arylation_campaign.search_space import MARKER, build_parameters
+
+
+def build_intake(*, campaign_label: str = "run") -> dict:
+    """Return a BO-MCP campaign intake dict.
+
+    Parameters
+    ----------
+    campaign_label : str
+        Short label appended after the marker to distinguish campaigns
+        within the same invocation (e.g. ``"run"`` or ``"resume"``).
+
+    Design choices
+    --------------
+    * All parameters are categorical — preserves exact oracle spelling.
+    * ``batch_size=1`` — sequential evaluation so each observation
+      informs the next suggestion (60 evaluations is a tight budget).
+    * ``initial_design_size=8`` — Sobol warmup before model-driven
+      acquisition; 8 points cover the 5-dimensional space sparsely
+      but sufficiently for the GP to learn rough trends.
+    * ``acquisition_method="expected_improvement"`` — classic EI for
+      maximization; well-suited to small-budget categorical spaces.
+    * ``backend="auto"`` — let the server pick the best backend.
+    * No ``max_iterations`` — the CLI budget of 60 controls the loop;
+      the intake is immutable and a fossilized cap would block reopens.
+    """
+    return {
+        "name": f"direct-arylation-{MARKER}-{campaign_label}",
+        "description": (
+            "Direct arylation reaction-yield optimization. "
+            f"Marker: {MARKER}. Nonce: a375b9bd-ae19-499a-9006-4ecc7a3bc68d"
+        ),
+        "parameters": build_parameters(),
+        "objectives": [
+            {
+                "name": "yield",
+                "direction": "maximize",
+                "unit": "percent",
+            }
+        ],
+        "batch_size": 1,
+        "initial_design_size": 8,
+        "acquisition_method": "expected_improvement",
+        "backend": "auto",
+    }
+--- campaign.py remainder ---
+        )
+
+        if eval_result["status"] == "success":
+            yield_val = eval_result["objective_values"]["yield"]
+            _tag("RESULT", f"Attempt {attempt_count}: yield={yield_val:.2f}% | {param_vals}")
+
+            # Submit result to BO-MCP
+            result_payload = {
+                "suggestion_id": suggestion_id,
+                "parameter_values": eval_result["parameter_values"],
+                "objective_values": eval_result["objective_values"],
+            }
+            idem_key = BoMcpClient.make_idempotency_key(
+                "result", campaign_id, str(attempt_count)
+            )
+            try:
+                client.submit_results(
+                    campaign_id,
+                    results=[result_payload],
+                    idempotency_key=idem_key,
+                )
+            except (BoMcpClientError, BoMcpOperationError) as exc:
+                _tag("ALERT", f"Result submission failed: {exc}")
+        else:
+            _tag("ALERT", f"Attempt {attempt_count} FAILED: {eval_result.get('error', 'unknown')} | {param_vals}")
+
+            # Mark the suggestion as failed so BO-MCP knows
+            try:
+                client.update_suggestion_status(suggestion_id, status="failed")
+            except (BoMcpClientError, BoMcpOperationError) as exc:
+                _tag("ALERT", f"Suggestion status update failed: {exc}")
+
+        time.sleep(poll_s)
+
+    # ── End-of-invocation ─────────────────────────────────────────
+    _tag("EVENT", f"Invocation complete: {attempt_count} attempts made")
+
+    # Print summary
+    print_summary(artifact_dir)
+
+    # Fetch diagnostics (generous timeout for a grown campaign)
+    _tag("EVENT", "Fetching campaign diagnostics")
+    try:
+        diag = client.get_diagnostics(campaign_id, timeout_s=300.0)
+        diag_path = os.path.join(artifact_dir, "diagnostics.json")
+        import json
+        with open(diag_path, "w") as f:
+            json.dump(diag, f, indent=2, default=str)
+        _tag("EVENT", f"Diagnostics saved to {diag_path}")
+    except Exception as exc:
+        _tag("ALERT", f"Diagnostics fetch failed: {exc}")
+
+    # Pause the campaign (not terminate — allows resume)
+    try:
+        client.lifecycle(campaign_id, action="pause")
+        _tag("EVENT", "Campaign paused for potential resume")
+    except Exception as exc:
+        _tag("ALERT", f"Pause failed: {exc}")
+
+    # Print the campaign ID for the main agent
+    print(f"BO_MCP_CAMPAIGN_ID={campaign_id}", flush=True)
+
+    return campaign_id
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

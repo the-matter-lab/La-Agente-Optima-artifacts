@@ -1,0 +1,890 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- run_direct_arylation.py ---
+#!/usr/bin/env python3
+"""
+Entry point for Direct Arylation BO-MCP campaign.
+
+Usage:
+    python run_direct_arylation.py [--campaign-id CAMPAIGN_ID] [--max-evals N] [--poll-s N] [--heartbeat-s N] [--stop-file PATH]
+
+Environment variables required:
+    BO_MCP_API_URL      - BO-MCP REST API base URL
+    BO_MCP_API_KEY      - BO-MCP API key
+    DIRECT_ARYLATION_API_URL - Oracle API base URL for yield evaluations
+
+The campaign optimizes direct arylation reaction yield over a fixed search space
+of 1,728 measured reactions with a budget of 60 oracle evaluations.
+
+Marker: akg-eval-0c360b08e6684de0b0ed04f50bde3b2c
+Nonce: 16e7e684-7bf5-4a9b-af93-fae14403be06
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+
+from direct_arylation_campaign.campaign import run_campaign
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Direct Arylation Yield Optimization via BO-MCP",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--campaign-id",
+        type=str,
+        default=None,
+        help="Resume existing campaign by ID (must contain marker akg-eval-0c360b08e6684de0b0ed04f50bde3b2c)",
+    )
+    parser.add_argument(
+        "--max-evals",
+        type=int,
+        default=60,
+        help="Maximum oracle evaluations this invocation (budget per run)",
+    )
+    parser.add_argument(
+        "--poll-s",
+        type=int,
+        default=180,
+        help="Polling interval for BO-MCP next_action (seconds)",
+    )
+    parser.add_argument(
+        "--heartbeat-s",
+        type=int,
+        default=1800,
+        help="Heartbeat logging interval (seconds)",
+    )
+    parser.add_argument(
+        "--stop-file",
+        type=str,
+        default="STOP",
+        help="Path to stop file; if exists, campaign pauses gracefully",
+    )
+    return parser.parse_args()
+
+
+def check_env() -> None:
+    """Verify required environment variables are set."""
+    required = ["BO_MCP_API_URL", "BO_MCP_API_KEY", "DIRECT_ARYLATION_API_URL"]
+    missing = [var for var in required if not os.getenv(var)]
+    if missing:
+        print(f"[ALERT] Missing required environment variables: {', '.join(missing)}", file=sys.stderr)
+        print("Set them before running:", file=sys.stderr)
+        for var in missing:
+            print(f"  export {var}=...", file=sys.stderr)
+        sys.exit(1)
+
+
+def main() -> int:
+    check_env()
+    args = parse_args()
+
+    print(f"[EVENT] Starting Direct Arylation BO campaign")
+    print(f"[EVENT] Max evaluations this run: {args.max_evals}")
+    print(f"[EVENT] Poll interval: {args.poll_s}s, Heartbeat: {args.heartbeat_s}s")
+    print(f"[EVENT] Stop file: {args.stop_file}")
+    if args.campaign_id:
+        print(f"[EVENT] Resuming campaign: {args.campaign_id}")
+
+    try:
+        campaign_id, evaluated = run_campaign(
+            campaign_id=args.campaign_id,
+            max_evaluations=args.max_evals,
+            poll_s=args.poll_s,
+            heartbeat_s=args.heartbeat_s,
+            stop_file=args.stop_file,
+        )
+        print(f"[EVENT] Campaign {campaign_id} completed run")
+        return 0
+    except KeyboardInterrupt:
+        print("[EVENT] Interrupted by user")
+        return 130
+    except Exception as e:
+        print(f"[ALERT] Campaign failed: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())--- campaign.py ---
+"""Campaign orchestration for direct arylation BO-MCP optimization."""
+
+from __future__ import annotations
+
+import os
+import sys
+import time
+import uuid
+from pathlib import Path
+from typing import Any
+
+import logfire
+from domains.bo_mcp.client import BoMcpClient, BoMcpClientError, BoMcpOperationError
+
+from direct_arylation_campaign.evaluator import evaluate_batch, EvaluationError
+from direct_arylation_campaign.intake import build_intake, validate_intake
+from direct_arylation_campaign.reporter import compute_summary, print_campaign_report, print_final_summary_line
+from direct_arylation_campaign.search_space import validate_candidate
+
+
+# Constants
+MARKER = "akg-eval-0c360b08e6684de0b0ed04f50bde3b2c"
+NONCE = "16e7e684-7bf5-4a9b-af93-fae14403be06"
+MAX_EVALUATIONS = 60
+DEFAULT_POLL_S = 180
+DEFAULT_HEARTBEAT_S = 1800
+DEFAULT_STOP_FILE = "STOP"
+
+
+class CampaignState:
+    """Minimal in-memory campaign state (never persisted per BO-MCP policy)."""
+
+    def __init__(self, campaign_id: str):
+        self.campaign_id = campaign_id
+        self.evaluated: list[dict[str, Any]] = []  # All evaluation attempts
+        self.submitted_suggestion_ids: set[str] = set()
+        self.last_heartbeat = time.time()
+
+
+def make_idempotency_key(prefix: str, *parts: str) -> str:
+    """Generate an idempotency key with prefix, parts, and random suffix."""
+    joined = "-".join(p.replace("/", "_") for p in parts if p)
+    return f"{prefix}-{joined}-{uuid.uuid4().hex[:10]}"
+
+
+def check_stop_file(stop_file: Path) -> bool:
+    """Check if stop file exists; if so, delete it and return True."""
+    if stop_file.exists():
+        try:
+            stop_file.unlink()
+            return True
+        except OSError:
+            return True
+    return False
+
+
+def log_event(msg: str) -> None:
+    """Log an [EVENT] line to stdout and logfire."""
+    print(f"[EVENT] {msg}", flush=True)
+    logfire.info("{msg}", msg=msg)
+
+
+def log_alert(msg: str) -> None:
+    """Log an [ALERT] line to stdout and logfire."""
+    print(f"[ALERT] {msg}", flush=True)
+    logfire.warning("{msg}", msg=msg)
+
+
+def log_result(msg: str) -> None:
+    """Log a [RESULT] line to stdout and logfire."""
+    print(f"[RESULT] {msg}", flush=True)
+    logfire.info("{msg}", msg=msg)
+
+
+def log_heartbeat(msg: str) -> None:
+    """Log a [HEARTBEAT] line to stdout and logfire."""
+    print(f"[HEARTBEAT] {msg}", flush=True)
+    logfire.info("{msg}", msg=msg)
+
+
+def submit_results(
+    client: BoMcpClient,
+    campaign_id: str,
+    results: list[dict[str, Any]],
+    *,
+    force: bool = False,
+) -> list[str]:
+    """
+    Submit successful evaluation results to BO-MCP.
+
+    Args:
+        client: BO-MCP client
+        campaign_id: Campaign ID
+        results: List of evaluation result dicts (only successful ones)
+        force: Whether to force submission (for replicates)
+
+    Returns:
+        List of result IDs from BO-MCP
+    """
+    if not results:
+        return []
+
+    # Build BO-MCP result submission payload
+    bo_results = []
+    for r in results:
+        if r["status"] != "success" or r["yield"] is None:
+            continue
+        candidate = r["candidate"]
+        if not validate_candidate(candidate):
+            log_alert(f"Skipping invalid candidate for submission: {candidate}")
+            continue
+
+        bo_results.append({
+            "parameter_values": candidate,
+            "objective_values": {"yield": r["yield"]},
+            "metadata": {
+                "notes": f"oracle_api; elapsed_s={r.get('elapsed_s', 0.0):.3f}",
+            },
+        })
+
+    if not bo_results:
+        return []
+
+    idempotency_key = make_idempotency_key("submit", campaign_id, str(len(bo_results)))
+    try:
+        response = client.submit_results(
+            campaign_id,
+            results=bo_results,
+            idempotency_key=idempotency_key,
+            force=force,
+        )
+        result_ids = response.get("result_ids", [])
+        log_event(f"Submitted {len(result_ids)} results to BO-MCP")
+        return result_ids
+    except BoMcpOperationError as e:
+        if "duplicate" in str(e.payload).lower() and not force:
+            log_alert(f"Duplicate result rejected; consider force=True for replicates: {e}")
+        raise
+    except BoMcpClientError as e:
+        log_alert(f"Failed to submit results: {e}")
+        raise
+
+
+def run_optimization_loop(
+    client: BoMcpClient,
+    campaign_id: str,
+    state: CampaignState,
+    *,
+    max_evaluations: int = MAX_EVALUATIONS,
+    poll_s: int = DEFAULT_POLL_S,
+    heartbeat_s: int = DEFAULT_HEARTBEAT_S,
+    stop_file: Path,
+) -> None:
+    """
+    Run the BO optimization loop until budget exhausted or stop condition.
+
+    The loop follows BO-MCP server authority via next_action().
+    """
+    log_event(f"Starting optimization loop for campaign {campaign_id}")
+    log_event(f"Budget: {max_evaluations} evaluations, Poll: {poll_s}s, Heartbeat: {heartbeat_s}s")
+
+    while True:
+        # Check stop file at loop start (before generating suggestions)
+        if check_stop_file(stop_file):
+            log_event("Stop file detected; pausing campaign")
+            client.lifecycle(campaign_id, action="pause")
+            break
+
+        # Check local budget at top of loop (applies regardless of server action)
+        if len(state.evaluated) >= max_evaluations:
+            log_event(f"Local evaluation budget exhausted ({max_evaluations})")
+            log_alert("Budget reached; pausing campaign")
+            client.lifecycle(campaign_id, action="pause")
+            break
+
+        # Check heartbeat
+        now = time.time()
+        if now - state.last_heartbeat >= heartbeat_s:
+            log_heartbeat(f"Campaign {campaign_id} alive; evaluated={len(state.evaluated)}/{max_evaluations}")
+            state.last_heartbeat = now
+
+        # Ask server for next action
+        try:
+            decision = client.next_action(campaign_id)
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            log_alert(f"Failed to get next action: {e}")
+            time.sleep(poll_s)
+            continue
+
+        action = decision.get("action")
+        reason = decision.get("reason", "")
+        status = decision.get("status", "unknown")
+        n_results = decision.get("n_results", 0)
+        iteration = decision.get("iteration", 0)
+
+        log_event(f"Server decision: action={action}, reason={reason}, status={status}, iter={iteration}, results={n_results}")
+
+        # Auto-resume if campaign is paused
+        if status == "paused" and action == "review_campaign_status":
+            log_event("Campaign is paused; resuming automatically")
+            client.lifecycle(campaign_id, action="resume")
+            time.sleep(2.0)  # Give server time to process resume
+            continue
+
+        # Check if server recommends stop
+        if action != "bo_generate_suggestions":
+            log_event(f"Server recommends stop: {action} ({reason})")
+            if action in ("pause", "terminate", "completed", "budget_exceeded"):
+                break
+            # For other actions (e.g., bo_submit_results), wait and retry
+            time.sleep(poll_s)
+            continue
+
+        # Generate suggestions (batch_size=1 per iteration)
+        try:
+            gen_response = client.generate_suggestions(campaign_id, batch_size=1)
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            log_alert(f"Failed to generate suggestions: {e}")
+            time.sleep(poll_s)
+            continue
+
+        suggestions = gen_response.get("suggestions", [])
+        if not suggestions:
+            log_alert("No suggestions generated; waiting")
+            time.sleep(poll_s)
+            continue
+
+        suggestion = suggestions[0]
+        suggestion_id = suggestion["suggestion_id"]
+        param_values = suggestion["parameter_values"]
+
+        log_event(f"Received suggestion {suggestion_id}: {param_values}")
+
+        # Validate suggestion
+        if not validate_candidate(param_values):
+            log_alert(f"Invalid suggestion from BO: {param_values}")
+            client.update_suggestion_status(suggestion_id, "rejected")
+            continue
+
+        # Evaluate candidate via oracle
+        log_event(f"Evaluating candidate via oracle API...")
+        eval_results = evaluate_batch([param_values])
+        eval_result = eval_results[0]
+        state.evaluated.append(eval_result)
+
+        # Log result
+        if eval_result["status"] == "success":
+            log_result(f"Yield: {eval_result['yield']:.2f}% | {param_values}")
+        else:
+            log_alert(f"Evaluation failed: {eval_result['error']} | {param_values}")
+
+        # Submit successful results to BO-MCP
+        if eval_result["status"] == "success":
+            try:
+                submit_results(client, campaign_id, [eval_result])
+                state.submitted_suggestion_ids.add(suggestion_id)
+            except (BoMcpClientError, BoMcpOperationError) as e:
+                log_alert(f"Result submission failed: {e}")
+                # Don't mark suggestion as rejected; let server handle it
+        else:
+            # Mark failed suggestion as rejected so BO doesn't retry same point
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+                log_event(f"Marked suggestion {suggestion_id} as rejected")
+            except (BoMcpClientError, BoMcpOperationError) as e:
+                log_alert(f"Failed to update suggestion status: {e}")
+
+        # Brief pause to avoid hammering the oracle
+        time.sleep(1.0)
+
+
+def create_or_resume_campaign(
+    client: BoMcpClient,
+    campaign_id: str | None = None,
+) -> str:
+    """Create a new campaign or return existing campaign ID."""
+    if campaign_id:
+        # Verify campaign exists and has our marker
+        try:
+            campaign = client.get_campaign(campaign_id)
+            if MARKER not in campaign.get("name", ""):
+                log_alert(f"Campaign {campaign_id} does not have required marker {MARKER}")
+            log_event(f"Resuming existing campaign: {campaign_id}")
+            return campaign_id
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            log_alert(f"Failed to get campaign {campaign_id}: {e}")
+            raise
+
+    # Create new campaign
+    intake = build_intake()
+    validate_intake(intake)
+
+    idempotency_key = make_idempotency_key("create", MARKER, NONCE)
+    try:
+        response = client.create_campaign(intake, idempotency_key=idempotency_key)
+        new_campaign_id = response.get("campaign_id")
+        if not new_campaign_id:
+            raise BoMcpOperationError("No campaign_id in response", response)
+        log_event(f"Created new campaign: {new_campaign_id}")
+        return new_campaign_id
+    except BoMcpOperationError as e:
+        if e.payload.get("idempotency_replay"):
+            # Campaign already exists, find it
+            log_event("Campaign creation replayed; querying for existing campaign")
+            # We'd need to query campaigns to find it, but for simplicity error out
+            raise BoMcpClientError("Idempotency replay but no campaign_id returned")
+        raise
+
+
+def run_campaign(
+    campaign_id: str | None = None,
+    *,
+    max_evaluations: int = MAX_EVALUATIONS,
+    poll_s: int = DEFAULT_POLL_S,
+    heartbeat_s: int = DEFAULT_HEARTBEAT_S,
+    stop_file: str = DEFAULT_STOP_FILE,
+) -> tuple[str, list[dict[str, Any]]]:
+    """
+    Run the direct arylation BO campaign.
+
+--- intake.py ---
+"""Campaign intake construction for direct arylation BO-MCP campaign."""
+
+from __future__ import annotations
+
+from direct_arylation_campaign.search_space import get_objective_definition, get_parameter_definitions
+
+
+MARKER = "akg-eval-0c360b08e6684de0b0ed04f50bde3b2c"
+NONCE = "16e7e684-7bf5-4a9b-af93-fae14403be06"
+
+
+def build_intake() -> dict:
+    """Build the campaign intake payload for BO-MCP."""
+    return {
+        "name": f"direct_arylation_yield_opt_{MARKER}_{NONCE}",
+        "description": (
+            "Bayesian optimization of direct arylation reaction yield over "
+            "a fixed fully crossed search space of 1,728 measured reactions. "
+            "Budget: 60 oracle evaluations. Marker: {MARKER}. Nonce: {NONCE}."
+        ),
+        "parameters": get_parameter_definitions(),
+        "objectives": [get_objective_definition()],
+        "backend": "auto",
+        "acquisition_method": "auto",
+        "batch_size": 1,
+        "initial_design_size": 10,  # Sobol/LHS warmup before model-driven BO
+        "max_observations": 60,  # Hard budget cap on total evaluations
+        "random_seed": 42,  # Reproducible initial design
+    }
+
+
+def validate_intake(intake: dict) -> None:
+    """Validate intake structure has required fields."""
+    required = {"name", "parameters", "objectives"}
+    missing = required - set(intake.keys())
+    if missing:
+        raise ValueError(f"Intake missing required fields: {missing}")
+    if not intake["parameters"]:
+        raise ValueError("Intake must have at least one parameter")
+    if not intake["objectives"]:
+        raise ValueError("Intake must have at least one objective")
+    obj = intake["objectives"][0]
+    if obj.get("name") != "yield":
+        raise ValueError("Objective name must be 'yield'")
+    if obj.get("target_mode") != "maximize":
+        raise ValueError("Objective direction must be maximize")--- evaluator.py ---
+"""Oracle evaluation for direct arylation reaction yield."""
+
+from __future__ import annotations
+
+import os
+import time
+import uuid
+from typing import Any
+
+import requests
+
+from direct_arylation_campaign.search_space import candidate_to_oracle_payload, validate_candidate
+
+
+class EvaluationError(Exception):
+    """Raised when oracle evaluation fails."""
+
+    def __init__(self, message: str, status_code: int | None = None, response: dict | None = None):
+        super().__init__(message)
+        self.status_code = status_code
+        self.response = response
+
+
+def get_oracle_url() -> str:
+    """Get the oracle API URL from environment."""
+    url = os.getenv("DIRECT_ARYLATION_API_URL")
+    if not url:
+        raise EvaluationError("DIRECT_ARYLATION_API_URL environment variable not set")
+    return url.rstrip("/") + "/v1/evaluate"
+
+
+def evaluate_candidate(candidate: dict[str, Any], timeout_s: float = 30.0) -> float:
+    """
+    Evaluate a single candidate via the oracle API.
+
+    Args:
+        candidate: Dict with base, ligand, solvent, concentration, temperature_c
+        timeout_s: Request timeout in seconds
+
+    Returns:
+        Yield value as float (percent)
+
+    Raises:
+        EvaluationError: If evaluation fails (non-2xx, invalid response, etc.)
+    """
+    if not validate_candidate(candidate):
+        raise EvaluationError(f"Invalid candidate parameters: {candidate}")
+
+    payload = candidate_to_oracle_payload(candidate)
+    url = get_oracle_url()
+
+    # Generate idempotency key for this evaluation attempt
+    idempotency_key = f"eval-{uuid.uuid4().hex[:12]}"
+    headers = {
+        "Content-Type": "application/json",
+        "Idempotency-Key": idempotency_key,
+    }
+
+    start = time.perf_counter()
+    try:
+        response = requests.post(url, json=payload, headers=headers, timeout=timeout_s)
+        elapsed = time.perf_counter() - start
+    except requests.Timeout:
+        raise EvaluationError(f"Oracle request timed out after {timeout_s}s")
+    except requests.RequestException as e:
+        raise EvaluationError(f"Oracle request failed: {e}")
+
+    if response.status_code >= 400:
+        raise EvaluationError(
+            f"Oracle returned {response.status_code}: {response.text[:500]}",
+            status_code=response.status_code,
+        )
+
+    try:
+        data = response.json()
+    except ValueError:
+        raise EvaluationError(f"Oracle returned non-JSON: {response.text[:500]}")
+
+    if "yield" not in data:
+        raise EvaluationError(f"Oracle response missing 'yield' field: {data}")
+
+    yield_val = data["yield"]
+    if not isinstance(yield_val, (int, float)):
+        raise EvaluationError(f"Oracle yield is not numeric: {yield_val}")
+
+    return float(yield_val)
+
+
+def evaluate_batch(
+    candidates: list[dict[str, Any]], timeout_s: float = 30.0
+) -> list[dict[str, Any]]:
+    """
+    Evaluate a batch of candidates sequentially.
+
+    Returns list of result dicts with:
+    - candidate: the input candidate
+    - yield: the yield value (float) or None if failed
+    - status: "success" or "failed"
+    - error: error message if failed
+    - elapsed_s: evaluation time
+    """
+    results = []
+    for candidate in candidates:
+        start = time.perf_counter()
+        try:
+            yield_val = evaluate_candidate(candidate, timeout_s=timeout_s)
+            elapsed = time.perf_counter() - start
+            results.append({
+                "candidate": candidate,
+                "yield": yield_val,
+                "status": "success",
+                "error": None,
+                "elapsed_s": elapsed,
+            })
+        except EvaluationError as e:
+            elapsed = time.perf_counter() - start
+            results.append({
+                "candidate": candidate,
+                "yield": None,
+                "status": "failed",
+                "error": str(e),
+                "elapsed_s": elapsed,
+            })
+    return results--- reporter.py ---
+"""Result extraction and reporting for direct arylation BO-MCP campaign."""
+
+from __future__ import annotations
+
+from typing import Any
+
+
+def format_candidate(candidate: dict[str, Any]) -> str:
+    """Format a candidate dict as a readable string."""
+    return (
+        f"base={candidate['base']}, "
+        f"ligand={candidate['ligand']}, "
+        f"solvent={candidate['solvent']}, "
+        f"conc={candidate['concentration']}M, "
+        f"temp={candidate['temperature_c']}°C"
+    )
+
+
+def extract_results_from_bo_mcp(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """
+    Extract standardized result records from BO-MCP result rows.
+
+    Returns list of dicts with:
+    - candidate: parameter dict
+    - yield: objective value (float) or None
+    - status: "success" or "failed" (all BO-MCP results are successes by definition)
+    - result_id: BO-MCP result ID
+    - suggestion_id: BO-MCP suggestion ID if available
+    """
+    extracted = []
+    for row in results:
+        param_vals = row.get("parameter_values", {})
+        obj_vals = row.get("objective_values", {})
+        yield_val = obj_vals.get("yield")
+
+        # BO-MCP only stores successful submissions; failed evaluations
+        # are tracked separately in the campaign script's local state
+        extracted.append({
+            "candidate": param_vals,
+            "yield": float(yield_val) if yield_val is not None else None,
+            "status": "success" if yield_val is not None else "failed",
+            "result_id": row.get("result_id"),
+            "suggestion_id": row.get("suggestion_id"),
+        })
+    return extracted
+
+
+def compute_summary(evaluated: list[dict[str, Any]]) -> dict[str, Any]:
+    """
+    Compute campaign summary statistics from all evaluated candidates.
+
+    Args:
+        evaluated: List of evaluation result dicts from evaluator.evaluate_batch
+                   (includes both success and failed entries)
+
+    Returns:
+        Summary dict with best conditions, counts, etc.
+    """
+    successful = [r for r in evaluated if r["status"] == "success" and r["yield"] is not None]
+    failed = [r for r in evaluated if r["status"] == "failed"]
+
+    summary = {
+        "total_attempted": len(evaluated),
+        "successful_count": len(successful),
+        "failed_count": len(failed),
+        "best_yield": None,
+        "best_candidate": None,
+        "worst_yield": None,
+        "worst_candidate": None,
+        "mean_yield": None,
+    }
+
+    if successful:
+        yields = [r["yield"] for r in successful]
+        best_idx = yields.index(max(yields))
+        worst_idx = yields.index(min(yields))
+        summary.update({
+            "best_yield": max(yields),
+            "best_candidate": successful[best_idx]["candidate"],
+            "worst_yield": min(yields),
+            "worst_candidate": successful[worst_idx]["candidate"],
+            "mean_yield": sum(yields) / len(yields),
+        })
+
+    return summary
+
+
+def print_campaign_report(
+    campaign_id: str,
+    evaluated: list[dict[str, Any]],
+    summary: dict[str, Any] | None = None,
+) -> None:
+    """Print a formatted campaign report to stdout."""
+    if summary is None:
+        summary = compute_summary(evaluated)
+
+    print("\n" + "=" * 70)
+    print(f"CAMPAIGN REPORT: {campaign_id}")
+    print("=" * 70)
+    print(f"Total attempted evaluations: {summary['total_attempted']}")
+    print(f"Successful:                  {summary['successful_count']}")
+    print(f"Failed:                      {summary['failed_count']}")
+
+    if summary["best_yield"] is not None:
+        print(f"\nBest yield: {summary['best_yield']:.2f}%")
+        print(f"  Conditions: {format_candidate(summary['best_candidate'])}")
+        print(f"Worst yield: {summary['worst_yield']:.2f}%")
+        print(f"  Conditions: {format_candidate(summary['worst_candidate'])}")
+        print(f"Mean yield: {summary['mean_yield']:.2f}%")
+
+    print("\nAll evaluated candidates:")
+    print("-" * 70)
+    for i, r in enumerate(evaluated, 1):
+        status_marker = "✓" if r["status"] == "success" else "✗"
+        yield_str = f"{r['yield']:.2f}%" if r["yield"] is not None else "FAILED"
+        error_str = f" ({r['error']})" if r["error"] else ""
+        print(f"  {i:3d}. {status_marker} {yield_str:>8} | {format_candidate(r['candidate'])}{error_str}")
+
+    print("=" * 70)
+
+
+def print_final_summary_line(campaign_id: str, summary: dict[str, Any]) -> None:
+    """Print the required final summary line with campaign ID."""
+    print(f"BO_MCP_CAMPAIGN_ID={campaign_id}")--- search_space.py ---
+"""Search space definition for direct arylation reaction optimization."""
+
+from typing import Any
+
+# Categorical parameter options (must match oracle API exactly)
+BASES = [
+    "Potassium acetate",
+    "Potassium pivalate",
+    "Cesium acetate",
+    "Cesium pivalate",
+]
+
+LIGANDS = [
+    "BrettPhos",
+    "Di-tert-butylphenylphosphine",
+    "(t-Bu)PhCPhos",
+    "Tricyclohexylphosphine",
+    "PPh3",
+    "XPhos",
+    "P(2-furyl)3",
+    "Methyldiphenylphosphine",
+    "1268824-69-6",
+    "JackiePhos",
+    "SCHEMBL15068049",
+    "Me2PPh",
+]
+
+SOLVENTS = [
+    "DMAc",
+    "Butyornitrile",  # Spelling must be preserved exactly
+    "Butyl Ester",
+    "p-Xylene",
+]
+
+# Numeric values for oracle API (exact types)
+CONCENTRATIONS_NUMERIC = [0.057, 0.1, 0.153]
+TEMPERATURES_C_NUMERIC = [90, 105, 120]
+
+# String versions for BO-MCP categorical parameters
+CONCENTRATIONS_STR = ["0.057", "0.1", "0.153"]
+TEMPERATURES_C_STR = ["90", "105", "120"]
+
+# Total search space size: 4 * 12 * 4 * 3 * 3 = 1,728
+
+
+def get_parameter_definitions() -> list[dict[str, Any]]:
+    """Return BO-MCP parameter definitions for the campaign intake."""
+    return [
+        {
+            "name": "base",
+            "type": "categorical",
+            "categories": BASES,
+            "description": "Base reagent for the reaction",
+        },
+        {
+            "name": "ligand",
+            "type": "categorical",
+            "categories": LIGANDS,
+            "description": "Ligand for the palladium catalyst",
+        },
+        {
+            "name": "solvent",
+            "type": "categorical",
+            "categories": SOLVENTS,
+            "description": "Reaction solvent (note: Butyornitrile spelling is exact)",
+        },
+        {
+            "name": "concentration",
+            "type": "categorical",
+            "categories": CONCENTRATIONS_STR,
+            "description": "Substrate concentration in M",
+        },
+        {
+            "name": "temperature_c",
+            "type": "categorical",
+            "categories": TEMPERATURES_C_STR,
+            "description": "Reaction temperature in Celsius",
+        },
+    ]
+
+
+def get_objective_definition() -> dict[str, Any]:
+    """Return BO-MCP objective definition for yield maximization."""
+    return {
+        "name": "yield",
+        "target_mode": "maximize",
+        "unit": "percent",
+    }
+
+
+def validate_candidate(candidate: dict[str, Any]) -> bool:
+    """Validate that a candidate has all required parameters with valid values.
+    
+    Accepts both string (from BO-MCP) and numeric (for oracle) formats for
+    concentration and temperature_c.
+    """
+    required = {"base", "ligand", "solvent", "concentration", "temperature_c"}
+    if not required.issubset(candidate.keys()):
+        return False
+    
+    # Check base, ligand, solvent (always strings)
+    if candidate["base"] not in BASES:
+        return False
+    if candidate["ligand"] not in LIGANDS:
+        return False
+    if candidate["solvent"] not in SOLVENTS:
+        return False
+    
+    # Check concentration (accept string or numeric)
+    conc = candidate["concentration"]
+    if isinstance(conc, str):
+        if conc not in CONCENTRATIONS_STR:
+            return False
+    elif isinstance(conc, (int, float)):
+        if conc not in CONCENTRATIONS_NUMERIC:
+            return False
+    else:
+        return False
+    
+    # Check temperature_c (accept string or numeric)
+    temp = candidate["temperature_c"]
+    if isinstance(temp, str):
+        if temp not in TEMPERATURES_C_STR:
+            return False
+    elif isinstance(temp, (int, float)):
+        if temp not in TEMPERATURES_C_NUMERIC:
+            return False
+    else:
+        return False
+    
+    return True
+
+
+def candidate_to_oracle_payload(candidate: dict[str, Any]) -> dict[str, Any]:
+    """Convert candidate dict to oracle API payload format.
+    
+    Converts string categorical values to proper numeric types for the oracle API.
+    """
+    # Convert concentration to float
+    conc = candidate["concentration"]
+    if isinstance(conc, str):
+        conc = float(conc)
+    
+    # Convert temperature_c to int
+    temp = candidate["temperature_c"]
+    if isinstance(temp, str):
+        temp = int(temp)
+    
+    return {
+        "base": candidate["base"],
+        "ligand": candidate["ligand"],
+        "solvent": candidate["solvent"],
+        "concentration": conc,
+        "temperature_c": temp,
+    }
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

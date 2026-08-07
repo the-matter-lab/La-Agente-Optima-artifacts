@@ -1,0 +1,19 @@
+exit_code=0
+
+=== stdout (raw) ===
+(self, suggestion_id: 'str', status: 'str') -> 'dict[str, Any]'
+    def update_suggestion_status(
+        self, suggestion_id: str, status: str
+    ) -> dict[str, Any]:
+        return self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{suggestion_id}/status",
+            json={"status": status},
+        )
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

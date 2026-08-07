@@ -1,0 +1,133 @@
+{
+  "cases": [
+    {
+      "architecture_prompt_addenda": [
+        [
+          "main_agent_tool_passing_bo_mcp",
+          "Direct-tool execution note: call `evaluate_direct_arylation_yield` once for each candidate selected by the fresh BO-MCP campaign. Submit the returned `yield` unchanged as the campaign objective. The tool accepts exactly the five fixed benchmark parameters and does not expose the result table."
+        ]
+      ],
+      "architecture_toolset_ids": [
+        [
+          "main_agent_tool_passing_bo_mcp",
+          [
+            "direct-arylation-oracle"
+          ]
+        ]
+      ],
+      "benchmark_prompt_addendum": "",
+      "evaluation_budget": 60,
+      "expected_backend": "baybe",
+      "id": "direct_arylation",
+      "name": "Direct arylation reaction-yield optimization",
+      "objective_direction": "maximize",
+      "objective_name": "yield",
+      "objective_reference_point": null,
+      "objective_unit": "percent",
+      "objective_verifier": "direct_arylation",
+      "objectives": [],
+      "prompt": "# Direct arylation reaction-yield optimization\n\nOptimize the measured yield of a direct arylation reaction over the fixed, fully crossed search space below.\nThis is a controlled table-lookup benchmark over 1,728 measured reactions.\n\nThe process is a palladium-catalyzed direct C\u2013H arylation of an imidazole with an aryl bromide, forming a new carbon\u2013carbon bond without prefunctionalizing the reacting carbon of the imidazole. A phosphine-ligated palladium catalyst and carboxylate base enable the coupling, whose efficiency is strongly influenced by the ligand, base, solvent, concentration, and temperature.\n\n## Search space\n\nUse the following five parameters with these lowercase names and values.\nConcentration and temperature are discrete numeric parameters.\n\n- `base`: `Potassium acetate`, `Potassium pivalate`, `Cesium acetate`,\n  `Cesium pivalate`\n- `ligand`: `BrettPhos`, `Di-tert-butylphenylphosphine`, `(t-Bu)PhCPhos`,\n  `Tricyclohexylphosphine`, `PPh3`, `XPhos`, `P(2-furyl)3`,\n  `Methyldiphenylphosphine`, `1268824-69-6`, `JackiePhos`,\n  `SCHEMBL15068049`, `Me2PPh`\n- `solvent`: `DMAc`, `Butyornitrile`, `Butyl Ester`, `p-Xylene`\n- `concentration`: `0.057`, `0.1`, `0.153`\n- `temperature_c`: `90`, `105`, `120`\n\nThe spelling `Butyornitrile` is intentional and must be preserved.\n\n## Objective evaluator\n\nMaximize the single objective `yield`, measured in percent.\nA separate oracle service returns the measured value for one exact candidate.\nFor script-based architectures, read its base URL only from `DIRECT_ARYLATION_API_URL` and call for example:\n\n```text\nPOST ${DIRECT_ARYLATION_API_URL}/v1/evaluate\nContent-Type: application/json\n\n{\n  \"base\": \"Potassium acetate\",\n  \"ligand\": \"(t-Bu)PhCPhos\",\n  \"solvent\": \"DMAc\",\n  \"concentration\": 0.1,\n  \"temperature_c\": 105\n}\n```\n\nThe response has exactly the measured objective value, for example\n`{\"yield\": 78.95}`.\nA non-2xx response is a failed attempted evaluation.\n\nDo not access, or search for, or reconstruct the source CSV or any other complete result table.\nDo not use internet access, repository search, prior campaign results, or undocumented service endpoints to discover yields.\nDo not enumerate the full search space and sort by yield.\nQuery the oracle only for candidates selected by the optimization workflow during this invocation.\n\n## Campaign planning\n\nDesign the optimization campaign yourself.\nChoose the campaign design, including the parameter representation or encoding, initialization strategy, batch schedule, acquisition strategy, and any supported backend, using the available optimization capabilities.\nDo not assume or copy campaign settings from the source benchmark implementation.\n\nUse exactly the attempted objective-evaluation budget stated in the benchmark result contract appended below.\nEvery oracle request consumes one attempt.\n\n## Output requirements\n\nAt the end, report the best reaction conditions, best measured yield, and the numbers of successful and attempted evaluations. Also report all evaluated candidates and their statuses/objective values.\n\nIn case of the no-BO-MCP architecture, every submitted or locally recorded successful result must use a `parameter_values` object containing the exact five lowercase parameter names and an `objective_values` object containing `{\"yield\": <measured value>}`; and save the required local JSON artifact with one record per attempt and the standardized `parameter_values` and `objective_values` objects described above.\n\nFinal answer requirement:\n- Include exactly one line in this format:\n\nBO_MCP_CAMPAIGN_ID=<campaign_id>\n\n\nFor this evaluation, use the BayBE backend.",
+      "required_environment_variables": [
+        "DIRECT_ARYLATION_API_URL"
+      ]
+    }
+  ],
+  "config": {
+    "agent_timeout_s": 3600.0,
+    "architecture_mode": "standard_subagent_script_bo_mcp",
+    "bo_api_url": "http://api:8000",
+    "bo_mcp_repo_path": "PosixPath('/bo-mcp-source')",
+    "cli_argv": [
+      "--case",
+      "direct_arylation",
+      "--output-dir",
+      "/app/outputs/cells/direct_arylation_standard_gpt56_fixed_r03/eval",
+      "--architecture-mode",
+      "standard_subagent_script_bo_mcp",
+      "--bo-api-url",
+      "http://api:8000",
+      "--bo-mcp-repo-path",
+      "/bo-mcp-source",
+      "--tool-registry-config",
+      "tool_registry.gpu4pyscf.toml",
+      "--request-limit",
+      "80",
+      "--agent-timeout-seconds",
+      "3600",
+      "--model",
+      "openai-responses:gpt-5.4",
+      "--repeats",
+      "1",
+      "--repeat-cache-buster",
+      "uuid",
+      "--run-id",
+      "direct_arylation_standard_gpt56_fixed_r03-20260803",
+      "--subagent-model",
+      "openai-responses:gpt-5.6-sol"
+    ],
+    "dry_run": false,
+    "env_file": null,
+    "max_concurrency": 1,
+    "model_id": "openai-responses:gpt-5.4",
+    "output_dir": "PosixPath('/app/outputs/cells/direct_arylation_standard_gpt56_fixed_r03/eval')",
+    "prompt_cache_buster_nonce": "46a801bd-6a04-4619-85af-c43ea27b8591",
+    "prompt_cache_buster_policy": "uuid",
+    "repeat_count": 1,
+    "repeat_id": "repeat_001",
+    "repeat_index": 1,
+    "request_limit": 80,
+    "run_id": "direct_arylation_standard_gpt56_fixed_r03-20260803",
+    "selector": "direct_arylation",
+    "subagent_model_id": "openai-responses:gpt-5.6-sol",
+    "tool_registry_config": "tool_registry.gpu4pyscf.toml"
+  },
+  "report": {
+    "analyses": [],
+    "cases": [],
+    "experiment_metadata": {
+      "architecture_mode": "standard_subagent_script_bo_mcp",
+      "bo_api_url": "http://api:8000",
+      "case_ids": [
+        "direct_arylation"
+      ],
+      "dry_run": false,
+      "model_id": "openai-responses:gpt-5.4",
+      "repeat_id": "repeat_001",
+      "request_limit": 80,
+      "run_id": "direct_arylation_standard_gpt56_fixed_r03-20260803",
+      "subagent_model_id": "openai-responses:gpt-5.6-sol",
+      "tool_registry_config": "tool_registry.gpu4pyscf.toml"
+    },
+    "failures": [
+      {
+        "error_message": "EvaluationError: ReadTimeout: HTTPConnectionPool(host='api', port=8000): Read timed out. (read timeout=120.0)",
+        "error_stacktrace": "Traceback (most recent call last):\n  File \"/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 534, in _make_request\n    response = conn.getresponse()\n               ^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/urllib3/connection.py\", line 571, in getresponse\n    httplib_response = super().getresponse()\n                       ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/http/client.py\", line 1450, in getresponse\n    response.begin()\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/http/client.py\", line 336, in begin\n    version, status, reason = self._read_status()\n                              ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/http/client.py\", line 297, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/socket.py\", line 720, in readinto\n    return self._sock.recv_into(b)\n           ^^^^^^^^^^^^^^^^^^^^^^^\nTimeoutError: timed out\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/opt/venv/lib/python3.12/site-packages/requests/adapters.py\", line 644, in send\n    resp = conn.urlopen(\n           ^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 841, in urlopen\n    retries = retries.increment(\n              ^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/urllib3/util/retry.py\", line 490, in increment\n    raise reraise(type(error), error, _stacktrace)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/urllib3/util/util.py\", line 39, in reraise\n    raise value\n  File \"/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 787, in urlopen\n    response = self._make_request(\n               ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 536, in _make_request\n    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\n  File \"/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 367, in _raise_timeout\n    raise ReadTimeoutError(\nurllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='api', port=8000): Read timed out. (read timeout=120.0)\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/app/evals/bo_mcp/runner.py\", line 508, in run_eval_case\n    metrics_result = evaluate_final_answer(\n                     ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/evals/bo_mcp/evaluator.py\", line 628, in evaluate_final_answer\n    diagnostics_payload = client.get_diagnostics(campaign_id)\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/evals/bo_mcp/bo_client.py\", line 83, in get_diagnostics\n    return self.get_json(f\"/api/v1/diagnostics/{campaign_id}\")\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/evals/bo_mcp/bo_client.py\", line 59, in get_json\n    response = requests.get(url, headers=headers, timeout=self.timeout_s)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/requests/api.py\", line 73, in get\n    return request(\"get\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/requests/api.py\", line 59, in request\n    return session.request(method=method, url=url, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/requests/sessions.py\", line 589, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/requests/sessions.py\", line 703, in send\n    r = adapter.send(request, **kwargs)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/requests/adapters.py\", line 690, in send\n    raise ReadTimeout(e, request=request)\nrequests.exceptions.ReadTimeout: HTTPConnectionPool(host='api', port=8000): Read timed out. (read timeout=120.0)\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_evals/dataset.py\", line 1140, in _run_task_and_evaluators\n    scoring_context = await _run_task(task, case, retry_task)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_evals/dataset.py\", line 993, in _run_task\n    task_run, task_output, duration, span_tree = await _run_once()\n                                                 ^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_evals/dataset.py\", line 978, in _run_once\n    task_output_ = cast(OutputT, await task(case.inputs))\n                                 ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/evals/bo_mcp/suite.py\", line 556, in _run_case\n    output = await run_eval_case(\n             ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/evals/bo_mcp/runner.py\", line 569, in run_eval_case\n    raise EvaluationError(exception_summary) from exc\nevals.bo_mcp.evaluator.EvaluationError: ReadTimeout: HTTPConnectionPool(host='api', port=8000): Read timed out. (read timeout=120.0)\n",
+        "expected_output": null,
+        "inputs": "Repeat cache-buster nonce: 46a801bd-6a04-4619-85af-c43ea27b8591\n\n# Direct arylation reaction-yield optimization\n\nOptimize the measured yield of a direct arylation reaction over the fixed, fully crossed search space below.\nThis is a controlled table-lookup benchmark over 1,728 measured reactions.\n\nThe process is a palladium-catalyzed direct C\u2013H arylation of an imidazole with an aryl bromide, forming a new carbon\u2013carbon bond without prefunctionalizing the reacting carbon of the imidazole. A phosphine-ligated palladium catalyst and carboxylate base enable the coupling, whose efficiency is strongly influenced by the ligand, base, solvent, concentration, and temperature.\n\n## Search space\n\nUse the following five parameters with these lowercase names and values.\nConcentration and temperature are discrete numeric parameters.\n\n- `base`: `Potassium acetate`, `Potassium pivalate`, `Cesium acetate`,\n  `Cesium pivalate`\n- `ligand`: `BrettPhos`, `Di-tert-butylphenylphosphine`, `(t-Bu)PhCPhos`,\n  `Tricyclohexylphosphine`, `PPh3`, `XPhos`, `P(2-furyl)3`,\n  `Methyldiphenylphosphine`, `1268824-69-6`, `JackiePhos`,\n  `SCHEMBL15068049`, `Me2PPh`\n- `solvent`: `DMAc`, `Butyornitrile`, `Butyl Ester`, `p-Xylene`\n- `concentration`: `0.057`, `0.1`, `0.153`\n- `temperature_c`: `90`, `105`, `120`\n\nThe spelling `Butyornitrile` is intentional and must be preserved.\n\n## Objective evaluator\n\nMaximize the single objective `yield`, measured in percent.\nA separate oracle service returns the measured value for one exact candidate.\nFor script-based architectures, read its base URL only from `DIRECT_ARYLATION_API_URL` and call for example:\n\n```text\nPOST ${DIRECT_ARYLATION_API_URL}/v1/evaluate\nContent-Type: application/json\n\n{\n  \"base\": \"Potassium acetate\",\n  \"ligand\": \"(t-Bu)PhCPhos\",\n  \"solvent\": \"DMAc\",\n  \"concentration\": 0.1,\n  \"temperature_c\": 105\n}\n```\n\nThe response has exactly the measured objective value, for example\n`{\"yield\": 78.95}`.\nA non-2xx response is a failed attempted evaluation.\n\nDo not access, or search for, or reconstruct the source CSV or any other complete result table.\nDo not use internet access, repository search, prior campaign results, or undocumented service endpoints to discover yields.\nDo not enumerate the full search space and sort by yield.\nQuery the oracle only for candidates selected by the optimization workflow during this invocation.\n\n## Campaign planning\n\nDesign the optimization campaign yourself.\nChoose the campaign design, including the parameter representation or encoding, initialization strategy, batch schedule, acquisition strategy, and any supported backend, using the available optimization capabilities.\nDo not assume or copy campaign settings from the source benchmark implementation.\n\nUse exactly the attempted objective-evaluation budget stated in the benchmark result contract appended below.\nEvery oracle request consumes one attempt.\n\n## Output requirements\n\nAt the end, report the best reaction conditions, best measured yield, and the numbers of successful and attempted evaluations. Also report all evaluated candidates and their statuses/objective values.\n\nIn case of the no-BO-MCP architecture, every submitted or locally recorded successful result must use a `parameter_values` object containing the exact five lowercase parameter names and an `objective_values` object containing `{\"yield\": <measured value>}`; and save the required local JSON artifact with one record per attempt and the standardized `parameter_values` and `objective_values` objects described above.\n\nFinal answer requirement:\n- Include exactly one line in this format:\n\nBO_MCP_CAMPAIGN_ID=<campaign_id>\n\n\nFor this evaluation, use the BayBE backend.\n\nBenchmark result contract:\n- Use exactly 60 attempted objective evaluations for this case.\n- Count objective evaluations as PySCF objective calculations submitted to BO-MCP\n  or written to the local result artifact.\n- Do not exceed the evaluation budget. If an evaluation fails, record the failed\n  candidate/status and continue only within the same budget.\n- Report all evaluated candidates and objective values/statuses.\n- Use objective_name=`yield` and objective_direction=`maximize`.\n- Report objective values in `percent`.\n\n\nArchitecture requirement: delegate BO campaign script authoring and repair\nto `bo-pyscf-specialist`, including for objectives that do not use PySCF. The\nmain agent executes and resumes the specialist-authored script. Do not use a\nlocal-results branch or implement BO locally in this architecture.\n",
+        "metadata": {
+          "architecture_mode": "standard_subagent_script_bo_mcp",
+          "case_id": "direct_arylation",
+          "objective_direction": "maximize",
+          "objective_name": "yield",
+          "objectives": [
+            {
+              "direction": "maximize",
+              "name": "yield",
+              "unit": "percent"
+            }
+          ],
+          "repeat_id": "repeat_001"
+        },
+        "name": "direct_arylation",
+        "source_case_name": null,
+        "span_id": "8d87c8e07cf574d0",
+        "trace_id": "019fdabf1803dcfe924ec277d9661dd0"
+      }
+    ],
+    "name": "bo_mcp_graph_eval",
+    "report_evaluator_failures": [],
+    "span_id": "1ba9b36203f14540",
+    "trace_id": "019fdabf1803dcfe924ec277d9661dd0"
+  },
+  "timestamp": "2026-08-07T05:55:32+00:00"
+}

@@ -1,0 +1,94 @@
+# Execute the owned Ackley 6D BayBE campaign
+
+## Ownership
+
+Every campaign created by this package is named with the required marker:
+
+`akg-eval-51c1c165161b4a2c8d9e46348cddaf5c`
+
+The runner refuses to resume a campaign whose name does not contain this marker. The created campaign ID is written to `artifacts/ackley_6d_baybe/campaign_id.txt` and printed as an `[EVENT]` line.
+
+## Inputs and fixed benchmark behavior
+
+- Six continuous parameters: `x_1` through `x_6`, each exactly bounded by `[0.0, 1.0]`.
+- BayBE backend.
+- Objective: maximize `surface_response`, unit `normalized_unitless`.
+- Deterministic Ackley evaluation with `z_i = -40 + 80*x_i`, the requested classic Ackley equation, `raw_response = -classic`, and only the requested normalization against `-22.350402387287602` and `0.0`.
+- Total campaign budget: exactly 60 attempted objective evaluations. Successful submissions plus evaluator failures rejected in BO-MCP are counted as attempts. Duplicate suggestions are expired without evaluation and therefore do not consume the attempt budget.
+- Default BO schedule: seed `26080551`, 11-point BayBE warmup, batch size 4, and UCB acquisition with beta 2.4.
+
+Optional CLI inputs:
+
+- `--campaign-id ID`: resume/reopen the existing owned campaign. Omit only for first creation.
+- `--artifact-dir PATH`: defaults to `artifacts/ackley_6d_baybe`.
+- `--batch-size N`: defaults to 4; the final request is truncated to the remaining budget.
+- `--invocation-attempt-limit N`: bounds only this process invocation. It does not alter the immutable campaign budget. Omit for normal execution to the total of 60.
+- `--poll-s N`: BO-MCP wait polling interval, default 180 seconds.
+- `--heartbeat-s N`: liveness interval, default 1800 seconds.
+- `--stop-file PATH`: defaults to `STOP` in the current working directory.
+
+## Environment requirements
+
+Required environment variables:
+
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+
+The active container environment must provide `/opt/venv`, repository imports under `/app`, BO-MCP access, `logfire`, and `grafico`. No chemistry, PySCF, CREST, MOF, RAISE, or local BO implementation is used.
+
+## Exact commands
+
+First creation and normal execution:
+
+```bash
+PYTHONPATH=/app PYTHONUNBUFFERED=1 /opt/venv/bin/python run_ackley_6d_baybe.py
+```
+
+Resume the same campaign after a pause, process interruption, or bounded smoke run:
+
+```bash
+CAMPAIGN_ID="$(tr -d '\n' < artifacts/ackley_6d_baybe/campaign_id.txt)"
+PYTHONPATH=/app PYTHONUNBUFFERED=1 /opt/venv/bin/python run_ackley_6d_baybe.py --campaign-id "$CAMPAIGN_ID"
+```
+
+The script asks BO-MCP `next_action` for loop control, reuses pending suggestions after interruption, and never uses artifact files to determine campaign progress. A paused campaign is resumed; a completed campaign is reopened only when continuation is needed. The campaign is paused, not terminated, at normal invocation shutdown when its server status is still running.
+
+## Stop and resume
+
+Create the stop marker from another shell:
+
+```bash
+touch STOP
+```
+
+At the top of the next loop iteration the runner prints an `[EVENT]`, deletes `STOP`, writes reports, submits any already-finished evaluation before shutdown, and pauses the campaign if it is running. Resume with the command above. The stop file is intentionally not checked between evaluation and result submission.
+
+## Output tags and logs
+
+Monitor stdout with these tags:
+
+- `[EVENT]`: campaign creation/resume/pause, suggestion generation, budget and artifact state changes.
+- `[ALERT]`: evaluator failures or BO-MCP stop conditions before the requested budget.
+- `[RESULT]`: complete per-evaluation row, including coordinates, normalized objective, raw response, status, and failure reason.
+- `[HEARTBEAT]`: periodic liveness and server-derived counts.
+
+Detailed non-UI logging lands at `artifacts/ackley_6d_baybe/run.log`.
+
+## Artifacts
+
+All artifacts land under `artifacts/ackley_6d_baybe/`:
+
+- `campaign_id.txt`: owned BO-MCP campaign ID.
+- `evaluations.jsonl`: append-only, one row per attempted objective evaluation with `evaluation_index`, `parameter_values`, `objective_values`, `status`, `failure_reason`, and `raw_response`.
+- `evaluations.csv`: table of all evaluated candidates and values.
+- `summary.json`: campaign ID, attempted/successful counts, best normalized coordinates, best raw response, best surface response, and artifact paths.
+- `run.log`: detailed execution log.
+
+Validate after completion:
+
+```bash
+PYTHONPATH=/app /opt/venv/bin/python -m json.tool artifacts/ackley_6d_baybe/summary.json
+wc -l artifacts/ackley_6d_baybe/evaluations.jsonl
+```
+
+A completed normal run must show 60 JSONL rows. Use `evaluations.csv` for the requested full table and `summary.json` for the best point and counts.

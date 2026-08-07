@@ -1,0 +1,492 @@
+exit_code=0
+
+=== stdout (raw) ===
+=== bo_mcp memory ===
+## BO / RAISE campaign script authoring
+
+- In workspace Python scripts executed with `uv run python`, `from domains.raise_platform.tools import run_raise_experiment` is an async coroutine function. Call it with `asyncio.run(run_raise_experiment(...))` from synchronous scripts rather than treating it like a normal dict-returning function.
+- When surfacing `run_raise_experiment` failures to CLI users, trim the exception string at `", Traceback:"` if present. The raw message can include an embedded traceback from the helper; trimming keeps stdout/stderr concise while preserving the actionable root cause.
+
+- For direct BO API result submission to `POST /api/v1/results/{campaign_id}`, the top-level `source` field must match the allowed pattern `gui|file_upload|api`. Use `"api"` for scripted submissions.
+- When authoring BO campaign scripts that use BO API idempotency keys, make the campaign-creation key unique per logical run (for example, include a run nonce) rather than deriving it only from the intake payload. Otherwise rerunning the same named/spec-identical script can replay an earlier campaign creation response instead of creating a fresh campaign.
+
+- In `uv run python` BO/RAISE scripts, `asyncio.run(run_raise_experiment(...))` can return a `RaiseExperimentResult` model object rather than a plain `dict`. Normalize it with `result.model_dump()` (or fall back to `result.input_parameters` / `result.static_contact_angle`) before subscripting.
+- RAISE can return a non-finite `static_contact_angle` for some candidates. For production BO loops, detect non-finite values before result submission and submit a finite penalty objective instead of propagating `NaN` into the BO API payload.
+
+- RAISE may echo back submitted inputs with zero-valued parameters omitted (for example, it can omit `SDS: 0.0`). When `run_raise_experiment(...)` fails only because the echoed-input check rejects that omission, a script-level fallback can safely normalize the raw payload by treating missing expected zero-valued parameters as equivalent to the submitted candidate, while still rejecting unexpected extra keys or non-zero mismatches.
+- For resumable BO loops, check BO for existing pending suggestions before generating a new suggestion. If a prior run paused after suggestion generation but before result submission, resuming against the pending suggestion avoids skipping or duplicating BO work.
+
+- BO suggestion generation can return HTTP 200 with `success=false` when a campaign has hit `max_iterations`, `max_observations`, or other stopping criteria. In BO/RAISE runner scripts, do not treat that as an unexpected exception; detect the exhaustion envelope, print a concise completion message, and terminate/close the campaign cleanly instead of pausing on exception.
+
+## BO/PySCF scripting caveats
+
+- When submitting BO-MCP REST results to `POST /api/v1/results/{campaign_id}`, the `source` field must match the allowed pattern `^(gui|file_upload|api)$`; for agent-authored scripts, use `"api"` rather than a custom script name.
+
+- When calling `run_pyscf_workflow` from a Python script via `uv run python`, the returned object is a `PySCFWorkflowResult` model (with fields such as `total_energy`, `workflow_summary`, and `pyscf_output.chkfile`), not a plain list; script code should read the energy from `result.total_energy`.
+
+- BO-MCP categorical parameters require at least 2 categories each at campaign intake. For smoke tests of categorical campaigns, keep every categorical parameter at cardinality >= 2 and reduce budget/iterations instead of collapsing a parameter to a single category.
+- When calling `run_pyscf_workflow` directly from Python, `result.analysis_results` may be a Pydantic model rather than a plain dict; use `model_dump()` before dict-style access like `.get(...)`.
+
+- When extracting dipole data from `run_pyscf_workflow` molecular analysis in a direct Python script, `analysis_results.model_dump()["dipole_moment"]` can be a NumPy ndarray; convert via `.tolist()` or iterate and cast to float before computing the magnitude.
+
+- In direct `uv run python` BO/PySCF scripts, `run_pyscf_workflow` is invoked synchronously (do **not** `await` it); it returns a `PySCFWorkflowResult` object directly.
+
+- BO-MCP REST intake accepts a BayBE substance categorical parameter with `parameter_options={"baybe": {"role": "substance", "substance_data": {label: smiles}}}`; `substance_encoding` is optional, so agent-authored scripts can keep the intake minimal unless a specific encoding is required.
+- For bounded BO smoke tests, it is practical to run the real script with `--max-iterations 1` and a cleanup flag (for example `--terminate-on-exit`) so create/generate/evaluate/submit/export are exercised end-to-end without leaving temporary campaign state behind.
+
+- BO-MCP `GET /api/v1/campaigns/{campaign_id}/export` may return a text/CSV payload rather than JSON; agent-authored REST scripts should inspect `Content-Type` and save the raw response body to an appropriate artifact file instead of assuming `response.json()` will work.
+
+- To seed a fresh BO-MCP campaign from prior completed experiments, agent-authored REST scripts can submit historical observations directly to `POST /api/v1/results/{campaign_id}` using only `parameter_values`, `objective_values`, and optional `metadata`; `suggestion_id` is not required for these seed rows.
+
+- BO-MCP REST campaign intake accepts lowercase neutral enums such as `{"type": "categorical"}` for input parameters and `{"direction": "maximize"}` for objectives; a minimal categorical intake with `backend="baybe"` validates cleanly via `POST /api/v1/campaigns/validate`.
+- A bounded end-to-end BO-MCP REST smoke test can use the sequence validate -> create campaign -> generate suggestions -> submit results -> export campaign (`format=csv`) -> lifecycle terminate; this exercises the real campaign loop while keeping server state tidy.
+
+- For bounded validation of a BO-MCP + PySCF campaign script, it is effective to separate concerns: run the script once with a tiny categorical search space and a synthetic evaluator to exercise BO-MCP create/generate/submit/export/terminate end-to-end, then run a separate minimal direct `run_pyscf_workflow` smoke test on a tiny molecule to validate PySCF result-shape handling without paying the cost of a full campaign evaluation.
+
+- For resume-safe BO-MCP REST scripts, handle suggestion-generation read timeouts by listing pending suggestions on the campaign before generating a new batch and by polling for newly visible pending suggestions after a timeout; this avoids duplicating suggestion batches when the server created suggestions but the client timed out before reading the response.
+
+- In direct workspace scripts that build MOFs through `domains.mofs.ontomofs` / PORMAKE inside this container.
+
+- For PORMAKE-native categorical BO over `topology + node + edge` where node suitability depends on topology, a practical script pattern is to build the BO node category as the union of topology-specific node shortlists, then apply a topology-conditioned validity check inside the evaluator and submit finite penalty objectives for invalid topology/node combinations instead of crashing the campaign.
+
+- For digital OSL campaign scripts that sanity-check `product_smiles.py` against `adk9227_data_s6.csv`, do not fail the run on a pure stereochemistry / canonical-SMILES representation mismatch when the generated product and backtest row have the same non-isomeric connectivity. Record the discrepancy in the backtest artifact and continue by default; reserve fail-fast behavior for hard connectivity mismatches (or an explicit strict-backtest mode).
+
+- In direct workspace scripts that construct MOFs via `domains.mofs.ontomofs.MOFBuilder`, prefer `build_by_type(topology, node_bbs=..., edge_bbs=...)` over the simpler `build(topology, [..])` helper. In this container, `build_by_type` works reliably with PORMAKE topology node/edge-type assignments (including single-node/single-edge topologies like `pcu`), whereas `build(...)` can fail with indexing/placement errors for the same building blocks.
+
+- In finite-library BO campaign scripts that use a fixed warm-start shortlist, smoke-test truncation (`--cap-limit`, `--bridge-limit`, `--core-limit`) can exclude the preferred warm-start tuples from the active categorical space. A robust pattern is to keep the preferred shortlist when available, but append deterministic in-library fallback warm starts (for example opposite corners of the active truncated library) so bounded end-to-end smoke tests still satisfy the required warm-start count without violating the campaign categories.
+
+- For finite PORMAKE MOF BO spaces where `topology + node_bb + edge_bb` contain topology-conditional validity, prefer a single categorical `candidate_id` that enumerates only valid combinations and decode it back to the structural fields during evaluation/reporting. This avoids wasting BO suggestions on invalid cross-combinations.
+
+- When authoring BO-MCP REST scripts that manually warm-start a campaign by seeding completed observations via `POST /api/v1/results/{campaign_id}`, those seeded rows do **not** satisfy the server's `initial_design_size` counter the same way server-generated initial-design suggestions do. On this server, campaign intake validation still requires `initial_design_size >= 1`, so use the smallest allowed value (`1`) and treat the curated seed rows as the practical warm start in script-level orchestration.
+- When authoring BO-MCP scripts that manually warm-start a campaign by seeding completed observations via `POST /api/v1/results/{campaign_id}`, those seeded rows do **not** satisfy the server's `initial_design_size` counter the same way server-generated initial-design suggestions do. On this server, `initial_design_size=0` is rejected at intake validation; for BayBE-backed warm-start workflows, omit `initial_design_size` instead (BayBE then switches after the first measurement by default) and treat the curated seed rows as the practical initial design in script-level orchestration.
+
+- For BO/PySCF campaign scripts, do not implement calculations by importing `pyscf` directly, even though direct PySCF invocation is technically possible in the environment. All PySCF execution must go through `run_pyscf_workflow` so the script uses the repository-owned workflow, GPU routing, logging, and failure boundaries.
+
+- In direct workspace MOF campaign scripts that use PORMAKE builders, `import pormake.log as pormake_log; pormake_log.disable_print()` is an effective way to suppress PORMAKE's verbose construction messages from cluttering stdout during smoke tests and BO loops.
+
+- In direct `uv run python` digital OSL / PySCF scripts, `run_pyscf_workflow(...).model_dump()` exposes excited-state data under `tddft_results` (for example `tddft_singlet_energies` and `tddft_singlet_oscillator_strength`), while `analysis_results` carries orbital energies / dipole descriptors. Do not look for a separate `excited_states` field when extracting bright-state objectives.
+
+- In direct BO/PySCF workspace scripts, `run_pyscf_workflow(...).model_dump()` can include ontology-backed `set` fields (for example `final_molecule.rdfs_label`, `final_molecule.rdfs_comment`, and similar fields on `pyscf_output`). Before writing artifacts with `json.dumps`, prefer `result.model_dump(mode="json")` and/or a recursive JSON normalizer that converts `set`/`frozenset` to lists.
+
+- For BO/PySCF digital campaign scripts where one candidate evaluation can stall inside CREST or a downstream workflow, a robust pattern is to run each candidate evaluation in an isolated worker subprocess with a parent-enforced wall-clock timeout, plus tool-specific timeouts where available (for example `subprocess.run(..., timeout=...)` for CREST). On timeout, kill the worker process group, record the candidate as failed, reject the BO suggestion, and continue the campaign.
+
+
+- For BO-MCP digital OSL follow-on scripts that expand to a new categorical subset but also need to reuse historical seed rows, first verify whether every seed parameter value is inside the new campaign categories. If some approved seeds fall outside the requested live subset, a practical pattern is to (a) keep a separate *requested live subset* for chemistry evaluation/policy, (b) minimally augment the BO campaign categories with the out-of-subset seed ids so BO-MCP can accept the historical rows, and (c) reject any later BO suggestions that fall outside the requested live subset. Document the mismatch clearly and expose a strict flag to fail instead of augmenting the space when needed.
+
+- In direct `uv run python` BO/PySCF workspace scripts, `run_pyscf_workflow(...).model_dump(mode="json")['tddft_results']['tddft_singlet_energies']` are returned in Hartree. Convert them explicitly (for example with `get_conversion_factor` / `UnitConvPair`) before computing eV-based objectives such as color-target error.
+
+- In direct RDKit-based BO/PySCF workspace scripts, `AllChem.MMFFOptimizeMolecule(...)` should be called with `confId=` only; do not pass `mmff_props=` to that function. Use `AllChem.MMFFGetMoleculeProperties(...)` and `AllChem.MMFFGetMoleculeForceField(...)` separately when you need post-optimization MMFF energies per conformer.
+
+- For BO-MCP BayBE custom-categorical parameters, every category label must have a unique descriptor vector at campaign creation time. In finite chemistry libraries, chemically distinct labels can share the same coarse RDKit descriptor tuple; a practical fix is to append deterministic fragment-identity codes (for example cap/core indices) to the compact descriptor table so BayBE can distinguish labels without abandoning the custom representation.
+- BO-MCP REST idempotency keys for `POST /api/v1/results/{campaign_id}` should be unique not just per candidate but per campaign/run as well. Reusing a result-submission key like `seed-<candidate_id>` across different campaigns can trigger an idempotency conflict because the cache namespace is shared broadly; include the campaign id or a run nonce in the key.
+
+
+- BO-MCP BayBE custom-categorical parameters work end-to-end on this server with the intake shape `{"type": "categorical", "categories": [...], "parameter_options": {"baybe": {"role": "custom", "custom_descriptors": {label: {descriptor_name: float, ...}}, "decorrelate": false}}}`. In addition to exact label coverage, keep descriptor columns non-constant within the active categories and ensure each label has a unique descriptor row (add a deterministic identity code only when needed).
+
+- In BO-MCP script entrypoints, a fresh create-only invocation can leave the campaign in status `created` rather than `running`. Before sending a lifecycle `pause`, fetch the campaign status and skip the pause when the status is not `running`; otherwise create-only runs can emit a noisy operation-level rejection even though campaign creation succeeded.
+
+
+- In direct BO-MCP workspace scripts, `BoMcpClient.export_campaign(campaign_id, fmt=...)` currently returns a `(content_bytes, content_type)` tuple rather than bare bytes. Capture both values when exporting artifacts and write the raw bytes according to the reported content type.
+
+- For BO-MCP BayBE custom-categorical smoke tests with very small active category sets, pruning constant descriptor columns can leave a parameter with zero remaining descriptor columns even when label coverage is correct. In that case, add a deterministic numeric `identity_code` descriptor so the custom descriptor table is non-empty and each category remains distinguishable at campaign creation time.
+
+- For direct `uv run python` smoke tests of BO/PySCF evaluators that use `multiprocessing` with the `spawn` context, do not invoke the test body via stdin heredocs (`uv run python - <<'PY' ...`) or `-c`. The spawned worker may fail trying to import `__main__` from a non-file path like `<stdin>`. Use an on-disk entrypoint script/module (for example the real `run_*.py` script) when validating spawn-based evaluation paths.
+
+- Treat `get_diagnostics` as informational, never loop-critical. Its timeouts are structural (server recomputes from all results, latency grows with the campaign) — never retry, never call per iteration; fetch once at invocation end with a generous timeout and continue on failure. Keep final export / pause cleanup best-effort so submitted results are never lost to a non-critical timeout.
+
+- In BO/PySCF workspace campaign packages, keep `configure_logfire()` / `logfire.instrument_requests()` in the top-level runnable entrypoint (or otherwise guard them), not both the entry script and imported package modules. Double instrumentation produces noisy `Attempting to instrument while already instrumented` output during smoke tests.
+
+- In direct BO-MCP workspace scripts, `client.export_campaign(..., fmt='csv')` can emit result columns prefixed as `param_<parameter_name>` and `obj_<objective_name>` rather than bare parameter/objective names. When deriving machine-readable summaries from the export, parse both bare and prefixed column names.
+
+- In direct BO-MCP workspace scripts, `submit_results(...)` metadata is validated against the typed BO API schema and does **not** accept arbitrary extra keys like `smiles`, `total_energy`, or vector payloads. Keep BO submission metadata to supported fields (for example `conditions` with primitive values and `notes` as a string), and write richer evaluation provenance to separate artifact files instead of the BO results payload.
+
+- In direct BO-MCP workspace scripts, `BoMcpClient.export_campaign(campaign_id, fmt="csv")` currently yields CSV headers prefixed as `param_<parameter_name>` and `obj_<objective_name>` (for example `param_molecule`, `obj_target`). Reporting/export parsers should handle those prefixes instead of assuming bare parameter/objective column names.
+
+- For BO-MCP seeded-continuation scripts that bulk-submit many historical result rows, keep the `Idempotency-Key` for `submit_results` short and stable per chunk (for example campaign id + chunk index + chunk size). In this environment, a very long key derived from every seeded candidate can trigger a server-side 500 during result submission even though the same payload succeeds with a concise key.
+
+- In direct BO-MCP workspace scripts, a freshly created campaign can remain in status `created`, and the server rejects lifecycle `resume` from that state. Do not try to resume `created`; instead let the first suggestion-generation call transition the campaign into active optimization, and reserve `resume` for `paused` campaigns only.
+
+- In direct scripts using `BoMcpClient.make_idempotency_key`, pass only string-like key parts. The helper joins parts with `.replace(...)` and will fail if a dict/payload is supplied; include a short run nonce or concise identifiers as strings instead of passing the intake/result payload.
+
+- For RoboFlex campaign scripts, treat transient `GET` failures during polling (especially HTTP 502/503/504 from `/v1/runs/{run_id}`) as retryable read errors. After retrying, inspect the RoboFlex run record; if the run is `failed` (for example a platform/threading error with no result), record failure provenance but do not submit any BO-MCP objective result. For BO-generated suggestions, leaving the suggestion pending is preferable for random/platform failures so a resume can retry the same candidate rather than teaching BO from a non-chemical failure.
+
+- For RoboFlex/NMR BO retry logic, duplicate-run reuse should ignore matching runs whose RoboFlex status is `failed` or `success is False`, but continue reusing matching `queued`, `running`, or successful `completed` runs after process interruption. When resubmitting a failed condition within the same RoboFlex campaign, give both the run note and `sample_name` a deterministic retry suffix (for example `retry2` / `_r2`) so NMR does not see the same sample name again.
+
+- For RoboFlex/NMR campaign continuations, do not build `sample_name` from a per-invocation BO counter alone; it resets on resume and can duplicate prior NMR sample names. Include stable suggestion identity/iteration plus a retry or run nonce in sample names, especially when retrying pending suggestions after platform failures.
+
+## RoboFlex v0.1 campaign-script caveats
+
+- The canonical `domains.roboflex.tools.fetch_roboflex_text` helper is currently GET-only (`fetch_roboflex_text(path)`), although it can retrieve and locally parse `/openapi.json`. RoboFlex v0.1 documents run submission as `POST /v1/runs` with `RunRequestBody={parameters: list[ParameterInput], note: str}`; do not invent an `intent`, `executed_conditions`, idempotency-key, or per-run simulation API.
+- RoboFlex v0.1 simulation is an experiment-type/campaign choice (the documented `(simulation)` experiment variant), not a per-run simulation endpoint. For hardware packages that cannot mutate through the GET-only canonical helper, keep mutation behind an explicitly operator-supplied adapter and require it to send the exact OpenAPI request shape; never describe adapter-side validation as RoboFlex simulation.
+- Completed RoboFlex ground truth comes from `GET /v1/results/{run_id}`. `ResultResponse.parameters` is the list of actual executed parameters; optimization scripts should translate those actual values (including residence-time unit conversion where needed) back to BO coordinates rather than expecting a custom `executed_conditions` mapping.
+
+=== domains bo_mcp client relevant ===
+    @classmethod
+    def from_env(cls, *, timeout_s: float = 120.0) -> "BoMcpClient":
+        base_url = os.getenv("BO_MCP_API_URL")
+        if not base_url:
+            raise BoMcpClientError(
+                "BO_MCP_API_URL is not set; it must point at the BO-MCP REST API."
+            )
+        api_key = os.getenv("BO_MCP_API_KEY")
+        if not api_key:
+            raise BoMcpClientError(
+                "BO_MCP_API_KEY is not set; it is required for BO-MCP REST calls."
+            )
+        return cls(base_url=base_url, api_key=api_key, timeout_s=timeout_s)
+
+    def validate_intake(self, intake: dict[str, Any]) -> dict[str, Any]:
+        """Dry-run a campaign intake payload against the API's own validation.
+
+        The intake schema is owned by BO-MCP, not this client: discover its
+        exact field shapes via ``inspect_bo_mcp_openapi_operation`` on
+        ``POST /api/v1/campaigns``, then validate here before creating.
+        """
+        return self._json_request(
+            "POST", "/api/v1/campaigns/validate", json={"intake": intake}
+        )
+
+    def create_campaign(
+        self, intake: dict[str, Any], *, idempotency_key: str
+    ) -> dict[str, Any]:
+        return self._json_request(
+            "POST",
+            "/api/v1/campaigns",
+            json={"intake": intake},
+            headers={"Idempotency-Key": idempotency_key},
+        )
+
+    def get_campaign(self, campaign_id: str) -> dict[str, Any]:
+        return self._json_request("GET", f"/api/v1/campaigns/{campaign_id}")
+
+    def query_suggestions(
+        self,
+        campaign_id: str,
+        *,
+        status_filter: str | None = None,
+        limit: int = 500,
+    ) -> list[dict[str, Any]]:
+        response = self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{campaign_id}/query",
+            json={
+                "status_filter": status_filter,
+                "limit": limit,
+                "verbosity": "standard",
+            },
+        )
+        return list(response.get("suggestions") or [])
+
+    def generate_suggestions(
+        self,
+        campaign_id: str,
+        *,
+        batch_size: int = 1,
+        timeout_s: float = _GENERATE_SUGGESTIONS_TIMEOUT_S,
+    ) -> dict[str, Any]:
+        """Ask the BO backend for new candidates.
+
+        Cost follows the search space's shape, not the result count: a space
+        mixing categorical/discrete with continuous parameters optimizes the
+        continuous part once per discrete configuration, so minutes are
+        normal. Raise ``timeout_s`` for a wide discrete side.
+        """
+        return self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{campaign_id}/generate",
+            params={"batch_size": batch_size},
+            timeout=timeout_s,
+        )
+
+    def submit_results(
+        self,
+        campaign_id: str,
+        *,
+        results: list[dict[str, Any]],
+        idempotency_key: str,
+        force: bool = False,
+    ) -> dict[str, Any]:
+        """Submit measurements, using ``force=True`` for an approved replicate.
+
+        A duplicate rejection is terminal and the server caches it under the
+        submitted ``idempotency_key``, with ``force`` part of the request
+        hash. A forced retry of a rejected submission must therefore use a
+        fresh key from :meth:`make_idempotency_key` — reusing the rejected
+        key returns a 409 idempotency conflict instead of submitting the
+        replicate.
+        """
+        payload: dict[str, Any] = {"results": results, "source": "api"}
+        # Sent only when requested: the server's result schema forbids extra
+        # keys, so an unconditional ``"force": false`` would 422 every
+        # ordinary submission against a server predating the field. Omission
+        # and ``false`` are equivalent, including in the idempotency hash.
+        if force:
+            payload["force"] = True
+        return self._json_request(
+            "POST",
+            f"/api/v1/results/{campaign_id}",
+            json=payload,
+            headers={"Idempotency-Key": idempotency_key},
+        )
+
+    def get_results(self, campaign_id: str) -> list[dict[str, Any]]:
+        """Return the campaign's server-persisted result rows.
+
+        For reporting and cross-checks. Progress and budget authority remain
+        with :meth:`next_action` and its ``n_results`` field — do not re-derive
+        loop position from these rows. A row matching a new suggestion is not
+        grounds for rejecting it either; see the replicate policy above.
+        """
+        response = self._json_request("GET", f"/api/v1/results/{campaign_id}")
+        if not isinstance(response, list):
+            raise BoMcpOperationError(
+                f"BO-MCP returned a non-list result payload for campaign {campaign_id}",
+                response if isinstance(response, dict) else {"response": response},
+            )
+        return response
+
+    def update_suggestion_status(
+        self, suggestion_id: str, status: str
+    ) -> dict[str, Any]:
+        return self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{suggestion_id}/status",
+            json={"status": status},
+        )
+
+    def next_action(self, campaign_id: str) -> dict[str, Any]:
+        """Return the server's loop decision for one campaign, flattened.
+
+        Thin projection of ``POST /api/v1/campaigns/status/batch`` for a
+        single id: the returned dict carries the campaign's ``status``,
+        ``iteration``, ``n_results``, and the server-computed
+        recommendation flattened to ``action``/``reason``/``urgency``.
+        The continue/stop decision belongs to the server — callers branch
+
+=== test submit_results maybe schema ===
+from __future__ import annotations
+
+import json
+
+import pytest
+
+from domains.bo_mcp.client import (
+    BoMcpClient,
+    BoMcpClientError,
+    BoMcpOperationError,
+)
+
+
+class _FakeResponse:
+    def __init__(
+        self,
+        *,
+        status_code: int = 200,
+        payload: dict | list | None = None,
+        content: bytes = b"",
+        content_type: str = "application/json",
+        text: str = "",
+    ) -> None:
+        self.status_code = status_code
+        self._payload = payload
+        self.content = content
+        self.headers = {"Content-Type": content_type}
+        self.text = text or (json.dumps(payload) if payload is not None else "")
+
+    def json(self):
+        if self._payload is None:
+            raise ValueError("no JSON")
+        return self._payload
+
+
+class _FakeSession:
+    def __init__(self, response: _FakeResponse) -> None:
+        self.response = response
+        self.headers: dict[str, str] = {}
+        self.calls: list[dict] = []
+
+    def request(self, method, url, **kwargs):
+        self.calls.append({"method": method, "url": url, **kwargs})
+        return self.response
+
+
+def _client(response: _FakeResponse) -> tuple[BoMcpClient, _FakeSession]:
+    client = BoMcpClient(base_url="http://api:8000", api_key="key-123")
+    fake = _FakeSession(response)
+    fake.headers = dict(client.session.headers)
+    client.session = fake
+    return client, fake
+
+
+def test_from_env_requires_base_url(monkeypatch):
+    monkeypatch.delenv("BO_MCP_API_URL", raising=False)
+    monkeypatch.setenv("BO_MCP_API_KEY", "key-123")
+    with pytest.raises(BoMcpClientError, match="BO_MCP_API_URL"):
+        BoMcpClient.from_env()
+
+
+def test_from_env_requires_api_key(monkeypatch):
+    monkeypatch.setenv("BO_MCP_API_URL", "http://api:8000")
+    monkeypatch.delenv("BO_MCP_API_KEY", raising=False)
+    with pytest.raises(BoMcpClientError, match="BO_MCP_API_KEY"):
+        BoMcpClient.from_env()
+
+
+def test_api_key_header_is_set():
+    client = BoMcpClient(base_url="http://api:8000", api_key="key-123")
+    assert client.session.headers["X-API-Key"] == "key-123"
+
+
+def test_client_guidance_distinguishes_replicates_from_rejections():
+    guidance = " ".join((BoMcpClient.__doc__ or "").split())
+
+    assert "Do not reject a suggestion solely because" in guidance
+    assert "may intentionally recommend a replicate" in guidance
+    assert "force=True" in guidance
+    assert "does not exclude" in guidance
+
+
+def test_create_campaign_sends_idempotency_key():
+    client, fake = _client(
+        _FakeResponse(payload={"success": True, "campaign_id": "c1"})
+    )
+    result = client.create_campaign({"objectives": []}, idempotency_key="idem-1")
+    assert result["campaign_id"] == "c1"
+    call = fake.calls[0]
+    assert call["method"] == "POST"
+    assert call["url"].endswith("/api/v1/campaigns")
+    assert call["headers"]["Idempotency-Key"] == "idem-1"
+    assert call["json"] == {"intake": {"objectives": []}}
+
+
+def test_submit_results_posts_to_campaign_scoped_path():
+    client, fake = _client(_FakeResponse(payload={"success": True}))
+    client.submit_results("c1", results=[{"x": 1}], idempotency_key="idem-2")
+    call = fake.calls[0]
+    assert call["url"].endswith("/api/v1/results/c1")
+    assert call["headers"]["Idempotency-Key"] == "idem-2"
+    # Exact equality: ``force`` must be absent rather than falsy, because the
+    # server's result schema forbids extra keys on versions predating it.
+    assert call["json"] == {"results": [{"x": 1}], "source": "api"}
+
+
+def test_submit_results_forwards_force_override():
+    client, fake = _client(_FakeResponse(payload={"success": True}))
+    client.submit_results(
+        "c1", results=[{"x": 1}], idempotency_key="idem-2", force=True
+    )
+
+    assert fake.calls[0]["json"]["force"] is True
+
+
+def test_get_results_reads_campaign_scoped_result_rows():
+    client, fake = _client(_FakeResponse(payload=[{"id": "result-1"}]))
+
+    assert client.get_results("c1") == [{"id": "result-1"}]
+    call = fake.calls[0]
+    assert call["method"] == "GET"
+    assert call["url"].endswith("/api/v1/results/c1")
+
+
+def test_get_results_rejects_non_list_payload():
+    client, _ = _client(_FakeResponse(payload={"results": []}))
+
+    with pytest.raises(BoMcpOperationError, match="non-list result payload"):
+        client.get_results("c1")
+
+
+def test_get_campaign_reads_campaign_path():
+    client, fake = _client(
+        _FakeResponse(payload={"success": True, "campaign_id": "c1"})
+    )
+    client.get_campaign("c1")
+    call = fake.calls[0]
+    assert call["method"] == "GET"
+    assert call["url"].endswith("/api/v1/campaigns/c1")
+
+
+def test_non_2xx_raises_client_error():
+    client, _ = _client(
+        _FakeResponse(status_code=422, payload={"detail": "bad intake"})
+    )
+    with pytest.raises(BoMcpClientError, match="422"):
+        client.get_campaign("c1")
+
+
+def test_2xx_success_false_raises_operation_error():
+    payload = {"success": False, "errors": ["objective mismatch"]}
+    client, _ = _client(_FakeResponse(payload=payload))
+    with pytest.raises(BoMcpOperationError, match="objective mismatch") as exc:
+        client.submit_results("c1", results=[], idempotency_key="idem-3")
+    assert exc.value.payload == payload
+
+
+def test_json_decode_failure_raises_client_error():
+    client, _ = _client(_FakeResponse(payload=None, text="<html>gateway</html>"))
+    with pytest.raises(BoMcpClientError, match="JSON"):
+        client.get_diagnostics("c1")
+
+
+def test_export_returns_raw_bytes_without_json_parsing():
+    client, fake = _client(
+        _FakeResponse(payload=None, content=b"a,b\n1,2\n", content_type="text/csv")
+    )
+    content, content_type = client.export_campaign("c1", fmt="csv")
+    assert content == b"a,b\n1,2\n"
+    assert content_type == "text/csv"
+    assert fake.calls[0]["params"] == {"format": "csv"}
+
+
+def test_generate_suggestions_forwards_batch_size():
+    client, fake = _client(
+        _FakeResponse(
+            payload={"success": True, "suggestions": [{"suggestion_id": "s1", "x": 1}]}
+        )
+    )
+    response = client.generate_suggestions("c1", batch_size=3)
+    assert response["suggestions"] == [{"suggestion_id": "s1", "x": 1}]
+    call = fake.calls[0]
+    assert call["url"].endswith("/api/v1/suggestions/c1/generate")
+    assert call["params"] == {"batch_size": 3}
+
+
+def test_generate_suggestions_uses_own_generous_timeout():
+    client, fake = _client(_FakeResponse(payload={"success": True, "suggestions": []}))
+    client.generate_suggestions("c1")
+    assert fake.calls[0]["timeout"] == 900.0
+
+
+def test_generate_suggestions_honors_explicit_timeout():
+    client, fake = _client(_FakeResponse(payload={"success": True, "suggestions": []}))
+    client.generate_suggestions("c1", timeout_s=1800.0)
+    assert fake.calls[0]["timeout"] == 1800.0
+
+
+def test_query_suggestions_posts_filter_and_returns_list():
+    payload = {"success": True, "suggestions": [{"suggestion_id": "s1"}]}
+    client, fake = _client(_FakeResponse(payload=payload))
+    suggestions = client.query_suggestions("c1", status_filter="pending", limit=5)
+    assert suggestions == [{"suggestion_id": "s1"}]
+    call = fake.calls[0]
+    assert call["url"].endswith("/api/v1/suggestions/c1/query")
+    assert call["json"]["status_filter"] == "pending"
+    assert call["json"]["limit"] == 5
+
+
+def test_diagnostics_forwards_verbosity():
+    client, fake = _client(_FakeResponse(payload={"success": True}))
+    client.get_diagnostics("c1", verbosity="detailed")
+    assert fake.calls[0]["params"]["verbosity"] == "detailed"
+
+
+def test_update_suggestion_status_posts_status():
+    client, fake = _client(_FakeResponse(payload={"success": True}))
+    client.update_suggestion_status("s1", "rejected")
+    call = fake.calls[0]
+    assert call["url"].endswith("/api/v1/suggestions/s1/status")
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

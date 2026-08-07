@@ -1,0 +1,464 @@
+exit_code=0
+
+=== stdout (raw) ===
+Source:  http://api:8000/openapi.json
+=== OPERATION ===
+POST   /api/v1/campaigns
+operationId: create_new_campaign_api_v1_campaigns_post
+summary: Create New Campaign
+description: Create a new optimization campaign.
+
+Returns ``201 Created`` with a ``Location`` header pointing at
+:func:`get_campaign` on success. Operation-level rejections —
+the ``success=False`` envelope produced when intake / capability
+validation fails — keep the historical ``200 OK`` shape so
+existing tests for that contract still receive the envelope
+rather than a redirected HTTP error.
+
+Honours the ``Idempotency-Key`` request header so retries
+against this endpoint replay the cached response instead of
+creating a duplicate campaign — same semantics as the MCP
+``bo_create_campaign`` tool's ``idempotency_key`` parameter,
+sharing the same cache namespace so a retry on either transport
+sees the other's prior response.
+tags: campaigns
+  security: [{"ApiKeyAuth": []}]
+  parameters:
+    - Idempotency-Key in=header required=False :: Optional[str]
+      desc: Optional at-most-once mutation key. Generate one stable key for each logical create/submit attempt and reuse that same key only when retrying the exact same request after a timeout or transport failure. Do not reuse a key for a different payload: BO-MCP returns a conflict/in-progress envelope. The cache namespace is shared with the MCP tools, so REST and MCP retries can replay the same prior operation when the canonical payload matches.
+  requestBody:
+    - application/json: $ref(CampaignCreate)
+  responses:
+    - 201: Successful Response
+    - 201 application/json: $ref(CampaignCreateResponse)
+    - 401: Missing or invalid X-API-Key header.
+    - 401 application/json: $ref(HttpErrorResponse)
+      example: {"detail": "Authentication required"}
+    - 400: Malformed identifier, invalid query combination, or invalid upload.
+    - 400 application/json: $ref(HttpErrorResponse)
+    - 403: Authenticated caller is not authorized to access this resource.
+    - 403 application/json: $ref(HttpErrorResponse)
+    - 404: Requested resource was not found.
+    - 404 application/json: $ref(HttpErrorResponse)
+    - 500: Sanitized internal error envelope with request correlation details.
+    - 500 application/json: $ref(StructuredErrorEnvelope)
+    - 200: Operation-level campaign creation rejection. The HTTP request was processed, but the campaign was not persisted; inspect success=false and errors.
+    - 200 application/json: $ref(CampaignCreateResponse)
+      example: {"schema_version": 2, "success": false, "warnings": [], "errors": ["Campaign intake is incompatible with the active backend."], "idempotency_replay": false}
+    - 409: Idempotency conflict or in-progress operation. Reuse an Idempotency-Key only for retries of the exact same payload.
+    - 409 application/json: $ref(HttpErrorResponse)
+      example: {"detail": {"code": "IDEMPOTENCY_CONFLICT", "message": "Idempotency key was reused with a different payload.", "retryable": false}}
+    - 422: Validation Error
+    - 422 application/json: $ref(HTTPValidationError)
+
+=== COMPONENTS (REFERENCED) ===
+
+-- components.schemas (27) --
+
+class AcquisitionMethod:
+    """Acquisition function method.
+
+Values are backend-agnostic semantic names. The mapping to concrete
+BoTorch classes lives inside ``bo_engine.acquisition``; the BayBE
+mapping lives in ``bo_engine_baybe.converters``. Not every member is
+expressible on every backend — each backend's
+``validate_capabilities`` classifies unmappable members as
+``UNSUPPORTED`` so ``backend="auto"`` routes to a backend that honors
+the request and a pinned incompatible backend fails loudly.
+
+Semantic families:
+
+* Improvement-based: ``NOISY_EI`` / ``EXPECTED_IMPROVEMENT`` (log
+  variants, the defaults) and their explicit non-log siblings
+  ``*_NONLOG`` for callers that need the classic formulation.
+* Exploration: ``UPPER_CONFIDENCE_BOUND`` (tunable ``acquisition_beta``)
+  and ``POSTERIOR_STANDARD_DEVIATION`` (pure exploration).
+* Exploitation: ``POSTERIOR_MEAN`` and ``SIMPLE_REGRET`` (its
+  Monte-Carlo counterpart).
+* Active learning: ``ACTIVE_LEARNING`` (negated integrated posterior
+  variance, qNIPV).
+* Lookahead / randomized: ``KNOWLEDGE_GRADIENT``, ``THOMPSON_SAMPLING``.
+* Multi-objective: ``HYPERVOLUME_IMPROVEMENT`` (+ ``_NONLOG``) and
+  ``SCALARIZED_MULTI_OBJ``."""
+    # schema has no explicit properties; type=string
+
+class AcquisitionOptimizationConfig:
+    """Override L-BFGS-B restart count and raw-sample budget.
+
+Both fields are optional; ``None`` keeps the dimension-adaptive defaults
+from bo-engine. Use this only when calibrating against a benchmark or
+when the campaign has a known multi-modal acquisition surface that needs
+more aggressive exploration.
+
+Targets the BoTorch backend's own L-BFGS-B optimizer — reported
+IGNORED on the BayBE backend by default (see
+``acknowledge_degradations`` on :class:`CampaignSpec`), since BayBE
+optimizes its acquisition function internally. The BayBE-equivalent
+knobs are ``n_restarts``/``n_raw_samples`` under
+``backend_options['baybe'].recommender.bayesian`` (fixed defaults of
+10/64, not dimension-adaptive)."""
+    num_restarts: Optional[int] = None  # desc="L-BFGS-B multi-start restart count. None uses bo-engine's dimension-adaptive default."
+    raw_samples: Optional[int] = None  # desc="Raw samples drawn to seed the restarts. None uses bo-engine's dimension-adaptive default."
+
+class Bounds:
+    """Numeric lower/upper bounds."""
+    lower: float
+    upper: float
+
+class CampaignCreate:
+    """Campaign creation request."""
+    intake: IntakeData
+
+class CampaignCreateResponse:
+    """Campaign creation response.
+
+``idempotency_replay`` is ``True`` when the response was served
+from the idempotency cache instead of executing a fresh
+mutation — same marker the MCP tool exposes. REST clients can
+distinguish a network retry's replayed response from a brand-new
+create and surface the distinction to their users (e.g. "Already
+created earlier, here's the same id")."""
+    errors: list[str]
+    success: bool
+    campaign_id: Optional[str] = None
+    idempotency_replay: Optional[bool] = None  # default=False
+    schema_version: Optional[int] = None  # default=2
+    spec_id: Optional[str] = None
+    warnings: Optional[list[str]] = None
+
+class Constraint:
+    """Constraint definition.
+
+``parameters`` and ``coefficients`` are tuples so a frozen instance
+is deeply immutable. JSON round-trips preserve these as arrays.
+
+Shape invariants per :attr:`type`:
+
+* ``LINEAR``: ``coefficients`` must be supplied and align one-to-one
+  with ``parameters`` (same length, same order). The engine encodes
+  the constraint as ``coefficients @ x[parameters] <= value``;
+  missing coefficients used to be silently coerced into a sum
+  constraint at the engine boundary, which produced unrelated
+  semantics for a typo'd input. Reject the shape at intake so the
+  failure is loud.
+* ``SUM_*`` / ``PRODUCT_*``: ``coefficients`` must not be supplied
+  (the aggregate is unweighted by definition); supplying coefficients
+  here is a sign the caller meant ``LINEAR`` and would otherwise be
+  silently dropped.
+* ``CARDINALITY``: bounds the count of nonzero parameters via
+  ``min_cardinality`` / ``max_cardinality`` (at least one required);
+  ``value`` / ``coefficients`` do not apply.
+* Set-based (``NO_LABEL_DUPLICATES`` / ``LINKED_PARAMETERS`` /
+  ``PERMUTATION_INVARIANCE``): pure parameter-set relations — at
+  least 2 parameters, no ``value`` / ``coefficients``.
+* ``is_interpoint``: switches a continuous linear/sum constraint to
+  across-the-batch semantics; only valid for the linear/sum family."""
+    parameters: list[str]  # desc='Parameter names this constraint references; must already be declared.'
+    type: ConstraintType  # desc='Constraint family, which determines which of `value` / `coefficients` / `min_cardinality` / `max_cardinality` are required vs. forbidden (enforced at intake).'
+    coefficients: Optional[list[float]] = None  # desc="Per-parameter weights, one per entry in `parameters` in the same order. Required for type='linear' only; forbidden for every other type (SUM_*/PRODUCT_* are unweighted by definition)."
+    is_interpoint: Optional[bool] = None  # desc='Switch a continuous linear/sum constraint to across-the-batch semantics (constrains the sum/linear combination over the whole recommended batch, not each point individually). Only valid for the continuous linear/sum constraint family.', default=False
+    max_cardinality: Optional[int] = None  # desc="Maximum count of nonzero parameters. type='cardinality' only; at least one of `min_cardinality`/`max_cardinality` is required there."
+    min_cardinality: Optional[int] = None  # desc="Minimum count of nonzero parameters. type='cardinality' only; at least one of `min_cardinality`/`max_cardinality` is required there."
+    value: Optional[float] = None  # desc='Arithmetic threshold. Required for the SUM_*/PRODUCT_*/LINEAR families; forbidden for every other type.'
+
+class ConstraintType:
+    """Type of constraint.
+
+Arithmetic families (``SUM_*`` / ``PRODUCT_*`` / ``LINEAR``) compare an
+aggregate of the referenced parameters against
+:attr:`ConstraintSpec.value`. ``CARDINALITY`` bounds the number of
+*nonzero* parameters (sparsity; ``min_cardinality`` /
+``max_cardinality``). The set-based members constrain relationships
+between the referenced parameters' assigned values: distinct values
+within a batch row (``NO_LABEL_DUPLICATES``), identical values
+(``LINKED_PARAMETERS``), or order-invariance of the parameter group
+(``PERMUTATION_INVARIANCE``). Note that ``PERMUTATION_INVARIANCE``
+(as implemented by BayBE) additionally drops candidate rows where
+the group's slots hold *equal* values — the constraint keeps one
+canonical representative per multiset of values, so "two slots, same
+value" configurations are excluded by design, not only reordered
+duplicates."""
+    # schema has no explicit properties; type=string
+
+class ErrorInfo:
+    """Structured operation/internal error details."""
+    code: str
+    message: str
+    details: Optional[dict[str, Any]] = None
+    recovery_action: Optional[str] = None
+    retryable: Optional[bool] = None  # default=False
+
+class FidelityParameter:
+    """Fidelity parameter for multi-fidelity optimization (v2.0).
+
+Fidelity parameters control the approximation level of evaluations.
+Lower fidelity = cheaper but less accurate. BoTorch-only — reported
+UNSUPPORTED on the BayBE backend by default (see
+``acknowledge_degradations`` on :class:`CampaignSpec`), which has no
+native multi-fidelity acquisition."""
+    bounds: Bounds  # desc='(min_fidelity, max_fidelity) range.'
+    name: str  # desc='Name of the fidelity parameter.'
+    target: float  # desc='Fidelity used for the final recommendation once optimization completes.'
+    cost_weight: Optional[float] = None  # desc='Scales evaluation cost by fidelity level for the acquisition.', default=1.0
+    fixed_cost: Optional[float] = None  # desc='Fixed per-evaluation overhead added regardless of fidelity level.', default=0.0, min=0.0
+
+class HTTPValidationError:
+    detail: Optional[list[ValidationError]] = None
+
+class HttpErrorResponse:
+    """FastAPI HTTPException response body."""
+    detail: str | dict[str, Any] | list[dict[str, Any]]
+
+class InputParameter:
+    """Input parameter definition.
+
+``parameter_options`` carries per-backend metadata that has no neutral
+cross-backend equivalent (encoding choices, task-parameter active
+values, candidate-table mode). Outer keys are backend names; inner
+dicts are opaque to the neutral model. Backends ignore options
+addressed to other backends.
+
+Sequence fields (``values``, ``categories``) are typed as tuples so a
+frozen :class:`InputParameter` instance is also deeply immutable:
+``param.categories.append(...)`` raises ``AttributeError`` instead of
+silently mutating shared state. JSON round-trips still produce
+arrays (Pydantic serializes tuples as JSON arrays).
+
+``parameter_options`` is wrapped in nested :class:`types.MappingProxyType`
+views by ``field_validator(mode="after")`` so subscript assignment
+(``p.parameter_options["baybe"]["encoding"] = "x"``) raises
+``TypeError`` instead of silently mutating the shared option dict.
+The custom :meth:`__hash__` projects the option mapping into a
+hashable form so instances with option payloads remain hashable for
+use as cache keys."""
+    name: str
+    type: ParameterType  # desc="Parameter kind, which determines which other fields are required vs. rejected (enforced at intake): 'continuous' requires `bounds`; 'discrete' requires `values` and/or `bounds`; 'categorical' requires `categories` with at least 2 entries. Fields outside the kind's set are rejected."
+    bounds: Optional[Bounds] = None  # desc="Numeric range as {lower, upper} (legacy [lower, upper] pairs also accepted). Required for type='continuous'; for type='discrete', supplying only `bounds` (no `values`) expands to an integer grid over the range. Rejected for type='categorical'."
+    categories: Optional[list[str]] = None  # desc="Category labels. type='categorical' only (rejected for other types); at least 2 required."
+    description: Optional[str] = None  # desc='Free-text human-readable note. Not consumed by any backend.', default=''
+    parameter_options: Optional[dict[str, dict[str, Any]]] = None  # desc="Per-backend metadata with no neutral cross-backend equivalent, keyed by backend name (currently only 'baybe' — see BayBEParameterOptions). A backend ignores options addressed to a different backend."
+    values: Optional[list[float]] = None  # desc="Explicit discrete grid values (fractional values allowed). type='discrete' only (rejected for other types); required unless `bounds` is set instead."
+
+class IntakeData:
+    """Campaign intake data schema for the REST API.
+
+Field set mirrors ``bo_mcp_server.domain.CampaignIntakeInput`` so the
+same JSON payload works on either transport. The ``parameters``,
+``objectives``, and ``constraints`` fields use the canonical domain
+types directly — when the REST handler forwards a validated
+``IntakeData`` to ``CampaignIntakeInput`` it can pass the already-
+parsed nested instances through without re-dumping to a dict.
+
+The advanced cross-backend knobs (``turbo_config``, ``saasbo_config``,
+``fidelity_parameter``, ``transfer_learning``,
+``outcome_constraints``, ``acquisition_optimization``) use the same
+canonical domain config models as ``CampaignIntakeInput`` (they are
+neutral domain types, not backend-specific). This gives the REST
+OpenAPI the full typed shape of each knob — parity with the MCP tool
+schema — and rejects a malformed inner field at the request boundary
+with a 422 instead of an opaque ``object``. ``CampaignIntakeInput`` /
+``CampaignSpec`` still re-validate downstream."""
+    name: str
+    objectives: list[Objective]
+    parameters: list[InputParameter]
+    acknowledge_degradations: Optional[list[str]] = None  # desc="Opt-in list of attribute names (e.g. 'turbo_config', 'outcome_constraints') whose BayBE-UNSUPPORTED status should downgrade to an IGNORED warning instead of rejecting the request, when running a BoTorch-only feature on backend='baybe'. 'transfer_learning' is not downgradable — declare a task parameter via parameter_options['baybe'] for BayBE-native transfer learning instead."
+    acquisition_beta: Optional[float] = None  # desc="UCB exploration weight. Only valid with acquisition_method='upper_confidence_bound'; rejected otherwise."
+    acquisition_method: Optional[AcquisitionMethod] = None  # default='auto'
+    acquisition_optimization: Optional[AcquisitionOptimizationConfig] = None
+    backend: Optional[str  # enum=['auto', 'botorch', 'baybe']] = None  # desc="Optimization backend. 'auto' resolves to the deployment's configured default backend unless the spec uses features that only another installed backend can honor; resolution is driven by each backend's capability report (list the current per-backend feature matrix via the capability-listing tool/endpoint). Pin 'botorch' or 'baybe' explicitly to fail fast instead of silently switching.", default='auto'
+    backend_options: Optional[dict[str, dict[str, Any]]] = None  # desc="Backend-native option surface, keyed by backend name (currently only 'baybe' has a typed schema: BayBEBackendOptions / BayBEParameterOptions in the bo-engine-baybe package). Options addressed to a non-selected backend are rejected at intake when `backend` is pinned to a concrete name."
+    batch_size: Optional[int] = None  # desc='Number of suggestions generated per call.', default=1, min=1.0, max=100.0
+    constraints: Optional[list[Constraint]] = None
+    convergence_tolerance: Optional[float] = None  # desc='Relative-improvement threshold below which the campaign is considered converged. Single-objective campaigns only — multi-objective campaigns are rejected at intake and must rely on hypervolume diagnostics instead.'
+    description: Optional[str] = None  # desc='Free-text human-readable note.', default=''
+    fidelity_parameter: Optional[FidelityParameter] = None
+    initial_design_size: Optional[int] = None  # desc="Number of space-filling (Sobol/random) warmup points before switching to the model-driven acquisition phase. None uses a dimension-adaptive default (BoTorch) or switches after the first measurement (BayBE). An explicitly set backend_options['baybe'].recommender.switch_after takes precedence over this field."
+    max_iterations: Optional[int] = None  # desc='Cap on the number of completed BO iterations. Once reached, suggestion generation reports BUDGET_EXCEEDED instead of producing more suggestions.'
+    max_observations: Optional[int] = None  # desc='Cap on the total number of observed results, irrespective of iteration grouping. Reaching it short-circuits suggestion generation even mid-iteration.'
+    outcome_constraints: Optional[list[OutcomeConstraint]] = None
+    random_seed: Optional[int] = None  # desc='Campaign-level RNG seed. Optional. When supplied, the Sobol initial design and acquisition multi-start are deterministic within a fixed (torch version, device, deterministic-algorithms setting) triple; suggestions are NOT byte-identical across different torch versions, CPU vs. CUDA, or backend swaps. Set torch.use_deterministic_algorithms(True) for strictest behavior.'
+    saasbo_config: Optional[SaasboConfig] = None
+    scalarization: Optional[ScalarizationMode] = None  # default='pareto'
+    scalarizer: Optional[ScalarizerKind] = None  # desc="Use 'mean' for arithmetic mean or 'geom_mean' for geometric mean; only valid with scalarization='desirability'. Null uses 'geom_mean'."
+    transfer_learning: Optional[TransferLearningConfig] = None
+    turbo_config: Optional[TurboConfig] = None
+    use_cost_aware: Optional[bool] = None  # desc="Cost-aware acquisition (EIpu), weighting candidates by a cost model fit from the 'cost' metadata field of submitted results; without cost metadata, generation falls back to standard acquisition with a warning. BoTorch-only — reported UNSUPPORTED on the BayBE backend by default (see `acknowledge_degradations`).", default=False
+    use_input_warping: Optional[bool] = None  # desc='Input warping for non-stationary objectives. BoTorch-only — reported UNSUPPORTED on the BayBE backend by default (see `acknowledge_degradations`).', default=False
+
+class MatchShape:
+    """Distance-to-target shape for ``TargetMode.MATCH`` objectives.
+
+``ABSOLUTE`` / ``QUADRATIC`` penalize the (squared) distance without
+extra parameters; ``BELL`` and ``TRIANGULAR`` are normalized kernels
+that additionally need a width (``ObjectiveSpec.match_scale``: the
+bell's sigma / the triangle's total base width)."""
+    # schema has no explicit properties; type=string
+
+class Objective:
+    """Optimization objective definition.
+
+``log_transform`` opts a minimize objective into a ``Log → Standardize``
+outcome stack so multi-decade targets (e.g. concentrations or rates
+spanning several orders of magnitude) train against a roughly
+homoskedastic scale. Only valid for minimize objectives — declared
+via either ``direction="minimize"`` or ``target_mode="minimize"``;
+enabling it on a maximize objective is rejected by capability
+validation at campaign creation because BoTorch's ``Log`` transform
+requires strictly positive targets and negation flips positive raw
+values to negative.
+
+The goal is declared either through the legacy ``direction`` string or
+the richer ``target_mode`` (mutually exclusive — exactly one must be
+set). ``target_mode='match'`` drives the campaign toward ``target``
+with the ``match_shape`` distance kernel (``match_scale``: bell sigma /
+triangular base width). ``weight`` and ``normalization_bounds`` feed
+the desirability scalarization (``CampaignSpec.scalarization``), and
+``transform`` is the typed target-transformation union."""
+    name: str
+    direction: Optional[str] = None  # desc='Legacy goal declaration. Mutually exclusive with `target_mode` — exactly one of the two must be set.'
+    log_transform: Optional[bool] = None  # desc="Apply a Log -> Standardize outcome stack, for multi-decade targets (e.g. concentrations spanning orders of magnitude). Only valid for minimize objectives (direction='minimize' or target_mode='minimize'): BoTorch's Log transform requires strictly positive targets, which negation for 'maximize' would violate. Mutually exclusive with `transform`.", default=False
+    match_scale: Optional[float] = None  # desc="Width of the match-mode distance kernel (bell sigma / triangular base width). Only meaningful for match_shape in ('bell', 'triangular')."
+    match_shape: Optional[MatchShape] = None  # desc="Distance-to-target kernel. Only valid with target_mode='match'."
+    normalization_bounds: Optional[list[Any]] = None  # desc="(lower, upper) range this objective's raw values are mapped into before desirability scalarization. Only meaningful with the campaign-level scalarization='desirability'."
+    target: Optional[float] = None  # desc="Target value for target_mode='match'. Required when target_mode='match'; unused otherwise."
+    target_mode: Optional[TargetMode] = None  # desc="Richer goal declaration than `direction`: 'minimize'/'maximize' (same as `direction`) or 'match' (hit `target` using the `match_shape` distance kernel). Mutually exclusive with `direction` — exactly one of the two must be set."
+    transform: Optional[ObjectiveTransform] = None  # desc='Typed target transformation (log / clamp / power / sigmoid). Mutually exclusive with `log_transform`. Honored by the BayBE backend; BoTorch reports it UNSUPPORTED.'
+    unit: Optional[str] = None  # desc='Display unit. Not consumed by any backend.', default=''
+    weight: Optional[float] = None  # desc="Relative weight for desirability scalarization. Only meaningful with the campaign-level scalarization='desirability'; ignored under scalarization='pareto'."
+
+class ObjectiveTransform:
+    """Typed target transformation applied to an objective's raw values.
+
+Mirrors :class:`bo_engine.types.ObjectiveTransformSpec`; field usage per
+``kind`` is validated at intake (``clamp`` needs ``bounds``, ``power``
+needs ``exponent``, ``sigmoid`` needs ``center`` + ``steepness``; every
+field outside the kind's set is rejected).
+Honored by the BayBE backend; BoTorch reports it UNSUPPORTED."""
+    kind: ObjectiveTransformKind
+    bounds: Optional[list[Any]] = None
+    center: Optional[float] = None
+    exponent: Optional[int] = None
+    steepness: Optional[float] = None
+
+class ObjectiveTransformKind:
+    """Typed target-transformation union (generalizes ``log_transform``)."""
+    # schema has no explicit properties; type=string
+
+class OutcomeConstraint:
+    """Outcome constraint learned from data.
+
+Specifies a threshold on an objective that defines feasibility.
+BoTorch-only — reported UNSUPPORTED on the BayBE backend by default
+(see ``acknowledge_degradations`` on :class:`CampaignSpec`), which
+has no equivalent probability-of-feasibility constraint model."""
+    objective_name: str  # desc='Objective this constraint applies to; must be declared.'
+    threshold: float  # desc="Constraint value on the objective's raw scale."
+    feasibility_threshold: Optional[float] = None  # desc="Cutoff on the constraint GP's predicted P(feasible) above which a candidate counts as feasible.", default=0.5, min=0.0, max=1.0
+    greater_than: Optional[bool] = None  # desc='True: objective >= threshold is feasible. False: objective <= threshold.', default=True
+
+class ParameterType:
+    """Type of input parameter."""
+    # schema has no explicit properties; type=string
+
+class SaasboConfig:
+    """Configuration for SAASBO high-dimensional optimization.
+
+Present = use SAASBO, absent (None) = standard GP. Sparse
+Axis-Aligned Subspace BO (Eriksson & Jankowiak, UAI 2021) fits a
+fully Bayesian GP via NUTS (No-U-Turn Sampler) MCMC to identify the
+small subset of important dimensions in a high-dimensional
+(50+ parameter) search space. BoTorch-only — reported UNSUPPORTED
+on the BayBE backend by default (see ``acknowledge_degradations``
+on :class:`CampaignSpec`), which has no fully-Bayesian NUTS surrogate."""
+    num_samples: Optional[int] = None  # desc='Number of posterior samples drawn for the fully Bayesian ensemble.', default=128
+    thinning: Optional[int] = None  # desc='Keep every Nth NUTS sample, to reduce autocorrelation between samples.', default=16
+    warmup_steps: Optional[int] = None  # desc='NUTS warmup (burn-in) steps before collecting posterior samples.', default=256
+
+class ScalarizationMode:
+    """Multi-objective combination strategy.
+
+``PARETO`` (default) optimizes the full front; ``DESIRABILITY``
+scalarizes normalized targets into a single figure of merit using the
+per-objective ``weight`` fields and the spec-level ``scalarizer``."""
+    # schema has no explicit properties; type=string
+
+class ScalarizerKind:
+    """Weighted-mean flavor for ``ScalarizationMode.DESIRABILITY``."""
+    # schema has no explicit properties; type=string
+
+class StructuredErrorEnvelope:
+    """MCP-aligned structured error envelope."""
+    error: ErrorInfo
+    schema_version: Optional[int] = None  # default=2
+    success: Optional[bool] = None  # default=False
+
+class TargetMode:
+    """Optimization direction / goal of a single objective.
+
+``MATCH`` targets a specific value (``ObjectiveSpec.target_value``)
+instead of a direction — the common lab ask "hit pH 7.4" — with the
+distance-to-target shape selected by :class:`MatchShape`."""
+    # schema has no explicit properties; type=string
+
+class TransferLearningConfig:
+    """Configuration for RGPE transfer learning from prior campaigns (v2.0).
+
+Allows leveraging data from prior optimization campaigns. The
+``prior_campaign_ids`` field is a tuple so a frozen config instance
+is deeply immutable.
+
+This RGPE ensemble targets the BoTorch backend. On a pinned
+``backend='baybe'`` the spec is reported UNSUPPORTED and rejected at
+intake, and — unlike other BoTorch-only features —
+``acknowledge_degradations`` cannot downgrade the rejection to a
+warning. Use BayBE's own native transfer-learning mechanism instead:
+declare a parameter's ``parameter_options['baybe'].role`` as
+``'task'`` rather than setting this config (with ``backend='auto'``
+an RGPE spec simply resolves to the BoTorch backend).
+
+``temperature`` is deprecated and has no effect: RGPE ensemble
+weights are computed from the paper's ranking loss (argmin counts
+over posterior samples), which involves no softmax. The field is
+kept only so previously stored specs and older clients keep
+validating; it is not forwarded to the engine."""
+    prior_campaign_ids: list[str]  # desc='IDs of prior campaigns to pool data from.'
+    num_ranking_samples: Optional[int] = None  # desc='Posterior samples used to compute RGPE ranking-loss ensemble weights.', default=512, min=1.0
+    temperature: Optional[float] = None  # desc='Deprecated, ignored: ranking-loss RGPE weights have no softmax temperature. Kept for stored-spec compatibility.', default=0.5
+
+class TurboConfig:
+    """Configuration for TuRBO trust-region optimization.
+
+Present = use TuRBO, absent (None) = standard acquisition optimization.
+
+Defaults follow the canonical paper (Eriksson et al., NeurIPS 2019); see
+the bo-engine ``TurboState`` docstring for the unit-standardized-targets
+scale assumption and the meaning of each tolerance. ``failure_tolerance``
+defaults to ``None`` so the engine re-derives the dim/batch-size-aware
+default at construction time — set an integer to override.
+
+Invariants enforced at the schema boundary so garbage never reaches the
+engine: every length is strictly positive, ``length_min < length_max``,
+the initial trust region sits inside the operating band
+(``length_min <= initial_length <= length_max``), and the success /
+failure tolerances are at least one (the smallest value that still
+counts a single batch toward expand/contract).
+
+BoTorch-only — reported UNSUPPORTED on the BayBE backend by default
+(see ``acknowledge_degradations`` on :class:`CampaignSpec`), which
+has no native trust-region recommender."""
+    failure_tolerance: Optional[int] = None  # desc='Consecutive non-improving batches before the trust region halves. None re-derives a dim/batch-size-aware value at construction time; set an integer to override.'
+    initial_length: Optional[float] = None  # desc='Initial trust-region edge in normalized [0,1] input space.', default=0.8
+    length_max: Optional[float] = None  # desc='Trust-region edge cap after expansion.', default=1.6
+    length_min: Optional[float] = None  # desc='Trust-region edge below which a restart is triggered.', default=0.0078125
+    success_tolerance: Optional[int] = None  # desc='Consecutive improving batches before the trust region doubles.', default=10, min=1.0
+
+class ValidationError:
+    loc: list[str | int]
+    msg: str
+    type: str
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

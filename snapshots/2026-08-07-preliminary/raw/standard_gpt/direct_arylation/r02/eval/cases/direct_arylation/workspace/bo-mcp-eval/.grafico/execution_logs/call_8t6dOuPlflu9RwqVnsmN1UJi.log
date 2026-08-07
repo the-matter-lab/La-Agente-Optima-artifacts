@@ -1,0 +1,50 @@
+exit_code=0
+
+=== stdout (raw) ===
+monitor_logs/direct_arylation_yield_bo_20260730T172304Z.log
+17:24:15.948 GET api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:16.960 POST api/api/v1/campaigns/status/batch
+17:24:16.983 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/query
+17:24:16.999 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/generate ? batch_size='1'
+[EVENT] attempt-start campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 attempt=40/60 suggestion_id=c158e61d-b09f-41a3-b5e3-6e7c43ab4809 candidate={'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:24:17.917 POST direct-arylation-oracle/v1/evaluate
+17:24:17.920 POST api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+[RESULT] attempt=40/60 status=submitted campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 suggestion_id=c158e61d-b09f-41a3-b5e3-6e7c43ab4809 yield=84.6700 candidate={'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:24:18.001 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:18.013 GET api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:19.027 POST api/api/v1/campaigns/status/batch
+17:24:19.048 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/query
+17:24:19.060 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/generate ? batch_size='1'
+[EVENT] attempt-start campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 attempt=41/60 suggestion_id=6aeac681-6290-456c-8306-b4890cfd95f2 candidate={'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:24:21.087 POST direct-arylation-oracle/v1/evaluate
+17:24:21.092 POST api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+[RESULT] attempt=41/60 status=submitted campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 suggestion_id=6aeac681-6290-456c-8306-b4890cfd95f2 yield=77.5800 candidate={'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:24:21.200 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:21.210 GET api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:22.225 POST api/api/v1/campaigns/status/batch
+17:24:22.250 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/query
+17:24:22.263 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/generate ? batch_size='1'
+[EVENT] attempt-start campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 attempt=42/60 suggestion_id=25a0ccdb-6703-4d37-90a5-a7ee67d0aed2 candidate={'base': 'Cesium acetate', 'ligand': 'Me2PPh', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:24:23.236 POST direct-arylation-oracle/v1/evaluate
+17:24:23.239 POST api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+[RESULT] attempt=42/60 status=submitted campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 suggestion_id=25a0ccdb-6703-4d37-90a5-a7ee67d0aed2 yield=5.9000 candidate={'base': 'Cesium acetate', 'ligand': 'Me2PPh', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:24:23.429 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:23.439 GET api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:24.453 POST api/api/v1/campaigns/status/batch
+17:24:24.476 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/query
+17:24:24.488 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/generate ? batch_size='1'
+[EVENT] attempt-start campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 attempt=43/60 suggestion_id=e3ba723a-313f-459a-a7dd-570215ecddba candidate={'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:24:25.388 POST direct-arylation-oracle/v1/evaluate
+17:24:25.392 POST api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+[RESULT] attempt=43/60 status=submitted campaign_id=71a4c41d-c9d0-432a-b43a-20386c1447a0 suggestion_id=e3ba723a-313f-459a-a7dd-570215ecddba yield=99.8100 candidate={'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120} | nonce=f8cfd946-3972-4d92-97e3-98d984cbbd2a
+17:24:26.384 GET api/api/v1/campaigns/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:26.394 GET api/api/v1/results/71a4c41d-c9d0-432a-b43a-20386c1447a0
+17:24:27.413 POST api/api/v1/campaigns/status/batch
+17:24:27.430 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/query
+17:24:27.445 POST api/api/v1/suggestions/71a4c41d-c9d0-432a-b43a-20386c1447a0/generate ? batch_size='1'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

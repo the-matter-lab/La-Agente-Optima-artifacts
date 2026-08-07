@@ -1,0 +1,35 @@
+exit_code=0
+
+=== stdout (raw) ===
+/app/outputs/cells/ackley_no_bo_gpt_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley6d_opt.py:48: LogfireNotConfiguredWarning: No logs or spans will be created until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.info("starting_ackley_campaign", budget=config.budget, seed=config.seed, init_size=config.init_size)
+Case: synthetic_ackley_6d
+Objective: surface_response (maximize, normalized_unitless)
+Seed: 20260730
+Attempted evaluations: 5
+Successful evaluations: 5
+Best normalized coordinates:
+{
+  "x_1": 0.42342882240427865,
+  "x_2": 0.44712144335225956,
+  "x_3": 0.6119506452967889,
+  "x_4": 0.7037615003029649,
+  "x_5": 0.5020586986159599,
+  "x_6": 0.702405955551332
+}
+Best raw_response: -18.800342431901
+Best surface_response: 0.158836511928
+All evaluated candidates:
+eval | status | surface_response | raw_response | x_1 | x_2 | x_3 | x_4 | x_5 | x_6
+--- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+0 | success | 0.032966 | -21.613590 | 0.877682 | 0.133573 | 0.165006 | 0.240356 | 0.658921 | 0.228827
+1 | success | 0.044452 | -21.356883 | 0.559253 | 0.501033 | 0.954918 | 0.490220 | 0.293424 | 0.124323
+2 | success | 0.158837 | -18.800342 | 0.423429 | 0.447121 | 0.611951 | 0.703762 | 0.502059 | 0.702406
+3 | success | 0.030739 | -21.663380 | 0.205257 | 0.778521 | 0.727429 | 0.587753 | 0.480790 | 0.991559
+4 | success | 0.109019 | -19.913785 | 0.405500 | 0.420642 | 0.680680 | 0.550374 | 0.350700 | 0.733643
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

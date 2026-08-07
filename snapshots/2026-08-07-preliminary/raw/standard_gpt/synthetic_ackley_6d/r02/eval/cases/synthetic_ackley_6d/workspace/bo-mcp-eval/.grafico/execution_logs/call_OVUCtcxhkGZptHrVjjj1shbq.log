@@ -1,0 +1,17 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+  File "<stdin>", line 9
+    completed=[r for r in rows if r[status]==completed and r[surface_response]!=]
+                                                                                ^
+SyntaxError: invalid syntax
+
+
+=== stderr (model-visible) ===
+  File "<stdin>", line 9
+    completed=[r for r in rows if r[status]==completed and r[surface_response]!=]
+                                                                                ^
+SyntaxError: invalid syntax

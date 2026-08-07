@@ -1,0 +1,875 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- HOW_TO_EXECUTE_CAMPAIGN.md (updated) ---
+# How to Execute the Direct Arylation BO-MCP Campaign
+
+## Overview
+
+This campaign optimizes the measured yield of a direct arylation reaction over a fixed fully crossed search space of **1,728 measured reactions** using Bayesian Optimization via BO-MCP. The campaign uses **oracle queries only** (HTTP POST to `${DIRECT_ARYLATION_API_URL}/v1/evaluate`) with a budget of **exactly 60 total attempted oracle evaluations (including failures) across the campaign lifetime**.
+
+## Prerequisites
+
+### Required Environment Variables
+
+```bash
+export BO_MCP_API_URL="http://api:8000"          # BO-MCP REST API base URL
+export BO_MCP_API_KEY="[REDACTED]"         # BO-MCP API key
+export DIRECT_ARYLATION_API_URL="http://oracle:8080"  # Oracle API for yield evaluations
+```
+
+### Required Marker
+
+Every campaign created by this invocation **must** include the marker:
+```
+akg-eval-0c360b08e6684de0b0ed04f50bde3b2c
+```
+
+This marker is embedded in the campaign name and validated on resume.
+
+### Cache-Buster Nonce
+
+```
+16e7e684-7bf5-4a9b-af93-fae14403be06
+```
+
+Used in campaign name and documentation for traceability.
+
+## Quick Start
+
+```bash
+# From the workspace directory
+cd /app/outputs/cells/direct_arylation_standard_nemotron_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval
+
+# Run the campaign (creates new campaign)
+python run_direct_arylation.py
+
+# Or with custom parameters
+python run_direct_arylation.py --max-attempts 60 --poll-s 180 --heartbeat-s 1800
+```
+
+## Resume / Continue
+
+If the run is interrupted (Ctrl+C, stop file, crash), resume by re-running with the campaign ID:
+
+```bash
+# Get the campaign ID from the previous run's output (BO_MCP_CAMPAIGN_ID=...)
+python run_direct_arylation.py --campaign-id <CAMPAIGN_ID>
+```
+
+The script will:
+1. Verify the campaign has the required marker
+2. Load existing attempt history from the local artifact (`artifacts/<campaign_id>/attempts.jsonl`)
+3. Continue the optimization loop, enforcing the **total 60-attempt budget across all runs**
+4. Append new attempts to the same artifact file
+
+**Key budget semantics**: `--max-attempts` bounds the **campaign lifetime total** (not per invocation). The artifact file `artifacts/<campaign_id>/attempts.jsonl` is the source of truth for attempted evaluations. Resuming does not reset the budget.
+
+## Stop File (Graceful Pause)
+
+Create a `STOP` file in the working directory to pause the campaign gracefully:
+
+```bash
+touch STOP
+```
+
+The campaign will:
+- Detect the stop file at the start of the next loop iteration
+- Submit any pending results first
+- Pause the campaign on the BO-MCP server
+- Delete the stop file
+- Exit cleanly
+
+To continue after a stop, re-run with `--campaign-id`.
+
+## Command-Line Arguments
+
+| Argument | Default | Description |
+|----------|---------|-------------|
+| `--campaign-id` | (none) | Resume existing campaign by ID |
+| `--max-attempts` | 60 | **Maximum total oracle evaluation attempts (including failures) for the campaign lifetime** |
+| `--poll-s` | 180 | Polling interval for `next_action()` (seconds, 120–300 recommended) |
+| `--heartbeat-s` | 1800 | Heartbeat logging interval (seconds) |
+| `--stop-file` | `STOP` | Path to stop file |
+
+## Output Tags (Monitoring)
+
+The script emits tagged lines to stdout for monitoring:
+
+| Tag | Meaning |
+|-----|---------|
+| `[EVENT]` | State changes, campaign start/stop, loop decisions |
+| `[ALERT]` | Failures, errors, rejected suggestions, duplicate results |
+| `[RESULT]` | Successful oracle evaluations with yield values |
+| `[HEARTBEAT]` | Periodic liveness signal |
+
+Example output:
+```
+[EVENT] Starting Direct Arylation BO campaign (marker=akg-eval-0c360b08e6684de0b0ed04f50bde3b2c, nonce=16e7e684-7bf5-4a9b-af93-fae14403be06)
+[EVENT] Created new campaign: camp_abc123def456
+[EVENT] Server decision: action=bo_generate_suggestions, reason=initial_design, status=running, iter=0, results=0
+[EVENT] Received suggestion sug_xyz789: {'base': 'Potassium acetate', 'ligand': 'BrettPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 90}
+[EVENT] Evaluating candidate via oracle API...
+[RESULT] Yield: 78.95% | base=Potassium acetate, ligand=BrettPhos, solvent=DMAc, conc=0.1M, temp=90°C
+[EVENT] Submitted 1 results to BO-MCP
+[HEARTBEAT] Campaign camp_abc123def456 alive; attempted=5/60
+...
+[EVENT] Total attempt budget exhausted (60)
+[ALERT] Budget reached; pausing campaign
+[EVENT] Campaign paused for resumption
+
+=== CAMPAIGN REPORT: camp_abc123def456 ===
+Total attempted evaluations: 60
+Successful:                  58
+Failed:                      2
+Best yield: 92.34%
+  Conditions: base=Cesium pivalate, ligand=JackiePhos, solvent=Butyornitrile, conc=0.153M, temp=120°C
+...
+BO_MCP_CAMPAIGN_ID=camp_abc123def456
+```
+
+## Final Report
+
+At completion, the script prints:
+1. Full campaign report with **all attempted candidates from the artifact** (including failed attempts and attempts from prior runs)
+2. Summary statistics (best/worst/mean yield)
+3. **Required final line**: `BO_MCP_CAMPAIGN_ID=<campaign_id>`
+
+## Search Space Definition
+
+| Parameter | Type | Values (exact) |
+|-----------|------|----------------|
+| `base` | Categorical (4) | Potassium acetate, Potassium pivalate, Cesium acetate, Cesium pivalate |
+| `ligand` | Categorical (12) | BrettPhos, Di-tert-butylphenylphosphine, (t-Bu)PhCPhos, Tricyclohexylphosphine, PPh3, XPhos, P(2-furyl)3, Methyldiphenylphosphine, 1268824-69-6, JackiePhos, SCHEMBL15068049, Me2PPh |
+| `solvent` | Categorical (4) | DMAc, Butyornitrile, Butyl Ester, p-Xylene |
+| `concentration` | Discrete numeric (3) | 0.057, 0.1, 0.153 |
+| `temperature_c` | Discrete numeric (3) | 90, 105, 120 |
+
+**Total combinations**: 4 × 12 × 4 × 3 × 3 = 1,728
+
+**Note**: `concentration` and `temperature_c` are modeled as **discrete numeric** parameters in the BO-MCP intake (type `discrete` with explicit `values` arrays), not categorical strings.
+
+## Oracle API Contract
+
+**Endpoint**: `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate`
+
+**Request body** (exact field names and values):
+```json
+{
+  "base": "Potassium acetate",
+  "ligand": "BrettPhos",
+  "solvent": "DMAc",
+  "concentration": 0.1,
+  "temperature_c": 90
+}
+```
+
+**Response** (success):
+```json
+{"yield": 78.95}
+```
+
+**Non-2xx** = failed evaluation (counts toward 60-attempt budget)
+
+## Campaign Configuration (BO-MCP Intake)
+
+- **Objective**: `yield` (maximize, unit: percent)
+- **Backend**: `auto` (BoTorch or BayBE)
+- **Acquisition**: `auto`
+- **Batch size**: 1
+- **Initial design**: 10 (Sobol/LHS warmup)
+- **Max observations**: 60 (hard cap on successful results stored in BO-MCP)
+- **Random seed**: 42 (reproducible initial design)
+
+## File Structure
+
+```
+workspace/
+├── run_direct_arylation.py          # Entry point
+├── direct_arylation_campaign/       # Campaign package
+│   ├── __init__.py
+│   ├── search_space.py              # Parameter definitions & validation
+│   ├── intake.py                    # BO-MCP campaign intake builder
+│   ├── evaluator.py                 # Oracle API evaluation logic
+│   ├── reporter.py                  # Result extraction & reporting
+│   ├── attempt_tracking.py          # Local attempt artifact (JSONL)
+│   └── campaign.py                  # Orchestration loop
+├── HOW_TO_EXECUTE_CAMPAIGN.md       # This file
+├── campaign_manifest.json           # Package manifest
+├── STOP                             # Stop file (created by user to pause)
+└── artifacts/                       # Attempt tracking artifacts (per campaign)
+    └── <campaign_id>/
+        └── attempts.jsonl           # All 60 attempts (success + failure)
+```
+
+## Attempt Tracking Artifact
+
+The file `artifacts/<campaign_id>/attempts.jsonl` is an append-only JSONL log of **all oracle evaluation attempts** (successful and failed). Each line is a JSON object:
+
+```json
+{
+  "suggestion_id": "uuid-from-bo-mcp",
+  "candidate": {"base": "...", "ligand": "...", "solvent": "...", "concentration": 0.1, "temperature_c": 90},
+  "yield": 78.95,
+  "status": "success",
+  "error": null,
+  "elapsed_s": 1.23,
+  "timestamp": 1234567890.123
+}
+```
+
+**Purpose**: 
+- Enforces the 60-attempt budget across resumes (source of truth for `count_attempts()`)
+- Provides complete history for final reporting (including failures)
+- Survives process restarts and campaign pauses
+
+**Do not delete or modify this file** — it is the campaign's budget ledger.
+
+## Troubleshooting
+
+### Campaign won't start
+- Verify `BO_MCP_API_URL`, `BO_MCP_API_KEY`, `DIRECT_ARYLATION_API_URL` are set
+- Check BO-MCP server health: `curl ${BO_MCP_API_URL}/health`
+- Check oracle API: `curl ${DIRECT_ARYLATION_API_URL}/health`
+
+### Oracle evaluations failing
+- Verify oracle API accepts the exact parameter values (case-sensitive, spelling)
+- Check network connectivity and timeouts
+- Failed evaluations count toward the 60-attempt budget
+
+### Resume not working
+- Ensure campaign ID has the marker `akg-eval-0c360b08e6684de0b0ed04f50bde3b2c`
+- Campaign must be in `paused` or `running` state (not `terminated`)
+- Use `action="reopen"` via lifecycle API if campaign shows `completed`
+- Check `artifacts/<campaign_id>/attempts.jsonl` exists and is readable
+
+### Budget confusion
+- `--max-attempts` bounds the **campaign lifetime total** (not per invocation)
+- The artifact `artifacts/<campaign_id>/attempts.jsonl` is the budget ledger
+- BO-MCP `max_observations=60` caps successful results stored in BO-MCP
+- Server-side `next_action()` will return `budget_exceeded` when 60 total results exist
+
+## Logfire Instrumentation
+
+The script configures Logfire for request tracing. Set `LOGFIRE_TOKEN` if you want to export traces.
+
+## Validation
+
+Before full run, do a smoke test (1 iteration):
+
+```bash
+python run_direct_arylation.py --max-attempts 1 --poll-s 10 --heartbeat-s 10
+```
+
+Verify:
+--- run_direct_arylation.py ---
+#!/usr/bin/env python3
+"""
+Entry point for Direct Arylation BO-MCP campaign.
+
+Usage:
+    python run_direct_arylation.py [--campaign-id CAMPAIGN_ID] [--max-attempts N] [--poll-s N] [--heartbeat-s N] [--stop-file PATH]
+
+Environment variables required:
+    BO_MCP_API_URL      - BO-MCP REST API base URL
+    BO_MCP_API_KEY      - BO-MCP API key
+    DIRECT_ARYLATION_API_URL - Oracle API base URL for yield evaluations
+
+The campaign optimizes direct arylation reaction yield over a fixed search space
+of 1,728 measured reactions with a budget of exactly 60 total attempted
+oracle evaluations (including failures) across all runs/resumes.
+
+Marker: akg-eval-0c360b08e6684de0b0ed04f50bde3b2c
+Nonce: 16e7e684-7bf5-4a9b-af93-fae14403be06
+
+Attempt tracking artifact: artifacts/<campaign_id>/attempts.jsonl
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+
+from direct_arylation_campaign.campaign import run_campaign
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Direct Arylation Yield Optimization via BO-MCP",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--campaign-id",
+        type=str,
+        default=None,
+        help="Resume existing campaign by ID (must contain marker akg-eval-0c360b08e6684de0b0ed04f50bde3b2c)",
+    )
+    parser.add_argument(
+        "--max-attempts",
+        type=int,
+        default=60,
+        help="Maximum total oracle evaluation attempts (including failures) for the campaign lifetime",
+    )
+    parser.add_argument(
+        "--poll-s",
+        type=int,
+        default=180,
+        help="Polling interval for BO-MCP next_action (seconds)",
+    )
+    parser.add_argument(
+        "--heartbeat-s",
+        type=int,
+        default=1800,
+        help="Heartbeat logging interval (seconds)",
+    )
+    parser.add_argument(
+        "--stop-file",
+        type=str,
+        default="STOP",
+        help="Path to stop file; if exists, campaign pauses gracefully",
+    )
+    return parser.parse_args()
+
+
+def check_env() -> None:
+    """Verify required environment variables are set."""
+    required = ["BO_MCP_API_URL", "BO_MCP_API_KEY", "DIRECT_ARYLATION_API_URL"]
+    missing = [var for var in required if not os.getenv(var)]
+    if missing:
+        print(f"[ALERT] Missing required environment variables: {', '.join(missing)}", file=sys.stderr)
+        print("Set them before running:", file=sys.stderr)
+        for var in missing:
+            print(f"  export {var}=...", file=sys.stderr)
+        sys.exit(1)
+
+
+def main() -> int:
+    check_env()
+    args = parse_args()
+
+    print(f"[EVENT] Starting Direct Arylation BO campaign")
+    print(f"[EVENT] Total attempt budget: {args.max_attempts}")
+    print(f"[EVENT] Poll interval: {args.poll_s}s, Heartbeat: {args.heartbeat_s}s")
+    print(f"[EVENT] Stop file: {args.stop_file}")
+    if args.campaign_id:
+        print(f"[EVENT] Resuming campaign: {args.campaign_id}")
+
+    try:
+        campaign_id, all_attempts = run_campaign(
+            campaign_id=args.campaign_id,
+            max_attempts=args.max_attempts,
+            poll_s=args.poll_s,
+            heartbeat_s=args.heartbeat_s,
+            stop_file=args.stop_file,
+        )
+        print(f"[EVENT] Campaign {campaign_id} completed run")
+        return 0
+    except KeyboardInterrupt:
+        print("[EVENT] Interrupted by user")
+        return 130
+    except Exception as e:
+        print(f"[ALERT] Campaign failed: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())--- search_space.py ---
+"""Search space definition for direct arylation reaction optimization."""
+
+from typing import Any
+
+# Categorical parameter options (must match oracle API exactly)
+BASES = [
+    "Potassium acetate",
+    "Potassium pivalate",
+    "Cesium acetate",
+    "Cesium pivalate",
+]
+
+LIGANDS = [
+    "BrettPhos",
+    "Di-tert-butylphenylphosphine",
+    "(t-Bu)PhCPhos",
+    "Tricyclohexylphosphine",
+    "PPh3",
+    "XPhos",
+    "P(2-furyl)3",
+    "Methyldiphenylphosphine",
+    "1268824-69-6",
+    "JackiePhos",
+    "SCHEMBL15068049",
+    "Me2PPh",
+]
+
+SOLVENTS = [
+    "DMAc",
+    "Butyornitrile",  # Spelling must be preserved exactly
+    "Butyl Ester",
+    "p-Xylene",
+]
+
+# Discrete numeric values for oracle API and BO-MCP (exact types)
+CONCENTRATIONS = [0.057, 0.1, 0.153]
+TEMPERATURES_C = [90, 105, 120]
+
+# Total search space size: 4 * 12 * 4 * 3 * 3 = 1,728
+
+
+def get_parameter_definitions() -> list[dict[str, Any]]:
+    """Return BO-MCP parameter definitions for the campaign intake.
+    
+    Uses 'discrete' type for concentration and temperature_c with explicit numeric values.
+    """
+    return [
+        {
+            "name": "base",
+            "type": "categorical",
+            "categories": BASES,
+            "description": "Base reagent for the reaction",
+        },
+        {
+            "name": "ligand",
+            "type": "categorical",
+            "categories": LIGANDS,
+            "description": "Ligand for the palladium catalyst",
+        },
+        {
+            "name": "solvent",
+            "type": "categorical",
+            "categories": SOLVENTS,
+            "description": "Reaction solvent (note: Butyornitrile spelling is exact)",
+        },
+        {
+            "name": "concentration",
+            "type": "discrete",
+            "values": CONCENTRATIONS,
+            "description": "Substrate concentration in M",
+        },
+        {
+            "name": "temperature_c",
+            "type": "discrete",
+            "values": TEMPERATURES_C,
+            "description": "Reaction temperature in Celsius",
+        },
+    ]
+
+
+def get_objective_definition() -> dict[str, Any]:
+    """Return BO-MCP objective definition for yield maximization."""
+    return {
+        "name": "yield",
+        "target_mode": "maximize",
+        "unit": "percent",
+    }
+
+
+def validate_candidate(candidate: dict[str, Any]) -> bool:
+    """Validate that a candidate has all required parameters with valid values."""
+    required = {"base", "ligand", "solvent", "concentration", "temperature_c"}
+    if not required.issubset(candidate.keys()):
+        return False
+    return (
+        candidate["base"] in BASES
+        and candidate["ligand"] in LIGANDS
+        and candidate["solvent"] in SOLVENTS
+        and candidate["concentration"] in CONCENTRATIONS
+        and candidate["temperature_c"] in TEMPERATURES_C
+    )
+
+
+def candidate_to_oracle_payload(candidate: dict[str, Any]) -> dict[str, Any]:
+    """Convert candidate dict to oracle API payload format."""
+    return {
+        "base": candidate["base"],
+        "ligand": candidate["ligand"],
+        "solvent": candidate["solvent"],
+        "concentration": candidate["concentration"],
+        "temperature_c": candidate["temperature_c"],
+    }--- attempt_tracking.py ---
+"""Attempt tracking artifact for direct arylation BO-MCP campaign.
+
+Tracks all 60 attempted oracle evaluations (including failures) across resumes.
+Uses a JSONL file for append-only provenance.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+from pathlib import Path
+from typing import Any
+
+
+ATTEMPTS_FILENAME = "attempts.jsonl"
+
+
+def get_attempts_path(campaign_id: str, workspace: Path | None = None) -> Path:
+    """Get the path to the attempts artifact file for a campaign."""
+    if workspace is None:
+        workspace = Path.cwd()
+    # Store in a subdirectory named after the campaign
+    artifact_dir = workspace / "artifacts" / campaign_id
+    artifact_dir.mkdir(parents=True, exist_ok=True)
+    return artifact_dir / ATTEMPTS_FILENAME
+
+
+def load_attempts(campaign_id: str, workspace: Path | None = None) -> list[dict[str, Any]]:
+    """Load all attempts from the artifact file."""
+    path = get_attempts_path(campaign_id, workspace)
+    if not path.exists():
+        return []
+    
+    attempts = []
+    with path.open("r") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                attempts.append(json.loads(line))
+    return attempts
+
+
+def append_attempt(campaign_id: str, attempt: dict[str, Any], workspace: Path | None = None) -> None:
+    """Append a single attempt to the artifact file."""
+    path = get_attempts_path(campaign_id, workspace)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a") as f:
+        f.write(json.dumps(attempt) + "\n")
+
+
+def count_attempts(campaign_id: str, workspace: Path | None = None) -> int:
+    """Count total attempts (including failed) for a campaign."""
+    return len(load_attempts(campaign_id, workspace))
+
+
+def get_attempt_history(campaign_id: str, workspace: Path | None = None) -> list[dict[str, Any]]:
+    """Get full attempt history for reporting."""
+    return load_attempts(campaign_id, workspace)--- campaign.py excerpt ---
+"""Campaign orchestration for direct arylation BO-MCP optimization."""
+
+from __future__ import annotations
+
+import os
+import sys
+import time
+import uuid
+from pathlib import Path
+from typing import Any
+
+import logfire
+from domains.bo_mcp.client import BoMcpClient, BoMcpClientError, BoMcpOperationError
+
+from direct_arylation_campaign.attempt_tracking import (
+    append_attempt,
+    count_attempts,
+    get_attempt_history,
+    get_attempts_path,
+)
+from direct_arylation_campaign.evaluator import evaluate_batch, EvaluationError
+from direct_arylation_campaign.intake import build_intake, validate_intake
+from direct_arylation_campaign.reporter import compute_summary, print_campaign_report, print_final_summary_line
+from direct_arylation_campaign.search_space import validate_candidate
+
+
+# Constants
+MARKER = "akg-eval-0c360b08e6684de0b0ed04f50bde3b2c"
+NONCE = "16e7e684-7bf5-4a9b-af93-fae14403be06"
+MAX_ATTEMPTS = 60
+DEFAULT_POLL_S = 180
+DEFAULT_HEARTBEAT_S = 1800
+DEFAULT_STOP_FILE = "STOP"
+
+
+class CampaignState:
+    """Minimal in-memory campaign state (never persisted per BO-MCP policy)."""
+
+    def __init__(self, campaign_id: str):
+        self.campaign_id = campaign_id
+        self.evaluated: list[dict[str, Any]] = []  # Evaluation attempts this run
+        self.submitted_suggestion_ids: set[str] = set()
+        self.last_heartbeat = time.time()
+
+
+def make_idempotency_key(prefix: str, *parts: str) -> str:
+    """Generate an idempotency key with prefix, parts, and random suffix."""
+    joined = "-".join(p.replace("/", "_") for p in parts if p)
+    return f"{prefix}-{joined}-{uuid.uuid4().hex[:10]}"
+
+
+def check_stop_file(stop_file: Path) -> bool:
+    """Check if stop file exists; if so, delete it and return True."""
+    if stop_file.exists():
+        try:
+            stop_file.unlink()
+            return True
+        except OSError:
+            return True
+    return False
+
+
+def log_event(msg: str) -> None:
+    """Log an [EVENT] line to stdout and logfire."""
+    print(f"[EVENT] {msg}", flush=True)
+    logfire.info("{msg}", msg=msg)
+
+
+def log_alert(msg: str) -> None:
+    """Log an [ALERT] line to stdout and logfire."""
+    print(f"[ALERT] {msg}", flush=True)
+    logfire.warning("{msg}", msg=msg)
+
+
+def log_result(msg: str) -> None:
+    """Log a [RESULT] line to stdout and logfire."""
+    print(f"[RESULT] {msg}", flush=True)
+    logfire.info("{msg}", msg=msg)
+
+
+def log_heartbeat(msg: str) -> None:
+    """Log a [HEARTBEAT] line to stdout and logfire."""
+    print(f"[HEARTBEAT] {msg}", flush=True)
+    logfire.info("{msg}", msg=msg)
+
+
+def submit_results(
+    client: BoMcpClient,
+    campaign_id: str,
+    results: list[dict[str, Any]],
+    *,
+    force: bool = False,
+) -> list[str]:
+    """
+    Submit successful evaluation results to BO-MCP.
+
+    Args:
+        client: BO-MCP client
+        campaign_id: Campaign ID
+        results: List of evaluation result dicts (only successful ones)
+        force: Whether to force submission (for replicates)
+
+    Returns:
+        List of result IDs from BO-MCP
+    """
+    if not results:
+        return []
+
+    # Build BO-MCP result submission payload
+    bo_results = []
+    for r in results:
+        if r["status"] != "success" or r["yield"] is None:
+            continue
+        candidate = r["candidate"]
+        if not validate_candidate(candidate):
+            log_alert(f"Skipping invalid candidate for submission: {candidate}")
+            continue
+
+        bo_results.append({
+            "parameter_values": candidate,
+            "objective_values": {"yield": r["yield"]},
+            "metadata": {
+                "notes": f"oracle_api; elapsed_s={r.get('elapsed_s', 0.0):.3f}",
+            },
+        })
+
+    if not bo_results:
+        return []
+
+    idempotency_key = make_idempotency_key("submit", campaign_id, str(len(bo_results)))
+    try:
+        response = client.submit_results(
+            campaign_id,
+            results=bo_results,
+            idempotency_key=idempotency_key,
+            force=force,
+        )
+        result_ids = response.get("result_ids", [])
+        log_event(f"Submitted {len(result_ids)} results to BO-MCP")
+        return result_ids
+    except BoMcpOperationError as e:
+        if "duplicate" in str(e.payload).lower() and not force:
+            log_alert(f"Duplicate result rejected; consider force=True for replicates: {e}")
+        raise
+    except BoMcpClientError as e:
+        log_alert(f"Failed to submit results: {e}")
+        raise
+
+
+def run_optimization_loop(
+    client: BoMcpClient,
+    campaign_id: str,
+    state: CampaignState,
+    *,
+    max_attempts: int = MAX_ATTEMPTS,
+    poll_s: int = DEFAULT_POLL_S,
+    heartbeat_s: int = DEFAULT_HEARTBEAT_S,
+    stop_file: Path,
+) -> None:
+    """
+    Run the BO optimization loop until budget exhausted or stop condition.
+
+    The loop follows BO-MCP server authority via next_action().
+    Tracks all attempts (including failures) in local artifact for budget enforcement across resumes.
+    """
+    log_event(f"Starting optimization loop for campaign {campaign_id}")
+    log_event(f"Total attempt budget: {max_attempts}, Poll: {poll_s}s, Heartbeat: {heartbeat_s}s")
+
+    while True:
+        # Check stop file at loop start (before generating suggestions)
+        if check_stop_file(stop_file):
+            log_event("Stop file detected; pausing campaign")
+            client.lifecycle(campaign_id, action="pause")
+            break
+
+        # Check total attempt budget (including prior runs via artifact)
+        total_attempts = count_attempts(campaign_id) + len(state.evaluated)
+        if total_attempts >= max_attempts:
+            log_event(f"Total attempt budget exhausted ({max_attempts})")
+            log_alert("Budget reached; pausing campaign")
+            client.lifecycle(campaign_id, action="pause")
+            break
+
+        # Check heartbeat
+        now = time.time()
+        if now - state.last_heartbeat >= heartbeat_s:
+            log_heartbeat(f"Campaign {campaign_id} alive; attempted={total_attempts}/{max_attempts}")
+            state.last_heartbeat = now
+
+        # Ask server for next action
+        try:
+            decision = client.next_action(campaign_id)
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            log_alert(f"Failed to get next action: {e}")
+            time.sleep(poll_s)
+            continue
+
+        action = decision.get("action")
+        reason = decision.get("reason", "")
+        status = decision.get("status", "unknown")
+        n_results = decision.get("n_results", 0)
+        iteration = decision.get("iteration", 0)
+
+        log_event(f"Server decision: action={action}, reason={reason}, status={status}, iter={iteration}, results={n_results}")
+
+        # Auto-resume if campaign is paused
+        if status == "paused" and action == "review_campaign_status":
+            log_event("Campaign is paused; resuming automatically")
+            client.lifecycle(campaign_id, action="resume")
+            time.sleep(2.0)  # Give server time to process resume
+            continue
+
+        # Check if server recommends stop
+        if action != "bo_generate_suggestions":
+            log_event(f"Server recommends stop: {action} ({reason})")
+            if action in ("pause", "terminate", "completed", "budget_exceeded"):
+                break
+            # For other actions (e.g., bo_submit_results), wait and retry
+            time.sleep(poll_s)
+            continue
+
+        # Generate suggestions (batch_size=1 per iteration)
+        try:
+            gen_response = client.generate_suggestions(campaign_id, batch_size=1)
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            log_alert(f"Failed to generate suggestions: {e}")
+            time.sleep(poll_s)
+            continue
+
+        suggestions = gen_response.get("suggestions", [])
+        if not suggestions:
+            log_alert("No suggestions generated; waiting")
+            time.sleep(poll_s)
+            continue
+
+        suggestion = suggestions[0]
+        suggestion_id = suggestion["suggestion_id"]
+        param_values = suggestion["parameter_values"]
+
+        log_event(f"Received suggestion {suggestion_id}: {param_values}")
+
+        # Validate suggestion
+        if not validate_candidate(param_values):
+            log_alert(f"Invalid suggestion from BO: {param_values}")
+            client.update_suggestion_status(suggestion_id, "rejected")
+            continue
+
+        # Evaluate candidate via oracle
+        log_event(f"Evaluating candidate via oracle API...")
+        eval_results = evaluate_batch([param_values])
+        eval_result = eval_results[0]
+        state.evaluated.append(eval_result)
+
+        # Record attempt in artifact (for budget tracking across resumes)
+        attempt_record = {
+            "suggestion_id": suggestion_id,
+            "candidate": param_values,
+            "yield": eval_result["yield"],
+            "status": eval_result["status"],
+            "error": eval_result["error"],
+            "elapsed_s": eval_result["elapsed_s"],
+            "timestamp": time.time(),
+        }
+        append_attempt(campaign_id, attempt_record)
+
+        # Log result
+        if eval_result["status"] == "success":
+            log_result(f"Yield: {eval_result['yield']:.2f}% | {param_values}")
+        else:
+            log_alert(f"Evaluation failed: {eval_result['error']} | {param_values}")
+
+        # Submit successful results to BO-MCP
+        if eval_result["status"] == "success":
+            try:
+                submit_results(client, campaign_id, [eval_result])
+                state.submitted_suggestion_ids.add(suggestion_id)
+            except (BoMcpClientError, BoMcpOperationError) as e:
+                log_alert(f"Result submission failed: {e}")
+                # Don't mark suggestion as rejected; let server handle it
+        else:
+            # Mark failed suggestion as rejected so BO doesn't retry same point
+            try:
+                client.update_suggestion_status(suggestion_id, "rejected")
+                log_event(f"Marked suggestion {suggestion_id} as rejected")
+            except (BoMcpClientError, BoMcpOperationError) as e:
+                log_alert(f"Failed to update suggestion status: {e}")
+
+        # Brief pause to avoid hammering the oracle
+        time.sleep(1.0)
+
+
+def create_or_resume_campaign(
+    client: BoMcpClient,
+    campaign_id: str | None = None,
+) -> str:
+    """Create a new campaign or return existing campaign ID."""
+    if campaign_id:
+        # Verify campaign exists and has our marker
+        try:
+            campaign = client.get_campaign(campaign_id)
+            if MARKER not in campaign.get("name", ""):
+                log_alert(f"Campaign {campaign_id} does not have required marker {MARKER}")
+            log_event(f"Resuming existing campaign: {campaign_id}")
+            return campaign_id
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            log_alert(f"Failed to get campaign {campaign_id}: {e}")
+            raise
+
+    # Create new campaign
+    intake = build_intake()
+    validate_intake(intake)
+
+    idempotency_key = make_idempotency_key("create", MARKER, NONCE)
+    try:
+        response = client.create_campaign(intake, idempotency_key=idempotency_key)
+        new_campaign_id = response.get("campaign_id")
+        if not new_campaign_id:
+            raise BoMcpOperationError("No campaign_id in response", response)
+        log_event(f"Created new campaign: {new_campaign_id}")
+        return new_campaign_id
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

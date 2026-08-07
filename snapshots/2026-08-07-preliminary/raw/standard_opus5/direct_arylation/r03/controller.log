@@ -1,0 +1,213 @@
+
+[2026-08-07T07:14:42.496438Z] COMMAND ["docker", "compose", "-p", "opus5-fixed-20260807", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "direct_arylation", "--output-dir", "/app/outputs/cells/direct_arylation_standard_opus5_fixed_r03/eval", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "direct_arylation_standard_opus5_fixed_r03-20260803", "--subagent-model", "anthropic:claude-opus-5"]
+ Container opus5-fixed-20260807-eval-run-9322731e9f39 Creating 
+ Container opus5-fixed-20260807-eval-run-9322731e9f39 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+07:14:51.935 evaluate bo_mcp_graph_eval
+07:14:51.936   case: direct_arylation
+07:14:51.936     execute _run_case
+mkdir -p failed for path /root/.config/matplotlib: [Errno 30] Read-only file system: '/root/.config'
+Matplotlib created a temporary cache directory at /tmp/matplotlib-p6j47_oa because there was an issue with the default path (/root/.config/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+07:15:07.147       agent run
+07:15:07.155         chat gpt-5.4
+07:15:07.925           POST api.openai.com/v1/responses
+07:15:20.099         running tool: task
+07:15:20.151 agent run
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+07:15:20.158         chat gpt-5.4
+07:15:20.265           POST api.openai.com/v1/responses
+             agent run
+07:15:20.274   chat claude-opus-5
+07:15:20.395     POST api.anthropic.com/v1/messages ? beta='true'
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+07:15:21.556         running tool: wait_tasks
+             agent run
+07:15:24.919   running tool: read_memory
+07:15:24.921   running tool: execute
+07:15:26.292   chat claude-opus-5
+07:15:26.435     POST api.anthropic.com/v1/messages ? beta='true'
+07:15:29.305   running tool: inspect_bo_mcp_openapi_overview
+07:15:29.356   chat claude-opus-5
+07:15:29.432     POST api.anthropic.com/v1/messages ? beta='true'
+07:15:32.820   running tool: inspect_bo_mcp_openapi_operation
+07:15:33.451   chat claude-opus-5
+07:15:33.531     POST api.anthropic.com/v1/messages ? beta='true'
+07:15:38.087   running tool: execute
+07:15:38.782   chat claude-opus-5
+07:15:38.866     POST api.anthropic.com/v1/messages ? beta='true'
+07:15:41.362   running tool: execute
+07:15:41.494   chat claude-opus-5
+07:15:41.589     POST api.anthropic.com/v1/messages ? beta='true'
+07:15:55.495   running tool: execute
+07:15:56.191   chat claude-opus-5
+07:15:56.286     POST api.anthropic.com/v1/messages ? beta='true'
+07:16:00.186   running tool: execute
+07:16:00.242   chat claude-opus-5
+07:16:00.373     POST api.anthropic.com/v1/messages ? beta='true'
+07:16:06.240   running tool: write_todos
+07:16:06.280   chat claude-opus-5
+07:16:06.368     POST api.anthropic.com/v1/messages ? beta='true'
+07:16:15.959   running tool: update_todo_status
+07:16:15.961   running tool: execute
+07:16:16.668   chat claude-opus-5
+07:16:16.762     POST api.anthropic.com/v1/messages ? beta='true'
+07:16:21.957   running tool: read_todos
+07:16:21.958   running tool: inspect_bo_mcp_openapi_operation
+07:16:22.057   chat claude-opus-5
+07:16:22.152     POST api.anthropic.com/v1/messages ? beta='true'
+07:16:27.344   running tool: execute
+07:16:29.140   chat claude-opus-5
+07:16:30.126     POST api.anthropic.com/v1/messages ? beta='true'
+07:16:35.742   running tool: execute
+07:16:36.782   chat claude-opus-5
+07:16:37.020     POST api.anthropic.com/v1/messages ? beta='true'
+07:16:40.422   running tool: execute
+07:16:42.006   chat claude-opus-5
+07:16:42.287     POST api.anthropic.com/v1/messages ? beta='true'
+07:17:36.230   running tool: update_todo_statuses
+07:17:36.232   running tool: write_file
+07:17:36.310   chat claude-opus-5
+07:17:36.403     POST api.anthropic.com/v1/messages ? beta='true'
+07:17:48.519   running tool: write_file
+07:17:48.521   running tool: write_file
+07:17:48.608   chat claude-opus-5
+07:17:49.289     POST api.anthropic.com/v1/messages ? beta='true'
+07:18:12.256   running tool: write_file
+07:18:12.299   chat claude-opus-5
+07:18:12.809     POST api.anthropic.com/v1/messages ? beta='true'
+07:18:27.007   running tool: execute
+07:18:27.684   chat claude-opus-5
+07:18:27.787     POST api.anthropic.com/v1/messages ? beta='true'
+07:18:52.621   running tool: write_file
+07:18:52.663   chat claude-opus-5
+07:18:52.792     POST api.anthropic.com/v1/messages ? beta='true'
+07:19:00.496   running tool: read_file
+07:19:00.550   chat claude-opus-5
+07:19:00.656     POST api.anthropic.com/v1/messages ? beta='true'
+07:19:07.088   running tool: hashline_edit
+07:19:07.130   chat claude-opus-5
+07:19:07.238     POST api.anthropic.com/v1/messages ? beta='true'
+07:19:11.406   running tool: read_file
+07:19:11.464   chat claude-opus-5
+07:19:11.577     POST api.anthropic.com/v1/messages ? beta='true'
+07:19:16.975   running tool: hashline_edit
+07:19:17.054   chat claude-opus-5
+07:19:17.173     POST api.anthropic.com/v1/messages ? beta='true'
+07:19:30.908   running tool: write_file
+07:19:30.910   running tool: write_file
+07:19:31.018   chat claude-opus-5
+07:19:31.144     POST api.anthropic.com/v1/messages ? beta='true'
+07:19:37.019   running tool: execute
+07:19:37.350   chat claude-opus-5
+07:19:37.494     POST api.anthropic.com/v1/messages ? beta='true'
+07:19:43.510   running tool: update_todo_statuses
+07:19:43.511   running tool: execute
+07:19:46.828   chat claude-opus-5
+07:19:47.080     POST api.anthropic.com/v1/messages ? beta='true'
+07:19:53.480   running tool: execute
+07:19:56.136   chat claude-opus-5
+07:19:56.272     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:04.306   running tool: execute
+07:20:08.296   chat claude-opus-5
+07:20:08.424     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:20.046   running tool: read_file
+07:20:20.586   chat claude-opus-5
+07:20:20.773     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:25.588   running tool: hashline_edit
+07:20:25.668   chat claude-opus-5
+07:20:25.835     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:31.153   running tool: read_file
+07:20:31.199   chat claude-opus-5
+07:20:31.324     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:35.091   running tool: hashline_edit
+07:20:35.137   chat claude-opus-5
+07:20:35.263     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:38.805   running tool: read_file
+07:20:38.886   chat claude-opus-5
+07:20:39.042     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:43.845   running tool: hashline_edit
+07:20:43.904   chat claude-opus-5
+07:20:44.056     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:48.106   running tool: hashline_edit
+07:20:48.163   chat claude-opus-5
+07:20:48.346     POST api.anthropic.com/v1/messages ? beta='true'
+07:20:53.523   running tool: hashline_edit
+07:20:53.567   chat claude-opus-5
+07:20:53.695     POST api.anthropic.com/v1/messages ? beta='true'
+07:21:03.936   running tool: write_file
+07:21:03.983   chat claude-opus-5
+07:21:04.107     POST api.anthropic.com/v1/messages ? beta='true'
+07:21:48.380   running tool: write_file
+07:21:48.424   chat claude-opus-5
+07:21:48.551     POST api.anthropic.com/v1/messages ? beta='true'
+07:21:56.157   running tool: execute
+07:21:58.737   chat claude-opus-5
+07:21:58.862     POST api.anthropic.com/v1/messages ? beta='true'
+07:22:09.143   running tool: execute
+07:22:10.582   chat claude-opus-5
+07:22:10.733     POST api.anthropic.com/v1/messages ? beta='true'
+07:22:25.126   running tool: update_todo_statuses
+07:22:25.127   running tool: write_memory
+07:22:25.215   chat claude-opus-5
+07:22:25.355     POST api.anthropic.com/v1/messages ? beta='true'
+07:22:29.073   running tool: update_todo_status
+07:22:29.119   chat claude-opus-5
+07:22:29.244     POST api.anthropic.com/v1/messages ? beta='true'
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+07:22:46.081         chat gpt-5.4
+07:22:46.161           POST api.openai.com/v1/responses
+07:22:51.364         running tool: bash_exec
+07:22:51.377 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+07:22:51.387           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+07:22:51.467         chat gpt-5.4
+07:22:51.583           POST api.openai.com/v1/responses
+07:22:58.868         running tool: start_monitor
+07:22:58.908         chat gpt-5.4
+07:22:58.985           POST api.openai.com/v1/responses
+07:23:01.424         running tool: bash_exec
+07:23:06.490         chat gpt-5.4
+07:23:06.623           POST api.openai.com/v1/responses
+07:23:09.890         running tool: list_monitors
+07:23:09.943         chat gpt-5.4
+07:23:10.055           POST api.openai.com/v1/responses
+07:23:13.769         running tool: bash_exec
+07:24:23.920         chat gpt-5.4
+07:24:24.017           POST api.openai.com/v1/responses
+07:24:25.848         running tool: list_monitors
+07:24:25.889         chat gpt-5.4
+07:24:25.986           POST api.openai.com/v1/responses
+07:24:31.661         running tool: stop_monitor
+07:24:31.702         chat gpt-5.4
+07:24:31.799           POST api.openai.com/v1/responses
+07:24:35.302         running tool: bash_exec
+07:24:35.378         chat gpt-5.4
+07:24:35.498           POST api.openai.com/v1/responses
+07:24:41.002         running tool: bash_exec
+07:24:41.162         chat gpt-5.4
+07:24:41.249           POST api.openai.com/v1/responses
+07:24:45.487         running tool: bash_exec
+07:24:45.595         chat gpt-5.4
+07:24:45.691           POST api.openai.com/v1/responses
+07:24:50.750         running tool: bash_exec
+07:24:50.902         chat gpt-5.4
+07:24:50.998           POST api.openai.com/v1/responses
+[2026-08-07T07:25:11.366486Z] EXIT 0

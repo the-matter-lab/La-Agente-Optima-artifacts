@@ -1,0 +1,17 @@
+exit_code=1
+
+=== stdout (raw) ===
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley6d_campaign.py", line 6, in <module>
+    from ackley6d_campaign.campaign import CampaignConfig, run_campaign
+  File "/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_campaign/__init__.py", line 1, in <module>
+    from .campaign import run_campaign
+  File "/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_campaign/campaign.py", line 12, in <module>
+    from grafico.core.logfire_config import configure_logfire
+ModuleNotFoundError: No module named 'grafico'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,294 @@
+
+[2026-07-30T18:07:55.752028Z] COMMAND ["docker", "compose", "-p", "mx-20260730-direct-tool-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--output-dir", "/app/outputs/cells/ackley_direct_tool_gpt_r02/eval", "--architecture-mode", "main_agent_tool_passing_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "ackley_direct_tool_gpt_r02-20260730"]
+ Container mx-20260730-direct-tool-gpt-eval-run-82af8f408665 Creating 
+ Container mx-20260730-direct-tool-gpt-eval-run-82af8f408665 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:08:06.578 evaluate bo_mcp_graph_eval
+18:08:06.578   case: synthetic_ackley_6d
+18:08:06.579     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+18:08:31.815       POST mcp/mcp
+18:08:31.830       POST mcp/mcp
+18:08:31.830       GET mcp/mcp
+18:08:31.860       agent run
+18:08:31.864         tools/list
+18:08:31.865       POST mcp/mcp
+                   agent run
+18:08:31.896         chat gpt-5.4
+18:08:33.535           POST api.openai.com/v1/responses
+18:09:01.145         running tool: bo_health_check
+18:09:01.145         running tool: bo_list_capabilities
+                     running tool: bo_health_check
+18:09:01.146           tools/call bo_health_check
+                     running tool: bo_list_capabilities
+18:09:01.146           tools/call bo_list_capabilities
+18:09:01.147       POST mcp/mcp
+18:09:01.148       POST mcp/mcp
+                   agent run
+18:09:02.344         chat gpt-5.4
+18:09:02.377           POST api.openai.com/v1/responses
+18:09:09.672         running tool: bo_validate_intake
+18:09:09.673           tools/call bo_validate_intake
+18:09:09.674       POST mcp/mcp
+                   agent run
+18:09:09.982         chat gpt-5.4
+18:09:10.012           POST api.openai.com/v1/responses
+18:09:34.316         running tool: bo_create_campaign
+18:09:34.316           tools/call bo_create_campaign
+18:09:34.317       POST mcp/mcp
+                   agent run
+18:09:34.943         chat gpt-5.4
+18:09:34.978           POST api.openai.com/v1/responses
+18:09:42.507         running tool: bo_generate_suggestions
+18:09:42.507           tools/call bo_generate_suggestions
+18:09:42.508       POST mcp/mcp
+                   agent run
+18:09:44.085         chat gpt-5.4
+18:09:44.126           POST api.openai.com/v1/responses
+18:09:49.356         running tool: evaluate_ackley_6d
+18:09:49.357         running tool: evaluate_ackley_6d
+18:09:49.357         running tool: evaluate_ackley_6d
+18:09:49.358         running tool: evaluate_ackley_6d
+18:09:49.358         running tool: evaluate_ackley_6d
+18:09:49.371         chat gpt-5.4
+18:09:49.407           POST api.openai.com/v1/responses
+18:09:58.459         running tool: bo_submit_results
+18:09:58.460           tools/call bo_submit_results
+18:09:58.461       POST mcp/mcp
+                   agent run
+18:09:58.780         chat gpt-5.4
+18:09:58.819           POST api.openai.com/v1/responses
+18:10:04.831         running tool: bo_generate_suggestions
+18:10:04.831           tools/call bo_generate_suggestions
+18:10:04.832       POST mcp/mcp
+                   agent run
+18:10:04.979         chat gpt-5.4
+18:10:05.018           POST api.openai.com/v1/responses
+18:10:11.520         running tool: evaluate_ackley_6d
+18:10:11.521         running tool: evaluate_ackley_6d
+18:10:11.521         running tool: evaluate_ackley_6d
+18:10:11.521         running tool: evaluate_ackley_6d
+18:10:11.522         running tool: evaluate_ackley_6d
+18:10:11.533         chat gpt-5.4
+18:10:11.576           POST api.openai.com/v1/responses
+18:10:18.989         running tool: bo_submit_results
+18:10:18.989           tools/call bo_submit_results
+18:10:18.990       POST mcp/mcp
+                   agent run
+18:10:21.068         chat gpt-5.4
+18:10:21.239           POST api.openai.com/v1/responses
+18:10:28.092         running tool: bo_generate_suggestions
+18:10:28.093           tools/call bo_generate_suggestions
+18:10:28.094       POST mcp/mcp
+                   agent run
+18:10:30.026         chat gpt-5.4
+18:10:30.285           POST api.openai.com/v1/responses
+18:10:35.402         running tool: bo_list_results
+18:10:35.402           tools/call bo_list_results
+18:10:35.403       POST mcp/mcp
+                   agent run
+18:10:36.816         chat gpt-5.4
+18:10:36.872           POST api.openai.com/v1/responses
+18:10:41.591         running tool: bo_list_results
+18:10:41.592           tools/call bo_list_results
+18:10:41.593       POST mcp/mcp
+                   agent run
+18:10:42.485         chat gpt-5.4
+18:10:42.533           POST api.openai.com/v1/responses
+18:10:47.044         running tool: bo_list_results
+18:10:47.044           tools/call bo_list_results
+18:10:47.045       POST mcp/mcp
+                   agent run
+18:10:48.214         chat gpt-5.4
+18:10:48.263           POST api.openai.com/v1/responses
+18:10:52.697         running tool: bo_list_results
+18:10:52.698           tools/call bo_list_results
+18:10:52.698       POST mcp/mcp
+                   agent run
+18:10:53.255         chat gpt-5.4
+18:10:53.305           POST api.openai.com/v1/responses
+18:10:57.936         running tool: bo_list_results
+18:10:57.937           tools/call bo_list_results
+18:10:57.937       POST mcp/mcp
+                   agent run
+18:10:58.175         chat gpt-5.4
+18:10:58.227           POST api.openai.com/v1/responses
+18:11:02.719         running tool: bo_list_results
+18:11:02.719           tools/call bo_list_results
+18:11:02.720       POST mcp/mcp
+                   agent run
+18:11:02.794         chat gpt-5.4
+18:11:02.849           POST api.openai.com/v1/responses
+18:11:06.540         running tool: bo_list_results
+18:11:06.540           tools/call bo_list_results
+18:11:06.541       POST mcp/mcp
+                   agent run
+18:11:06.795         chat gpt-5.4
+18:11:06.853           POST api.openai.com/v1/responses
+18:11:10.377         running tool: bo_list_results
+18:11:10.378           tools/call bo_list_results
+18:11:10.378       POST mcp/mcp
+                   agent run
+18:11:10.461         chat gpt-5.4
+18:11:10.520           POST api.openai.com/v1/responses
+18:11:16.102         running tool: bo_list_suggestions
+18:11:16.103           tools/call bo_list_suggestions
+18:11:16.103       POST mcp/mcp
+                   agent run
+18:11:16.278         chat gpt-5.4
+18:11:16.338           POST api.openai.com/v1/responses
+18:11:22.694         running tool: evaluate_ackley_6d
+18:11:22.694         running tool: evaluate_ackley_6d
+18:11:22.695         running tool: evaluate_ackley_6d
+18:11:22.695         running tool: evaluate_ackley_6d
+18:11:22.695         running tool: evaluate_ackley_6d
+18:11:22.707         chat gpt-5.4
+18:11:22.771           POST api.openai.com/v1/responses
+18:11:33.550         running tool: bo_submit_results
+18:11:33.550           tools/call bo_submit_results
+18:11:33.551       POST mcp/mcp
+                   agent run
+18:11:33.746         chat gpt-5.4
+18:11:33.811           POST api.openai.com/v1/responses
+18:11:38.015         running tool: bo_generate_suggestions
+18:11:38.016           tools/call bo_generate_suggestions
+18:11:38.016       POST mcp/mcp
+                   agent run
+18:11:50.934         chat gpt-5.4
+18:11:51.005           POST api.openai.com/v1/responses
+18:11:59.973         running tool: evaluate_ackley_6d
+18:11:59.973         running tool: evaluate_ackley_6d
+18:11:59.974         running tool: evaluate_ackley_6d
+18:11:59.975         running tool: evaluate_ackley_6d
+18:11:59.975         running tool: evaluate_ackley_6d
+18:11:59.991         chat gpt-5.4
+18:12:00.065           POST api.openai.com/v1/responses
+18:12:08.401         running tool: bo_submit_results
+18:12:08.402           tools/call bo_submit_results
+18:12:08.403       POST mcp/mcp
+                   agent run
+18:12:09.667         chat gpt-5.4
+18:12:09.739           POST api.openai.com/v1/responses
+18:12:16.795         running tool: bo_generate_suggestions
+18:12:16.796           tools/call bo_generate_suggestions
+18:12:16.797       POST mcp/mcp
+                   agent run
+18:12:42.144         chat gpt-5.4
+18:12:42.217           POST api.openai.com/v1/responses
+18:12:48.961         running tool: evaluate_ackley_6d
+18:12:48.964         running tool: evaluate_ackley_6d
+18:12:48.965         running tool: evaluate_ackley_6d
+18:12:48.965         running tool: evaluate_ackley_6d
+18:12:48.966         running tool: evaluate_ackley_6d
+18:12:48.966         running tool: evaluate_ackley_6d
+18:12:48.967         running tool: evaluate_ackley_6d
+18:12:48.967         running tool: evaluate_ackley_6d
+18:12:48.967         running tool: evaluate_ackley_6d
+18:12:48.968         running tool: evaluate_ackley_6d
+18:12:48.984         chat gpt-5.4
+18:12:49.079           POST api.openai.com/v1/responses
+18:13:00.841         running tool: bo_submit_results
+18:13:00.842           tools/call bo_submit_results
+18:13:00.843       POST mcp/mcp
+                   agent run
+18:13:01.744         chat gpt-5.4
+18:13:01.828           POST api.openai.com/v1/responses
+18:13:05.001         running tool: bo_generate_suggestions
+18:13:05.002           tools/call bo_generate_suggestions
+18:13:05.003       POST mcp/mcp
+                   agent run
+18:13:55.946         chat gpt-5.4
+18:13:56.042           POST api.openai.com/v1/responses
+18:14:06.268         running tool: evaluate_ackley_6d
+18:14:06.269         running tool: evaluate_ackley_6d
+18:14:06.269         running tool: evaluate_ackley_6d
+18:14:06.270         running tool: evaluate_ackley_6d
+18:14:06.271         running tool: evaluate_ackley_6d
+18:14:06.271         running tool: evaluate_ackley_6d
+18:14:06.272         running tool: evaluate_ackley_6d
+18:14:06.272         running tool: evaluate_ackley_6d
+18:14:06.273         running tool: evaluate_ackley_6d
+18:14:06.273         running tool: evaluate_ackley_6d
+18:14:06.287         chat gpt-5.4
+18:14:06.385           POST api.openai.com/v1/responses
+18:14:18.087         running tool: bo_submit_results
+18:14:18.088           tools/call bo_submit_results
+18:14:18.089       POST mcp/mcp
+                   agent run
+18:14:18.631         chat gpt-5.4
+18:14:18.736           POST api.openai.com/v1/responses
+18:14:22.349         running tool: bo_generate_suggestions
+18:14:22.350           tools/call bo_generate_suggestions
+18:14:22.351       POST mcp/mcp
+                   agent run
+18:14:57.812         chat gpt-5.4
+18:14:57.911           POST api.openai.com/v1/responses
+18:15:08.713         running tool: evaluate_ackley_6d
+18:15:08.713         running tool: evaluate_ackley_6d
+18:15:08.713         running tool: evaluate_ackley_6d
+18:15:08.714         running tool: evaluate_ackley_6d
+18:15:08.714         running tool: evaluate_ackley_6d
+18:15:08.714         running tool: evaluate_ackley_6d
+18:15:08.715         running tool: evaluate_ackley_6d
+18:15:08.715         running tool: evaluate_ackley_6d
+18:15:08.715         running tool: evaluate_ackley_6d
+18:15:08.716         running tool: evaluate_ackley_6d
+18:15:08.735         chat gpt-5.4
+18:15:08.841           POST api.openai.com/v1/responses
+18:15:51.209         running tool: bo_submit_results
+18:15:51.209           tools/call bo_submit_results
+18:15:51.211       POST mcp/mcp
+                   agent run
+18:15:51.389         chat gpt-5.4
+18:15:51.543           POST api.openai.com/v1/responses
+18:15:56.228         running tool: bo_generate_suggestions
+18:15:56.228           tools/call bo_generate_suggestions
+18:15:56.229       POST mcp/mcp
+                   agent run
+18:17:24.037         chat gpt-5.4
+18:17:24.243           POST api.openai.com/v1/responses
+18:17:36.547         running tool: evaluate_ackley_6d
+18:17:36.547         running tool: evaluate_ackley_6d
+18:17:36.548         running tool: evaluate_ackley_6d
+18:17:36.548         running tool: evaluate_ackley_6d
+18:17:36.549         running tool: evaluate_ackley_6d
+18:17:36.549         running tool: evaluate_ackley_6d
+18:17:36.549         running tool: evaluate_ackley_6d
+18:17:36.550         running tool: evaluate_ackley_6d
+18:17:36.550         running tool: evaluate_ackley_6d
+18:17:36.551         running tool: evaluate_ackley_6d
+18:17:36.566         chat gpt-5.4
+18:17:36.715           POST api.openai.com/v1/responses
+18:17:52.543         running tool: bo_submit_results
+18:17:52.544           tools/call bo_submit_results
+18:17:52.545       POST mcp/mcp
+                   agent run
+18:17:53.828         chat gpt-5.4
+18:17:53.994           POST api.openai.com/v1/responses
+18:17:59.779         running tool: bo_get_diagnostics
+18:17:59.779         running tool: bo_list_results
+18:17:59.780         running tool: bo_export_campaign
+                     running tool: bo_get_diagnostics
+18:17:59.780           tools/call bo_get_diagnostics
+                     running tool: bo_list_results
+18:17:59.781           tools/call bo_list_results
+                     running tool: bo_export_campaign
+18:17:59.781           tools/call bo_export_campaign
+18:17:59.782       POST mcp/mcp
+18:17:59.783       POST mcp/mcp
+18:17:59.783       POST mcp/mcp
+                   agent run
+18:18:00.039         chat gpt-5.4
+18:18:00.213           POST api.openai.com/v1/responses
+18:18:12.183         running tool: bo_list_results
+18:18:12.184           tools/call bo_list_results
+18:18:12.185       POST mcp/mcp
+                   agent run
+18:18:12.607         chat gpt-5.4
+18:18:12.782           POST api.openai.com/v1/responses
+18:19:09.128       DELETE mcp/mcp
+[2026-07-30T18:19:28.986365Z] EXIT 0

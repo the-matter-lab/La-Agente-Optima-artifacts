@@ -1,0 +1,50 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/ackley_bo_20260730_165014.log
+[RESULT] eval=52 surface_response=0.146479 raw_response=-19.076537 best_surface=0.728449
+16:52:12.513 POST api/api/v1/campaigns/status/batch
+16:52:12.524 POST api/api/v1/suggestions/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/generate ? batch_size='1'
+16:52:16.146 POST api/api/v1/results/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+[RESULT] eval=53 surface_response=0.347052 raw_response=-14.593651 best_surface=0.728449
+16:52:16.213 POST api/api/v1/campaigns/status/batch
+16:52:16.223 POST api/api/v1/suggestions/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/generate ? batch_size='1'
+16:52:19.103 POST api/api/v1/results/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+[RESULT] eval=54 surface_response=0.424229 raw_response=-12.868716 best_surface=0.728449
+16:52:19.158 POST api/api/v1/campaigns/status/batch
+16:52:19.167 POST api/api/v1/suggestions/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/generate ? batch_size='1'
+16:52:22.770 POST api/api/v1/results/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+[RESULT] eval=55 surface_response=0.792211 raw_response=-4.644171 best_surface=0.792211
+16:52:22.836 POST api/api/v1/campaigns/status/batch
+16:52:22.849 POST api/api/v1/suggestions/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/generate ? batch_size='1'
+16:52:24.543 POST api/api/v1/results/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+[RESULT] eval=56 surface_response=0.604706 raw_response=-8.834974 best_surface=0.792211
+16:52:24.602 POST api/api/v1/campaigns/status/batch
+16:52:24.617 POST api/api/v1/suggestions/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/generate ? batch_size='1'
+16:52:26.985 POST api/api/v1/results/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+[RESULT] eval=57 surface_response=0.434388 raw_response=-12.641667 best_surface=0.792211
+16:52:27.140 POST api/api/v1/campaigns/status/batch
+16:52:27.152 POST api/api/v1/suggestions/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/generate ? batch_size='1'
+16:52:29.018 POST api/api/v1/results/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+[RESULT] eval=58 surface_response=0.775371 raw_response=-5.020550 best_surface=0.792211
+16:52:29.125 POST api/api/v1/campaigns/status/batch
+16:52:29.138 POST api/api/v1/suggestions/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/generate ? batch_size='1'
+16:52:31.168 POST api/api/v1/results/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+[RESULT] eval=59 surface_response=0.651892 raw_response=-7.780352 best_surface=0.792211
+16:52:31.225 POST api/api/v1/campaigns/status/batch
+16:52:31.237 POST api/api/v1/suggestions/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/generate ? batch_size='1'
+16:52:34.597 POST api/api/v1/results/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+[RESULT] eval=60 surface_response=0.456544 raw_response=-12.146455 best_surface=0.792211
+
+[EVENT] Campaign loop finished  attempted=60  successful=60
+[RESULT] best_surface_response=0.792211  best_raw_response=-4.644171  best_params={'x_1': 0.5219679672666647, 'x_2': 0.49710558739740446, 'x_3': 0.49984508756350493, 'x_4': 0.5044665012952003, 'x_5': 0.5067076993535893, 'x_6': 0.4971176472824613}
+16:52:34.655 POST api/api/v1/campaigns/status/batch
+16:52:34.664 POST api/api/v1/campaigns/8d3b5221-9dee-49c4-9b60-f87bd1ff22a9/lifecycle
+[EVENT] Paused campaign 8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+BO_MCP_CAMPAIGN_ID=8d3b5221-9dee-49c4-9b60-f87bd1ff22a9
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

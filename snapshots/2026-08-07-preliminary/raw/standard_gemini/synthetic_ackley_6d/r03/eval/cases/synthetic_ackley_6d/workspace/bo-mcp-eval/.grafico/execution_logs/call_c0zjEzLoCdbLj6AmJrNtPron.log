@@ -1,0 +1,30 @@
+exit_code=0
+
+=== stdout (raw) ===
+#!/usr/bin/env python
+# Cache-buster nonce: 54354cdc-4da6-4419-86a6-f4560fc0efbe
+
+import argparse
+import sys
+
+sys.path.insert(0, "/app")
+
+from ackley_6d.campaign import run_campaign
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Run Ackley 6D synthetic BO-MCP campaign."
+    )
+    parser.add_argument("--campaign-id", type=str, default=None)
+    parser.add_argument(
+        "--name",
+        type=str,
+        default="Ackley 6D Optimization",
+        help="Base campaign n
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,21 @@
+exit_code=0
+
+=== stdout (raw) ===
+case_id=synthetic_ackley_6d
+attempted_evaluations=60
+successful_evaluations=60
+best_surface_response=0.386175470593
+best_raw_response=-13.719225227435
+best_parameters={"x_1": 0.5130284242331982, "x_2": 0.5327437436208129, "x_3": 0.4523993572220206, "x_4": 0.5396371418610215, "x_5": 0.5973099749535322, "x_6": 0.4120269138365984}
+results_path=/app/outputs/cells/ackley_no_bo_gpt_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/local_results.json
+campaign_log=ackley6d_campaign_20260730_155950.log
+
+
+=== stderr (raw) ===
+/app/outputs/cells/ackley_no_bo_gpt_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_opt/bo.py:51: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  return engine.random(n)
+
+
+=== stderr (model-visible) ===
+/app/outputs/cells/ackley_no_bo_gpt_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_opt/bo.py:51: UserWarning: The balance properties of Sobol' points require n to be a power of 2.
+  return engine.random(n)

@@ -1,0 +1,403 @@
+"""Campaign orchestration for Ackley 6D BO-MCP optimization."""
+
+import os
+import time
+import uuid
+from pathlib import Path
+from typing import Any
+
+import logfire
+from domains.bo_mcp.client import BoMcpClient, BoMcpClientError, BoMcpOperationError
+
+from . import evaluate, report, search_space
+
+# Ownership marker required in every campaign name for this invocation
+OWNERSHIP_MARKER = "akg-eval-fd1886f5b43b4509a3ee02d638497312"
+
+# Package directory (workspace root for this campaign)
+PACKAGE_DIR = Path(__file__).parent.parent
+
+
+class CampaignRunner:
+    """Orchestrates the BO-MCP campaign loop for Ackley 6D."""
+
+    def __init__(
+        self,
+        client: BoMcpClient,
+        campaign_id: str | None = None,
+        *,
+        random_seed: int = 42,
+        initial_design_size: int = 10,
+        batch_size: int = 1,
+        max_observations: int = 60,
+        backend: str = "auto",
+        acquisition_method: str = "auto",
+        artifact_dir: Path | None = None,
+        poll_s: int = 180,
+        heartbeat_s: int = 1800,
+        stop_file: Path | None = None,
+    ) -> None:
+        self.client = client
+        self.campaign_id = campaign_id
+        self.random_seed = random_seed
+        self.initial_design_size = initial_design_size
+        self.batch_size = batch_size
+        self.max_observations = max_observations
+        self.backend = backend
+        self.acquisition_method = acquisition_method
+        # Resolve artifact_dir to a writable path
+        if artifact_dir is None:
+            self.artifact_dir = Path("/tmp/ackley_opt_artifacts")
+        elif artifact_dir.is_absolute():
+            self.artifact_dir = artifact_dir
+        else:
+            self.artifact_dir = PACKAGE_DIR / artifact_dir
+        self.poll_s = poll_s
+        self.heartbeat_s = heartbeat_s
+        self.stop_file = stop_file or Path("STOP")
+
+        self.evaluated_cache: set[tuple[float, ...]] = set()
+        self.all_results: list[dict[str, Any]] = []
+        self.attempted_count: int = 0  # Local counter for attempted evaluations (including duplicates/failures)
+        self.last_heartbeat = time.time()
+
+    def _log_event(self, msg: str) -> None:
+        logfire.info(msg)
+        print(f"[EVENT] {msg}", flush=True)
+
+    def _log_alert(self, msg: str) -> None:
+        logfire.warning(msg)
+        print(f"[ALERT] {msg}", flush=True)
+
+    def _log_result(self, msg: str) -> None:
+        logfire.info(msg)
+        print(f"[RESULT] {msg}", flush=True)
+
+    def _log_heartbeat(self, msg: str) -> None:
+        logfire.debug(msg)
+        print(f"[HEARTBEAT] {msg}", flush=True)
+
+    def _check_stop_file(self) -> bool:
+        """Check for stop file; delete it and return True if found."""
+        if self.stop_file.exists():
+            self._log_event(f"Stop file {self.stop_file} detected; requesting pause")
+            self.stop_file.unlink(missing_ok=True)
+            return True
+        return False
+
+    def _maybe_heartbeat(self) -> None:
+        now = time.time()
+        if now - self.last_heartbeat >= self.heartbeat_s:
+            self._log_heartbeat(f"Campaign {self.campaign_id} running, {len(self.all_results)} evaluations so far")
+            self.last_heartbeat = now
+
+    def _build_campaign_name(self) -> str:
+        return f"ackley-6d-{OWNERSHIP_MARKER}-{uuid.uuid4().hex[:8]}"
+
+    def create_or_resume_campaign(self) -> str:
+        """Create a new campaign or verify existing one has ownership marker."""
+        if self.campaign_id:
+            # Resume existing - verify it has our marker
+            campaign = self.client.get_campaign(self.campaign_id)
+            name = campaign.get("name", "") or campaign.get("spec", {}).get("name", "")
+            if OWNERSHIP_MARKER not in name:
+                raise ValueError(
+                    f"Campaign {self.campaign_id} name '{name}' lacks ownership marker {OWNERSHIP_MARKER}"
+                )
+            self._log_event(f"Resuming campaign {self.campaign_id} ({name})")
+            # Load existing results to populate cache
+            self._load_existing_results()
+            # If campaign is paused, resume it
+            try:
+                campaign = self.client.get_campaign(self.campaign_id)
+                if campaign.get("status") == "paused":
+                    self.client.lifecycle(self.campaign_id, action="resume")
+                    self._log_event(f"Resumed paused campaign {self.campaign_id}")
+            except Exception as e:
+                self._log_alert(f"Failed to resume campaign: {e}")
+            return self.campaign_id
+
+        # Create new campaign
+        name = self._build_campaign_name()
+        intake = search_space.build_intake(
+            name=name,
+            random_seed=self.random_seed,
+            initial_design_size=self.initial_design_size,
+            batch_size=self.batch_size,
+            max_observations=self.max_observations,
+            backend=self.backend,
+            acquisition_method=self.acquisition_method,
+        )
+        self._log_event(f"Validating intake for campaign '{name}'")
+        search_space.validate_intake(self.client, intake)
+
+        idempotency_key = BoMcpClient.make_idempotency_key("create", name)
+        self._log_event(f"Creating campaign '{name}'")
+        response = self.client.create_campaign(intake, idempotency_key=idempotency_key)
+        campaign_id = response["campaign_id"]
+        self.campaign_id = campaign_id
+        self._log_event(f"Created campaign {campaign_id}")
+        return campaign_id
+
+    def _load_existing_results(self) -> None:
+        """Load existing results from server to populate evaluated_cache."""
+        try:
+            results = self.client.get_results(self.campaign_id)
+            for r in results:
+                # Server results have parameter_values and objective_values at top level
+                params = r.get("parameter_values", {})
+                coords = tuple(params.get(f"x_{i}", 0.0) for i in range(1, 7))
+                self.evaluated_cache.add(coords)
+                # Store in all_results for final artifact (adapt to our internal format)
+                self.all_results.append({
+                    "suggestion_id": r.get("suggestion_id"),
+                    "status": "success" if r.get("objective_values") else "failed",
+                    "objective_values": r.get("objective_values", {}),
+                    "parameter_values": params,
+                    "metadata": {
+                        "raw_response": r.get("metadata", {}).get("raw_response"),
+                    },
+                    "failure_reason": r.get("failure_reason"),
+                })
+            # Initialize attempted_count from loaded results
+            self.attempted_count = len(results)
+            self._log_event(f"Loaded {len(results)} existing results from server (attempted_count={self.attempted_count})")
+        except Exception as e:
+            self._log_alert(f"Failed to load existing results: {e}")
+
+    def run_iteration(self) -> bool:
+        """Run one BO iteration. Returns True to continue, False to stop."""
+        # Check stop file at top of loop
+        if self._check_stop_file():
+            self._pause_campaign()
+            return False
+
+        self._maybe_heartbeat()
+
+        # Budget check (local attempted evaluations, not server n_results)
+        if self.attempted_count >= self.max_observations:
+            self._log_event(f"Reached max_observations={self.max_observations} (attempted={self.attempted_count}); stopping")
+            return False
+
+        # Ask server for next action
+        decision = self.client.next_action(self.campaign_id)
+        action = decision.get("action")
+        reason = decision.get("reason", "")
+        n_results = decision.get("n_results", 0)
+        status = decision.get("status", "unknown")
+
+        self._log_event(
+            f"Campaign status: {status}, iteration: {decision.get('iteration')}, "
+            f"n_results: {n_results}, attempted: {self.attempted_count}/{self.max_observations}, "
+            f"action: {action}, reason: {reason}"
+        )
+
+        if action != "bo_generate_suggestions":
+            self._log_event(f"Server recommends stop: {reason}")
+            return False
+
+        # Generate suggestions (respect batch_size but don't exceed budget)
+        remaining = self.max_observations - self.attempted_count
+        batch_size = min(self.batch_size, remaining)
+        self._log_event(f"Generating {batch_size} suggestion(s) (remaining budget: {remaining})")
+        gen_response = self.client.generate_suggestions(
+            self.campaign_id, batch_size=batch_size
+        )
+        suggestions = gen_response.get("suggestions", [])
+        if not suggestions:
+            self._log_alert("No suggestions returned; stopping")
+            return False
+
+        # Evaluate candidates
+        batch_results = []
+        for sug in suggestions:
+            # Check budget again before each evaluation
+            if self.attempted_count >= self.max_observations:
+                self._log_event("Budget exhausted mid-batch; stopping further evaluations")
+                break
+            result = evaluate.evaluate_candidate(sug, self.evaluated_cache)
+            batch_results.append(result)
+            self.all_results.append(result)
+            self.attempted_count += 1  # Count every attempted evaluation
+
+            # Log per-candidate result
+            status = result["status"]
+            if status == "success":
+                surf = result["objective_values"]["surface_response"]
+                raw = result["metadata"]["raw_response"]
+                coords = result["parameter_values"]
+                self._log_result(
+                    f"Eval {self.attempted_count}: surface={surf:.6f}, raw={raw:.6f}, "
+                    f"coords={coords}, status={status}"
+                )
+            elif status == "duplicate":
+                self._log_alert(f"Duplicate candidate skipped: {result['parameter_values']}")
+            else:
+                self._log_alert(f"Evaluation failed: {result.get('failure_reason')}")
+
+        # Submit results - use the format expected by BO-MCP API
+        # ResultMetadata only allows specific fields; strip extra fields for submission
+        allowed_metadata_keys = {
+            "batch_ref", "conditions", "cost", "experiment_id",
+            "external_ref", "notes", "operator", "source_file", "source_row"
+        }
+        submit_results = []
+        for r in batch_results:
+            if r["status"] in ("success", "failed"):
+                # Filter metadata to only allowed keys
+                meta = r.get("metadata", {})
+                filtered_meta = {k: v for k, v in meta.items() if k in allowed_metadata_keys}
+                submit_results.append({
+                    "suggestion_id": r["suggestion_id"],
+                    "objective_values": r["objective_values"],
+                    "parameter_values": r["parameter_values"],
+                    "metadata": filtered_meta,
+                })
+        if submit_results:
+            idempotency_key = BoMcpClient.make_idempotency_key(
+                "submit", self.campaign_id, str(self.attempted_count)
+            )
+            self._log_event(f"Submitting {len(submit_results)} result(s)")
+            self.client.submit_results(
+                self.campaign_id,
+                results=submit_results,
+                idempotency_key=idempotency_key,
+            )
+
+        # Update status for duplicates (rejected suggestions)
+        for r in batch_results:
+            if r["status"] == "duplicate":
+                sug_id = r.get("suggestion_id")
+                if sug_id:
+                    try:
+                        self.client.update_suggestion_status(sug_id, "rejected")
+                    except Exception as e:
+                        self._log_alert(f"Failed to mark duplicate suggestion rejected: {e}")
+
+        # Write artifact incrementally
+        self._write_artifacts()
+
+        return True
+
+    def _pause_campaign(self) -> None:
+        """Pause the campaign on the server."""
+        try:
+            self.client.lifecycle(self.campaign_id, action="pause")
+            self._log_event(f"Campaign {self.campaign_id} paused")
+        except Exception as e:
+            self._log_alert(f"Failed to pause campaign: {e}")
+
+    def _write_artifacts(self) -> None:
+        """Write current results to artifact files."""
+        self.artifact_dir.mkdir(parents=True, exist_ok=True)
+        jsonl_path = self.artifact_dir / "results.jsonl"
+        csv_path = self.artifact_dir / "results.csv"
+        report.write_results_artifact(self.all_results, jsonl_path)
+        report.write_results_csv(self.all_results, csv_path)
+
+    def finalize(self) -> dict[str, Any]:
+        """Finalize campaign: write final artifacts, print summary, return summary dict."""
+        self._write_artifacts()
+        summary = report.summarize_results(self.all_results)
+        # Add attempted count to summary
+        summary["total_attempted"] = len(self.all_results)
+        report.print_summary(summary)
+        report.print_results_table(self.all_results)
+
+        # Also export campaign from server
+        try:
+            export_bytes, _ = self.client.export_campaign(self.campaign_id, fmt="csv")
+            export_path = self.artifact_dir / "server_export.csv"
+            export_path.write_bytes(export_bytes)
+            self._log_event(f"Server export written to {export_path}")
+        except Exception as e:
+            self._log_alert(f"Server export failed: {e}")
+
+        return summary
+
+
+def run_campaign(
+    *,
+    campaign_id: str | None = None,
+    random_seed: int = 42,
+    initial_design_size: int = 10,
+    batch_size: int = 1,
+    max_observations: int = 60,
+    backend: str = "auto",
+    acquisition_method: str = "auto",
+    artifact_dir: str = "artifacts",
+    poll_s: int = 180,
+    heartbeat_s: int = 1800,
+    stop_file: str = "STOP",
+) -> tuple[str, dict[str, Any]]:
+    """Main entrypoint for the campaign.
+
+    Args:
+        campaign_id: Resume existing campaign if provided.
+        random_seed: RNG seed.
+        initial_design_size: Sobol initial points.
+        batch_size: Suggestions per generation.
+        max_observations: Total evaluation budget (attempted evaluations).
+        backend: BO backend.
+        acquisition_method: Acquisition function.
+        artifact_dir: Directory for artifacts (relative to workspace or absolute).
+        poll_s: Poll interval (unused, kept for interface compatibility).
+        heartbeat_s: Heartbeat interval in seconds.
+        stop_file: Path to stop file.
+
+    Returns:
+        Tuple of (campaign_id, summary_dict) with best coordinates and values.
+    """
+    client = BoMcpClient.from_env()
+    runner = CampaignRunner(
+        client=client,
+        campaign_id=campaign_id,
+        random_seed=random_seed,
+        initial_design_size=initial_design_size,
+        batch_size=batch_size,
+        max_observations=max_observations,
+        backend=backend,
+        acquisition_method=acquisition_method,
+        artifact_dir=Path(artifact_dir),
+        poll_s=poll_s,
+        heartbeat_s=heartbeat_s,
+        stop_file=Path(stop_file),
+    )
+
+    campaign_id = runner.create_or_resume_campaign()
+
+    # Main loop
+    while True:
+        try:
+            should_continue = runner.run_iteration()
+            if not should_continue:
+                break
+        except BoMcpOperationError as e:
+            runner._log_alert(f"BO-MCP operation error: {e}")
+            if "BUDGET_EXCEEDED" in str(e) or "budget" in str(e).lower():
+                break
+            # For other operation errors, continue loop (server may recover)
+        except BoMcpClientError as e:
+            runner._log_alert(f"BO-MCP transport error: {e}")
+            # Transport errors: could retry, but for now stop
+            break
+        except KeyboardInterrupt:
+            runner._log_event("Interrupted by user")
+            runner._pause_campaign()
+            break
+        except Exception as e:
+            runner._log_alert(f"Unexpected error: {e}")
+            # Don't crash the campaign on evaluation errors; log and continue
+            import traceback
+
+            traceback.print_exc()
+
+    # Final pause if still running
+    try:
+        final_status = runner.client.get_campaign(campaign_id).get("status")
+        if final_status == "running":
+            runner._pause_campaign()
+    except Exception:
+        pass
+
+    return campaign_id, runner.finalize()

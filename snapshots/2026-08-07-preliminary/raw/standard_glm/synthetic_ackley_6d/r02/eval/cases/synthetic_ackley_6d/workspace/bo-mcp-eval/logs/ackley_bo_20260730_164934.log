@@ -1,0 +1,36 @@
+16:49:34.912 GET api/api/v1/campaigns/529dc6d7-350a-4c2c-8b0f-a81799b24c4b
+[EVENT] Resuming existing campaign 529dc6d7-350a-4c2c-8b0f-a81799b24c4b
+16:49:34.921 POST api/api/v1/campaigns/status/batch
+16:49:34.930 POST api/api/v1/campaigns/529dc6d7-350a-4c2c-8b0f-a81799b24c4b/lifecycle
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Resumed paused campaign 529dc6d7-350a-4c2c-8b0f-a81799b24c4b
+[EVENT] Starting BO loop  budget=60  attempted=0  successful=0
+16:49:35.533 POST api/api/v1/campaigns/status/batch
+16:49:35.546 POST api/api/v1/suggestions/529dc6d7-350a-4c2c-8b0f-a81799b24c4b/generate ? batch_size='1'
+16:49:38.472 POST api/api/v1/results/529dc6d7-350a-4c2c-8b0f-a81799b24c4b
+[RESULT] eval=1 surface_response=0.358332 raw_response=-14.341548 best_surface=0.358332
+16:49:39.430 POST api/api/v1/campaigns/status/batch
+16:49:39.446 POST api/api/v1/suggestions/529dc6d7-350a-4c2c-8b0f-a81799b24c4b/generate ? batch_size='1'
+16:49:42.962 POST api/api/v1/results/529dc6d7-350a-4c2c-8b0f-a81799b24c4b
+[RESULT] eval=2 surface_response=0.421333 raw_response=-12.933446 best_surface=0.421333
+16:49:44.202 POST api/api/v1/campaigns/status/batch
+16:49:44.211 POST api/api/v1/suggestions/529dc6d7-350a-4c2c-8b0f-a81799b24c4b/generate ? batch_size='1'
+16:49:47.308 POST api/api/v1/results/529dc6d7-350a-4c2c-8b0f-a81799b24c4b
+[RESULT] eval=3 surface_response=0.376246 raw_response=-13.941160 best_surface=0.421333
+16:49:47.785 POST api/api/v1/campaigns/status/batch
+16:49:47.799 POST api/api/v1/suggestions/529dc6d7-350a-4c2c-8b0f-a81799b24c4b/generate ? batch_size='1'
+16:49:51.497 POST api/api/v1/results/529dc6d7-350a-4c2c-8b0f-a81799b24c4b
+[RESULT] eval=4 surface_response=0.060459 raw_response=-20.999121 best_surface=0.421333
+16:49:51.990 POST api/api/v1/campaigns/status/batch
+16:49:52.001 POST api/api/v1/suggestions/529dc6d7-350a-4c2c-8b0f-a81799b24c4b/generate ? batch_size='1'
+16:49:56.725 POST api/api/v1/results/529dc6d7-350a-4c2c-8b0f-a81799b24c4b
+[RESULT] eval=5 surface_response=0.336820 raw_response=-14.822332 best_surface=0.421333
+[EVENT] Stop file 'STOP' detected — pausing campaign
+16:49:58.620 POST api/api/v1/campaigns/status/batch
+16:49:58.637 POST api/api/v1/campaigns/529dc6d7-350a-4c2c-8b0f-a81799b24c4b/lifecycle
+
+[EVENT] Campaign loop finished  attempted=5  successful=5
+[RESULT] best_surface_response=0.421333  best_raw_response=-12.933446  best_params={'x_1': 0.4200833269067708, 'x_2': 0.5270748745317384, 'x_3': 0.5079290526225818, 'x_4': 0.5878731307512518, 'x_5': 0.4714895863938236, 'x_6': 0.5233351484638508}
+16:49:59.842 POST api/api/v1/campaigns/status/batch
+BO_MCP_CAMPAIGN_ID=529dc6d7-350a-4c2c-8b0f-a81799b24c4b

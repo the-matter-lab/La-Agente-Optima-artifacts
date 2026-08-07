@@ -1,0 +1,28 @@
+exit_code=0
+
+=== stdout (raw) ===
+149:    def submit_results(
+150-        self,
+151-        campaign_id: str,
+152-        results: list[dict[str, Any]],
+153-        force: bool = False,
+154-    ) -> ResultSubmitResponse:
+155-        """Submit evaluation results for a campaign."""
+156-        idempotency_key = self._generate_idempotency_key(f"results-{campaign_id}")
+157-        payload = {"results": results, "source": "api"}
+158-        if force:
+159-            payload["force"] = True
+160-
+161-        logfire.info("Submitting results", campaign_id=campaign_id, count=len(results))
+162-
+163-        response = self._client.post(
+164-            f"/api/v1/results/{campaign_id}",
+165-            json=payload,
+166-            headers={"Idempotency-Key": idempotency_key},
+167-        )
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

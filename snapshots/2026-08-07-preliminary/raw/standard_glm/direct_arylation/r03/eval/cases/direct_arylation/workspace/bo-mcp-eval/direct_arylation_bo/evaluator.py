@@ -1,0 +1,71 @@
+"""Oracle evaluator for the direct arylation reaction yield."""
+
+from __future__ import annotations
+
+import os
+import requests
+
+from direct_arylation_bo.search_space import PARAM_NAMES
+
+
+def _get_api_url() -> str:
+    url = os.environ.get("DIRECT_ARYLATION_API_URL")
+    if not url:
+        raise RuntimeError(
+            "DIRECT_ARYLATION_API_URL environment variable is not set"
+        )
+    return url.rstrip("/")
+
+
+def evaluate_candidate(parameter_values: dict) -> dict:
+    """Evaluate a single candidate via the direct arylation oracle.
+
+    Returns a dict with keys:
+        success: bool  – True if the oracle returned 2xx with a yield value
+        yield: float   – measured yield in percent (only on success)
+        parameter_values: dict – the exact parameters sent
+        status: str    – "success" or "failed"
+        raw_response: str – raw response text for debugging (on failure)
+    """
+    api_url = _get_api_url()
+    endpoint = f"{api_url}/v1/evaluate"
+
+    # Build the JSON body with exactly the five lowercase parameter names
+    body = {k: parameter_values[k] for k in PARAM_NAMES}
+
+    try:
+        resp = requests.post(endpoint, json=body, timeout=60)
+    except requests.RequestException as exc:
+        return {
+            "success": False,
+            "parameter_values": body,
+            "status": "failed",
+            "raw_response": str(exc),
+        }
+
+    if resp.status_code < 200 or resp.status_code >= 300:
+        return {
+            "success": False,
+            "parameter_values": body,
+            "status": "failed",
+            "raw_response": f"HTTP {resp.status_code}: {resp.text[:500]}",
+        }
+
+    try:
+        data = resp.json()
+        yield_val = float(data["yield"])
+    except (ValueError, KeyError, TypeError) as exc:
+        return {
+            "success": False,
+            "parameter_values": body,
+            "status": "failed",
+            "raw_response": f"Parse error: {exc}; body={resp.text[:500]}",
+        }
+
+    return {
+        "success": True,
+        "yield": yield_val,
+        "parameter_values": body,
+        "status": "success",
+        "raw_response": None,
+    }

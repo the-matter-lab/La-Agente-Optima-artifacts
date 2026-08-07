@@ -1,0 +1,69 @@
+{
+  "_metadata": {
+    "backend": "botorch",
+    "backend_source": "campaign",
+    "protocol": "rest",
+    "server_version": "0.1.0"
+  },
+  "best_parameters": {
+    "x_1": 0.21471071243286133,
+    "x_2": 0.8207526803016663,
+    "x_3": 0.3442210257053375,
+    "x_4": 0.12810085713863373,
+    "x_5": 0.5054937601089478,
+    "x_6": 0.8613457083702087
+  },
+  "best_value": 0.030327401517960744,
+  "campaign_status": "running",
+  "constraint_satisfaction": null,
+  "convergence": {
+    "converged": false,
+    "convergence_score": 0.0,
+    "reason": "Insufficient data for convergence detection",
+    "recommendation": "Continue optimization to gather more data."
+  },
+  "errors": [],
+  "exploration_exploitation": null,
+  "feature_importance": null,
+  "health_status": "healthy",
+  "hypervolume": null,
+  "improvement_history": [
+    0.030327401517960744
+  ],
+  "improvement_rate": 0.0,
+  "iteration": 1,
+  "model_correlation": null,
+  "model_info": {
+    "acquisition_function": "upper_confidence_bound",
+    "backend": "botorch",
+    "batch_strategy": "L-BFGS-B with random restarts",
+    "input_warping": false,
+    "kernel": "RBF with automatic relevance determination (ARD)",
+    "type": "SingleTaskGP"
+  },
+  "n_pareto_points": null,
+  "n_pending_suggestions": 0,
+  "n_results": 1,
+  "next_action_recommendation": {
+    "action": "bo_generate_suggestions",
+    "reason": "Campaign healthy with 1 results. Ready for next batch of suggestions.",
+    "urgency": "normal"
+  },
+  "objective_ranges": {
+    "surface_response": {
+      "direction": "maximize",
+      "max": 0.030327401517960744,
+      "min": 0.030327401517960744
+    }
+  },
+  "outcome_constraint_calibration": null,
+  "pareto_front": null,
+  "progress_status": "stable",
+  "schema_version": 2,
+  "success": true,
+  "suggestion_diversity": null,
+  "uncertainty_trend": null,
+  "warnings": [
+    "Collecting initial data - diagnostics will improve with more results"
+  ]
+}

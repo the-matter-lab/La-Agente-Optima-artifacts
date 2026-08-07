@@ -1,0 +1,31 @@
+exit_code=0
+
+=== stdout (raw) ===
+attempted 1 successful 1 best 66.49
+--- tail direct_arylation_20260807_055139.log ---
+05:52:22.983 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:22.994 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:23.007 POST api/api/v1/campaigns/status/batch
+05:52:23.020 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:23.879 POST direct-arylation-oracle/v1/evaluate
+05:52:23.883 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 65.37}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "5175c0da-19c4-4d14-9eae-02e3e31f9854"}
+05:52:23.948 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:23.968 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:23.984 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:23.997 POST api/api/v1/campaigns/status/batch
+05:52:24.014 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:25.614 POST direct-arylation-oracle/v1/evaluate
+05:52:25.620 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 29.16}, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "d9a68d1e-0460-4d80-89f9-098205d0cae4"}
+05:52:25.758 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:25.781 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:25.797 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:25.810 POST api/api/v1/campaigns/status/batch
+05:52:25.825 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

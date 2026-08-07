@@ -1,0 +1,474 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- campaign.py tail ---
+
+    Returns:
+        Tuple of (campaign_id, evaluated_results)
+    """
+    # Initialize Logfire
+    try:
+        from grafico.core.logfire_config import configure_logfire
+        configure_logfire()
+        logfire.instrument_requests()
+    except Exception:
+        pass  # Logfire optional
+
+    log_event(f"Direct Arylation BO Campaign starting (marker={MARKER}, nonce={NONCE})")
+
+    # Initialize BO-MCP client
+    try:
+        client = BoMcpClient.from_env()
+    except BoMcpClientError as e:
+        log_alert(f"Failed to initialize BO-MCP client: {e}")
+        raise
+
+    # Create or resume campaign
+    final_campaign_id = create_or_resume_campaign(client, campaign_id)
+    state = CampaignState(final_campaign_id)
+
+    # If resuming, load existing results to avoid re-evaluating
+    if campaign_id:
+        try:
+            existing_results = client.get_results(final_campaign_id)
+            log_event(f"Loaded {len(existing_results)} existing results from server")
+            # Note: We don't add these to state.evaluated since they were already counted
+            # in the server's n_results. The local budget tracks attempted evaluations this run.
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            log_alert(f"Failed to load existing results: {e}")
+
+    # Run optimization loop
+    stop_path = Path(stop_file).resolve()
+    run_optimization_loop(
+        client,
+        final_campaign_id,
+        state,
+        max_evaluations=max_evaluations,
+        poll_s=poll_s,
+        heartbeat_s=heartbeat_s,
+        stop_file=stop_path,
+    )
+
+    # Final report
+    summary = compute_summary(state.evaluated)
+    print_campaign_report(final_campaign_id, state.evaluated, summary)
+    print_final_summary_line(final_campaign_id, summary)
+
+    # Pause campaign at end (don't terminate)
+    try:
+        current_status = client.get_campaign(final_campaign_id).get("status")
+        if current_status == "running":
+            client.lifecycle(final_campaign_id, action="pause")
+            log_event("Campaign paused for resumption")
+    except (BoMcpClientError, BoMcpOperationError) as e:
+        log_alert(f"Failed to pause campaign: {e}")
+
+    return final_campaign_id, state.evaluated--- evaluator.py ---
+"""Oracle evaluation for direct arylation reaction yield."""
+
+from __future__ import annotations
+
+import os
+import time
+import uuid
+from typing import Any
+
+import requests
+
+from direct_arylation_campaign.search_space import candidate_to_oracle_payload, validate_candidate
+
+
+class EvaluationError(Exception):
+    """Raised when oracle evaluation fails."""
+
+    def __init__(self, message: str, status_code: int | None = None, response: dict | None = None):
+        super().__init__(message)
+        self.status_code = status_code
+        self.response = response
+
+
+def get_oracle_url() -> str:
+    """Get the oracle API URL from environment."""
+    url = os.getenv("DIRECT_ARYLATION_API_URL")
+    if not url:
+        raise EvaluationError("DIRECT_ARYLATION_API_URL environment variable not set")
+    return url.rstrip("/") + "/v1/evaluate"
+
+
+def evaluate_candidate(candidate: dict[str, Any], timeout_s: float = 30.0) -> float:
+    """
+    Evaluate a single candidate via the oracle API.
+
+    Args:
+        candidate: Dict with base, ligand, solvent, concentration, temperature_c
+        timeout_s: Request timeout in seconds
+
+    Returns:
+        Yield value as float (percent)
+
+    Raises:
+        EvaluationError: If evaluation fails (non-2xx, invalid response, etc.)
+    """
+    if not validate_candidate(candidate):
+        raise EvaluationError(f"Invalid candidate parameters: {candidate}")
+
+    payload = candidate_to_oracle_payload(candidate)
+    url = get_oracle_url()
+
+    # Generate idempotency key for this evaluation attempt
+    idempotency_key = f"eval-{uuid.uuid4().hex[:12]}"
+    headers = {
+        "Content-Type": "application/json",
+        "Idempotency-Key": idempotency_key,
+    }
+
+    start = time.perf_counter()
+    try:
+        response = requests.post(url, json=payload, headers=headers, timeout=timeout_s)
+        elapsed = time.perf_counter() - start
+    except requests.Timeout:
+        raise EvaluationError(f"Oracle request timed out after {timeout_s}s")
+    except requests.RequestException as e:
+        raise EvaluationError(f"Oracle request failed: {e}")
+
+    if response.status_code >= 400:
+        raise EvaluationError(
+            f"Oracle returned {response.status_code}: {response.text[:500]}",
+            status_code=response.status_code,
+        )
+
+    try:
+        data = response.json()
+    except ValueError:
+        raise EvaluationError(f"Oracle returned non-JSON: {response.text[:500]}")
+
+    if "yield" not in data:
+        raise EvaluationError(f"Oracle response missing 'yield' field: {data}")
+
+    yield_val = data["yield"]
+    if not isinstance(yield_val, (int, float)):
+        raise EvaluationError(f"Oracle yield is not numeric: {yield_val}")
+
+    return float(yield_val)
+
+
+def evaluate_batch(
+    candidates: list[dict[str, Any]], timeout_s: float = 30.0
+) -> list[dict[str, Any]]:
+    """
+    Evaluate a batch of candidates sequentially.
+
+    Returns list of result dicts with:
+    - candidate: the input candidate
+    - yield: the yield value (float) or None if failed
+    - status: "success" or "failed"
+    - error: error message if failed
+    - elapsed_s: evaluation time
+    """
+    results = []
+    for candidate in candidates:
+        start = time.perf_counter()
+        try:
+            yield_val = evaluate_candidate(candidate, timeout_s=timeout_s)
+            elapsed = time.perf_counter() - start
+            results.append({
+                "candidate": candidate,
+                "yield": yield_val,
+                "status": "success",
+                "error": None,
+                "elapsed_s": elapsed,
+            })
+        except EvaluationError as e:
+            elapsed = time.perf_counter() - start
+            results.append({
+                "candidate": candidate,
+                "yield": None,
+                "status": "failed",
+                "error": str(e),
+                "elapsed_s": elapsed,
+            })
+    return results--- reporter.py ---
+"""Result extraction and reporting for direct arylation BO-MCP campaign."""
+
+from __future__ import annotations
+
+from typing import Any
+
+
+def format_candidate(candidate: dict[str, Any]) -> str:
+    """Format a candidate dict as a readable string."""
+    return (
+        f"base={candidate['base']}, "
+        f"ligand={candidate['ligand']}, "
+        f"solvent={candidate['solvent']}, "
+        f"conc={candidate['concentration']}M, "
+        f"temp={candidate['temperature_c']}°C"
+    )
+
+
+def extract_results_from_bo_mcp(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """
+    Extract standardized result records from BO-MCP result rows.
+
+    Returns list of dicts with:
+    - candidate: parameter dict
+    - yield: objective value (float) or None
+    - status: "success" or "failed" (all BO-MCP results are successes by definition)
+    - result_id: BO-MCP result ID
+    - suggestion_id: BO-MCP suggestion ID if available
+    """
+    extracted = []
+    for row in results:
+        param_vals = row.get("parameter_values", {})
+        obj_vals = row.get("objective_values", {})
+        yield_val = obj_vals.get("yield")
+
+        # BO-MCP only stores successful submissions; failed evaluations
+        # are tracked separately in the campaign script's local state
+        extracted.append({
+            "candidate": param_vals,
+            "yield": float(yield_val) if yield_val is not None else None,
+            "status": "success" if yield_val is not None else "failed",
+            "result_id": row.get("result_id"),
+            "suggestion_id": row.get("suggestion_id"),
+        })
+    return extracted
+
+
+def compute_summary(evaluated: list[dict[str, Any]]) -> dict[str, Any]:
+    """
+    Compute campaign summary statistics from all evaluated candidates.
+
+    Args:
+        evaluated: List of evaluation result dicts from evaluator.evaluate_batch
+                   (includes both success and failed entries)
+
+    Returns:
+        Summary dict with best conditions, counts, etc.
+    """
+    successful = [r for r in evaluated if r["status"] == "success" and r["yield"] is not None]
+    failed = [r for r in evaluated if r["status"] == "failed"]
+
+    summary = {
+        "total_attempted": len(evaluated),
+        "successful_count": len(successful),
+        "failed_count": len(failed),
+        "best_yield": None,
+        "best_candidate": None,
+        "worst_yield": None,
+        "worst_candidate": None,
+        "mean_yield": None,
+    }
+
+    if successful:
+        yields = [r["yield"] for r in successful]
+        best_idx = yields.index(max(yields))
+        worst_idx = yields.index(min(yields))
+        summary.update({
+            "best_yield": max(yields),
+            "best_candidate": successful[best_idx]["candidate"],
+            "worst_yield": min(yields),
+            "worst_candidate": successful[worst_idx]["candidate"],
+            "mean_yield": sum(yields) / len(yields),
+        })
+
+    return summary
+
+
+def print_campaign_report(
+    campaign_id: str,
+    evaluated: list[dict[str, Any]],
+    summary: dict[str, Any] | None = None,
+) -> None:
+    """Print a formatted campaign report to stdout."""
+    if summary is None:
+        summary = compute_summary(evaluated)
+
+    print("\n" + "=" * 70)
+    print(f"CAMPAIGN REPORT: {campaign_id}")
+    print("=" * 70)
+    print(f"Total attempted evaluations: {summary['total_attempted']}")
+    print(f"Successful:                  {summary['successful_count']}")
+    print(f"Failed:                      {summary['failed_count']}")
+
+    if summary["best_yield"] is not None:
+        print(f"\nBest yield: {summary['best_yield']:.2f}%")
+        print(f"  Conditions: {format_candidate(summary['best_candidate'])}")
+        print(f"Worst yield: {summary['worst_yield']:.2f}%")
+        print(f"  Conditions: {format_candidate(summary['worst_candidate'])}")
+        print(f"Mean yield: {summary['mean_yield']:.2f}%")
+
+    print("\nAll evaluated candidates:")
+    print("-" * 70)
+    for i, r in enumerate(evaluated, 1):
+        status_marker = "✓" if r["status"] == "success" else "✗"
+        yield_str = f"{r['yield']:.2f}%" if r["yield"] is not None else "FAILED"
+        error_str = f" ({r['error']})" if r["error"] else ""
+        print(f"  {i:3d}. {status_marker} {yield_str:>8} | {format_candidate(r['candidate'])}{error_str}")
+
+    print("=" * 70)
+
+
+def print_final_summary_line(campaign_id: str, summary: dict[str, Any]) -> None:
+    """Print the required final summary line with campaign ID."""
+    print(f"BO_MCP_CAMPAIGN_ID={campaign_id}")--- search_space.py ---
+"""Search space definition for direct arylation reaction optimization."""
+
+from typing import Any
+
+# Categorical parameter options (must match oracle API exactly)
+BASES = [
+    "Potassium acetate",
+    "Potassium pivalate",
+    "Cesium acetate",
+    "Cesium pivalate",
+]
+
+LIGANDS = [
+    "BrettPhos",
+    "Di-tert-butylphenylphosphine",
+    "(t-Bu)PhCPhos",
+    "Tricyclohexylphosphine",
+    "PPh3",
+    "XPhos",
+    "P(2-furyl)3",
+    "Methyldiphenylphosphine",
+    "1268824-69-6",
+    "JackiePhos",
+    "SCHEMBL15068049",
+    "Me2PPh",
+]
+
+SOLVENTS = [
+    "DMAc",
+    "Butyornitrile",  # Spelling must be preserved exactly
+    "Butyl Ester",
+    "p-Xylene",
+]
+
+# Numeric values for oracle API (exact types)
+CONCENTRATIONS_NUMERIC = [0.057, 0.1, 0.153]
+TEMPERATURES_C_NUMERIC = [90, 105, 120]
+
+# String versions for BO-MCP categorical parameters
+CONCENTRATIONS_STR = ["0.057", "0.1", "0.153"]
+TEMPERATURES_C_STR = ["90", "105", "120"]
+
+# Total search space size: 4 * 12 * 4 * 3 * 3 = 1,728
+
+
+def get_parameter_definitions() -> list[dict[str, Any]]:
+    """Return BO-MCP parameter definitions for the campaign intake."""
+    return [
+        {
+            "name": "base",
+            "type": "categorical",
+            "categories": BASES,
+            "description": "Base reagent for the reaction",
+        },
+        {
+            "name": "ligand",
+            "type": "categorical",
+            "categories": LIGANDS,
+            "description": "Ligand for the palladium catalyst",
+        },
+        {
+            "name": "solvent",
+            "type": "categorical",
+            "categories": SOLVENTS,
+            "description": "Reaction solvent (note: Butyornitrile spelling is exact)",
+        },
+        {
+            "name": "concentration",
+            "type": "categorical",
+            "categories": CONCENTRATIONS_STR,
+            "description": "Substrate concentration in M",
+        },
+        {
+            "name": "temperature_c",
+            "type": "categorical",
+            "categories": TEMPERATURES_C_STR,
+            "description": "Reaction temperature in Celsius",
+        },
+    ]
+
+
+def get_objective_definition() -> dict[str, Any]:
+    """Return BO-MCP objective definition for yield maximization."""
+    return {
+        "name": "yield",
+        "target_mode": "maximize",
+        "unit": "percent",
+    }
+
+
+def validate_candidate(candidate: dict[str, Any]) -> bool:
+    """Validate that a candidate has all required parameters with valid values.
+    
+    Accepts both string (from BO-MCP) and numeric (for oracle) formats for
+    concentration and temperature_c.
+    """
+    required = {"base", "ligand", "solvent", "concentration", "temperature_c"}
+    if not required.issubset(candidate.keys()):
+        return False
+    
+    # Check base, ligand, solvent (always strings)
+    if candidate["base"] not in BASES:
+        return False
+    if candidate["ligand"] not in LIGANDS:
+        return False
+    if candidate["solvent"] not in SOLVENTS:
+        return False
+    
+    # Check concentration (accept string or numeric)
+    conc = candidate["concentration"]
+    if isinstance(conc, str):
+        if conc not in CONCENTRATIONS_STR:
+            return False
+    elif isinstance(conc, (int, float)):
+        if conc not in CONCENTRATIONS_NUMERIC:
+            return False
+    else:
+        return False
+    
+    # Check temperature_c (accept string or numeric)
+    temp = candidate["temperature_c"]
+    if isinstance(temp, str):
+        if temp not in TEMPERATURES_C_STR:
+            return False
+    elif isinstance(temp, (int, float)):
+        if temp not in TEMPERATURES_C_NUMERIC:
+            return False
+    else:
+        return False
+    
+    return True
+
+
+def candidate_to_oracle_payload(candidate: dict[str, Any]) -> dict[str, Any]:
+    """Convert candidate dict to oracle API payload format.
+    
+    Converts string categorical values to proper numeric types for the oracle API.
+    """
+    # Convert concentration to float
+    conc = candidate["concentration"]
+    if isinstance(conc, str):
+        conc = float(conc)
+    
+    # Convert temperature_c to int
+    temp = candidate["temperature_c"]
+    if isinstance(temp, str):
+        temp = int(temp)
+    
+    return {
+        "base": candidate["base"],
+        "ligand": candidate["ligand"],
+        "solvent": candidate["solvent"],
+        "concentration": conc,
+        "temperature_c": temp,
+    }
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

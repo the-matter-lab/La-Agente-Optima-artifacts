@@ -1,0 +1,120 @@
+exit_code=0
+
+=== stdout (raw) ===
+#!/usr/bin/env python3
+"""Entry point for the direct arylation BO-MCP campaign.
+
+Usage:
+    python run_direct_arylation.py [--campaign-id CAMPAIGN_ID] [--max-evaluations N] [--batch-size N] [--artifacts-dir DIR]
+
+Environment variables required:
+    BO_MCP_API_URL - BO-MCP REST API base URL
+    BO_MCP_API_KEY - BO-MCP API key
+    DIRECT_ARYLATION_API_URL - Oracle API base URL
+"""
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+# Add the package to path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from direct_arylation_bo.campaign import run_campaign
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Direct Arylation Yield Optimization via BO-MCP",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--campaign-id",
+        type=str,
+        default=None,
+        help="Existing campaign ID to resume (omit to create new)",
+    )
+    parser.add_argument(
+        "--max-evaluations",
+        type=int,
+        default=60,
+        help="Maximum oracle evaluations this invocation",
+    )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=1,
+        help="Suggestions per BO iteration",
+    )
+    parser.add_argument(
+        "--artifacts-dir",
+        type=Path,
+        default=Path("artifacts"),
+        help="Directory for output artifacts",
+    )
+    parser.add_argument(
+        "--poll-s",
+        type=int,
+        default=180,
+        help="Poll interval for server decisions (seconds)",
+    )
+    parser.add_argument(
+        "--heartbeat-s",
+        type=int,
+        default=1800,
+        help="Heartbeat interval (seconds)",
+    )
+    parser.add_argument(
+        "--stop-file",
+        type=Path,
+        default=Path("STOP"),
+        help="Stop file path (checked each iteration)",
+    )
+
+    args = parser.parse_args()
+
+    # Validate required environment variables
+    required_env = ["BO_MCP_API_URL", "BO_MCP_API_KEY", "DIRECT_ARYLATION_API_URL"]
+    missing = [v for v in required_env if not os.getenv(v)]
+    if missing:
+        print(f"ERROR: Missing required environment variables: {', '.join(missing)}", file=sys.stderr)
+        return 1
+
+    # Create artifacts directory
+    args.artifacts_dir.mkdir(parents=True, exist_ok=True)
+
+    # Configure logfire if available
+    try:
+        import logfire
+        from grafico.core.logfire_config import configure_logfire
+        configure_logfire()
+        logfire.instrument_requests()
+    except ImportError:
+        pass  # Logfire optional
+
+    try:
+        run_campaign(
+            campaign_id=args.campaign_id,
+            batch_size=args.batch_size,
+            max_evaluations=args.max_evaluations,
+            artifacts_dir=args.artifacts_dir,
+        )
+        return 0
+    except KeyboardInterrupt:
+        print("\n[EVENT] Interrupted by user")
+        return 130
+    except Exception as exc:
+        print(f"[ALERT] Campaign failed: {exc}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

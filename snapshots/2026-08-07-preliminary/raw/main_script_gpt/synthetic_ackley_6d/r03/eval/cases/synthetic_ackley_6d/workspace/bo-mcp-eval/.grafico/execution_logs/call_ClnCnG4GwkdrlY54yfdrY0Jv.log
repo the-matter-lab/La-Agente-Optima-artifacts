@@ -1,0 +1,152 @@
+exit_code=0
+
+=== stdout (raw) ===
+### create_campaign
+    def create_campaign(
+        self, intake: dict[str, Any], *, idempotency_key: str
+    ) -> dict[str, Any]:
+        return self._json_request(
+            "POST",
+            "/api/v1/campaigns",
+            json={"intake": intake},
+            headers={"Idempotency-Key": idempotency_key},
+        )
+
+### generate_suggestions
+    def generate_suggestions(
+        self,
+        campaign_id: str,
+        *,
+        batch_size: int = 1,
+        timeout_s: float = _GENERATE_SUGGESTIONS_TIMEOUT_S,
+    ) -> dict[str, Any]:
+        """Ask the BO backend for new candidates.
+
+        Cost follows the search space's shape, not the result count: a space
+        mixing categorical/discrete with continuous parameters optimizes the
+        continuous part once per discrete configuration, so minutes are
+        normal. Raise ``timeout_s`` for a wide discrete side.
+        """
+        return self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{campaign_id}/generate",
+            params={"batch_size": batch_size},
+            timeout=timeout_s,
+        )
+
+### query_suggestions
+    def query_suggestions(
+        self,
+        campaign_id: str,
+        *,
+        status_filter: str | None = None,
+        limit: int = 500,
+    ) -> list[dict[str, Any]]:
+        response = self._json_request(
+            "POST",
+            f"/api/v1/suggestions/{campaign_id}/query",
+            json={
+                "status_filter": status_filter,
+                "limit": limit,
+                "verbosity": "standard",
+            },
+        )
+        return list(response.get("suggestions") or [])
+
+### submit_results
+    def submit_results(
+        self,
+        campaign_id: str,
+        *,
+        results: list[dict[str, Any]],
+        idempotency_key: str,
+        force: bool = False,
+    ) -> dict[str, Any]:
+        """Submit measurements, using ``force=True`` for an approved replicate.
+
+        A duplicate rejection is terminal and the server caches it under the
+        submitted ``idempotency_key``, with ``force`` part of the request
+        hash. A forced retry of a rejected submission must therefore use a
+        fresh key from :meth:`make_idempotency_key` — reusing the rejected
+        key returns a 409 idempotency conflict instead of submitting the
+        replicate.
+        """
+        payload: dict[str, Any] = {"results": results, "source": "api"}
+        # Sent only when requested: the server's result schema forbids extra
+        # keys, so an unconditional ``"force": false`` would 422 every
+        # ordinary submission against a server predating the field. Omission
+        # and ``false`` are equivalent, including in the idempotency hash.
+        if force:
+            payload["force"] = True
+        return self._json_request(
+            "POST",
+            f"/api/v1/results/{campaign_id}",
+            json=payload,
+            headers={"Idempotency-Key": idempotency_key},
+        )
+
+### get_results
+    def get_results(self, campaign_id: str) -> list[dict[str, Any]]:
+        """Return the campaign's server-persisted result rows.
+
+        For reporting and cross-checks. Progress and budget authority remain
+        with :meth:`next_action` and its ``n_results`` field — do not re-derive
+        loop position from these rows. A row matching a new suggestion is not
+        grounds for rejecting it either; see the replicate policy above.
+        """
+        response = self._json_request("GET", f"/api/v1/results/{campaign_id}")
+        if not isinstance(response, list):
+            raise BoMcpOperationError(
+                f"BO-MCP returned a non-list result payload for campaign {campaign_id}",
+                response if isinstance(response, dict) else {"response": response},
+            )
+        return response
+
+### next_action
+    def next_action(self, campaign_id: str) -> dict[str, Any]:
+        """Return the server's loop decision for one campaign, flattened.
+
+        Thin projection of ``POST /api/v1/campaigns/status/batch`` for a
+        single id: the returned dict carries the campaign's ``status``,
+        ``iteration``, ``n_results``, and the server-computed
+        recommendation flattened to ``action``/``reason``/``urgency``.
+        The continue/stop decision belongs to the server — callers branch
+        on ``action`` (``"bo_generate_suggestions"`` means another round)
+        and must not re-derive it from local state.
+        """
+        response = self._json_request(
+            "POST",
+            "/api/v1/campaigns/status/batch",
+            json={"campaign_ids": [campaign_id], "verbosity": "minimal"},
+        )
+        campaign = (response.get("campaigns") or {}).get(campaign_id)
+        if campaign is None:
+            raise BoMcpOperationError(
+                f"BO-MCP has no status for campaign {campaign_id}: "
+                f"{response.get('errors') or response.get('failed_ids')}",
+                response,
+            )
+        recommendation = campaign.get("next_action_recommendation") or {}
+        return {
+            "status": campaign.get("status"),
+            "iteration": campaign.get("iteration"),
+            "n_results": campaign.get("n_results"),
+            "action": recommendation.get("action"),
+            "reason": recommendation.get("reason"),
+            "urgency": recommendation.get("urgency"),
+        }
+
+### lifecycle
+    def lifecycle(self, campaign_id: str, *, action: str) -> dict[str, Any]:
+        return self._json_request(
+            "POST",
+            f"/api/v1/campaigns/{campaign_id}/lifecycle",
+            json={"action": action},
+        )
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

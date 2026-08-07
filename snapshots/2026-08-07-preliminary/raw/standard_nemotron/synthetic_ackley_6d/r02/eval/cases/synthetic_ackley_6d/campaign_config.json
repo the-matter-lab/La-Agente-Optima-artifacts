@@ -1,0 +1,262 @@
+{
+  "_source": "BO-MCP REST campaign/spec read-back",
+  "campaign": {
+    "created_at": "2026-08-03T19:13:59.429245Z",
+    "description": "",
+    "id": "e2311138-639c-4b1a-9d87-ce71ecda9385",
+    "iteration": 60,
+    "n_objectives": 1,
+    "n_parameters": 6,
+    "name": "ackley_6d_akg-eval-33269dad0b2d4893af291cb6d2b01f22",
+    "spec_id": "d024d727-cfa2-43b6-a306-1940ed0aeec0",
+    "status": "running",
+    "updated_at": "2026-08-03T19:17:30.263248Z"
+  },
+  "campaign_config": {
+    "_source": "BO-MCP REST campaign/spec read-back",
+    "acknowledge_degradations": [],
+    "acquisition": {
+      "method": "auto",
+      "optimization": null,
+      "saasbo_config": null,
+      "turbo_config": null,
+      "use_cost_aware": false,
+      "use_input_warping": false
+    },
+    "backend_options": null,
+    "backend_requested": "auto",
+    "backend_resolved": "botorch",
+    "batch_size": 1,
+    "campaign_id": "e2311138-639c-4b1a-9d87-ce71ecda9385",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "fidelity_parameter": null,
+    "initial_design_size": 12,
+    "initial_design_size_requested": 12,
+    "initial_design_size_source": "requested",
+    "max_iterations": null,
+    "max_observations": 60,
+    "missing_fields": [
+      "max_iterations",
+      "convergence_tolerance",
+      "backend_options",
+      "fidelity_parameter",
+      "transfer_learning"
+    ],
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_1 in [0, 1]",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_2 in [0, 1]",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_3 in [0, 1]",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_4 in [0, 1]",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_5 in [0, 1]",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_6 in [0, 1]",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 42,
+    "spec_id": "d024d727-cfa2-43b6-a306-1940ed0aeec0",
+    "transfer_learning": null
+  },
+  "spec": {
+    "acknowledge_degradations": [],
+    "acquisition_beta": null,
+    "acquisition_method": "auto",
+    "acquisition_optimization": null,
+    "backend_options": null,
+    "backend_requested": "auto",
+    "backend_resolved": "botorch",
+    "batch_size": 1,
+    "campaign_id": "e2311138-639c-4b1a-9d87-ce71ecda9385",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "description": "",
+    "fidelity_parameter": null,
+    "initial_design_size": 12,
+    "initial_design_size_requested": 12,
+    "initial_design_size_source": "requested",
+    "iteration": 60,
+    "max_iterations": null,
+    "max_observations": 60,
+    "name": "ackley_6d_akg-eval-33269dad0b2d4893af291cb6d2b01f22",
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_1 in [0, 1]",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_2 in [0, 1]",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_3 in [0, 1]",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_4 in [0, 1]",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_5 in [0, 1]",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Input parameter x_6 in [0, 1]",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 42,
+    "saasbo_config": null,
+    "scalarization": "pareto",
+    "scalarizer": null,
+    "spec_id": "d024d727-cfa2-43b6-a306-1940ed0aeec0",
+    "status": "running",
+    "transfer_learning": null,
+    "turbo_config": null,
+    "use_cost_aware": false,
+    "use_input_warping": false
+  }
+}

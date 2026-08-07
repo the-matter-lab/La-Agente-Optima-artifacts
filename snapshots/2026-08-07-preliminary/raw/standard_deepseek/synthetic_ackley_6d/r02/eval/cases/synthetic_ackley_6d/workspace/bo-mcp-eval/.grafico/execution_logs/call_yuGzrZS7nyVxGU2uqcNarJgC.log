@@ -1,0 +1,132 @@
+exit_code=0
+
+=== stdout (raw) ===
+# How to Execute the Ackley 6-D Benchmark Campaign
+
+## Overview
+
+This campaign optimizes a synthetic 6-dimensional Ackley surface using
+BO-MCP with the BayBE backend.  The evaluator is a pure Python function
+— no chemistry, no PySCF, no CREST, no MOF.
+
+- **Campaign name**: `ackley-6d-akg-eval-8c5ca00fb69c4b67af14d0be90fef5f8`
+- **Search space**: 6 continuous parameters `x_1` … `x_6`, each ∈ [0, 1]
+- **Objective**: `surface_response` (maximize, normalized unitless)
+- **Budget**: 60 attempted evaluations (CLI budget, not intake cap)
+- **Backend**: BayBE
+- **Acquisition**: Expected Improvement
+- **Initial design**: 12 Sobol points
+- **Batch size**: 3
+
+## Environment
+
+Requires the BO-MCP API to be reachable.  The following environment
+variables **must** be set:
+
+| Variable          | Purpose                          |
+|-------------------|----------------------------------|
+| `BO_MCP_API_URL`  | Base URL of the BO-MCP REST API  |
+| `BO_MCP_API_KEY`  | API key for authentication       |
+
+Optional:
+
+| Variable     | Default | Purpose                          |
+|-------------|---------|----------------------------------|
+| `STOP_FILE` | `STOP`  | Path to the stop marker file     |
+
+## Run Command
+
+```bash
+uv run python run_ackley_benchmark.py
+```
+
+With unbuffered output and tee (recommended for monitoring):
+
+```bash
+uv run python -u run_ackley_benchmark.py 2>&1 | tee run.log
+```
+
+### Resume a Paused / Killed Campaign
+
+```bash
+uv run python run_ackley_benchmark.py --campaign-id <CAMPAIGN_ID>
+```
+
+The script will `resume` (paused) or `reopen` (completed) the campaign
+and continue from where it left off.
+
+## Stop File
+
+If the file named by `--stop-file` (default `STOP` in the current
+directory) exists at the top of a loop iteration, the script:
+
+1. Prints `[EVENT] Stop file 'STOP' detected — shutting down`
+2. Deletes the stop file
+3. Exits through the normal shutdown path (pauses the campaign)
+
+Create the file to request a graceful stop:
+
+```bash
+touch STOP
+```
+
+## Stdout Tags
+
+The script emits tagged lines suitable for monitoring:
+
+| Tag           | Meaning                                          |
+|---------------|--------------------------------------------------|
+| `[EVENT]`     | State changes: creation, resume, submission, etc.|
+| `[ALERT]`     | Failures and stop conditions                     |
+| `[RESULT]`    | Per-evaluation analysis and final report         |
+| `[HEARTBEAT]` | Liveness indicator (every 1800 s by default)     |
+
+Everything else goes to the run log on disk (`campaign.log`).
+
+## Output Artifacts
+
+All artifacts land in `artifacts/` (configurable via `--artifact-dir`):
+
+| File                          | Content                                      |
+|-------------------------------|----------------------------------------------|
+| `results_<timestamp>.jsonl`   | One JSON object per evaluated candidate      |
+| `diagnostics_<timestamp>.json`| BO-MCP diagnostics (called once at end)      |
+
+Each results row contains:
+
+- `evaluation_index`
+- `parameter_values`: `{x_1, …, x_6}`
+- `objective_values`: `{surface_response}`
+- `status`: `"completed"` or `"failed"`
+- `failure_reason` (when failed)
+- `raw_response`
+- `suggestion_id`
+
+## Final Report
+
+At the end of the run the script prints to stdout:
+
+- Best normalized coordinates
+- Best `raw_response`
+- Best `surface_response`
+- Counts of successful and attempted evaluations
+- A table of all evaluated candidates with objective values and statuses
+
+## Files
+
+| Path                              | Role                          |
+|-----------------------------------|-------------------------------|
+| `run_ackley_benchmark.py`         | CLI entrypoint                |
+| `ackley_benchmark/__init__.py`    | Package root                  |
+| `ackley_benchmark/search_space.py`| Search-space definition       |
+| `ackley_benchmark/intake.py`      | Campaign intake construction  |
+| `ackley_benchmark/evaluator.py`   | Ackley function evaluator     |
+| `ackley_benchmark/orchestrator.py`| BO-MCP loop orchestrator      |
+| `ackley_benchmark/reporting.py`   | Result extraction & reporting |
+| `campaign_manifest.json`          | Package manifest              |
+| `HOW_TO_EXECUTE_CAMPAIGN.md`      | This file                     |
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,41 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/direct_arylation_20260730_174800.log
+ATTEMPTS=42
+17:49:22.290 Evaluation succeeded: {'yield': 16.83}
+17:49:22.291 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=SCHEMBL15068049, solvent=Butyl Ester, concentration=0.153, temperature_c=90.0 -> Yield: 16.83%
+17:49:23.362 POST api/api/v1/campaigns/status/batch
+17:49:23.380 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:49:23.391 Generating new suggestion...
+17:49:23.392 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:49:24.797 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 120}
+17:49:24.798 POST direct-arylation-oracle/v1/evaluate
+17:49:24.801 Evaluation succeeded: {'yield': 76.24}
+17:49:24.802 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyl Ester, concentration=0.153, temperature_c=120.0 -> Yield: 76.24%
+17:49:25.877 POST api/api/v1/campaigns/status/batch
+17:49:25.899 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:49:25.910 Generating new suggestion...
+17:49:25.910 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:49:27.733 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'Butyl Ester', 'concentration': 0.1, 'temperature_c': 120}
+17:49:27.734 POST direct-arylation-oracle/v1/evaluate
+17:49:27.739 Evaluation succeeded: {'yield': 73.71}
+17:49:27.740 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyl Ester, concentration=0.1, temperature_c=120.0 -> Yield: 73.71%
+17:49:28.812 POST api/api/v1/campaigns/status/batch
+17:49:28.837 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/query
+17:49:28.852 Generating new suggestion...
+17:49:28.853 POST api/api/v1/suggestions/0f26e119-ef44-4a92-b970-7d97eed33f3d/generate ? batch_size='1'
+17:49:29.805 Evaluating candidate: {'base': 'Potassium acetate', 'ligand': 'XPhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 105}
+17:49:29.806 POST direct-arylation-oracle/v1/evaluate
+17:49:29.811 Evaluation succeeded: {'yield': 53.49}
+17:49:29.812 POST api/api/v1/results/0f26e119-ef44-4a92-b970-7d97eed33f3d
+[RESULT] SUCCESS | base=Potassium acetate, ligand=XPhos, solvent=Butyl Ester, concentration=0.153, temperature_c=105.0 -> Yield: 53.49%
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

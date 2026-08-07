@@ -1,0 +1,35 @@
+{
+  "campaign_slug": "direct_arylation_baybe",
+  "benchmark_marker": "akg-eval-9209d1682dba47dfb5f5735d25356061",
+  "cache_buster_nonce": "4b764ac7-d36a-4203-89a4-800a2274f65c",
+  "package_modules": [
+    "direct_arylation_baybe/__init__.py",
+    "direct_arylation_baybe/search_space.py",
+    "direct_arylation_baybe/intake.py",
+    "direct_arylation_baybe/oracle.py",
+    "direct_arylation_baybe/reporting.py",
+    "direct_arylation_baybe/campaign.py"
+  ],
+  "run_entrypoint": "run_direct_arylation_baybe.py",
+  "how_to_execute": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "latest_artifact_dir": "direct_arylation_baybe_artifacts",
+  "artifact_files": {
+    "results_jsonl": "direct_arylation_baybe_artifacts/results.jsonl",
+    "summary_json": "direct_arylation_baybe_artifacts/summary.json",
+    "run_log": "direct_arylation_baybe_artifacts/run.log"
+  },
+  "backend": "baybe",
+  "objective_name": "yield",
+  "objective_direction": "maximize",
+  "objective_units": "percent",
+  "attempt_budget": 60,
+  "smoke_test": {
+    "campaign_id": "3447e24a-05e0-46d1-99ce-3698696de27d",
+    "campaign_name": "direct-arylation-yield-baybe-akg-eval-9209d1682dba47dfb5f5735d25356061",
+    "attempts_consumed": 3,
+    "successful": 2,
+    "failed": 1,
+    "status": "paused",
+    "note": "Real oracle attempts already consumed against the 60-attempt budget (2 success + 1 induced-failure connectivity test). Resume this same campaign_id for the full run instead of creating a new one -- do not create a second campaign."
+  }
+}

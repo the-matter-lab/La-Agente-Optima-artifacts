@@ -1,0 +1,30 @@
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+05:58:53.218 ackley6d_bo campaign invocation starting
+[EVENT] resuming campaign 466765ab-f0d1-456b-b974-12e34c3d36dc
+05:58:53.219 GET api/api/v1/campaigns/466765ab-f0d1-456b-b974-12e34c3d36dc
+05:58:53.230 POST api/api/v1/campaigns/466765ab-f0d1-456b-b974-12e34c3d36dc/lifecycle
+[EVENT] campaign 466765ab-f0d1-456b-b974-12e34c3d36dc resumed (was paused)
+05:58:53.266 GET api/api/v1/results/466765ab-f0d1-456b-b974-12e34c3d36dc
+05:58:53.277 POST api/api/v1/suggestions/466765ab-f0d1-456b-b974-12e34c3d36dc/query
+05:58:53.288 POST api/api/v1/campaigns/status/batch
+05:58:53.302 POST api/api/v1/suggestions/466765ab-f0d1-456b-b974-12e34c3d36dc/generate ? batch_size='1'
+05:59:07.315 GET api/api/v1/results/466765ab-f0d1-456b-b974-12e34c3d36dc
+05:59:07.327 POST api/api/v1/suggestions/466765ab-f0d1-456b-b974-12e34c3d36dc/query
+05:59:07.340 POST api/api/v1/results/466765ab-f0d1-456b-b974-12e34c3d36dc
+[RESULT] eval=17 status=success surface_response=0.042272 raw_response=-21.405614 (x_1=0.9924, x_2=0.9132, x_3=0.0501, x_4=0.6382, x_5=0.7042, x_6=0.3462)
+[HEARTBEAT] campaign=466765ab-f0d1-456b-b974-12e34c3d36dc attempted=17/60
+[EVENT] stop file STOP2 found; honoring stop request
+05:59:07.405 GET api/api/v1/campaigns/466765ab-f0d1-456b-b974-12e34c3d36dc
+05:59:07.414 POST api/api/v1/campaigns/466765ab-f0d1-456b-b974-12e34c3d36dc/lifecycle
+[EVENT] campaign 466765ab-f0d1-456b-b974-12e34c3d36dc paused
+05:59:07.558 GET api/api/v1/results/466765ab-f0d1-456b-b974-12e34c3d36dc
+05:59:07.573 POST api/api/v1/suggestions/466765ab-f0d1-456b-b974-12e34c3d36dc/query
+05:59:07.588 GET api/api/v1/results/466765ab-f0d1-456b-b974-12e34c3d36dc
+[EVENT] final summary
+BO_MCP_CAMPAIGN_ID=466765ab-f0d1-456b-b974-12e34c3d36dc
+attempted_evaluations=17
+successful_evaluations=17
+best_surface_response=0.062820
+best_raw_response=-20.946349
+best_parameter_values={x_1=0.959987, x_2=0.901204, x_3=0.076101, x_4=0.627290, x_5=0.673966, x_6=0.358913}

@@ -1,0 +1,1161 @@
+{
+  "bo_mcp": {
+    "_source": "BO-MCP REST read-back of campaign, spec, results, and diagnostics endpoints",
+    "attempted_objective_evaluations": 60,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "best_objective_evaluation_index": 51,
+    "best_objective_value": 89.17,
+    "best_parameters": {
+      "base": "Cesium acetate",
+      "concentration": 0.057,
+      "ligand": "XPhos",
+      "solvent": "DMAc",
+      "temperature_c": 105
+    },
+    "best_so_far": 89.17,
+    "best_so_far_by_evaluation": [
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      82.21,
+      82.21,
+      82.21,
+      82.21,
+      82.21,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17
+    ],
+    "bo_mcp_reported_hypervolume": null,
+    "bo_mcp_reported_improvement_history": [
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      82.21,
+      82.21,
+      82.21,
+      82.21,
+      82.21,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17
+    ],
+    "bo_mcp_reported_n_pareto_points": null,
+    "bo_mcp_reported_pareto_front": null,
+    "campaign_batch_size": 1,
+    "campaign_config": {
+      "_source": "BO-MCP REST campaign/spec read-back",
+      "acknowledge_degradations": [],
+      "acquisition": {
+        "method": "expected_improvement",
+        "optimization": null,
+        "saasbo_config": null,
+        "turbo_config": null,
+        "use_cost_aware": false,
+        "use_input_warping": false
+      },
+      "backend_options": null,
+      "backend_requested": "baybe",
+      "backend_resolved": "baybe",
+      "batch_size": 1,
+      "campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063",
+      "constraints": [],
+      "convergence_tolerance": null,
+      "fidelity_parameter": null,
+      "initial_design_size": 12,
+      "initial_design_size_requested": 12,
+      "initial_design_size_source": "requested",
+      "max_iterations": null,
+      "max_observations": null,
+      "missing_fields": [
+        "max_iterations",
+        "max_observations",
+        "convergence_tolerance",
+        "backend_options",
+        "fidelity_parameter",
+        "transfer_learning"
+      ],
+      "objectives": [
+        {
+          "direction": "maximize",
+          "log_transform": false,
+          "match_scale": null,
+          "match_shape": null,
+          "name": "yield",
+          "normalization_bounds": null,
+          "target": null,
+          "target_mode": null,
+          "transform": null,
+          "unit": "percent",
+          "weight": null
+        }
+      ],
+      "outcome_constraints": [],
+      "parameters": [
+        {
+          "bounds": null,
+          "categories": [
+            "Potassium acetate",
+            "Potassium pivalate",
+            "Cesium acetate",
+            "Cesium pivalate"
+          ],
+          "description": "",
+          "name": "base",
+          "parameter_options": null,
+          "type": "categorical",
+          "values": null
+        },
+        {
+          "bounds": null,
+          "categories": [
+            "BrettPhos",
+            "Di-tert-butylphenylphosphine",
+            "(t-Bu)PhCPhos",
+            "Tricyclohexylphosphine",
+            "PPh3",
+            "XPhos",
+            "P(2-furyl)3",
+            "Methyldiphenylphosphine",
+            "1268824-69-6",
+            "JackiePhos",
+            "SCHEMBL15068049",
+            "Me2PPh"
+          ],
+          "description": "",
+          "name": "ligand",
+          "parameter_options": null,
+          "type": "categorical",
+          "values": null
+        },
+        {
+          "bounds": null,
+          "categories": [
+            "DMAc",
+            "Butyornitrile",
+            "Butyl Ester",
+            "p-Xylene"
+          ],
+          "description": "",
+          "name": "solvent",
+          "parameter_options": null,
+          "type": "categorical",
+          "values": null
+        },
+        {
+          "bounds": null,
+          "categories": null,
+          "description": "",
+          "name": "concentration",
+          "parameter_options": null,
+          "type": "discrete",
+          "values": [
+            0.057,
+            0.1,
+            0.153
+          ]
+        },
+        {
+          "bounds": null,
+          "categories": null,
+          "description": "",
+          "name": "temperature_c",
+          "parameter_options": null,
+          "type": "discrete",
+          "values": [
+            90.0,
+            105.0,
+            120.0
+          ]
+        }
+      ],
+      "random_seed": 20250308,
+      "spec_id": "a31cbd3c-68da-49fa-9998-17ac5d5a6b68",
+      "transfer_learning": null
+    },
+    "campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063",
+    "campaign_initial_design_size": 12,
+    "campaign_iteration": 60,
+    "campaign_max_iterations": null,
+    "campaign_max_observations": null,
+    "campaign_random_seed": 20250308,
+    "campaign_retrieved": true,
+    "campaign_status": "paused",
+    "completed_evaluations": 60,
+    "completed_objective_evaluations": 60,
+    "converged": true,
+    "duplicate_evaluations": 0,
+    "duplicate_rate": 0.0,
+    "eval_best_so_far_auc": 5002.21,
+    "eval_best_so_far_curve": [
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      66.49,
+      82.21,
+      82.21,
+      82.21,
+      82.21,
+      82.21,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      86.43,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      87.83,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      88.41,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17,
+      89.17
+    ],
+    "failed_evaluation_rate": 0.0,
+    "failed_evaluations": 0,
+    "final_objective_value": 72.89,
+    "hypervolume": null,
+    "hypervolume_reference_point": null,
+    "incomplete_objective_evaluations": 0,
+    "n_pareto_points": null,
+    "objective_metadata": [
+      {
+        "direction": "maximize",
+        "name": "yield"
+      }
+    ],
+    "objective_reducer": "single_objective_best_so_far",
+    "objective_vector_count": 60,
+    "objective_vectors": [
+      {
+        "evaluation_index": 1,
+        "objective_values": {
+          "yield": 66.49
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 2,
+        "objective_values": {
+          "yield": 27.05
+        },
+        "parameter_values": {
+          "base": "Cesium pivalate",
+          "concentration": 0.153,
+          "ligand": "P(2-furyl)3",
+          "solvent": "Butyl Ester",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 3,
+        "objective_values": {
+          "yield": 0.22
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.153,
+          "ligand": "Methyldiphenylphosphine",
+          "solvent": "p-Xylene",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 4,
+        "objective_values": {
+          "yield": 14.01
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.153,
+          "ligand": "(t-Bu)PhCPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 5,
+        "objective_values": {
+          "yield": 0.0
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.1,
+          "ligand": "Tricyclohexylphosphine",
+          "solvent": "Butyl Ester",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 6,
+        "objective_values": {
+          "yield": 30.03
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.153,
+          "ligand": "1268824-69-6",
+          "solvent": "DMAc",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 7,
+        "objective_values": {
+          "yield": 0.0
+        },
+        "parameter_values": {
+          "base": "Cesium pivalate",
+          "concentration": 0.153,
+          "ligand": "Me2PPh",
+          "solvent": "Butyornitrile",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 8,
+        "objective_values": {
+          "yield": 0.0
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.1,
+          "ligand": "Me2PPh",
+          "solvent": "p-Xylene",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 9,
+        "objective_values": {
+          "yield": 82.21
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 10,
+        "objective_values": {
+          "yield": 0.0
+        },
+        "parameter_values": {
+          "base": "Cesium pivalate",
+          "concentration": 0.153,
+          "ligand": "Di-tert-butylphenylphosphine",
+          "solvent": "Butyl Ester",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 11,
+        "objective_values": {
+          "yield": 6.67
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.153,
+          "ligand": "PPh3",
+          "solvent": "Butyornitrile",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 12,
+        "objective_values": {
+          "yield": 0.97
+        },
+        "parameter_values": {
+          "base": "Cesium pivalate",
+          "concentration": 0.153,
+          "ligand": "JackiePhos",
+          "solvent": "DMAc",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "yield": 81.66
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "yield": 86.43
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "yield": 85.24
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "yield": 7.02
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "yield": 44.48
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "yield": 42.3
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "yield": 84.48
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 20,
+        "objective_values": {
+          "yield": 87.83
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "yield": 84.17
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "yield": 84.62
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "yield": 83.83
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "yield": 86.37
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 25,
+        "objective_values": {
+          "yield": 59.27
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "p-Xylene",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 26,
+        "objective_values": {
+          "yield": 0.0
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 27,
+        "objective_values": {
+          "yield": 77.01
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 28,
+        "objective_values": {
+          "yield": 72.9
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "yield": 84.49
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "yield": 70.8
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "p-Xylene",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "yield": 76.63
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "p-Xylene",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "yield": 67.17
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "p-Xylene",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 33,
+        "objective_values": {
+          "yield": 79.33
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 34,
+        "objective_values": {
+          "yield": 6.23
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 35,
+        "objective_values": {
+          "yield": 84.81
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 36,
+        "objective_values": {
+          "yield": 84.17
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 37,
+        "objective_values": {
+          "yield": 80.61
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 38,
+        "objective_values": {
+          "yield": 50.93
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 39,
+        "objective_values": {
+          "yield": 77.41
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 40,
+        "objective_values": {
+          "yield": 80.39
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 41,
+        "objective_values": {
+          "yield": 65.37
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 42,
+        "objective_values": {
+          "yield": 29.16
+        },
+        "parameter_values": {
+          "base": "Cesium pivalate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 43,
+        "objective_values": {
+          "yield": 84.67
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 44,
+        "objective_values": {
+          "yield": 88.41
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 45,
+        "objective_values": {
+          "yield": 67.04
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "p-Xylene",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 46,
+        "objective_values": {
+          "yield": 78.6
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 47,
+        "objective_values": {
+          "yield": 56.57
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 48,
+        "objective_values": {
+          "yield": 61.67
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "p-Xylene",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 49,
+        "objective_values": {
+          "yield": 82.28
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 50,
+        "objective_values": {
+          "yield": 48.86
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 51,
+        "objective_values": {
+          "yield": 89.17
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 52,
+        "objective_values": {
+          "yield": 88.41
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 53,
+        "objective_values": {
+          "yield": 77.58
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 54,
+        "objective_values": {
+          "yield": 72.21
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 55,
+        "objective_values": {
+          "yield": 54.52
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "p-Xylene",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 56,
+        "objective_values": {
+          "yield": 64.62
+        },
+        "parameter_values": {
+          "base": "Potassium acetate",
+          "concentration": 0.1,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 57,
+        "objective_values": {
+          "yield": 62.07
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "DMAc",
+          "temperature_c": 120
+        }
+      },
+      {
+        "evaluation_index": 58,
+        "objective_values": {
+          "yield": 34.45
+        },
+        "parameter_values": {
+          "base": "Potassium pivalate",
+          "concentration": 0.153,
+          "ligand": "XPhos",
+          "solvent": "p-Xylene",
+          "temperature_c": 105
+        }
+      },
+      {
+        "evaluation_index": 59,
+        "objective_values": {
+          "yield": 61.71
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "Butyl Ester",
+          "temperature_c": 90
+        }
+      },
+      {
+        "evaluation_index": 60,
+        "objective_values": {
+          "yield": 72.89
+        },
+        "parameter_values": {
+          "base": "Cesium acetate",
+          "concentration": 0.057,
+          "ligand": "XPhos",
+          "solvent": "Butyornitrile",
+          "temperature_c": 105
+        }
+      }
+    ],
+    "pareto_front": null,
+    "results_retrieved": true,
+    "submitted_results_count": 60,
+    "successful_objective_evaluations": 60,
+    "suggestions_generated": 60,
+    "unique_parameter_evaluations": 60,
+    "unresolved_suggestions": 0,
+    "verification_status": "verified"
+  },
+  "metric_notes": [
+    "Token and cost fields are reported only when exposed by the runtime or derivable from recorded message metadata.",
+    "Subagent metrics use TaskHandle observability fields when the installed subagent runtime exposes them, with older-runtime fallbacks."
+  ]
+}

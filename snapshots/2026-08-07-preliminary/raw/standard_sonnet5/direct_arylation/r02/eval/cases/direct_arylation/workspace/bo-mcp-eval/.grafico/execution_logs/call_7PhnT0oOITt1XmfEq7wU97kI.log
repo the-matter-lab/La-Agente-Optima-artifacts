@@ -1,0 +1,148 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Direct Arylation Yield — BO-MCP Campaign
+
+Optimizes measured yield (%) of a direct-arylation reaction over a fixed,
+fully-crossed search space of 1,728 combinations (`base` x `ligand` x
+`solvent` x `concentration` x `temperature_c`), using a **BO-MCP campaign on
+the BayBE backend** (`backend: "baybe"` is pinned in the intake — this is a
+categorical/discrete crossed space, BayBE's core use case). No local BO is
+implemented; all optimization state and the continue/stop decision live on
+the BO-MCP server.
+
+Every campaign created by this script has the exact marker
+`akg-eval-115631eb4ad043529f2b64b9751e1583` in its name
+(`direct-arylation-yield-bo-akg-eval-115631eb4ad043529f2b64b9751e1583`).
+Only campaigns with that marker belong to this invocation.
+
+## Files
+
+- `run_direct_arylation_bo.py` — CLI entrypoint (only argument wiring).
+- `direct_arylation_bo/` — package:
+  - `search_space.py` — exact parameter names/values (including the
+    `Butyornitrile` spelling) and the campaign intake builder.
+  - `oracle.py` — single POST to `{DIRECT_ARYLATION_API_URL}/v1/evaluate`
+    per candidate; any non-2xx/timeout/malformed body is a failed attempt.
+  - `reporting.py` — append-only per-attempt JSONL provenance + a final
+    report re-derived from the BO-MCP server at the end of a run.
+  - `campaign.py` — create/resume, the BO loop, and finalization.
+- `campaign_manifest.json` — module map + latest artifact dir for
+  continuations (see the note about the smoke-test campaign id below).
+
+## Required environment variables
+
+- `BO_MCP_API_URL`, `BO_MCP_API_KEY` — BO-MCP REST API.
+- `DIRECT_ARYLATION_API_URL` — oracle base URL (`.../v1/evaluate` is appended).
+
+## Exact execution command
+
+```
+python3 run_direct_arylation_bo.py
+```
+
+This creates a **new** campaign (name includes the required marker) and runs
+up to 60 attempted objective evaluations (`--max-attempts`, default 60).
+
+To resume a killed/paused invocation on the *same* campaign:
+
+```
+python3 run_direct_arylation_bo.py --campaign-id <BO_MCP_CAMPAIGN_ID>
+```
+
+Do **not** resume the smoke-test campaign id recorded in
+`campaign_manifest.json` for the real run — it contains one synthetic failed
+attempt injected on purpose to exercise the failure path, which would corrupt
+the final attempted/failed counts. Start the real campaign fresh (no
+`--campaign-id`).
+
+## How the 60-attempt budget is enforced
+
+`--max-attempts` (default 60) bounds this **invocation**, not the campaign
+intake (`max_iterations` is intentionally left unset, per BO-MCP loop
+policy, so a paused campaign can always be resumed later). At the top of
+every loop iteration the script asks the server for ground truth:
+`n_results` from `next_action` (successful attempts) plus the count of
+`rejected` suggestions (failed oracle attempts) via
+`query_suggestions(status_filter="rejected")`. The loop stops the moment
+`successful + failed >= max_attempts`, so exactly 60 attempted evaluations
+are made across the campaign's full history — including any prior
+invocations resumed via `--campaign-id` — never more.
+
+The server's own `next_action` recommendation is also honored: if BO-MCP
+ever reports an action other than `bo_generate_suggestions` (e.g. it
+considers itself converged), the script stops early and pauses rather than
+forcing more evaluations.
+
+## Failed evaluations
+
+A non-2xx/timeout/malformed oracle response is recorded as a failed
+attempt: the suggestion is rejected via `update_suggestion_status(...,
+"rejected")` (so it does not block future generation, per BO-MCP's replicate
+policy) and **no result is submitted** (BO-MCP requires finite objective
+values). Failed attempts still count toward the 60-attempt budget.
+
+## Stop / resume behavior
+
+- `--stop-file` (default `STOP` in the current working directory) is checked
+  at the top of every loop iteration, before generating a new suggestion —
+  never between evaluation and submission, so a result is always submitted
+  before the campaign is paused. If found, the script logs `[EVENT]`,
+  deletes the file (so a future resume isn't blocked by a stale marker), and
+  pauses the campaign.
+- On budget exhaustion or a server stop signal, the script pauses the
+  campaign (only if it is currently `running`) rather than terminating it.
+- Resume with the exact command above plus `--campaign-id`.
+
+## Monitoring tags (stdout)
+
+- `[EVENT]` — campaign created/resumed/reopened/paused, budget reached,
+  server stop signal, stop-file handling.
+- `[ALERT]` — a failed oracle attempt (non-2xx/timeout) or a suggestion
+  generation failure.
+- `[RESULT]` — one line per successful attempt (yield + full conditions),
+  plus the final campaign summary, best conditions/yield, and diagnostics.
+- `[HEARTBEAT]` — liveness signal, emitted at least every `--heartbeat-s`
+  (default 1800s) and while backing off after a suggestion-generation
+  timeout.
+- The final line of every invocation is `BO_MCP_CAMPAIGN_ID=<id>` — copy this
+  value for `--campaign-id` on a later resume.
+
+`--poll-s` (default 180, valid range 120-300) is the backoff interval used
+only when `generate_suggestions` itself times out on the HTTP read: per the
+BO-MCP client contract, a read timeout does not prove nothing was produced,
+so the script waits `--poll-s` and re-queries pending suggestions instead of
+blindly retrying generation.
+
+Everything else (per-HTTP-call Logfire spans, etc.) goes to Logfire/stdout
+at debug level and is not tagged; the tagged lines above are the ones a
+monitor should match on.
+
+## Outputs / artifacts
+
+Written under `artifacts/direct_arylation_bo/<campaign_id>/`:
+
+- `attempts.jsonl` — append-only per-attempt provenance for this invocation
+  (status, conditions, yield or error). Never read back to make loop
+  decisions.
+- `final_report.json` — written at the end of every invocation, re-derived
+  from the BO-MCP server (`get_results` + rejected suggestions), so it
+  always reflects the campaign's **full** history, not just this run. Fields:
+  `attempted_evaluations`, `successful_evaluations`, `failed_evaluations`,
+  `best_conditions`, `best_measured_yield`, `all_evaluated_candidates`
+  (every result/rejected-suggestion with its status and objective value).
+
+## Validating a run
+
+1. Confirm the printed campaign name contains
+   `akg-eval-115631eb4ad043529f2b64b9751e1583`.
+2. Tail stdout for `[RESULT]` lines and the final `BO_MCP_CAMPAIGN_ID=...`.
+3. Open `artifacts/direct_arylation_bo/<campaign_id>/final_report.json` and
+   check `attempted_evaluations == 60` (or less only if the server itself
+   signaled a stop) and that `all_evaluated_candidates` lists every attempt.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

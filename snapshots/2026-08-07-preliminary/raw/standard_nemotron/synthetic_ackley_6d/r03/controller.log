@@ -1,0 +1,300 @@
+
+[2026-08-03T19:18:44.642226Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--output-dir", "/app/outputs/cells/ackley_standard_nemotron_r03/eval", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "ackley_standard_nemotron_r03-20260803", "--subagent-model", "nvidia:nvidia/nemotron-3-ultra-550b-a55b"]
+ Container nemotron-extension-20260803-eval-run-fe0ebcef5521 Creating 
+ Container nemotron-extension-20260803-eval-run-fe0ebcef5521 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+19:19:03.532 evaluate bo_mcp_graph_eval
+19:19:03.533   case: synthetic_ackley_6d
+19:19:03.533     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+19:19:26.679       agent run
+19:19:26.685         chat gpt-5.4
+19:19:27.618           POST api.openai.com/v1/responses
+19:19:39.802         running tool: task
+19:19:39.808 agent run
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+19:19:39.814         chat gpt-5.4
+19:19:39.824           POST api.openai.com/v1/responses
+             agent run
+19:19:39.829   chat nvidia/nemotron-3-ultra-550b-a55b
+19:19:39.835     POST integrate.api.nvidia.com/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+19:19:41.415         running tool: wait_tasks
+             agent run
+19:19:47.161   running tool: inspect_bo_mcp_openapi_overview
+19:19:47.161   running tool: execute
+19:19:48.172   chat nvidia/nemotron-3-ultra-550b-a55b
+19:19:48.179     POST integrate.api.nvidia.com/v1/chat/completions
+19:19:50.375   running tool: read_file
+19:19:50.385   chat nvidia/nemotron-3-ultra-550b-a55b
+19:19:50.390     POST integrate.api.nvidia.com/v1/chat/completions
+19:19:53.945   running tool: glob
+19:19:53.953   chat nvidia/nemotron-3-ultra-550b-a55b
+19:19:53.958     POST integrate.api.nvidia.com/v1/chat/completions
+19:19:55.386   running tool: glob
+19:19:55.393   chat nvidia/nemotron-3-ultra-550b-a55b
+19:19:55.399     POST integrate.api.nvidia.com/v1/chat/completions
+19:19:56.763   running tool: grep
+19:19:56.774   chat nvidia/nemotron-3-ultra-550b-a55b
+19:19:56.780     POST integrate.api.nvidia.com/v1/chat/completions
+19:19:58.127   running tool: grep
+19:19:58.135   chat nvidia/nemotron-3-ultra-550b-a55b
+19:19:58.142     POST integrate.api.nvidia.com/v1/chat/completions
+19:19:59.604   running tool: ls
+19:19:59.617   chat nvidia/nemotron-3-ultra-550b-a55b
+19:19:59.623     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:01.985   running tool: execute
+19:20:02.130   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:02.137     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:04.555   running tool: read_file
+19:20:04.562   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:04.569     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:05.921   running tool: execute
+19:20:05.938   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:05.948     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:07.443   running tool: read_file
+19:20:07.451   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:07.459     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:08.934   running tool: ls
+19:20:08.941   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:08.949     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:10.379   running tool: execute
+19:20:10.537   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:10.546     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:15.861   running tool: read_file
+19:20:15.871   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:15.881     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:17.428   running tool: execute
+19:20:17.444   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:17.453     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:26.401   running tool: read_file
+19:20:26.409   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:26.423     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:28.341   running tool: execute
+19:20:28.352   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:28.363     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:31.123   running tool: execute
+19:20:31.143   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:31.152     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:42.234   running tool: read_file
+19:20:42.234   running tool: read_file
+19:20:42.234   running tool: read_file
+19:20:42.236   running tool: read_file
+19:20:42.238   running tool: read_file
+19:20:42.250   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:42.263     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:53.694   running tool: execute
+19:20:53.711   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:53.724     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:56.095   running tool: execute
+19:20:56.112   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:56.124     POST integrate.api.nvidia.com/v1/chat/completions
+19:20:57.923   running tool: execute
+19:20:57.942   chat nvidia/nemotron-3-ultra-550b-a55b
+19:20:57.954     POST integrate.api.nvidia.com/v1/chat/completions
+19:21:00.723   running tool: execute
+19:21:00.740   chat nvidia/nemotron-3-ultra-550b-a55b
+19:21:00.752     POST integrate.api.nvidia.com/v1/chat/completions
+19:21:03.987   running tool: execute
+19:21:04.006   chat nvidia/nemotron-3-ultra-550b-a55b
+19:21:04.018     POST integrate.api.nvidia.com/v1/chat/completions
+19:21:06.355   running tool: execute
+19:21:06.373   chat nvidia/nemotron-3-ultra-550b-a55b
+19:21:06.386     POST integrate.api.nvidia.com/v1/chat/completions
+19:21:08.464     POST integrate.api.nvidia.com/v1/chat/completions
+19:21:58.013   running tool: execute
+19:21:58.023   chat nvidia/nemotron-3-ultra-550b-a55b
+19:21:58.036     POST integrate.api.nvidia.com/v1/chat/completions
+19:22:16.498   running tool: write_todos
+19:22:16.505   chat nvidia/nemotron-3-ultra-550b-a55b
+19:22:16.519     POST integrate.api.nvidia.com/v1/chat/completions
+19:22:19.058   running tool: execute
+19:22:19.075   chat nvidia/nemotron-3-ultra-550b-a55b
+19:22:19.089     POST integrate.api.nvidia.com/v1/chat/completions
+19:22:28.108   running tool: write_file
+19:22:28.109   running tool: write_file
+19:22:28.109   running tool: write_file
+19:22:28.110   running tool: write_file
+19:22:28.110   running tool: write_file
+19:22:28.122   chat nvidia/nemotron-3-ultra-550b-a55b
+19:22:28.136     POST integrate.api.nvidia.com/v1/chat/completions
+19:22:30.688   running tool: update_todo_status
+19:22:30.688   running tool: update_todo_status
+19:22:30.694   chat nvidia/nemotron-3-ultra-550b-a55b
+19:22:30.709     POST integrate.api.nvidia.com/v1/chat/completions
+19:22:51.368   running tool: write_file
+19:22:51.376   chat nvidia/nemotron-3-ultra-550b-a55b
+19:22:51.391     POST integrate.api.nvidia.com/v1/chat/completions
+19:23:17.101   running tool: update_todo_status
+19:23:17.102   running tool: update_todo_status
+19:23:17.109   chat nvidia/nemotron-3-ultra-550b-a55b
+19:23:17.124     POST integrate.api.nvidia.com/v1/chat/completions
+19:23:41.133   running tool: write_file
+19:23:41.142   chat nvidia/nemotron-3-ultra-550b-a55b
+19:23:41.157     POST integrate.api.nvidia.com/v1/chat/completions
+19:23:44.437   running tool: update_todo_status
+19:23:44.437   running tool: update_todo_status
+19:23:44.443   chat nvidia/nemotron-3-ultra-550b-a55b
+19:23:44.464     POST integrate.api.nvidia.com/v1/chat/completions
+19:24:20.105   running tool: write_file
+19:24:20.112   chat nvidia/nemotron-3-ultra-550b-a55b
+19:24:20.129     POST integrate.api.nvidia.com/v1/chat/completions
+19:24:30.381   running tool: update_todo_status
+19:24:30.382   running tool: update_todo_status
+19:24:30.388   chat nvidia/nemotron-3-ultra-550b-a55b
+19:24:30.405     POST integrate.api.nvidia.com/v1/chat/completions
+19:25:40.209   running tool: write_file
+19:25:40.217   chat nvidia/nemotron-3-ultra-550b-a55b
+19:25:40.234     POST integrate.api.nvidia.com/v1/chat/completions
+19:25:43.170   running tool: update_todo_status
+19:25:43.170   running tool: update_todo_status
+19:25:43.181   chat nvidia/nemotron-3-ultra-550b-a55b
+19:25:43.201     POST integrate.api.nvidia.com/v1/chat/completions
+19:26:11.122   running tool: write_file
+19:26:11.130   chat nvidia/nemotron-3-ultra-550b-a55b
+19:26:11.149     POST integrate.api.nvidia.com/v1/chat/completions
+19:26:13.684   running tool: update_todo_status
+19:26:13.685   running tool: update_todo_status
+19:26:13.692   chat nvidia/nemotron-3-ultra-550b-a55b
+19:26:13.710     POST integrate.api.nvidia.com/v1/chat/completions
+19:26:35.296   running tool: write_file
+19:26:35.304   chat nvidia/nemotron-3-ultra-550b-a55b
+19:26:35.322     POST integrate.api.nvidia.com/v1/chat/completions
+19:26:38.455   running tool: update_todo_status
+19:26:38.455   running tool: update_todo_status
+19:26:38.463   chat nvidia/nemotron-3-ultra-550b-a55b
+19:26:38.484     POST integrate.api.nvidia.com/v1/chat/completions
+19:27:02.067   running tool: write_file
+19:27:02.077   chat nvidia/nemotron-3-ultra-550b-a55b
+19:27:02.097     POST integrate.api.nvidia.com/v1/chat/completions
+19:27:04.832   running tool: update_todo_status
+19:27:04.833   running tool: update_todo_status
+19:27:04.839   chat nvidia/nemotron-3-ultra-550b-a55b
+19:27:04.859     POST integrate.api.nvidia.com/v1/chat/completions
+19:27:14.995   running tool: write_file
+19:27:15.007   chat nvidia/nemotron-3-ultra-550b-a55b
+19:27:15.027     POST integrate.api.nvidia.com/v1/chat/completions
+19:27:27.316   running tool: execute
+19:27:27.864   chat nvidia/nemotron-3-ultra-550b-a55b
+19:27:27.884     POST integrate.api.nvidia.com/v1/chat/completions
+19:27:41.132   running tool: execute
+19:27:41.976   chat nvidia/nemotron-3-ultra-550b-a55b
+19:27:42.002     POST integrate.api.nvidia.com/v1/chat/completions
+19:27:46.588   running tool: execute
+19:27:47.303   chat nvidia/nemotron-3-ultra-550b-a55b
+19:27:47.324     POST integrate.api.nvidia.com/v1/chat/completions
+19:28:10.247   running tool: execute
+19:28:10.291   chat nvidia/nemotron-3-ultra-550b-a55b
+19:28:10.313     POST integrate.api.nvidia.com/v1/chat/completions
+19:29:25.700   running tool: execute
+19:29:25.742   chat nvidia/nemotron-3-ultra-550b-a55b
+19:29:25.763     POST integrate.api.nvidia.com/v1/chat/completions
+19:29:57.725   running tool: execute
+19:29:57.778   chat nvidia/nemotron-3-ultra-550b-a55b
+19:29:57.800     POST integrate.api.nvidia.com/v1/chat/completions
+19:30:02.958   running tool: execute
+19:30:02.972   chat nvidia/nemotron-3-ultra-550b-a55b
+19:30:02.994     POST integrate.api.nvidia.com/v1/chat/completions
+19:30:06.253   running tool: execute
+19:30:07.147   chat nvidia/nemotron-3-ultra-550b-a55b
+19:30:07.169     POST integrate.api.nvidia.com/v1/chat/completions
+19:30:09.917   running tool: execute
+19:30:09.932   chat nvidia/nemotron-3-ultra-550b-a55b
+19:30:09.957     POST integrate.api.nvidia.com/v1/chat/completions
+19:30:14.284   running tool: execute
+19:30:14.304   chat nvidia/nemotron-3-ultra-550b-a55b
+19:30:14.731     POST integrate.api.nvidia.com/v1/chat/completions
+19:31:02.182   running tool: execute
+19:32:02.203   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:02.232     POST integrate.api.nvidia.com/v1/chat/completions
+19:32:06.100   running tool: execute
+19:32:06.118   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:06.142     POST integrate.api.nvidia.com/v1/chat/completions
+19:32:14.577   running tool: execute
+19:32:14.953   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:14.984     POST integrate.api.nvidia.com/v1/chat/completions
+19:32:18.889   running tool: execute
+19:32:18.937   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:18.961     POST integrate.api.nvidia.com/v1/chat/completions
+19:32:22.180   running tool: update_todo_status
+19:32:22.181   running tool: update_todo_status
+19:32:22.187   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:22.212     POST integrate.api.nvidia.com/v1/chat/completions
+19:32:26.408   running tool: execute
+19:32:26.431   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:26.456     POST integrate.api.nvidia.com/v1/chat/completions
+19:32:33.022   running tool: execute
+19:32:33.077   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:33.103     POST integrate.api.nvidia.com/v1/chat/completions
+19:32:37.989   running tool: execute
+19:32:38.497   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:38.523     POST integrate.api.nvidia.com/v1/chat/completions
+19:32:40.814   running tool: update_todo_status
+19:32:40.822   chat nvidia/nemotron-3-ultra-550b-a55b
+19:32:40.851     POST integrate.api.nvidia.com/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+19:33:03.706         chat gpt-5.4
+19:33:03.717           POST api.openai.com/v1/responses
+19:33:07.715         running tool: bash_exec
+19:33:07.721 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+19:33:07.731           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+19:33:07.756         chat gpt-5.4
+19:33:07.768           POST api.openai.com/v1/responses
+19:33:13.118         running tool: bash_exec
+19:33:13.143         chat gpt-5.4
+19:33:13.156           POST api.openai.com/v1/responses
+19:33:16.401         running tool: bash_exec
+19:33:16.439         chat gpt-5.4
+19:33:16.454           POST api.openai.com/v1/responses
+19:33:23.830         running tool: start_monitor
+19:33:23.835         chat gpt-5.4
+19:33:23.851           POST api.openai.com/v1/responses
+19:33:28.909         running tool: list_monitors
+19:33:28.915         chat gpt-5.4
+19:33:28.938           POST api.openai.com/v1/responses
+19:33:34.560         running tool: bash_exec
+19:34:04.578         chat gpt-5.4
+19:34:04.605           POST api.openai.com/v1/responses
+19:34:06.052         running tool: list_monitors
+19:34:06.058         chat gpt-5.4
+19:34:06.086           POST api.openai.com/v1/responses
+19:34:08.217         running tool: bash_exec
+19:34:38.235         chat gpt-5.4
+19:34:38.266           POST api.openai.com/v1/responses
+19:34:39.641         running tool: list_monitors
+19:34:39.647         chat gpt-5.4
+19:34:39.679           POST api.openai.com/v1/responses
+19:34:41.323         running tool: bash_exec
+19:35:11.340         chat gpt-5.4
+19:35:11.375           POST api.openai.com/v1/responses
+19:35:15.933         running tool: bash_exec
+19:36:15.960         chat gpt-5.4
+19:36:15.991           POST api.openai.com/v1/responses
+19:36:19.719         running tool: stop_monitor
+19:36:19.725         chat gpt-5.4
+19:36:19.752           POST api.openai.com/v1/responses
+19:36:26.013         running tool: python_repl
+19:36:26.069         chat gpt-5.4
+19:36:26.110           POST api.openai.com/v1/responses
+19:36:30.871         running tool: python_repl
+19:36:30.913         chat gpt-5.4
+19:36:30.943           POST api.openai.com/v1/responses
+[2026-08-03T19:37:01.577378Z] EXIT 0

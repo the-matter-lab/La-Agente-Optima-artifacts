@@ -1,0 +1,2 @@
+## BO/PySCF script validation caveat
+- If `/app` is mounted read-only, `uv run python ...` may fail while trying to rebuild the editable `grafico` package (`Cannot update time stamp of directory 'grafico.egg-info'`). In that case, local smoke tests can still validate workspace scripts from the workspace root with `PYTHONPATH=/app python <script>.py ...`, which imports the canonical repository modules without embedding `/app` paths into the generated script itself.

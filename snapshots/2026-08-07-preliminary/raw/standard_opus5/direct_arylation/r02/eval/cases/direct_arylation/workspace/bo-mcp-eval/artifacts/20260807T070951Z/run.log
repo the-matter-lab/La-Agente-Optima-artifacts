@@ -1,0 +1,15 @@
+EVENT: campaign was paused -> resumed
+EVENT: campaign 4f32f613-3520-4ad8-b543-ba2dd22689e6 | artifacts artifacts/20260807T070951Z
+detail: next_action={'status': 'running', 'iteration': 1, 'n_results': 1, 'action': 'bo_submit_results', 'reason': '1 suggestion(s) awaiting results.', 'urgency': 'normal'}
+RESULT: attempt 2/60 | yield=0.00 percent | best=0.00 | base=Cesium pivalate | ligand=Di-tert-butylphenylphosphine | solvent=p-Xylene | concentration=0.1 | temperature_c=105
+detail: next_action={'status': 'running', 'iteration': 1, 'n_results': 2, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 2 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+RESULT: attempt 3/60 | yield=7.74 percent | best=7.74 | base=Cesium acetate | ligand=(t-Bu)PhCPhos | solvent=Butyl Ester | concentration=0.153 | temperature_c=90
+EVENT: invocation budget reached: 2 attempts
+EVENT: === CAMPAIGN SUMMARY ===
+RESULT: attempted=3 successful=3 failed=0
+RESULT: best yield = 7.74 percent @ base=Cesium acetate | ligand=(t-Bu)PhCPhos | solvent=Butyl Ester | concentration=0.153 | temperature_c=90
+RESULT: #01 [success] yield=0.00 :: base=Cesium pivalate | ligand=Di-tert-butylphenylphosphine | solvent=p-Xylene | concentration=0.1 | temperature_c=105
+RESULT: #02 [success] yield=0.00 :: base=Cesium pivalate | ligand=Di-tert-butylphenylphosphine | solvent=p-Xylene | concentration=0.1 | temperature_c=105
+RESULT: #03 [success] yield=7.74 :: base=Cesium acetate | ligand=(t-Bu)PhCPhos | solvent=Butyl Ester | concentration=0.153 | temperature_c=90
+EVENT: campaign 4f32f613-3520-4ad8-b543-ba2dd22689e6 paused (resume with --campaign-id 4f32f613-3520-4ad8-b543-ba2dd22689e6)
+EVENT: report written to artifacts/20260807T070951Z/report.json

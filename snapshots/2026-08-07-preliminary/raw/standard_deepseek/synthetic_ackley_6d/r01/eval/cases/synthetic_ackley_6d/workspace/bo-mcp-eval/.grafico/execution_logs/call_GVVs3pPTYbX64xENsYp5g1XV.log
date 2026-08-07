@@ -1,0 +1,53 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/ackley_benchmark_fast_20260807T055423Z.log
+[RESULT] eval=28  surface_response=0.097883  raw_response=-20.162686  params={x_1=0.0113, x_2=0.0000, x_3=1.0000, x_4=0.0013, x_5=1.0000, x_6=0.0000}
+05:57:34.123 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=28  n_results=28  status=running
+05:57:34.134 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:35.013 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=29  surface_response=0.099412  raw_response=-20.128495  params={x_1=0.0109, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+05:57:35.091 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=29  n_results=29  status=running
+05:57:35.104 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:35.756 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=30  surface_response=0.105462  raw_response=-19.993291  params={x_1=0.0000, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+05:57:35.813 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=30  n_results=30  status=running
+05:57:35.824 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:36.374 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=31  surface_response=0.102960  raw_response=-20.049211  params={x_1=0.1615, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+05:57:36.444 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=31  n_results=31  status=running
+05:57:36.455 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:36.872 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+[RESULT] eval=32  surface_response=0.086155  raw_response=-20.424795  params={x_1=0.2343, x_2=0.0000, x_3=1.0000, x_4=0.0000, x_5=1.0000, x_6=0.0000}
+05:57:36.930 POST api/api/v1/campaigns/status/batch
+[EVENT] next_action → action=bo_generate_suggestions  iteration=32  n_results=32  status=running
+05:57:36.943 POST api/api/v1/suggestions/f4d1a084-d330-4e72-acfa-87fcacae7dc5/generate ? batch_size='1'
+05:57:37.436 POST api/api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_benchmark.py", line 113, in <module>
+    main()
+  File "/app/outputs/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_benchmark.py", line 93, in main
+    campaign_id = run_campaign(
+                  ^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_benchmark/campaign.py", line 196, in run_campaign
+    submit_resp = client.submit_results(
+                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 231, in submit_results
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 348, in _json_request
+    raise BoMcpOperationError(
+domains.bo_mcp.client.BoMcpOperationError: BO-MCP POST /api/v1/results/f4d1a084-d330-4e72-acfa-87fcacae7dc5 rejected the operation: ['Exact duplicate results detected. Use force=True to override.']
+---
+32
+[EVENT] Created campaign_id=f4d1a084-d330-4e72-acfa-87fcacae7dc5
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

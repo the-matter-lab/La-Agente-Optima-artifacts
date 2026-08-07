@@ -1,0 +1,64 @@
+
+[2026-08-07T05:40:25.666606Z] COMMAND ["docker", "compose", "-p", "gpt56-fixed-20260807", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Network gpt56-fixed-20260807_default Creating 
+ Network gpt56-fixed-20260807_default Created 
+ Volume gpt56-fixed-20260807_postgres-data Creating 
+ Volume gpt56-fixed-20260807_postgres-data Created 
+ Container gpt56-fixed-20260807-direct-arylation-oracle-1 Creating 
+ Container gpt56-fixed-20260807-db-1 Creating 
+ Container gpt56-fixed-20260807-db-1 Created 
+ Container gpt56-fixed-20260807-api-1 Creating 
+ Container gpt56-fixed-20260807-direct-arylation-oracle-1 Created 
+ Container gpt56-fixed-20260807-api-1 Created 
+ Container gpt56-fixed-20260807-mcp-1 Creating 
+ Container gpt56-fixed-20260807-mcp-1 Created 
+ Container gpt56-fixed-20260807-db-1 Starting 
+ Container gpt56-fixed-20260807-direct-arylation-oracle-1 Starting 
+ Container gpt56-fixed-20260807-db-1 Started 
+ Container gpt56-fixed-20260807-db-1 Waiting 
+ Container gpt56-fixed-20260807-direct-arylation-oracle-1 Started 
+ Container gpt56-fixed-20260807-db-1 Healthy 
+ Container gpt56-fixed-20260807-api-1 Starting 
+ Container gpt56-fixed-20260807-api-1 Started 
+ Container gpt56-fixed-20260807-api-1 Waiting 
+ Container gpt56-fixed-20260807-api-1 Healthy 
+ Container gpt56-fixed-20260807-mcp-1 Starting 
+ Container gpt56-fixed-20260807-mcp-1 Started 
+ Container gpt56-fixed-20260807-db-1 Waiting 
+ Container gpt56-fixed-20260807-api-1 Waiting 
+ Container gpt56-fixed-20260807-mcp-1 Waiting 
+ Container gpt56-fixed-20260807-direct-arylation-oracle-1 Waiting 
+ Container gpt56-fixed-20260807-api-1 Healthy 
+ Container gpt56-fixed-20260807-direct-arylation-oracle-1 Healthy 
+ Container gpt56-fixed-20260807-db-1 Healthy 
+ Container gpt56-fixed-20260807-mcp-1 Healthy 
+[2026-08-07T05:42:21.059272Z] EXIT 0
+
+[2026-08-07T05:42:21.844043Z] COMMAND ["docker", "compose", "-p", "gpt56-fixed-20260807", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--dry-run", "--output-dir", "/app/outputs/control/preflight", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "preflight-standard_gpt56_fixed-20260803", "--subagent-model", "openai-responses:gpt-5.6-sol"]
+ Container gpt56-fixed-20260807-eval-run-381d85a3a651 Creating 
+ Container gpt56-fixed-20260807-eval-run-381d85a3a651 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+05:42:43.360 evaluate bo_mcp_graph_eval
+05:42:43.361   case: synthetic_ackley_6d
+05:42:43.361     execute _run_case
+[2026-08-07T05:42:51.676384Z] EXIT 0
+
+[2026-08-07T05:55:38.988870Z] COMMAND ["docker", "compose", "-p", "gpt56-fixed-20260807", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-07T05:55:39.963855Z] EXIT 0
+
+[2026-08-07T05:55:40.892405Z] COMMAND ["docker", "compose", "-p", "gpt56-fixed-20260807", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-07T05:55:41.530509Z] EXIT 0
+
+[2026-08-07T05:55:42.469725Z] COMMAND ["docker", "compose", "-p", "gpt56-fixed-20260807", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "stop"]
+ Container gpt56-fixed-20260807-mcp-1 Stopping 
+ Container gpt56-fixed-20260807-direct-arylation-oracle-1 Stopping 
+ Container gpt56-fixed-20260807-direct-arylation-oracle-1 Stopped 
+ Container gpt56-fixed-20260807-mcp-1 Stopped 
+ Container gpt56-fixed-20260807-api-1 Stopping 
+ Container gpt56-fixed-20260807-api-1 Stopped 
+ Container gpt56-fixed-20260807-db-1 Stopping 
+ Container gpt56-fixed-20260807-db-1 Stopped 
+[2026-08-07T05:56:06.101552Z] EXIT 0

@@ -1,0 +1,42 @@
+exit_code=0
+
+=== stdout (raw) ===
+LATEST_LOG=artifacts/run_20260730_173508.log
+[RESULT] Attempt 58: yield=84.03% | {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 90.0}
+17:41:04.952 POST api/api/v1/results/61ad202d-9835-4d49-87b8-8312f155d135
+17:41:10.033 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating suggestion (attempt 59/60)
+17:41:10.051 POST api/api/v1/suggestions/61ad202d-9835-4d49-87b8-8312f155d135/generate ? batch_size='1'
+[EVENT] Evaluating attempt 59: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:41:12.202 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 59: yield=61.33% | {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:41:12.206 POST api/api/v1/results/61ad202d-9835-4d49-87b8-8312f155d135
+17:41:17.281 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating suggestion (attempt 60/60)
+17:41:17.298 POST api/api/v1/suggestions/61ad202d-9835-4d49-87b8-8312f155d135/generate ? batch_size='1'
+[EVENT] Evaluating attempt 60: {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:41:18.767 POST direct-arylation-oracle/v1/evaluate
+[RESULT] Attempt 60: yield=36.29% | {'base': 'Potassium pivalate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:41:18.771 POST api/api/v1/results/61ad202d-9835-4d49-87b8-8312f155d135
+[EVENT] Invocation complete: 60 attempts made
+=== Campaign Summary ===
+Total attempts: 60
+Successful:     60
+Failed:         0
+Best yield:     100.00%
+Best params:    {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+[EVENT] Fetching campaign diagnostics
+17:41:23.836 GET api/api/v1/diagnostics/61ad202d-9835-4d49-87b8-8312f155d135 ? use_cache='true' & verbosity='standard'
+[EVENT] Diagnostics saved to ./artifacts/diagnostics.json
+17:42:07.530 POST api/api/v1/campaigns/61ad202d-9835-4d49-87b8-8312f155d135/lifecycle
+[EVENT] Campaign paused for potential resume
+BO_MCP_CAMPAIGN_ID=61ad202d-9835-4d49-87b8-8312f155d135
+[EVENT] Campaign ID: 61ad202d-9835-4d49-87b8-8312f155d135
+--- PGREP ---
+314 bash -lc sleep 45; cd /app/outputs/cells/direct_arylation_standard_glm_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval && latest=$(ls -1t artifacts/run_*.log 2>/dev/null | head -n1); echo "LATEST_LOG=$latest"; tail -n 30 "$latest"; echo "--- PGREP ---"; pgrep -af "run_direct_arylation.py|direct-arylation-bo|python3 run_direct_arylation.py" || true
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

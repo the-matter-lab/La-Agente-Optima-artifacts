@@ -1,0 +1,270 @@
+{
+  "_source": "BO-MCP REST campaign/spec read-back",
+  "campaign": {
+    "created_at": "2026-08-03T19:46:51.935992Z",
+    "description": "Direct arylation reaction yield optimization over 1728-condition benchmark. Maximize yield (%).",
+    "id": "e0cb1bed-76ca-4025-8c4e-73e30180af65",
+    "iteration": 60,
+    "n_objectives": 1,
+    "n_parameters": 5,
+    "name": "direct-arylation-yield-opt-akg-eval-044a756aaa4043a8a4fab847b8851ac2",
+    "spec_id": "63e02115-3bc3-478e-adea-f6540e030e23",
+    "status": "paused",
+    "updated_at": "2026-08-03T19:47:54.238402Z"
+  },
+  "campaign_config": {
+    "_source": "BO-MCP REST campaign/spec read-back",
+    "acknowledge_degradations": [],
+    "acquisition": {
+      "method": "auto",
+      "optimization": null,
+      "saasbo_config": null,
+      "turbo_config": null,
+      "use_cost_aware": false,
+      "use_input_warping": false
+    },
+    "backend_options": null,
+    "backend_requested": "auto",
+    "backend_resolved": "baybe",
+    "batch_size": 1,
+    "campaign_id": "e0cb1bed-76ca-4025-8c4e-73e30180af65",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "fidelity_parameter": null,
+    "initial_design_size": 10,
+    "initial_design_size_requested": 10,
+    "initial_design_size_source": "requested",
+    "max_iterations": null,
+    "max_observations": 60,
+    "missing_fields": [
+      "max_iterations",
+      "convergence_tolerance",
+      "backend_options",
+      "fidelity_parameter",
+      "transfer_learning"
+    ],
+    "objectives": [
+      {
+        "direction": null,
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "yield",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": "maximize",
+        "transform": null,
+        "unit": "percent",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": null,
+        "categories": [
+          "Potassium acetate",
+          "Potassium pivalate",
+          "Cesium acetate",
+          "Cesium pivalate"
+        ],
+        "description": "",
+        "name": "base",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": [
+          "BrettPhos",
+          "Di-tert-butylphenylphosphine",
+          "(t-Bu)PhCPhos",
+          "Tricyclohexylphosphine",
+          "PPh3",
+          "XPhos",
+          "P(2-furyl)3",
+          "Methyldiphenylphosphine",
+          "1268824-69-6",
+          "JackiePhos",
+          "SCHEMBL15068049",
+          "Me2PPh"
+        ],
+        "description": "",
+        "name": "ligand",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": [
+          "DMAc",
+          "Butyornitrile",
+          "Butyl Ester",
+          "p-Xylene"
+        ],
+        "description": "",
+        "name": "solvent",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": null,
+        "description": "",
+        "name": "concentration",
+        "parameter_options": null,
+        "type": "discrete",
+        "values": [
+          0.057,
+          0.1,
+          0.153
+        ]
+      },
+      {
+        "bounds": null,
+        "categories": null,
+        "description": "",
+        "name": "temperature_c",
+        "parameter_options": null,
+        "type": "discrete",
+        "values": [
+          90.0,
+          105.0,
+          120.0
+        ]
+      }
+    ],
+    "random_seed": 42,
+    "spec_id": "63e02115-3bc3-478e-adea-f6540e030e23",
+    "transfer_learning": null
+  },
+  "spec": {
+    "acknowledge_degradations": [],
+    "acquisition_beta": null,
+    "acquisition_method": "auto",
+    "acquisition_optimization": null,
+    "backend_options": null,
+    "backend_requested": "auto",
+    "backend_resolved": "baybe",
+    "batch_size": 1,
+    "campaign_id": "e0cb1bed-76ca-4025-8c4e-73e30180af65",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "description": "Direct arylation reaction yield optimization over 1728-condition benchmark. Maximize yield (%).",
+    "fidelity_parameter": null,
+    "initial_design_size": 10,
+    "initial_design_size_requested": 10,
+    "initial_design_size_source": "requested",
+    "iteration": 60,
+    "max_iterations": null,
+    "max_observations": 60,
+    "name": "direct-arylation-yield-opt-akg-eval-044a756aaa4043a8a4fab847b8851ac2",
+    "objectives": [
+      {
+        "direction": null,
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "yield",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": "maximize",
+        "transform": null,
+        "unit": "percent",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": null,
+        "categories": [
+          "Potassium acetate",
+          "Potassium pivalate",
+          "Cesium acetate",
+          "Cesium pivalate"
+        ],
+        "description": "",
+        "name": "base",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": [
+          "BrettPhos",
+          "Di-tert-butylphenylphosphine",
+          "(t-Bu)PhCPhos",
+          "Tricyclohexylphosphine",
+          "PPh3",
+          "XPhos",
+          "P(2-furyl)3",
+          "Methyldiphenylphosphine",
+          "1268824-69-6",
+          "JackiePhos",
+          "SCHEMBL15068049",
+          "Me2PPh"
+        ],
+        "description": "",
+        "name": "ligand",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": [
+          "DMAc",
+          "Butyornitrile",
+          "Butyl Ester",
+          "p-Xylene"
+        ],
+        "description": "",
+        "name": "solvent",
+        "parameter_options": null,
+        "type": "categorical",
+        "values": null
+      },
+      {
+        "bounds": null,
+        "categories": null,
+        "description": "",
+        "name": "concentration",
+        "parameter_options": null,
+        "type": "discrete",
+        "values": [
+          0.057,
+          0.1,
+          0.153
+        ]
+      },
+      {
+        "bounds": null,
+        "categories": null,
+        "description": "",
+        "name": "temperature_c",
+        "parameter_options": null,
+        "type": "discrete",
+        "values": [
+          90.0,
+          105.0,
+          120.0
+        ]
+      }
+    ],
+    "random_seed": 42,
+    "saasbo_config": null,
+    "scalarization": "pareto",
+    "scalarizer": null,
+    "spec_id": "63e02115-3bc3-478e-adea-f6540e030e23",
+    "status": "paused",
+    "transfer_learning": null,
+    "turbo_config": null,
+    "use_cost_aware": false,
+    "use_input_warping": false
+  }
+}

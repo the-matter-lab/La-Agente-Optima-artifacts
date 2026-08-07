@@ -1,0 +1,488 @@
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+05:51:41.289 GET api/api/v1/campaigns/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:41.318 POST api/api/v1/campaigns/bbefc81d-fbe2-4557-8c12-d49aba74c063/lifecycle
+[EVENT] campaign ready campaign_id=bbefc81d-fbe2-4557-8c12-d49aba74c063 backend=baybe
+05:51:42.729 Direct arylation campaign active
+05:51:42.730 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:42.752 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:42.766 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:42.781 POST api/api/v1/campaigns/status/batch
+05:51:42.798 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:42.893 POST direct-arylation-oracle/v1/evaluate
+05:51:42.899 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 27.05}, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "P(2-furyl)3", "solvent": "Butyl Ester", "temperature_c": 105}, "status": "success", "suggestion_id": "f01b0236-c860-405c-9cb0-f6b24332b0f2"}
+05:51:43.001 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.016 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:43.025 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.036 POST api/api/v1/campaigns/status/batch
+05:51:43.048 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:43.124 POST direct-arylation-oracle/v1/evaluate
+05:51:43.129 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 0.22}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "Methyldiphenylphosphine", "solvent": "p-Xylene", "temperature_c": 105}, "status": "success", "suggestion_id": "333adc39-c8d5-470c-b781-79e5e079eefb"}
+05:51:43.203 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.221 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:43.231 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.243 POST api/api/v1/campaigns/status/batch
+05:51:43.255 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:43.321 POST direct-arylation-oracle/v1/evaluate
+05:51:43.328 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 14.01}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "(t-Bu)PhCPhos", "solvent": "Butyl Ester", "temperature_c": 120}, "status": "success", "suggestion_id": "4d60350a-15b2-4931-bb57-2a9a60a7302e"}
+05:51:43.401 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.422 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:43.429 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.441 POST api/api/v1/campaigns/status/batch
+05:51:43.452 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:43.524 POST direct-arylation-oracle/v1/evaluate
+05:51:43.528 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 0.0}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.1, "ligand": "Tricyclohexylphosphine", "solvent": "Butyl Ester", "temperature_c": 120}, "status": "success", "suggestion_id": "5be3553f-5048-4ba5-abb9-669117aab52d"}
+05:51:43.604 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.624 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:43.633 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.646 POST api/api/v1/campaigns/status/batch
+05:51:43.657 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:43.733 POST direct-arylation-oracle/v1/evaluate
+05:51:43.739 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 30.03}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 90}, "status": "success", "suggestion_id": "99147198-1c1e-4b6a-874b-7b3501a36839"}
+05:51:43.812 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.827 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:43.835 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:43.847 POST api/api/v1/campaigns/status/batch
+05:51:43.861 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:43.938 POST direct-arylation-oracle/v1/evaluate
+05:51:43.941 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 0.0}, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "Me2PPh", "solvent": "Butyornitrile", "temperature_c": 105}, "status": "success", "suggestion_id": "3533bbfb-53c7-461f-a06e-0b53a839991f"}
+05:51:44.018 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:44.030 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:44.038 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:44.050 POST api/api/v1/campaigns/status/batch
+05:51:44.062 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:44.135 POST direct-arylation-oracle/v1/evaluate
+05:51:44.140 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 0.0}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.1, "ligand": "Me2PPh", "solvent": "p-Xylene", "temperature_c": 90}, "status": "success", "suggestion_id": "155c4d19-0221-45c5-88a2-331f26899b8d"}
+05:51:44.215 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:44.230 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:44.238 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:44.252 POST api/api/v1/campaigns/status/batch
+05:51:44.264 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:44.332 POST direct-arylation-oracle/v1/evaluate
+05:51:44.337 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 82.21}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 90}, "status": "success", "suggestion_id": "8cb76b0c-3184-49ed-ba7f-c11bb4f27cff"}
+05:51:44.423 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:44.437 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:44.445 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:44.456 POST api/api/v1/campaigns/status/batch
+05:51:44.474 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:44.549 POST direct-arylation-oracle/v1/evaluate
+05:51:44.553 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 0.0}, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "Di-tert-butylphenylphosphine", "solvent": "Butyl Ester", "temperature_c": 90}, "status": "success", "suggestion_id": "f78c0ad5-a89a-4c88-b66f-b52add9c44a9"}
+05:51:44.619 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:44.637 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:44.646 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:44.657 POST api/api/v1/campaigns/status/batch
+05:51:44.668 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:44.776 POST direct-arylation-oracle/v1/evaluate
+05:51:44.783 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 6.67}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "PPh3", "solvent": "Butyornitrile", "temperature_c": 105}, "status": "success", "suggestion_id": "56cc1fec-0f8d-43fd-8487-52b5343d2cf1"}
+05:51:45.744 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:45.759 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:45.767 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:45.780 POST api/api/v1/campaigns/status/batch
+05:51:45.792 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:45.910 POST direct-arylation-oracle/v1/evaluate
+05:51:45.918 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 0.97}, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "JackiePhos", "solvent": "DMAc", "temperature_c": 90}, "status": "success", "suggestion_id": "152b1071-cd21-4000-af40-be7d90692470"}
+05:51:45.986 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:45.999 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:46.011 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:46.022 POST api/api/v1/campaigns/status/batch
+05:51:46.035 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:48.580 POST direct-arylation-oracle/v1/evaluate
+05:51:48.584 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 81.66}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 105}, "status": "success", "suggestion_id": "f859930f-3491-484a-b426-5f13445c5fb0"}
+05:51:48.753 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:48.770 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:48.780 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:48.791 POST api/api/v1/campaigns/status/batch
+05:51:48.802 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:49.279 POST direct-arylation-oracle/v1/evaluate
+05:51:49.283 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 86.43}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 105}, "status": "success", "suggestion_id": "cb2bb5bd-db67-424c-a2ff-3c0ee98a1870"}
+05:51:49.402 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:49.420 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:49.429 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:49.440 POST api/api/v1/campaigns/status/batch
+05:51:49.452 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:50.011 POST direct-arylation-oracle/v1/evaluate
+05:51:50.014 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 85.24}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 90}, "status": "success", "suggestion_id": "bf1dafb8-c24c-4f59-bf79-8a5e96541108"}
+05:51:50.081 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:50.102 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:50.110 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:50.121 POST api/api/v1/campaigns/status/batch
+05:51:50.132 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:51.382 POST direct-arylation-oracle/v1/evaluate
+05:51:51.387 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 7.02}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 120}, "status": "success", "suggestion_id": "ceea58c2-7dfc-4df0-a757-7ee8f45535b7"}
+05:51:52.317 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:52.334 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:52.345 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:52.360 POST api/api/v1/campaigns/status/batch
+05:51:52.374 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:54.262 POST direct-arylation-oracle/v1/evaluate
+05:51:54.268 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 44.48}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 105}, "status": "success", "suggestion_id": "5e8d6942-2cd6-4938-825a-98afd77a0ef6"}
+05:51:54.432 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:54.450 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:54.459 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:54.470 POST api/api/v1/campaigns/status/batch
+05:51:54.482 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:54.966 POST direct-arylation-oracle/v1/evaluate
+05:51:54.970 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 42.3}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 90}, "status": "success", "suggestion_id": "17150766-2a30-4806-af85-a6c90f2b41b9"}
+05:51:55.354 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:55.373 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:55.382 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:55.393 POST api/api/v1/campaigns/status/batch
+05:51:55.405 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:56.080 POST direct-arylation-oracle/v1/evaluate
+05:51:56.085 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 84.48}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "5d084ef8-ba4a-487d-ae3d-a43635fcb0b2"}
+05:51:56.239 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:56.257 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:56.267 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:56.280 POST api/api/v1/campaigns/status/batch
+05:51:56.292 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:57.343 POST direct-arylation-oracle/v1/evaluate
+05:51:57.348 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 87.83}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "4fef763c-3442-49cc-b563-baf3197599fd"}
+05:51:57.632 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:57.649 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:57.660 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:57.675 POST api/api/v1/campaigns/status/batch
+05:51:57.689 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:51:58.894 POST direct-arylation-oracle/v1/evaluate
+05:51:58.899 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 84.17}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 90}, "status": "success", "suggestion_id": "2c068439-f34d-44dd-bb72-0c2a74f648b3"}
+05:51:59.012 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:59.027 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:51:59.036 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:51:59.048 POST api/api/v1/campaigns/status/batch
+05:51:59.059 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:00.592 POST direct-arylation-oracle/v1/evaluate
+05:52:00.596 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 84.62}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 105}, "status": "success", "suggestion_id": "1f4424bf-0e5c-491a-9d70-53be552ccf91"}
+05:52:00.715 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:00.729 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:00.739 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:00.750 POST api/api/v1/campaigns/status/batch
+05:52:00.762 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:03.049 POST direct-arylation-oracle/v1/evaluate
+05:52:03.054 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 83.83}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 105}, "status": "success", "suggestion_id": "95370f27-9733-4864-9f35-62acea9d217c"}
+05:52:03.615 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:03.631 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:03.641 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:03.652 POST api/api/v1/campaigns/status/batch
+05:52:03.665 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:04.521 POST direct-arylation-oracle/v1/evaluate
+05:52:04.524 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 86.37}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 90}, "status": "success", "suggestion_id": "9f7e5d61-80d4-476b-8947-160925903c4f"}
+05:52:04.598 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:04.613 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:04.625 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:04.637 POST api/api/v1/campaigns/status/batch
+05:52:04.654 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:06.732 POST direct-arylation-oracle/v1/evaluate
+05:52:06.735 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 59.27}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "p-Xylene", "temperature_c": 90}, "status": "success", "suggestion_id": "f946d63d-187e-4864-9ea6-a70a7272e0c3"}
+05:52:07.174 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:07.195 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:07.205 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:07.217 POST api/api/v1/campaigns/status/batch
+05:52:07.230 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:07.930 POST direct-arylation-oracle/v1/evaluate
+05:52:07.934 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 0.0}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 90}, "status": "success", "suggestion_id": "82909653-83c3-49ee-9399-0422a985a6cf"}
+05:52:08.008 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:08.022 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:08.034 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:08.046 POST api/api/v1/campaigns/status/batch
+05:52:08.059 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:09.145 POST direct-arylation-oracle/v1/evaluate
+05:52:09.148 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 77.01}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 120}, "status": "success", "suggestion_id": "477011d9-a587-48f3-a40a-24c387bab507"}
+05:52:09.696 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:09.713 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:09.724 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:09.739 POST api/api/v1/campaigns/status/batch
+05:52:09.754 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:10.368 POST direct-arylation-oracle/v1/evaluate
+05:52:10.373 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 72.9}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 90}, "status": "success", "suggestion_id": "41177937-2e98-45e1-8616-bb396da62e45"}
+05:52:10.459 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:10.480 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:10.490 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:10.502 POST api/api/v1/campaigns/status/batch
+05:52:10.515 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:11.099 POST direct-arylation-oracle/v1/evaluate
+05:52:11.106 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 84.49}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "7c580add-63f3-40f9-8ece-54e340632efa"}
+05:52:11.178 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:11.200 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:11.210 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:11.224 POST api/api/v1/campaigns/status/batch
+05:52:11.236 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:11.813 POST direct-arylation-oracle/v1/evaluate
+05:52:11.817 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 70.8}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "p-Xylene", "temperature_c": 120}, "status": "success", "suggestion_id": "cee1cde2-3d37-4901-89cf-abe5a36ab54b"}
+05:52:11.903 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:11.918 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:11.930 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:11.942 POST api/api/v1/campaigns/status/batch
+05:52:11.958 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:12.852 POST direct-arylation-oracle/v1/evaluate
+05:52:12.857 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 76.63}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "p-Xylene", "temperature_c": 105}, "status": "success", "suggestion_id": "dc455a0f-a6cc-4bc7-b91b-35fe85749b7e"}
+05:52:12.996 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:13.014 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:13.024 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:13.036 POST api/api/v1/campaigns/status/batch
+05:52:13.049 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:13.903 POST direct-arylation-oracle/v1/evaluate
+05:52:13.909 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 67.17}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "p-Xylene", "temperature_c": 105}, "status": "success", "suggestion_id": "e648f58f-4954-4577-b3ef-c5a28802ebd8"}
+05:52:13.983 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:14.003 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:14.017 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:14.029 POST api/api/v1/campaigns/status/batch
+05:52:14.041 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:14.825 POST direct-arylation-oracle/v1/evaluate
+05:52:14.831 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 79.33}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 90}, "status": "success", "suggestion_id": "65acaa3b-944f-4b1a-a2d6-403f20367e4c"}
+05:52:14.904 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:14.922 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:14.933 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:14.947 POST api/api/v1/campaigns/status/batch
+05:52:14.959 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:15.772 POST direct-arylation-oracle/v1/evaluate
+05:52:15.777 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 6.23}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 120}, "status": "success", "suggestion_id": "e7ee8fa1-45d7-4171-a688-0983bb6fe5a1"}
+05:52:16.152 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:16.174 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:16.184 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:16.196 POST api/api/v1/campaigns/status/batch
+05:52:16.208 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:17.056 POST direct-arylation-oracle/v1/evaluate
+05:52:17.062 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 84.81}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "4b06c4c7-9828-4dad-8ef1-ade492c51dd5"}
+05:52:17.190 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:17.210 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:17.221 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:17.235 POST api/api/v1/campaigns/status/batch
+05:52:17.247 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:18.241 POST direct-arylation-oracle/v1/evaluate
+05:52:18.248 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 84.17}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 120}, "status": "success", "suggestion_id": "c39146af-e492-4599-a89f-ed3eb1a845f5"}
+05:52:18.368 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:18.386 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:18.397 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:18.412 POST api/api/v1/campaigns/status/batch
+05:52:18.424 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:19.439 POST direct-arylation-oracle/v1/evaluate
+05:52:19.444 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 80.61}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "4daf25f4-0547-4549-a9d1-1e73a9dab7f9"}
+05:52:19.596 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:19.618 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:19.628 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:19.640 POST api/api/v1/campaigns/status/batch
+05:52:19.653 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:20.449 POST direct-arylation-oracle/v1/evaluate
+05:52:20.454 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 50.93}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 120}, "status": "success", "suggestion_id": "85003dab-6d21-44ea-b99a-d32a4b44cb7c"}
+05:52:20.527 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:20.547 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:20.558 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:20.570 POST api/api/v1/campaigns/status/batch
+05:52:20.583 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:21.387 POST direct-arylation-oracle/v1/evaluate
+05:52:21.391 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 77.41}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "7fe05074-7230-45e7-ab00-c460894a5b31"}
+05:52:21.496 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:21.513 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:21.523 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:21.534 POST api/api/v1/campaigns/status/batch
+05:52:21.547 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:22.803 POST direct-arylation-oracle/v1/evaluate
+05:52:22.806 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 80.39}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "41e6b868-7667-43c7-b5c9-ef5c6dfea226"}
+05:52:22.963 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:22.983 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:22.994 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:23.007 POST api/api/v1/campaigns/status/batch
+05:52:23.020 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:23.879 POST direct-arylation-oracle/v1/evaluate
+05:52:23.883 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 65.37}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "5175c0da-19c4-4d14-9eae-02e3e31f9854"}
+05:52:23.948 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:23.968 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:23.984 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:23.997 POST api/api/v1/campaigns/status/batch
+05:52:24.014 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:25.614 POST direct-arylation-oracle/v1/evaluate
+05:52:25.620 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 29.16}, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "d9a68d1e-0460-4d80-89f9-098205d0cae4"}
+05:52:25.758 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:25.781 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:25.797 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:25.810 POST api/api/v1/campaigns/status/batch
+05:52:25.825 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:27.002 POST direct-arylation-oracle/v1/evaluate
+05:52:27.008 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 84.67}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "26c18306-72e3-4a21-a044-f6ffe5f15fc4"}
+05:52:27.093 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:27.112 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:27.123 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:27.134 POST api/api/v1/campaigns/status/batch
+05:52:27.146 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:28.130 POST direct-arylation-oracle/v1/evaluate
+05:52:28.134 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 88.41}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "2b3417f5-d35a-4361-ad0b-f1a939953fa0"}
+05:52:28.221 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:28.236 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:28.248 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:28.260 POST api/api/v1/campaigns/status/batch
+05:52:28.272 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:29.224 POST direct-arylation-oracle/v1/evaluate
+05:52:29.228 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 67.04}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "p-Xylene", "temperature_c": 120}, "status": "success", "suggestion_id": "e146c432-e67b-4648-a63c-80f32f523384"}
+05:52:29.396 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:29.412 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:29.428 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:29.442 POST api/api/v1/campaigns/status/batch
+05:52:29.455 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:30.510 POST direct-arylation-oracle/v1/evaluate
+05:52:30.513 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 78.6}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 120}, "status": "success", "suggestion_id": "0ec15882-991c-4d7f-82aa-127e0d824d13"}
+05:52:30.714 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:30.733 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:30.745 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:30.756 POST api/api/v1/campaigns/status/batch
+05:52:30.768 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:31.579 POST direct-arylation-oracle/v1/evaluate
+05:52:31.584 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 56.57}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 120}, "status": "success", "suggestion_id": "b92cdfdc-3275-40ef-87ec-6d584a86b3b0"}
+05:52:31.715 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:31.733 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:31.744 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:31.756 POST api/api/v1/campaigns/status/batch
+05:52:31.769 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:33.007 POST direct-arylation-oracle/v1/evaluate
+05:52:33.011 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 61.67}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "p-Xylene", "temperature_c": 120}, "status": "success", "suggestion_id": "2556a937-2482-41a9-bc74-a7c4e3e9bfb4"}
+05:52:33.562 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:33.579 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:33.590 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:33.602 POST api/api/v1/campaigns/status/batch
+05:52:33.617 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:34.651 POST direct-arylation-oracle/v1/evaluate
+05:52:34.658 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 82.28}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "ed4954df-3d59-4aa5-ba31-b86bf772aeaa"}
+05:52:34.731 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:34.748 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:34.760 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:34.771 POST api/api/v1/campaigns/status/batch
+05:52:34.783 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:36.931 POST direct-arylation-oracle/v1/evaluate
+05:52:36.934 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 48.86}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "014b20df-850a-4166-ac88-1efa63bfb788"}
+05:52:37.080 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:37.097 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:37.115 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:37.130 POST api/api/v1/campaigns/status/batch
+05:52:37.143 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:38.004 POST direct-arylation-oracle/v1/evaluate
+05:52:38.007 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 89.17}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 105}, "status": "success", "suggestion_id": "7f04b683-3702-43e5-b651-07872f31187f"}
+05:52:38.099 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:38.117 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:38.129 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:38.141 POST api/api/v1/campaigns/status/batch
+05:52:38.153 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:39.125 POST direct-arylation-oracle/v1/evaluate
+05:52:39.128 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 88.41}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "a4a92e87-9570-4056-b6b6-002ed561d6a1"}
+05:52:39.195 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:39.211 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:39.223 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:39.235 POST api/api/v1/campaigns/status/batch
+05:52:39.248 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:40.253 POST direct-arylation-oracle/v1/evaluate
+05:52:40.256 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 77.58}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "186d2e93-6bf8-42a7-ad79-a5910984c8d7"}
+05:52:40.415 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:40.433 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:40.445 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:40.457 POST api/api/v1/campaigns/status/batch
+05:52:40.469 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:41.968 POST direct-arylation-oracle/v1/evaluate
+05:52:41.971 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 72.21}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 120}, "status": "success", "suggestion_id": "c0be9467-16bc-4562-959d-192476703d39"}
+05:52:42.632 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:42.656 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:42.670 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:42.683 POST api/api/v1/campaigns/status/batch
+05:52:42.697 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:43.978 POST direct-arylation-oracle/v1/evaluate
+05:52:43.981 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 54.52}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "p-Xylene", "temperature_c": 120}, "status": "success", "suggestion_id": "3bbf2775-1280-4899-a470-8d6034238be9"}
+05:52:44.112 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:44.132 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:44.147 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:44.163 POST api/api/v1/campaigns/status/batch
+05:52:44.176 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:45.456 POST direct-arylation-oracle/v1/evaluate
+05:52:45.460 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 64.62}, "parameter_values": {"base": "Potassium acetate", "concentration": 0.1, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 105}, "status": "success", "suggestion_id": "48564a14-59f1-4fe4-b1ad-d49dcefa33ef"}
+05:52:46.458 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:46.479 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:46.494 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:46.507 POST api/api/v1/campaigns/status/batch
+05:52:46.522 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:47.613 POST direct-arylation-oracle/v1/evaluate
+05:52:47.616 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 62.07}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "XPhos", "solvent": "DMAc", "temperature_c": 120}, "status": "success", "suggestion_id": "f11890f4-865d-44ca-88a6-893fe3b811f9"}
+05:52:47.694 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:47.715 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:47.728 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:47.741 POST api/api/v1/campaigns/status/batch
+05:52:47.756 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:48.758 POST direct-arylation-oracle/v1/evaluate
+05:52:48.763 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 34.45}, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "XPhos", "solvent": "p-Xylene", "temperature_c": 105}, "status": "success", "suggestion_id": "88deda71-8dc5-47e0-b6c5-708789718e35"}
+05:52:49.210 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:49.226 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:49.238 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:49.250 POST api/api/v1/campaigns/status/batch
+05:52:49.262 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:50.240 POST direct-arylation-oracle/v1/evaluate
+05:52:50.245 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 61.71}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "Butyl Ester", "temperature_c": 90}, "status": "success", "suggestion_id": "1086ca41-8a6e-4e7a-b662-fe4b5bf9bcda"}
+05:52:50.415 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:50.437 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:50.449 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:50.461 POST api/api/v1/campaigns/status/batch
+05:52:50.473 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/generate ? batch_size='1'
+05:52:52.266 POST direct-arylation-oracle/v1/evaluate
+05:52:52.271 POST api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] {"campaign_id": "bbefc81d-fbe2-4557-8c12-d49aba74c063", "error": null, "objective_values": {"yield": 72.89}, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "XPhos", "solvent": "Butyornitrile", "temperature_c": 105}, "status": "success", "suggestion_id": "04535a7c-02b1-479b-abbf-fc4131083045"}
+05:52:52.377 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:52.394 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[EVENT] exact 60-attempt benchmark budget reached
+05:52:52.406 POST api/api/v1/suggestions/bbefc81d-fbe2-4557-8c12-d49aba74c063/query
+05:52:52.422 GET api/api/v1/results/bbefc81d-fbe2-4557-8c12-d49aba74c063
+[RESULT] summary={"attempted": 60, "best_measured_yield": 89.17, "best_reaction_conditions": [{"name": "base", "value": "Cesium acetate"}, {"name": "ligand", "value": "XPhos"}, {"name": "solvent", "value": "DMAc"}, {"name": "concentration", "value": 0.057}, {"name": "temperature_c", "value": 105}], "successful": 60}
+05:52:52.438 GET api/api/v1/campaigns/bbefc81d-fbe2-4557-8c12-d49aba74c063
+05:52:52.447 POST api/api/v1/campaigns/bbefc81d-fbe2-4557-8c12-d49aba74c063/lifecycle
+[EVENT] campaign paused campaign_id=bbefc81d-fbe2-4557-8c12-d49aba74c063
+[EVENT] normal shutdown campaign_id=bbefc81d-fbe2-4557-8c12-d49aba74c063

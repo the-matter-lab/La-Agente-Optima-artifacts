@@ -1,0 +1,1 @@
+"""Direct-arylation yield-optimisation BO-MCP campaign package."""

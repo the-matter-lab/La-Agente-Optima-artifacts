@@ -1,0 +1,42 @@
+exit_code=0
+
+=== stdout (raw) ===
+run_synthetic_ackley_6d.py:22:        default=os.getenv("BO_MCP_CAMPAIGN_ID"),
+run_synthetic_ackley_6d.py:50:        "--budget",
+run_synthetic_ackley_6d.py:53:        help="Total evaluation budget (default: 60)"
+run_synthetic_ackley_6d.py:97:            budget=args.budget,
+synthetic_ackley_6d/evaluation.py:12:        A tuple of (surface_response, raw_response).
+synthetic_ackley_6d/evaluation.py:33:    # Normalize surface_response
+synthetic_ackley_6d/evaluation.py:34:    # surface_response = (raw_response - (-22.350402387287602)) / ((0.0) - (-22.350402387287602))
+synthetic_ackley_6d/evaluation.py:36:    surface_response = (raw_response + denom) / denom
+synthetic_ackley_6d/evaluation.py:38:    return surface_response, raw_response
+synthetic_ackley_6d/intake.py:7:    # Campaign ownership marker: akg-eval-6840ad6b86bb414189216d3f126bba73
+synthetic_ackley_6d/intake.py:9:    campaign_name = "Ackley 6D Optimization - akg-eval-6840ad6b86bb414189216d3f126bba73"
+synthetic_ackley_6d/intake.py:22:            "name": "surface_response",
+synthetic_ackley_6d/campaign.py:26:    budget: int = 60,
+synthetic_ackley_6d/campaign.py:75:            print(f"BO_MCP_CAMPAIGN_ID={campaign_id}")
+synthetic_ackley_6d/campaign.py:108:        # Check budget
+synthetic_ackley_6d/campaign.py:111:        if eval_count >= budget:
+synthetic_ackley_6d/campaign.py:112:            print(f"[EVENT] Evaluation budget of {budget} reached. Stopping loop.")
+synthetic_ackley_6d/campaign.py:165:            logfire.info("Evaluation success", surface_response=surf_resp, raw_response=raw_resp)
+synthetic_ackley_6d/campaign.py:178:                    "objective_values": {"surface_response": surf_resp},
+synthetic_ackley_6d/campaign.py:207:            objective_values={"surface_response": surf_resp} if surf_resp is not None else {},
+synthetic_ackley_6d/reporting.py:84:    best_surface_response = -float("inf")
+synthetic_ackley_6d/reporting.py:98:        surf_resp = objs.get("surface_response")
+synthetic_ackley_6d/reporting.py:102:            if surf_resp > best_surface_response:
+synthetic_ackley_6d/reporting.py:103:                best_surface_response = surf_resp
+synthetic_ackley_6d/reporting.py:126:        print(f"  Best Surface Response (normalized): {best_surface_response:.8f}")
+
+
+=== stderr (raw) ===
+grep: synthetic_ackley_6d/__pycache__/reporting.cpython-312.pyc: binary file matches
+grep: synthetic_ackley_6d/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: synthetic_ackley_6d/__pycache__/campaign.cpython-312.pyc: binary file matches
+grep: synthetic_ackley_6d/__pycache__/intake.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+grep: synthetic_ackley_6d/__pycache__/reporting.cpython-312.pyc: binary file matches
+grep: synthetic_ackley_6d/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: synthetic_ackley_6d/__pycache__/campaign.cpython-312.pyc: binary file matches
+grep: synthetic_ackley_6d/__pycache__/intake.cpython-312.pyc: binary file matches

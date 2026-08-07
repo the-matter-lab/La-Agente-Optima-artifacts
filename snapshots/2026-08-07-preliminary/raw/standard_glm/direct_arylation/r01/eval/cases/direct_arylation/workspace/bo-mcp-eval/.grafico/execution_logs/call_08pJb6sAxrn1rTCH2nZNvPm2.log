@@ -1,0 +1,39 @@
+exit_code=0
+
+=== stdout (raw) ===
+17:18:45.815 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=1.62% | {'base': 'Cesium acetate', 'ligand': 'Di-tert-butylphenylphosphine', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:45.820 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:45.916 POST api/api/v1/campaigns/status/batch
+17:18:45.931 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 58/60: {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:47.371 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=78.60% | {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:18:47.376 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:47.462 POST api/api/v1/campaigns/status/batch
+17:18:47.479 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 59/60: {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:48.949 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=44.25% | {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 105.0}
+17:18:48.952 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:49.052 POST api/api/v1/campaigns/status/batch
+17:18:49.069 POST api/api/v1/suggestions/55d907a4-a09e-4ab6-8db1-a51535c83fd5/generate ? batch_size='1'
+[EVENT] Attempt 60/60: {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:49.819 POST direct-arylation-oracle/v1/evaluate
+[RESULT] yield=29.06% | {'base': 'Cesium acetate', 'ligand': 'P(2-furyl)3', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:18:49.825 POST api/api/v1/results/55d907a4-a09e-4ab6-8db1-a51535c83fd5
+[EVENT] Loop ended after 60 attempts
+[RESULT] Best yield: 81.48%
+[RESULT] Best conditions: {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+[RESULT] Successful: 60 | Failed: 0 | Total attempted: 60
+[RESULT] BO_MCP_CAMPAIGN_ID=55d907a4-a09e-4ab6-8db1-a51535c83fd5
+17:18:50.737 POST api/api/v1/campaigns/status/batch
+17:18:50.758 POST api/api/v1/campaigns/55d907a4-a09e-4ab6-8db1-a51535c83fd5/lifecycle
+[EVENT] Campaign paused for resumability
+BO_MCP_CAMPAIGN_ID=55d907a4-a09e-4ab6-8db1-a51535c83fd5
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

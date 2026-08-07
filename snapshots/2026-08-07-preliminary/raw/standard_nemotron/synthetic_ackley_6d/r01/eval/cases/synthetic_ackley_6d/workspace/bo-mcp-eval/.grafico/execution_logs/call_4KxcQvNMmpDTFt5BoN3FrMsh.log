@@ -1,0 +1,79 @@
+exit_code=0
+
+=== stdout (raw) ===
+    """Main entrypoint for the campaign.
+
+    Args:
+        campaign_id: Resume existing campaign if provided.
+        random_seed: RNG seed.
+        initial_design_size: Sobol initial points.
+        batch_size: Suggestions per generation.
+        max_observations: Total evaluation budget.
+        backend: BO backend.
+        acquisition_method: Acquisition function.
+        artifact_dir: Directory for artifacts (relative to workspace or absolute).
+        poll_s: Poll interval (unused, kept for interface compatibility).
+        heartbeat_s: Heartbeat interval in seconds.
+        stop_file: Path to stop file.
+
+    Returns:
+        Summary dict with best coordinates and values.
+    """
+    client = BoMcpClient.from_env()
+    runner = CampaignRunner(
+        client=client,
+        campaign_id=campaign_id,
+        random_seed=random_seed,
+        initial_design_size=initial_design_size,
+        batch_size=batch_size,
+        max_observations=max_observations,
+        backend=backend,
+        acquisition_method=acquisition_method,
+        artifact_dir=Path(artifact_dir),
+        poll_s=poll_s,
+        heartbeat_s=heartbeat_s,
+        stop_file=Path(stop_file),
+    )
+
+    campaign_id = runner.create_or_resume_campaign()
+
+    # Main loop
+    while True:
+        try:
+            should_continue = runner.run_iteration()
+            if not should_continue:
+                break
+        except BoMcpOperationError as e:
+            runner._log_alert(f"BO-MCP operation error: {e}")
+            if "BUDGET_EXCEEDED" in str(e) or "budget" in str(e).lower():
+                break
+            # For other operation errors, continue loop (server may recover)
+        except BoMcpClientError as e:
+            runner._log_alert(f"BO-MCP transport error: {e}")
+            # Transport errors: could retry, but for now stop
+            break
+        except KeyboardInterrupt:
+            runner._log_event("Interrupted by user")
+            runner._pause_campaign()
+            break
+        except Exception as e:
+            runner._log_alert(f"Unexpected error: {e}")
+            # Don't crash the campaign on evaluation errors; log and continue
+            import traceback
+
+            traceback.print_exc()
+
+    # Final pause if still running
+    try:
+        final_status = runner.client.get_campaign(campaign_id).get("status")
+        if final_status == "running":
+            runner._pause_campaign()
+    except Exception:
+        pass
+
+    return runner.finalize()
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

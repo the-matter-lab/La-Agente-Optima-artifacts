@@ -1,0 +1,170 @@
+exit_code=0
+
+=== stdout (raw) ===
+   300	def _maybe_stop_requested(stop_file: Path, campaign_id: str, logger: logging.Logger) -> bool:
+   301	    if stop_file.exists():
+   302	        logger.info("Stop file detected at %s", stop_file)
+   303	        _event(f"stop-file-detected campaign_id={campaign_id} stop_file={stop_file}")
+   304	        stop_file.unlink()
+   305	        return True
+   306	    return False
+   307	
+   308	
+   309	def _pause_if_running(client: BoMcpClient, campaign_id: str, logger: logging.Logger) -> dict[str, Any]:
+   310	    campaign = client.get_campaign(campaign_id)
+   311	    _ensure_marker(campaign)
+   312	    status = str(campaign.get("status", ""))
+   313	    if status == "running":
+   314	        logger.info("Pausing running campaign %s", campaign_id)
+   315	        client.lifecycle(campaign_id, action="pause")
+   316	        campaign = client.get_campaign(campaign_id)
+   317	    return campaign
+   318	
+   319	
+   320	def _write_diagnostics(client: BoMcpClient, campaign_id: str, paths: RuntimePaths, logger: logging.Logger) -> None:
+   321	    try:
+   322	        diagnostics = client.get_diagnostics(campaign_id, verbosity="standard", timeout_s=600.0)
+   323	        write_json(paths.diagnostics_json, diagnostics)
+   324	    except Exception as exc:  # pragma: no cover - nonfatal artifact refresh
+   325	        logger.warning("Unable to fetch diagnostics: %s", exc)
+   326	
+   327	
+   328	def run_campaign(config: RunConfig) -> int:
+   329	    api_url = _require_direct_arylation_api_url()
+   330	    client = BoMcpClient.from_env(timeout_s=max(float(config.poll_s), 120.0))
+   331	    campaign_id = _ensure_campaign(client, config)
+   332	    paths = _runtime_paths(config.artifact_root, campaign_id)
+   333	    paths.artifact_dir.mkdir(parents=True, exist_ok=True)
+   334	    logger = _setup_logging(paths.log_file)
+   335	    _write_runtime_config(paths, RunConfig(
+   336	        campaign_id=campaign_id,
+   337	        artifact_root=config.artifact_root,
+   338	        max_attempts=config.max_attempts,
+   339	        campaign_max_observations=config.campaign_max_observations,
+   340	        random_seed=config.random_seed,
+   341	        initial_design_size=config.initial_design_size,
+   342	        poll_s=config.poll_s,
+   343	        heartbeat_s=config.heartbeat_s,
+   344	        request_timeout_s=config.request_timeout_s,
+   345	        stop_file=config.stop_file,
+   346	    ))
+   347	    paths.campaign_id_txt.write_text(campaign_id + "\n", encoding="utf-8")
+   348	
+   349	    logger.info("Starting campaign runner nonce=%s", CACHE_BUSTER_NONCE)
+   350	    logfire.info(
+   351	        "starting_direct_arylation_campaign",
+   352	        campaign_id=campaign_id,
+   353	        cache_buster_nonce=CACHE_BUSTER_NONCE,
+   354	        max_attempts=config.max_attempts,
+   355	        campaign_max_observations=config.campaign_max_observations,
+   356	    )
+   357	    campaign = _resume_if_needed(client, campaign_id, logger)
+   358	    _ensure_marker(campaign)
+   359	    _event(
+   360	        f"campaign-ready campaign_id={campaign_id} status={campaign.get('status')} max_attempts={config.max_attempts} campaign_max_observations={config.campaign_max_observations} artifact_dir={paths.artifact_dir}"
+   361	    )
+   362	
+   363	    attempts = load_jsonl(paths.attempts_jsonl)
+   364	    _persist_snapshot(client=client, campaign_id=campaign_id, paths=paths, attempts=attempts, logger=logger)
+   365	    attempted = _normalize_attempt_count(attempts)
+   366	    last_heartbeat_at = 0.0
+   367	    session = requests.Session()
+   368	
+   369	    try:
+   370	        while attempted < config.max_attempts:
+   371	            last_heartbeat_at = _maybe_emit_heartbeat(
+   372	                last_heartbeat_at,
+   373	                config.heartbeat_s,
+   374	                attempted,
+   375	                config.max_attempts,
+   376	                campaign_id,
+   377	            )
+   378	            if _maybe_stop_requested(config.stop_file, campaign_id, logger):
+   379	                break
+   380	            decision = client.next_action(campaign_id)
+   381	            logger.info("next_action=%s", decision)
+   382	            action = str(decision.get("action", ""))
+   383	            if action != "bo_generate_suggestions":
+   384	                _alert(
+   385	                    "bo-server-stop action="
+   386	                    f"{action} reason={decision.get('reason')} campaign_id={campaign_id} attempted={attempted}/{config.max_attempts}"
+   387	                )
+   388	                break
+   389	            suggestion = _pending_or_new_suggestion(client, campaign_id, logger)
+   390	            if suggestion is None:
+   391	                break
+   392	            candidate = canonical_candidate(dict(suggestion["parameter_values"]))
+   393	            signature = candidate_signature(candidate)
+   394	            attempt_number = attempted + 1
+   395	            logger.info("Attempt %s suggestion_id=%s candidate=%s", attempt_number, suggestion["suggestion_id"], candidate)
+   396	            _event(
+   397	                f"attempt-start campaign_id={campaign_id} attempt={attempt_number}/{config.max_attempts} suggestion_id={suggestion['suggestion_id']} candidate={candidate}"
+   398	            )
+   399	            started_at = time.time()
+   400	            try:
+   401	                evaluation = evaluate_candidate(
+   402	                    api_url=api_url,
+   403	                    candidate=candidate,
+   404	                    timeout_s=config.request_timeout_s,
+   405	                    session=session,
+   406	                )
+   407	                submission = _submit_result(
+   408	                    client,
+   409	                    campaign_id,
+   410	                    suggestion,
+   411	                    evaluation.objective_value,
+   412	                    logger,
+   413	                )
+   414	                duration_s = round(time.time() - started_at, 3)
+   415	                record = {
+   416	                    "cache_buster_nonce": CACHE_BUSTER_NONCE,
+   417	                    "attempt_number": attempt_number,
+   418	                    "campaign_id": campaign_id,
+   419	                    "suggestion_id": suggestion["suggestion_id"],
+   420	                    "candidate": candidate,
+   421	                    "candidate_signature": signature,
+   422	                    "status": "submitted",
+   423	                    "objective_name": evaluation.objective_name,
+   424	                    "objective_value": evaluation.objective_value,
+   425	                    "duration_s": duration_s,
+   426	                    "submission": submission,
+   427	                    "oracle_response": evaluation.response_payload,
+   428	                }
+   429	                attempts = _record_attempt(paths=paths, attempts=attempts, record=record)
+   430	                attempted += 1
+   431	                _result(
+   432	                    f"attempt={attempt_number}/{config.max_attempts} status=submitted campaign_id={campaign_id} suggestion_id={suggestion['suggestion_id']} yield={evaluation.objective_value:.4f} candidate={candidate}"
+   433	                )
+   434	            except EvaluationFailure as exc:
+   435	                duration_s = round(time.time() - started_at, 3)
+   436	                logger.warning("Evaluation failure for suggestion %s: %s", suggestion["suggestion_id"], exc)
+   437	                client.update_suggestion_status(suggestion["suggestion_id"], "rejected")
+   438	                record = {
+   439	                    "cache_buster_nonce": CACHE_BUSTER_NONCE,
+   440	                    "attempt_number": attempt_number,
+   441	                    "campaign_id": campaign_id,
+   442	                    "suggestion_id": suggestion["suggestion_id"],
+   443	                    "candidate": exc.candidate,
+   444	                    "candidate_signature": signature,
+   445	                    "status": "evaluation_failed",
+   446	                    "duration_s": duration_s,
+   447	                    "http_status": exc.status_code,
+   448	                    "error": exc.message,
+   449	                    "response_text": exc.response_text,
+   450	                }
+   451	                attempts = _record_attempt(paths=paths, attempts=attempts, record=record)
+   452	                attempted += 1
+   453	                _alert(
+   454	                    f"attempt={attempt_number}/{config.max_attempts} status=evaluation_failed campaign_id={campaign_id} suggestion_id={suggestion['suggestion_id']} http_status={exc.status_code} candidate={exc.candidate}"
+   455	                )
+   456	                _result(
+   457	                    f"attempt={attempt_number}/{config.max_attempts} status=evaluation_failed campaign_id={campaign_id} suggestion_id={suggestion['suggestion_id']} candidate={exc.candidate} error={exc.message}"
+   458	                )
+   459	            except (BoMcpClientError, BoMcpOperationError, requests.RequestException) as exc:
+   460	                duration_s = round(time.time() - started_at, 3)
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,28 @@
+{
+  "version": "anthropic-list-prices-2026-08-05-v1",
+  "effective_date": "2026-08-05",
+  "currency": "USD",
+  "unit": "per_million_tokens",
+  "cache_write_assumption": "5-minute cache writes; retained requests do not declare a 1-hour TTL",
+  "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-8"
+  ],
+  "models": {
+    "claude-sonnet-5": {
+      "input": 2.0,
+      "cache_write_5m": 2.5,
+      "cache_write_1h": 4.0,
+      "cache_read": 0.2,
+      "output": 10.0,
+      "pricing_note": "Introductory pricing through 2026-08-31"
+    },
+    "claude-opus-5": {
+      "input": 5.0,
+      "cache_write_5m": 6.25,
+      "cache_write_1h": 10.0,
+      "cache_read": 0.5,
+      "output": 25.0
+    }
+  }
+}

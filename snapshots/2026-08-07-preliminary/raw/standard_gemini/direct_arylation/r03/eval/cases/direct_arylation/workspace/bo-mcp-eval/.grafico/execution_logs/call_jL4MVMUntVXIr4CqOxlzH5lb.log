@@ -1,0 +1,17 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+  File "<stdin>", line 7
+    print(f"BEST\t{best[objective_values][yield]}\t{best[parameter_values]}")
+                                         ^
+SyntaxError: f-string: expecting '=', or '!', or ':', or '}'
+
+
+=== stderr (model-visible) ===
+  File "<stdin>", line 7
+    print(f"BEST\t{best[objective_values][yield]}\t{best[parameter_values]}")
+                                         ^
+SyntaxError: f-string: expecting '=', or '!', or ':', or '}'

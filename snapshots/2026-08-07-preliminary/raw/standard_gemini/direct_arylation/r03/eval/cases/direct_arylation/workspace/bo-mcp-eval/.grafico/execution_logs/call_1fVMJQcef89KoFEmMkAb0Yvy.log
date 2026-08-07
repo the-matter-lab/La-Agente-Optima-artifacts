@@ -1,0 +1,25 @@
+exit_code=0
+
+=== stdout (raw) ===
+{
+  "package_modules": {
+    "init": "direct_arylation/__init__.py",
+    "search_space": "direct_arylation/search_space.py",
+    "intake": "direct_arylation/intake.py",
+    "evaluation": "direct_arylation/evaluation.py",
+    "reporting": "direct_arylation/reporting.py",
+    "campaign": "direct_arylation/campaign.py"
+  },
+  "run_entrypoint": "run_direct_arylation.py",
+  "latest_artifact_directory": "."
+}
+
+
+=== stderr (raw) ===
+bash: line 1: printf: --: invalid option
+printf: usage: printf [-v var] format [arguments]
+
+
+=== stderr (model-visible) ===
+bash: line 1: printf: --: invalid option
+printf: usage: printf [-v var] format [arguments]

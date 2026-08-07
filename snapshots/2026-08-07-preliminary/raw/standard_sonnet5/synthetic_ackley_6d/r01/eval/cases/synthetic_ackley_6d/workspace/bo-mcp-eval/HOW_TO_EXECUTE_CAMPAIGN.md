@@ -1,0 +1,158 @@
+# Ackley 6D BO-MCP Benchmark Campaign
+
+Synthetic benchmark only — no PySCF/CREST/MOF/RAISE/RoboFlex or any
+chemistry/experimental evaluator is involved. This optimizes the classic
+6D Ackley surface through BO-MCP (BayBE backend) as a controlled test of
+the optimization loop itself.
+
+Cache-buster nonce for this authoring pass: `f62806c2-a95a-4a49-80eb-993714a47ac6`.
+
+## Ownership marker
+
+Every campaign this package creates or resumes has the marker
+`akg-eval-3135b72daeac4d50bbb8b8b099a7fc02` embedded in its name
+(`ackley6d-benchmark-akg-eval-3135b72daeac4d50bbb8b8b099a7fc02[-suffix]`).
+The script refuses to operate (`[ALERT]` + exception) on any `--campaign-id`
+whose name lacks this marker.
+
+## Files
+
+- `run_ackley6d.py` — CLI entrypoint (workspace root).
+- `ackley6d_bo/` — package:
+  - `search_space.py` — x_1..x_6 continuous parameters on [0.0, 1.0].
+  - `objective.py` — synthetic Ackley evaluator: z_i = -40 + 80*x_i,
+    `classic` Ackley formula (d=6), `raw_response = -classic`,
+    `surface_response` linearly rescaled to the fixed constants given in
+    the task (`RAW_MIN=-22.350402387287602`, `RAW_MAX=0.0`). No noise, no
+    retries/timeouts needed (pure math); failures (e.g. malformed
+    candidate) are caught and reported, never raised.
+  - `intake.py` — builds the immutable BO-MCP intake: single objective
+    `surface_response` (`maximize`, unit `normalized_unitless`), backend
+    `baybe`, `initial_design_size=12`, campaign `batch_size=6`,
+    `acquisition_method=upper_confidence_bound` with `acquisition_beta=2.0`,
+    `random_seed=733029`. Chosen fresh for this task, not copied from any
+    prior run.
+  - `reporting.py` — append-only JSONL artifact (one row per evaluated
+    candidate) mirrored to a CSV snapshot after every row; summary/best
+    lookup for end-user reporting.
+  - `campaign.py` — orchestration: create-or-resume, `next_action`-driven
+    continue/stop, batch suggestion generation, evaluation, submission,
+    stop-file handling, heartbeats, pause-on-exit.
+- `campaign_manifest.json` — module inventory + latest artifact dir +
+  the already-smoke-tested campaign id (see below).
+- `artifacts/ackley6d_<campaign_id>.jsonl` / `.csv` — results artifact.
+
+## Environment requirements
+
+- `BO_MCP_API_URL` and `BO_MCP_API_KEY` must be set (required by
+  `BoMcpClient.from_env()`; the script fails fast if missing).
+- Run via `uv run python run_ackley6d.py ...` from this workspace directory
+  so the `ackley6d_bo` package and `artifacts/` resolve as relative paths.
+
+## Execution budget
+
+Exactly **60 attempted objective evaluations total** for the campaign
+(counted as: submitted to BO-MCP, or written as a row to the local JSONL
+artifact — this covers both successes and any evaluation failures). The
+loop re-derives `attempted_so_far` from the JSONL artifact at startup, so
+it is safe to stop and resume across multiple invocations without ever
+exceeding 60. No candidate is evaluated twice (BO-MCP suggests distinct
+continuous points; nothing in this script re-submits an existing
+coordinate).
+
+## Command
+
+First run (creates a new marked campaign) — **or** resume the
+already-smoke-tested campaign (see next section):
+
+```bash
+uv run python run_ackley6d.py
+```
+
+Resume a specific campaign (same command re-run after a pause/kill, or to
+continue the smoke-tested campaign):
+
+```bash
+uv run python run_ackley6d.py --campaign-id <campaign_id>
+```
+
+Optional flags: `--artifact-dir artifacts` (default), `--poll-s 180`
+(120-300 recommended), `--heartbeat-s 1800`, `--stop-file STOP`.
+
+## Smoke-tested campaign (ready to resume)
+
+During authoring, this package was smoke-tested end-to-end against the
+live BO-MCP API using the real production code path (not a mock): a
+campaign was created with the required marker, one batch of real
+Ackley evaluations was generated/evaluated/submitted, resume-from-paused
+was verified, and stop-file handling was verified. The campaign was left
+**paused** with **6 genuine evaluations already counted** toward the
+60-evaluation budget, and its artifact already lives at
+`artifacts/ackley6d_<campaign_id>.jsonl`.
+
+Campaign id: see `campaign_manifest.json` → `smoke_tested_campaign_id`
+(`20856160-5d59-4b24-8d3a-089687dfee21` at authoring time).
+
+To continue it toward the full 60-evaluation budget instead of spending a
+fresh 60 on a brand-new campaign:
+
+```bash
+uv run python run_ackley6d.py --campaign-id 20856160-5d59-4b24-8d3a-089687dfee21
+```
+
+If a genuinely fresh campaign is preferred instead, just run
+`uv run python run_ackley6d.py` with no `--campaign-id`; it will create a
+new marked campaign and start from 0/60.
+
+## Monitor-friendly stdout tags
+
+- `[EVENT]` — state changes: campaign created/resumed/reopened, stop-file
+  detected, budget reached, final pause.
+- `[ALERT]` — failures: rejected intake/suggestions/results, failed
+  candidate evaluation, inability to reject a failed suggestion.
+- `[RESULT]` — final (and any interim) reporting: attempted/success/failed
+  counts, best coordinates, best `raw_response`, best `surface_response`.
+- `[HEARTBEAT]` — liveness, printed after each generated batch and at
+  least every `--heartbeat-s` seconds.
+
+Everything else (per-request detail, stack traces) goes through `logfire`
+(configured via `grafico.core.logfire_config.configure_logfire()`), not
+stdout.
+
+## Stop-file behavior
+
+The script checks for `--stop-file` (default `STOP` in the current
+working directory) at the top of every loop iteration, **before**
+generating a new suggestion batch — never between evaluating and
+submitting a batch already in flight. If found, it prints `[EVENT]`,
+deletes the file (so a later resume is not blocked by a stale marker),
+pauses the campaign if it is still `running`, and exits normally. Resume
+with the same command plus `--campaign-id`.
+
+## Validating a run
+
+1. Confirm the printed final line `BO_MCP_CAMPAIGN_ID=<campaign_id>`.
+2. Inspect `artifacts/ackley6d_<campaign_id>.jsonl` (or the `.csv`
+   mirror) — one row per attempted evaluation with `evaluation_index`,
+   `parameter_values` (`x_1..x_6`), `objective_values.surface_response`,
+   `status`, `failure_reason` (if failed), `raw_response`.
+3. The final `[RESULT]` lines report best coordinates, best
+   `raw_response`, best `surface_response`, and attempted/success counts.
+4. Row count in the artifact must never exceed 60 across the campaign's
+   full history (resumed or not).
+
+## Campaign lifecycle notes
+
+- The BO-MCP server (`next_action`) owns the continue/stop decision; no
+  local `campaign_state.json` or iteration counters are used for that
+  decision.
+- `max_iterations`/`max_observations` are **not** set in the intake, so
+  a resumed/reopened campaign is never fossilized against future
+  continuation; the 60-evaluation budget is enforced purely by this
+  script's own loop using the artifact-row count, per this task's
+  explicit counting rule.
+- At the end of an invocation the campaign is paused (not terminated),
+  so it always continues via `lifecycle(action="resume")` (handled
+  automatically by re-running the same command with `--campaign-id`).
+  If the campaign happens to be `completed` (e.g. BO-MCP itself decided
+  to stop before 60 was reached), the script reopens it automatically.

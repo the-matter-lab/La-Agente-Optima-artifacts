@@ -1,0 +1,807 @@
+exit_code=0
+
+=== stdout (raw) ===
+
+=== ackley_6d_campaign/campaign/__init__.py ===
+"""Campaign orchestration package."""
+
+from ackley_6d_campaign.campaign.bo_client import BoMcpClient
+
+__all__ = ["BoMcpClient"]
+=== ackley_6d_campaign/campaign/bo_client.py ===
+"""BO-MCP REST client wrapper for campaign operations."""
+
+import os
+import uuid
+from typing import Any
+
+import httpx
+import logfire
+from pydantic import BaseModel
+
+
+class CampaignCreateResponse(BaseModel):
+    success: bool
+    campaign_id: str | None = None
+    errors: list[str] = []
+    warnings: list[str] = []
+    idempotency_replay: bool = False
+    schema_version: int = 2
+    spec_id: str | None = None
+
+
+class SuggestionProvenance(BaseModel):
+    batch_index: int
+    generation_method: str
+    iteration: int
+    acquisition_function: str | None = None
+    acquisition_value: float | None = None
+    confidence_level: str | None = None
+    explanation: str | None = None
+    model_type: str | None = None
+    model_uncertainty: float | None = None
+    model_version: int | None = None
+    random_seed: int | None = None
+
+
+class SuggestionResponse(BaseModel):
+    campaign_id: str
+    created_at: str
+    parameter_values: dict[str, Any]
+    provenance: SuggestionProvenance
+    status: str
+    suggestion_id: str
+
+
+class SuggestionsGenerateResponse(BaseModel):
+    success: bool
+    suggestions: list[SuggestionResponse] = []
+    errors: list[str] = []
+    iteration: int | None = None
+    idempotency_replay: bool = False
+    schema_version: int = 2
+
+
+class ResultSubmitResponse(BaseModel):
+    success: bool
+    result_ids: list[str] = []
+    errors: list[str] = []
+    warnings: list[str] = []
+    duplicates_detected: list[dict[str, Any]] | None = None
+    error_code: str | None = None
+    field_errors: dict[str, list[str]] | None = None
+    idempotency_replay: bool = False
+    schema_version: int = 2
+
+
+class CampaignResponse(BaseModel):
+    campaign_id: str
+    name: str
+    spec_id: str
+    created_at: str
+    status: str
+    intake: dict[str, Any]
+    max_observations: int | None = None
+
+
+class BoMcpClient:
+    """Client for BO-MCP REST API."""
+
+    def __init__(
+        self,
+        api_url: str | None = None,
+        api_key: str | None = None,
+        timeout: float = 60.0,
+    ):
+        self.api_url = api_url or os.environ.get("BO_MCP_API_URL")
+        if not self.api_url:
+            raise ValueError("BO_MCP_API_URL must be set in environment or passed explicitly")
+
+        self.api_key = api_key or os.environ.get("BO_MCP_API_KEY")
+        if not self.api_key:
+            raise ValueError("BO_MCP_API_KEY must be set in environment or passed explicitly")
+
+        self.timeout = timeout
+        self._client = httpx.Client(
+            base_url=self.api_url.rstrip("/"),
+            headers={"X-API-Key": self.api_key, "Content-Type": "application/json"},
+            timeout=timeout,
+        )
+
+    @classmethod
+    def from_env(cls) -> "BoMcpClient":
+        """Create client from environment variables."""
+        return cls()
+
+    def _generate_idempotency_key(self, prefix: str) -> str:
+        """Generate a unique idempotency key."""
+        return f"{prefix}-{uuid.uuid4().hex[:16]}"
+
+    def create_campaign(self, intake: dict[str, Any]) -> CampaignCreateResponse:
+        """Create a new BO campaign."""
+        idempotency_key = self._generate_idempotency_key("create-campaign")
+        logfire.info("Creating campaign", name=intake.get("name"))
+
+        response = self._client.post(
+            "/api/v1/campaigns",
+            json={"intake": intake},
+            headers={"Idempotency-Key": idempotency_key},
+        )
+        response.raise_for_status()
+        data = response.json()
+        return CampaignCreateResponse(**data)
+
+    def get_campaign(self, campaign_id: str) -> CampaignResponse:
+        """Get campaign details."""
+        response = self._client.get(f"/api/v1/campaigns/{campaign_id}")
+        response.raise_for_status()
+        return CampaignResponse(**response.json())
+
+    def generate_suggestions(
+        self, campaign_id: str, batch_size: int | None = None
+    ) -> SuggestionsGenerateResponse:
+        """Generate new suggestions for a campaign."""
+        idempotency_key = self._generate_idempotency_key(f"suggest-{campaign_id}")
+        params = {}
+        if batch_size is not None:
+            params["batch_size"] = batch_size
+
+        logfire.info("Generating suggestions", campaign_id=campaign_id, batch_size=batch_size)
+
+        response = self._client.post(
+            f"/api/v1/suggestions/{campaign_id}/generate",
+            params=params,
+            headers={"Idempotency-Key": idempotency_key},
+        )
+        response.raise_for_status()
+        data = response.json()
+        return SuggestionsGenerateResponse(**data)
+
+    def submit_results(
+        self,
+        campaign_id: str,
+        results: list[dict[str, Any]],
+        force: bool = False,
+    ) -> ResultSubmitResponse:
+        """Submit evaluation results for a campaign."""
+        idempotency_key = self._generate_idempotency_key(f"results-{campaign_id}")
+        payload = {"results": results, "force": force}
+
+        logfire.info("Submitting results", campaign_id=campaign_id, count=len(results))
+
+        response = self._client.post(
+            f"/api/v1/results/{campaign_id}",
+            json=payload,
+            headers={"Idempotency-Key": idempotency_key},
+        )
+        response.raise_for_status()
+        data = response.json()
+        return ResultSubmitResponse(**data)
+
+    def close(self):
+        """Close the HTTP client."""
+        self._client.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+=== ackley_6d_campaign/campaign/orchestrator.py ===
+"""Main campaign orchestration for 6D Ackley optimization."""
+
+import os
+import sys
+import time
+from pathlib import Path
+from typing import Any
+
+import logfire
+
+from ackley_6d_campaign.campaign.bo_client import BoMcpClient
+from ackley_6d_campaign.evaluation.objective import evaluate_ackley, get_optimum
+from ackley_6d_campaign.results.artifact import ResultRow, ResultsArtifact
+from ackley_6d_campaign.search_space.intake import build_intake, intake_to_dict, MARKER, CAMPAIGN_NAME
+
+# Campaign configuration
+MAX_OBSERVATIONS = 60
+MARKER = "akg-eval-33269dad0b2d4893af291cb6d2b01f22"
+
+
+class AckleyCampaign:
+    """Orchestrates the 6D Ackley BO-MCP campaign."""
+
+    def __init__(
+        self,
+        client: BoMcpClient,
+        artifact_path: Path,
+        campaign_id: str | None = None,
+        poll_interval: float = 180.0,
+        heartbeat_interval: float = 1800.0,
+        stop_file: Path | None = None,
+    ):
+        self.client = client
+        self.artifact_path = artifact_path
+        self.campaign_id = campaign_id
+        self.poll_interval = poll_interval
+        self.heartbeat_interval = heartbeat_interval
+        self.stop_file = stop_file or Path("STOP")
+        self.artifact = ResultsArtifact(artifact_path)
+        self.last_heartbeat = time.time()
+        self.evaluation_index = self.artifact.get_last_evaluation_index()
+
+    def _check_stop_file(self) -> bool:
+        """Check if stop file exists. If so, remove it and return True."""
+        if self.stop_file.exists():
+            logfire.info("Stop file detected, stopping campaign", stop_file=str(self.stop_file))
+            print(f"[EVENT] Stop file detected at {self.stop_file}, stopping campaign")
+            self.stop_file.unlink()
+            return True
+        return False
+
+    def _heartbeat(self):
+        """Print heartbeat if interval elapsed."""
+        now = time.time()
+        if now - self.last_heartbeat >= self.heartbeat_interval:
+            print(f"[HEARTBEAT] Campaign {self.campaign_id} running, "
+                  f"evaluations: {self.artifact.get_attempted_count()}/{MAX_OBSERVATIONS}, "
+                  f"successful: {self.artifact.get_successful_count()}")
+            self.last_heartbeat = now
+
+    def _evaluate_suggestion(self, suggestion_id: str, params: dict[str, Any]) -> ResultRow:
+        """Evaluate a single suggestion using the deterministic Ackley function."""
+        self.evaluation_index += 1
+        eval_idx = self.evaluation_index
+
+        logfire.info("Evaluating suggestion", suggestion_id=suggestion_id, index=eval_idx)
+
+        try:
+            # Evaluate objective
+            obj_values = evaluate_ackley(params)
+            raw_response = obj_values["raw_response"]
+            surface_response = obj_values["surface_response"]
+
+            result = ResultRow(
+                evaluation_index=eval_idx,
+                parameter_values=params,
+                objective_values={"surface_response": surface_response},
+                status="success",
+                raw_response=raw_response,
+                suggestion_id=suggestion_id,
+            )
+            print(f"[RESULT] eval={eval_idx} suggestion={suggestion_id} "
+                  f"surface_response={surface_response:.6f} raw_response={raw_response:.6f} "
+                  f"params={params}")
+            return result
+
+        except Exception as e:
+            logfire.error("Evaluation failed", suggestion_id=suggestion_id, error=str(e))
+            print(f"[ALERT] eval={eval_idx} suggestion={suggestion_id} FAILED: {e}")
+            result = ResultRow(
+                evaluation_index=eval_idx,
+                parameter_values=params,
+                objective_values={"surface_response": float("nan")},
+                status="failed",
+                failure_reason=str(e),
+                suggestion_id=suggestion_id,
+            )
+            return result
+
+    def _submit_results(self, results: list[ResultRow]):
+        """Submit results to BO-MCP."""
+        payload = []
+        for r in results:
+            payload.append({
+                "suggestion_id": r.suggestion_id,
+                "parameter_values": r.parameter_values,
+                "objective_values": r.objective_values,
+                "metadata": {
+                    "evaluation_index": r.evaluation_index,
+                    "raw_response": r.raw_response,
+                } if r.raw_response is not None else {
+                    "evaluation_index": r.evaluation_index,
+                }
+            })
+
+        response = self.client.submit_results(self.campaign_id, payload)
+        if not response.success:
+            logfire.error("Result submission failed", errors=response.errors)
+            print(f"[ALERT] Result submission failed: {response.errors}")
+            raise RuntimeError(f"Result submission failed: {response.errors}")
+
+        logfire.info("Results submitted", result_ids=response.result_ids)
+        for r in results:
+            self.artifact.add_row(r)
+
+    def run_iteration(self) -> bool:
+        """Run one BO iteration: generate suggestions, evaluate, submit.
+
+        Returns True if campaign should continue, False if done/stopped.
+        """
+        self._heartbeat()
+
+        if self._check_stop_file():
+            return False
+
+        # Check budget
+        attempted = self.artifact.get_attempted_count()
+        if attempted >= MAX_OBSERVATIONS:
+            print(f"[EVENT] Budget exhausted: {attempted}/{MAX_OBSERVATIONS} evaluations")
+            return False
+
+        # Generate suggestions
+        print(f"[EVENT] Generating suggestions (attempted: {attempted}/{MAX_OBSERVATIONS})")
+        suggest_response = self.client.generate_suggestions(self.campaign_id)
+
+        if not suggest_response.success:
+            errors = suggest_response.errors
+            print(f"[ALERT] Suggestion generation failed: {errors}")
+
+            # Check for budget exceeded or stopping criteria
+            if any("budget" in e.lower() or "exceeded" in e.lower() or "stopping" in e.lower() for e in errors):
+                print("[EVENT] Stopping criteria met")
+                return False
+
+            # Other errors - continue to next iteration after logging
+            time.sleep(self.poll_interval)
+            return True
+
+        suggestions = suggest_response.suggestions
+        if not suggestions:
+            print("[EVENT] No suggestions generated, campaign may be complete")
+            return False
+
+        print(f"[EVENT] Received {len(suggestions)} suggestion(s)")
+
+        # Evaluate each suggestion
+        results_to_submit = []
+        for suggestion in suggestions:
+            # Check budget again before each evaluation
+            if self.artifact.get_attempted_count() >= MAX_OBSERVATIONS:
+                print(f"[EVENT] Budget reached during batch evaluation")
+                break
+
+            # Check for duplicate (should not happen with BO-MCP but safety check)
+            params = suggestion.parameter_values
+            point = tuple(params.get(f"x_{i}", 0.0) for i in range(1, 7))
+            if point in self.artifact.get_evaluated_points():
+                print(f"[ALERT] Duplicate point detected, skipping: {params}")
+                self.evaluation_index += 1
+                result = ResultRow(
+                    evaluation_index=self.evaluation_index,
+                    parameter_values=params,
+                    objective_values={"surface_response": float("nan")},
+                    status="skipped_duplicate",
+                    failure_reason="Duplicate parameter values",
+                    suggestion_id=suggestion.suggestion_id,
+                )
+                results_to_submit.append(result)
+                continue
+
+            # Evaluate
+            result = self._evaluate_suggestion(suggestion.suggestion_id, params)
+            results_to_submit.append(result)
+
+        # Submit all results
+        if results_to_submit:
+            self._submit_results(results_to_submit)
+
+        return True
+
+    def initialize_campaign(self) -> str:
+        """Create or resume campaign. Returns campaign_id."""
+        if self.campaign_id:
+            # Resume existing campaign
+            print(f"[EVENT] Resuming campaign {self.campaign_id}")
+            campaign = self.client.get_campaign(self.campaign_id)
+            # Verify marker in name
+            if MARKER not in campaign.name:
+                raise ValueError(f"Campaign {self.campaign_id} does not contain required marker {MARKER}")
+            return self.campaign_id
+
+        # Create new campaign
+        print(f"[EVENT] Creating new campaign: {CAMPAIGN_NAME}")
+        intake = build_intake(max_observations=MAX_OBSERVATIONS)
+        intake_dict = intake_to_dict(intake)
+
+        response = self.client.create_campaign(intake_dict)
+        if not response.success:
+            raise RuntimeError(f"Campaign creation failed: {response.errors}")
+
+        self.campaign_id = response.campaign_id
+        print(f"[EVENT] Campaign created: {self.campaign_id}")
+        print(f"BO_MCP_CAMPAIGN_ID={self.campaign_id}")
+        return self.campaign_id
+
+    def run(self) -> str:
+        """Run the campaign loop."""
+        self.initialize_campaign()
+
+        print(f"[EVENT] Starting optimization loop (max {MAX_OBSERVATIONS} evaluations)")
+        print(f"BO_MCP_CAMPAIGN_ID={self.campaign_id}")
+
+        iteration = 0
+        while True:
+            iteration += 1
+            print(f"\n[EVENT] === Iteration {iteration} ===")
+
+            try:
+                continue_campaign = self.run_iteration()
+                if not continue_campaign:
+                    break
+            except KeyboardInterrupt:
+                print("\n[EVENT] Interrupted by user")
+                break
+            except Exception as e:
+                logfire.exception("Iteration failed")
+                print(f"[ALERT] Iteration failed: {e}")
+                # Continue to next iteration unless budget exhausted
+                if self.artifact.get_attempted_count() >= MAX_OBSERVATIONS:
+                    break
+                time.sleep(self.poll_interval)
+
+        # Final summary
+        self.artifact.print_summary()
+        print(f"\nBO_MCP_CAMPAIGN_ID={self.campaign_id}")
+        return self.campaign_id
+
+
+def run_campaign(
+    campaign_id: str | None = None,
+
+=== ackley_6d_campaign/evaluation/__init__.py ===
+"""Evaluation package for 6D Ackley campaign."""
+
+from ackley_6d_campaign.evaluation.objective import evaluate_ackley, get_optimum
+
+__all__ = ["evaluate_ackley", "get_optimum"]
+=== ackley_6d_campaign/evaluation/objective.py ===
+"""Deterministic Ackley objective function for 6D optimization.
+
+The function maps x_i in [0, 1] to z_i = -40 + 80*x_i, then computes:
+classic = -20*exp(-0.2*sqrt(sum(z_i^2)/d)) - exp(sum(cos(2*pi*z_i))/d) + 20 + e
+raw_response = -classic
+surface_response = (raw_response - (-22.350402387287602)) / (0.0 - (-22.350402387287602))
+
+The global maximum of surface_response is 1.0 at x_i = 0.5 (z_i = 0).
+"""
+
+import math
+from typing import Any
+
+# Constants from the specification
+D = 6
+Z_SCALE = 80.0
+Z_OFFSET = -40.0
+CLASSIC_MIN = -22.350402387287602  # raw_response at worst point
+CLASSIC_MAX = 0.0  # raw_response at global optimum (z_i = 0)
+
+
+def ackley_classic(z: list[float]) -> float:
+    """Compute classic Ackley function value for given z coordinates."""
+    d = len(z)
+    sum_sq = sum(zi * zi for zi in z)
+    sum_cos = sum(math.cos(2.0 * math.pi * zi) for zi in z)
+
+    term1 = -20.0 * math.exp(-0.2 * math.sqrt(sum_sq / d))
+    term2 = -math.exp(sum_cos / d)
+    return term1 + term2 + 20.0 + math.e
+
+
+def evaluate_ackley(x: dict[str, float]) -> dict[str, float]:
+    """Evaluate the 6D Ackley function at point x.
+
+    Args:
+        x: Dictionary with keys x_1 through x_6, values in [0, 1]
+
+    Returns:
+        Dictionary with 'raw_response' and 'surface_response'
+    """
+    # Extract and validate parameters
+    z = []
+    for i in range(1, 7):
+        xi = x.get(f"x_{i}")
+        if xi is None:
+            raise ValueError(f"Missing parameter x_{i}")
+        if not (0.0 <= xi <= 1.0):
+            raise ValueError(f"Parameter x_{i} = {xi} out of bounds [0, 1]")
+        zi = Z_OFFSET + Z_SCALE * xi
+        z.append(zi)
+
+    # Compute classic Ackley
+    classic = ackley_classic(z)
+    raw_response = -classic
+
+    # Normalize to [0, 1] where 1 is the global maximum
+    surface_response = (raw_response - CLASSIC_MIN) / (CLASSIC_MAX - CLASSIC_MIN)
+
+    return {
+        "raw_response": raw_response,
+        "surface_response": surface_response,
+    }
+
+
+def get_optimum() -> dict[str, Any]:
+    """Return the known global optimum."""
+    return {
+        "x": {f"x_{i}": 0.5 for i in range(1, 7)},
+        "z": [0.0] * 6,
+        "raw_response": CLASSIC_MAX,
+        "surface_response": 1.0,
+    }
+=== ackley_6d_campaign/results/__init__.py ===
+"""Results package for 6D Ackley campaign."""
+
+from ackley_6d_campaign.results.artifact import ResultRow, ResultsArtifact
+
+__all__ = ["ResultRow", "ResultsArtifact"]
+=== ackley_6d_campaign/results/artifact.py ===
+"""Results handling and artifact writing for 6D Ackley campaign."""
+
+import csv
+import json
+from pathlib import Path
+from typing import Any
+
+import logfire
+
+
+class ResultRow:
+    """Single result row for the campaign artifact."""
+
+    def __init__(
+        self,
+        evaluation_index: int,
+        parameter_values: dict[str, float],
+        objective_values: dict[str, float],
+        status: str,
+        failure_reason: str | None = None,
+        raw_response: float | None = None,
+        suggestion_id: str | None = None,
+    ):
+        self.evaluation_index = evaluation_index
+        self.parameter_values = parameter_values
+        self.objective_values = objective_values
+        self.status = status
+        self.failure_reason = failure_reason
+        self.raw_response = raw_response
+        self.suggestion_id = suggestion_id
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "evaluation_index": self.evaluation_index,
+            "parameter_values": self.parameter_values,
+            "objective_values": self.objective_values,
+            "status": self.status,
+            "failure_reason": self.failure_reason,
+            "raw_response": self.raw_response,
+            "suggestion_id": self.suggestion_id,
+        }
+
+    def to_csv_row(self) -> list[Any]:
+        return [
+            self.evaluation_index,
+            json.dumps(self.parameter_values),
+            json.dumps(self.objective_values),
+            self.status,
+            self.failure_reason or "",
+            self.raw_response if self.raw_response is not None else "",
+            self.suggestion_id or "",
+        ]
+
+
+class ResultsArtifact:
+    """Manages the results artifact file."""
+
+    CSV_HEADERS = [
+        "evaluation_index",
+        "parameter_values",
+        "objective_values",
+        "status",
+        "failure_reason",
+        "raw_response",
+        "suggestion_id",
+    ]
+
+    def __init__(self, path: Path):
+        self.path = path
+        self.rows: list[ResultRow] = []
+        self._load_existing()
+
+    def _load_existing(self):
+        """Load existing results from artifact file if it exists."""
+        if self.path.exists():
+            with open(self.path, "r") as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    self.rows.append(
+                        ResultRow(
+                            evaluation_index=int(row["evaluation_index"]),
+                            parameter_values=json.loads(row["parameter_values"]),
+                            objective_values=json.loads(row["objective_values"]),
+                            status=row["status"],
+                            failure_reason=row["failure_reason"] or None,
+                            raw_response=float(row["raw_response"]) if row["raw_response"] else None,
+                            suggestion_id=row["suggestion_id"] or None,
+                        )
+                    )
+            logfire.info("Loaded existing results", count=len(self.rows), path=str(self.path))
+
+    def add_row(self, row: ResultRow):
+        """Add a result row and persist to disk."""
+        self.rows.append(row)
+        self._write_all()
+
+    def _write_all(self):
+        """Write all rows to CSV."""
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        with open(self.path, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(self.CSV_HEADERS)
+            for row in self.rows:
+                writer.writerow(row.to_csv_row())
+
+    def get_evaluated_points(self) -> set[tuple[float, ...]]:
+        """Get set of already-evaluated parameter tuples to avoid duplicates."""
+        points = set()
+        for row in self.rows:
+            if row.status == "success":
+                point = tuple(row.parameter_values[f"x_{i}"] for i in range(1, 7))
+                points.add(point)
+        return points
+
+    def get_last_evaluation_index(self) -> int:
+        """Get the last evaluation index used."""
+        if not self.rows:
+            return 0
+        return max(row.evaluation_index for row in self.rows)
+
+    def get_successful_count(self) -> int:
+        """Get count of successful evaluations."""
+        return sum(1 for row in self.rows if row.status == "success")
+
+    def get_attempted_count(self) -> int:
+        """Get total count of attempted evaluations."""
+        return len(self.rows)
+
+    def get_best_result(self) -> ResultRow | None:
+        """Get the best successful result by surface_response."""
+        successful = [row for row in self.rows if row.status == "success"]
+        if not successful:
+            return None
+        return max(successful, key=lambda r: r.objective_values.get("surface_response", -float("inf")))
+
+    def print_summary(self):
+        """Print a summary of results."""
+        best = self.get_best_result()
+        successful = self.get_successful_count()
+        attempted = self.get_attempted_count()
+
+        print("\n" + "=" * 60)
+        print("CAMPAIGN RESULTS SUMMARY")
+        print("=" * 60)
+        print(f"Attempted evaluations: {attempted}")
+        print(f"Successful evaluations: {successful}")
+        print(f"Failed evaluations: {attempted - successful}")
+
+        if best:
+            print(f"\nBest result (evaluation #{best.evaluation_index}):")
+            print(f"  surface_response: {best.objective_values['surface_response']:.6f}")
+            print(f"  raw_response: {best.raw_response:.6f}")
+            print(f"  Coordinates:")
+            for i in range(1, 7):
+                print(f"    x_{i} = {best.parameter_values[f'x_{i}']:.6f}")
+
+        print("\nAll evaluated candidates:")
+        print("-" * 100)
+        header = f"{'Idx':>4} | {'surface_response':>16} | {'raw_response':>12} | {'Status':>8} | Coordinates"
+        print(header)
+        print("-" * 100)
+        for row in self.rows:
+            coords = " ".join(f"x_{i}={row.parameter_values[f'x_{i}']:.4f}" for i in range(1, 7))
+            sr = row.objective_values.get("surface_response", float("nan"))
+            rr = row.raw_response if row.raw_response is not None else float("nan")
+            print(f"{row.evaluation_index:>4} | {sr:>16.6f} | {rr:>12.6f} | {row.status:>8} | {coords}")
+        print("=" * 60)
+=== ackley_6d_campaign/search_space/__init__.py ===
+"""Search space construction for 6D Ackley optimization."""
+
+from ackley_6d_campaign.search_space.intake import build_intake
+
+
+__all__ = ["build_intake"]
+=== ackley_6d_campaign/search_space/intake.py ===
+"""Campaign intake construction for 6D Ackley optimization.
+
+This module builds the IntakeData payload for BO-MCP campaign creation.
+The campaign name includes the required marker: akg-eval-33269dad0b2d4893af291cb6d2b01f22
+"""
+
+from typing import Any
+from pydantic import BaseModel, Field
+
+
+class Bounds(BaseModel):
+    lower: float
+    upper: float
+
+
+class InputParameter(BaseModel):
+    name: str
+    type: str  # "continuous"
+    bounds: Bounds
+    description: str = ""
+
+
+class Objective(BaseModel):
+    name: str
+    direction: str  # "maximize"
+    unit: str = "normalized_unitless"
+    target_mode: str | None = None
+
+
+class IntakeData(BaseModel):
+    name: str
+    objectives: list[Objective]
+    parameters: list[InputParameter]
+    batch_size: int = 1
+    initial_design_size: int | None = None
+    max_observations: int | None = None
+    random_seed: int | None = None
+    backend: str = "auto"
+    acquisition_method: str = "auto"
+    acknowledge_degradations: list[str] = Field(default_factory=list)
+
+
+MARKER = "akg-eval-33269dad0b2d4893af291cb6d2b01f22"
+CAMPAIGN_NAME = f"ackley_6d_{MARKER}"
+
+
+def build_intake(
+    *,
+    batch_size: int = 1,
+    initial_design_size: int | None = 12,
+    max_observations: int = 60,
+    random_seed: int | None = 42,
+) -> IntakeData:
+    """Build the campaign intake for 6D Ackley optimization."""
+    parameters = [
+        InputParameter(
+            name=f"x_{i}",
+            type="continuous",
+            bounds=Bounds(lower=0.0, upper=1.0),
+            description=f"Input parameter x_{i} in [0, 1]",
+        )
+        for i in range(1, 7)
+    ]
+
+    objectives = [
+        Objective(
+            name="surface_response",
+            direction="maximize",
+            unit="normalized_unitless",
+        )
+    ]
+
+    return IntakeData(
+        name=CAMPAIGN_NAME,
+        objectives=objectives,
+        parameters=parameters,
+        batch_size=batch_size,
+        initial_design_size=initial_design_size,
+        max_observations=max_observations,
+        random_seed=random_seed,
+        backend="auto",
+        acquisition_method="auto",
+        acknowledge_degradations=[],
+    )
+
+
+def intake_to_dict(intake: IntakeData) -> dict[str, Any]:
+    """Convert IntakeData to dict for JSON serialization."""
+    return intake.model_dump(mode="json", exclude_none=True)
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,1 @@
+- For BO/PySCF campaign scripts in this container, `uv run python ...` may fail when `/app` is mounted read-only because the editable build tries to touch `/app/grafico.egg-info`. A reliable fallback is to run with `PYTHONPATH=/app python3 ...`, which still imports the canonical repository client/modules without mutating `/app`.

@@ -1,0 +1,50 @@
+{
+  "architecture_mode": "standard_subagent_script_bo_mcp",
+  "architecture_restrictions": {
+    "allow_bash": true,
+    "allow_bo_mcp_openapi_tools": false,
+    "allow_bo_mcp_tools": true,
+    "allow_python_repl": true,
+    "allow_subagents": true,
+    "execution_style": "specialist authors and smoke-tests script; main agent executes full campaign and reports",
+    "require_campaign_id": true,
+    "require_script_artifact": true,
+    "workflow_owner": "main-agent-with-bo-pyscf-specialist"
+  },
+  "bo_api_url": "http://api:8000",
+  "case": {
+    "architecture_prompt_addenda": [
+      [
+        "main_agent_tool_passing_bo_mcp",
+        "Direct-tool execution note: call `evaluate_ackley_6d` once for each candidate selected by the fresh BO-MCP campaign. Submit the returned `surface_response` unchanged as the campaign objective."
+      ]
+    ],
+    "architecture_toolset_ids": [
+      [
+        "main_agent_tool_passing_bo_mcp",
+        [
+          "ackley-6d-objective"
+        ]
+      ]
+    ],
+    "benchmark_prompt_addendum": "",
+    "evaluation_budget": 60,
+    "id": "synthetic_ackley_6d",
+    "name": "Ackley synthetic surface optimization (6D)",
+    "objective_direction": "maximize",
+    "objective_name": "surface_response",
+    "objective_reference_point": null,
+    "objective_unit": "normalized_unitless",
+    "objective_verifier": "ackley_6d",
+    "objectives": [],
+    "prompt": "# Ackley synthetic surface optimization (6D)\n\nRun an optimization workflow over the Ackley synthetic function in six\nnormalized dimensions.\n\nThis is a controlled synthetic benchmark. It replaces chemistry evaluation with\na deterministic Python function. Do not call PySCF, CREST, MOF, RAISE, or any\nother chemistry/experimental evaluator for this case.\n\n## Search Space\n\nUse exactly these search-space parameters:\n\n- `x_1`: continuous, lower bound `0.0`, upper bound `1.0`\n- `x_2`: continuous, lower bound `0.0`, upper bound `1.0`\n- `x_3`: continuous, lower bound `0.0`, upper bound `1.0`\n- `x_4`: continuous, lower bound `0.0`, upper bound `1.0`\n- `x_5`: continuous, lower bound `0.0`, upper bound `1.0`\n- `x_6`: continuous, lower bound `0.0`, upper bound `1.0`\n\nEach coordinate is already normalized to `[0, 1]`.\n\n## Objective\n\nMaximize a single objective named `surface_response`.\n\nMap each normalized coordinate `x_i` to `z_i = -40 + 80*x_i`.\n\nUse:\n\n```text\nclassic = -20*exp(-0.2*sqrt(sum(z_i^2)/d)) - exp(sum(cos(2*pi*z_i))/d) + 20 + e\nraw_response = -classic\n```\n\nNormalize the response with these fixed Ackley 6D bounds:\n\n```text\nsurface_response = (raw_response - (-22.350402387287602)) / ((0.0) - (-22.350402387287602))\n```\n\nDo not add noise. Do not negate or rescale the objective in any other way.\n\n## Optimization Settings\n\n- objective_name: `surface_response`\n- objective_direction: `maximize`\n- objective unit: normalized unitless response\n\nChoose the backend, random seed, initialization strategy and size, batch\nschedule, and acquisition strategy yourself. Do not copy settings from prior\nruns. Do not evaluate the same point more than once.\n\n## Output Requirements\n\nAt the end, report:\n\n- best normalized coordinates\n- best `raw_response`\n- best `surface_response`\n- number of successful and attempted objective evaluations\n- a table of all evaluated candidates and objective values\n\nAlso save a results artifact with one row per evaluated candidate and at least:\n\n```text\nevaluation_index\nparameter_values: {x_1, ..., x_6}\nobjective_values: {surface_response}\nstatus\nfailure_reason (when failed)\nraw_response (optional)\n```\n\n\nFinal answer requirement:\n- Include exactly one line in this format:\n\nBO_MCP_CAMPAIGN_ID=<campaign_id>\n",
+    "required_environment_variables": []
+  },
+  "dry_run": true,
+  "env_file": null,
+  "model_id": "openai-responses:gpt-5.4",
+  "prompt_cache_buster_nonce": "c9e41e6d-6b28-4135-b4a7-669e45e9ef4d",
+  "prompt_path": "/app/outputs/control/preflight/cases/synthetic_ackley_6d/prompt.txt",
+  "subagent_model_id": "openrouter:z-ai/glm-5.1",
+  "tool_registry_config": "tool_registry.gpu4pyscf.toml"
+}

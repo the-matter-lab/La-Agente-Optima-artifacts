@@ -1,0 +1,161 @@
+{
+  "schema_version": 2,
+  "success": true,
+  "campaign_status": "running",
+  "iteration": 10,
+  "n_results": 60,
+  "n_pending_suggestions": 0,
+  "errors": [],
+  "warnings": [],
+  "pareto_front": null,
+  "hypervolume": null,
+  "n_pareto_points": null,
+  "best_value": 0.5088324753729199,
+  "best_parameters": {
+    "x_1": 0.5010200278451735,
+    "x_2": 0.46371877363053365,
+    "x_3": 0.5191236994530832,
+    "x_4": 0.49096514525015883,
+    "x_5": 0.5647595310422467,
+    "x_6": 0.4409864151218844
+  },
+  "improvement_history": [
+    0.045383206773402206,
+    0.045383206773402206,
+    0.045383206773402206,
+    0.05868843012971051,
+    0.05868843012971051,
+    0.05868843012971051,
+    0.05868843012971051,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08745141714355911,
+    0.08931437363500186,
+    0.08931437363500186,
+    0.08931437363500186,
+    0.08931437363500186,
+    0.08931437363500186,
+    0.08931437363500186,
+    0.08931437363500186,
+    0.08931437363500186,
+    0.08931437363500186,
+    0.10045867511503138,
+    0.10045867511503138,
+    0.10045867511503138,
+    0.10045867511503138,
+    0.1081125340184799,
+    0.1081125340184799,
+    0.1461923165385423,
+    0.1461923165385423,
+    0.1461923165385423,
+    0.19076522883418232,
+    0.19076522883418232,
+    0.19076522883418232,
+    0.19076522883418232,
+    0.19076522883418232,
+    0.19076522883418232,
+    0.2467018189933334,
+    0.2467018189933334,
+    0.2467018189933334,
+    0.2467018189933334,
+    0.3881093777740743,
+    0.3881093777740743,
+    0.43343425264525404,
+    0.43343425264525404,
+    0.43343425264525404,
+    0.43343425264525404,
+    0.5088324753729199,
+    0.5088324753729199
+  ],
+  "improvement_rate": 0.1739553860072425,
+  "model_correlation": 0.9984440122256185,
+  "feature_importance": {
+    "lengthscale": {
+      "by_objective": {
+        "objective_0": {
+          "x_1": 0.1143,
+          "x_2": 0.2196,
+          "x_3": 0.1157,
+          "x_4": 0.1623,
+          "x_5": 0.2826,
+          "x_6": 0.1055
+        }
+      },
+      "aggregate": {
+        "x_1": 0.1143,
+        "x_2": 0.2196,
+        "x_3": 0.1157,
+        "x_4": 0.1623,
+        "x_5": 0.2826,
+        "x_6": 0.1055
+      }
+    }
+  },
+  "objective_ranges": {
+    "surface_response": {
+      "min": 0.023640066261430948,
+      "max": 0.5088324753729199,
+      "direction": "maximize"
+    }
+  },
+  "model_info": {
+    "backend": "botorch",
+    "type": "SingleTaskGP",
+    "acquisition_function": "expected_improvement",
+    "batch_strategy": "L-BFGS-B with random restarts",
+    "kernel": "RBFKernel",
+    "input_warping": false
+  },
+  "health_status": "healthy",
+  "progress_status": "improving",
+  "next_action_recommendation": {
+    "action": "review_outliers",
+    "reason": "Detected 4 potential outlier(s). Verify measurements for errors.",
+    "urgency": "normal"
+  },
+  "uncertainty_trend": {
+    "mean_uncertainty": 0.014,
+    "std_uncertainty": 0.0121,
+    "trend": "decreasing",
+    "slope": -0.013013,
+    "interpretation": "Model uncertainty is decreasing. The model is becoming more confident as it learns from observations. This is expected behavior."
+  },
+  "exploration_exploitation": {
+    "exploration_ratio": 0.1679,
+    "diversity_score": 0.3879,
+    "average_distance_to_best": 0.2632,
+    "balance_assessment": "exploitation_heavy",
+    "recommendation": "Suggestions are focused near known good points. If stuck in local optima, consider increasing exploration."
+  },
+  "suggestion_diversity": null,
+  "constraint_satisfaction": null,
+  "outcome_constraint_calibration": null,
+  "convergence": {
+    "converged": false,
+    "convergence_score": 0.1,
+    "reason": "Still improving",
+    "avg_improvement": 0.043489,
+    "iterations_without_improvement": 1,
+    "recommendation": "Continue optimization to find better solutions."
+  },
+  "_metadata": {
+    "backend": "botorch",
+    "backend_source": "campaign",
+    "protocol": "rest",
+    "server_version": "0.1.0"
+  }
+}

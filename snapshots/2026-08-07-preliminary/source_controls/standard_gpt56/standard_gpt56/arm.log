@@ -1,0 +1,116 @@
+
+[2026-08-05T02:57:14.614472Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Network gpt56-baybe-extension-valid-20260805_default Creating 
+ Network gpt56-baybe-extension-valid-20260805_default Created 
+ Volume gpt56-baybe-extension-valid-20260805_postgres-data Creating 
+ Volume gpt56-baybe-extension-valid-20260805_postgres-data Created 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Creating 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Creating 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Created 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Creating 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Created 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Created 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Creating 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Created 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Starting 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Starting 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Started 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Started 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Starting 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Started 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Starting 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Started 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Healthy 
+[2026-08-05T02:58:23.727584Z] EXIT 0
+
+[2026-08-05T02:58:23.860396Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--dry-run", "--output-dir", "/app/outputs/control/preflight", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "preflight-standard_gpt56-20260803", "--subagent-model", "openai-responses:gpt-5.6-sol"]
+ Container gpt56-baybe-extension-valid-20260805-eval-run-425b626e7a9f Creating 
+ Container gpt56-baybe-extension-valid-20260805-eval-run-425b626e7a9f Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+02:58:32.539 evaluate bo_mcp_graph_eval
+02:58:32.540   case: synthetic_ackley_6d
+02:58:32.540     execute _run_case
+[2026-08-05T02:58:37.048632Z] EXIT 0
+
+[2026-08-05T03:05:43.379818Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-05T03:05:43.627181Z] EXIT 0
+
+[2026-08-05T03:16:52.209937Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-05T03:16:52.472812Z] EXIT 0
+
+[2026-08-05T03:16:52.930579Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-05T03:16:53.262969Z] EXIT 0
+
+[2026-08-05T03:16:54.332893Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "stop"]
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Stopping 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Stopping 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Stopped 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Stopped 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Stopping 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Stopped 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Stopping 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Stopped 
+[2026-08-05T03:17:06.166181Z] EXIT 0
+
+[2026-08-05T03:19:31.070383Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Starting 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Starting 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Started 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Started 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Starting 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Started 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Starting 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Started 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Waiting 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Healthy 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Healthy 
+[2026-08-05T03:20:08.689858Z] EXIT 0
+
+[2026-08-05T03:28:46.119032Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-05T03:28:46.361374Z] EXIT 0
+
+[2026-08-05T03:37:03.145127Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-05T03:37:03.367959Z] EXIT 0
+
+[2026-08-05T03:46:22.584315Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-05T03:46:22.848779Z] EXIT 0
+
+[2026-08-05T03:58:18.363940Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-05T03:58:18.609969Z] EXIT 0
+
+[2026-08-05T03:58:18.912106Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-05T03:58:19.175215Z] EXIT 0
+
+[2026-08-05T03:58:19.454943Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "stop"]
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Stopping 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Stopping 
+ Container gpt56-baybe-extension-valid-20260805-mcp-1 Stopped 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Stopping 
+ Container gpt56-baybe-extension-valid-20260805-direct-arylation-oracle-1 Stopped 
+ Container gpt56-baybe-extension-valid-20260805-api-1 Stopped 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Stopping 
+ Container gpt56-baybe-extension-valid-20260805-db-1 Stopped 
+[2026-08-05T03:58:29.111794Z] EXIT 0

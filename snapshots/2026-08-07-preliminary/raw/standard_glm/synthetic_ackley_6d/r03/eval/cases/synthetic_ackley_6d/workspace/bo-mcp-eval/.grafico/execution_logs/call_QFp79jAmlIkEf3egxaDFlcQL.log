@@ -1,0 +1,149 @@
+exit_code=0
+
+=== stdout (raw) ===
+# HOW TO EXECUTE CAMPAIGN — 6D Ackley Synthetic Benchmark
+
+## Campaign Marker
+
+Every BO-MCP campaign created by this script includes the exact marker
+`akg-eval-884f9c5c3b2746eb87ab80c667e74db7` in its name. Do **not**
+create, resume, or report campaigns without this marker.
+
+## Cache-Buster Nonce
+
+All log lines and artifact rows repeat the nonce
+`5e2a0e00-c88b-4a12-bc78-62161e987709` for cache-busting and traceability.
+
+---
+
+## Environment
+
+| Variable | Required | Description |
+|---|---|---|
+| `BO_MCP_API_URL` | **Yes** | Base URL of the BO-MCP REST API (e.g. `http://api:8000`) |
+| `BO_MCP_API_KEY` | **Yes** | API key for authenticated endpoints |
+
+No other external services (PySCF, CREST, MOF, etc.) are needed — the
+evaluator is a pure-Python deterministic function.
+
+## Inputs
+
+The script takes no input files. All parameters are defined in the
+campaign intake (6 continuous dimensions x_1..x_6 on [0,1]).
+
+## Execution Command
+
+```bash
+cd /app/outputs/cells/ackley_standard_glm_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval
+
+PYTHONPATH=/app:. python run_ackley6d.py
+```
+
+### Optional Arguments
+
+| Flag | Default | Description |
+|---|---|---|
+| `--campaign-id ID` | *(none)* | Resume an existing campaign by ID instead of creating a new one |
+| `--stop-file PATH` | `./STOP` | File whose existence triggers a graceful pause |
+| `--poll-s SECONDS` | `180` | Timeout for BO suggestion generation |
+| `--heartbeat-s SECONDS` | `1800` | Interval between `[HEARTBEAT]` log lines |
+
+### Resume a Paused Campaign
+
+```bash
+PYTHONPATH=/app:. python run_ackley6d.py --campaign-id <CAMPAIGN_ID>
+```
+
+## Behaviour
+
+1. **Creates** a new BO-MCP campaign (or **resumes** an existing one if
+   `--campaign-id` is given).
+2. Runs the BO loop for **exactly 60 attempted evaluations**:
+   - Asks `next_action` → generates suggestions → evaluates the 6D Ackley
+     function locally → submits results.
+   - On evaluation failure, records the failure and continues within the
+     same 60-evaluation budget.
+3. After 60 evaluations (or early stop), **pauses** the campaign (does not
+   terminate — allows `reopen` for continuation).
+4. Prints a final summary with best coordinates, best objective values,
+   and success/attempt counts.
+
+## Tagged Output Lines
+
+| Tag | Meaning |
+|---|---|
+| `[EVENT]` | State changes: campaign created, paused, resumed, stop-file detected |
+| `[ALERT]` | Failures: suggestion errors, submission failures |
+| `[RESULT]` | Per-evaluation analysis and final best/summary |
+| `[HEARTBEAT]` | Liveness ping with evaluation progress |
+
+All tagged lines are printed unbuffered to stdout. Everything else goes to
+the run log on disk.
+
+## Stop-File Behaviour
+
+- Default stop-file: `./STOP` (in the working directory).
+- The script checks for the stop-file **at the top of each loop iteration**,
+  before generating a new suggestion.
+- When the file exists, the script:
+  1. Prints `[EVENT] Stop file detected — pausing campaign`.
+  2. Deletes the stop-file so a resume run is not immediately stopped.
+  3. Pauses the campaign via the BO-MCP lifecycle API.
+  4. Exits cleanly.
+- The stop-file is **not** checked between evaluation and result submission
+  (results are always submitted before pausing).
+
+## Artifact Paths
+
+All artifacts are written under the `artifacts/` directory relative to the
+workspace:
+
+| Path | Description |
+|---|---|
+| `artifacts/ackley6d_results.jsonl` | One JSON line per evaluated candidate |
+
+### JSONL Row Schema
+
+```json
+{
+  "evaluation_index": 1,
+  "parameter_values": {"x_1": 0.5, "x_2": 0.5, "x_3": 0.5, "x_4": 0.5, "x_5": 0.5, "x_6": 0.5},
+  "objective_values": {"surface_response": 1.0},
+  "raw_response": 0.0,
+  "status": "success",
+  "failure_reason": null,
+  "suggestion_id": "...",
+  "nonce": "5e2a0e00-c88b-4a12-bc78-62161e987709",
+  "timestamp": "2026-07-30T17:00:00+00:00"
+}
+```
+
+## Expected Output
+
+- **Campaign ID** printed as `[EVENT] Campaign ID: <id>`.
+- **60 evaluation rows** in the JSONL artifact (some may have
+  `status: "failed"` if errors occur).
+- **Final summary** with:
+  - Best normalized coordinates (x_1..x_6)
+  - Best `raw_response`
+  - Best `surface_response`
+  - Successful and attempted evaluation counts
+  - Full table of all evaluated candidates and objective values/statuses
+
+## Campaign Configuration
+
+| Setting | Value |
+|---|---|
+| Backend | `botorch` |
+| Acquisition | `expected_improvement` |
+| Batch size | 1 (sequential) |
+| Initial design | 12 Sobol points |
+| Random seed | 42 |
+| Total budget | 60 evaluations |
+| Objective | `surface_response`, maximize, `normalized_unitless` |
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

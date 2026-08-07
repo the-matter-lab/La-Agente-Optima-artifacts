@@ -1,0 +1,418 @@
+exit_code=0
+
+=== stdout (raw) ===
+#!/usr/bin/env python
+"""Entrypoint for Ackley 6D BO-MCP optimization campaign.
+
+Usage:
+    python run_ackley_opt.py [--campaign-id CAMPAIGN_ID] [options]
+
+Environment:
+    BO_MCP_API_URL    - BO-MCP REST API base URL (required)
+    BO_MCP_API_KEY    - BO-MCP API key (required)
+    GRAPHCHAT_AGENT_WS_URL / VITE_WS_URL - WebSocket URL (for logfire context)
+    GRAPHCHAT_ROOM    - Room identifier (default: "room")
+    SPARQL_ENDPOINT   - SPARQL endpoint (default: "http://blazegraph:8080/blazegraph/namespace/kb/sparql")
+
+Output:
+    - Artifacts in ./artifacts/ (results.jsonl, results.csv, server_export.csv)
+    - Campaign ID printed as: BO_MCP_CAMPAIGN_ID=<id>
+    - Console tagged lines: [EVENT], [ALERT], [RESULT], [HEARTBEAT]
+    - Stop file: ./STOP (create to request graceful pause)
+"""
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+# Configure logfire early
+import logfire
+from grafico.core.logfire_config import configure_logfire
+
+configure_logfire()
+logfire.instrument_requests()
+
+from ackley_opt.campaign import run_campaign
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Ackley 6D synthetic benchmark optimization via BO-MCP",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--campaign-id",
+        help="Resume existing campaign by ID (must contain ownership marker)",
+    )
+    parser.add_argument(
+        "--random-seed",
+        type=int,
+        default=42,
+        help="RNG seed for reproducible initialization",
+    )
+    parser.add_argument(
+        "--initial-design-size",
+        type=int,
+        default=10,
+        help="Number of Sobol initial design points",
+    )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=1,
+        help="Number of suggestions per generation call",
+    )
+    parser.add_argument(
+        "--max-observations",
+        type=int,
+        default=60,
+        help="Total evaluation budget (attempted evaluations)",
+    )
+    parser.add_argument(
+        "--backend",
+        choices=["auto", "botorch", "baybe"],
+        default="auto",
+        help="BO backend to use",
+    )
+    parser.add_argument(
+        "--acquisition-method",
+        default="auto",
+        help="Acquisition function (e.g., noisy_ei, upper_confidence_bound, auto)",
+    )
+    parser.add_argument(
+        "--artifact-dir",
+        default="artifacts",
+        help="Directory for output artifacts",
+    )
+    parser.add_argument(
+        "--poll-s",
+        type=int,
+        default=180,
+        help="Poll interval in seconds (kept for compatibility)",
+    )
+    parser.add_argument(
+        "--heartbeat-s",
+        type=int,
+        default=1800,
+        help="Heartbeat log interval in seconds",
+    )
+    parser.add_argument(
+        "--stop-file",
+        default="STOP",
+        help="Path to stop file; create to request graceful pause",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+
+    # Validate required env vars
+    for var in ("BO_MCP_API_URL", "BO_MCP_API_KEY"):
+        if not os.getenv(var):
+            print(f"[ALERT] Required environment variable {var} not set", flush=True)
+            return 1
+
+    print("[EVENT] Starting Ackley 6D BO-MCP campaign", flush=True)
+    print(f"[EVENT] BO_MCP_API_URL={os.getenv('BO_MCP_API_URL')}", flush=True)
+
+    try:
+        campaign_id, summary = run_campaign(
+            campaign_id=args.campaign_id,
+            random_seed=args.random_seed,
+            initial_design_size=args.initial_design_size,
+            batch_size=args.batch_size,
+            max_observations=args.max_observations,
+            backend=args.backend,
+            acquisition_method=args.acquisition_method,
+            artifact_dir=args.artifact_dir,
+            poll_s=args.poll_s,
+            heartbeat_s=args.heartbeat_s,
+            stop_file=args.stop_file,
+        )
+
+        # Emit campaign ID for downstream consumption
+        print(f"BO_MCP_CAMPAIGN_ID={campaign_id}", flush=True)
+        return 0
+
+    except Exception as e:
+        print(f"[ALERT] Campaign failed: {e}", flush=True)
+        import traceback
+
+        traceback.print_exc()
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())---
+"""Campaign orchestration for Ackley 6D BO-MCP optimization."""
+
+import os
+import time
+import uuid
+from pathlib import Path
+from typing import Any
+
+import logfire
+from domains.bo_mcp.client import BoMcpClient, BoMcpClientError, BoMcpOperationError
+
+from . import evaluate, report, search_space
+
+# Ownership marker required in every campaign name for this invocation
+OWNERSHIP_MARKER = "akg-eval-fd1886f5b43b4509a3ee02d638497312"
+
+# Package directory (workspace root for this campaign)
+PACKAGE_DIR = Path(__file__).parent.parent
+
+
+class CampaignRunner:
+    """Orchestrates the BO-MCP campaign loop for Ackley 6D."""
+
+    def __init__(
+        self,
+        client: BoMcpClient,
+        campaign_id: str | None = None,
+        *,
+        random_seed: int = 42,
+        initial_design_size: int = 10,
+        batch_size: int = 1,
+        max_observations: int = 60,
+        backend: str = "auto",
+        acquisition_method: str = "auto",
+        artifact_dir: Path | None = None,
+        poll_s: int = 180,
+        heartbeat_s: int = 1800,
+        stop_file: Path | None = None,
+    ) -> None:
+        self.client = client
+        self.campaign_id = campaign_id
+        self.random_seed = random_seed
+        self.initial_design_size = initial_design_size
+        self.batch_size = batch_size
+        self.max_observations = max_observations
+        self.backend = backend
+        self.acquisition_method = acquisition_method
+        # Resolve artifact_dir to a writable path
+        if artifact_dir is None:
+            self.artifact_dir = Path("/tmp/ackley_opt_artifacts")
+        elif artifact_dir.is_absolute():
+            self.artifact_dir = artifact_dir
+        else:
+            self.artifact_dir = PACKAGE_DIR / artifact_dir
+        self.poll_s = poll_s
+        self.heartbeat_s = heartbeat_s
+        self.stop_file = stop_file or Path("STOP")
+
+        self.evaluated_cache: set[tuple[float, ...]] = set()
+        self.all_results: list[dict[str, Any]] = []
+        self.attempted_count: int = 0  # Local counter for attempted evaluations (including duplicates/failures)
+        self.last_heartbeat = time.time()
+
+    def _log_event(self, msg: str) -> None:
+        logfire.info(msg)
+        print(f"[EVENT] {msg}", flush=True)
+
+    def _log_alert(self, msg: str) -> None:
+        logfire.warning(msg)
+        print(f"[ALERT] {msg}", flush=True)
+
+    def _log_result(self, msg: str) -> None:
+        logfire.info(msg)
+        print(f"[RESULT] {msg}", flush=True)
+
+    def _log_heartbeat(self, msg: str) -> None:
+        logfire.debug(msg)
+        print(f"[HEARTBEAT] {msg}", flush=True)
+
+    def _check_stop_file(self) -> bool:
+        """Check for stop file; delete it and return True if found."""
+        if self.stop_file.exists():
+            self._log_event(f"Stop file {self.stop_file} detected; requesting pause")
+            self.stop_file.unlink(missing_ok=True)
+            return True
+        return False
+
+    def _maybe_heartbeat(self) -> None:
+        now = time.time()
+        if now - self.last_heartbeat >= self.heartbeat_s:
+            self._log_heartbeat(f"Campaign {self.campaign_id} running, {len(self.all_results)} evaluations so far")
+            self.last_heartbeat = now
+
+    def _build_campaign_name(self) -> str:
+        return f"ackley-6d-{OWNERSHIP_MARKER}-{uuid.uuid4().hex[:8]}"
+
+    def create_or_resume_campaign(self) -> str:
+        """Create a new campaign or verify existing one has ownership marker."""
+        if self.campaign_id:
+            # Resume existing - verify it has our marker
+            campaign = self.client.get_campaign(self.campaign_id)
+            name = campaign.get("name", "") or campaign.get("spec", {}).get("name", "")
+            if OWNERSHIP_MARKER not in name:
+                raise ValueError(
+                    f"Campaign {self.campaign_id} name '{name}' lacks ownership marker {OWNERSHIP_MARKER}"
+                )
+            self._log_event(f"Resuming campaign {self.campaign_id} ({name})")
+            # Load existing results to populate cache
+            self._load_existing_results()
+            # If campaign is paused, resume it
+            try:
+                campaign = self.client.get_campaign(self.campaign_id)
+                if campaign.get("status") == "paused":
+                    self.client.lifecycle(self.campaign_id, action="resume")
+                    self._log_event(f"Resumed paused campaign {self.campaign_id}")
+            except Exception as e:
+                self._log_alert(f"Failed to resume campaign: {e}")
+            return self.campaign_id
+
+        # Create new campaign
+        name = self._build_campaign_name()
+        intake = search_space.build_intake(
+            name=name,
+            random_seed=self.random_seed,
+            initial_design_size=self.initial_design_size,
+            batch_size=self.batch_size,
+            max_observations=self.max_observations,
+            backend=self.backend,
+            acquisition_method=self.acquisition_method,
+        )
+        self._log_event(f"Validating intake for campaign '{name}'")
+        search_space.validate_intake(self.client, intake)
+
+        idempotency_key = BoMcpClient.make_idempotency_key("create", name)
+        self._log_event(f"Creating campaign '{name}'")
+        response = self.client.create_campaign(intake, idempotency_key=idempotency_key)
+        campaign_id = response["campaign_id"]
+        self.campaign_id = campaign_id
+        self._log_event(f"Created campaign {campaign_id}")
+        return campaign_id
+
+    def _load_existing_results(self) -> None:
+        """Load existing results from server to populate evaluated_cache."""
+        try:
+            results = self.client.get_results(self.campaign_id)
+            for r in results:
+                # Server results have parameter_values and objective_values at top level
+                params = r.get("parameter_values", {})
+                coords = tuple(params.get(f"x_{i}", 0.0) for i in range(1, 7))
+                self.evaluated_cache.add(coords)
+                # Store in all_results for final artifact (adapt to our internal format)
+                self.all_results.append({
+                    "suggestion_id": r.get("suggestion_id"),
+                    "status": "success" if r.get("objective_values") else "failed",
+                    "objective_values": r.get("objective_values", {}),
+                    "parameter_values": params,
+                    "metadata": {
+                        "raw_response": r.get("metadata", {}).get("raw_response"),
+                    },
+                    "failure_reason": r.get("failure_reason"),
+                })
+            # Initialize attempted_count from loaded results
+            self.attempted_count = len(results)
+            self._log_event(f"Loaded {len(results)} existing results from server (attempted_count={self.attempted_count})")
+        except Exception as e:
+            self._log_alert(f"Failed to load existing results: {e}")
+
+    def run_iteration(self) -> bool:
+        """Run one BO iteration. Returns True to continue, False to stop."""
+        # Check stop file at top of loop
+        if self._check_stop_file():
+            self._pause_campaign()
+            return False
+
+        self._maybe_heartbeat()
+
+        # Budget check (local attempted evaluations, not server n_results)
+        if self.attempted_count >= self.max_observations:
+            self._log_event(f"Reached max_observations={self.max_observations} (attempted={self.attempted_count}); stopping")
+            return False
+
+        # Ask server for next action
+        decision = self.client.next_action(self.campaign_id)
+        action = decision.get("action")
+        reason = decision.get("reason", "")
+        n_results = decision.get("n_results", 0)
+        status = decision.get("status", "unknown")
+
+        self._log_event(
+            f"Campaign status: {status}, iteration: {decision.get('iteration')}, "
+            f"n_results: {n_results}, attempted: {self.attempted_count}/{self.max_observations}, "
+            f"action: {action}, reason: {reason}"
+        )
+
+        if action != "bo_generate_suggestions":
+            self._log_event(f"Server recommends stop: {reason}")
+            return False
+
+        # Generate suggestions (respect batch_size but don't exceed budget)
+        remaining = self.max_observations - self.attempted_count
+        batch_size = min(self.batch_size, remaining)
+        self._log_event(f"Generating {batch_size} suggestion(s) (remaining budget: {remaining})")
+        gen_response = self.client.generate_suggestions(
+            self.campaign_id, batch_size=batch_size
+        )
+        suggestions = gen_response.get("suggestions", [])
+        if not suggestions:
+            self._log_alert("No suggestions returned; stopping")
+            return False
+
+        # Evaluate candidates
+        batch_results = []
+        for sug in suggestions:
+            # Check budget again before each evaluation
+            if self.attempted_count >= self.max_observations:
+                self._log_event("Budget exhausted mid-batch; stopping further evaluations")
+                break
+            result = evaluate.evaluate_candidate(sug, self.evaluated_cache)
+            batch_results.append(result)
+            self.all_results.append(result)
+            self.attempted_count += 1  # Count every attempted evaluation
+
+            # Log per-candidate result
+            status = result["status"]
+            if status == "success":
+                surf = result["objective_values"]["surface_response"]
+                raw = result["metadata"]["raw_response"]
+                coords = result["parameter_values"]
+                self._log_result(
+                    f"Eval {self.attempted_count}: surface={surf:.6f}, raw={raw:.6f}, "
+                    f"coords={coords}, status={status}"
+                )
+            elif status == "duplicate":
+                self._log_alert(f"Duplicate candidate skipped: {result['parameter_values']}")
+            else:
+                self._log_alert(f"Evaluation failed: {result.get('failure_reason')}")
+
+        # Submit results - use the format expected by BO-MCP API
+        # ResultMetadata only allows specific fields; strip extra fields for submission
+        allowed_metadata_keys = {
+            "batch_ref", "conditions", "cost", "experiment_id",
+            "external_ref", "notes", "operator", "source_file", "source_row"
+        }
+        submit_results = []
+        for r in batch_results:
+            if r["status"] in ("success", "failed"):
+                # Filter metadata to only allowed keys
+                meta = r.get("metadata", {})
+                filtered_meta = {k: v for k, v in meta.items() if k in allowed_metadata_keys}
+                submit_results.append({
+                    "suggestion_id": r["suggestion_id"],
+                    "objective_values": r["objective_values"],
+                    "parameter_values": r["parameter_values"],
+                    "metadata": filtered_meta,
+                })
+        if submit_results:
+            idempotency_key = BoMcpClient.make_idempotency_key(
+                "submit", self.campaign_id, str(self.attempted_count)
+            )
+            self._log_event(f"Submitting {len(submit_results)} result(s)")
+--- HOWTO chunks ---
+62:| `--max-observations` | 60 | **Total attempted evaluation budget** (including duplicates/failures) |
+212:| Duplicate suggestions submitted | Script handles via `status=duplicate` + `update_suggestion_status=rejected`; check `[ALERT]` lines. Duplicates count toward the `--max-observations` budget. |
+215:| Budget exceeded unexpectedly | Budget is tracked locally as **attempted evaluations** (including duplicates/failures); `--max-observations` limits total artifact rows, not just server `n_results` |
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

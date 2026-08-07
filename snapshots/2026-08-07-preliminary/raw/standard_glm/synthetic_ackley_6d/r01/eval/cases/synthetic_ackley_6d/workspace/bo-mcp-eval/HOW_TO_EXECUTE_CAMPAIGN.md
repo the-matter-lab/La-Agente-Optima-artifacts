@@ -1,0 +1,115 @@
+# How to Execute the 6D Ackley BO-MCP Campaign
+
+## Quick Start
+
+```bash
+cd /app/outputs/cells/ackley_standard_glm_r01/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval
+
+# Full campaign (60 evaluations)
+PYTHONPATH=/app python3 run_ackley6d.py
+
+# Resume a paused/completed campaign
+PYTHONPATH=/app python3 run_ackley6d.py --campaign-id <CAMPAIGN_ID>
+```
+
+> **Note:** Use `PYTHONPATH=/app python3` instead of `uv run python` — the container's `/app` is read-only and `uv run` attempts an editable rebuild that fails. The script itself also adds `/app` to `sys.path` as a fallback.
+
+## Environment Variables (pre-configured in container)
+
+- `BO_MCP_API_URL` — BO-MCP REST API base URL (required)
+- `BO_MCP_API_KEY` — API authentication key (required)
+
+## CLI Arguments
+
+| Argument | Default | Description |
+|---|---|---|
+| `--campaign-id` | None | Existing campaign ID to resume/reopen |
+| `--max-evals` | 60 | Maximum attempted objective evaluations |
+| `--seed` | 42 | Random seed for new campaign creation |
+| `--poll-s` | 180 | Monitor poll interval (seconds) |
+| `--heartbeat-s` | 1800 | Heartbeat interval (seconds) |
+| `--stop-file` | STOP | Path to stop-file marker |
+| `--artifact-dir` | artifacts | Output directory for artifacts |
+
+## Tagged Output Lines
+
+The script prints unbuffered tagged lines for monitoring:
+
+- `[EVENT]` — State changes, campaign creation, pause, summary
+- `[ALERT]` — Failures, duplicate submissions, errors
+- `[RESULT]` — Per-evaluation analysis (eval index, status, surface_response, raw_response)
+- `[HEARTBEAT]` — Liveness check with eval progress
+
+All other output goes to the run log on disk.
+
+## Stop File
+
+Create a file named `STOP` (or the path given to `--stop-file`) in the working directory to gracefully pause the campaign at the next loop iteration. The file is automatically deleted after detection so a resume command is not blocked by a stale marker.
+
+```bash
+touch STOP   # Signal the running campaign to pause
+```
+
+## Resume Command
+
+If the campaign was paused or completed, resume with:
+
+```bash
+PYTHONPATH=/app python3 run_ackley6d.py --campaign-id <CAMPAIGN_ID>
+```
+
+The script will automatically:
+- Resume a paused campaign
+- Reopen a completed campaign
+- Continue from where it left off (server owns progress state)
+
+## Campaign ID
+
+The campaign ID is surfaced in two ways:
+1. Tagged output line: `[EVENT] BO_MCP_CAMPAIGN_ID=<id>`
+2. Final stdout line: `BO_MCP_CAMPAIGN_ID=<id>`
+
+## Output Artifacts
+
+All artifacts are written to the `artifacts/` directory (configurable via `--artifact-dir`):
+
+| File | Description |
+|---|---|
+| `artifacts/evaluations.jsonl` | One JSON line per evaluated candidate |
+| `artifacts/evaluations.csv` | Tabular CSV with all evaluations |
+| `artifacts/summary.json` | End-of-campaign summary |
+
+### JSONL Row Schema
+
+Each line in `evaluations.jsonl` contains:
+```json
+{
+  "evaluation_index": 1,
+  "parameter_values": {"x_1": 0.5, "x_2": 0.5, "x_3": 0.5, "x_4": 0.5, "x_5": 0.5, "x_6": 0.5},
+  "objective_values": {"surface_response": 0.123},
+  "status": "success",
+  "failure_reason": "",
+  "raw_response": -3.456
+}
+```
+
+### Summary Schema
+
+```json
+{
+  "n_attempted": 60,
+  "n_successful": 60,
+  "n_failed": 0,
+  "best_parameter_values": {"x_1": 0.5, ...},
+  "best_raw_response": -0.001,
+  "best_surface_response": 0.999
+}
+```
+
+## Campaign Ownership Marker
+
+Every campaign created by this script includes the marker `akg-eval-08b0c2917b4f44cb9ab75ed75b9fdff9` in its name. Campaigns without this marker do not belong to this invocation and must not be created, resumed, or reported.
+
+## Cache-Buster Nonce
+
+`20de70fe-0849-43d9-9827-c26fdd61729e`

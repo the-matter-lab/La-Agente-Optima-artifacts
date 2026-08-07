@@ -1,0 +1,263 @@
+{
+  "_source": "BO-MCP REST campaign/spec read-back",
+  "campaign": {
+    "created_at": "2026-07-30T18:24:34.259400Z",
+    "description": "Synthetic 6D Ackley surface benchmark with deterministic Python evaluation. Marker=akg-eval-aec7138fc7b443a08c3a021815ff43af; nonce=c33313ce-be38-46b9-850c-838405edd7bf; objective unit=normalized_unitless.",
+    "id": "b8b2b852-262c-4032-bf92-7dc34642ef3d",
+    "iteration": 15,
+    "n_objectives": 1,
+    "n_parameters": 6,
+    "name": "ackley-6d-akg-eval-aec7138fc7b443a08c3a021815ff43af-20260730T182433Z-smoke",
+    "spec_id": "aa7a865b-0343-4e0c-b66e-2edcebd550c2",
+    "status": "paused",
+    "updated_at": "2026-07-30T18:30:08.021317Z"
+  },
+  "campaign_config": {
+    "_source": "BO-MCP REST campaign/spec read-back",
+    "acknowledge_degradations": [],
+    "acquisition": {
+      "method": "noisy_expected_improvement",
+      "optimization": null,
+      "saasbo_config": null,
+      "turbo_config": null,
+      "use_cost_aware": false,
+      "use_input_warping": false
+    },
+    "backend_options": null,
+    "backend_requested": "botorch",
+    "backend_resolved": "botorch",
+    "batch_size": 4,
+    "campaign_id": "b8b2b852-262c-4032-bf92-7dc34642ef3d",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "fidelity_parameter": null,
+    "initial_design_size": 16,
+    "initial_design_size_requested": 16,
+    "initial_design_size_source": "requested",
+    "max_iterations": null,
+    "max_observations": null,
+    "missing_fields": [
+      "max_iterations",
+      "max_observations",
+      "convergence_tolerance",
+      "backend_options",
+      "fidelity_parameter",
+      "transfer_learning"
+    ],
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 578852911,
+    "spec_id": "aa7a865b-0343-4e0c-b66e-2edcebd550c2",
+    "transfer_learning": null
+  },
+  "spec": {
+    "acknowledge_degradations": [],
+    "acquisition_beta": null,
+    "acquisition_method": "noisy_expected_improvement",
+    "acquisition_optimization": null,
+    "backend_options": null,
+    "backend_requested": "botorch",
+    "backend_resolved": "botorch",
+    "batch_size": 4,
+    "campaign_id": "b8b2b852-262c-4032-bf92-7dc34642ef3d",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "description": "Synthetic 6D Ackley surface benchmark with deterministic Python evaluation. Marker=akg-eval-aec7138fc7b443a08c3a021815ff43af; nonce=c33313ce-be38-46b9-850c-838405edd7bf; objective unit=normalized_unitless.",
+    "fidelity_parameter": null,
+    "initial_design_size": 16,
+    "initial_design_size_requested": 16,
+    "initial_design_size_source": "requested",
+    "iteration": 15,
+    "max_iterations": null,
+    "max_observations": null,
+    "name": "ackley-6d-akg-eval-aec7138fc7b443a08c3a021815ff43af-20260730T182433Z-smoke",
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "Normalized Ackley coordinate.",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 578852911,
+    "saasbo_config": null,
+    "scalarization": "pareto",
+    "scalarizer": null,
+    "spec_id": "aa7a865b-0343-4e0c-b66e-2edcebd550c2",
+    "status": "paused",
+    "transfer_learning": null,
+    "turbo_config": null,
+    "use_cost_aware": false,
+    "use_input_warping": false
+  }
+}

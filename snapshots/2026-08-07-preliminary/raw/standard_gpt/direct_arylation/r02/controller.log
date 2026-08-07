@@ -1,0 +1,434 @@
+
+[2026-07-30T17:10:02.204143Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "direct_arylation", "--output-dir", "/app/outputs/cells/direct_arylation_standard_gpt_r02/eval", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "direct_arylation_standard_gpt_r02-20260730", "--subagent-model", "openai-responses:gpt-5.4"]
+ Container mx-20260730-standard-gpt-eval-run-2d092c30e061 Creating 
+ Container mx-20260730-standard-gpt-eval-run-2d092c30e061 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+17:10:14.914 evaluate bo_mcp_graph_eval
+17:10:14.915   case: direct_arylation
+17:10:14.915     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+17:10:30.891       agent run
+17:10:30.896         chat gpt-5.4
+17:10:31.565           POST api.openai.com/v1/responses
+17:10:45.307         running tool: task
+17:10:45.315 agent run
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+17:10:45.324         chat gpt-5.4
+17:10:45.335           POST api.openai.com/v1/responses
+             agent run
+17:10:45.340   chat gpt-5.4
+17:10:45.353     POST api.openai.com/v1/responses
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+17:10:46.921         running tool: wait_tasks
+             agent run
+17:10:52.384   running tool: read_todos
+17:10:52.384   running tool: ls
+17:10:52.385   running tool: execute
+17:10:54.209   chat gpt-5.4
+17:10:54.222     POST api.openai.com/v1/responses
+17:10:57.838   running tool: write_todos
+17:10:57.845   chat gpt-5.4
+17:10:57.858     POST api.openai.com/v1/responses
+17:11:02.998   running tool: execute
+17:11:03.000   running tool: execute
+17:11:03.031   chat gpt-5.4
+17:11:03.050     POST api.openai.com/v1/responses
+17:11:07.659   running tool: execute
+17:11:07.661   running tool: execute
+17:11:07.699   chat gpt-5.4
+17:11:07.720     POST api.openai.com/v1/responses
+17:11:15.253   running tool: execute
+17:11:15.255   running tool: execute
+17:11:15.398   chat gpt-5.4
+17:11:15.418     POST api.openai.com/v1/responses
+17:11:20.614   running tool: inspect_bo_mcp_openapi_overview
+17:11:20.633   chat gpt-5.4
+17:11:20.653     POST api.openai.com/v1/responses
+17:11:26.342   running tool: inspect_bo_mcp_openapi_operation
+17:11:26.342   running tool: inspect_bo_mcp_openapi_operation
+17:11:26.343   running tool: inspect_bo_mcp_openapi_operation
+17:11:26.344   running tool: inspect_bo_mcp_openapi_operation
+17:11:26.344   running tool: inspect_bo_mcp_openapi_operation
+17:11:26.382   chat gpt-5.4
+17:11:26.408     POST api.openai.com/v1/responses
+17:11:30.215   running tool: execute
+17:11:30.217   running tool: execute
+17:11:30.357   chat gpt-5.4
+17:11:30.385     POST api.openai.com/v1/responses
+17:11:42.719   running tool: inspect_bo_mcp_openapi_overview
+17:11:42.738   chat gpt-5.4
+17:11:42.768     POST api.openai.com/v1/responses
+17:11:48.966   running tool: inspect_bo_mcp_openapi_overview
+17:11:48.980   chat gpt-5.4
+17:11:49.014     POST api.openai.com/v1/responses
+17:12:00.418   running tool: inspect_bo_mcp_openapi_operation
+17:12:00.433   chat gpt-5.4
+17:12:00.464     POST api.openai.com/v1/responses
+17:12:11.091   running tool: execute
+17:12:11.093   running tool: execute
+17:12:11.786   chat gpt-5.4
+17:12:11.826     POST api.openai.com/v1/responses
+17:12:17.080   running tool: execute
+17:12:17.081   running tool: execute
+17:12:17.109   chat gpt-5.4
+17:12:17.144     POST api.openai.com/v1/responses
+17:12:41.471   running tool: execute
+17:12:41.615   chat gpt-5.4
+17:12:41.652     POST api.openai.com/v1/responses
+17:13:31.220   running tool: execute
+17:13:31.376   chat gpt-5.4
+17:13:31.429     POST api.openai.com/v1/responses
+17:13:34.065   running tool: execute
+17:13:34.222   chat gpt-5.4
+17:13:34.276     POST api.openai.com/v1/responses
+17:14:16.220   running tool: inspect_bo_mcp_openapi_operation
+17:14:16.238   chat gpt-5.4
+17:14:16.278     POST api.openai.com/v1/responses
+17:15:20.105   running tool: write_file
+17:15:20.106   running tool: write_file
+17:15:20.107   running tool: write_file
+17:15:20.108   running tool: write_file
+17:15:20.109   running tool: write_file
+17:15:20.111   running tool: write_file
+17:15:20.112   running tool: write_file
+17:15:20.124   chat gpt-5.4
+17:15:20.171     POST api.openai.com/v1/responses
+17:15:26.917   running tool: execute
+17:15:26.973   chat gpt-5.4
+17:15:27.028     POST api.openai.com/v1/responses
+17:15:31.486   running tool: execute
+17:15:32.655   chat gpt-5.4
+17:15:32.706     POST api.openai.com/v1/responses
+17:15:44.715   running tool: ls
+17:15:44.716   running tool: read_file
+17:15:44.719   running tool: read_file
+17:15:44.732   chat gpt-5.4
+17:15:44.784     POST api.openai.com/v1/responses
+17:15:53.652   running tool: read_file
+17:15:53.661   chat gpt-5.4
+17:15:53.717     POST api.openai.com/v1/responses
+17:15:58.713   running tool: hashline_edit
+17:15:58.722   chat gpt-5.4
+17:15:58.776     POST api.openai.com/v1/responses
+17:16:06.428   running tool: execute
+17:16:06.481   chat gpt-5.4
+17:16:06.552     POST api.openai.com/v1/responses
+17:16:15.051   running tool: execute
+17:16:15.888   chat gpt-5.4
+17:16:15.950     POST api.openai.com/v1/responses
+17:16:18.978   running tool: read_file
+17:16:18.987   chat gpt-5.4
+17:16:19.049     POST api.openai.com/v1/responses
+17:16:31.840   running tool: write_memory
+17:16:31.854   chat gpt-5.4
+17:16:31.915     POST api.openai.com/v1/responses
+17:16:47.640   running tool: write_file
+17:16:47.640   running tool: write_file
+17:16:47.649   chat gpt-5.4
+17:16:47.714     POST api.openai.com/v1/responses
+17:16:52.944   running tool: read_todos
+17:16:52.950   chat gpt-5.4
+17:16:53.019     POST api.openai.com/v1/responses
+17:16:56.294   running tool: update_todo_statuses
+17:16:56.303   chat gpt-5.4
+17:16:56.374     POST api.openai.com/v1/responses
+17:17:00.055   running tool: read_todos
+17:17:00.064   chat gpt-5.4
+17:17:00.139     POST api.openai.com/v1/responses
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+17:17:10.814         chat gpt-5.4
+17:17:10.824           POST api.openai.com/v1/responses
+17:17:13.675         running tool: bash_exec
+17:17:13.683 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+17:17:13.693           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+17:17:13.724         chat gpt-5.4
+17:17:13.737           POST api.openai.com/v1/responses
+17:17:23.312         running tool: start_monitor
+17:17:23.321         chat gpt-5.4
+17:17:23.336           POST api.openai.com/v1/responses
+17:17:26.078         running tool: list_monitors
+17:17:26.085         chat gpt-5.4
+17:17:26.103           POST api.openai.com/v1/responses
+17:17:32.951         running tool: bash_exec
+17:17:32.986         chat gpt-5.4
+17:17:33.003           POST api.openai.com/v1/responses
+17:17:40.605         running tool: task
+17:17:40.609 agent run
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+17:17:40.615         chat gpt-5.4
+17:17:40.632           POST api.openai.com/v1/responses
+             agent run
+17:17:40.636   chat gpt-5.4
+17:17:40.707     POST api.openai.com/v1/responses
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+17:17:42.670         running tool: wait_tasks
+             agent run
+17:18:00.895   running tool: write_todos
+17:18:00.903   chat gpt-5.4
+17:18:01.462     POST api.openai.com/v1/responses
+17:18:04.142   running tool: read_file
+17:18:04.143   running tool: read_file
+17:18:04.143   running tool: read_file
+17:18:04.144   running tool: read_file
+17:18:04.160   chat gpt-5.4
+17:18:04.253     POST api.openai.com/v1/responses
+17:18:06.472   running tool: read_file
+17:18:06.481   chat gpt-5.4
+17:18:06.606     POST api.openai.com/v1/responses
+17:18:27.730   running tool: read_file
+17:18:27.737   chat gpt-5.4
+17:18:27.837     POST api.openai.com/v1/responses
+17:18:31.507   running tool: read_file
+17:18:31.523   chat gpt-5.4
+17:18:31.619     POST api.openai.com/v1/responses
+17:18:41.793   running tool: read_file
+17:18:41.800   chat gpt-5.4
+17:18:41.881     POST api.openai.com/v1/responses
+17:18:46.387   running tool: hashline_edit
+17:18:46.395   chat gpt-5.4
+17:18:46.528     POST api.openai.com/v1/responses
+17:18:55.106   running tool: write_file
+17:18:55.114   chat gpt-5.4
+17:18:55.200     POST api.openai.com/v1/responses
+17:19:02.541   running tool: write_file
+17:19:02.548   chat gpt-5.4
+17:19:02.629     POST api.openai.com/v1/responses
+17:19:07.128   running tool: hashline_edit
+17:19:07.261   chat gpt-5.4
+17:19:07.345     POST api.openai.com/v1/responses
+17:19:11.640   running tool: hashline_edit
+17:19:11.649   chat gpt-5.4
+17:19:11.731     POST api.openai.com/v1/responses
+17:19:14.713   running tool: read_file
+17:19:14.721   chat gpt-5.4
+17:19:14.805     POST api.openai.com/v1/responses
+17:19:17.538   running tool: hashline_edit
+17:19:17.548   chat gpt-5.4
+17:19:17.636     POST api.openai.com/v1/responses
+17:19:23.508   running tool: hashline_edit
+17:19:23.516   chat gpt-5.4
+17:19:23.610     POST api.openai.com/v1/responses
+17:19:26.371   running tool: read_file
+17:19:26.379   chat gpt-5.4
+17:19:26.468     POST api.openai.com/v1/responses
+17:19:30.052   running tool: hashline_edit
+17:19:30.061   chat gpt-5.4
+17:19:30.182     POST api.openai.com/v1/responses
+17:19:35.469   running tool: hashline_edit
+17:19:35.477   chat gpt-5.4
+17:19:35.573     POST api.openai.com/v1/responses
+17:19:38.087   running tool: read_file
+17:19:38.094   chat gpt-5.4
+17:19:38.198     POST api.openai.com/v1/responses
+17:19:41.875   running tool: hashline_edit
+17:19:41.883   chat gpt-5.4
+17:19:41.980     POST api.openai.com/v1/responses
+17:19:45.928   running tool: hashline_edit
+17:19:45.938   chat gpt-5.4
+17:19:46.041     POST api.openai.com/v1/responses
+17:19:52.343   running tool: hashline_edit
+17:19:52.351   chat gpt-5.4
+17:19:52.472     POST api.openai.com/v1/responses
+17:19:59.037   running tool: read_file
+17:19:59.043   chat gpt-5.4
+17:19:59.145     POST api.openai.com/v1/responses
+17:20:01.854   running tool: hashline_edit
+17:20:01.872   chat gpt-5.4
+17:20:01.974     POST api.openai.com/v1/responses
+17:20:05.857   running tool: hashline_edit
+17:20:05.863   chat gpt-5.4
+17:20:05.979     POST api.openai.com/v1/responses
+17:20:08.587   running tool: read_file
+17:20:08.598   chat gpt-5.4
+17:20:08.698     POST api.openai.com/v1/responses
+17:20:12.678   running tool: hashline_edit
+17:20:12.687   chat gpt-5.4
+17:20:12.787     POST api.openai.com/v1/responses
+17:20:18.785   running tool: hashline_edit
+17:20:18.795   chat gpt-5.4
+17:20:18.902     POST api.openai.com/v1/responses
+17:20:21.755   running tool: read_file
+17:20:21.763   chat gpt-5.4
+17:20:21.867     POST api.openai.com/v1/responses
+17:20:24.589   running tool: hashline_edit
+17:20:24.600   chat gpt-5.4
+17:20:24.742     POST api.openai.com/v1/responses
+17:20:29.525   running tool: read_file
+17:20:29.538   chat gpt-5.4
+17:20:29.643     POST api.openai.com/v1/responses
+17:20:33.768   running tool: read_file
+17:20:33.776   chat gpt-5.4
+17:20:33.891     POST api.openai.com/v1/responses
+17:20:37.129   running tool: hashline_edit
+17:20:37.138   chat gpt-5.4
+17:20:37.243     POST api.openai.com/v1/responses
+17:20:41.894   running tool: execute
+17:20:41.951   chat gpt-5.4
+17:20:42.077     POST api.openai.com/v1/responses
+17:20:46.994   running tool: execute
+17:20:48.517   chat gpt-5.4
+17:20:48.645     POST api.openai.com/v1/responses
+17:20:53.512   running tool: execute
+17:20:58.141   chat gpt-5.4
+17:20:58.252     POST api.openai.com/v1/responses
+17:21:05.895   running tool: execute
+17:21:08.949   chat gpt-5.4
+17:21:09.076     POST api.openai.com/v1/responses
+17:21:23.078   running tool: write_file
+17:21:23.085   chat gpt-5.4
+17:21:23.199     POST api.openai.com/v1/responses
+17:21:31.952   running tool: write_file
+17:21:31.959   chat gpt-5.4
+17:21:32.083     POST api.openai.com/v1/responses
+17:21:36.293   running tool: execute
+17:21:36.294   running tool: execute
+17:21:36.807   chat gpt-5.4
+17:21:36.926     POST api.openai.com/v1/responses
+17:21:45.492   running tool: read_todos
+17:21:45.498   chat gpt-5.4
+17:21:45.612     POST api.openai.com/v1/responses
+17:21:48.678   running tool: update_todo_statuses
+17:21:48.685   chat gpt-5.4
+17:21:48.811     POST api.openai.com/v1/responses
+17:21:51.176   running tool: read_todos
+17:21:51.183   chat gpt-5.4
+17:21:51.299     POST api.openai.com/v1/responses
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+17:22:01.798         chat gpt-5.4
+17:22:01.817           POST api.openai.com/v1/responses
+17:22:04.802         running tool: bash_exec
+17:22:04.837         chat gpt-5.4
+17:22:04.856           POST api.openai.com/v1/responses
+17:22:08.423         running tool: stop_monitor
+17:22:08.429         chat gpt-5.4
+17:22:08.449           POST api.openai.com/v1/responses
+17:22:11.574         running tool: start_monitor
+17:22:11.582         chat gpt-5.4
+17:22:11.603           POST api.openai.com/v1/responses
+17:22:15.317         running tool: list_monitors
+17:22:15.322         chat gpt-5.4
+17:22:15.349           POST api.openai.com/v1/responses
+17:22:22.155         running tool: bash_exec
+17:22:27.191         chat gpt-5.4
+17:22:27.216           POST api.openai.com/v1/responses
+17:22:29.525         running tool: list_monitors
+17:22:29.530         chat gpt-5.4
+17:22:29.555           POST api.openai.com/v1/responses
+17:22:32.933         running tool: bash_exec
+17:22:32.975         chat gpt-5.4
+17:22:33.022           POST api.openai.com/v1/responses
+17:22:36.901         running tool: bash_exec
+17:22:39.938         chat gpt-5.4
+17:22:39.967           POST api.openai.com/v1/responses
+17:22:41.852         running tool: bash_exec
+17:22:41.889         chat gpt-5.4
+17:22:41.917           POST api.openai.com/v1/responses
+17:22:44.836         running tool: list_monitors
+17:22:44.842         chat gpt-5.4
+17:22:44.871           POST api.openai.com/v1/responses
+17:22:51.947         running tool: bash_exec
+17:22:52.122         chat gpt-5.4
+17:22:52.155           POST api.openai.com/v1/responses
+17:22:53.784         running tool: bash_exec
+17:22:53.806         chat gpt-5.4
+17:22:53.840           POST api.openai.com/v1/responses
+17:23:00.843         running tool: stop_monitor
+17:23:00.850         chat gpt-5.4
+17:23:00.887           POST api.openai.com/v1/responses
+17:23:04.721         running tool: start_monitor
+17:23:04.729         chat gpt-5.4
+17:23:04.764           POST api.openai.com/v1/responses
+17:23:08.069         running tool: bash_exec
+17:23:23.100         chat gpt-5.4
+17:23:23.142           POST api.openai.com/v1/responses
+17:23:27.461         running tool: list_monitors
+17:23:27.466         chat gpt-5.4
+17:23:27.507           POST api.openai.com/v1/responses
+17:23:29.691         running tool: bash_exec
+17:24:24.724         chat gpt-5.4
+17:24:24.774           POST api.openai.com/v1/responses
+17:24:26.496         running tool: list_monitors
+17:24:26.501         chat gpt-5.4
+17:24:26.538           POST api.openai.com/v1/responses
+17:24:28.914         running tool: bash_exec
+17:24:28.955         chat gpt-5.4
+17:24:28.994           POST api.openai.com/v1/responses
+17:24:32.392         running tool: bash_exec
+17:25:07.424         chat gpt-5.4
+17:25:07.482           POST api.openai.com/v1/responses
+17:25:09.377         running tool: list_monitors
+17:25:09.386         chat gpt-5.4
+17:25:09.469           POST api.openai.com/v1/responses
+17:25:14.882         running tool: bash_exec
+17:25:14.911         chat gpt-5.4
+17:25:14.970           POST api.openai.com/v1/responses
+17:25:17.500         running tool: bash_exec
+17:25:20.595         chat gpt-5.4
+17:25:20.693           POST api.openai.com/v1/responses
+17:25:27.338         running tool: list_monitors
+17:25:27.347         chat gpt-5.4
+17:25:27.417           POST api.openai.com/v1/responses
+17:25:29.664         running tool: bash_exec
+17:25:29.806         chat gpt-5.4
+17:25:29.869           POST api.openai.com/v1/responses
+17:25:32.273         running tool: bash_exec
+17:25:42.364         chat gpt-5.4
+17:25:42.430           POST api.openai.com/v1/responses
+17:25:43.917         running tool: list_monitors
+17:25:43.926         chat gpt-5.4
+17:25:44.086           POST api.openai.com/v1/responses
+17:25:48.357         running tool: bash_exec
+17:26:18.460         chat gpt-5.4
+17:26:18.526           POST api.openai.com/v1/responses
+17:26:20.492         running tool: list_monitors
+17:26:20.509         chat gpt-5.4
+17:26:20.574           POST api.openai.com/v1/responses
+17:26:38.880         running tool: python_repl
+17:26:38.939         chat gpt-5.4
+17:26:39.024           POST api.openai.com/v1/responses
+17:26:43.724         running tool: python_repl
+17:26:43.764         chat gpt-5.4
+17:26:43.836           POST api.openai.com/v1/responses
+17:26:49.943         running tool: python_repl
+17:26:50.642         chat gpt-5.4
+17:26:50.697           POST api.openai.com/v1/responses
+17:26:53.333         running tool: stop_monitor
+17:26:53.340         chat gpt-5.4
+17:26:53.420           POST api.openai.com/v1/responses
+17:26:58.743         running tool: python_repl
+17:26:58.793         chat gpt-5.4
+17:26:58.874           POST api.openai.com/v1/responses
+17:27:02.170         running tool: python_repl
+17:27:02.236         chat gpt-5.4
+17:27:02.323           POST api.openai.com/v1/responses
+17:27:06.544         running tool: python_repl
+17:27:06.596         chat gpt-5.4
+17:27:06.682           POST api.openai.com/v1/responses
+[2026-07-30T17:27:30.659793Z] EXIT 0

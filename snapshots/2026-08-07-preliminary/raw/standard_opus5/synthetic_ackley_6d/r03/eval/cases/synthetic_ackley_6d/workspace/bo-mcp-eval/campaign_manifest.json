@@ -1,0 +1,61 @@
+{
+  "campaign_slug": "ackley6_bo",
+  "campaign_marker": "akg-eval-2a04c50f6e2f4a42952ebc5cbc96b431",
+  "nonce": "c02de9f3-c0fa-4590-bebf-d77d7aa55ad1",
+  "campaign_name": "ackley6-surface-response akg-eval-2a04c50f6e2f4a42952ebc5cbc96b431",
+  "backend": "baybe",
+  "objective": {
+    "name": "surface_response",
+    "direction": "maximize",
+    "unit": "normalized_unitless"
+  },
+  "search_space": "x_1..x_6 continuous [0.0, 1.0]",
+  "budget": {
+    "campaign_wide_attempted_evaluations": 60,
+    "cli_flag": "--max-evals",
+    "status": "complete: 60/60 attempted, 60 successful, 0 failed"
+  },
+  "strategy": {
+    "random_seed": 31337,
+    "initial_design_size": 12,
+    "initial_batch_size": 6,
+    "bo_batch_size": 6,
+    "acquisition_method": "upper_confidence_bound",
+    "acquisition_beta": 2.0
+  },
+  "run_entrypoint": "run_ackley6_bo.py",
+  "modules": {
+    "search_space": "ackley6_bo/space.py",
+    "campaign_intake": "ackley6_bo/intake.py",
+    "objective_evaluator": "ackley6_bo/objective.py",
+    "evaluation_harness": "ackley6_bo/harness.py",
+    "objective_extraction_and_reporting": "ackley6_bo/report.py",
+    "orchestration": "ackley6_bo/campaign.py"
+  },
+  "existing_campaign_id": "7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace",
+  "existing_campaign_results_on_server": 60,
+  "artifact_base": "artifacts/ackley6_bo",
+  "latest_artifact_dir": "artifacts/ackley6_bo/run-20260807T063903Z",
+  "docs": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "campaign_status": "paused (complete)",
+  "best": {
+    "surface_response": 0.6791756838925176,
+    "raw_response": -7.170552560628588,
+    "parameters": {
+      "x_1": 0.501970993719693,
+      "x_2": 0.50909431743844,
+      "x_3": 0.4780089341223599,
+      "x_4": 0.5091308296995483,
+      "x_5": 0.5388694997455926,
+      "x_6": 0.4773391312273133
+    }
+  },
+  "repairs": [
+    "consume pending suggestions and treat bo_submit_results as work (was: stop, orphaning slots)",
+    "catch requests.RequestException alongside BO-MCP errors (raw ReadTimeout was fatal)",
+    "liveness heartbeats every 60s inside blocking BO-MCP calls",
+    "SIGINT/SIGTERM + exception paths always write artifacts and pause",
+    "diagnostics opt-in via --diagnostics-verbosity (default none)",
+    "explicit report-only mode when the campaign-wide budget is already satisfied"
+  ]
+}

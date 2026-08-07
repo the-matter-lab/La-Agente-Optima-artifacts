@@ -1,0 +1,23 @@
+exit_code=0
+
+=== stdout (raw) ===
+13 logs/ackley6_bo_20260807T062247Z.log
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+06:22:51.454 ackley6_bo start {'campaign_id': '7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace', 'max_e...rtifact_base': 'artifacts/ackley6_bo', 'eval_timeout_s': 60.0}
+[EVENT] continuing campaign 7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace
+06:22:51.457 POST api/api/v1/campaigns/status/batch
+06:22:51.477 POST api/api/v1/campaigns/7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace/lifecycle
+[EVENT] campaign paused -> resume
+06:22:51.533 POST api/api/v1/campaigns/status/batch
+[EVENT] budget: 60 campaign-wide, 18 already on server, 42 to evaluate now
+06:22:51.549 GET api/api/v1/results/7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace
+06:22:51.571 POST api/api/v1/campaigns/status/batch
+06:22:51.590 POST api/api/v1/suggestions/7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace/query
+06:22:51.608 POST api/api/v1/suggestions/7b4e11c4-cb79-4f37-97e3-a1a10d7d2ace/generate ? batch_size='4'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

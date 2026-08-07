@@ -1,0 +1,124 @@
+18:24:33.500 POST api/api/v1/campaigns/validate
+18:24:33.508 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+18:24:34.299 POST api/api/v1/campaigns/status/batch
+18:24:34.309 GET api/api/v1/results/b8b2b852-262c-4032-bf92-7dc34642ef3d
+18:24:34.321 POST api/api/v1/suggestions/b8b2b852-262c-4032-bf92-7dc34642ef3d/query
+18:24:34.329 POST api/api/v1/suggestions/b8b2b852-262c-4032-bf92-7dc34642ef3d/generate ? batch_size='4'
+18:24:34.372 POST api/api/v1/results/b8b2b852-262c-4032-bf92-7dc34642ef3d
+18:24:34.440 POST api/api/v1/campaigns/status/batch
+18:24:34.452 POST api/api/v1/suggestions/b8b2b852-262c-4032-bf92-7dc34642ef3d/query
+18:24:34.463 GET api/api/v1/diagnostics/b8b2b852-262c-4032-bf92-7dc34642ef3d ? use_cache='true' & verbosity='standard'
+18:24:34.474 GET api/api/v1/results/b8b2b852-262c-4032-bf92-7dc34642ef3d
+18:24:34.481 POST api/api/v1/campaigns/status/batch
+18:24:34.490 POST api/api/v1/campaigns/b8b2b852-262c-4032-bf92-7dc34642ef3d/lifecycle
+{
+  "campaign_id": "b8b2b852-262c-4032-bf92-7dc34642ef3d",
+  "marker": "akg-eval-aec7138fc7b443a08c3a021815ff43af",
+  "nonce": "c33313ce-be38-46b9-850c-838405edd7bf",
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "objective_unit": "normalized_unitless",
+  "attempted_evaluations": 4,
+  "successful_evaluations": 4,
+  "config": {
+    "total_budget": 4,
+    "default_batch_size": 4,
+    "initial_design_size": 16,
+    "acquisition_method": "noisy_expected_improvement",
+    "backend": "botorch",
+    "max_batches": 1,
+    "random_seed": 578852911,
+    "invocation_label": "smoke"
+  },
+  "best": {
+    "evaluation_index": 1,
+    "parameter_values": {
+      "x_1": 0.6019313335418701,
+      "x_2": 0.44541314244270325,
+      "x_3": 0.2480873018503189,
+      "x_4": 0.3784109950065613,
+      "x_5": 0.4975084066390991,
+      "x_6": 0.21652737259864807
+    },
+    "raw_response": -20.352391585289638,
+    "surface_response": 0.08939484700885685
+  },
+  "diagnostics": {
+    "schema_version": 2,
+    "success": true,
+    "campaign_status": "running",
+    "iteration": 1,
+    "n_results": 4,
+    "n_pending_suggestions": 0,
+    "errors": [],
+    "warnings": [],
+    "pareto_front": null,
+    "hypervolume": null,
+    "n_pareto_points": null,
+    "best_value": 0.08939484700885685,
+    "best_parameters": {
+      "x_1": 0.6019313335418701,
+      "x_2": 0.44541314244270325,
+      "x_3": 0.2480873018503189,
+      "x_4": 0.3784109950065613,
+      "x_5": 0.4975084066390991,
+      "x_6": 0.21652737259864807
+    },
+    "improvement_history": [
+      0.08939484700885685,
+      0.08939484700885685,
+      0.08939484700885685,
+      0.08939484700885685
+    ],
+    "improvement_rate": 0.0,
+    "feature_importance": null,
+    "model_correlation": null,
+    "objective_ranges": {
+      "surface_response": {
+        "min": 0.02072038001895228,
+        "max": 0.08939484700885685,
+        "direction": "maximize"
+      }
+    },
+    "model_info": {
+      "backend": "botorch",
+      "type": "SingleTaskGP",
+      "acquisition_function": "noisy_expected_improvement",
+      "batch_strategy": "L-BFGS-B with random restarts",
+      "kernel": "RBF with automatic relevance determination (ARD)",
+      "input_warping": false
+    },
+    "health_status": "warning",
+    "progress_status": "stable",
+    "next_action_recommendation": {
+      "action": "monitor_progress",
+      "reason": "Campaign health has warnings. Continue but monitor closely.",
+      "urgency": "normal"
+    },
+    "uncertainty_trend": null,
+    "exploration_exploitation": {
+      "exploration_ratio": 0.5,
+      "diversity_score": 1.0,
+      "average_distance_to_best": 0.7253,
+      "balance_assessment": "exploration_heavy",
+      "recommendation": "Suggestions are primarily exploring new regions. If optimization is mature, consider reducing exploration."
+    },
+    "suggestion_diversity": null,
+    "constraint_satisfaction": null,
+    "outcome_constraint_calibration": null,
+    "convergence": {
+      "converged": false,
+      "convergence_score": 0.0,
+      "reason": "Insufficient data for convergence detection",
+      "recommendation": "Continue optimization to gather more data."
+    },
+    "_metadata": {
+      "backend": "botorch",
+      "backend_source": "campaign",
+      "protocol": "rest",
+      "server_version": "0.1.0"
+    }
+  }
+}

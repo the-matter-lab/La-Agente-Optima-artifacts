@@ -1,0 +1,24 @@
+{
+  "campaign_slug": "ackley6d",
+  "marker": "akg-eval-50bfa115c6354334be7d31cab8784f14",
+  "campaign_name": "ackley-6d-synthetic-surface-akg-eval-50bfa115c6354334be7d31cab8784f14",
+  "backend": "baybe",
+  "objective": {"name": "surface_response", "direction": "maximize", "unit": "normalized_unitless"},
+  "entrypoint": "run_ackley6d.py",
+  "modules": {
+    "search_space": "ackley6d/space.py",
+    "intake": "ackley6d/intake.py",
+    "objective": "ackley6d/objective.py",
+    "evaluation_harness": "ackley6d/harness.py",
+    "reporting": "ackley6d/reporting.py",
+    "orchestration": "ackley6d/campaign.py"
+  },
+  "docs": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "smoke_test": {
+    "campaign_id": "95e5ca97-4cca-4c0c-9d0d-6f5c095351f6",
+    "status_after_smoke": "paused",
+    "results_recorded": 4,
+    "reusable": true
+  },
+  "latest_artifacts_dir": "artifacts/akg-eval-50bfa115c6354334be7d31cab8784f14_95e5ca97-4cca-4c0c-9d0d-6f5c095351f6"
+}

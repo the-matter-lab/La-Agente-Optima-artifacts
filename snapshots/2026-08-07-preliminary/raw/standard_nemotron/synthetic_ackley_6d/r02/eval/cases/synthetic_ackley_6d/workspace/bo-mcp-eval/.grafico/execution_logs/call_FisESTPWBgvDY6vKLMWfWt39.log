@@ -1,0 +1,13 @@
+exit_code=2
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+bash: -c: line 5: syntax error near unexpected token `('
+bash: -c: line 5: `old = '''    def submit_results(\n        self,\n        campaign_id: str,\n        results: list[dict[str, Any]],\n        force: bool = False,\n    ) -> ResultSubmitResponse:\n        """Submit evaluation results for a campaign."""\n        idempotency_key = self._generate_idempotency_key(f"results-{campaign_id}")\n        payload = {"results": results, "force": force}\n\n        logfire.info("Submitting results", campaign_id=campaign_id, count=len(results))\n\n        response = self._client.post(\n            f"/api/v1/results/{campaign_id}",\n            json=payload,\n            headers={"Idempotency-Key": idempotency_key},\n        )\n''''
+
+
+=== stderr (model-visible) ===
+bash: -c: line 5: syntax error near unexpected token `('
+bash: -c: line 5: `old = '''    def submit_results(\n        self,\n        campaign_id: str,\n        results: list[dict[str, Any]],\n        force: bool = False,\n    ) -> ResultSubmitResponse:\n        """Submit evaluation results for a campaign."""\n        idempotency_key = self._generate_idempotency_key(f"results-{campaign_id}")\n        payload = {"results": results, "force": force}\n\n        logfire.info("Submitting results", campaign_id=campaign_id, count=len(results))\n\n        response = self._client.post(\n            f"/api/v1/results/{campaign_id}",\n            json=payload,\n            headers={"Idempotency-Key": idempotency_key},\n        )\n''''

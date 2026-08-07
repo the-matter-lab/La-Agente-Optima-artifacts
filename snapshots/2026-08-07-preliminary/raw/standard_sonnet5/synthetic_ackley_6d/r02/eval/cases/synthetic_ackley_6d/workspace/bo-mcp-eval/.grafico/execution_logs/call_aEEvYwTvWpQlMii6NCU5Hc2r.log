@@ -1,0 +1,123 @@
+exit_code=0
+
+=== stdout (raw) ===
+# How to Execute: Synthetic Ackley-6D BO-MCP Campaign
+
+Marker (must appear in the campaign name and all artifacts):
+`akg-eval-23a9554a4f294e68a41175bde18c362a`
+
+## What this campaign is
+
+- A closed-loop BO-MCP campaign (BayBE backend), **not** a local-only optimizer.
+- Search space: 6 continuous normalized parameters `x_1..x_6` on `[0.0, 1.0]`.
+- Objective: single objective `surface_response` (`maximize`, unit `normalized_unitless`).
+- Evaluator: a deterministic synthetic Ackley-6D function (no PySCF/CREST/MOF/
+  chemistry/experimental tools of any kind):
+  - `z_i = -40 + 80 * x_i`, `d = 6`
+  - `classic = -20*exp(-0.2*sqrt(sum(z_i^2)/d)) - exp(sum(cos(2*pi*z_i))/d) + 20 + e`
+  - `raw_response = -classic`
+  - `surface_response = (raw_response - (-22.350402387287602)) / (0.0 - (-22.350402387287602))`
+- Hard budget: **exactly 60 attempted objective evaluations** for the campaign
+  (enforced by the orchestrator against BO-MCP server-reported counts, not
+  baked into the immutable campaign intake as `max_iterations`).
+
+## Package layout
+
+- `ackley6d_bo/search_space.py` — parameter definitions (x_1..x_6).
+- `ackley6d_bo/objective.py` — deterministic Ackley evaluator (campaign-specific).
+- `ackley6d_bo/evaluation.py` — campaign-agnostic try/except evaluation harness.
+- `ackley6d_bo/intake.py` — BO-MCP intake payload (BayBE backend, campaign name marker).
+- `ackley6d_bo/reporting.py` — CSV/JSONL artifact writer + stdout reporting.
+- `ackley6d_bo/campaign.py` — thin orchestrator (BoMcpClient loop).
+- `run_ackley6d_bo.py` — CLI entrypoint (this is what you run).
+- `campaign_manifest.json` — module inventory for continuations.
+
+## Command
+
+From this workspace directory:
+
+```bash
+uv run python run_ackley6d_bo.py
+```
+
+To resume a paused/completed campaign (recommended after any interruption —
+never re-create):
+
+```bash
+uv run python run_ackley6d_bo.py --campaign-id <BO_MCP_CAMPAIGN_ID>
+```
+
+Useful flags (all optional):
+- `--poll-s` (default 180, keep 120-300): per-`generate_suggestions` timeout budget.
+- `--heartbeat-s` (default 1800): seconds between `[HEARTBEAT]` lines.
+- `--stop-file` (default `STOP`): create this file in the cwd to request a
+  graceful stop; checked at the top of each loop iteration (before generating
+  a new suggestion, never between evaluation and submission). The file is
+  deleted once honored so a later resume isn't blocked by a stale marker.
+- `--artifact-dir` (default `ackley6d_bo_artifacts`): keep this the same
+  across resumes of the same campaign so `results.csv`/`results.jsonl` stay
+  in one place (they are append-only provenance, not read back for loop
+  control — the loop decision always comes from BO-MCP's `next_action`).
+- `--seed`, `--batch-size`, `--initial-design-size`: only apply when creating
+  a brand-new campaign (ignored when `--campaign-id` is supplied, since the
+  intake is immutable once created).
+
+## Stopping
+
+```bash
+touch STOP
+```
+
+The run finishes its current candidate (submits first), then pauses the
+campaign (only if it is still `running`) and prints the final summary before
+exiting. Resume later with `--campaign-id`.
+
+## Output tags (stdout)
+
+- `[EVENT]` — campaign create/resume/pause/reopen, stop-file honored, budget/next_action-driven stop.
+- `[ALERT]` — evaluation failures, generation failures, stop conditions.
+- `[RESULT]` — one line per evaluated candidate: index, status, `surface_response`,
+  `raw_response`, and the `x_1..x_6` coordinates.
+- `[HEARTBEAT]` — liveness line at most every `--heartbeat-s` seconds.
+- Final block prints `BO_MCP_CAMPAIGN_ID=<id>`, `attempted_evaluations`,
+  `successful_evaluations`, `best_surface_response`, `best_raw_response`, and
+  `best_parameter_values` — derived from BO-MCP's own result/suggestion
+  records, so it is correct even if this is a later resumed invocation.
+
+Everything else (per-request detail, logfire instrumentation) goes to Logfire
+(`configure_logfire()` + `logfire.instrument_requests()`) and the local
+`ackley6d_bo_artifacts/results.{csv,jsonl}` files, not the tagged stdout.
+
+## Results artifact
+
+`ackley6d_bo_artifacts/results.csv` and `results.jsonl` — one row per
+evaluated candidate:
+`evaluation_index, x_1..x_6, surface_response, raw_response, status, failure_reason`.
+
+## Validating a run
+
+1. Check the last stdout block for `BO_MCP_CAMPAIGN_ID=...` and
+   `attempted_evaluations=60` (or less if intentionally stopped early).
+2. `wc -l ackley6d_bo_artifacts/results.jsonl` should match the number of
+   `[RESULT]` lines printed in this and any prior invocation combined for
+   this artifact dir.
+3. Re-run `uv run python run_ackley6d_bo.py --campaign-id <id>` — it should
+   immediately report the budget already met (if 60 reached) instead of
+   generating more suggestions.
+
+## Smoke test performed before handoff
+
+One resumed iteration was run against a real BO-MCP campaign created for
+this task (BayBE backend, same intake as above) to confirm: intake
+validation, campaign creation, `next_action`/`generate_suggestions`/
+`submit_results`/`get_results`/`query_suggestions`/`lifecycle` all behave as
+expected end-to-end, and that the deterministic Ackley objective, tagged
+stdout lines, and CSV/JSONL artifact are produced correctly. The full
+60-evaluation campaign was intentionally **not** run to completion by this
+authoring step — only a bounded smoke test — per task instructions.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

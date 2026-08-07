@@ -1,0 +1,25 @@
+{
+  "campaign_slug": "ackley6d_bench",
+  "nonce": "f42213a0-34a7-4c2a-bbef-8b4700e0fb91",
+  "campaign_marker": "akg-eval-7f1274a8431e4c5d94a3b24374899d9e",
+  "backend": "baybe",
+  "objective": {
+    "name": "surface_response",
+    "direction": "maximize",
+    "unit": "normalized_unitless"
+  },
+  "entrypoint": "run_ackley6d_bench.py",
+  "docs": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "modules": {
+    "search_space": "ackley6d_bench/space.py",
+    "intake": "ackley6d_bench/intake.py",
+    "objective": "ackley6d_bench/objective.py",
+    "evaluation_harness": "ackley6d_bench/harness.py",
+    "reporting": "ackley6d_bench/reporting.py",
+    "orchestration": "ackley6d_bench/campaign.py"
+  },
+  "latest_artifacts_dir": "artifacts/smoke",
+  "smoke_campaign_id": "f36d19dc-5f95-4b71-82f7-c82867261e06",
+  "smoke_campaign_name": "ackley6d-synthetic-akg-eval-7f1274a8431e4c5d94a3b24374899d9e-20260807T055051Z",
+  "evaluation_budget": 60
+}

@@ -1,0 +1,2 @@
+## BO/PySCF script execution in read-only `/app`
+When plain `uv run` attempts an editable build and fails creating `/app/grafico.egg-info` on the read-only repository, run workspace scripts with `PYTHONPATH=/app uv run --no-sync python ...`. This uses the active uv environment while importing repository packages directly from `/app` without triggering the editable build.

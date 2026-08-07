@@ -1,0 +1,105 @@
+2026-08-07 06:36:40,078 INFO campaign start  max_attempted=60  campaign_id=43c0d331-e4f4-4bd7-8de4-e2f947b19be6
+2026-08-07 06:36:40,089 INFO resuming campaign_id=43c0d331-e4f4-4bd7-8de4-e2f947b19be6
+2026-08-07 06:36:40,101 DEBUG Starting new HTTP connection (1): api:8000
+2026-08-07 06:36:40,116 DEBUG http://api:8000 "POST /api/v1/campaigns/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/lifecycle HTTP/1.1" 200 262
+2026-08-07 06:36:40,185 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:36:40,185 DEBUG next_action: {'status': 'running', 'iteration': 17, 'n_results': 51, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 51 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:37:09,297 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 200 280
+2026-08-07 06:37:09,297 ERROR generate_suggestions rejected: BO-MCP POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate rejected the operation: ['Campaign 43c0d331-e4f4-4bd7-8de4-e2f947b19be6 was modified by another request while your update was in flight (expected version 53). Fetch the current version and retry.']
+2026-08-07 06:37:39,298 DEBUG Resetting dropped connection: api
+2026-08-07 06:37:39,309 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 461
+2026-08-07 06:37:39,310 DEBUG next_action: {'status': 'running', 'iteration': 18, 'n_results': 51, 'action': 'bo_submit_results', 'reason': '3 suggestion(s) awaiting results.', 'urgency': 'normal'}
+2026-08-07 06:37:39,318 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 461
+2026-08-07 06:37:39,349 DEBUG http://api:8000 "POST /api/v1/campaigns/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/lifecycle HTTP/1.1" 200 249
+2026-08-07 06:37:39,350 DEBUG Starting new HTTP connection (1): api:8000
+2026-08-07 06:37:52,327 DEBUG http://api:8000 "GET /api/v1/diagnostics/43c0d331-e4f4-4bd7-8de4-e2f947b19be6?verbosity=standard&use_cache=true HTTP/1.1" 200 3040
+2026-08-07 06:37:52,328 INFO campaign end  attempted=0  campaign_id=43c0d331-e4f4-4bd7-8de4-e2f947b19be6
+2026-08-07 06:39:51,685 INFO campaign start  max_attempted=60  campaign_id=43c0d331-e4f4-4bd7-8de4-e2f947b19be6
+2026-08-07 06:39:51,685 INFO resuming campaign_id=43c0d331-e4f4-4bd7-8de4-e2f947b19be6
+2026-08-07 06:39:51,688 DEBUG Starting new HTTP connection (1): api:8000
+2026-08-07 06:39:51,853 DEBUG http://api:8000 "POST /api/v1/campaigns/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/lifecycle HTTP/1.1" 200 249
+2026-08-07 06:39:51,874 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 461
+2026-08-07 06:39:51,875 DEBUG next_action: {'status': 'running', 'iteration': 18, 'n_results': 51, 'action': 'bo_submit_results', 'reason': '3 suggestion(s) awaiting results.', 'urgency': 'normal'}
+2026-08-07 06:39:51,894 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/query HTTP/1.1" 200 1230
+2026-08-07 06:39:52,083 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:39:52,097 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:39:52,098 DEBUG next_action: {'status': 'running', 'iteration': 18, 'n_results': 54, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 54 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:40:19,312 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2208
+2026-08-07 06:40:19,584 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:40:19,595 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:40:19,596 DEBUG next_action: {'status': 'running', 'iteration': 19, 'n_results': 57, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 57 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:44:45,131 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2206
+2026-08-07 06:44:45,522 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:44:45,533 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:44:45,534 DEBUG next_action: {'status': 'running', 'iteration': 20, 'n_results': 60, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 60 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:45:47,486 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2210
+2026-08-07 06:45:47,640 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:45:47,651 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:45:47,651 DEBUG next_action: {'status': 'running', 'iteration': 21, 'n_results': 63, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 63 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:45:51,792 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2178
+2026-08-07 06:45:52,209 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:45:52,223 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:45:52,223 DEBUG next_action: {'status': 'running', 'iteration': 22, 'n_results': 66, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 66 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:45:55,878 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2155
+2026-08-07 06:45:55,979 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:45:55,991 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:45:55,991 DEBUG next_action: {'status': 'running', 'iteration': 23, 'n_results': 69, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 69 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:45:57,875 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2160
+2026-08-07 06:45:57,998 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:45:58,010 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:45:58,011 DEBUG next_action: {'status': 'running', 'iteration': 24, 'n_results': 72, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 72 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:00,492 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2183
+2026-08-07 06:46:00,605 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:00,616 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:00,617 DEBUG next_action: {'status': 'running', 'iteration': 25, 'n_results': 75, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 75 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:03,590 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2092
+2026-08-07 06:46:04,057 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:04,072 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:04,072 DEBUG next_action: {'status': 'running', 'iteration': 26, 'n_results': 78, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 78 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:06,575 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2091
+2026-08-07 06:46:06,676 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:06,688 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:06,689 DEBUG next_action: {'status': 'running', 'iteration': 27, 'n_results': 81, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 81 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:12,001 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2154
+2026-08-07 06:46:12,102 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:12,115 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:12,116 DEBUG next_action: {'status': 'running', 'iteration': 28, 'n_results': 84, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 84 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:13,956 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2025
+2026-08-07 06:46:14,087 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:14,099 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:14,099 DEBUG next_action: {'status': 'running', 'iteration': 29, 'n_results': 87, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 87 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:14,968 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2040
+2026-08-07 06:46:15,092 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:15,102 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:15,102 DEBUG next_action: {'status': 'running', 'iteration': 30, 'n_results': 90, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 90 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:16,549 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2013
+2026-08-07 06:46:16,746 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:16,761 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:16,761 DEBUG next_action: {'status': 'running', 'iteration': 31, 'n_results': 93, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 93 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:21,702 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2076
+2026-08-07 06:46:21,832 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:21,843 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:21,844 DEBUG next_action: {'status': 'running', 'iteration': 32, 'n_results': 96, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 96 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:24,337 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 1983
+2026-08-07 06:46:25,745 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:25,760 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 572
+2026-08-07 06:46:25,761 DEBUG next_action: {'status': 'running', 'iteration': 33, 'n_results': 99, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 99 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:27,872 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2029
+2026-08-07 06:46:28,039 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:28,051 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 574
+2026-08-07 06:46:28,052 DEBUG next_action: {'status': 'running', 'iteration': 34, 'n_results': 102, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 102 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:31,133 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2107
+2026-08-07 06:46:31,337 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:31,347 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 574
+2026-08-07 06:46:31,347 DEBUG next_action: {'status': 'running', 'iteration': 35, 'n_results': 105, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 105 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:37,343 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 2100
+2026-08-07 06:46:37,462 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:37,476 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 574
+2026-08-07 06:46:37,476 DEBUG next_action: {'status': 'running', 'iteration': 36, 'n_results': 108, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 108 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-07 06:46:39,206 DEBUG http://api:8000 "POST /api/v1/suggestions/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/generate?batch_size=3 HTTP/1.1" 201 1998
+2026-08-07 06:46:39,851 DEBUG http://api:8000 "POST /api/v1/results/43c0d331-e4f4-4bd7-8de4-e2f947b19be6 HTTP/1.1" 201 281
+2026-08-07 06:46:39,862 DEBUG http://api:8000 "POST /api/v1/campaigns/status/batch HTTP/1.1" 200 574
+2026-08-07 06:46:39,976 DEBUG http://api:8000 "POST /api/v1/campaigns/43c0d331-e4f4-4bd7-8de4-e2f947b19be6/lifecycle HTTP/1.1" 200 249
+2026-08-07 06:46:39,978 DEBUG Starting new HTTP connection (1): api:8000
+2026-08-07 06:47:23,351 DEBUG http://api:8000 "GET /api/v1/diagnostics/43c0d331-e4f4-4bd7-8de4-e2f947b19be6?verbosity=standard&use_cache=true HTTP/1.1" 200 4066
+2026-08-07 06:47:23,352 INFO campaign end  attempted=60  campaign_id=43c0d331-e4f4-4bd7-8de4-e2f947b19be6

@@ -1,0 +1,104 @@
+Repeat cache-buster nonce: e08d42c5-5a6f-4a75-bc18-e04ba6932b81
+
+# Ackley synthetic surface optimization (6D)
+
+Run an optimization workflow over the Ackley synthetic function in six
+normalized dimensions.
+
+This is a controlled synthetic benchmark. It replaces chemistry evaluation with
+a deterministic Python function. Do not call PySCF, CREST, MOF, RAISE, or any
+other chemistry/experimental evaluator for this case.
+
+## Search Space
+
+Use exactly these search-space parameters:
+
+- `x_1`: continuous, lower bound `0.0`, upper bound `1.0`
+- `x_2`: continuous, lower bound `0.0`, upper bound `1.0`
+- `x_3`: continuous, lower bound `0.0`, upper bound `1.0`
+- `x_4`: continuous, lower bound `0.0`, upper bound `1.0`
+- `x_5`: continuous, lower bound `0.0`, upper bound `1.0`
+- `x_6`: continuous, lower bound `0.0`, upper bound `1.0`
+
+Each coordinate is already normalized to `[0, 1]`.
+
+## Objective
+
+Maximize a single objective named `surface_response`.
+
+Map each normalized coordinate `x_i` to `z_i = -40 + 80*x_i`.
+
+Use:
+
+```text
+classic = -20*exp(-0.2*sqrt(sum(z_i^2)/d)) - exp(sum(cos(2*pi*z_i))/d) + 20 + e
+raw_response = -classic
+```
+
+Normalize the response with these fixed Ackley 6D bounds:
+
+```text
+surface_response = (raw_response - (-22.350402387287602)) / ((0.0) - (-22.350402387287602))
+```
+
+Do not add noise. Do not negate or rescale the objective in any other way.
+
+## Optimization Settings
+
+- objective_name: `surface_response`
+- objective_direction: `maximize`
+- objective unit: normalized unitless response
+
+Use the BayBE backend. Choose the random seed, initialization strategy and
+size, batch schedule, and acquisition strategy yourself. Do not copy settings
+from prior runs. Do not evaluate the same point more than once.
+
+## Output Requirements
+
+At the end, report:
+
+- best normalized coordinates
+- best `raw_response`
+- best `surface_response`
+- number of successful and attempted objective evaluations
+- a table of all evaluated candidates and objective values
+
+Also save a results artifact with one row per evaluated candidate and at least:
+
+```text
+evaluation_index
+parameter_values: {x_1, ..., x_6}
+objective_values: {surface_response}
+status
+failure_reason (when failed)
+raw_response (optional)
+```
+
+Benchmark result contract:
+- Use exactly 60 attempted objective evaluations for this case.
+- Count objective evaluations as PySCF objective calculations submitted to BO-MCP
+  or written to the local result artifact.
+- Do not exceed the evaluation budget. If an evaluation fails, record the failed
+  candidate/status and continue only within the same budget.
+- Report all evaluated candidates and objective values/statuses.
+- Use objective_name=`surface_response` and objective_direction=`maximize`.
+- Report objective values in `normalized_unitless`.
+
+
+Final answer requirement:
+- Include exactly one line in this format:
+
+BO_MCP_CAMPAIGN_ID=<campaign_id>
+
+Architecture requirement: delegate BO campaign script authoring and repair
+to `bo-pyscf-specialist`, including for objectives that do not use PySCF. The
+main agent executes and resumes the specialist-authored script. Do not use a
+local-results branch or implement BO locally in this architecture.
+
+
+Benchmark campaign ownership:
+- Include the exact marker `akg-eval-51c1c165161b4a2c8d9e46348cddaf5c` in the name of every BO-MCP campaign
+  created during this invocation.
+- Preserve this marker in delegated instructions and generated scripts.
+- A campaign without this marker does not belong to this invocation and must
+  not be created, resumed, or reported.

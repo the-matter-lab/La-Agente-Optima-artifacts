@@ -1,0 +1,147 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Campaign intake construction for direct arylation campaign
+from direct_arylation.search_space import get_parameters
+
+def get_objectives() -> list[dict]:
+    """Return the list of objectives for the direct arylation campaign."""
+    return [
+        {
+            "name": "yield",
+            "direction": "maximize",
+            "unit": "percent"
+        }
+    ]
+
+def build_intake(campaign_name: str) -> dict:
+    """Build the campaign intake payload."""
+    return {
+        "name": campaign_name,
+        "objectives": get_objectives(),
+        "parameters": get_parameters(),
+        "backend": "auto"
+    }
+
+---
+# Search space definition for direct arylation campaign
+
+def get_parameters() -> list[dict]:
+    """Return the list of input parameters for the direct arylation campaign."""
+    return [
+        {
+            "name": "base",
+            "type": "categorical",
+            "categories": [
+                "Potassium acetate",
+                "Potassium pivalate",
+                "Cesium acetate",
+                "Cesium pivalate"
+            ]
+        },
+        {
+            "name": "ligand",
+            "type": "categorical",
+            "categories": [
+                "BrettPhos",
+                "Di-tert-butylphenylphosphine",
+                "(t-Bu)PhCPhos",
+                "Tricyclohexylphosphine",
+                "PPh3",
+                "XPhos",
+                "P(2-furyl)3",
+                "Methyldiphenylphosphine",
+                "1268824-69-6",
+                "JackiePhos",
+                "SCHEMBL15068049",
+                "Me2PPh"
+            ]
+        },
+        {
+            "name": "solvent",
+            "type": "categorical",
+            "categories": [
+                "DMAc",
+                "Butyornitrile",
+                "Butyl Ester",
+                "p-Xylene"
+            ]
+        },
+        {
+            "name": "concentration",
+            "type": "discrete",
+            "values": [0.057, 0.1, 0.153]
+        },
+        {
+            "name": "temperature_c",
+            "type": "discrete",
+            "values": [90.0, 105.0, 120.0]
+        }
+    ]
+
+---
+# Candidate evaluation module for direct arylation campaign
+import os
+import requests
+import logfire
+
+def evaluate_candidate(candidate: dict) -> dict:
+    """
+    Evaluate a single candidate against the direct arylation oracle.
+    
+    Parameters:
+    - candidate: dict containing the exact five parameters:
+      "base", "ligand", "solvent", "concentration", "temperature_c"
+      
+    Returns:
+    - dict containing {"yield": float} if successful, or raises an exception.
+    """
+    base_url = os.getenv("DIRECT_ARYLATION_API_URL")
+    if not base_url:
+        raise ValueError("DIRECT_ARYLATION_API_URL environment variable is not set.")
+    
+    url = f"{base_url.rstrip('/')}/v1/evaluate"
+    
+    # Ensure concentration and temperature_c are numeric
+    payload = {
+        "base": str(candidate["base"]),
+        "ligand": str(candidate["ligand"]),
+        "solvent": str(candidate["solvent"]),
+        "concentration": float(candidate["concentration"]),
+        "temperature_c": float(candidate["temperature_c"])
+    }
+    
+    logfire.info("Evaluating candidate: {payload}", payload=payload)
+    
+    response = requests.post(url, json=payload, timeout=30)
+    if response.status_code != 200:
+        logfire.error("Evaluation failed with status code {status_code}: {text}", 
+                      status_code=response.status_code, text=response.text)
+        response.raise_for_status()
+        
+    result = response.json()
+    if "yield" not in result:
+        raise ValueError(f"Invalid response from oracle: {result}")
+        
+    return result
+
+---
+# Objective extraction and reporting module for direct arylation campaign
+import logfire
+
+def extract_objective(evaluation_result: dict) -> float:
+    """Extract the yield objective value from the evaluation result."""
+    return float(evaluation_result["yield"])
+
+def report_result(candidate: dict, yield_val: float, status: str):
+    """Print a standardized result line for the main agent's monitor."""
+    if status == "success":
+        print(f"[RESULT] Candidate: {candidate} -> yield: {yield_val}% (status: {status})", flush=True)
+    else:
+        print(f"[RESULT] Candidate: {candidate} -> yield: None (status: {status})", flush=True)
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

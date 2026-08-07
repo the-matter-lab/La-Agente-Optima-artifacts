@@ -1,0 +1,1 @@
+"""Ackley-6D synthetic benchmark campaign package (BayBE backend)."""

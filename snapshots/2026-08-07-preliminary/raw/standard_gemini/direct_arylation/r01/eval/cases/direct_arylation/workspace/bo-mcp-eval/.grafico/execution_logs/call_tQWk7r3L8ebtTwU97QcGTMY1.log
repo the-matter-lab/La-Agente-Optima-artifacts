@@ -1,0 +1,51 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/direct_arylation_20260730_172854.log
+---
+17:29:10.574 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 41d5fffb-22b7-4010-8df2-81293aadd100
+[RESULT] Candidate: {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0} -> yield: 66.84% (status: success)
+17:29:12.405 Sleeping for 1 seconds...
+17:29:13.407 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:29:13.427 Current attempts count: 7/60
+17:29:13.428 POST api/api/v1/campaigns/status/batch
+17:29:13.442 Server next action: bo_generate_suggestions, status: running
+17:29:13.442 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:29:14.075 Generated new suggestion: 92a36c09-4dc2-43b3-83c3-fd15d44645a3
+[EVENT] Evaluating candidate 8/60: {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:29:14.076 Evaluating candidate: {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:29:14.077 POST direct-arylation-oracle/v1/evaluate
+17:29:14.083 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 92a36c09-4dc2-43b3-83c3-fd15d44645a3
+[RESULT] Candidate: {'base': 'Cesium acetate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0} -> yield: 62.6% (status: success)
+17:29:15.407 Sleeping for 1 seconds...
+17:29:16.408 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:29:16.428 Current attempts count: 8/60
+17:29:16.429 POST api/api/v1/campaigns/status/batch
+17:29:16.441 Server next action: bo_generate_suggestions, status: running
+17:29:16.441 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:29:16.901 Generated new suggestion: 1a7bf186-2284-4502-8120-e38912d25ec0
+[EVENT] Evaluating candidate 9/60: {'base': 'Cesium acetate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:29:16.902 Evaluating candidate: {'base': 'Cesium acetate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:29:16.903 POST direct-arylation-oracle/v1/evaluate
+17:29:16.909 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 1a7bf186-2284-4502-8120-e38912d25ec0
+[RESULT] Candidate: {'base': 'Cesium acetate', 'ligand': '1268824-69-6', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0} -> yield: 16.77% (status: success)
+17:29:16.981 Sleeping for 1 seconds...
+17:29:17.982 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:29:18.000 Current attempts count: 9/60
+17:29:18.001 POST api/api/v1/campaigns/status/batch
+17:29:18.014 Server next action: bo_generate_suggestions, status: running
+17:29:18.015 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:29:19.812 Generated new suggestion: 846c7575-c703-4e48-b5de-bd5e16d493b2
+[EVENT] Evaluating candidate 10/60: {'base': 'Cesium pivalate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:29:19.813 Evaluating candidate: {'base': 'Cesium pivalate', 'ligand': '(t-Bu)PhCPhos', 'solvent': 'DMAc', 'concentration': 0.057, 'temperature_c': 120.0}
+17:29:19.814 POST direct-arylation-oracle/v1/evaluate
+17:29:19.821 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

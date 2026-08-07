@@ -1,0 +1,19 @@
+exit_code=0
+
+=== stdout (raw) ===
+from_env (*, timeout_s: 'float' = 120.0) -> "'BoMcpClient'"
+validate_intake (self, intake: 'dict[str, Any]') -> 'dict[str, Any]'
+create_campaign (self, intake: 'dict[str, Any]', *, idempotency_key: 'str') -> 'dict[str, Any]'
+next_action (self, campaign_id: 'str') -> 'dict[str, Any]'
+generate_suggestions (self, campaign_id: 'str', *, batch_size: 'int' = 1, timeout_s: 'float' = 900.0) -> 'dict[str, Any]'
+submit_results (self, campaign_id: 'str', *, results: 'list[dict[str, Any]]', idempotency_key: 'str', force: 'bool' = False) -> 'dict[str, Any]'
+get_results (self, campaign_id: 'str') -> 'list[dict[str, Any]]'
+get_diagnostics (self, campaign_id: 'str', *, verbosity: 'str' = 'standard', timeout_s: 'float | None' = None) -> 'dict[str, Any]'
+lifecycle (self, campaign_id: 'str', *, action: 'str') -> 'dict[str, Any]'
+query_suggestions (self, campaign_id: 'str', *, status_filter: 'str | None' = None, limit: 'int' = 500) -> 'list[dict[str, Any]]'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

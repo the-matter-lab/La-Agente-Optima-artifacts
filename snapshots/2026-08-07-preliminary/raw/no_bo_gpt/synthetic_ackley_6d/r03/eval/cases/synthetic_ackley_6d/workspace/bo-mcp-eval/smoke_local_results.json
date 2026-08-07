@@ -1,0 +1,128 @@
+{
+  "case_id": "synthetic_ackley_6d",
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "objective_unit": "normalized_unitless",
+  "seed": 20260730,
+  "budget": 5,
+  "initialization_strategy": "latin_hypercube_random_initial_design",
+  "initialization_size": 4,
+  "acquisition_strategy": "gaussian_process_expected_improvement",
+  "backend": "local_python_gp_bo",
+  "attempted_evaluations": 5,
+  "completed_evaluations": 5,
+  "successful_evaluations": 5,
+  "failed_evaluations": 0,
+  "best_objective_value": 0.2020052284400897,
+  "best_parameters": {
+    "x_1": 0.49044440843059584,
+    "x_2": 0.4445925862918303,
+    "x_3": 0.5625842338113919,
+    "x_4": 0.6775214775943964,
+    "x_5": 0.5234492039054847,
+    "x_6": 0.6565253444262631
+  },
+  "best_raw_response": -17.835504247315644,
+  "results": [
+    {
+      "evaluation_index": 0,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.8776816599447168,
+        "x_2": 0.13357261604798243,
+        "x_3": 0.1650061921362092,
+        "x_4": 0.2403563054769726,
+        "x_5": 0.6589212594453873,
+        "x_6": 0.22882660324984055
+      },
+      "objective_values": {
+        "surface_response": 0.03296639217620195
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.61359025689236,
+      "objective_unit": "normalized_unitless"
+    },
+    {
+      "evaluation_index": 1,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.5592531300977192,
+        "x_2": 0.5010334679040077,
+        "x_3": 0.9549181931090315,
+        "x_4": 0.49022016138561364,
+        "x_5": 0.2934237338939715,
+        "x_6": 0.12432300288356897
+      },
+      "objective_values": {
+        "surface_response": 0.04445197403973895
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.356882880590174,
+      "objective_unit": "normalized_unitless"
+    },
+    {
+      "evaluation_index": 2,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.42342882240427865,
+        "x_2": 0.44712144335225956,
+        "x_3": 0.6119506452967889,
+        "x_4": 0.7037615003029649,
+        "x_5": 0.5020586986159599,
+        "x_6": 0.702405955551332
+      },
+      "objective_values": {
+        "surface_response": 0.1588365119281229
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -18.800342431900848,
+      "objective_unit": "normalized_unitless"
+    },
+    {
+      "evaluation_index": 3,
+      "batch_index": 0,
+      "batch_size": 4,
+      "parameter_values": {
+        "x_1": 0.20525711383652032,
+        "x_2": 0.7785209576951327,
+        "x_3": 0.7274288170364306,
+        "x_4": 0.5877531822701149,
+        "x_5": 0.4807902640617486,
+        "x_6": 0.9915588389525155
+      },
+      "objective_values": {
+        "surface_response": 0.030738697976698034
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -21.663380118647098,
+      "objective_unit": "normalized_unitless"
+    },
+    {
+      "evaluation_index": 4,
+      "batch_index": 1,
+      "batch_size": 1,
+      "parameter_values": {
+        "x_1": 0.49044440843059584,
+        "x_2": 0.4445925862918303,
+        "x_3": 0.5625842338113919,
+        "x_4": 0.6775214775943964,
+        "x_5": 0.5234492039054847,
+        "x_6": 0.6565253444262631
+      },
+      "objective_values": {
+        "surface_response": 0.2020052284400897
+      },
+      "status": "success",
+      "failure_reason": null,
+      "raw_response": -17.835504247315644,
+      "objective_unit": "normalized_unitless"
+    }
+  ]
+}

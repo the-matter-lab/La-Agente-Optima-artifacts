@@ -1,0 +1,50 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/direct_arylation_bo_20260807_065602.log
+06:56:55.732 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/query
+06:56:55.745 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/generate ? batch_size='1'
+06:56:57.366 POST direct-arylation-oracle/v1/evaluate ? _cb='18bbb6cb-…f6ac9b778'
+06:56:57.370 POST api/api/v1/results/3d2aba3c-b4e4-4879-ada6-e1651fca61c0
+[RESULT] attempt 56/60 success yield=62.33% conditions={'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 120.0}
+06:56:57.483 POST api/api/v1/campaigns/status/batch
+06:56:57.501 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/query
+06:56:57.514 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/generate ? batch_size='1'
+06:56:59.534 POST direct-arylation-oracle/v1/evaluate ? _cb='18bbb6cb-…f6ac9b778'
+06:56:59.538 POST api/api/v1/results/3d2aba3c-b4e4-4879-ada6-e1651fca61c0
+[RESULT] attempt 57/60 success yield=71.43% conditions={'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+06:56:59.772 POST api/api/v1/campaigns/status/batch
+06:56:59.788 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/query
+06:56:59.801 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/generate ? batch_size='1'
+06:57:00.884 POST direct-arylation-oracle/v1/evaluate ? _cb='18bbb6cb-…f6ac9b778'
+06:57:00.888 POST api/api/v1/results/3d2aba3c-b4e4-4879-ada6-e1651fca61c0
+[RESULT] attempt 58/60 success yield=19.64% conditions={'base': 'Cesium acetate', 'ligand': 'PPh3', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120.0}
+06:57:01.070 POST api/api/v1/campaigns/status/batch
+06:57:01.088 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/query
+06:57:01.100 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/generate ? batch_size='1'
+06:57:02.236 POST direct-arylation-oracle/v1/evaluate ? _cb='18bbb6cb-…f6ac9b778'
+06:57:02.240 POST api/api/v1/results/3d2aba3c-b4e4-4879-ada6-e1651fca61c0
+[RESULT] attempt 59/60 success yield=91.19% conditions={'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 120.0}
+06:57:02.439 POST api/api/v1/campaigns/status/batch
+06:57:02.466 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/query
+06:57:02.479 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/generate ? batch_size='1'
+06:57:03.538 POST direct-arylation-oracle/v1/evaluate ? _cb='18bbb6cb-…f6ac9b778'
+06:57:03.543 POST api/api/v1/results/3d2aba3c-b4e4-4879-ada6-e1651fca61c0
+[RESULT] attempt 60/60 success yield=80.69% conditions={'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'p-Xylene', 'concentration': 0.153, 'temperature_c': 105.0}
+06:57:03.698 POST api/api/v1/campaigns/status/batch
+06:57:03.717 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/query
+[EVENT] attempt budget reached: 60/60
+06:57:03.730 GET api/api/v1/campaigns/3d2aba3c-b4e4-4879-ada6-e1651fca61c0
+06:57:03.738 POST api/api/v1/campaigns/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/lifecycle
+[EVENT] paused campaign 3d2aba3c-b4e4-4879-ada6-e1651fca61c0
+06:57:03.854 GET api/api/v1/results/3d2aba3c-b4e4-4879-ada6-e1651fca61c0
+06:57:03.869 POST api/api/v1/suggestions/3d2aba3c-b4e4-4879-ada6-e1651fca61c0/query
+[RESULT] campaign summary: attempted=60 successful=60 failed=0
+[RESULT] best measured yield=100.0 conditions={'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+06:57:03.882 GET api/api/v1/diagnostics/3d2aba3c-b4e4-4879-ada6-e1651fca61c0 ? use_cache='true' & verbosity='minimal'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

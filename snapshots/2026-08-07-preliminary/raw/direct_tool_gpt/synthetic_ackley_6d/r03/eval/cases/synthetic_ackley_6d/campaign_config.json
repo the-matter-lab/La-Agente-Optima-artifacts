@@ -1,0 +1,273 @@
+{
+  "_source": "BO-MCP REST campaign/spec read-back",
+  "campaign": {
+    "created_at": "2026-07-30T18:21:04.102049Z",
+    "description": "Controlled 6D Ackley synthetic surface optimization. Nonce d789ce9b-f083-4c91-aa31-92ec2fa84fae. Maximize normalized surface_response over six continuous normalized coordinates. Deterministic evaluator via evaluate_ackley_6d only.",
+    "id": "7712b12e-0964-492c-b219-fe2aa4dba15d",
+    "iteration": 10,
+    "n_objectives": 1,
+    "n_parameters": 6,
+    "name": "Ackley6D synthetic benchmark akg-eval-21dd754043934e6199458f29a579d6e0 d789ce9b-f083-4c91-aa31-92ec2fa84fae",
+    "spec_id": "624c6e99-2523-4565-806e-ad7b2649305e",
+    "status": "running",
+    "updated_at": "2026-07-30T18:30:31.073510Z"
+  },
+  "campaign_config": {
+    "_source": "BO-MCP REST campaign/spec read-back",
+    "acknowledge_degradations": [],
+    "acquisition": {
+      "method": "noisy_expected_improvement",
+      "optimization": null,
+      "saasbo_config": null,
+      "turbo_config": {
+        "failure_tolerance": null,
+        "initial_length": 0.8,
+        "length_max": 1.6,
+        "length_min": 0.0078125,
+        "success_tolerance": 10
+      },
+      "use_cost_aware": false,
+      "use_input_warping": false
+    },
+    "backend_options": null,
+    "backend_requested": "botorch",
+    "backend_resolved": "botorch",
+    "batch_size": 6,
+    "campaign_id": "7712b12e-0964-492c-b219-fe2aa4dba15d",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "fidelity_parameter": null,
+    "initial_design_size": 18,
+    "initial_design_size_requested": 18,
+    "initial_design_size_source": "requested",
+    "max_iterations": 30,
+    "max_observations": 60,
+    "missing_fields": [
+      "convergence_tolerance",
+      "backend_options",
+      "fidelity_parameter",
+      "transfer_learning"
+    ],
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 20260730,
+    "spec_id": "624c6e99-2523-4565-806e-ad7b2649305e",
+    "transfer_learning": null
+  },
+  "spec": {
+    "acknowledge_degradations": [],
+    "acquisition_beta": null,
+    "acquisition_method": "noisy_expected_improvement",
+    "acquisition_optimization": null,
+    "backend_options": null,
+    "backend_requested": "botorch",
+    "backend_resolved": "botorch",
+    "batch_size": 6,
+    "campaign_id": "7712b12e-0964-492c-b219-fe2aa4dba15d",
+    "constraints": [],
+    "convergence_tolerance": null,
+    "description": "Controlled 6D Ackley synthetic surface optimization. Nonce d789ce9b-f083-4c91-aa31-92ec2fa84fae. Maximize normalized surface_response over six continuous normalized coordinates. Deterministic evaluator via evaluate_ackley_6d only.",
+    "fidelity_parameter": null,
+    "initial_design_size": 18,
+    "initial_design_size_requested": 18,
+    "initial_design_size_source": "requested",
+    "iteration": 10,
+    "max_iterations": 30,
+    "max_observations": 60,
+    "name": "Ackley6D synthetic benchmark akg-eval-21dd754043934e6199458f29a579d6e0 d789ce9b-f083-4c91-aa31-92ec2fa84fae",
+    "objectives": [
+      {
+        "direction": "maximize",
+        "log_transform": false,
+        "match_scale": null,
+        "match_shape": null,
+        "name": "surface_response",
+        "normalization_bounds": null,
+        "target": null,
+        "target_mode": null,
+        "transform": null,
+        "unit": "normalized_unitless",
+        "weight": null
+      }
+    ],
+    "outcome_constraints": [],
+    "parameters": [
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_1",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_2",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_3",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_4",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_5",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      },
+      {
+        "bounds": {
+          "lower": 0.0,
+          "upper": 1.0
+        },
+        "categories": null,
+        "description": "",
+        "name": "x_6",
+        "parameter_options": null,
+        "type": "continuous",
+        "values": null
+      }
+    ],
+    "random_seed": 20260730,
+    "saasbo_config": null,
+    "scalarization": "pareto",
+    "scalarizer": null,
+    "spec_id": "624c6e99-2523-4565-806e-ad7b2649305e",
+    "status": "running",
+    "transfer_learning": null,
+    "turbo_config": {
+      "failure_tolerance": null,
+      "initial_length": 0.8,
+      "length_max": 1.6,
+      "length_min": 0.0078125,
+      "success_tolerance": 10
+    },
+    "use_cost_aware": false,
+    "use_input_warping": false
+  }
+}

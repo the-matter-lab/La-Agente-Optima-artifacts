@@ -1,0 +1,97 @@
+Repeat cache-buster nonce: a375b9bd-ae19-499a-9006-4ecc7a3bc68d
+
+# Direct arylation reaction-yield optimization
+
+Optimize the measured yield of a direct arylation reaction over the fixed, fully crossed search space below.
+This is a controlled table-lookup benchmark over 1,728 measured reactions.
+
+The process is a palladium-catalyzed direct C–H arylation of an imidazole with an aryl bromide, forming a new carbon–carbon bond without prefunctionalizing the reacting carbon of the imidazole. A phosphine-ligated palladium catalyst and carboxylate base enable the coupling, whose efficiency is strongly influenced by the ligand, base, solvent, concentration, and temperature.
+
+## Search space
+
+Use the following five parameters with these lowercase names and values.
+Concentration and temperature are discrete numeric parameters.
+
+- `base`: `Potassium acetate`, `Potassium pivalate`, `Cesium acetate`,
+  `Cesium pivalate`
+- `ligand`: `BrettPhos`, `Di-tert-butylphenylphosphine`, `(t-Bu)PhCPhos`,
+  `Tricyclohexylphosphine`, `PPh3`, `XPhos`, `P(2-furyl)3`,
+  `Methyldiphenylphosphine`, `1268824-69-6`, `JackiePhos`,
+  `SCHEMBL15068049`, `Me2PPh`
+- `solvent`: `DMAc`, `Butyornitrile`, `Butyl Ester`, `p-Xylene`
+- `concentration`: `0.057`, `0.1`, `0.153`
+- `temperature_c`: `90`, `105`, `120`
+
+The spelling `Butyornitrile` is intentional and must be preserved.
+
+## Objective evaluator
+
+Maximize the single objective `yield`, measured in percent.
+A separate oracle service returns the measured value for one exact candidate.
+For script-based architectures, read its base URL only from `DIRECT_ARYLATION_API_URL` and call for example:
+
+```text
+POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate
+Content-Type: application/json
+
+{
+  "base": "Potassium acetate",
+  "ligand": "(t-Bu)PhCPhos",
+  "solvent": "DMAc",
+  "concentration": 0.1,
+  "temperature_c": 105
+}
+```
+
+The response has exactly the measured objective value, for example
+`{"yield": 78.95}`.
+A non-2xx response is a failed attempted evaluation.
+
+Do not access, or search for, or reconstruct the source CSV or any other complete result table.
+Do not use internet access, repository search, prior campaign results, or undocumented service endpoints to discover yields.
+Do not enumerate the full search space and sort by yield.
+Query the oracle only for candidates selected by the optimization workflow during this invocation.
+
+## Campaign planning
+
+Design the optimization campaign yourself.
+Choose the campaign design, including the parameter representation or encoding, initialization strategy, batch schedule, acquisition strategy, and any supported backend, using the available optimization capabilities.
+Do not assume or copy campaign settings from the source benchmark implementation.
+
+Use exactly the attempted objective-evaluation budget stated in the benchmark result contract appended below.
+Every oracle request consumes one attempt.
+
+## Output requirements
+
+At the end, report the best reaction conditions, best measured yield, and the numbers of successful and attempted evaluations. Also report all evaluated candidates and their statuses/objective values.
+
+In case of the no-BO-MCP architecture, every submitted or locally recorded successful result must use a `parameter_values` object containing the exact five lowercase parameter names and an `objective_values` object containing `{"yield": <measured value>}`; and save the required local JSON artifact with one record per attempt and the standardized `parameter_values` and `objective_values` objects described above.
+
+Benchmark result contract:
+- Use exactly 60 attempted objective evaluations for this case.
+- Count objective evaluations as PySCF objective calculations submitted to BO-MCP
+  or written to the local result artifact.
+- Do not exceed the evaluation budget. If an evaluation fails, record the failed
+  candidate/status and continue only within the same budget.
+- Report all evaluated candidates and objective values/statuses.
+- Use objective_name=`yield` and objective_direction=`maximize`.
+- Report objective values in `percent`.
+
+
+Final answer requirement:
+- Include exactly one line in this format:
+
+BO_MCP_CAMPAIGN_ID=<campaign_id>
+
+Architecture requirement: delegate BO campaign script authoring and repair
+to `bo-pyscf-specialist`, including for objectives that do not use PySCF. The
+main agent executes and resumes the specialist-authored script. Do not use a
+local-results branch or implement BO locally in this architecture.
+
+
+Benchmark campaign ownership:
+- Include the exact marker `akg-eval-d9613e26762c4c47a426799e86b370f2` in the name of every BO-MCP campaign
+  created during this invocation.
+- Preserve this marker in delegated instructions and generated scripts.
+- A campaign without this marker does not belong to this invocation and must
+  not be created, resumed, or reported.

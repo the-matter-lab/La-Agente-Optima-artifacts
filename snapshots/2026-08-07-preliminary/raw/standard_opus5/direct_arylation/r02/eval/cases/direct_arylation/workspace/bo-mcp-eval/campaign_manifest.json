@@ -1,0 +1,23 @@
+{
+  "campaign_slug": "direct_arylation_yield",
+  "marker": "akg-eval-6d0e0c6f27e643e281edfabe22ebe90e",
+  "backend": "baybe",
+  "objective": {"name": "yield", "direction": "maximize", "unit": "percent"},
+  "attempt_budget": 60,
+  "oracle": "POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate",
+  "entrypoint": "run_direct_arylation_yield.py",
+  "modules": {
+    "search_space": "direct_arylation_yield/search_space.py",
+    "intake": "direct_arylation_yield/intake.py",
+    "evaluation": "direct_arylation_yield/oracle.py",
+    "reporting": "direct_arylation_yield/reporting.py",
+    "orchestration": "direct_arylation_yield/campaign.py"
+  },
+  "docs": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "artifacts_dir": "artifacts",
+  "latest_artifact_dir": "artifacts/20260807T070951Z",
+  "smoke_test_campaigns": {
+    "4f32f613-3520-4ad8-b543-ba2dd22689e6": "happy-path smoke test (3 attempts used, includes one forced replicate)",
+    "6fb5d69d-2aef-4580-a4b2-7f0547d53d36": "oracle-failure-path smoke test (bogus oracle URL, 3 failed attempts) - do not use for the real run"
+  }
+}

@@ -1,0 +1,1544 @@
+{
+  "mode": "production",
+  "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+  "campaign_name": "da-smoke-20260730T183707Z-akg-eval-98f2c9514731447aa0f0f60f1a2c44dd",
+  "campaign_status": "paused",
+  "backend": "baybe",
+  "design": {
+    "batch_size": 1,
+    "initial_design_size": 12,
+    "max_attempts": 60,
+    "max_observations": 60,
+    "random_seed": 597580827
+  },
+  "successful_evaluations": 60,
+  "attempted_evaluations": 60,
+  "best_result": {
+    "attempt_index": 54,
+    "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+    "timestamp_utc": "2026-07-30T18:38:47.145309+00:00",
+    "status": "success",
+    "parameter_values": {
+      "base": "Cesium acetate",
+      "ligand": "SCHEMBL15068049",
+      "solvent": "DMAc",
+      "concentration": 0.153,
+      "temperature_c": 105
+    },
+    "objective_values": {
+      "yield": 100.0
+    },
+    "objective_name": "yield",
+    "objective_unit": "percent",
+    "suggestion_id": "aa0241ae-1c65-4c3d-928f-e6d8500ba7a7",
+    "suggestion_status_before_evaluation": "pending",
+    "suggestion_source": "generated",
+    "iteration": 54,
+    "bo_result_ids": [
+      "f99e5e9b-241f-44c2-9476-5d902bac27cb"
+    ]
+  },
+  "artifact_dir": "artifacts/direct_arylation_bo_run_20260730T183747Z",
+  "attempts": [
+    {
+      "attempt_index": 1,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:47.523117+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "P(2-furyl)3",
+        "solvent": "p-Xylene",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 19.04
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "7801ed72-acb7-4f1c-a04a-979ece4af214",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "pending_reuse",
+      "iteration": null,
+      "bo_result_ids": [
+        "936c6731-8d93-4306-b2a8-faa4de36b515"
+      ]
+    },
+    {
+      "attempt_index": 2,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:47.781720+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "JackiePhos",
+        "solvent": "Butyl Ester",
+        "concentration": 0.057,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 2.45
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "e4894561-3539-48ed-a7ef-111005d4b0de",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 2,
+      "bo_result_ids": [
+        "591ac6c1-30a0-42c6-962e-16948ee7e1e0"
+      ]
+    },
+    {
+      "attempt_index": 3,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:48.244285+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "P(2-furyl)3",
+        "solvent": "DMAc",
+        "concentration": 0.057,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 62.04
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "9b2ecadd-4b42-41e1-9194-b47a839d3256",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 3,
+      "bo_result_ids": [
+        "4f40a02b-b313-4990-9236-c1a2fb100016"
+      ]
+    },
+    {
+      "attempt_index": 4,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:48.474308+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "1268824-69-6",
+        "solvent": "Butyl Ester",
+        "concentration": 0.153,
+        "temperature_c": 90
+      },
+      "objective_values": {
+        "yield": 4.16
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "0847d4d2-3764-401d-a49e-96cd42de8efa",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 4,
+      "bo_result_ids": [
+        "c90444ac-aedc-4a37-937c-57bc69b21483"
+      ]
+    },
+    {
+      "attempt_index": 5,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:48.687080+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "JackiePhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.1,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 26.69
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "3358242f-55fd-43d5-afb7-16eb90fee79a",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 5,
+      "bo_result_ids": [
+        "57d3ab11-4a09-4bd8-af09-fdbf97af05df"
+      ]
+    },
+    {
+      "attempt_index": 6,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:49.895207+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium pivalate",
+        "ligand": "(t-Bu)PhCPhos",
+        "solvent": "p-Xylene",
+        "concentration": 0.057,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 20.07
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "fdf85349-25e7-40f0-8b10-9f677b662e62",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 6,
+      "bo_result_ids": [
+        "ddf57844-c10f-4640-a16d-f5cb3450e857"
+      ]
+    },
+    {
+      "attempt_index": 7,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:50.203026+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyl Ester",
+        "concentration": 0.153,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 53.49
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "6630a090-a2f8-4ac8-b9ef-81450838db3f",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 7,
+      "bo_result_ids": [
+        "f854e14f-e955-41ce-933b-e82d69cbc153"
+      ]
+    },
+    {
+      "attempt_index": 8,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:50.426249+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "BrettPhos",
+        "solvent": "p-Xylene",
+        "concentration": 0.057,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 13.19
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "db2de623-5488-4e7b-9a98-6a2e62e057a6",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 8,
+      "bo_result_ids": [
+        "f4a86c16-6ef1-440b-86bd-48d8f302b9df"
+      ]
+    },
+    {
+      "attempt_index": 9,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:50.689218+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium pivalate",
+        "ligand": "Me2PPh",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 90
+      },
+      "objective_values": {
+        "yield": 0.0
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "292fa57b-e35d-4d9a-9295-b5c8c7dca274",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 9,
+      "bo_result_ids": [
+        "5e528d76-db32-40f2-975c-d2624165580b"
+      ]
+    },
+    {
+      "attempt_index": 10,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:51.024827+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "JackiePhos",
+        "solvent": "Butyl Ester",
+        "concentration": 0.057,
+        "temperature_c": 90
+      },
+      "objective_values": {
+        "yield": 3.77
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "8257444d-b602-422f-8a6e-5617801117cd",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 10,
+      "bo_result_ids": [
+        "fd8a1882-d2ea-4b34-87e9-7a7981151ad3"
+      ]
+    },
+    {
+      "attempt_index": 11,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:51.261217+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "Me2PPh",
+        "solvent": "Butyl Ester",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 0.0
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "60a9ba38-b5dc-47f4-a2f9-0666308b2799",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 11,
+      "bo_result_ids": [
+        "42d6d73b-b503-4314-b9b3-bea3f97af271"
+      ]
+    },
+    {
+      "attempt_index": 12,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:51.535063+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "Di-tert-butylphenylphosphine",
+        "solvent": "Butyl Ester",
+        "concentration": 0.057,
+        "temperature_c": 90
+      },
+      "objective_values": {
+        "yield": 0.0
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "2795ac9b-d81d-43af-a323-281a96d808a1",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 12,
+      "bo_result_ids": [
+        "469797d0-fcf5-4249-9a6f-d1eb1fadc558"
+      ]
+    },
+    {
+      "attempt_index": 13,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:52.103108+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "P(2-furyl)3",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 60.48
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "7aad025c-8779-43c3-94ba-7c46aff9a3e6",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 13,
+      "bo_result_ids": [
+        "7ccb1cf4-c169-4bb0-8c51-f56babc69ed3"
+      ]
+    },
+    {
+      "attempt_index": 14,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:53.102467+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "P(2-furyl)3",
+        "solvent": "DMAc",
+        "concentration": 0.057,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 39.39
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "2c9ee97d-ba29-46fb-9044-414f1db8445c",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 14,
+      "bo_result_ids": [
+        "24797c9c-265e-4a17-a1d1-bd605a145a4a"
+      ]
+    },
+    {
+      "attempt_index": 15,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:54.384960+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyl Ester",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 76.24
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "0bd06cfb-2410-41f6-bb6f-a07ca835a73d",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 15,
+      "bo_result_ids": [
+        "a5f63069-95dd-4620-8c9d-cdcbb23e6c57"
+      ]
+    },
+    {
+      "attempt_index": 16,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:55.403704+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyl Ester",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 73.71
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "c8112ba2-1fce-429a-8ca5-ffdfa5c35cd2",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 16,
+      "bo_result_ids": [
+        "e8573e66-09e4-4155-891c-abdca614fe12"
+      ]
+    },
+    {
+      "attempt_index": 17,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:56.470990+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 88.41
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "1d3b76da-3820-483b-a48e-6c6af22c4dac",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 17,
+      "bo_result_ids": [
+        "2b6092dd-9468-4155-85df-baa2650b9cc9"
+      ]
+    },
+    {
+      "attempt_index": 18,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:57.189922+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 84.67
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "5fd653ad-826a-402c-ad80-4cf9d31cc3e2",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 18,
+      "bo_result_ids": [
+        "217ccddd-16f0-40ea-a5b0-69e5d7da67db"
+      ]
+    },
+    {
+      "attempt_index": 19,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:57.912266+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.057,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 77.58
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "222db929-df8d-4cfa-ab91-b3982ce05299",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 19,
+      "bo_result_ids": [
+        "de6e6232-7001-4c54-927b-ce0aa34ec434"
+      ]
+    },
+    {
+      "attempt_index": 20,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:37:59.968291+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 78.6
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "ef0f26cb-eab1-4ebd-b35e-b3b0749513e5",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 20,
+      "bo_result_ids": [
+        "6b71cfc7-2cb5-43ca-9ff5-4e0a9ae98443"
+      ]
+    },
+    {
+      "attempt_index": 21,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:01.482263+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.057,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 43.22
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "5b784a40-5278-404f-93f0-d7b583cb2226",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 21,
+      "bo_result_ids": [
+        "cabe3832-1dd3-4f81-b659-849b447b6c54"
+      ]
+    },
+    {
+      "attempt_index": 22,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:02.370721+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "p-Xylene",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 61.67
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "85c7cbec-4904-4f59-a3e3-c20398e7dfd4",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 22,
+      "bo_result_ids": [
+        "9fe7770b-2956-4452-81ad-40dc7a312bc0"
+      ]
+    },
+    {
+      "attempt_index": 23,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:04.482183+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 65.37
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "f641b268-02c2-4ecd-bc4a-00560eae61a1",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 23,
+      "bo_result_ids": [
+        "e1278864-b5ad-4147-8363-aa9d05cd8892"
+      ]
+    },
+    {
+      "attempt_index": 24,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:05.271280+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "Methyldiphenylphosphine",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 7.5
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "bcf0bb9a-4f76-4b4b-a432-e7919e9ad5c0",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 24,
+      "bo_result_ids": [
+        "fb641d97-d7e1-4ae7-810e-c13a30e45c5c"
+      ]
+    },
+    {
+      "attempt_index": 25,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:07.079170+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 80.39
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "86c79ab3-e1e6-4b83-aa88-7c88d87aa3dd",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 25,
+      "bo_result_ids": [
+        "f77ba514-e63b-4b60-bd10-78257979559a"
+      ]
+    },
+    {
+      "attempt_index": 26,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:08.574318+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "XPhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 71.43
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "7b76e178-ea77-4125-90e1-aff3a31d8485",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 26,
+      "bo_result_ids": [
+        "26f38d42-0cb8-41af-980c-7eaddeb2c6c2"
+      ]
+    },
+    {
+      "attempt_index": 27,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:10.120638+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "XPhos",
+        "solvent": "Butyl Ester",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 48.91
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "513f9c19-252e-43bf-aacc-fcbd8684ab8c",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 27,
+      "bo_result_ids": [
+        "4385f020-3350-4ff3-a464-1a16de515d67"
+      ]
+    },
+    {
+      "attempt_index": 28,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:12.182319+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.057,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 62.07
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "397423ae-784e-4e61-8782-7d8e66a89f5d",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 28,
+      "bo_result_ids": [
+        "2894204e-0770-4adf-915f-a812224c99f3"
+      ]
+    },
+    {
+      "attempt_index": 29,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:13.170813+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium pivalate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 48.34
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "1fdb60bf-f268-4c15-bf54-532aac9e0832",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 29,
+      "bo_result_ids": [
+        "55df5043-afd7-4c6d-b4ef-e5669dd151c3"
+      ]
+    },
+    {
+      "attempt_index": 30,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:13.958569+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 84.49
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "c5eda011-7ab0-4db6-b149-2e4b69d82ac6",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 30,
+      "bo_result_ids": [
+        "dd541bd3-c324-4ec0-82fd-4ff41b78a708"
+      ]
+    },
+    {
+      "attempt_index": 31,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:16.710249+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 77.01
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "bb8d14b6-2803-48a2-ae6c-ba6c743995f3",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 31,
+      "bo_result_ids": [
+        "cf757ca5-309e-4e45-a17d-4abece895e02"
+      ]
+    },
+    {
+      "attempt_index": 32,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:17.632593+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 84.81
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "74c99cde-e0ed-44f6-9a3e-a5c9be818885",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 32,
+      "bo_result_ids": [
+        "c0bf7469-ab6d-42a0-9809-4c66a98c80b2"
+      ]
+    },
+    {
+      "attempt_index": 33,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:18.388395+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyl Ester",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 6.23
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "3f094a64-bd63-4df1-8eec-51549669614e",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 33,
+      "bo_result_ids": [
+        "2c328f69-764b-48d9-9622-9348a0353b54"
+      ]
+    },
+    {
+      "attempt_index": 34,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:19.228039+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 84.48
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "d2e8a175-5e0b-4ceb-a1bb-64af6c722cde",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 34,
+      "bo_result_ids": [
+        "abc8c143-807d-4917-b726-5a76988c5ae2"
+      ]
+    },
+    {
+      "attempt_index": 35,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:20.023059+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 87.83
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "b325b273-92ae-48ab-8a5d-550eb9dc58e6",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 35,
+      "bo_result_ids": [
+        "b3bc4e41-1ee3-4948-b3ef-b8ab3c95c72b"
+      ]
+    },
+    {
+      "attempt_index": 36,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:21.443933+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "XPhos",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 90
+      },
+      "objective_values": {
+        "yield": 0.0
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "49de4f5e-1013-42ec-be5c-41592609006d",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 36,
+      "bo_result_ids": [
+        "0185f5c1-35ca-43f8-955f-ee5c499a2f20"
+      ]
+    },
+    {
+      "attempt_index": 37,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:22.748592+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 82.28
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "164ca404-a966-4f61-a5e9-1283dc75f38e",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 37,
+      "bo_result_ids": [
+        "39056ac3-85a6-430e-bdf0-d2e353f5bbdd"
+      ]
+    },
+    {
+      "attempt_index": 38,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:24.185936+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "XPhos",
+        "solvent": "p-Xylene",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 62.15
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "0d225ef9-ef67-40d8-b5bc-20fbad803137",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 38,
+      "bo_result_ids": [
+        "9f363fe7-1d28-4948-971c-2a0e758a77d4"
+      ]
+    },
+    {
+      "attempt_index": 39,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:25.168263+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "XPhos",
+        "solvent": "DMAc",
+        "concentration": 0.057,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 89.17
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "6e2fd6be-9741-4d1e-b5ce-05c19d4e8fda",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 39,
+      "bo_result_ids": [
+        "a1e4174d-6b8e-4fc0-9bdc-cd6f139b250d"
+      ]
+    },
+    {
+      "attempt_index": 40,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:26.598809+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "1268824-69-6",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 61.33
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "50402e62-f1b6-49c6-9dc5-9886dd4073f9",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 40,
+      "bo_result_ids": [
+        "d554915f-a3fa-4e94-ac48-4f9402c7f230"
+      ]
+    },
+    {
+      "attempt_index": 41,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:27.608629+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "1268824-69-6",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 26.78
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "c677b6b2-b4d0-456e-b7ef-ba9f78478064",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 41,
+      "bo_result_ids": [
+        "7cd425c9-c1a4-496d-8db9-91173f38a44d"
+      ]
+    },
+    {
+      "attempt_index": 42,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:28.762018+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "Di-tert-butylphenylphosphine",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 0.0
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "6fc767fd-d791-459c-8c83-fb92ec6e699a",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 42,
+      "bo_result_ids": [
+        "3e2ec1a8-5891-498f-a080-9865e822c07d"
+      ]
+    },
+    {
+      "attempt_index": 43,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:29.722853+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "P(2-furyl)3",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 78.93
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "e06a898f-a593-4dab-aad8-dad550b896f4",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 43,
+      "bo_result_ids": [
+        "5151b53c-3dd6-4511-886e-051466b94127"
+      ]
+    },
+    {
+      "attempt_index": 44,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:31.091071+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "JackiePhos",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 43.12
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "4d0b963b-bdeb-48b7-9b0e-22876c2b977f",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 44,
+      "bo_result_ids": [
+        "104bf1aa-8887-439d-b7a7-8b8813d96f77"
+      ]
+    },
+    {
+      "attempt_index": 45,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:32.174208+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "P(2-furyl)3",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 53.11
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "0046a571-719b-492b-80d7-6fe102b352eb",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 45,
+      "bo_result_ids": [
+        "519f013a-d256-4d81-bdd7-5baaa14191d2"
+      ]
+    },
+    {
+      "attempt_index": 46,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:33.148792+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "PPh3",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 79.1
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "efda595c-8b32-4957-9098-5c1c90d9915c",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 46,
+      "bo_result_ids": [
+        "bc2dfc1d-c6a7-427e-a7bc-6e00dd2960a1"
+      ]
+    },
+    {
+      "attempt_index": 47,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:33.963509+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "PPh3",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 71.11
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "385b085a-8dfb-4cf3-997c-0ab60a374747",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 47,
+      "bo_result_ids": [
+        "fa4cd29b-e492-4469-b7ea-27b1902e6a07"
+      ]
+    },
+    {
+      "attempt_index": 48,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:37.521936+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "PPh3",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 51.83
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "241e1d46-23a6-4dd0-8828-776e8054de6b",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 48,
+      "bo_result_ids": [
+        "3dda8bb1-b8ca-4ab2-90ee-f8cdf4edf65b"
+      ]
+    },
+    {
+      "attempt_index": 49,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:39.259287+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "(t-Bu)PhCPhos",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 45.01
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "0fa0f527-48e3-4fb4-869a-7ba483731f8c",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 49,
+      "bo_result_ids": [
+        "31b75a5d-11a3-4e0e-9387-80f7a90b81f9"
+      ]
+    },
+    {
+      "attempt_index": 50,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:41.105646+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 99.81
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "a4d9e0b0-8388-4dcb-b7db-6762be2b3014",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 50,
+      "bo_result_ids": [
+        "133c9bf0-ad70-4176-a78f-307db764b517"
+      ]
+    },
+    {
+      "attempt_index": 51,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:42.922720+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 98.49
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "c8ae1a3d-83c3-4d92-9955-7039ff729887",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 51,
+      "bo_result_ids": [
+        "401cd55a-b0c3-4c7e-a06d-189d923affcb"
+      ]
+    },
+    {
+      "attempt_index": 52,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:44.424273+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 87.59
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "77f10a7b-b574-4c6b-a3ec-33b4b3802ed4",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 52,
+      "bo_result_ids": [
+        "c7332b39-5c2b-4cb3-b888-a3568166008d"
+      ]
+    },
+    {
+      "attempt_index": 53,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:46.194367+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 99.22
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "160676a4-e63e-45c7-ab0d-19d876dc2d8a",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 53,
+      "bo_result_ids": [
+        "7d8a17aa-6d47-48b9-bce0-c91ef1075ad3"
+      ]
+    },
+    {
+      "attempt_index": 54,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:47.145309+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 100.0
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "aa0241ae-1c65-4c3d-928f-e6d8500ba7a7",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 54,
+      "bo_result_ids": [
+        "f99e5e9b-241f-44c2-9476-5d902bac27cb"
+      ]
+    },
+    {
+      "attempt_index": 55,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:48.563390+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 105
+      },
+      "objective_values": {
+        "yield": 83.25
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "b7ce9ada-3158-4434-82ca-52f877e2c3c1",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 55,
+      "bo_result_ids": [
+        "59c299b4-46c4-4b57-81ca-66023cc7ef94"
+      ]
+    },
+    {
+      "attempt_index": 56,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:49.681300+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "DMAc",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 98.38
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "fd78d860-73ab-4eab-ae81-3b47bebbbb6b",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 56,
+      "bo_result_ids": [
+        "e649f980-1c87-4199-9930-da63c476b8fe"
+      ]
+    },
+    {
+      "attempt_index": 57,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:50.751291+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "DMAc",
+        "concentration": 0.1,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 83.22
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "9d187019-2786-40f1-86a2-ec3c8fed4745",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 57,
+      "bo_result_ids": [
+        "12b8fc72-ab04-496d-9f81-3f241520132c"
+      ]
+    },
+    {
+      "attempt_index": 58,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:54.492450+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium acetate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 80.86
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "86c7aa98-e7ce-4e37-a24f-b7cf930c852a",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 58,
+      "bo_result_ids": [
+        "3c17825a-a5ce-491e-9c59-5e27a204072d"
+      ]
+    },
+    {
+      "attempt_index": 59,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:56.510405+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Potassium pivalate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 80.65
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "8da98c6a-d103-49a1-8d09-c0b5ff6f0ef0",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 59,
+      "bo_result_ids": [
+        "906d3c7a-7671-4fc1-ab24-4cb4c2d78c99"
+      ]
+    },
+    {
+      "attempt_index": 60,
+      "campaign_id": "8aa011e1-ff2f-41ca-94c4-83ebd78e96e6",
+      "timestamp_utc": "2026-07-30T18:38:57.926139+00:00",
+      "status": "success",
+      "parameter_values": {
+        "base": "Cesium acetate",
+        "ligand": "SCHEMBL15068049",
+        "solvent": "Butyornitrile",
+        "concentration": 0.153,
+        "temperature_c": 120
+      },
+      "objective_values": {
+        "yield": 99.98
+      },
+      "objective_name": "yield",
+      "objective_unit": "percent",
+      "suggestion_id": "64ba43ac-a004-439d-b91d-5a8e5f9fc60d",
+      "suggestion_status_before_evaluation": "pending",
+      "suggestion_source": "generated",
+      "iteration": 60,
+      "bo_result_ids": [
+        "17af3474-c287-4bbf-abc1-f2c27abce94a"
+      ]
+    }
+  ]
+}

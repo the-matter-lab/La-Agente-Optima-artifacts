@@ -1,0 +1,429 @@
+03:13:10.613 GET api/api/v1/campaigns/7b909c35-cd07-4330-b908-e636f4fe7152
+03:13:10.624 GET api/api/v1/campaigns/7b909c35-cd07-4330-b908-e636f4fe7152/config
+03:13:10.633 POST api/api/v1/campaigns/7b909c35-cd07-4330-b908-e636f4fe7152/lifecycle
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+03:13:10.679 GET api/api/v1/campaigns/7b909c35-cd07-4330-b908-e636f4fe7152
+[EVENT] resumed campaign 7b909c35-cd07-4330-b908-e636f4fe7152
+[EVENT] campaign=7b909c35-cd07-4330-b908-e636f4fe7152 marker=akg-eval-c5b8d1ef58b7491e871349ed99f9483b nonce=84b0bae8-8245-4434-aa84-be3c9ca05210
+03:13:10.691 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:10.704 POST api/api/v1/campaigns/status/batch
+03:13:10.719 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:11.040 POST direct-arylation-oracle/v1/evaluate
+03:13:11.045 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 2, "attempted_at_utc": "2026-08-05T03:13:11.044269+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 0.0, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "(t-Bu)PhCPhos", "solvent": "Butyornitrile", "temperature_c": 90.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":0.0}", "status": "success", "suggestion_id": "8c8bd768-0b22-4071-ab88-c2b769a2a2e6"}
+03:13:11.125 direct arylation attempt
+03:13:11.126 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:11.143 POST api/api/v1/campaigns/status/batch
+03:13:11.157 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:11.447 POST direct-arylation-oracle/v1/evaluate
+03:13:11.451 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 3, "attempted_at_utc": "2026-08-05T03:13:11.451164+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 54.83, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":54.83}", "status": "success", "suggestion_id": "c1afb3ea-30a1-43de-9d5c-12af84a735bd"}
+03:13:11.526 direct arylation attempt
+03:13:11.527 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:11.544 POST api/api/v1/campaigns/status/batch
+03:13:11.558 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:11.886 POST direct-arylation-oracle/v1/evaluate
+03:13:11.892 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 4, "attempted_at_utc": "2026-08-05T03:13:11.891392+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 45.17, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.1, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":45.17}", "status": "success", "suggestion_id": "8f9f0dd5-22a1-4e47-a3ab-478bbb279441"}
+03:13:11.966 direct arylation attempt
+03:13:11.967 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:11.983 POST api/api/v1/campaigns/status/batch
+03:13:11.997 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:12.354 POST direct-arylation-oracle/v1/evaluate
+03:13:12.358 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 5, "attempted_at_utc": "2026-08-05T03:13:12.358179+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 76.34, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":76.34}", "status": "success", "suggestion_id": "965a3b61-5be4-4b44-b795-4927f3f71a57"}
+03:13:12.422 direct arylation attempt
+03:13:12.423 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:12.440 POST api/api/v1/campaigns/status/batch
+03:13:12.453 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:12.856 POST direct-arylation-oracle/v1/evaluate
+03:13:12.859 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 6, "attempted_at_utc": "2026-08-05T03:13:12.858899+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 23.23, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 90.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":23.23}", "status": "success", "suggestion_id": "77fcf675-1008-425b-b2bc-504db983a2cc"}
+03:13:12.943 direct arylation attempt
+03:13:12.943 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:12.957 POST api/api/v1/campaigns/status/batch
+03:13:12.969 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:13.804 POST direct-arylation-oracle/v1/evaluate
+03:13:13.810 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 7, "attempted_at_utc": "2026-08-05T03:13:13.809031+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 40.43, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.1, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":40.43}", "status": "success", "suggestion_id": "52ac7ced-46ba-49cf-8352-e173d908f69e"}
+03:13:14.439 direct arylation attempt
+03:13:14.440 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:14.457 POST api/api/v1/campaigns/status/batch
+03:13:14.473 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:14.887 POST direct-arylation-oracle/v1/evaluate
+03:13:14.891 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 8, "attempted_at_utc": "2026-08-05T03:13:14.890898+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 4.53, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "p-Xylene", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":4.53}", "status": "success", "suggestion_id": "b31b695d-a723-4a2a-8e02-9674fb10d8dd"}
+03:13:14.967 direct arylation attempt
+03:13:14.968 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:14.983 POST api/api/v1/campaigns/status/batch
+03:13:14.996 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:15.624 POST direct-arylation-oracle/v1/evaluate
+03:13:15.629 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 9, "attempted_at_utc": "2026-08-05T03:13:15.628655+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 0.0, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "BrettPhos", "solvent": "DMAc", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":0.0}", "status": "success", "suggestion_id": "00dcd05e-db23-4a9b-a1c3-f57491c522cb"}
+03:13:15.702 direct arylation attempt
+03:13:15.703 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:15.717 POST api/api/v1/campaigns/status/batch
+03:13:15.730 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:16.357 POST direct-arylation-oracle/v1/evaluate
+03:13:16.361 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 10, "attempted_at_utc": "2026-08-05T03:13:16.361246+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 72.45, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":72.45}", "status": "success", "suggestion_id": "b5799d26-3fcf-4ec7-82b8-98cdfef8fa0e"}
+03:13:16.426 direct arylation attempt
+03:13:16.427 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:16.443 POST api/api/v1/campaigns/status/batch
+03:13:16.456 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:17.048 POST direct-arylation-oracle/v1/evaluate
+03:13:17.052 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 11, "attempted_at_utc": "2026-08-05T03:13:17.051874+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 61.33, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":61.33}", "status": "success", "suggestion_id": "48bb9daf-a7bf-4409-8e32-ec6395639e07"}
+03:13:17.126 direct arylation attempt
+03:13:17.127 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:17.141 POST api/api/v1/campaigns/status/batch
+03:13:17.155 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:17.803 POST direct-arylation-oracle/v1/evaluate
+03:13:17.807 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 12, "attempted_at_utc": "2026-08-05T03:13:17.806588+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 21.77, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":21.77}", "status": "success", "suggestion_id": "1e55e34b-8413-40fc-87f7-693f61cebb1d"}
+03:13:17.882 direct arylation attempt
+03:13:17.884 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:17.900 POST api/api/v1/campaigns/status/batch
+03:13:17.913 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:18.610 POST direct-arylation-oracle/v1/evaluate
+03:13:18.613 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 13, "attempted_at_utc": "2026-08-05T03:13:18.613272+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 59.83, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":59.83}", "status": "success", "suggestion_id": "10047561-51c9-480f-9acc-ad3249c53405"}
+03:13:18.678 direct arylation attempt
+03:13:18.679 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:18.694 POST api/api/v1/campaigns/status/batch
+03:13:18.707 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:19.443 POST direct-arylation-oracle/v1/evaluate
+03:13:19.446 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 14, "attempted_at_utc": "2026-08-05T03:13:19.446425+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 40.26, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":40.26}", "status": "success", "suggestion_id": "8e1e3335-63c5-48d3-9b83-24f630ba1bd8"}
+03:13:19.511 direct arylation attempt
+03:13:19.512 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:19.528 POST api/api/v1/campaigns/status/batch
+03:13:19.541 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:20.227 POST direct-arylation-oracle/v1/evaluate
+03:13:20.230 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 15, "attempted_at_utc": "2026-08-05T03:13:20.230517+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 38.15, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.1, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":38.15}", "status": "success", "suggestion_id": "0c9bfd51-430b-47ef-ab46-9dd55844bd6b"}
+03:13:20.297 direct arylation attempt
+03:13:20.297 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:20.312 POST api/api/v1/campaigns/status/batch
+03:13:20.325 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:20.985 POST direct-arylation-oracle/v1/evaluate
+03:13:20.989 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 16, "attempted_at_utc": "2026-08-05T03:13:20.989124+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 26.48, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "Butyl Ester", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":26.48}", "status": "success", "suggestion_id": "6d930ca4-a766-45b5-accc-39ea86097750"}
+03:13:21.053 direct arylation attempt
+03:13:21.054 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:21.069 POST api/api/v1/campaigns/status/batch
+03:13:21.084 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:21.656 POST direct-arylation-oracle/v1/evaluate
+03:13:21.659 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 17, "attempted_at_utc": "2026-08-05T03:13:21.659290+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 30.77, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":30.77}", "status": "success", "suggestion_id": "e5a96742-6e06-4440-a982-f2e8035fad29"}
+03:13:21.723 direct arylation attempt
+03:13:21.724 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:21.738 POST api/api/v1/campaigns/status/batch
+03:13:21.750 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:22.297 POST direct-arylation-oracle/v1/evaluate
+03:13:22.300 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 18, "attempted_at_utc": "2026-08-05T03:13:22.300313+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 39.2, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":39.2}", "status": "success", "suggestion_id": "9fc3acd4-adab-4f8d-ae34-cbbd6d47f36e"}
+03:13:22.364 direct arylation attempt
+03:13:22.365 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:22.378 POST api/api/v1/campaigns/status/batch
+03:13:22.390 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:23.104 POST direct-arylation-oracle/v1/evaluate
+03:13:23.108 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 19, "attempted_at_utc": "2026-08-05T03:13:23.107686+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 9.03, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "1268824-69-6", "solvent": "Butyl Ester", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":9.03}", "status": "success", "suggestion_id": "17117263-458b-48db-bf8e-841d9d7c9968"}
+03:13:23.195 direct arylation attempt
+03:13:23.196 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:23.210 POST api/api/v1/campaigns/status/batch
+03:13:23.225 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:24.140 POST direct-arylation-oracle/v1/evaluate
+03:13:24.145 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 20, "attempted_at_utc": "2026-08-05T03:13:24.144674+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 0.0, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "Di-tert-butylphenylphosphine", "solvent": "DMAc", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":0.0}", "status": "success", "suggestion_id": "999abfa4-5d8e-46ee-97ed-c41cbc608264"}
+03:13:24.232 direct arylation attempt
+03:13:24.233 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:24.248 POST api/api/v1/campaigns/status/batch
+03:13:24.261 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:24.868 POST direct-arylation-oracle/v1/evaluate
+03:13:24.871 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 21, "attempted_at_utc": "2026-08-05T03:13:24.871279+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 56.45, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.1, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":56.45}", "status": "success", "suggestion_id": "75be320b-28be-4371-acec-35d5204f572b"}
+03:13:24.958 direct arylation attempt
+03:13:24.959 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:24.978 POST api/api/v1/campaigns/status/batch
+03:13:24.991 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:25.816 POST direct-arylation-oracle/v1/evaluate
+03:13:25.823 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 22, "attempted_at_utc": "2026-08-05T03:13:25.822522+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 40.61, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":40.61}", "status": "success", "suggestion_id": "1f8c064c-17be-4c53-aa7d-0b32a940189e"}
+03:13:25.907 direct arylation attempt
+03:13:25.909 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:25.929 POST api/api/v1/campaigns/status/batch
+03:13:25.946 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:26.821 POST direct-arylation-oracle/v1/evaluate
+03:13:26.825 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 23, "attempted_at_utc": "2026-08-05T03:13:26.824684+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 58.13, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":58.13}", "status": "success", "suggestion_id": "2987804e-34d5-4296-b7b8-c058b856eaeb"}
+03:13:26.903 direct arylation attempt
+03:13:26.905 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:26.924 POST api/api/v1/campaigns/status/batch
+03:13:26.937 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:27.590 POST direct-arylation-oracle/v1/evaluate
+03:13:27.594 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 24, "attempted_at_utc": "2026-08-05T03:13:27.593708+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 64.48, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":64.48}", "status": "success", "suggestion_id": "798d81c3-2d3d-48ad-a764-08a93ba618bb"}
+03:13:27.683 direct arylation attempt
+03:13:27.684 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:27.705 POST api/api/v1/campaigns/status/batch
+03:13:27.718 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:28.723 POST direct-arylation-oracle/v1/evaluate
+03:13:28.728 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 25, "attempted_at_utc": "2026-08-05T03:13:28.728444+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 20.95, "parameter_values": {"base": "Potassium acetate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":20.95}", "status": "success", "suggestion_id": "9c507127-d92a-4117-9b93-61bbf58aa20c"}
+03:13:28.812 direct arylation attempt
+03:13:28.813 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:28.830 POST api/api/v1/campaigns/status/batch
+03:13:28.849 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:30.259 POST direct-arylation-oracle/v1/evaluate
+03:13:30.264 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 26, "attempted_at_utc": "2026-08-05T03:13:30.264202+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 49.19, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":49.19}", "status": "success", "suggestion_id": "35ac74fb-8dc3-46bf-8a77-984e77d62321"}
+03:13:30.391 direct arylation attempt
+03:13:30.392 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:30.413 POST api/api/v1/campaigns/status/batch
+03:13:30.426 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:31.278 POST direct-arylation-oracle/v1/evaluate
+03:13:31.283 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 27, "attempted_at_utc": "2026-08-05T03:13:31.283040+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 38.63, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyl Ester", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":38.63}", "status": "success", "suggestion_id": "7da3eb5e-87e5-499d-9050-e720802f5dab"}
+03:13:31.414 direct arylation attempt
+03:13:31.415 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:31.436 POST api/api/v1/campaigns/status/batch
+03:13:31.450 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:32.474 POST direct-arylation-oracle/v1/evaluate
+03:13:32.478 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 28, "attempted_at_utc": "2026-08-05T03:13:32.477862+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 4.02, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "p-Xylene", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":4.02}", "status": "success", "suggestion_id": "c4b6d8f1-17cc-4646-8203-54d1b6099d69"}
+03:13:32.654 direct arylation attempt
+03:13:32.654 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:32.669 POST api/api/v1/campaigns/status/batch
+03:13:32.681 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:33.677 POST direct-arylation-oracle/v1/evaluate
+03:13:33.682 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 29, "attempted_at_utc": "2026-08-05T03:13:33.682236+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 36.9, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":36.9}", "status": "success", "suggestion_id": "5b7e7881-25d8-498b-939e-124c05f19c81"}
+03:13:34.536 direct arylation attempt
+03:13:34.537 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:34.556 POST api/api/v1/campaigns/status/batch
+03:13:34.569 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:35.241 POST direct-arylation-oracle/v1/evaluate
+03:13:35.247 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 30, "attempted_at_utc": "2026-08-05T03:13:35.246695+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 16.07, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "JackiePhos", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":16.07}", "status": "success", "suggestion_id": "d0b2b556-68ef-4158-aeaf-5cc81441225a"}
+03:13:35.403 direct arylation attempt
+03:13:35.404 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:35.424 POST api/api/v1/campaigns/status/batch
+03:13:35.437 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:36.615 POST direct-arylation-oracle/v1/evaluate
+03:13:36.622 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 31, "attempted_at_utc": "2026-08-05T03:13:36.622094+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 0.0, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.057, "ligand": "Me2PPh", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":0.0}", "status": "success", "suggestion_id": "fa0ef92a-5352-4370-afb6-54939e36fd4e"}
+03:13:36.787 direct arylation attempt
+03:13:36.788 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:36.807 POST api/api/v1/campaigns/status/batch
+03:13:36.823 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:37.640 POST direct-arylation-oracle/v1/evaluate
+03:13:37.647 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 32, "attempted_at_utc": "2026-08-05T03:13:37.646649+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 7.88, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "JackiePhos", "solvent": "p-Xylene", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":7.88}", "status": "success", "suggestion_id": "346f8950-d2e8-457e-8f01-8fbb90b12943"}
+03:13:37.828 direct arylation attempt
+03:13:37.829 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:37.847 POST api/api/v1/campaigns/status/batch
+03:13:37.860 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:38.805 POST direct-arylation-oracle/v1/evaluate
+03:13:38.812 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 33, "attempted_at_utc": "2026-08-05T03:13:38.811896+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 46.17, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":46.17}", "status": "success", "suggestion_id": "42786361-5b7f-4081-ac98-0ecd8ec230fd"}
+03:13:39.030 direct arylation attempt
+03:13:39.032 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:39.053 POST api/api/v1/campaigns/status/batch
+03:13:39.066 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:39.732 POST direct-arylation-oracle/v1/evaluate
+03:13:39.737 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 34, "attempted_at_utc": "2026-08-05T03:13:39.737126+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 4.98, "parameter_values": {"base": "Potassium acetate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 90.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":4.98}", "status": "success", "suggestion_id": "9906efd3-6c98-44ec-8ea4-f78385541ae7"}
+03:13:39.886 direct arylation attempt
+03:13:39.887 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:39.915 POST api/api/v1/campaigns/status/batch
+03:13:39.932 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:40.944 POST direct-arylation-oracle/v1/evaluate
+03:13:40.951 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 35, "attempted_at_utc": "2026-08-05T03:13:40.950178+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 14.81, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "P(2-furyl)3", "solvent": "Butyl Ester", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":14.81}", "status": "success", "suggestion_id": "eb3ecd72-362c-4616-8063-9b0fbd8d81af"}
+03:13:41.125 direct arylation attempt
+03:13:41.125 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:41.146 POST api/api/v1/campaigns/status/batch
+03:13:41.162 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:42.000 POST direct-arylation-oracle/v1/evaluate
+03:13:42.006 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 36, "attempted_at_utc": "2026-08-05T03:13:42.006388+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 15.86, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "P(2-furyl)3", "solvent": "p-Xylene", "temperature_c": 90.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":15.86}", "status": "success", "suggestion_id": "b0a146d7-d287-4a0c-b3c9-1f6ff0031334"}
+03:13:42.179 direct arylation attempt
+03:13:42.179 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:42.196 POST api/api/v1/campaigns/status/batch
+03:13:42.208 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:43.133 POST direct-arylation-oracle/v1/evaluate
+03:13:43.140 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 37, "attempted_at_utc": "2026-08-05T03:13:43.139937+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 0.0, "parameter_values": {"base": "Potassium acetate", "concentration": 0.057, "ligand": "Methyldiphenylphosphine", "solvent": "p-Xylene", "temperature_c": 90.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":0.0}", "status": "success", "suggestion_id": "02b38641-33f4-4d5e-8744-e4e832622063"}
+03:13:43.287 direct arylation attempt
+03:13:43.289 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:43.305 POST api/api/v1/campaigns/status/batch
+03:13:43.317 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:43.995 POST direct-arylation-oracle/v1/evaluate
+03:13:44.004 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 38, "attempted_at_utc": "2026-08-05T03:13:44.003096+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 15.64, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "PPh3", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":15.64}", "status": "success", "suggestion_id": "daaf53e1-d955-4f19-8c71-d175a50654f3"}
+03:13:44.169 direct arylation attempt
+03:13:44.171 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:44.189 POST api/api/v1/campaigns/status/batch
+03:13:44.202 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:45.359 POST direct-arylation-oracle/v1/evaluate
+03:13:45.363 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 39, "attempted_at_utc": "2026-08-05T03:13:45.362744+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 3.04, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "P(2-furyl)3", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":3.04}", "status": "success", "suggestion_id": "ca2a1601-8c73-40e5-a2cf-d6b803b1b19f"}
+03:13:45.618 direct arylation attempt
+03:13:45.618 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:45.637 POST api/api/v1/campaigns/status/batch
+03:13:45.649 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:46.560 POST direct-arylation-oracle/v1/evaluate
+03:13:46.566 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 40, "attempted_at_utc": "2026-08-05T03:13:46.565836+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 6.18, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "PPh3", "solvent": "p-Xylene", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":6.18}", "status": "success", "suggestion_id": "1db921b1-001d-4b66-915f-0f70b2e5f8b5"}
+03:13:47.467 direct arylation attempt
+03:13:47.469 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:47.485 POST api/api/v1/campaigns/status/batch
+03:13:47.498 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:48.060 POST direct-arylation-oracle/v1/evaluate
+03:13:48.064 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 41, "attempted_at_utc": "2026-08-05T03:13:48.064071+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 36.29, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "DMAc", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":36.29}", "status": "success", "suggestion_id": "15f61502-dfc2-4065-bfc7-21aa145791d0"}
+03:13:48.220 direct arylation attempt
+03:13:48.221 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:48.237 POST api/api/v1/campaigns/status/batch
+03:13:48.249 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:49.503 POST direct-arylation-oracle/v1/evaluate
+03:13:49.509 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 42, "attempted_at_utc": "2026-08-05T03:13:49.508621+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 34.4, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyl Ester", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":34.4}", "status": "success", "suggestion_id": "6e89ad51-36f6-4502-a874-df6a9fd28489"}
+03:13:49.659 direct arylation attempt
+03:13:49.659 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:49.682 POST api/api/v1/campaigns/status/batch
+03:13:49.694 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:50.557 POST direct-arylation-oracle/v1/evaluate
+03:13:50.562 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 43, "attempted_at_utc": "2026-08-05T03:13:50.562093+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 48.15, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.1, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":48.15}", "status": "success", "suggestion_id": "833d79b7-618d-4544-8720-4ed03a1cf102"}
+03:13:50.949 direct arylation attempt
+03:13:50.950 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:50.966 POST api/api/v1/campaigns/status/batch
+03:13:50.980 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:52.540 POST direct-arylation-oracle/v1/evaluate
+03:13:52.544 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 44, "attempted_at_utc": "2026-08-05T03:13:52.544379+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 49.09, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "1268824-69-6", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":49.09}", "status": "success", "suggestion_id": "28ce7e9b-3ef6-432b-88c7-bd183971c186"}
+03:13:52.656 direct arylation attempt
+03:13:52.657 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:52.678 POST api/api/v1/campaigns/status/batch
+03:13:52.691 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:53.458 POST direct-arylation-oracle/v1/evaluate
+03:13:53.463 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 45, "attempted_at_utc": "2026-08-05T03:13:53.462793+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 38.65, "parameter_values": {"base": "Cesium acetate", "concentration": 0.057, "ligand": "SCHEMBL15068049", "solvent": "Butyl Ester", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":38.65}", "status": "success", "suggestion_id": "bc9872a2-f662-4aa1-afef-a61537769029"}
+03:13:53.563 direct arylation attempt
+03:13:53.564 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:53.582 POST api/api/v1/campaigns/status/batch
+03:13:53.596 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:54.534 POST direct-arylation-oracle/v1/evaluate
+03:13:54.540 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 46, "attempted_at_utc": "2026-08-05T03:13:54.540569+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 45.73, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyl Ester", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":45.73}", "status": "success", "suggestion_id": "4050e499-b391-42bb-86a1-0417e5506759"}
+03:13:54.639 direct arylation attempt
+03:13:54.640 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:54.656 POST api/api/v1/campaigns/status/batch
+03:13:54.669 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:55.683 POST direct-arylation-oracle/v1/evaluate
+03:13:55.689 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 47, "attempted_at_utc": "2026-08-05T03:13:55.688999+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 50.69, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyl Ester", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":50.69}", "status": "success", "suggestion_id": "10b9c7e7-b93b-4559-b3a5-0df099dd7180"}
+03:13:55.785 direct arylation attempt
+03:13:55.786 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:55.804 POST api/api/v1/campaigns/status/batch
+03:13:55.817 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:56.672 POST direct-arylation-oracle/v1/evaluate
+03:13:56.678 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 48, "attempted_at_utc": "2026-08-05T03:13:56.677234+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 36.23, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.1, "ligand": "SCHEMBL15068049", "solvent": "Butyl Ester", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":36.23}", "status": "success", "suggestion_id": "64ce9e72-34f3-499b-8b03-6ef2bcfdf2b7"}
+03:13:56.772 direct arylation attempt
+03:13:56.773 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:56.788 POST api/api/v1/campaigns/status/batch
+03:13:56.802 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:57.706 POST direct-arylation-oracle/v1/evaluate
+03:13:57.711 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 49, "attempted_at_utc": "2026-08-05T03:13:57.710602+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 99.98, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":99.98}", "status": "success", "suggestion_id": "516b9cf0-806b-4c4b-9136-c30d82db7fef"}
+03:13:57.822 direct arylation attempt
+03:13:57.823 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:57.844 POST api/api/v1/campaigns/status/batch
+03:13:57.857 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:59.025 POST direct-arylation-oracle/v1/evaluate
+03:13:59.031 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 50, "attempted_at_utc": "2026-08-05T03:13:59.031277+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 88.82, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":88.82}", "status": "success", "suggestion_id": "018430ec-ec5b-4fac-8ee3-a525aa93f3ed"}
+03:13:59.136 direct arylation attempt
+03:13:59.137 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:59.155 POST api/api/v1/campaigns/status/batch
+03:13:59.169 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:13:59.675 POST direct-arylation-oracle/v1/evaluate
+03:13:59.682 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 51, "attempted_at_utc": "2026-08-05T03:13:59.681791+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 71.81, "parameter_values": {"base": "Cesium pivalate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":71.81}", "status": "success", "suggestion_id": "3e58823b-168c-428c-846b-64f7f8029d39"}
+03:13:59.788 direct arylation attempt
+03:13:59.789 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:13:59.807 POST api/api/v1/campaigns/status/batch
+03:13:59.820 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:00.921 POST direct-arylation-oracle/v1/evaluate
+03:14:00.926 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 52, "attempted_at_utc": "2026-08-05T03:14:00.926366+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 96.38, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":96.38}", "status": "success", "suggestion_id": "37627bd4-a7ff-4468-8259-d535edb2724a"}
+03:14:01.069 direct arylation attempt
+03:14:01.069 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:14:01.089 POST api/api/v1/campaigns/status/batch
+03:14:01.102 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:01.675 POST direct-arylation-oracle/v1/evaluate
+03:14:01.680 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 53, "attempted_at_utc": "2026-08-05T03:14:01.679810+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 82.33, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":82.33}", "status": "success", "suggestion_id": "a49fab5a-c62b-4b93-b568-6bcba9f79617"}
+03:14:01.780 direct arylation attempt
+03:14:01.781 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:14:01.797 POST api/api/v1/campaigns/status/batch
+03:14:01.811 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:02.685 POST direct-arylation-oracle/v1/evaluate
+03:14:02.690 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 54, "attempted_at_utc": "2026-08-05T03:14:02.690317+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 69.2, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":69.2}", "status": "success", "suggestion_id": "bfde5a7d-8b94-4f60-90e5-91ec1ee49fa8"}
+03:14:02.807 direct arylation attempt
+03:14:02.807 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:14:02.828 POST api/api/v1/campaigns/status/batch
+03:14:02.842 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:04.550 POST direct-arylation-oracle/v1/evaluate
+03:14:04.553 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 55, "attempted_at_utc": "2026-08-05T03:14:04.553273+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 80.86, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":80.86}", "status": "success", "suggestion_id": "fa33c5f6-6fb5-4ce4-9f70-954c8aff5c6c"}
+03:14:04.767 direct arylation attempt
+03:14:04.769 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:14:04.792 POST api/api/v1/campaigns/status/batch
+03:14:04.805 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:06.082 POST direct-arylation-oracle/v1/evaluate
+03:14:06.087 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 56, "attempted_at_utc": "2026-08-05T03:14:06.087085+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 50.75, "parameter_values": {"base": "Potassium acetate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":50.75}", "status": "success", "suggestion_id": "cf4613bf-52a7-4cca-954e-dc9cd19b796d"}
+03:14:06.197 direct arylation attempt
+03:14:06.198 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:14:06.219 POST api/api/v1/campaigns/status/batch
+03:14:06.234 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:07.731 POST direct-arylation-oracle/v1/evaluate
+03:14:07.737 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 57, "attempted_at_utc": "2026-08-05T03:14:07.736393+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 80.65, "parameter_values": {"base": "Potassium pivalate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "Butyornitrile", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":80.65}", "status": "success", "suggestion_id": "b282a3b1-9d74-4a8e-82e0-cc11ab785a7d"}
+03:14:07.877 direct arylation attempt
+03:14:07.878 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:14:07.900 POST api/api/v1/campaigns/status/batch
+03:14:07.921 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:08.863 POST direct-arylation-oracle/v1/evaluate
+03:14:08.868 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 58, "attempted_at_utc": "2026-08-05T03:14:08.867665+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 99.22, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "DMAc", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":99.22}", "status": "success", "suggestion_id": "bcfa7c55-799c-47ae-a9e6-3e6697cb39f3"}
+03:14:09.502 direct arylation attempt
+03:14:09.503 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:14:09.524 POST api/api/v1/campaigns/status/batch
+03:14:09.538 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:10.609 POST direct-arylation-oracle/v1/evaluate
+03:14:10.613 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 59, "attempted_at_utc": "2026-08-05T03:14:10.612788+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 100.0, "parameter_values": {"base": "Cesium acetate", "concentration": 0.153, "ligand": "SCHEMBL15068049", "solvent": "DMAc", "temperature_c": 105.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":100.0}", "status": "success", "suggestion_id": "121b35b6-54ff-4058-8e72-e608ad3cf004"}
+03:14:10.718 direct arylation attempt
+03:14:10.719 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+03:14:10.743 POST api/api/v1/campaigns/status/batch
+03:14:10.757 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/generate ? batch_size='1'
+03:14:11.876 POST direct-arylation-oracle/v1/evaluate
+03:14:11.882 POST api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[RESULT] {"attempt_number": 60, "attempted_at_utc": "2026-08-05T03:14:11.881980+00:00", "cache_buster_nonce": "84b0bae8-8245-4434-aa84-be3c9ca05210", "campaign_id": "7b909c35-cd07-4330-b908-e636f4fe7152", "campaign_name": "direct-arylation-yield-akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "error": null, "http_status": 200, "objective_name": "yield", "objective_units": "percent", "objective_value": 81.63, "parameter_values": {"base": "Cesium acetate", "concentration": 0.1, "ligand": "SCHEMBL15068049", "solvent": "DMAc", "temperature_c": 120.0}, "required_marker": "akg-eval-c5b8d1ef58b7491e871349ed99f9483b", "response_excerpt": "{\"yield\":81.63}", "status": "success", "suggestion_id": "013d9488-73b7-4b10-8d13-941f6304cdf1"}
+03:14:12.053 direct arylation attempt
+03:14:12.054 POST api/api/v1/suggestions/7b909c35-cd07-4330-b908-e636f4fe7152/query
+[EVENT] exact 60-suggestion campaign budget reached
+03:14:12.075 GET api/api/v1/campaigns/7b909c35-cd07-4330-b908-e636f4fe7152
+03:14:12.085 POST api/api/v1/campaigns/7b909c35-cd07-4330-b908-e636f4fe7152/lifecycle
+03:14:12.201 GET api/api/v1/campaigns/7b909c35-cd07-4330-b908-e636f4fe7152
+[EVENT] paused campaign 7b909c35-cd07-4330-b908-e636f4fe7152
+03:14:12.218 GET api/api/v1/results/7b909c35-cd07-4330-b908-e636f4fe7152
+[EVENT] artifacts=artifacts/direct_arylation_baybe attempted=60 successful=60 status=paused

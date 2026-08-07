@@ -1,0 +1,106 @@
+{
+  "schema_version": 2,
+  "success": true,
+  "campaign_status": "running",
+  "iteration": 42,
+  "n_results": 32,
+  "n_pending_suggestions": 0,
+  "errors": [],
+  "warnings": [],
+  "best_value": 0.1054617093241383,
+  "best_parameters": {
+    "x_1": 0.0,
+    "x_2": 0.0,
+    "x_3": 1.0,
+    "x_4": 0.0,
+    "x_5": 1.0,
+    "x_6": 0.0
+  },
+  "improvement_history": [
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.06109245544691621,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.07455300764565731,
+    0.0978826434853384,
+    0.09941241149671746,
+    0.1054617093241383,
+    0.1054617093241383,
+    0.1054617093241383
+  ],
+  "improvement_rate": 0.07743013029613519,
+  "pareto_front": null,
+  "hypervolume": null,
+  "n_pareto_points": null,
+  "model_correlation": 0.9160557184750732,
+  "feature_importance": null,
+  "objective_ranges": {
+    "surface_response": {
+      "min": 0.020183269876788423,
+      "max": 0.1054617093241383,
+      "direction": "maximize"
+    }
+  },
+  "model_info": {
+    "backend": "baybe",
+    "type": "BayBE GP",
+    "acquisition_function": "qLogNoisyExpectedImprovement",
+    "batch_strategy": "BotorchRecommender (GP-based)",
+    "kernel": "MaternKernel",
+    "input_warping": false
+  },
+  "health_status": "healthy",
+  "progress_status": "stable",
+  "next_action_recommendation": {
+    "action": "review_outliers",
+    "reason": "Detected 1 potential outlier(s). Verify measurements for errors.",
+    "urgency": "normal"
+  },
+  "uncertainty_trend": null,
+  "exploration_exploitation": {
+    "exploration_ratio": 0.5,
+    "diversity_score": 0.0,
+    "average_distance_to_best": 0.0,
+    "balance_assessment": "exploitation_heavy",
+    "recommendation": "Suggestions are focused near known good points. If stuck in local optima, consider increasing exploration."
+  },
+  "suggestion_diversity": null,
+  "constraint_satisfaction": null,
+  "outcome_constraint_calibration": null,
+  "convergence": {
+    "converged": false,
+    "convergence_score": 0.2,
+    "reason": "Still improving",
+    "avg_improvement": 0.01912,
+    "iterations_without_improvement": 2,
+    "recommendation": "Continue optimization to find better solutions."
+  },
+  "_metadata": {
+    "backend": "baybe",
+    "backend_source": "campaign",
+    "protocol": "rest",
+    "server_version": "0.1.0"
+  }
+}

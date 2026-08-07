@@ -1,0 +1,36 @@
+exit_code=1
+
+=== stdout (raw) ===
+/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_campaign/campaign.py:37: LogfireNotConfiguredWarning: Instrumentation will have no effect until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.instrument_requests()
+/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_campaign/campaign.py:88: LogfireNotConfiguredWarning: No logs or spans will be created until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.info(
+/opt/venv/lib/python3.12/site-packages/sklearn/gaussian_process/kernels.py:450: ConvergenceWarning: The optimal value found for dimension 0 of parameter k1__k2__length_scale is close to the specified upper bound 5.0. Increasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/opt/venv/lib/python3.12/site-packages/sklearn/gaussian_process/kernels.py:450: ConvergenceWarning: The optimal value found for dimension 1 of parameter k1__k2__length_scale is close to the specified upper bound 5.0. Increasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/opt/venv/lib/python3.12/site-packages/sklearn/gaussian_process/kernels.py:450: ConvergenceWarning: The optimal value found for dimension 3 of parameter k1__k2__length_scale is close to the specified upper bound 5.0. Increasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/opt/venv/lib/python3.12/site-packages/sklearn/gaussian_process/kernels.py:450: ConvergenceWarning: The optimal value found for dimension 4 of parameter k1__k2__length_scale is close to the specified upper bound 5.0. Increasing the bound and calling fit again may find a better value.
+  warnings.warn(
+/opt/venv/lib/python3.12/site-packages/sklearn/gaussian_process/kernels.py:450: ConvergenceWarning: The optimal value found for dimension 5 of parameter k1__k2__length_scale is close to the specified upper bound 5.0. Increasing the bound and calling fit again may find a better value.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley6d_campaign.py", line 55, in <module>
+    main()
+  File "/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley6d_campaign.py", line 40, in main
+    payload = run_campaign(config)
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_campaign/campaign.py", line 148, in run_campaign
+    batch = suggest_batch(X_arr, y_arr, batch_size, rng, seen_keys, suggestion_config)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_campaign/bo.py", line 97, in suggest_batch
+    keep_mask = np.array([key not in blocked for key in keys], dtype=bool)
+                          ^^^^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'numpy.ndarray'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

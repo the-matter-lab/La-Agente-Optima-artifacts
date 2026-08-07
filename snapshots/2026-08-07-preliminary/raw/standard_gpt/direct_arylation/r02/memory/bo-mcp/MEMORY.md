@@ -1,0 +1,1 @@
+- For BO/PySCF campaign scripts in this container, `uv run python ...` can fail before execution if the editable build cannot update `/app/grafico.egg-info` timestamps. A reliable fallback is to run the workspace entrypoint with `PYTHONPATH=/app:. python ...`, which keeps repo imports (`domains.*`, `grafico.*`) available without embedding `/app` inside the script itself.

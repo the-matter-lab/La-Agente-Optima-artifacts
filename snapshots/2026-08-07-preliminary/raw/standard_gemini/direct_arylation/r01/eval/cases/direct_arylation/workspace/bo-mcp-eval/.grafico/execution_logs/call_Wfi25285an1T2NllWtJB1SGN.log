@@ -1,0 +1,129 @@
+exit_code=0
+
+=== stdout (raw) ===
+[HEARTBEAT] Campaign 1073006d-864a-460a-9cf4-1b3aaa77152d is active.
+17:30:57.477 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:30:57.494 Current attempts count: 52/60
+17:30:57.494 POST api/api/v1/campaigns/status/batch
+17:30:57.508 Server next action: bo_generate_suggestions, status: running
+17:30:57.508 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:30:58.433 Generated new suggestion: 3af1be34-e7bd-405c-a60c-000c6c7d7c3d
+[EVENT] Evaluating candidate 53/60: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:30:58.434 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:30:58.435 POST direct-arylation-oracle/v1/evaluate
+17:30:58.439 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 3af1be34-e7bd-405c-a60c-000c6c7d7c3d
+[RESULT] Candidate: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0} -> yield: 99.81% (status: success)
+17:30:58.514 Sleeping for 1 seconds...
+17:30:59.516 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:30:59.542 Current attempts count: 53/60
+17:30:59.544 POST api/api/v1/campaigns/status/batch
+17:30:59.561 Server next action: bo_generate_suggestions, status: running
+17:30:59.561 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:31:00.748 Generated new suggestion: 6586500c-b59e-41ab-89c5-fa225324473c
+[EVENT] Evaluating candidate 54/60: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+17:31:00.749 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+17:31:00.749 POST direct-arylation-oracle/v1/evaluate
+17:31:00.752 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 6586500c-b59e-41ab-89c5-fa225324473c
+[RESULT] Candidate: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0} -> yield: 98.49% (status: success)
+17:31:00.832 Sleeping for 1 seconds...
+17:31:01.833 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:31:01.854 Current attempts count: 54/60
+17:31:01.854 POST api/api/v1/campaigns/status/batch
+17:31:01.869 Server next action: bo_generate_suggestions, status: running
+17:31:01.870 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:31:03.669 Generated new suggestion: a2074b3b-cc3e-4ae8-9dc5-9054f226f9ca
+[EVENT] Evaluating candidate 55/60: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+17:31:03.670 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0}
+17:31:03.671 POST direct-arylation-oracle/v1/evaluate
+17:31:03.678 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion a2074b3b-cc3e-4ae8-9dc5-9054f226f9ca
+[RESULT] Candidate: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105.0} -> yield: 89.76% (status: success)
+17:31:03.763 Sleeping for 1 seconds...
+17:31:04.765 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:31:04.787 Current attempts count: 55/60
+17:31:04.788 POST api/api/v1/campaigns/status/batch
+17:31:04.801 Server next action: bo_generate_suggestions, status: running
+17:31:04.801 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:31:06.043 Generated new suggestion: 95127583-2e0b-4a1f-b25f-2c3cd277e681
+[EVENT] Evaluating candidate 56/60: {'base': 'Potassium pivalate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:31:06.043 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:31:06.044 POST direct-arylation-oracle/v1/evaluate
+17:31:06.046 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 95127583-2e0b-4a1f-b25f-2c3cd277e681
+[RESULT] Candidate: {'base': 'Potassium pivalate', 'ligand': 'JackiePhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0} -> yield: 43.12% (status: success)
+17:31:06.115 Sleeping for 1 seconds...
+17:31:07.117 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:31:07.142 Current attempts count: 56/60
+17:31:07.142 POST api/api/v1/campaigns/status/batch
+17:31:07.156 Server next action: bo_generate_suggestions, status: running
+17:31:07.156 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:31:09.656 Generated new suggestion: 2cbea000-d7d7-4552-96dc-923a8c1bdcd8
+[EVENT] Evaluating candidate 57/60: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:31:09.657 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0}
+17:31:09.658 POST direct-arylation-oracle/v1/evaluate
+17:31:09.664 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 2cbea000-d7d7-4552-96dc-923a8c1bdcd8
+[RESULT] Candidate: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 120.0} -> yield: 87.59% (status: success)
+17:31:09.871 Sleeping for 1 seconds...
+17:31:10.873 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:31:10.895 Current attempts count: 57/60
+17:31:10.896 POST api/api/v1/campaigns/status/batch
+17:31:10.910 Server next action: bo_generate_suggestions, status: running
+17:31:10.910 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:31:12.205 Generated new suggestion: d03f2a70-8681-4615-93cd-44b944353d29
+[EVENT] Evaluating candidate 58/60: {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 90.0}
+17:31:12.205 Evaluating candidate: {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 90.0}
+17:31:12.205 POST direct-arylation-oracle/v1/evaluate
+17:31:12.209 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion d03f2a70-8681-4615-93cd-44b944353d29
+[RESULT] Candidate: {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 90.0} -> yield: 43.84% (status: success)
+17:31:12.285 Sleeping for 1 seconds...
+17:31:13.287 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:31:13.310 Current attempts count: 58/60
+17:31:13.310 POST api/api/v1/campaigns/status/batch
+17:31:13.327 Server next action: bo_generate_suggestions, status: running
+17:31:13.327 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:31:15.128 Generated new suggestion: 78aaf0a7-34e3-4b63-bb25-584f3c75b931
+[EVENT] Evaluating candidate 59/60: {'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+17:31:15.129 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0}
+17:31:15.129 POST direct-arylation-oracle/v1/evaluate
+17:31:15.132 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 78aaf0a7-34e3-4b63-bb25-584f3c75b931
+[RESULT] Candidate: {'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105.0} -> yield: 82.28% (status: success)
+17:31:15.211 Sleeping for 1 seconds...
+17:31:16.212 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:31:16.236 Current attempts count: 59/60
+17:31:16.236 POST api/api/v1/campaigns/status/batch
+17:31:16.250 Server next action: bo_generate_suggestions, status: running
+17:31:16.250 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/generate ? batch_size='1'
+17:31:18.344 Generated new suggestion: 0302cec1-1de6-48a1-b9a9-6db424d53584
+[EVENT] Evaluating candidate 60/60: {'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:31:18.345 Evaluating candidate: {'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+17:31:18.346 POST direct-arylation-oracle/v1/evaluate
+17:31:18.352 POST api/api/v1/results/1073006d-864a-460a-9cf4-1b3aaa77152d
+[EVENT] Submitted result for suggestion 0302cec1-1de6-48a1-b9a9-6db424d53584
+[RESULT] Candidate: {'base': 'Potassium pivalate', 'ligand': 'XPhos', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0} -> yield: 80.39% (status: success)
+17:31:18.468 Sleeping for 1 seconds...
+17:31:19.469 POST api/api/v1/suggestions/1073006d-864a-460a-9cf4-1b3aaa77152d/query
+17:31:19.493 Current attempts count: 60/60
+[EVENT] Reached maximum attempted evaluations budget (60). Stopping.
+
+=== CAMPAIGN SUMMARY ===
+Campaign ID: 1073006d-864a-460a-9cf4-1b3aaa77152d
+Attempted evaluations: 60
+Successful evaluations: 60
+Failed evaluations: 0
+Best measured yield: 99.81%
+Best reaction conditions: {'base': 'Potassium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 120.0}
+========================
+
+17:31:19.493 POST api/api/v1/campaigns/1073006d-864a-460a-9cf4-1b3aaa77152d/lifecycle
+[EVENT] Paused campaign 1073006d-864a-460a-9cf4-1b3aaa77152d
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

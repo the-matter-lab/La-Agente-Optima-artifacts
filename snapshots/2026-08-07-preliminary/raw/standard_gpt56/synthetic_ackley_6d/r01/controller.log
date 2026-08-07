@@ -1,0 +1,187 @@
+
+[2026-08-05T02:58:37.375480Z] COMMAND ["docker", "compose", "-p", "gpt56-baybe-extension-valid-20260805", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--output-dir", "/app/outputs/cells/ackley_standard_gpt56_r01/eval", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "ackley_standard_gpt56_r01-20260803", "--subagent-model", "openai-responses:gpt-5.6-sol"]
+ Container gpt56-baybe-extension-valid-20260805-eval-run-c2d859c7742a Creating 
+ Container gpt56-baybe-extension-valid-20260805-eval-run-c2d859c7742a Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+02:58:46.897 evaluate bo_mcp_graph_eval
+02:58:46.898   case: synthetic_ackley_6d
+02:58:46.898     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+02:59:02.690       agent run
+02:59:02.696         chat gpt-5.4
+02:59:03.362           POST api.openai.com/v1/responses
+02:59:12.681         running tool: task
+02:59:12.685 agent run
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+02:59:12.691         chat gpt-5.4
+02:59:12.701           POST api.openai.com/v1/responses
+             agent run
+02:59:12.706   chat gpt-5.6-sol
+02:59:12.714     POST api.openai.com/v1/responses
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+02:59:14.499         running tool: wait_tasks
+             agent run
+02:59:16.617   running tool: read_todos
+02:59:16.624   chat gpt-5.6-sol
+02:59:16.636     POST api.openai.com/v1/responses
+02:59:19.828   running tool: write_todos
+02:59:19.835   chat gpt-5.6-sol
+02:59:19.847     POST api.openai.com/v1/responses
+02:59:21.969   running tool: execute
+02:59:21.971   running tool: ls
+02:59:21.972   running tool: read_memory
+02:59:23.297   chat gpt-5.6-sol
+02:59:23.311     POST api.openai.com/v1/responses
+02:59:27.401   running tool: execute
+02:59:27.403   running tool: ls
+02:59:27.403   running tool: read_file
+02:59:27.422   chat gpt-5.6-sol
+02:59:27.438     POST api.openai.com/v1/responses
+02:59:31.901   running tool: execute
+02:59:32.585   chat gpt-5.6-sol
+02:59:32.602     POST api.openai.com/v1/responses
+02:59:36.007   running tool: execute
+02:59:36.056   chat gpt-5.6-sol
+02:59:36.075     POST api.openai.com/v1/responses
+02:59:39.410   running tool: execute
+02:59:39.494   chat gpt-5.6-sol
+02:59:39.514     POST api.openai.com/v1/responses
+02:59:42.165   running tool: execute
+02:59:42.304   chat gpt-5.6-sol
+02:59:42.325     POST api.openai.com/v1/responses
+02:59:48.954   running tool: inspect_bo_mcp_openapi_overview
+02:59:48.954   running tool: inspect_bo_mcp_openapi_overview
+02:59:48.955   running tool: inspect_bo_mcp_openapi_overview
+03:00:00.959   chat gpt-5.6-sol
+03:00:00.983     POST api.openai.com/v1/responses
+03:00:06.366   running tool: inspect_bo_mcp_openapi_operation
+03:00:06.367   running tool: inspect_bo_mcp_openapi_operation
+03:00:06.367   running tool: inspect_bo_mcp_openapi_operation
+03:00:06.368   running tool: inspect_bo_mcp_openapi_overview
+03:00:06.403   chat gpt-5.6-sol
+03:00:06.430     POST api.openai.com/v1/responses
+03:00:24.599   running tool: execute
+03:00:24.601   running tool: inspect_bo_mcp_openapi_operation
+03:00:24.601   running tool: inspect_bo_mcp_openapi_overview
+03:00:24.602   running tool: inspect_bo_mcp_openapi_operation
+03:00:24.742   chat gpt-5.6-sol
+03:00:24.773     POST api.openai.com/v1/responses
+03:01:03.656   running tool: execute
+03:01:03.727   chat gpt-5.6-sol
+03:01:03.772     POST api.openai.com/v1/responses
+03:01:15.288   running tool: update_todo_statuses
+03:01:15.295   chat gpt-5.6-sol
+03:01:15.330     POST api.openai.com/v1/responses
+03:01:17.293   running tool: read_todos
+03:01:17.301   chat gpt-5.6-sol
+03:01:17.337     POST api.openai.com/v1/responses
+03:01:21.262   running tool: update_todo_statuses
+03:01:21.269   chat gpt-5.6-sol
+03:01:21.308     POST api.openai.com/v1/responses
+03:01:52.866   running tool: write_file
+03:01:52.867   running tool: write_file
+03:01:52.868   running tool: write_file
+03:01:52.869   running tool: write_file
+03:01:52.871   running tool: write_file
+03:01:52.872   running tool: write_file
+03:01:52.873   running tool: write_file
+03:01:52.881   chat gpt-5.6-sol
+03:01:52.930     POST api.openai.com/v1/responses
+03:02:29.592   running tool: write_file
+03:02:29.600   chat gpt-5.6-sol
+03:02:29.644     POST api.openai.com/v1/responses
+03:02:51.473   running tool: write_file
+03:02:51.481   chat gpt-5.6-sol
+03:02:51.527     POST api.openai.com/v1/responses
+03:02:56.243   running tool: execute
+03:02:56.329   chat gpt-5.6-sol
+03:02:56.383     POST api.openai.com/v1/responses
+03:02:59.527   running tool: update_todo_statuses
+03:02:59.534   chat gpt-5.6-sol
+03:02:59.582     POST api.openai.com/v1/responses
+03:03:02.348   running tool: execute
+03:03:03.324   chat gpt-5.6-sol
+03:03:03.372     POST api.openai.com/v1/responses
+03:03:07.451   running tool: read_file
+03:03:07.452   running tool: read_file
+03:03:07.452   running tool: execute
+03:03:07.599   chat gpt-5.6-sol
+03:03:07.650     POST api.openai.com/v1/responses
+03:03:15.999   running tool: update_todo_statuses
+03:03:16.006   chat gpt-5.6-sol
+03:03:16.060     POST api.openai.com/v1/responses
+03:03:19.848   running tool: update_todo_status
+03:03:19.858   chat gpt-5.6-sol
+03:03:19.913     POST api.openai.com/v1/responses
+03:03:22.068   running tool: read_todos
+03:03:22.075   chat gpt-5.6-sol
+03:03:22.130     POST api.openai.com/v1/responses
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+03:03:27.504         chat gpt-5.4
+03:03:27.514           POST api.openai.com/v1/responses
+03:03:30.158         running tool: bash_exec
+03:03:30.164 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+03:03:30.176           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+03:03:30.480         chat gpt-5.4
+03:03:30.492           POST api.openai.com/v1/responses
+03:03:38.179         running tool: start_monitor
+03:03:38.187         chat gpt-5.4
+03:03:38.200           POST api.openai.com/v1/responses
+03:03:42.120         running tool: list_monitors
+03:03:42.127         chat gpt-5.4
+03:03:42.141           POST api.openai.com/v1/responses
+03:03:46.578         running tool: list_monitors
+03:03:46.583         chat gpt-5.4
+03:03:46.599           POST api.openai.com/v1/responses
+03:03:49.543         running tool: bash_exec
+03:03:54.598         chat gpt-5.4
+03:03:54.616           POST api.openai.com/v1/responses
+03:03:56.480         running tool: list_monitors
+03:03:56.486         chat gpt-5.4
+03:03:56.511           POST api.openai.com/v1/responses
+03:04:00.413         running tool: bash_exec
+03:04:15.438         chat gpt-5.4
+03:04:15.463           POST api.openai.com/v1/responses
+03:04:16.998         running tool: list_monitors
+03:04:17.004         chat gpt-5.4
+03:04:17.025           POST api.openai.com/v1/responses
+03:04:18.952         running tool: bash_exec
+03:04:33.977         chat gpt-5.4
+03:04:34.009           POST api.openai.com/v1/responses
+03:04:35.174         running tool: list_monitors
+03:04:35.178         chat gpt-5.4
+03:04:35.201           POST api.openai.com/v1/responses
+03:04:36.801         running tool: bash_exec
+03:04:46.834         chat gpt-5.4
+03:04:46.857           POST api.openai.com/v1/responses
+03:04:48.490         running tool: list_monitors
+03:04:48.497         chat gpt-5.4
+03:04:48.523           POST api.openai.com/v1/responses
+03:04:51.412         running tool: stop_monitor
+03:04:51.418         chat gpt-5.4
+03:04:51.443           POST api.openai.com/v1/responses
+03:04:55.700         running tool: bash_exec
+03:04:56.353         chat gpt-5.4
+03:04:56.381           POST api.openai.com/v1/responses
+03:05:02.600         running tool: python_repl
+03:05:02.639         chat gpt-5.4
+03:05:02.667           POST api.openai.com/v1/responses
+[2026-08-05T03:05:43.051770Z] EXIT 0

@@ -1,0 +1,85 @@
+exit_code=0
+
+=== stdout (raw) ===
+{
+  "name": "Test ackley akg-eval-43dcff3d628d4a86ba717e0455386a93",
+  "backend": "auto",
+  "random_seed": 123,
+  "initial_design_size": 8,
+  "parameters": [
+    {
+      "name": "x_1",
+      "type": "continuous",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    },
+    {
+      "name": "x_2",
+      "type": "continuous",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    },
+    {
+      "name": "x_3",
+      "type": "continuous",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    },
+    {
+      "name": "x_4",
+      "type": "continuous",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    },
+    {
+      "name": "x_5",
+      "type": "continuous",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    },
+    {
+      "name": "x_6",
+      "type": "continuous",
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      }
+    }
+  ],
+  "objectives": [
+    {
+      "name": "surface_response",
+      "direction": "maximize",
+      "unit": "normalized_unitless"
+    }
+  ]
+}
+VALIDATE_OK {
+  "schema_version": 2,
+  "valid": true,
+  "errors": [],
+  "warnings": [],
+  "spec_summary": {
+    "name": "Test ackley akg-eval-43dcff3d628d4a86ba717e0455386a93",
+    "n_parameters": 6,
+    "n_objectives": 1,
+    "n_constraints": 0,
+    "batch_size": 1
+  }
+}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

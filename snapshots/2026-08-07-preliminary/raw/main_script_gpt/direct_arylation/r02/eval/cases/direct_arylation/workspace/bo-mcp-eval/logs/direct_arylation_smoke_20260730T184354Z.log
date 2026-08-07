@@ -1,0 +1,24 @@
+18:43:54.526 starting_direct_arylation_campaign
+18:43:54.527 POST api/api/v1/campaigns/validate
+18:43:54.537 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+Traceback (most recent call last):
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_bo.py", line 62, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_bo.py", line 47, in main
+    summary = run_campaign(
+              ^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py", line 305, in run_campaign
+    campaign_id, campaign, paths = ensure_campaign(
+                                   ^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/direct_arylation_main_script_gpt_r02/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py", line 198, in ensure_campaign
+    response = client.create_campaign(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 158, in create_campaign
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 348, in _json_request
+    raise BoMcpOperationError(
+domains.bo_mcp.client.BoMcpOperationError: BO-MCP POST /api/v1/campaigns rejected the operation: ['parameters: Mixed spaces with more than 100 categorical combinations are not yet supported by BoTorch acquisition (this space has 192). Consider reducing the number of categories or selecting another backend.']

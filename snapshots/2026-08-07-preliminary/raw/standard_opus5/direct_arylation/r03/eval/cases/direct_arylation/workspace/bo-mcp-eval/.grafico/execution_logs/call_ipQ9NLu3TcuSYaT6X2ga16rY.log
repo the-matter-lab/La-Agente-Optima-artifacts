@@ -1,0 +1,17 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+  File "<stdin>", line 9
+    print(f"{i}\t{rec.get(status)}\t{y if y is not None else }\t{pv[base]}\t{pv[ligand]}\t{pv[solvent]}\t{pv[concentration]}\t{pv[temperature_c]}")
+                                       ^^
+SyntaxError: f-string: expecting '=', or '!', or ':', or '}'
+
+
+=== stderr (model-visible) ===
+  File "<stdin>", line 9
+    print(f"{i}\t{rec.get(status)}\t{y if y is not None else }\t{pv[base]}\t{pv[ligand]}\t{pv[solvent]}\t{pv[concentration]}\t{pv[temperature_c]}")
+                                       ^^
+SyntaxError: f-string: expecting '=', or '!', or ':', or '}'

@@ -1,0 +1,1 @@
+"""Direct-arylation reaction-yield BO-MCP campaign package."""

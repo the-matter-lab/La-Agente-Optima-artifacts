@@ -1,0 +1,80 @@
+{
+  "schema_version": 2,
+  "success": true,
+  "campaign_status": "running",
+  "iteration": 1,
+  "n_results": 6,
+  "n_pending_suggestions": 0,
+  "errors": [],
+  "warnings": [],
+  "pareto_front": null,
+  "hypervolume": null,
+  "n_pareto_points": null,
+  "best_value": 0.05868843012971051,
+  "best_parameters": {
+    "x_1": 0.16255420446395874,
+    "x_2": 0.22815877199172974,
+    "x_3": 0.67501300573349,
+    "x_4": 0.8369668126106262,
+    "x_5": 0.9668462872505188,
+    "x_6": 0.039590634405612946
+  },
+  "improvement_history": [
+    0.045383206773402206,
+    0.045383206773402206,
+    0.045383206773402206,
+    0.05868843012971051,
+    0.05868843012971051,
+    0.05868843012971051
+  ],
+  "improvement_rate": 0.29317503769050796,
+  "feature_importance": null,
+  "model_correlation": null,
+  "objective_ranges": {
+    "surface_response": {
+      "min": 0.023640066261430948,
+      "max": 0.05868843012971051,
+      "direction": "maximize"
+    }
+  },
+  "model_info": {
+    "backend": "botorch",
+    "type": "SingleTaskGP",
+    "acquisition_function": "expected_improvement",
+    "batch_strategy": "L-BFGS-B with random restarts",
+    "kernel": "RBF with automatic relevance determination (ARD)",
+    "input_warping": false
+  },
+  "health_status": "healthy",
+  "progress_status": "improving",
+  "next_action_recommendation": {
+    "action": "review_outliers",
+    "reason": "Detected 1 potential outlier(s). Verify measurements for errors.",
+    "urgency": "normal"
+  },
+  "uncertainty_trend": null,
+  "exploration_exploitation": {
+    "exploration_ratio": 0.5,
+    "diversity_score": 1.0,
+    "average_distance_to_best": 1.0153,
+    "balance_assessment": "exploration_heavy",
+    "recommendation": "Suggestions are primarily exploring new regions. If optimization is mature, consider reducing exploration."
+  },
+  "suggestion_diversity": null,
+  "constraint_satisfaction": null,
+  "outcome_constraint_calibration": null,
+  "convergence": {
+    "converged": false,
+    "convergence_score": 0.0,
+    "reason": "Insufficient history (6/10 observations required)",
+    "avg_improvement": 0.0,
+    "iterations_without_improvement": 0,
+    "recommendation": "Continue optimization to gather more data."
+  },
+  "_metadata": {
+    "backend": "botorch",
+    "backend_source": "campaign",
+    "protocol": "rest",
+    "server_version": "0.1.0"
+  }
+}

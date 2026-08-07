@@ -1,0 +1,155 @@
+
+[2026-07-30T15:46:15.632345Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Network mx-20260730-standard-gpt_default Creating 
+ Network mx-20260730-standard-gpt_default Created 
+ Volume mx-20260730-standard-gpt_postgres-data Creating 
+ Volume mx-20260730-standard-gpt_postgres-data Created 
+ Container mx-20260730-standard-gpt-db-1 Creating 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Creating 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Created 
+ Container mx-20260730-standard-gpt-db-1 Created 
+ Container mx-20260730-standard-gpt-api-1 Creating 
+ Container mx-20260730-standard-gpt-api-1 Created 
+ Container mx-20260730-standard-gpt-mcp-1 Creating 
+ Container mx-20260730-standard-gpt-mcp-1 Created 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-standard-gpt-db-1 Starting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Started 
+ Container mx-20260730-standard-gpt-db-1 Started 
+ Container mx-20260730-standard-gpt-db-1 Waiting 
+ Container mx-20260730-standard-gpt-db-1 Error dependency db failed to start
+dependency failed to start: container mx-20260730-standard-gpt-db-1 is unhealthy
+[2026-07-30T15:47:52.544577Z] EXIT 1
+
+[2026-07-30T15:47:53.018104Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-standard-gpt-mcp-1 Stopping 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-standard-gpt-mcp-1 Stopped 
+ Container mx-20260730-standard-gpt-api-1 Stopping 
+ Container mx-20260730-standard-gpt-api-1 Stopped 
+ Container mx-20260730-standard-gpt-db-1 Stopping 
+ Container mx-20260730-standard-gpt-db-1 Stopped 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Stopped 
+[2026-07-30T15:48:17.514389Z] EXIT 0
+
+[2026-07-30T15:50:53.739959Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-standard-gpt-db-1 Recreate 
+ Container mx-20260730-standard-gpt-db-1 Recreated 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-standard-gpt-db-1 Starting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Started 
+ Container mx-20260730-standard-gpt-db-1 Started 
+ Container mx-20260730-standard-gpt-db-1 Waiting 
+ Container mx-20260730-standard-gpt-db-1 Healthy 
+ Container mx-20260730-standard-gpt-api-1 Starting 
+ Container mx-20260730-standard-gpt-api-1 Started 
+ Container mx-20260730-standard-gpt-api-1 Waiting 
+ Container mx-20260730-standard-gpt-api-1 Healthy 
+ Container mx-20260730-standard-gpt-mcp-1 Starting 
+ Container mx-20260730-standard-gpt-mcp-1 Started 
+ Container mx-20260730-standard-gpt-api-1 Waiting 
+ Container mx-20260730-standard-gpt-mcp-1 Waiting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-standard-gpt-db-1 Waiting 
+ Container mx-20260730-standard-gpt-db-1 Healthy 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-standard-gpt-api-1 Healthy 
+ Container mx-20260730-standard-gpt-mcp-1 Healthy 
+[2026-07-30T15:54:53.060749Z] EXIT 0
+
+[2026-07-30T15:54:53.498911Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--dry-run", "--output-dir", "/app/outputs/control/preflight", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "preflight-standard_gpt-20260730", "--subagent-model", "openai-responses:gpt-5.4"]
+ Container mx-20260730-standard-gpt-eval-run-2c476231b68b Creating 
+ Container mx-20260730-standard-gpt-eval-run-2c476231b68b Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+15:55:25.003 evaluate bo_mcp_graph_eval
+15:55:25.004   case: synthetic_ackley_6d
+15:55:25.004     execute _run_case
+[2026-07-30T15:55:49.654301Z] EXIT 0
+
+[2026-07-30T15:58:14.815404Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-standard-gpt-mcp-1 Stopping 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-standard-gpt-mcp-1 Stopped 
+ Container mx-20260730-standard-gpt-api-1 Stopping 
+ Container mx-20260730-standard-gpt-api-1 Stopped 
+ Container mx-20260730-standard-gpt-db-1 Stopping 
+ Container mx-20260730-standard-gpt-db-1 Stopped 
+[2026-07-30T15:58:49.372394Z] EXIT 0
+
+[2026-07-30T16:31:41.261270Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-standard-gpt-db-1 Starting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-standard-gpt-db-1 Started 
+ Container mx-20260730-standard-gpt-db-1 Waiting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Started 
+ Container mx-20260730-standard-gpt-db-1 Healthy 
+ Container mx-20260730-standard-gpt-api-1 Starting 
+ Container mx-20260730-standard-gpt-api-1 Started 
+ Container mx-20260730-standard-gpt-api-1 Waiting 
+ Container mx-20260730-standard-gpt-api-1 Healthy 
+ Container mx-20260730-standard-gpt-mcp-1 Starting 
+ Container mx-20260730-standard-gpt-mcp-1 Started 
+ Container mx-20260730-standard-gpt-mcp-1 Waiting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-standard-gpt-db-1 Waiting 
+ Container mx-20260730-standard-gpt-api-1 Waiting 
+ Container mx-20260730-standard-gpt-api-1 Healthy 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-standard-gpt-db-1 Healthy 
+ Container mx-20260730-standard-gpt-mcp-1 Healthy 
+[2026-07-30T16:34:20.226261Z] EXIT 0
+
+[2026-07-30T17:37:28.528184Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-07-30T17:37:29.909771Z] EXIT 0
+
+[2026-07-30T17:37:30.206727Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-standard-gpt-mcp-1 Stopping 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-standard-gpt-mcp-1 Stopped 
+ Container mx-20260730-standard-gpt-api-1 Stopping 
+ Container mx-20260730-standard-gpt-api-1 Stopped 
+ Container mx-20260730-standard-gpt-db-1 Stopping 
+ Container mx-20260730-standard-gpt-db-1 Stopped 
+[2026-07-30T17:37:36.885580Z] EXIT 0
+
+[2026-07-30T17:52:35.672246Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container mx-20260730-standard-gpt-db-1 Starting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Starting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Started 
+ Container mx-20260730-standard-gpt-db-1 Started 
+ Container mx-20260730-standard-gpt-db-1 Waiting 
+ Container mx-20260730-standard-gpt-db-1 Healthy 
+ Container mx-20260730-standard-gpt-api-1 Starting 
+ Container mx-20260730-standard-gpt-api-1 Started 
+ Container mx-20260730-standard-gpt-api-1 Waiting 
+ Container mx-20260730-standard-gpt-api-1 Healthy 
+ Container mx-20260730-standard-gpt-mcp-1 Starting 
+ Container mx-20260730-standard-gpt-mcp-1 Started 
+ Container mx-20260730-standard-gpt-mcp-1 Waiting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Waiting 
+ Container mx-20260730-standard-gpt-db-1 Waiting 
+ Container mx-20260730-standard-gpt-api-1 Waiting 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Healthy 
+ Container mx-20260730-standard-gpt-db-1 Healthy 
+ Container mx-20260730-standard-gpt-api-1 Healthy 
+ Container mx-20260730-standard-gpt-mcp-1 Healthy 
+[2026-07-30T17:53:18.513587Z] EXIT 0
+
+[2026-07-30T18:06:45.610044Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-07-30T18:06:47.831838Z] EXIT 0
+
+[2026-07-30T18:06:48.680789Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-gpt", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "stop"]
+ Container mx-20260730-standard-gpt-mcp-1 Stopping 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Stopping 
+ Container mx-20260730-standard-gpt-direct-arylation-oracle-1 Stopped 
+ Container mx-20260730-standard-gpt-mcp-1 Stopped 
+ Container mx-20260730-standard-gpt-api-1 Stopping 
+ Container mx-20260730-standard-gpt-api-1 Stopped 
+ Container mx-20260730-standard-gpt-db-1 Stopping 
+ Container mx-20260730-standard-gpt-db-1 Stopped 
+[2026-07-30T18:07:03.241551Z] EXIT 0

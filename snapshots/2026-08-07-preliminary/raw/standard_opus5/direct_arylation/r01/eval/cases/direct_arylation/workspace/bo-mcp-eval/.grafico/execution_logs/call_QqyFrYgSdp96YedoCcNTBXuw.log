@@ -1,0 +1,161 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Direct arylation reaction-yield campaign — how to execute
+
+Cache-buster nonce: `63564e1a-5ca5-4172-97e2-374479e19e77`
+Campaign ownership marker (in every campaign name created here): `akg-eval-2805014a05614c938643d467cfb9d6ff`
+
+## What it does
+
+Maximizes the **measured reaction yield** (`yield`, percent, maximize) of a direct
+arylation reaction over the fixed fully crossed benchmark space of **1,728**
+measured reactions:
+
+| parameter | type | values |
+|---|---|---|
+| `base` | categorical | Potassium acetate, Potassium pivalate, Cesium acetate, Cesium pivalate |
+| `ligand` | categorical | BrettPhos, Di-tert-butylphenylphosphine, (t-Bu)PhCPhos, Tricyclohexylphosphine, PPh3, XPhos, P(2-furyl)3, Methyldiphenylphosphine, 1268824-69-6, JackiePhos, SCHEMBL15068049, Me2PPh |
+| `solvent` | categorical | DMAc, Butyornitrile, Butyl Ester, p-Xylene |
+| `concentration` | discrete | 0.057, 0.1, 0.153 |
+| `temperature_c` | discrete | 90, 105, 120 |
+
+All Bayesian optimization runs through **BO-MCP** (`BoMcpClient`) with the
+**BayBE** backend: one-hot encoded categoricals, sequential suggestions
+(`batch_size=1`), 6 space-filling warmup points, qLogNEI
+(`noisy_expected_improvement`) acquisition, `random_seed=2805`. No local BO,
+no local results branch, no enumeration of the search space.
+
+Each candidate is evaluated by exactly one oracle call:
+`POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate` with a JSON body carrying the
+five exact lowercase parameter names; response `{"yield": <float>}`. A non-2xx
+response (or unusable payload / transport error) is an **attempted but failed**
+evaluation: it consumes budget, is recorded in the artifacts, and its
+suggestion is retired with status `rejected` (no penalty value is invented for
+it, and its coordinates are not excluded from future generation).
+
+## Environment requirements
+
+```
+BO_MCP_API_URL           # BO-MCP REST API base URL   (already set in this container)
+BO_MCP_API_KEY           # BO-MCP API key             (already set)
+DIRECT_ARYLATION_API_URL # oracle base URL            (already set)
+```
+Run with the repo's `uv` environment: `uv run --project /app python ...`.
+
+## Budget accounting — READ FIRST
+
+Total benchmark budget: **60 attempted evaluations**.
+`--max-attempts` is a **per-invocation** budget (the campaign intake is
+deliberately *not* capped with `max_iterations`, so it can be resumed).
+
+Bounded smoke tests already ran on the campaign below and consumed
+**3 attempted evaluations** (3 successful, 0 failed). Reuse that campaign and
+run the **remaining 57**:
+
+```bash
+cd <this workspace>
+uv run --project /app python -u run_direct_arylation_yield.py \
+  --campaign-id 1c52ea2a-2442-43ea-bc9e-cb017b5d9697 \
+  --max-attempts 57 --poll-s 180 --heartbeat-s 1800
+```
+
+If you prefer a completely fresh campaign instead, omit `--campaign-id` and use
+`--max-attempts 60` (a new campaign is created, still carrying the ownership
+marker in its name).
+
+## Resuming / interrupting
+
+* **Resume** (after a kill, pause, or a partially spent budget): re-run the same
+  command with `--campaign-id <id>` and `--max-attempts <remaining>`. The loop
+  re-derives its position from the BO-MCP server (`next_action`), and
+  automatically `resume`s a paused campaign or `reopen`s a completed one. No
+  loop state is stored on disk.
+* **Graceful stop**: `touch STOP` in the working directory. The file is checked
+  at the top of each iteration *before* a suggestion is generated; the script
+  prints `[EVENT]`, deletes the marker (so the resume command is not blocked by
+  a stale file), pauses the campaign if it is running, prints the final report,
+  and exits. Override the path with `--stop-file`.
+* At the end of every invocation the campaign is **paused**, never terminated.
+
+## CLI flags
+
+| flag | default | meaning |
+|---|---|---|
+| `--campaign-id` | none | resume/continue an existing campaign |
+| `--max-attempts` | 60 | attempted evaluations for **this** invocation |
+| `--batch-size` | 1 | suggestions per BO round |
+| `--initial-design-size` | 6 | space-filling warmup points |
+| `--random-seed` | 2805 | campaign RNG seed |
+| `--poll-s` | 180 | wait between retries when no suggestion is available |
+| `--heartbeat-s` | 1800 | `[HEARTBEAT]` liveness interval |
+| `--stop-file` | `STOP` | graceful-stop marker path |
+| `--artifacts-root` | `artifacts` | artifact root (`<root>/<campaign_id>/`) |
+| `--eval-timeout-s` | 120 | per-oracle-call timeout |
+| `--log-file` | `direct_arylation_yield_run.log` | run log |
+
+## Stdout tags (everything else goes to the run log)
+
+| tag | meaning |
+|---|---|
+| `[EVENT]` | state changes: campaign created/reused, resume/reopen/pause, stop file, budget exhausted |
+| `[ALERT]` | failed evaluations, server-side stop conditions, no suggestions available |
+| `[RESULT]` | full per-attempt analysis (status, yield, conditions, best-so-far) and the final report |
+| `[HEARTBEAT]` | liveness ping |
+
+Suggested monitor filter: `^\[(EVENT|ALERT|RESULT|HEARTBEAT)\]`.
+
+## Artifacts
+
+`artifacts/<campaign_id>/`
+
+* `attempts.jsonl` — append-only, **one record per attempted evaluation**.
+* `attempts.json` — the same records as a JSON array (required local JSON artifact).
+* `final_report.json` — best conditions, best measured yield, successful /
+  attempted counts, and every evaluated candidate with status and objective values.
+
+Every attempt record uses the standardized shape:
+
+```json
+{
+  "attempt": 1, "attempted_at": "...", "campaign_id": "...",
+  "nonce": "63564e1a-5ca5-4172-97e2-374479e19e77",
+  "suggestion_id": "...", "status": "success",
+  "parameter_values": {"base": "...", "ligand": "...", "solvent": "...",
+                       "concentration": 0.1, "temperature_c": 105.0},
+  "objective_values": {"yield": 78.95},
+  "detail": "ok"
+}
+```
+Failed attempts carry `"status": "failed"`, `"objective_values": null` and the
+error in `detail`.
+
+## Validating a run
+
+```bash
+uv run --project /app python -m py_compile run_direct_arylation_yield.py direct_arylation_yield/*.py
+
+# single-iteration smoke test (consumes 1 attempted evaluation)
+uv run --project /app python -u run_direct_arylation_yield.py \
+  --campaign-id 1c52ea2a-2442-43ea-bc9e-cb017b5d9697 --max-attempts 1
+```
+
+After the full run, check that
+`final_report.json`'s `n_attempted_evaluations_campaign` is **60** and that
+`wc -l artifacts/<campaign_id>/attempts.jsonl` is **60**.
+
+## Files
+
+* `run_direct_arylation_yield.py` — CLI/config wiring only.
+* `direct_arylation_yield/search_space.py` — the fixed 1,728-point space.
+* `direct_arylation_yield/intake.py` — immutable BO-MCP/BayBE campaign intake.
+* `direct_arylation_yield/evaluation.py` — campaign-agnostic oracle harness.
+* `direct_arylation_yield/reporting.py` — records, artifacts, tagged stdout, report.
+* `direct_arylation_yield/campaign.py` — BO-MCP loop orchestration.
+* `campaign_manifest.json` — module paths, entrypoint, latest artifact dir, budget state.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

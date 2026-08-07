@@ -1,0 +1,264 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- updated search_space.py ---
+"""Search-space definition for the direct arylation benchmark.
+
+Three parameters (base, ligand, solvent) are declared as categorical
+(string-valued) to preserve exact spelling.  Two parameters
+(concentration, temperature_c) are declared as discrete numeric so
+BO-MCP and the oracle both receive JSON numbers, not strings.
+"""
+
+MARKER = "akg-eval-d9613e26762c4c47a426799e86b370f2"
+NONCE = "a375b9bd-ae19-499a-9006-4ecc7a3bc68d"
+
+# Exact parameter names and values as required by the oracle.
+# Categorical parameters use string lists; discrete numeric parameters
+# use float lists so BO-MCP and the oracle both see JSON numbers.
+CATEGORICAL_PARAMS = {
+    "base": [
+        "Potassium acetate",
+        "Potassium pivalate",
+        "Cesium acetate",
+        "Cesium pivalate",
+    ],
+    "ligand": [
+        "BrettPhos",
+        "Di-tert-butylphenylphosphine",
+        "(t-Bu)PhCPhos",
+        "Tricyclohexylphosphine",
+        "PPh3",
+        "XPhos",
+        "P(2-furyl)3",
+        "Methyldiphenylphosphine",
+        "1268824-69-6",
+        "JackiePhos",
+        "SCHEMBL15068049",
+        "Me2PPh",
+    ],
+    "solvent": [
+        "DMAc",
+        "Butyornitrile",
+        "Butyl Ester",
+        "p-Xylene",
+    ],
+}
+
+DISCRETE_NUMERIC_PARAMS = {
+    "concentration": [0.057, 0.1, 0.153],
+    "temperature_c": [90, 105, 120],
+}
+
+# Total search-space size: 4 * 12 * 4 * 3 * 3 = 1728
+TOTAL_SPACE_SIZE = 1
+for _v in CATEGORICAL_PARAMS.values():
+    TOTAL_SPACE_SIZE *= len(_v)
+for _v in DISCRETE_NUMERIC_PARAMS.values():
+    TOTAL_SPACE_SIZE *= len(_v)
+
+
+def build_parameters() -> list[dict]:
+    """Return the BO-MCP intake ``parameters`` list.
+
+    Categorical parameters (base, ligand, solvent) are declared as
+    ``categorical`` with string categories.  Discrete numeric parameters
+    (concentration, temperature_c) are declared as ``discrete`` with
+    explicit float/int values so BO-MCP returns them as numbers and the
+    oracle payload uses JSON numbers.
+    """
+    params: list[dict] = []
+    for name, categories in CATEGORICAL_PARAMS.items():
+        params.append(
+            {
+                "name": name,
+                "type": "categorical",
+                "categories": categories,
+            }
+        )
+    for name, values in DISCRETE_NUMERIC_PARAMS.items():
+        params.append(
+            {
+                "name": name,
+                "type": "discrete",
+                "values": values,
+            }
+        )
+    return params
+--- updated evaluation.py ---
+"""Oracle evaluation for the direct arylation benchmark.
+
+Calls the external oracle at ``DIRECT_ARYLATION_API_URL`` and returns
+the measured yield.  A non-2xx response counts as a failed attempt.
+"""
+
+from __future__ import annotations
+
+import os
+from typing import Any
+
+import requests
+
+_ORACLE_TIMEOUT_S = 30.0
+
+
+def _oracle_base_url() -> str:
+    url = os.getenv("DIRECT_ARYLATION_API_URL")
+    if not url:
+        raise RuntimeError("DIRECT_ARYLATION_API_URL is not set")
+    return url.rstrip("/")
+
+
+def evaluate_candidate(parameter_values: dict[str, Any]) -> dict:
+    """Evaluate a single candidate against the direct-arylation oracle.
+
+    Returns a dict with keys:
+      ``parameter_values`` — the exact five-name dict sent to the oracle
+      ``status``           — ``"success"`` or ``"failed"``
+      ``objective_values`` — ``{"yield": <float>}`` on success, absent on failure
+      ``error``            — error detail string on failure, absent on success
+    """
+    # Build the payload with exact parameter names and values.
+    # Categorical params (base, ligand, solvent) are sent as strings.
+    # Discrete numeric params (concentration, temperature_c) are sent as
+    # JSON numbers — the oracle expects numeric values, not strings.
+    _NUMERIC_KEYS = {"concentration", "temperature_c"}
+    payload = {}
+    for key in ("base", "ligand", "solvent", "concentration", "temperature_c"):
+        val = parameter_values.get(key)
+        if val is None:
+            return {
+                "parameter_values": parameter_values,
+                "status": "failed",
+                "error": f"Missing parameter: {key}",
+            }
+        if key in _NUMERIC_KEYS:
+            payload[key] = float(val)
+        else:
+            payload[key] = str(val)
+
+    base_url = _oracle_base_url()
+    url = f"{base_url}/v1/evaluate"
+
+    try:
+        resp = requests.post(url, json=payload, timeout=_ORACLE_TIMEOUT_S)
+    except requests.RequestException as exc:
+        return {
+            "parameter_values": parameter_values,
+            "status": "failed",
+            "error": f"Request exception: {exc}",
+        }
+
+    if resp.status_code < 200 or resp.status_code >= 300:
+        return {
+            "parameter_values": parameter_values,
+            "status": "failed",
+            "error": f"HTTP {resp.status_code}: {resp.text[:200]}",
+        }
+
+    try:
+        body = resp.json()
+    except ValueError:
+        return {
+            "parameter_values": parameter_values,
+            "status": "failed",
+            "error": f"Non-JSON response: {resp.text[:200]}",
+        }
+
+    # The oracle returns {"yield": <float>}.  Use explicit key check
+    # (not ``or``) because 0.0 is a valid yield value.
+    yield_val = None
+    if isinstance(body, dict) and "yield" in body:
+        yield_val = body["yield"]
+    elif isinstance(body, dict) and "yield_percent" in body:
+        yield_val = body["yield_percent"]
+    elif isinstance(body, dict) and "result" in body:
+        yield_val = body["result"]
+    elif isinstance(body, (int, float)):
+        yield_val = float(body)
+
+    if yield_val is None:
+        return {
+            "parameter_values": parameter_values,
+            "status": "failed",
+            "error": f"No yield in response: {str(body)[:200]}",
+        }
+
+    return {
+        "parameter_values": parameter_values,
+        "status": "success",
+        "objective_values": {"yield": float(yield_val)},
+    }
+--- updated HOW_TO_EXECUTE excerpt ---
+7:concentrations × 3 temperatures) using Bayesian optimization via the BO-MCP
+91:### evaluation_log.jsonl Record Format
+103:    "concentration": 0.1,
+104:    "temperature_c": 105
+124:## Campaign Design
+|---|---|
+| `[EVENT]` | State changes, campaign lifecycle, iteration progress |
+| `[ALERT]` | Failures, errors, non-2xx oracle responses |
+| `[RESULT]` | Full per-experiment analysis: attempt number, yield, parameters |
+| `[HEARTBEAT]` | Liveness signal (every `--heartbeat-s` seconds, default 1800) |
+
+The final line of output is always:
+
+```
+BO_MCP_CAMPAIGN_ID=<campaign_id>
+```
+
+## Outputs and Artifacts
+
+All artifacts are written to the `--artifact-dir` (default: `./artifacts`):
+
+| File | Description |
+|---|---|
+| `evaluation_log.jsonl` | One JSON record per attempt (append-only) |
+| `diagnostics.json` | Campaign diagnostics from BO-MCP (fetched at end) |
+
+### evaluation_log.jsonl Record Format
+
+Each line is a JSON object:
+
+```json
+{
+  "attempt_index": 1,
+  "timestamp": "2026-07-30T17:30:00.000000+00:00",
+  "parameter_values": {
+    "base": "Potassium acetate",
+    "ligand": "BrettPhos",
+    "solvent": "DMAc",
+    "concentration": 0.1,
+    "temperature_c": 105
+  "status": "success",
+  "objective_values": {"yield": 42.5},
+  "suggestion_id": "abc123"
+}
+```
+
+For **failed** attempts:
+
+```json
+{
+  "attempt_index": 2,
+  "timestamp": "...",
+  "parameter_values": {...},
+  "status": "failed",
+  "error": "HTTP 500: internal error",
+  "suggestion_id": "def456"
+}
+```
+
+## Campaign Design
+
+| Aspect | Choice | Rationale |
+|---|---|---|
+| Parameter encoding | 3 categorical + 2 discrete numeric | Categorical preserves spelling; discrete numeric sends JSON numbers to oracle |
+| Batch size | 1 | Sequential evaluation; each observation informs the next |
+| Initial design | 8 Sobol points | Sparse warmup for 5-dim mixed space |
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

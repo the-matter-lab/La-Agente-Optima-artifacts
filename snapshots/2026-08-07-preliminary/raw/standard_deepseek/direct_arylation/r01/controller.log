@@ -1,0 +1,277 @@
+
+[2026-07-30T17:28:28.436161Z] COMMAND ["docker", "compose", "-p", "mx-20260730-standard-deepseek", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "direct_arylation", "--output-dir", "/app/outputs/cells/direct_arylation_standard_deepseek_r01/eval", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "direct_arylation_standard_deepseek_r01-20260730", "--subagent-model", "openrouter:deepseek/deepseek-v4-pro"]
+ Container mx-20260730-standard-deepseek-eval-run-68681ebc2a10 Creating 
+ Container mx-20260730-standard-deepseek-eval-run-68681ebc2a10 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+17:28:39.511 evaluate bo_mcp_graph_eval
+17:28:39.511   case: direct_arylation
+17:28:39.512     execute _run_case
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+17:28:55.088       agent run
+17:28:55.094         chat gpt-5.4
+17:28:55.728           POST api.openai.com/v1/responses
+17:29:10.142         running tool: task
+17:29:10.147 agent run
+17:29:10.159   chat deepseek/deepseek-v4-pro
+17:29:10.170     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+17:29:10.174         chat gpt-5.4
+17:29:10.187           POST api.openai.com/v1/responses
+17:29:11.684         running tool: wait_tasks
+             agent run
+17:29:21.484   running tool: read_todos
+17:29:21.491   chat deepseek/deepseek-v4-pro
+17:29:21.497     POST openrouter.ai/api/v1/chat/completions
+17:29:31.209   running tool: write_todos
+17:29:31.217   chat deepseek/deepseek-v4-pro
+17:29:31.222     POST openrouter.ai/api/v1/chat/completions
+17:29:37.840   running tool: inspect_bo_mcp_openapi_overview
+17:29:37.841   running tool: execute
+17:29:38.853   chat deepseek/deepseek-v4-pro
+17:29:38.860     POST openrouter.ai/api/v1/chat/completions
+17:29:45.391   running tool: read_file
+17:29:45.393   running tool: inspect_bo_mcp_openapi_operation
+17:29:45.410   chat deepseek/deepseek-v4-pro
+17:29:45.416     POST openrouter.ai/api/v1/chat/completions
+17:29:51.295   running tool: glob
+17:29:51.295   running tool: glob
+17:29:51.304   chat deepseek/deepseek-v4-pro
+17:29:51.311     POST openrouter.ai/api/v1/chat/completions
+17:29:59.076   running tool: glob
+17:29:59.082   chat deepseek/deepseek-v4-pro
+17:29:59.090     POST openrouter.ai/api/v1/chat/completions
+17:30:04.806   running tool: grep
+17:30:04.816   chat deepseek/deepseek-v4-pro
+17:30:04.823     POST openrouter.ai/api/v1/chat/completions
+17:30:11.062   running tool: execute
+17:30:11.201   chat deepseek/deepseek-v4-pro
+17:30:11.209     POST openrouter.ai/api/v1/chat/completions
+17:30:17.555   running tool: execute
+17:30:17.692   chat deepseek/deepseek-v4-pro
+17:30:17.701     POST openrouter.ai/api/v1/chat/completions
+17:30:33.859   running tool: inspect_bo_mcp_openapi_operation
+17:30:33.860   running tool: inspect_bo_mcp_openapi_operation
+17:30:33.861   running tool: inspect_bo_mcp_openapi_operation
+17:30:33.891   chat deepseek/deepseek-v4-pro
+17:30:33.900     POST openrouter.ai/api/v1/chat/completions
+17:30:49.929   running tool: update_todo_status
+17:30:49.936   chat deepseek/deepseek-v4-pro
+17:30:49.948     POST openrouter.ai/api/v1/chat/completions
+17:30:54.433   running tool: read_todos
+17:30:54.441   chat deepseek/deepseek-v4-pro
+17:30:54.450     POST openrouter.ai/api/v1/chat/completions
+17:31:05.303   running tool: update_todo_statuses
+17:31:05.315   chat deepseek/deepseek-v4-pro
+17:31:05.334     POST openrouter.ai/api/v1/chat/completions
+17:31:15.774   running tool: execute
+17:31:15.793   chat deepseek/deepseek-v4-pro
+17:31:15.803     POST openrouter.ai/api/v1/chat/completions
+17:31:21.220   running tool: execute
+17:31:21.239   chat deepseek/deepseek-v4-pro
+17:31:21.249     POST openrouter.ai/api/v1/chat/completions
+17:31:33.792   running tool: execute
+17:31:33.811   chat deepseek/deepseek-v4-pro
+17:31:33.821     POST openrouter.ai/api/v1/chat/completions
+17:32:04.402   running tool: write_file
+17:32:04.403   running tool: write_file
+17:32:04.403   running tool: write_file
+17:32:04.405   running tool: write_file
+17:32:04.415   chat deepseek/deepseek-v4-pro
+17:32:04.430     POST openrouter.ai/api/v1/chat/completions
+17:32:54.815   running tool: write_file
+17:32:54.823   chat deepseek/deepseek-v4-pro
+17:32:54.838     POST openrouter.ai/api/v1/chat/completions
+17:33:36.216   running tool: write_file
+17:33:36.217   running tool: write_file
+17:33:36.218   running tool: write_file
+17:33:36.227   chat deepseek/deepseek-v4-pro
+17:33:36.240     POST openrouter.ai/api/v1/chat/completions
+17:33:55.055   running tool: update_todo_statuses
+17:33:55.065   chat deepseek/deepseek-v4-pro
+17:33:55.082     POST openrouter.ai/api/v1/chat/completions
+17:34:02.581   running tool: execute
+17:34:02.634   chat deepseek/deepseek-v4-pro
+17:34:02.647     POST openrouter.ai/api/v1/chat/completions
+17:34:08.383   running tool: execute
+17:34:08.396   chat deepseek/deepseek-v4-pro
+17:34:08.409     POST openrouter.ai/api/v1/chat/completions
+17:34:27.447   running tool: execute
+17:34:27.485   chat deepseek/deepseek-v4-pro
+17:34:27.510     POST openrouter.ai/api/v1/chat/completions
+17:34:46.802   running tool: execute
+17:34:47.478   chat deepseek/deepseek-v4-pro
+17:34:47.504     POST openrouter.ai/api/v1/chat/completions
+17:34:55.319   running tool: execute
+17:34:55.356   chat deepseek/deepseek-v4-pro
+17:34:55.375     POST openrouter.ai/api/v1/chat/completions
+17:35:01.063   running tool: execute
+17:35:01.094   chat deepseek/deepseek-v4-pro
+17:35:01.110     POST openrouter.ai/api/v1/chat/completions
+17:35:10.861   running tool: execute
+17:35:10.881   chat deepseek/deepseek-v4-pro
+17:35:10.908     POST openrouter.ai/api/v1/chat/completions
+17:35:15.737   running tool: execute
+17:35:15.775   chat deepseek/deepseek-v4-pro
+17:35:15.790     POST openrouter.ai/api/v1/chat/completions
+17:35:24.049   running tool: execute
+17:35:24.064   chat deepseek/deepseek-v4-pro
+17:35:24.084     POST openrouter.ai/api/v1/chat/completions
+17:35:33.781   running tool: execute
+17:35:33.974   chat deepseek/deepseek-v4-pro
+17:35:33.989     POST openrouter.ai/api/v1/chat/completions
+17:35:40.846   running tool: execute
+17:35:40.878   chat deepseek/deepseek-v4-pro
+17:35:40.894     POST openrouter.ai/api/v1/chat/completions
+17:35:47.639   running tool: execute
+17:35:47.784   chat deepseek/deepseek-v4-pro
+17:35:47.800     POST openrouter.ai/api/v1/chat/completions
+17:35:55.035   running tool: execute
+17:35:55.397   chat deepseek/deepseek-v4-pro
+17:35:55.414     POST openrouter.ai/api/v1/chat/completions
+17:36:11.472   running tool: execute
+17:36:11.959   chat deepseek/deepseek-v4-pro
+17:36:11.976     POST openrouter.ai/api/v1/chat/completions
+17:36:28.148   running tool: execute
+17:36:28.293   chat deepseek/deepseek-v4-pro
+17:36:28.313     POST openrouter.ai/api/v1/chat/completions
+17:36:49.078   running tool: execute
+17:36:50.170   chat deepseek/deepseek-v4-pro
+17:36:50.194     POST openrouter.ai/api/v1/chat/completions
+17:36:58.277   running tool: read_file
+17:36:58.285   chat deepseek/deepseek-v4-pro
+17:36:58.309     POST openrouter.ai/api/v1/chat/completions
+17:37:05.436   running tool: hashline_edit
+17:37:05.445   chat deepseek/deepseek-v4-pro
+17:37:05.469     POST openrouter.ai/api/v1/chat/completions
+17:37:10.725   running tool: read_file
+17:37:10.735   chat deepseek/deepseek-v4-pro
+17:37:10.759     POST openrouter.ai/api/v1/chat/completions
+17:37:19.084   running tool: hashline_edit
+17:37:19.379   chat deepseek/deepseek-v4-pro
+17:37:19.414     POST openrouter.ai/api/v1/chat/completions
+17:37:26.535   running tool: read_file
+17:37:26.546   chat deepseek/deepseek-v4-pro
+17:37:26.565     POST openrouter.ai/api/v1/chat/completions
+17:37:33.724   running tool: hashline_edit
+17:37:33.735   chat deepseek/deepseek-v4-pro
+17:37:33.753     POST openrouter.ai/api/v1/chat/completions
+17:37:43.206   running tool: hashline_edit
+17:37:43.213   chat deepseek/deepseek-v4-pro
+17:37:43.236     POST openrouter.ai/api/v1/chat/completions
+17:37:49.000   running tool: read_file
+17:37:49.011   chat deepseek/deepseek-v4-pro
+17:37:49.043     POST openrouter.ai/api/v1/chat/completions
+17:37:56.376   running tool: hashline_edit
+17:37:56.384   chat deepseek/deepseek-v4-pro
+17:37:56.409     POST openrouter.ai/api/v1/chat/completions
+17:38:04.337   running tool: hashline_edit
+17:38:04.346   chat deepseek/deepseek-v4-pro
+17:38:04.366     POST openrouter.ai/api/v1/chat/completions
+17:38:12.564   running tool: hashline_edit
+17:38:12.574   chat deepseek/deepseek-v4-pro
+17:38:12.595     POST openrouter.ai/api/v1/chat/completions
+17:38:18.606   running tool: hashline_edit
+17:38:18.615   chat deepseek/deepseek-v4-pro
+17:38:18.643     POST openrouter.ai/api/v1/chat/completions
+17:38:24.416   running tool: read_file
+17:38:24.425   chat deepseek/deepseek-v4-pro
+17:38:24.450     POST openrouter.ai/api/v1/chat/completions
+17:38:30.797   running tool: hashline_edit
+17:38:30.806   chat deepseek/deepseek-v4-pro
+17:38:30.831     POST openrouter.ai/api/v1/chat/completions
+17:38:36.235   running tool: hashline_edit
+17:38:36.244   chat deepseek/deepseek-v4-pro
+17:38:36.266     POST openrouter.ai/api/v1/chat/completions
+17:38:43.515   running tool: read_file
+17:38:43.524   chat deepseek/deepseek-v4-pro
+17:38:43.546     POST openrouter.ai/api/v1/chat/completions
+17:39:07.337   running tool: write_file
+17:39:07.345   chat deepseek/deepseek-v4-pro
+17:39:07.367     POST openrouter.ai/api/v1/chat/completions
+17:39:16.266   running tool: execute
+17:39:17.840   chat deepseek/deepseek-v4-pro
+17:39:18.281     POST openrouter.ai/api/v1/chat/completions
+17:39:26.858   running tool: execute
+17:39:26.876   chat deepseek/deepseek-v4-pro
+17:39:26.899     POST openrouter.ai/api/v1/chat/completions
+17:39:38.328   running tool: execute
+17:39:38.348   chat deepseek/deepseek-v4-pro
+17:39:38.371     POST openrouter.ai/api/v1/chat/completions
+17:39:48.690   running tool: write_memory
+17:39:48.700   chat deepseek/deepseek-v4-pro
+17:39:48.724     POST openrouter.ai/api/v1/chat/completions
+17:39:59.308   running tool: update_todo_statuses
+17:39:59.315   chat deepseek/deepseek-v4-pro
+17:39:59.339     POST openrouter.ai/api/v1/chat/completions
+17:40:12.803   running tool: execute
+17:40:12.861   chat deepseek/deepseek-v4-pro
+17:40:12.905     POST openrouter.ai/api/v1/chat/completions
+17:40:18.342   running tool: update_todo_status
+17:40:18.350   chat deepseek/deepseek-v4-pro
+17:40:18.375     POST openrouter.ai/api/v1/chat/completions
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+17:40:36.771         chat gpt-5.4
+17:40:36.781           POST api.openai.com/v1/responses
+17:40:41.674         running tool: bash_exec
+17:40:41.681 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: direct_arylation
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+17:40:41.691           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+17:40:41.724         chat gpt-5.4
+17:40:41.736           POST api.openai.com/v1/responses
+17:40:51.708         running tool: bash_exec
+17:40:51.731         chat gpt-5.4
+17:40:51.748           POST api.openai.com/v1/responses
+17:40:55.531         running tool: bash_exec
+17:40:55.550         chat gpt-5.4
+17:40:55.564           POST api.openai.com/v1/responses
+17:40:59.467         running tool: start_monitor
+17:40:59.474         chat gpt-5.4
+17:40:59.492           POST api.openai.com/v1/responses
+17:41:04.096         running tool: list_monitors
+17:41:04.101         chat gpt-5.4
+17:41:04.123           POST api.openai.com/v1/responses
+17:41:07.846         running tool: bash_exec
+17:42:07.877         chat gpt-5.4
+17:42:07.895           POST api.openai.com/v1/responses
+17:42:10.253         running tool: list_monitors
+17:42:10.261         chat gpt-5.4
+17:42:10.281           POST api.openai.com/v1/responses
+17:42:12.769         running tool: stop_monitor
+17:42:12.775         chat gpt-5.4
+17:42:12.795           POST api.openai.com/v1/responses
+17:42:16.565         running tool: bash_exec
+17:42:16.588         chat gpt-5.4
+17:42:16.610           POST api.openai.com/v1/responses
+17:42:20.135         running tool: bash_exec
+17:42:20.202         chat gpt-5.4
+17:42:20.224           POST api.openai.com/v1/responses
+17:42:24.599         running tool: bash_exec
+17:42:24.659         chat gpt-5.4
+17:42:24.687           POST api.openai.com/v1/responses
+17:42:30.078         running tool: bash_exec
+17:42:30.128         chat gpt-5.4
+17:42:30.153           POST api.openai.com/v1/responses
+17:42:33.456         running tool: bash_exec
+17:42:33.506         chat gpt-5.4
+17:42:33.532           POST api.openai.com/v1/responses
+17:42:39.795         running tool: bash_exec
+17:42:39.849         chat gpt-5.4
+17:42:39.878           POST api.openai.com/v1/responses
+17:42:44.242         running tool: bash_exec
+17:42:44.295         chat gpt-5.4
+17:42:44.323           POST api.openai.com/v1/responses
+[2026-07-30T17:43:07.452603Z] EXIT 0

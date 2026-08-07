@@ -1,0 +1,12 @@
+exit_code=0
+
+=== stdout (raw) ===
+    173       02:17 sh -c env PYTHONUNBUFFERED=1 BO_MCP_API_URL="${BO_MCP_API_URL}" BO_MCP_API_KEY="[REDACTED]}" DIRECT_ARYLATION_API_URL="${DIRECT_ARYLATION_API_URL}" bash -lc 'set -o pipefail; ts=$(date +%Y%m%d_%H%M%S); mkdir -p logs; log="logs/direct_arylation_bo_${ts}.log"; python3 -u run_direct_arylation_bo.py 2>&1 | tee "$log"; exit ${PIPESTATUS[0]}'
+    174       02:17 bash -lc set -o pipefail; ts=$(date +%Y%m%d_%H%M%S); mkdir -p logs; log="logs/direct_arylation_bo_${ts}.log"; python3 -u run_direct_arylation_bo.py 2>&1 | tee "$log"; exit ${PIPESTATUS[0]}
+    179       02:17 python3 -u run_direct_arylation_bo.py
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

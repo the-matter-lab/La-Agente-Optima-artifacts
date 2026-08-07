@@ -1,0 +1,33 @@
+exit_code=0
+
+=== stdout (raw) ===
+usage: run_direct_arylation_bo.py [-h] [--campaign-id CAMPAIGN_ID]
+                                  [--artifact-dir ARTIFACT_DIR] --max-attempts
+                                  MAX_ATTEMPTS [--random-seed RANDOM_SEED]
+                                  [--oracle-timeout-s ORACLE_TIMEOUT_S]
+
+Run the direct arylation BO benchmark campaign.
+
+options:
+  -h, --help            show this help message and exit
+  --campaign-id CAMPAIGN_ID
+                        Existing BO-MCP campaign id to resume/reopen.
+  --artifact-dir ARTIFACT_DIR
+                        Artifact directory. Defaults to a timestamped
+                        directory.
+  --max-attempts MAX_ATTEMPTS
+                        Attempt budget for this invocation.
+  --random-seed RANDOM_SEED
+                        Campaign random seed for new campaigns.
+  --oracle-timeout-s ORACLE_TIMEOUT_S
+                        Per-request oracle timeout.
+
+
+=== stderr (raw) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+
+
+=== stderr (model-visible) ===
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn

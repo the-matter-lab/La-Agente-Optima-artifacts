@@ -1,0 +1,132 @@
+{
+  "cases": [
+    {
+      "architecture_prompt_addenda": [
+        [
+          "main_agent_tool_passing_bo_mcp",
+          "Direct-tool execution note: call `evaluate_direct_arylation_yield` once for each candidate selected by the fresh BO-MCP campaign. Submit the returned `yield` unchanged as the campaign objective. The tool accepts exactly the five fixed benchmark parameters and does not expose the result table."
+        ]
+      ],
+      "architecture_toolset_ids": [
+        [
+          "main_agent_tool_passing_bo_mcp",
+          [
+            "direct-arylation-oracle"
+          ]
+        ]
+      ],
+      "benchmark_prompt_addendum": "",
+      "evaluation_budget": 60,
+      "id": "direct_arylation",
+      "name": "Direct arylation reaction-yield optimization",
+      "objective_direction": "maximize",
+      "objective_name": "yield",
+      "objective_reference_point": null,
+      "objective_unit": "percent",
+      "objective_verifier": "direct_arylation",
+      "objectives": [],
+      "prompt": "# Direct arylation reaction-yield optimization\n\nOptimize the measured yield of a direct arylation reaction over the fixed, fully crossed search space below.\nThis is a controlled table-lookup benchmark over 1,728 measured reactions.\n\nThe process is a palladium-catalyzed direct C\u2013H arylation of an imidazole with an aryl bromide, forming a new carbon\u2013carbon bond without prefunctionalizing the reacting carbon of the imidazole. A phosphine-ligated palladium catalyst and carboxylate base enable the coupling, whose efficiency is strongly influenced by the ligand, base, solvent, concentration, and temperature.\n\n## Search space\n\nUse the following five parameters with these lowercase names and values.\nConcentration and temperature are discrete numeric parameters.\n\n- `base`: `Potassium acetate`, `Potassium pivalate`, `Cesium acetate`,\n  `Cesium pivalate`\n- `ligand`: `BrettPhos`, `Di-tert-butylphenylphosphine`, `(t-Bu)PhCPhos`,\n  `Tricyclohexylphosphine`, `PPh3`, `XPhos`, `P(2-furyl)3`,\n  `Methyldiphenylphosphine`, `1268824-69-6`, `JackiePhos`,\n  `SCHEMBL15068049`, `Me2PPh`\n- `solvent`: `DMAc`, `Butyornitrile`, `Butyl Ester`, `p-Xylene`\n- `concentration`: `0.057`, `0.1`, `0.153`\n- `temperature_c`: `90`, `105`, `120`\n\nThe spelling `Butyornitrile` is intentional and must be preserved.\n\n## Objective evaluator\n\nMaximize the single objective `yield`, measured in percent.\nA separate oracle service returns the measured value for one exact candidate.\nFor script-based architectures, read its base URL only from `DIRECT_ARYLATION_API_URL` and call for example:\n\n```text\nPOST ${DIRECT_ARYLATION_API_URL}/v1/evaluate\nContent-Type: application/json\n\n{\n  \"base\": \"Potassium acetate\",\n  \"ligand\": \"(t-Bu)PhCPhos\",\n  \"solvent\": \"DMAc\",\n  \"concentration\": 0.1,\n  \"temperature_c\": 105\n}\n```\n\nThe response has exactly the measured objective value, for example\n`{\"yield\": 78.95}`.\nA non-2xx response is a failed attempted evaluation.\n\nDo not access, or search for, or reconstruct the source CSV or any other complete result table.\nDo not use internet access, repository search, prior campaign results, or undocumented service endpoints to discover yields.\nDo not enumerate the full search space and sort by yield.\nQuery the oracle only for candidates selected by the optimization workflow during this invocation.\n\n## Campaign planning\n\nDesign the optimization campaign yourself.\nChoose the campaign design, including the parameter representation or encoding, initialization strategy, batch schedule, acquisition strategy, and any supported backend, using the available optimization capabilities.\nDo not assume or copy campaign settings from the source benchmark implementation.\n\nUse exactly the attempted objective-evaluation budget stated in the benchmark result contract appended below.\nEvery oracle request consumes one attempt.\n\n## Output requirements\n\nAt the end, report the best reaction conditions, best measured yield, and the numbers of successful and attempted evaluations. Also report all evaluated candidates and their statuses/objective values.\n\nIn case of the no-BO-MCP architecture, every submitted or locally recorded successful result must use a `parameter_values` object containing the exact five lowercase parameter names and an `objective_values` object containing `{\"yield\": <measured value>}`; and save the required local JSON artifact with one record per attempt and the standardized `parameter_values` and `objective_values` objects described above.\n\nFinal answer requirement:\n- Include exactly one line in this format:\n\nBO_MCP_CAMPAIGN_ID=<campaign_id>\n",
+      "required_environment_variables": [
+        "DIRECT_ARYLATION_API_URL"
+      ]
+    }
+  ],
+  "config": {
+    "agent_timeout_s": 3600.0,
+    "architecture_mode": "standard_subagent_script_bo_mcp",
+    "bo_api_url": "http://api:8000",
+    "bo_mcp_repo_path": "PosixPath('/bo-mcp-source')",
+    "cli_argv": [
+      "--case",
+      "direct_arylation",
+      "--output-dir",
+      "/app/outputs/cells/direct_arylation_standard_nemotron_r03/eval",
+      "--architecture-mode",
+      "standard_subagent_script_bo_mcp",
+      "--bo-api-url",
+      "http://api:8000",
+      "--bo-mcp-repo-path",
+      "/bo-mcp-source",
+      "--tool-registry-config",
+      "tool_registry.gpu4pyscf.toml",
+      "--request-limit",
+      "80",
+      "--agent-timeout-seconds",
+      "3600",
+      "--model",
+      "openai-responses:gpt-5.4",
+      "--repeats",
+      "1",
+      "--repeat-cache-buster",
+      "uuid",
+      "--run-id",
+      "direct_arylation_standard_nemotron_r03-20260803",
+      "--subagent-model",
+      "nvidia:nvidia/nemotron-3-ultra-550b-a55b"
+    ],
+    "dry_run": false,
+    "env_file": null,
+    "max_concurrency": 1,
+    "model_id": "openai-responses:gpt-5.4",
+    "output_dir": "PosixPath('/app/outputs/cells/direct_arylation_standard_nemotron_r03/eval')",
+    "prompt_cache_buster_nonce": "16e7e684-7bf5-4a9b-af93-fae14403be06",
+    "prompt_cache_buster_policy": "uuid",
+    "repeat_count": 1,
+    "repeat_id": "repeat_001",
+    "repeat_index": 1,
+    "request_limit": 80,
+    "run_id": "direct_arylation_standard_nemotron_r03-20260803",
+    "selector": "direct_arylation",
+    "subagent_model_id": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+    "tool_registry_config": "tool_registry.gpu4pyscf.toml"
+  },
+  "report": {
+    "analyses": [],
+    "cases": [],
+    "experiment_metadata": {
+      "architecture_mode": "standard_subagent_script_bo_mcp",
+      "bo_api_url": "http://api:8000",
+      "case_ids": [
+        "direct_arylation"
+      ],
+      "dry_run": false,
+      "model_id": "openai-responses:gpt-5.4",
+      "repeat_id": "repeat_001",
+      "request_limit": 80,
+      "run_id": "direct_arylation_standard_nemotron_r03-20260803",
+      "subagent_model_id": "nvidia:nvidia/nemotron-3-ultra-550b-a55b",
+      "tool_registry_config": "tool_registry.gpu4pyscf.toml"
+    },
+    "failures": [
+      {
+        "error_message": "EvaluationError: AgentRunTimeout: complete agent run exceeded 3600s",
+        "error_stacktrace": "Traceback (most recent call last):\n  File \"/opt/venv/lib/python3.12/site-packages/anyio/streams/memory.py\", line 111, in receive\n    return self.receive_nowait()\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/anyio/streams/memory.py\", line 106, in receive_nowait\n    raise WouldBlock\nanyio.WouldBlock\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/app/evals/bo_mcp/runner.py\", line 337, in run_eval_case\n    result = await agent.run(\n             ^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/agent/abstract.py\", line 546, in run\n    node = await agent_run.next(node)  # pyright: ignore[reportArgumentType]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/run.py\", line 402, in next\n    return await self._run_node_with_hooks(node, self._advance_graph)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/run.py\", line 326, in _run_node_with_hooks\n    return await self._wrap_and_advance(run_context, node, step_fn)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/run.py\", line 294, in _wrap_and_advance\n    result = await cap.wrap_node_run(run_context, node=node, handler=step_fn)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 354, in wrap_node_run\n    return await chain(node)\n           ^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/combined.py\", line 785, in wrapped\n    return await cap.wrap_node_run(_ctx_for_cap(cap, ctx), node=node, handler=inner)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/capabilities/abstract.py\", line 567, in wrap_node_run\n    return await handler(node)\n           ^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_ai/run.py\", line 272, in _advance_graph\n    task = await self._graph_run.next(task)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_graph/graph_builder.py\", line 584, in next\n    return await anext(self)\n           ^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_graph/graph_builder.py\", line 557, in __anext__\n    self._next = await self._iterator.asend(self._next)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_graph/graph_builder.py\", line 687, in iter_graph\n    async for task_result in self.iter_stream_receiver:  # pragma: no branch\n  File \"/opt/venv/lib/python3.12/site-packages/anyio/abc/_streams.py\", line 41, in __anext__\n    return await self.receive()\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/anyio/streams/memory.py\", line 119, in receive\n    await receive_event.wait()\n  File \"/opt/venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py\", line 1774, in wait\n    await self._event.wait()\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/locks.py\", line 212, in wait\n    await fut\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/futures.py\", line 289, in __await__\n    yield self  # This tells Task to wait for completion.\n    ^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/tasks.py\", line 385, in __wakeup\n    future.result()\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/futures.py\", line 197, in result\n    raise self._make_cancelled_error()\nasyncio.exceptions.CancelledError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/app/evals/bo_mcp/runner.py\", line 336, in run_eval_case\n    async with asyncio.timeout(agent_timeout_s):\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/timeouts.py\", line 115, in __aexit__\n    raise TimeoutError from exc_val\nTimeoutError\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_evals/dataset.py\", line 1140, in _run_task_and_evaluators\n    scoring_context = await _run_task(task, case, retry_task)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_evals/dataset.py\", line 993, in _run_task\n    task_run, task_output, duration, span_tree = await _run_once()\n                                                 ^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pydantic_evals/dataset.py\", line 978, in _run_once\n    task_output_ = cast(OutputT, await task(case.inputs))\n                                 ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/app/evals/bo_mcp/suite.py\", line 556, in _run_case\n    output = await run_eval_case(\n             ^^^^^^^^^^^^^^^^^^^^\n  File \"/app/evals/bo_mcp/runner.py\", line 362, in run_eval_case\n    raise EvaluationError(str(output[\"error\"])) from exc\nevals.bo_mcp.evaluator.EvaluationError: AgentRunTimeout: complete agent run exceeded 3600s\n",
+        "expected_output": null,
+        "inputs": "Repeat cache-buster nonce: 16e7e684-7bf5-4a9b-af93-fae14403be06\n\n# Direct arylation reaction-yield optimization\n\nOptimize the measured yield of a direct arylation reaction over the fixed, fully crossed search space below.\nThis is a controlled table-lookup benchmark over 1,728 measured reactions.\n\nThe process is a palladium-catalyzed direct C\u2013H arylation of an imidazole with an aryl bromide, forming a new carbon\u2013carbon bond without prefunctionalizing the reacting carbon of the imidazole. A phosphine-ligated palladium catalyst and carboxylate base enable the coupling, whose efficiency is strongly influenced by the ligand, base, solvent, concentration, and temperature.\n\n## Search space\n\nUse the following five parameters with these lowercase names and values.\nConcentration and temperature are discrete numeric parameters.\n\n- `base`: `Potassium acetate`, `Potassium pivalate`, `Cesium acetate`,\n  `Cesium pivalate`\n- `ligand`: `BrettPhos`, `Di-tert-butylphenylphosphine`, `(t-Bu)PhCPhos`,\n  `Tricyclohexylphosphine`, `PPh3`, `XPhos`, `P(2-furyl)3`,\n  `Methyldiphenylphosphine`, `1268824-69-6`, `JackiePhos`,\n  `SCHEMBL15068049`, `Me2PPh`\n- `solvent`: `DMAc`, `Butyornitrile`, `Butyl Ester`, `p-Xylene`\n- `concentration`: `0.057`, `0.1`, `0.153`\n- `temperature_c`: `90`, `105`, `120`\n\nThe spelling `Butyornitrile` is intentional and must be preserved.\n\n## Objective evaluator\n\nMaximize the single objective `yield`, measured in percent.\nA separate oracle service returns the measured value for one exact candidate.\nFor script-based architectures, read its base URL only from `DIRECT_ARYLATION_API_URL` and call for example:\n\n```text\nPOST ${DIRECT_ARYLATION_API_URL}/v1/evaluate\nContent-Type: application/json\n\n{\n  \"base\": \"Potassium acetate\",\n  \"ligand\": \"(t-Bu)PhCPhos\",\n  \"solvent\": \"DMAc\",\n  \"concentration\": 0.1,\n  \"temperature_c\": 105\n}\n```\n\nThe response has exactly the measured objective value, for example\n`{\"yield\": 78.95}`.\nA non-2xx response is a failed attempted evaluation.\n\nDo not access, or search for, or reconstruct the source CSV or any other complete result table.\nDo not use internet access, repository search, prior campaign results, or undocumented service endpoints to discover yields.\nDo not enumerate the full search space and sort by yield.\nQuery the oracle only for candidates selected by the optimization workflow during this invocation.\n\n## Campaign planning\n\nDesign the optimization campaign yourself.\nChoose the campaign design, including the parameter representation or encoding, initialization strategy, batch schedule, acquisition strategy, and any supported backend, using the available optimization capabilities.\nDo not assume or copy campaign settings from the source benchmark implementation.\n\nUse exactly the attempted objective-evaluation budget stated in the benchmark result contract appended below.\nEvery oracle request consumes one attempt.\n\n## Output requirements\n\nAt the end, report the best reaction conditions, best measured yield, and the numbers of successful and attempted evaluations. Also report all evaluated candidates and their statuses/objective values.\n\nIn case of the no-BO-MCP architecture, every submitted or locally recorded successful result must use a `parameter_values` object containing the exact five lowercase parameter names and an `objective_values` object containing `{\"yield\": <measured value>}`; and save the required local JSON artifact with one record per attempt and the standardized `parameter_values` and `objective_values` objects described above.\n\nBenchmark result contract:\n- Use exactly 60 attempted objective evaluations for this case.\n- Count objective evaluations as PySCF objective calculations submitted to BO-MCP\n  or written to the local result artifact.\n- Do not exceed the evaluation budget. If an evaluation fails, record the failed\n  candidate/status and continue only within the same budget.\n- Report all evaluated candidates and objective values/statuses.\n- Use objective_name=`yield` and objective_direction=`maximize`.\n- Report objective values in `percent`.\n\n\nFinal answer requirement:\n- Include exactly one line in this format:\n\nBO_MCP_CAMPAIGN_ID=<campaign_id>\n\nArchitecture requirement: delegate BO campaign script authoring and repair\nto `bo-pyscf-specialist`, including for objectives that do not use PySCF. The\nmain agent executes and resumes the specialist-authored script. Do not use a\nlocal-results branch or implement BO locally in this architecture.\n",
+        "metadata": {
+          "architecture_mode": "standard_subagent_script_bo_mcp",
+          "case_id": "direct_arylation",
+          "objective_direction": "maximize",
+          "objective_name": "yield",
+          "objectives": [
+            {
+              "direction": "maximize",
+              "name": "yield",
+              "unit": "percent"
+            }
+          ],
+          "repeat_id": "repeat_001"
+        },
+        "name": "direct_arylation",
+        "source_case_name": null,
+        "span_id": "c11915f76d43dbcf",
+        "trace_id": "019fc92d74e0b33d7fb01b1e1885fbbe"
+      }
+    ],
+    "name": "bo_mcp_graph_eval",
+    "report_evaluator_failures": [],
+    "span_id": "be671dab00f3cb0e",
+    "trace_id": "019fc92d74e0b33d7fb01b1e1885fbbe"
+  },
+  "timestamp": "2026-08-03T20:50:49+00:00"
+}

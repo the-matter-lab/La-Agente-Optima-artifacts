@@ -1,0 +1,33 @@
+exit_code=0
+
+=== stdout (raw) ===
+ackley_benchmark/objective_extraction.py:8:    return {"surface_response": float(eval_result["surface_response"])}
+ackley_benchmark/evaluator.py:24:        ``raw_response`` (float), ``surface_response`` (float), ``status`` (str).
+ackley_benchmark/evaluator.py:38:    surface_response = (raw_response - _WORST_RAW) / (_BEST_RAW - _WORST_RAW)
+ackley_benchmark/evaluator.py:42:        "surface_response": surface_response,
+ackley_benchmark/campaign_intake.py:7:CAMPAIGN_MARKER: str = "akg-eval-b42cee6306f44fd696958bf6e0ead612"
+ackley_benchmark/campaign_intake.py:32:            "maximise normalised surface_response.  "
+ackley_benchmark/campaign_intake.py:39:                "name": "surface_response",
+ackley_benchmark/campaign.py:103:    # ── create or resume ───────────────────────────────────────────
+ackley_benchmark/campaign.py:118:            alert("Campaign is completed — reopening")
+ackley_benchmark/campaign.py:119:            client.lifecycle(campaign_id, action="reopen")
+ackley_benchmark/campaign.py:121:        elif current_status == "paused":
+ackley_benchmark/campaign.py:122:            client.lifecycle(campaign_id, action="resume")
+ackley_benchmark/campaign.py:127:    result_log = os.path.join(artifact_dir, "results.jsonl")
+ackley_benchmark/campaign.py:226:                    f"surface_response={obj_vals['surface_response']:.6f}  "
+ackley_benchmark/campaign.py:261:    # ── post-loop: diagnostics & pause ─────────────────────────────
+ackley_benchmark/campaign.py:272:    # Pause (don't terminate) so the campaign can be resumed later.
+ackley_benchmark/campaign.py:276:            client.lifecycle(campaign_id, action="pause")
+ackley_benchmark/campaign.py:277:            event("Campaign paused")
+ackley_benchmark/campaign.py:305:            sr = float(r["objective_values"]["surface_response"])
+ackley_benchmark/campaign.py:314:        event(f"best_surface_response={best_sr:.10f}")
+ackley_benchmark/campaign.py:326:        "best_surface_response": best_sr if best_row else None,
+run_ackley_benchmark.py:6:    uv run python run_ackley_benchmark.py [--campaign-id ID] [--max-evals N] ...
+run_ackley_benchmark.py:39:        "--campaign-id",
+run_ackley_benchmark.py:44:        "--max-evals",
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

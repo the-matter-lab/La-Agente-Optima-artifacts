@@ -1,0 +1,114 @@
+
+[2026-08-03T17:17:39.257147Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Volume nemotron-extension-20260803_postgres-data Creating 
+ Volume nemotron-extension-20260803_postgres-data Created 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Creating 
+ Container nemotron-extension-20260803-db-1 Creating 
+ Container nemotron-extension-20260803-db-1 Created 
+ Container nemotron-extension-20260803-api-1 Creating 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Created 
+ Container nemotron-extension-20260803-api-1 Created 
+ Container nemotron-extension-20260803-mcp-1 Creating 
+ Container nemotron-extension-20260803-mcp-1 Created 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Starting 
+ Container nemotron-extension-20260803-db-1 Starting 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Started 
+ Container nemotron-extension-20260803-db-1 Started 
+ Container nemotron-extension-20260803-db-1 Waiting 
+ Container nemotron-extension-20260803-db-1 Healthy 
+ Container nemotron-extension-20260803-api-1 Starting 
+ Container nemotron-extension-20260803-api-1 Started 
+ Container nemotron-extension-20260803-api-1 Waiting 
+ Container nemotron-extension-20260803-api-1 Healthy 
+ Container nemotron-extension-20260803-mcp-1 Starting 
+ Container nemotron-extension-20260803-mcp-1 Started 
+ Container nemotron-extension-20260803-db-1 Waiting 
+ Container nemotron-extension-20260803-api-1 Waiting 
+ Container nemotron-extension-20260803-mcp-1 Waiting 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Waiting 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Healthy 
+ Container nemotron-extension-20260803-db-1 Healthy 
+ Container nemotron-extension-20260803-api-1 Healthy 
+ Container nemotron-extension-20260803-mcp-1 Healthy 
+[2026-08-03T17:19:55.421321Z] EXIT 0
+
+[2026-08-03T17:19:55.912722Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--dry-run", "--output-dir", "/app/outputs/control/preflight", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "preflight-standard_nemotron-20260803", "--subagent-model", "nvidia:nvidia/nemotron-3-ultra-550b-a55b"]
+ Container nemotron-extension-20260803-eval-run-6e87e8183cfd Creating 
+ Container nemotron-extension-20260803-eval-run-6e87e8183cfd Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+17:20:29.806 evaluate bo_mcp_graph_eval
+17:20:29.806   case: synthetic_ackley_6d
+17:20:29.807     execute _run_case
+[2026-08-03T17:20:42.751766Z] EXIT 0
+
+[2026-08-03T18:07:42.977840Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-03T18:07:43.333466Z] EXIT 0
+
+[2026-08-03T18:36:21.026293Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-03T18:36:21.256294Z] EXIT 0
+
+[2026-08-03T18:36:21.548658Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-03T18:36:21.786960Z] EXIT 0
+
+[2026-08-03T18:36:23.188915Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "stop"]
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Stopping 
+ Container nemotron-extension-20260803-mcp-1 Stopping 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Stopped 
+ Container nemotron-extension-20260803-mcp-1 Stopped 
+ Container nemotron-extension-20260803-api-1 Stopping 
+ Container nemotron-extension-20260803-api-1 Stopped 
+ Container nemotron-extension-20260803-db-1 Stopping 
+ Container nemotron-extension-20260803-db-1 Stopped 
+[2026-08-03T18:36:38.301255Z] EXIT 0
+
+[2026-08-03T18:40:27.845498Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Container nemotron-extension-20260803-db-1 Starting 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Starting 
+ Container nemotron-extension-20260803-db-1 Started 
+ Container nemotron-extension-20260803-db-1 Waiting 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Started 
+ Container nemotron-extension-20260803-db-1 Healthy 
+ Container nemotron-extension-20260803-api-1 Starting 
+ Container nemotron-extension-20260803-api-1 Started 
+ Container nemotron-extension-20260803-api-1 Waiting 
+ Container nemotron-extension-20260803-api-1 Healthy 
+ Container nemotron-extension-20260803-mcp-1 Starting 
+ Container nemotron-extension-20260803-mcp-1 Started 
+ Container nemotron-extension-20260803-db-1 Waiting 
+ Container nemotron-extension-20260803-api-1 Waiting 
+ Container nemotron-extension-20260803-mcp-1 Waiting 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Waiting 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Healthy 
+ Container nemotron-extension-20260803-api-1 Healthy 
+ Container nemotron-extension-20260803-db-1 Healthy 
+ Container nemotron-extension-20260803-mcp-1 Healthy 
+[2026-08-03T18:41:17.726350Z] EXIT 0
+
+[2026-08-03T19:18:43.263637Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-03T19:18:44.124622Z] EXIT 0
+
+[2026-08-03T19:37:02.020747Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-03T19:37:02.277552Z] EXIT 0
+
+[2026-08-03T19:50:10.379461Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-03T19:50:11.400997Z] EXIT 0
+
+[2026-08-03T20:50:56.010790Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-03T20:50:56.273759Z] EXIT 0
+
+[2026-08-03T20:50:56.571939Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-03T20:50:56.833196Z] EXIT 0
+
+[2026-08-03T20:50:57.401578Z] COMMAND ["docker", "compose", "-p", "nemotron-extension-20260803", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/control/compose.yml", "stop"]
+ Container nemotron-extension-20260803-mcp-1 Stopping 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Stopping 
+ Container nemotron-extension-20260803-direct-arylation-oracle-1 Stopped 
+ Container nemotron-extension-20260803-mcp-1 Stopped 
+ Container nemotron-extension-20260803-api-1 Stopping 
+ Container nemotron-extension-20260803-api-1 Stopped 
+ Container nemotron-extension-20260803-db-1 Stopping 
+ Container nemotron-extension-20260803-db-1 Stopped 
+[2026-08-03T20:51:05.570040Z] EXIT 0

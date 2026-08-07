@@ -1,0 +1,167 @@
+exit_code=0
+
+=== stdout (raw) ===
+# How to Execute the Ackley 6D BO-MCP Campaign
+
+## Overview
+
+This campaign runs a Bayesian optimization over the **Ackley function in 6 normalized dimensions** using the **BO-MCP** (Bayesian Optimization Model Control Plane) service. The objective is to **maximize `surface_response`**, a normalized transformation of the classic Ackley function.
+
+**Ownership marker:** Every campaign created by this script includes `akg-eval-fd1886f5b43b4509a3ee02d638497312` in its name. Only campaigns with this marker belong to this invocation.
+
+---
+
+## Prerequisites
+
+### Environment Variables (Required)
+
+| Variable | Description | Example |
+|----------|-------------|---------|
+| `BO_MCP_API_URL` | Base URL of the BO-MCP REST API | `http://api:8000` |
+| `BO_MCP_API_KEY` | API key for authentication | `sk-...` |
+
+### Environment Variables (Optional, for Logfire/GraphChat context)
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `GRAPHCHAT_AGENT_WS_URL` / `VITE_WS_URL` | `ws://graphchat:3000` | WebSocket URL for monitoring |
+| `GRAPHCHAT_ROOM` | `room` | Room identifier |
+| `SPARQL_ENDPOINT` | `http://blazegraph:8080/blazegraph/namespace/kb/sparql` | SPARQL endpoint |
+
+### Python Dependencies
+
+The script runs in the project's `uv` environment. The `grafico` package must be installed in editable mode **with `--no-build-isolation`** to avoid a timestamp error on this filesystem (`error: Cannot update time stamp of directory 'grafico.egg-info'`).
+
+**One-time setup (run once per container/workspace):**
+```bash
+cd /path/to/workspace/bo-mcp-eval
+uv pip install -e . --no-build-isolation
+```
+
+After this, run the campaign directly with `python` (not `uv run`):
+```bash
+python run_ackley_opt.py
+```
+
+The script runs in the project's `uv` environment. Ensure you're in the workspace directory:
+
+```bash
+cd /path/to/workspace/bo-mcp-eval
+uv sync  # if needed
+```
+
+---
+
+## Execution
+
+### First Run (New Campaign)
+
+```bash
+```bash
+export BO_MCP_API_URL=http://api:8000
+export BO_MCP_API_KEY=[REDACTED]
+python run_ackley_opt.py
+```
+
+### Resume Existing Campaign
+```bash
+python run_ackley_opt.py --campaign-id <CAMPAIGN_ID>
+```
+export BO_MCP_API_KEY=[REDACTED]
+uv run python run_ackley_opt.py
+```
+
+### Resume Existing Campaign
+
+```bash
+uv run python run_ackley_opt.py --campaign-id <CAMPAIGN_ID>
+```
+
+### Common Options
+
+| Option | Default | Description |
+|--------|---------|-------------|
+| `--random-seed` | 42 | RNG seed for reproducible initialization |
+| `--initial-design-size` | 10 | Number of Sobol initial design points |
+| `--batch-size` | 1 | Suggestions per generation call |
+| `--max-observations` | 60 | **Total attempted evaluation budget** (including duplicates/failures) |
+| `--backend` | `auto` | BO backend: `auto`, `botorch`, or `baybe` |
+| `--acquisition-method` | `auto` | Acquisition function (e.g., `noisy_ei`, `upper_confidence_bound`) |
+| `--artifact-dir` | `artifacts` | Output directory for artifacts |
+| `--heartbeat-s` | 1800 | Heartbeat log interval (seconds) |
+| `--stop-file` | `STOP` | Path to stop file |
+
+---
+
+## Stop / Resume Semantics
+
+### Graceful Pause (Stop File)
+
+Create the stop file to request a graceful pause at the **next loop iteration boundary**:
+
+```bash
+touch STOP
+```
+
+The script checks for this file at the top of each iteration (before generating suggestions). When detected:
+
+1. Prints `[EVENT] Stop file detected; requesting pause`
+2. Deletes the stop file (so resume isn't blocked by a stale marker)
+3. Calls `lifecycle(campaign_id, action="pause")` on the server
+4. Exits cleanly
+
+### Resume After Pause
+
+Re-run the same command with `--campaign-id`:
+
+```bash
+uv run python run_ackley_opt.py --campaign-id <CAMPAIGN_ID>
+```
+
+The script will:
+- Verify the campaign has the ownership marker
+- Load existing results from the server (populating the deduplication cache)
+- Continue the optimization loop from the server's current state
+
+### Resume After Completion (Reopen)
+
+If the campaign shows `status: completed` (e.g., budget exhausted), use the same resume command. The script will call `lifecycle(action="reopen")` internally via the server's next-action logic.
+
+**Never** recreate a campaign by replaying results as seeds — always resume or reopen.
+
+---
+
+## Console Output Tags
+
+The script emits **tagged, unbuffered lines** for the main-agent monitor:
+
+| Tag | Purpose | Example |
+|-----|---------|---------|
+| `[EVENT]` | State changes, lifecycle | `[EVENT] Created campaign abc123` |
+| `[ALERT]` | Failures, warnings, stop conditions | `[ALERT] Evaluation failed: ...` |
+| `[RESULT]` | Per-evaluation objective values | `[RESULT] Eval 5: surface=0.987654, raw=22.012345, ...` |
+| `[HEARTBEAT]` | Liveness (every `--heartbeat-s` seconds) | `[HEARTBEAT] Campaign abc123 running, 23 evaluations so far` |
+--- artifacts ---
+total 52
+drwxr-xr-x  2 root root  4096 Aug  3 18:04 .
+drwxr-xr-x 13 root root  4096 Aug  3 18:03 ..
+-rw-r--r--  1 root root  5715 Aug  3 18:05 results.csv
+-rw-r--r--  1 root root 17081 Aug  3 18:05 results.jsonl
+-rw-r--r--  1 root root 12608 Aug  3 18:05 server_export.csv
+--- line count ---
+60 artifacts/results.jsonl
+--- head csv ---
+evaluation_index,x_1,x_2,x_3,x_4,x_5,x_6,surface_response,raw_response,status,failure_reason
+0,0.21471071243286133,0.8207526803016663,0.3442210257053375,0.12810085713863373,0.5054937601089478,0.8613457083702087,0.030327401517960744,,success,
+1,0.9818865060806274,0.33155357837677,0.9257998466491699,0.6068576574325562,0.37294822931289673,0.49111050367355347,0.027431975431021972,,success,
+2,0.6846363544464111,0.5101317167282104,0.22478339076042175,0.27046099305152893,0.16032177209854126,0.08005093038082123,0.04294829338032422,,success,
+3,0.38647425174713135,0.01726657524704933,0.5491417646408081,0.9948251247406006,0.9652611017227173,0.7081066370010376,0.029711933845400423,,success,
+4,0.288043737411499,0.6690478324890137,0.8218520283699036,0.8402104377746582,0.7882235050201416,0.9084213376045227,0.04061772710185689,,success,
+5,0.5159693956375122,0.178631991147995,0.40422138571739197,0.4239533841609955,0.09314743429422379,0.2879334092140198,0.04894396784942381,,success,
+6,0.8127164840698242,0.9836062788963318,0.7029016613960266,0.6989725828170776,0.3815280497074127,0.12672972679138184,0.04525627274334058,,success,
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

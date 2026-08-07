@@ -1,0 +1,43 @@
+exit_code=0
+
+=== stdout (raw) ===
+(path: "Annotated[str, Field(description='Exact OpenAPI path to inspect, e.g. `/api/v1/campaigns` or `/api/v1/results/{campaign_id}`.')]", method: "Annotated[str, Field(description='HTTP method for the operation, e.g. `get` or `post`. Case-insensitive.')]", openapi_url: "Annotated[str | None, Field(description='Optional OpenAPI JSON URL. Defaults to `BO_MCP_OPENAPI_URL`, or `BO_MCP_API_URL` with `/openapi.json` appended.')]" = None) -> 'str'
+@validate_call
+def inspect_bo_mcp_openapi_operation(
+    path: Annotated[
+        str,
+        Field(
+            description=(
+                "Exact OpenAPI path to inspect, e.g. `/api/v1/campaigns` or "
+                "`/api/v1/results/{campaign_id}`."
+            )
+        ),
+    ],
+    method: Annotated[
+        str,
+        Field(
+            description=(
+                "HTTP method for the operation, e.g. `get` or `post`. Case-insensitive."
+            )
+        ),
+    ],
+    openapi_url: Annotated[
+        str | None,
+        Field(
+            description=(
+                "Optional OpenAPI JSON URL. Defaults to `BO_MCP_OPENAPI_URL`, or "
+                "`BO_MCP_API_URL` with `/openapi.json` appended."
+            )
+        ),
+    ] = None,
+) -> str:
+    """Inspect one BO-MCP OpenAPI operation for agent-authored client code."""
+    target_url = (openapi_url or _default_openapi_url()).strip()
+    normalized_method = method.strip().lower()
+    if normalized_method not in HTT
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,93 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Execute the BO-MCP BayBE Ackley-6D Campaign
+
+## What this runs
+
+`run_ackley_6d_campaign.py` creates or resumes one BO-MCP campaign using the **BayBE** backend and the exact six-dimensional normalized Ackley evaluator requested. The campaign name contains the required ownership marker:
+
+`akg-eval-273a2e70abb14b06b243be3577879b18`
+
+The create request is idempotent using cache-buster nonce `6edf52a5-d114-4751-ac25-afe3937e8fbe`, so rerunning without `--campaign-id` reuses this invocation's campaign rather than creating another one. Any explicitly supplied campaign ID is rejected unless its campaign **name** contains the ownership marker.
+
+The immutable BO intake uses seed `240826`, 12 warm-up points, batches of up to 4, and expected improvement. `max_iterations` is intentionally unset. The script enforces the benchmark's campaign-wide limit of exactly 60 attempted evaluations from BO-MCP server state, skips/rejects duplicate coordinates without evaluating them, records failed attempts, and pauses rather than terminates at invocation shutdown.
+
+## Environment requirements
+
+Required environment variables:
+
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+
+The container must provide `/app` and the active `uv` environment. This benchmark does not call PySCF, CREST, MOF, RAISE, or any chemistry/experimental evaluator.
+
+## Exact execution command
+
+From this workspace directory, run under the main agent's monitor:
+
+```bash
+PYTHONPATH=/app uv run --no-sync python -u run_ackley_6d_campaign.py --campaign-id 012b6b40-2874-4a88-a3c8-8994307234d6 --attempt-budget 60 --poll-s 180 --heartbeat-s 1800
+```
+
+For monitor filtering, match:
+
+```text
+\[EVENT\]|\[ALERT\]|\[RESULT\]|\[HEARTBEAT\]
+```
+
+- `[EVENT]`: campaign lifecycle, generation, artifact path, and budget progress.
+- `[ALERT]`: evaluator/submission failures or BO-MCP stop conditions.
+- `[RESULT]`: full JSON record for every attempted objective evaluation.
+- `[HEARTBEAT]`: long-run liveness.
+
+## Stop and resume
+
+The default stop marker is `STOP` in the current workspace. The script checks it at the top of each loop before requesting a new suggestion. When found, it prints `[EVENT]`, deletes the marker, completes normal shutdown, and pauses the campaign when its status permits.
+
+Request a stop with:
+
+```bash
+touch STOP
+```
+
+Resume with the same exact execution command above. For a different owned continuation, replace the `--campaign-id` value only after verifying its campaign name contains the ownership marker.
+
+`--attempt-budget` is a per-invocation ceiling. The script independently enforces the campaign-wide 60-attempt benchmark budget, so resuming with 60 cannot exceed the remaining total.
+
+## Outputs
+
+The bounded smoke test created and paused owned campaign `012b6b40-2874-4a88-a3c8-8994307234d6` after one successful evaluation. Continue it so that smoke-test work is reused.
+
+- Results artifact: `artifacts/ackley_6d/012b6b40-2874-4a88-a3c8-8994307234d6/results.jsonl`
+- Run log: `artifacts/ackley_6d/012b6b40-2874-4a88-a3c8-8994307234d6/run.log`
+
+`results.jsonl` is append-only and has one JSON row per attempted evaluation with:
+
+- `evaluation_index`
+- `parameter_values` containing `x_1` through `x_6`
+- `objective_values.surface_response`
+- `status`
+- `failure_reason`
+- `raw_response`
+
+Successful results are submitted to BO-MCP with their `suggestion_id`. Failed evaluator or unrecoverable submission attempts are recorded locally and their suggestion is rejected so the server remains the source of truth for reconstructing the attempt count. Exact duplicate points are rejected without evaluation and do not consume the 60-attempt budget.
+
+## Validation
+
+1. Confirm startup prints an owned `campaign_id` and `results_artifact` path.
+2. Confirm every attempted evaluation emits one `[RESULT]` JSON object.
+3. Confirm the final line reports `total_attempts=60/60` for a completed benchmark run.
+4. Count artifact rows and verify evaluation indices are 1 through 60:
+
+```bash
+PYTHONPATH=/app uv run --no-sync python -c "import json, pathlib; p=pathlib.Path('artifacts/ackley_6d/012b6b40-2874-4a88-a3c8-8994307234d6/results.jsonl'); rows=[json.loads(x) for x in p.read_text().splitlines()]; print(len(rows), rows[0]['evaluation_index'], rows[-1]['evaluation_index'])"
+```
+
+5. Identify owned campaigns by querying/listing BO-MCP and accepting only campaign names containing `akg-eval-273a2e70abb14b06b243be3577879b18`. Never resume or report a campaign without that marker.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

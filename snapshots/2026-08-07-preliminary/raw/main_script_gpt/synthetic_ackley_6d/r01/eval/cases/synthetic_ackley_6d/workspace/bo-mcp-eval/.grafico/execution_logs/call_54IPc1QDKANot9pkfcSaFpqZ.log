@@ -1,0 +1,18 @@
+exit_code=0
+
+=== stdout (raw) ===
+Return the server's loop decision for one campaign, flattened.
+
+Thin projection of ``POST /api/v1/campaigns/status/batch`` for a
+single id: the returned dict carries the campaign's ``status``,
+``iteration``, ``n_results``, and the server-computed
+recommendation flattened to ``action``/``reason``/``urgency``.
+The continue/stop decision belongs to the server — callers branch
+on ``action`` (``"bo_generate_suggestions"`` means another round)
+and must not re-derive it from local state.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===
