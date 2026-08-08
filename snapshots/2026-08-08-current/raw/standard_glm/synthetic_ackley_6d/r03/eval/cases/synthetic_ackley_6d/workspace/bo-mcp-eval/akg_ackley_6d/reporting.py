@@ -1,0 +1,88 @@
+"""Append-only results artifact (JSONL) for the Ackley 6-D campaign."""
+
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Any
+
+
+def _coord_key(parameter_values: dict[str, Any], param_names: tuple[str, ...]) -> tuple[float, ...]:
+    """Return a hashable coordinate tuple for duplicate detection."""
+    return tuple(round(float(parameter_values.get(k, float("nan"))), 10) for k in param_names)
+
+
+class ResultsArtifact:
+    """Manages the JSONL results file and provides summary queries."""
+
+    # Canonical parameter order for coordinate-key construction
+    PARAM_NAMES: tuple[str, ...] = ("x_1", "x_2", "x_3", "x_4", "x_5", "x_6")
+
+    def __init__(self, path: str | Path) -> None:
+        self._path = Path(path)
+        self._path.parent.mkdir(parents=True, exist_ok=True)
+        # Start fresh
+        self._path.write_text("")
+        self._rows: list[dict] = []
+        self._seen_coords: set[tuple[float, ...]] = set()
+
+    # ── duplicate detection ──────────────────────────────────────────
+    def has_coords(self, parameter_values: dict[str, Any]) -> bool:
+        """Return True if this exact coordinate has already been evaluated."""
+        return _coord_key(parameter_values, self.PARAM_NAMES) in self._seen_coords
+
+    # ── write ───────────────────────────────────────────────────────
+    def append(
+        self,
+        evaluation_index: int,
+        parameter_values: dict[str, Any],
+        objective_values: dict[str, Any],
+        status: str,
+        failure_reason: str = "",
+        raw_response: float | None = None,
+    ) -> None:
+        row = {
+            "evaluation_index": evaluation_index,
+            "parameter_values": parameter_values,
+            "objective_values": objective_values,
+            "status": status,
+            "failure_reason": failure_reason,
+        }
+        if raw_response is not None:
+            row["raw_response"] = raw_response
+        self._rows.append(row)
+        # Track coordinate for duplicate detection (only successful evals)
+        if status == "success":
+            self._seen_coords.add(_coord_key(parameter_values, self.PARAM_NAMES))
+        with open(self._path, "a") as fh:
+            fh.write(json.dumps(row) + "\n")
+
+    # ── queries ─────────────────────────────────────────────────────
+    def n_attempted(self) -> int:
+        return len(self._rows)
+
+    def n_success(self) -> int:
+        return sum(1 for r in self._rows if r["status"] == "success")
+
+    def best(self) -> dict | None:
+        """Return the best successful row (max surface_response)."""
+        successful = [r for r in self._rows if r["status"] == "success"]
+        if not successful:
+            return None
+        return max(successful, key=lambda r: r["objective_values"].get("surface_response", float("-inf")))
+
+    def finalize(self) -> None:
+        """Write a summary block at the end of the artifact."""
+        best = self.best()
+        summary = {
+            "summary": True,
+            "total_attempted": self.n_attempted(),
+            "total_success": self.n_success(),
+            "best": best,
+        }
+        with open(self._path, "a") as fh:
+            fh.write(json.dumps(summary, default=str) + "\n")
+
+    @property
+    def path(self) -> Path:
+        return self._path

@@ -1,0 +1,35 @@
+exit_code=0
+
+=== stdout (raw) ===
+ackley_6d_bo/intake/__init__.py:7:    name: str = "ackley_6d_baybe_akg-eval-85fb74eb00b449cd9dc81b7e98d95efc",
+ackley_6d_bo/intake/__init__.py:8:    description: str = "6D Ackley function optimization using baybe backend",
+ackley_6d_bo/intake/__init__.py:47:        "backend": "baybe",
+ackley_6d_bo/intake/__init__.py:52:        # We don't specify acquisition_method to let baybe choose its default
+ackley_6d_bo/orchestration/__init__.py:24:        max_evaluations: int = 60,
+ackley_6d_bo/orchestration/__init__.py:34:            max_evaluations: Maximum evaluations for this invocation (CLI budget)
+ackley_6d_bo/orchestration/__init__.py:37:            stop_file: Path to stop file; if exists, pause gracefully
+ackley_6d_bo/orchestration/__init__.py:41:        self.max_evaluations = max_evaluations
+ackley_6d_bo/orchestration/__init__.py:106:        self._log_event(f"Starting optimization loop (max {self.max_evaluations} evaluations this run)")
+ackley_6d_bo/orchestration/__init__.py:108:        while self.evaluations_this_run < self.max_evaluations:
+ackley_6d_bo/orchestration/__init__.py:113:                self._pause_campaign()
+ackley_6d_bo/orchestration/__init__.py:128:                self._pause_campaign()
+ackley_6d_bo/orchestration/__init__.py:143:                self._pause_campaign()
+ackley_6d_bo/orchestration/__init__.py:148:                if self.evaluations_this_run >= self.max_evaluations:
+ackley_6d_bo/orchestration/__init__.py:153:                    self._pause_campaign()
+ackley_6d_bo/orchestration/__init__.py:195:            if self.evaluations_this_run >= self.max_evaluations:
+ackley_6d_bo/orchestration/__init__.py:197:                self._pause_campaign()
+ackley_6d_bo/orchestration/__init__.py:201:        self._pause_campaign()
+ackley_6d_bo/orchestration/__init__.py:203:    def _pause_campaign(self) -> None:
+ackley_6d_bo/orchestration/__init__.py:207:            self.client.lifecycle(self.campaign_id, action="pause")
+ackley_6d_bo/orchestration/__init__.py:361:        print(f"BO_MCP_CAMPAIGN_ID={report['campaign_id']}")
+ackley_6d_bo/orchestration/__init__.py:367:    max_evaluations: int = 60,
+ackley_6d_bo/orchestration/__init__.py:379:        max_evaluations: Max evaluations this invocation
+ackley_6d_bo/orchestration/__init__.py:395:        max_evaluations=max_evaluations,
+run_ackley_6d.py:28:    parser = argparse.ArgumentParser(description="6D Ackley BO campaign via BO-MCP (baybe backend)")
+run_ackley_6d.py:50:            max_evaluations=args.max_evaluations,
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

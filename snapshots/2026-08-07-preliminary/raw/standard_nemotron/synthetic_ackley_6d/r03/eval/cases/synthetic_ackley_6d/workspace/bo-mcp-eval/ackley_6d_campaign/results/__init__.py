@@ -1,1 +1,0 @@
-"""Results module for 6D Ackley campaign."""

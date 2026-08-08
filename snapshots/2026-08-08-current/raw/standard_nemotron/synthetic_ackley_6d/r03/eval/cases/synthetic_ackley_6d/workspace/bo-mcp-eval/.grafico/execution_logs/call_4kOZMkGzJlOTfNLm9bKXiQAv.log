@@ -1,0 +1,72 @@
+exit_code=0
+
+=== stdout (raw) ===
+logs/ackley_6d_20260808_010530.log
+
+--- tail ---
+[EVENT] Creating new campaign
+01:05:32.255 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Created campaign 69f4de86-a618-4572-ae3f-445ef7bc116f
+[EVENT] Starting optimization loop (max 60 evaluations this run)
+01:05:32.353 POST api/api/v1/campaigns/status/batch
+[EVENT] Server action: bo_generate_suggestions
+01:05:32.374 POST api/api/v1/suggestions/69f4de86-a618-4572-ae3f-445ef7bc116f/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 61839f0e-9733-47a0-91d5-2ab8027e936d
+[RESULT] eval=1 surface=0.047989 raw=-21.277830 [x_1=0.132172, x_2=0.677766, x_3=0.774264, x_4=0.973157, x_5=0.476478, x_6=0.915290]
+01:05:32.469 POST api/api/v1/results/69f4de86-a618-4572-ae3f-445ef7bc116f
+[ALERT] submit_results failed: BO-MCP POST /api/v1/results/69f4de86-a618-4572-ae3f-445ef7bc116f failed with 422: {"detail":[{"type":"extra_forbidden","loc":["body","results",0,"status"],"msg":"Extra inputs are not permitted","input":"success"},{"type":"extra_forbidden","loc":["body","results",0,"failure_reason"],"msg":"Extra inputs are not permitted","input":null},{"type":"extra_forbidden","loc":["body","results",0,"raw_response"],"msg":"Extra inputs are not permitted","input":-21.277830252057154},{"type":"extra_forbidden","loc":["body","results",0,"evaluation_index"],"msg":"Extra inputs are not permitted"
+[EVENT] Fetching final results for reporting
+01:05:32.476 GET api/api/v1/results/69f4de86-a618-4572-ae3f-445ef7bc116f
+[EVENT] Final report written to ackley_6d_results/final_report.json
+
+============================================================
+FINAL REPORT
+============================================================
+Campaign ID: 69f4de86-a618-4572-ae3f-445ef7bc116f
+Best surface_response: 0.047989
+Best raw_response: -21.277830
+Best normalized coordinates:
+  x_1: 0.132172
+  x_2: 0.677766
+  x_3: 0.774264
+  x_4: 0.973157
+  x_5: 0.476478
+  x_6: 0.915290
+Successful evaluations: 1
+Attempted evaluations: 1
+Failed evaluations: 0
+
+Candidate Table:
+----------------------------------------------------------------------------------------------------
+ Idx |    surface |        raw |   status | params
+----------------------------------------------------------------------------------------------------
+   1 |   0.047989 | -21.277830 |  success | x_1=0.1322, x_2=0.6778, x_3=0.7743, x_4=0.9732, x_5=0.4765, x_6=0.9153
+----------------------------------------------------------------------------------------------------
+BO_MCP_CAMPAIGN_ID=69f4de86-a618-4572-ae3f-445ef7bc116f
+[ALERT] Campaign failed: BO-MCP POST /api/v1/results/69f4de86-a618-4572-ae3f-445ef7bc116f failed with 422: {"detail":[{"type":"extra_forbidden","loc":["body","results",0,"status"],"msg":"Extra inputs are not permitted","input":"success"},{"type":"extra_forbidden","loc":["body","results",0,"failure_reason"],"msg":"Extra inputs are not permitted","input":null},{"type":"extra_forbidden","loc":["body","results",0,"raw_response"],"msg":"Extra inputs are not permitted","input":-21.277830252057154},{"type":"extra_forbidden","loc":["body","results",0,"evaluation_index"],"msg":"Extra inputs are not permitted"
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 47, in main
+    report = run_campaign(
+             ^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_bo/orchestration/__init__.py", line 409, in run_campaign
+    campaign.run_optimization_loop()
+  File "/app/outputs/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_bo/orchestration/__init__.py", line 181, in run_optimization_loop
+    submit_response = self.client.submit_results(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 231, in submit_results
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 338, in _json_request
+    response = self._request(method, path, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 361, in _request
+    raise BoMcpClientError(
+domains.bo_mcp.client.BoMcpClientError: BO-MCP POST /api/v1/results/69f4de86-a618-4572-ae3f-445ef7bc116f failed with 422: {"detail":[{"type":"extra_forbidden","loc":["body","results",0,"status"],"msg":"Extra inputs are not permitted","input":"success"},{"type":"extra_forbidden","loc":["body","results",0,"failure_reason"],"msg":"Extra inputs are not permitted","input":null},{"type":"extra_forbidden","loc":["body","results",0,"raw_response"],"msg":"Extra inputs are not permitted","input":-21.277830252057154},{"type":"extra_forbidden","loc":["body","results",0,"evaluation_index"],"msg":"Extra inputs are not permitted"
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

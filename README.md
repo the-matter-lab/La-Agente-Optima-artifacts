@@ -3,14 +3,13 @@
 This private repository collects the raw run evidence, audit metadata, plotting
 code, and figures for the BO-MCP framework comparison.
 
-The current snapshot is **preliminary**. The benchmark instructions and
-accounting definitions are being frozen before the final rerun. Existing raw
-evidence will remain versioned here; later results will be added as a new
-snapshot rather than overwriting this one.
+The current snapshot includes the corrected BayBE duplicate-resuggestion
+replacements and the latest comparison report. Results remain subject to
+manuscript review; prior snapshot states are preserved in Git history.
 
 ## Snapshot contents
 
-`snapshots/2026-08-07-preliminary/` contains:
+`snapshots/2026-08-08-current/` contains:
 
 - `raw/`: all 66 canonical cells used by the current report, organized by arm,
   case, and repeat. Cell directories retain conversations, metrics, logs,

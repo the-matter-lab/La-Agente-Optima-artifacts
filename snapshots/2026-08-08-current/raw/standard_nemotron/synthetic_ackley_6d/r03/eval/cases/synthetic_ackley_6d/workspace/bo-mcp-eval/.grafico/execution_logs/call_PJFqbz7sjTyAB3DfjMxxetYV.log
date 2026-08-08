@@ -1,0 +1,182 @@
+exit_code=0
+
+=== stdout (raw) ===
+        
+        return report
+    
+    def _load_local_results(self) -> List[Dict[str, Any]]:
+        """Load results from local JSONL artifact."""
+        artifact_path = self.results_dir / "evaluations.jsonl"
+        if not artifact_path.exists():
+            return []
+        
+        results = []
+        import json
+        with artifact_path.open() as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    results.append(json.loads(line))
+        return results
+    
+    def _merge_results(
+        self,
+        local: List[Dict[str, Any]],
+        server: List[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
+        """Merge local and server results, preferring local for raw_response."""
+        # Index local by suggestion_id
+        local_by_id = {r["suggestion_id"]: r for r in local}
+        server_by_id = {r["suggestion_id"]: r for r in server}
+        
+        # Union of all suggestion_ids
+        all_ids = set(local_by_id.keys()) | set(server_by_id.keys())
+        
+        merged = []
+        for sid in all_ids:
+            if sid in local_by_id:
+                merged.append(local_by_id[sid])
+            else:
+                merged.append(server_by_id[sid])
+        
+        # Sort by evaluation_index
+        merged.sort(key=lambda r: r.get("evaluation_index", 0))
+        return merged
+    
+    def _generate_report(self, results: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Generate final report from all results."""
+        successful = [r for r in results if r.get("status") == "success"]
+        failed = [r for r in results if r.get("status") != "success"]
+        
+        # Find best
+        best_result = None
+        best_surface = -float("inf")
+        
+        for r in successful:
+            surface = r["objective_values"]["surface_response"]
+            if surface > best_surface:
+                best_surface = surface
+                best_result = r
+        
+        # Build candidate table
+        candidate_table = []
+        for r in results:
+            row = {
+                "evaluation_index": r.get("evaluation_index"),
+                "suggestion_id": r.get("suggestion_id"),
+                "parameter_values": r.get("parameter_values", {}),
+                "objective_values": r.get("objective_values", {}),
+                "status": r.get("status"),
+                "failure_reason": r.get("failure_reason"),
+                "raw_response": r.get("raw_response"),
+            }
+            candidate_table.append(row)
+        
+        if best_result:
+            best_params = best_result["parameter_values"]
+            best_raw = best_result["raw_response"]
+        else:
+            best_params = {}
+            best_raw = None
+        
+        return {
+            "campaign_id": self.campaign_id,
+            "best_normalized_coordinates": best_params,
+            "best_raw_response": best_raw,
+            "best_surface_response": best_surface if best_result else None,
+            "successful_evaluations": len(successful),
+            "attempted_evaluations": len(results),
+            "failed_evaluations": len(failed),
+            "candidate_table": candidate_table,
+        }
+    
+    def _print_summary(self, report: Dict[str, Any]) -> None:
+        """Print summary to stdout."""
+        print("\n" + "=" * 60)
+        print("FINAL REPORT")
+        print("=" * 60)
+        print(f"Campaign ID: {report['campaign_id']}")
+        print(f"Best surface_response: {report['best_surface_response']:.6f}")
+        print(f"Best raw_response: {report['best_raw_response']:.6f}")
+        print(f"Best normalized coordinates:")
+        for name in PARAM_NAMES:
+            val = report['best_normalized_coordinates'].get(name, 0.0)
+            print(f"  {name}: {val:.6f}")
+        print(f"Successful evaluations: {report['successful_evaluations']}")
+        print(f"Attempted evaluations: {report['attempted_evaluations']}")
+        print(f"Failed evaluations: {report['failed_evaluations']}")
+        print("\nCandidate Table:")
+        print("-" * 100)
+        header = f"{'Idx':>4} | {'surface':>10} | {'raw':>10} | {'status':>8} | params"
+        print(header)
+        print("-" * 100)
+        for row in report["candidate_table"]:
+            idx = row["evaluation_index"] or 0
+            surf = row["objective_values"].get("surface_response")
+            raw = row["raw_response"]
+            status = row["status"]
+            surf_str = f"{surf:.6f}" if surf is not None else "N/A"
+            raw_str = f"{raw:.6f}" if raw is not None else "N/A"
+            params_str = ", ".join(f"{k}={v:.4f}" for k, v in row["parameter_values"].items())
+            print(f"{idx:>4} | {surf_str:>10} | {raw_str:>10} | {status:>8} | {params_str}")
+        print("-" * 100)
+        
+        # Required single-line output for main agent
+        print(f"BO_MCP_CAMPAIGN_ID={report['campaign_id']}")
+
+
+def run_campaign(
+    campaign_id: Optional[str] = None,
+    results_dir: Optional[str] = None,
+    max_evaluations: int = 60,
+    poll_interval: float = 180.0,
+    heartbeat_interval: float = 1800.0,
+    stop_file: Optional[str] = None,
+    random_seed: int = 42,
+    initial_design_size: int = 10,
+) -> Dict[str, Any]:
+    """Run the Ackley 6D BO campaign.
+    
+    Args:
+        campaign_id: Existing campaign ID to resume (None = create new)
+        results_dir: Directory for artifacts
+        max_evaluations: Max evaluations this invocation
+        poll_interval: Seconds between next_action calls
+        heartbeat_interval: Seconds between heartbeats
+        stop_file: Path to stop file
+        random_seed: Campaign RNG seed
+        initial_design_size: Initial design size
+    
+    Returns:
+        Final report dictionary
+    """
+    results_path = Path(results_dir) if results_dir else Path("ackley_6d_results")
+    stop_path = Path(stop_file) if stop_file else Path("STOP")
+    
+    campaign = AckleyCampaign(
+        campaign_id=campaign_id,
+        results_dir=results_path,
+        max_evaluations=max_evaluations,
+        poll_interval=poll_interval,
+        heartbeat_interval=heartbeat_interval,
+        stop_file=stop_path,
+    )
+    
+    if campaign_id is None:
+        # Create new campaign
+        intake = build_campaign_intake(random_seed=random_seed, initial_design_size=initial_design_size)
+        campaign.campaign_id = campaign.create_campaign(intake)
+    else:
+        campaign._log_event(f"Resuming campaign {campaign_id}")
+    
+    try:
+        campaign.run_optimization_loop()
+    finally:
+        report = campaign.finalize_and_report()
+    
+    return report
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

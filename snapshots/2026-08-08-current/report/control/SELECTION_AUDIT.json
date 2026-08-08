@@ -1,0 +1,683 @@
+{
+  "excluded_pilots": [
+    "standard_sonnet5_fixed",
+    "standard_gemini_fixed"
+  ],
+  "policy": "replace only infrastructure-defective cells; retain genuine model/agent failures",
+  "schema_version": 1,
+  "selected_replacements": [
+    {
+      "arm_id": "main_script_gpt",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_main_script_gpt/arms/main_script_gpt_prompt_v2/cells/ackley_main_script_gpt_prompt_v2_r01/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "bb16bcc307eea936565ce5fddc5fcd74ea6ba9abb848e66423027f574714e472"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_main_script_gpt/arms/main_script_gpt_prompt_v2/cells/ackley_main_script_gpt_prompt_v2_r01/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "94e502a5bf4951b7e40925d0f8478d2269635bbe65fa63d7ebc18b59c2e51387"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_main_script_gpt/arms/main_script_gpt_prompt_v2/cells/ackley_main_script_gpt_prompt_v2_r01/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "daf186ac8842dad879c599c1aa4e9a283f96c785484e640585fe6da02234c26c"
+      }
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r01/eval/cases/direct_arylation/metrics.json",
+        "sha256": "7722cabb30984fbbcee485c996702fbbd8f31556902827cf95c209de884470e4"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+        "sha256": "5187d38fe762a8ce3bb605852e4cbdbd61f800dadad78a07fad5313a19f84089"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r01/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "12d92d2530df2ea2679cf8d94367abb73d8a8653dd88fb412a6cc73ec89ca352"
+      }
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r02/eval/cases/direct_arylation/metrics.json",
+        "sha256": "fe2c138006d8f72af7b4cd7d3a0a555af26e1a88070cdbf9301cc7817751f352"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+        "sha256": "cd09049e13dad8316de5b2c59aa25998a7df0734d6376a811b41b82a115277ea"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r02/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "5982facca2d9f90926e302043846e4c96785856671d9ab61341be4fd8063d3af"
+      }
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r03/eval/cases/direct_arylation/metrics.json",
+        "sha256": "281dc9bfeac2643f5e04ec2f6f9a3879f92fb4356483db97da708798055a6c8d"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r03/eval/cases/direct_arylation/output.json",
+        "sha256": "ea8cf18fbfc43f330c28aa8c003ede21676d680cdc122795c6989655bbbcfb36"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r03/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "3bff263883fc5ac31c56b4dcfafed4d959fee716e97c93fa50170f4a86b73c33"
+      }
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "auxiliary_audits": [
+        {
+          "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/deepseek/arms/standard_deepseek_fixed/control/FAILURE_DB_AUDIT.json",
+          "sha256": "74089431c732ae3bd745316f454538c7980d3c33fbd15fc50f1be919d1ce1521"
+        }
+      ],
+      "case": "synthetic_ackley_6d",
+      "metrics": null,
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/deepseek/arms/standard_deepseek_fixed/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "a0639e5b46626e1892a154f108fbbe6cbaa6e0064d7f3e95d11c0e919a931746"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/deepseek/arms/standard_deepseek_fixed/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "d564bea1cc1e56bb8a5b0a40badb4c210d21f94d6ffd756059e72e42cbb26758"
+      }
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/ackley_standard_deepseek_prompt_v2_r02/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "5d003ca481e532c6a16a560928ca645f4db0291a32dacaf632b2beae6d6d8d6d"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/ackley_standard_deepseek_prompt_v2_r02/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "8a590e7363fc38db00a0e6ea27484c6906916dbdfb41bd05621160e53a5e7a12"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/ackley_standard_deepseek_prompt_v2_r02/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "50eb60ea40dfe776c7aa2a4d7519d5c2f79505a1b1cb8d4461c1d0c61fef2be2"
+      }
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/ackley_standard_deepseek_prompt_v2_r03/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "7c6663e76493f46efb1eda8c5a1a40fd2a88ac3c3f025fe5c285e33de9827bd5"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/ackley_standard_deepseek_prompt_v2_r03/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "6d46267e2a672435265255fce24718e1688f78adc1a3c9af1b9c56eb266ece6d"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/ackley_standard_deepseek_prompt_v2_r03/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "a59a52d462c5fa442c0af4f19a5781d5c865a594b784f90f0e9d17d63a9adf60"
+      }
+    },
+    {
+      "arm_id": "standard_gemini",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/direct_arylation_standard_gemini_fixed_v2_r01/eval/cases/direct_arylation/metrics.json",
+        "sha256": "c545a05f96b4bf5d7e66fdc8300662f0775b8f45c676bd67095d7023988b397f"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/direct_arylation_standard_gemini_fixed_v2_r01/eval/cases/direct_arylation/output.json",
+        "sha256": "2e2aec36e3ac804c6b8992007f4bbffe1c652f5fa8e2c162090b726f3ce1cb8d"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/direct_arylation_standard_gemini_fixed_v2_r01/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "d036722679a365dd4c0d41f4de8e640fb1c84492dc77c64e2868bd049addd6c8"
+      }
+    },
+    {
+      "arm_id": "standard_gemini",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gemini/arms/standard_gemini_prompt_v2/cells/direct_arylation_standard_gemini_prompt_v2_r02/eval/cases/direct_arylation/metrics.json",
+        "sha256": "5b4ce64666443d10b356b8ddddfd3a125edbf5bac5e4ee8053e39b14bd4b7491"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gemini/arms/standard_gemini_prompt_v2/cells/direct_arylation_standard_gemini_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+        "sha256": "d1684d922737c60aad25dcc439a856e9cd3c1bbff8c3d93525052f1c18d4c4ab"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gemini/arms/standard_gemini_prompt_v2/cells/direct_arylation_standard_gemini_prompt_v2_r02/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "abf9e966a091a0dc31eec8d8471787a1a2dbfb5092434588f673620acd699b76"
+      }
+    },
+    {
+      "arm_id": "standard_gemini",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/direct_arylation_standard_gemini_fixed_v2_r03/eval/cases/direct_arylation/metrics.json",
+        "sha256": "091b83eaa4640885308e68c778de5fcf52df3241ad594ff9f301147452f29f8f"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/direct_arylation_standard_gemini_fixed_v2_r03/eval/cases/direct_arylation/output.json",
+        "sha256": "e4d60fc3094bb892ec443ce35f9a1cd259749860663807eb59b290f504c037c2"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/direct_arylation_standard_gemini_fixed_v2_r03/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "400ecb674ac08e7542a08d3c6be71a408c2a27a515cae0986120c34c68aaa004"
+      }
+    },
+    {
+      "arm_id": "standard_gemini",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/ackley_standard_gemini_fixed_v2_r01/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "5ca8be3c5b1dc9f646405f6677937ccdb0824930c7f5bafad540aefafc472222"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/ackley_standard_gemini_fixed_v2_r01/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "9161682d2f004be3359a8d51430ff5680999c3aed657886124a336de2fdc53f4"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/ackley_standard_gemini_fixed_v2_r01/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "0ab31271fcdee21df1db3c273a6bcbac79cdbc103c2feb84bdbc948aa4901d9c"
+      }
+    },
+    {
+      "arm_id": "standard_gemini",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/ackley_standard_gemini_fixed_v2_r02/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "ce9679a4e8252c9440951f17f5ccc4927b7e0060f82a81606891855aa2b26dcf"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/ackley_standard_gemini_fixed_v2_r02/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "b8f36e02a80349b44dc214e3caf6161f659bfbde83a455c5e9f6d4ce24692b40"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/ackley_standard_gemini_fixed_v2_r02/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "44c3e196ded7b263ac5bf731148253ccb9692428e2104cac0a78637ff82e1531"
+      }
+    },
+    {
+      "arm_id": "standard_gemini",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gemini/arms/standard_gemini_prompt_v2/cells/ackley_standard_gemini_prompt_v2_r03/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "0c08cf716e7d1ee63d61f40216d2d74ac3c5d6862e46ffa1fc0919955788e3dc"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gemini/arms/standard_gemini_prompt_v2/cells/ackley_standard_gemini_prompt_v2_r03/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "6547fb1ce271d444ff286922ea42552b40264ec8133be07cf94623b616825766"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gemini/arms/standard_gemini_prompt_v2/cells/ackley_standard_gemini_prompt_v2_r03/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "4e9378859ccd39ec47673ec1fc8f078d6791cdd284a824c33d8212de89d9307e"
+      }
+    },
+    {
+      "arm_id": "standard_glm",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r01/eval/cases/direct_arylation/metrics.json",
+        "sha256": "d07e667c4943315346d46cf647ff61c4c4783df75ce8435732b3ccf3c6eb67f9"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+        "sha256": "6af35af4a62ded76f3d5278cce0dbf4fbd675e1f4573363a9bb639808977255c"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r01/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "a66b94c005366449cc6d78dbbd25980f02a334f05a52ccc21892a5b650c7a1f0"
+      }
+    },
+    {
+      "arm_id": "standard_glm",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r02/eval/cases/direct_arylation/metrics.json",
+        "sha256": "8cb8c8d11d14703f84a07ac124bf8ac54d72dd9f583f292f8147316c436680e6"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+        "sha256": "538e6cf984303cea06b344b6f43642182fdfdeb38dad6c98fc3640895a4a37aa"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r02/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "8ffa16aa84ed914fc7e6d7997f97e33808db5238d3c453c9522fe3a3708019ab"
+      }
+    },
+    {
+      "arm_id": "standard_glm",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r03/eval/cases/direct_arylation/metrics.json",
+        "sha256": "133aaa815329aab1f2b7d28dac0375959c8a4962efd2aac5813739ffc2958922"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r03/eval/cases/direct_arylation/output.json",
+        "sha256": "3c4a6fc94c23a7b8aaa19b834e21d994c1f84bcfbd869ab66bf94778cbaf6f6b"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r03/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "c7a040bc26ff4a17cc10938df3a949a72e96fd44233effd88743a10e1de833aa"
+      }
+    },
+    {
+      "arm_id": "standard_glm",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/ackley_standard_glm_prompt_v2_r01/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "afcdfef15e3e92d697616bcfe534abfd4e52a86d5ef63fe032cddac8b8792c28"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/ackley_standard_glm_prompt_v2_r01/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "40882bf88aeb92e350a9232bf4f222b777b5209407c61d43a1ba987cb762c7ed"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/ackley_standard_glm_prompt_v2_r01/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "e7e574c8a4da25688c806cb5c9e8eca83532f42c0437b59246be0c37f1319927"
+      }
+    },
+    {
+      "arm_id": "standard_glm",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/ackley_standard_glm_prompt_v2_r02/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "68697a20b70fbd5e7953cb20ac341c7ab8511ad9cf4ecf6877f22cc4d7368d3b"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/ackley_standard_glm_prompt_v2_r02/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "dec7f488906abff53c57c321b238240c3d622a5c2055dcf5fcd2b8e5360279d5"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/ackley_standard_glm_prompt_v2_r02/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "15490103c0a1b6f3f8b4cb618f3fb7eaf77c40bbe08803f1e9dad7f031417452"
+      }
+    },
+    {
+      "arm_id": "standard_glm",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_glm_ackley_r3_20260808T004854Z_retry1/runs/target/arms/standard_glm_baybe_duplicate_fix/cells/ackley_standard_glm_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "c6537965d96d4eff8f6fc647af3a57125c1502bd538e88813d04bc8b71eae224"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_glm_ackley_r3_20260808T004854Z_retry1/runs/target/arms/standard_glm_baybe_duplicate_fix/cells/ackley_standard_glm_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "5c493c23583e345be06d458f0ee5952e6004426f6d88ff204f820a7105fecf6f"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_glm_ackley_r3_20260808T004854Z_retry1/runs/target/arms/standard_glm_baybe_duplicate_fix/cells/ackley_standard_glm_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "0e5a79d38593a5497fe4267a926d8381205fadb8352ff0fb29cd65823dd0966e"
+      }
+    },
+    {
+      "arm_id": "standard_gpt",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gpt/arms/standard_gpt_prompt_v2/cells/direct_arylation_standard_gpt_prompt_v2_r01/eval/cases/direct_arylation/metrics.json",
+        "sha256": "7feea3c11c2edc3f8bf2d78b4a159146213cf3a445a3e3cd43bad88734200759"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gpt/arms/standard_gpt_prompt_v2/cells/direct_arylation_standard_gpt_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+        "sha256": "33b47620bcefca18811a5d3317241d1c09e01cd44c5b0923a412612e9a5fdb95"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gpt/arms/standard_gpt_prompt_v2/cells/direct_arylation_standard_gpt_prompt_v2_r01/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "815283d8aa09873588fb5eb6176325ac8dc53690c73bc2c7b2a92cef5cae37d4"
+      }
+    },
+    {
+      "arm_id": "standard_gpt",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gpt/arms/standard_gpt_prompt_v2/cells/direct_arylation_standard_gpt_prompt_v2_r02/eval/cases/direct_arylation/metrics.json",
+        "sha256": "19df2ee32b4565b90547426220e922598531bc00286d2dee46738fca4726ba33"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gpt/arms/standard_gpt_prompt_v2/cells/direct_arylation_standard_gpt_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+        "sha256": "e74472be32dbe789988b53d3cb69d581878e01b9a3ab6752492daea100956288"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gpt/arms/standard_gpt_prompt_v2/cells/direct_arylation_standard_gpt_prompt_v2_r02/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "4c66388779328cc2de0e311124adc40ac3730c895c1240ded008c93daa847a02"
+      }
+    },
+    {
+      "arm_id": "standard_gpt",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_gpt54_ackley_r3_20260808T002804Z/runs/prompt_gpt/arms/standard_gpt_baybe_duplicate_fix/cells/ackley_standard_gpt_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "dc5aeb7de4d8e3e511d0102ae9c16277083d6ebcde26fa87a837f48acebffdde"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_gpt54_ackley_r3_20260808T002804Z/runs/prompt_gpt/arms/standard_gpt_baybe_duplicate_fix/cells/ackley_standard_gpt_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "a72dc61cbee05c4a3bc48402f68abb6fff468f4a27401945b47b3719ebafd49d"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_gpt54_ackley_r3_20260808T002804Z/runs/prompt_gpt/arms/standard_gpt_baybe_duplicate_fix/cells/ackley_standard_gpt_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "d0e24e37767731d8c42f82da880646ab33f6035571f0fec382fc1f76be2e472b"
+      }
+    },
+    {
+      "arm_id": "standard_gpt56",
+      "auxiliary_audits": [
+        {
+          "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gpt56/arms/standard_gpt56_fixed/control/READBACK_RECOVERY_AUDIT.json",
+          "sha256": "5dcf472d1fa46cb4301574cfa3e111e40f298d41a49c8c03172253bc986cc428"
+        }
+      ],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gpt56/arms/standard_gpt56_fixed/cells/direct_arylation_standard_gpt56_fixed_r03/eval/cases/direct_arylation/metrics_recovered.json",
+        "sha256": "d8cfe3c6be5a3be67440e67be83542e431361cbb1c5bd0d075ee00b18e6e40d8"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gpt56/arms/standard_gpt56_fixed/cells/direct_arylation_standard_gpt56_fixed_r03/eval/cases/direct_arylation/output.json",
+        "sha256": "2e56b8b0ba74c6d97eb388a240c43efb2a138054753ab391676dfabbcf360563"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gpt56/arms/standard_gpt56_fixed/cells/direct_arylation_standard_gpt56_fixed_r03/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "1836ac11d47a85466872c40a7e8b674beb28415a157f9fcfc25d525d06dc996c"
+      }
+    },
+    {
+      "arm_id": "standard_nemotron",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_nemotron/arms/standard_nemotron_prompt_v2/cells/direct_arylation_standard_nemotron_prompt_v2_r01/eval/cases/direct_arylation/metrics.json",
+        "sha256": "205a48e42825d61ff160f9cf6dc40657b82dc79af2c96ba5d07b956286e377c3"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_nemotron/arms/standard_nemotron_prompt_v2/cells/direct_arylation_standard_nemotron_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+        "sha256": "0295cc62963f268a66a9d457c504f95e110897fb906d5e066d6760c1d4bea7b6"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_nemotron/arms/standard_nemotron_prompt_v2/cells/direct_arylation_standard_nemotron_prompt_v2_r01/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "af3cceeac53f74a976967d6ad3c29d7f9e220bed49b1b2d10f3781a3a6c0a628"
+      }
+    },
+    {
+      "arm_id": "standard_nemotron",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_nemotron_ackley_r3_20260808T004854Z_retry1/runs/target/arms/standard_nemotron_baybe_duplicate_fix/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "36be8485e9697f772242556a2673b6e59b6ece5a0941eeaa139243d3695680ba"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_nemotron_ackley_r3_20260808T004854Z_retry1/runs/target/arms/standard_nemotron_baybe_duplicate_fix/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "bd69cf8f2c7621e2a592bf6375ea0b71ed40f3c8c410937dbd88f7d0eeaee8ff"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_nemotron_ackley_r3_20260808T004854Z_retry1/runs/target/arms/standard_nemotron_baybe_duplicate_fix/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "de6587dcae3a1448ef418cac14635755f9e49eee46eef32eaafcfb784f191490"
+      }
+    },
+    {
+      "arm_id": "standard_opus5",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/direct_arylation_standard_opus5_fixed_r01/eval/cases/direct_arylation/metrics.json",
+        "sha256": "8beee84a36572ae91628a2337f87710e5f0132e75d1a5773a5400a140a1609e2"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/direct_arylation_standard_opus5_fixed_r01/eval/cases/direct_arylation/output.json",
+        "sha256": "b1d5aa26382155d9da7776c0aff2c5ac5fc7e5cc522c3ae71c1ba8c3b85c141b"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/direct_arylation_standard_opus5_fixed_r01/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "185c6206953521c28fea07338b07fefdb55a9c79cda977a7c7584cff40c6cba1"
+      }
+    },
+    {
+      "arm_id": "standard_opus5",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_opus5/arms/standard_opus5_prompt_v2/cells/direct_arylation_standard_opus5_prompt_v2_r02/eval/cases/direct_arylation/metrics.json",
+        "sha256": "6c65303b9c982529775b5e5bd80111b0bce144032faad6e1ec0dc0e5ea536f07"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_opus5/arms/standard_opus5_prompt_v2/cells/direct_arylation_standard_opus5_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+        "sha256": "886ad6aa1c0bc38a30cf92ee731c27a0ae06c7e011e3a03015edfd2e36b0d856"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_opus5/arms/standard_opus5_prompt_v2/cells/direct_arylation_standard_opus5_prompt_v2_r02/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "8d6bf2f6eca90b9c67d9b945dc0f61ea2b6f0f9ee2579bb92b149b4f6d92f4cb"
+      }
+    },
+    {
+      "arm_id": "standard_opus5",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/direct_arylation_standard_opus5_fixed_r03/eval/cases/direct_arylation/metrics.json",
+        "sha256": "55e35a31ec8fd5fc52112ad4a04f8404d097a037597aa509d693de9f7ab5ce50"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/direct_arylation_standard_opus5_fixed_r03/eval/cases/direct_arylation/output.json",
+        "sha256": "18623aa9fc28a8243569162b36eb03fe1a6695134cdbe75c742a77d62eef7ff6"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/direct_arylation_standard_opus5_fixed_r03/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "e19527bcfc6ee39adbca48eb3ad0105038a6cdf16d8e74453c3de2e8d58092a9"
+      }
+    },
+    {
+      "arm_id": "standard_opus5",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r01/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "150cec9ecbdc9a9f480f02a27d1738abde886c1b12a6838e0485a0558541e8e3"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r01/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "fc74f766880f0228af1e7d8b2af9fc55a8225a1d2967f2a78e3eee01ef428344"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r01/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "82155e12a7f6929b3efc3db0790b4744124d66f1c5e600c66bed671d88d08a0c"
+      }
+    },
+    {
+      "arm_id": "standard_opus5",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r02/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "c54e3f4b772b4f37b1f04aa3143a8cd95753fbef2ca9e75573414d813186d4c7"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r02/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "5ef60f3590ecec20c3fc6d856147107b8ceed61a5444f9589fd58441e74fd4c2"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r02/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "b831837cd4cafe6baf08c0105aaddc1c06739704ce22a7718e6a3f6eabd67dfb"
+      }
+    },
+    {
+      "arm_id": "standard_opus5",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r03/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "76f0e41251c325d888e69788772d8613f8c95551d82270dc299c9c23b6ab7ef0"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r03/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "c1d8db885ec15a6bf97768da795925db6f42825941c7a94805e1f62890910484"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r03/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "f1cfb6a55544ce34598e715eb58713962e74cbb7567a6fcffa654861c451ec60"
+      }
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r01/eval/cases/direct_arylation/metrics.json",
+        "sha256": "7350d7930a13a114027d6080928017641b1711b89b00bed0f7ec3e0d35b5f955"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+        "sha256": "253df1c21179ba65827c8628015374bed5ba5db66c99ceed6b043fb24f08cc54"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r01/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "53be0b66ec7a8893a391b5b0c2f600ea89ca532bfbc13bf9b1585b2f0e617456"
+      }
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r02/eval/cases/direct_arylation/metrics.json",
+        "sha256": "6cf5a052e77873921e58debd5438a6b99220e85947dd75062b43ea5f1b382301"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+        "sha256": "036b73a51eba70dc7cc93f96a9db1783e1dc63b6bcba321ec8b61df665bfd41b"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r02/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "3bba520ade0ba4acc60c536e1b1467dd79c76f0b262e4b7c9a6bb9be851be0b6"
+      }
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "auxiliary_audits": [],
+      "case": "direct_arylation",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r03/eval/cases/direct_arylation/metrics.json",
+        "sha256": "c7bc832478860828f53248e826b670033d85c2e5d8fa9587458713161558a7cc"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r03/eval/cases/direct_arylation/output.json",
+        "sha256": "b4d69cd71a4761971fb876c40d430ab2945e4c78ab0a3befe59391f8e1728894"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r03/eval/cases/direct_arylation/provider_requests.jsonl",
+        "sha256": "48c7a6e74f8ab9f4a445798cbf806aa119056e8aa77e4c94c1bb22f368e3b02a"
+      }
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r01/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "6c1b8becd08c8bef3fedb994f6c2a4c706021d676e5882abc0377578e56a1967"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r01/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "907a979f09519d365c0a5452fed3358a4fb1483ea678e570464313f62dc4b91a"
+      },
+      "repeat": 1,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r01/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "e3c3dd26e914d9db565ca7a4dfa67b84d0e3e75864d32332e6807ea1a0e9cbb6"
+      }
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r02/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "70281f2e64de11eda59c88c7a64fccc3055b5a71db71965393a937e144c460bf"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r02/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "11912ab5d14c86bcdaf88c3f943195d061a35e2a06db8cd5164b7bb3432de767"
+      },
+      "repeat": 2,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r02/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "20dc39ef934a98abdaef71e79be2a54dee2eff1c8949f8f657b0f8b67f08e841"
+      }
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "auxiliary_audits": [],
+      "case": "synthetic_ackley_6d",
+      "metrics": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r03/eval/cases/synthetic_ackley_6d/metrics.json",
+        "sha256": "0985fe4ea82d264be4d16ad2dc7aa4c7d8c75826772efeb789646c7cadb5ce2b"
+      },
+      "output": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r03/eval/cases/synthetic_ackley_6d/output.json",
+        "sha256": "2f4b34cc780493fa0cc9aa6392db2d796cf90233bb6aa47fd30c5636149ab257"
+      },
+      "repeat": 3,
+      "request_ledger": {
+        "path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r03/eval/cases/synthetic_ackley_6d/provider_requests.jsonl",
+        "sha256": "32ed0beba476a14253e1f2e846658e0ed28208681ea9662e2a69a399fda7631d"
+      }
+    }
+  ]
+}

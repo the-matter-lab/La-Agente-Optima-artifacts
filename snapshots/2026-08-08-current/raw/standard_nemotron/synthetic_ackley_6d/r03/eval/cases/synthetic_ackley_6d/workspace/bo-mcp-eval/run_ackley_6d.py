@@ -1,0 +1,66 @@
+#!/usr/bin/env python
+"""CLI entrypoint for 6D Ackley BO campaign via BO-MCP.
+
+Usage:
+    uv run python run_ackley_6d.py [--campaign-id CAMPAIGN_ID] [--max-evaluations N] [--poll-s SECONDS] [--heartbeat-s SECONDS] [--stop-file PATH] [--results-dir PATH] [--random-seed SEED] [--initial-design-size N]
+
+Environment:
+    BO_MCP_API_URL - BO-MCP server URL (required)
+    BO_MCP_API_KEY - API key for authentication (required)
+"""
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+# Configure Logfire for request instrumentation
+import logfire
+from grafico.core.logfire_config import configure_logfire
+
+configure_logfire()
+logfire.instrument_requests()
+
+from ackley_6d_bo.orchestration import run_campaign
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="6D Ackley BO campaign via BO-MCP (baybe backend)")
+    parser.add_argument("--campaign-id", type=str, default=None, help="Existing campaign ID to resume")
+    parser.add_argument("--max-evaluations", type=int, default=60, help="Max evaluations this run (default: 60)")
+    parser.add_argument("--poll-s", type=float, default=180.0, help="Poll interval for next_action (default: 180s)")
+    parser.add_argument("--heartbeat-s", type=float, default=1800.0, help="Heartbeat log interval (default: 1800s)")
+    parser.add_argument("--stop-file", type=str, default="STOP", help="Stop file path (default: STOP)")
+    parser.add_argument("--results-dir", type=str, default="ackley_6d_results", help="Results directory (default: ackley_6d_results)")
+    parser.add_argument("--random-seed", type=int, default=42, help="Campaign RNG seed (default: 42)")
+    parser.add_argument("--initial-design-size", type=int, default=10, help="Initial design size (default: 10)")
+    
+    args = parser.parse_args()
+    
+    # Validate required env vars
+    for var in ("BO_MCP_API_URL", "BO_MCP_API_KEY"):
+        if not os.getenv(var):
+            print(f"[ALERT] Required environment variable {var} not set", file=sys.stderr)
+            return 1
+    
+    try:
+        report = run_campaign(
+            campaign_id=args.campaign_id,
+            results_dir=args.results_dir,
+            max_evaluations=args.max_evaluations,
+            poll_interval=args.poll_s,
+            heartbeat_interval=args.heartbeat_s,
+            stop_file=args.stop_file,
+            random_seed=args.random_seed,
+            initial_design_size=args.initial_design_size,
+        )
+        return 0
+    except Exception as e:
+        print(f"[ALERT] Campaign failed: {e}", file=sys.stderr)
+        import traceback
+        traceback.print_exc()
+        return 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

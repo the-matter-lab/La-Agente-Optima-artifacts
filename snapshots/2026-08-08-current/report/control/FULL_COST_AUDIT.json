@@ -1,0 +1,3915 @@
+{
+  "arms": {
+    "direct_tool_gpt": {
+      "captured_unique_responses": 239,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 8.5131115,
+      "traced_provider_calls": 239,
+      "unmatched_traced_provider_calls": 0
+    },
+    "main_script_gpt": {
+      "captured_unique_responses": 162,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 4.972976,
+      "traced_provider_calls": 162,
+      "unmatched_traced_provider_calls": 0
+    },
+    "no_bo_gpt": {
+      "captured_unique_responses": 84,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.9619654999999998,
+      "traced_provider_calls": 84,
+      "unmatched_traced_provider_calls": 0
+    },
+    "standard_deepseek": {
+      "captured_unique_responses": 672,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 5.544719608375999,
+      "traced_provider_calls": 672,
+      "unmatched_traced_provider_calls": 0
+    },
+    "standard_gemini": {
+      "captured_unique_responses": 635,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 39.83695226666667,
+      "traced_provider_calls": 635,
+      "unmatched_traced_provider_calls": 0
+    },
+    "standard_glm": {
+      "captured_unique_responses": 616,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 9.1161484032,
+      "traced_provider_calls": 616,
+      "unmatched_traced_provider_calls": 0
+    },
+    "standard_gpt": {
+      "captured_unique_responses": 408,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 24,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 9.657077500000002,
+      "traced_provider_calls": 408,
+      "unmatched_traced_provider_calls": 0
+    },
+    "standard_gpt56": {
+      "captured_unique_responses": 349,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 13.668379250000001,
+      "traced_provider_calls": 349,
+      "unmatched_traced_provider_calls": 0
+    },
+    "standard_nemotron": {
+      "captured_unique_responses": 678,
+      "cells": 6,
+      "cost_status": "lower_bound",
+      "cost_status_counts": {
+        "exact_calculated": 5,
+        "lower_bound": 1
+      },
+      "duplicate_response_records": 988,
+      "failed_task_count": 2,
+      "known_list_cost_usd": 3.1005559999999996,
+      "traced_provider_calls": 781,
+      "unmatched_traced_provider_calls": 50
+    },
+    "standard_opus5": {
+      "captured_unique_responses": 448,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 23.567421000000003,
+      "traced_provider_calls": 448,
+      "unmatched_traced_provider_calls": 0
+    },
+    "standard_sonnet5": {
+      "captured_unique_responses": 444,
+      "cells": 6,
+      "cost_status": "exact_calculated",
+      "cost_status_counts": {
+        "exact_calculated": 6
+      },
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 12.1909558,
+      "traced_provider_calls": 444,
+      "unmatched_traced_provider_calls": 0
+    }
+  },
+  "cells": [
+    {
+      "arm_id": "direct_tool_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 46,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_direct_tool_gpt_r01",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/direct_arylation_direct_tool_gpt_r01/controller.log",
+      "controller_log_sha256": "6d4523c15511525e3813a3cc0eda529a104a845a78a62336d817bc506547940f",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.4317395000000002,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.4317395000000002,
+          "priced_responses": 46,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 46,
+          "responses_with_usage": 46,
+          "tokens": {
+            "cache_read": 2390528,
+            "cache_write": 0,
+            "input": 205003,
+            "output": 21440
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 46,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/direct_arylation_direct_tool_gpt_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "2e03ff9de09b6b1ebfa8ebb96356a454419815c885af063437e4f67dc49d0cd1",
+      "prior_reported_combined_cost_usd": 1.4317395000000002,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 46,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 46
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "direct_tool_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 50,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_direct_tool_gpt_r02",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/direct_arylation_direct_tool_gpt_r02/controller.log",
+      "controller_log_sha256": "12b08837728a12018c9f5ada5aa78a5beb06c08d4fbe51f2fa73e511e59864b2",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.3715355000000002,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.3715355000000002,
+          "priced_responses": 50,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 50,
+          "responses_with_usage": 50,
+          "tokens": {
+            "cache_read": 2879872,
+            "cache_write": 0,
+            "input": 134531,
+            "output": 21016
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 50,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/direct_arylation_direct_tool_gpt_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "e1543d5e00f4011c74fd2e52cf34a41eb0abfe40ec3e7e9d4a8bfbeab77b89eb",
+      "prior_reported_combined_cost_usd": 1.3715355000000002,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 50,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 50
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "direct_tool_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 43,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_direct_tool_gpt_r03",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/direct_arylation_direct_tool_gpt_r03/controller.log",
+      "controller_log_sha256": "bdab0a08cf20400650d7451aec3afe5527133696c3b13c8c2965aa488e1ab765",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.3653845000000002,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.3653845000000002,
+          "priced_responses": 43,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 43,
+          "responses_with_usage": 43,
+          "tokens": {
+            "cache_read": 2305408,
+            "cache_write": 0,
+            "input": 198175,
+            "output": 19573
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 43,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/direct_arylation_direct_tool_gpt_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "29c31ffc27b25cb282c56f84219f304ee17f258ba3bed16f894370e490f85c2f",
+      "prior_reported_combined_cost_usd": 1.3653845000000002,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 43,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 43
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "direct_tool_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 26,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_direct_tool_gpt_r01",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/ackley_direct_tool_gpt_r01/controller.log",
+      "controller_log_sha256": "76ccdb5389ab8e8174ce786eaee43b4f6d7220d5e77bb857067d37febeeb70f6",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.4830435,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.4830435,
+          "priced_responses": 26,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 26,
+          "responses_with_usage": 26,
+          "tokens": {
+            "cache_read": 1373824,
+            "cache_write": 0,
+            "input": 258039,
+            "output": 32966
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 26,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/ackley_direct_tool_gpt_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "08e89da0d69861b0e95eeb02a74db1559a3d9dfcb888780a6590dade52102350",
+      "prior_reported_combined_cost_usd": 1.4830435,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 26,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 26
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "direct_tool_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 39,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_direct_tool_gpt_r02",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/ackley_direct_tool_gpt_r02/controller.log",
+      "controller_log_sha256": "853826318ae8c27227a948b26eace8626f541e82d077eb239f473ef015b15017",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.505197,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.505197,
+          "priced_responses": 39,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 39,
+          "responses_with_usage": 39,
+          "tokens": {
+            "cache_read": 2093568,
+            "cache_write": 0,
+            "input": 226660,
+            "output": 27677
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 39,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/ackley_direct_tool_gpt_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "9c002b7ae7d0b6dc67d4b683342ae04351808edb0e2b8594bb659b57af1b0fcc",
+      "prior_reported_combined_cost_usd": 1.505197,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 39,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 39
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "direct_tool_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 35,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_direct_tool_gpt_r03",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/ackley_direct_tool_gpt_r03/controller.log",
+      "controller_log_sha256": "17d227998f2736f665b8925190a743b601d4dc28ea5c5fc3d9783dbc854c0f82",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.3562115000000001,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.3562115000000001,
+          "priced_responses": 35,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 35,
+          "responses_with_usage": 35,
+          "tokens": {
+            "cache_read": 2096896,
+            "cache_write": 0,
+            "input": 151601,
+            "output": 30199
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 35,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/direct_tool_gpt/cells/ackley_direct_tool_gpt_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "38ae29d9c246f86501142e63dd75f91ec8ed4c07a92566cb037d6353f6faeb63",
+      "prior_reported_combined_cost_usd": 1.3562115000000001,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 35,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 35
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "main_script_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 38,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_main_script_gpt_r01",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/direct_arylation_main_script_gpt_r01/controller.log",
+      "controller_log_sha256": "c231b7a7a1947d489d4071e58f945b065f9e72f925c4790b7f9f0f9e4dfcddce",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.990149,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.990149,
+          "priced_responses": 38,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 38,
+          "responses_with_usage": 38,
+          "tokens": {
+            "cache_read": 1689856,
+            "cache_write": 0,
+            "input": 77446,
+            "output": 24938
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 38,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/direct_arylation_main_script_gpt_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "656bb28bf0dda610f39476c430b494d01c283eca3ea8d03b4d0471157f92e9d1",
+      "prior_reported_combined_cost_usd": 0.990149,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 38,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 38
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "main_script_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 24,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_main_script_gpt_r02",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/direct_arylation_main_script_gpt_r02/controller.log",
+      "controller_log_sha256": "4ffdb4d48259692c65ea1bb38dd2b1b69c40ec3ebdc13810df2da28dfc807d16",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.910706,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.910706,
+          "priced_responses": 24,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 24,
+          "responses_with_usage": 24,
+          "tokens": {
+            "cache_read": 1199104,
+            "cache_write": 0,
+            "input": 80380,
+            "output": 27332
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 24,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/direct_arylation_main_script_gpt_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "0d2193cf7f2f6a15888709c68178b6ac3999ce5205f4b6d6e3a10cdacf5f0ffe",
+      "prior_reported_combined_cost_usd": 0.910706,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 24,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 24
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "main_script_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 27,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_main_script_gpt_r03",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/direct_arylation_main_script_gpt_r03/controller.log",
+      "controller_log_sha256": "b24ee81478d764ddb405b4da58bdd1ff52a9404d29582f41c8a6f46c47c0e453",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.7577665,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.7577665,
+          "priced_responses": 27,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 27,
+          "responses_with_usage": 27,
+          "tokens": {
+            "cache_read": 1042176,
+            "cache_write": 0,
+            "input": 102997,
+            "output": 15982
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 27,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/direct_arylation_main_script_gpt_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "fcc048faa6a644a08a2b181a9558e43a46d5c6b6137c923971868f0e11176ea0",
+      "prior_reported_combined_cost_usd": 0.7577665,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 27,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 27
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "main_script_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 21,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_main_script_gpt_prompt_v2_r01",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.7025754999999999,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.7025754999999999,
+          "priced_responses": 21,
+          "provider": "openai",
+          "responses": 21,
+          "responses_with_usage": 21,
+          "tokens": {
+            "cache_read": 719872,
+            "cache_write": 0,
+            "input": 75789,
+            "output": 22209
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 21,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_main_script_gpt/arms/main_script_gpt_prompt_v2/cells/ackley_main_script_gpt_prompt_v2_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "94e502a5bf4951b7e40925d0f8478d2269635bbe65fa63d7ebc18b59c2e51387",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 21,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 21
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "main_script_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 31,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_main_script_gpt_r02",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/ackley_main_script_gpt_r02/controller.log",
+      "controller_log_sha256": "c3f4064006cf75b36e941859c1a11d3ed7b42127b1020e8931ffffa009bcb18a",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.8966125,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.8966125,
+          "priced_responses": 31,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 31,
+          "responses_with_usage": 31,
+          "tokens": {
+            "cache_read": 1199360,
+            "cache_write": 0,
+            "input": 108077,
+            "output": 21772
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 31,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/ackley_main_script_gpt_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "2dc8927331a41199abb237b195eac2091943f9f030ef5b5b1c615343dcd6a421",
+      "prior_reported_combined_cost_usd": 0.8966125,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 31,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 31
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "main_script_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 21,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_main_script_gpt_r03",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/ackley_main_script_gpt_r03/controller.log",
+      "controller_log_sha256": "1a87502457d2593b0050acd9e81697cd93acae16a2507ccc5418824248eef53e",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.7151665,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.7151665,
+          "priced_responses": 21,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 21,
+          "responses_with_usage": 21,
+          "tokens": {
+            "cache_read": 937856,
+            "cache_write": 0,
+            "input": 63569,
+            "output": 21452
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 21,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/main_script_gpt/cells/ackley_main_script_gpt_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "bde1da8c9c60f8186f68ac515c6c29557b180d2cf5b2f80dd2e4a04999c350e5",
+      "prior_reported_combined_cost_usd": 0.7151665,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 21,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 21
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "no_bo_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 10,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_no_bo_gpt_r01",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/direct_arylation_no_bo_gpt_r01/controller.log",
+      "controller_log_sha256": "949c269adae54f9cf751be0c7e029d5dc53b4e2db1e590f81efbd544236a62d9",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.26935749999999997,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.26935749999999997,
+          "priced_responses": 10,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 10,
+          "responses_with_usage": 10,
+          "tokens": {
+            "cache_read": 183040,
+            "cache_write": 0,
+            "input": 20247,
+            "output": 11532
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 10,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "509928147e1ce93d68de940a8e383f9302876df61275e61e18fc6c81b0936f70",
+      "prior_reported_combined_cost_usd": 0.26935749999999997,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 10,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 10
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "no_bo_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 15,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_no_bo_gpt_r02",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/direct_arylation_no_bo_gpt_r02/controller.log",
+      "controller_log_sha256": "40ddcc1c93942f48564d9b6a6cd20e0ae87d49e3903d39d54032bb51789bdf01",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.39230600000000004,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.39230600000000004,
+          "priced_responses": 15,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 15,
+          "responses_with_usage": 15,
+          "tokens": {
+            "cache_read": 313984,
+            "cache_write": 0,
+            "input": 27550,
+            "output": 16329
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 15,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/direct_arylation_no_bo_gpt_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "49b946ed560f2fcc7c96b084b05bf1ceb0d4f63ffa740517d5fb730b16861a4f",
+      "prior_reported_combined_cost_usd": 0.39230600000000004,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 15,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 15
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "no_bo_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 16,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_no_bo_gpt_r03",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/direct_arylation_no_bo_gpt_r03/controller.log",
+      "controller_log_sha256": "de8727d7e5217bb1b3e500b4e79e99f90e0fd5ad9cc22056f2fc2c6faa4bab4a",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.364658,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.364658,
+          "priced_responses": 16,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 16,
+          "responses_with_usage": 16,
+          "tokens": {
+            "cache_read": 269952,
+            "cache_write": 0,
+            "input": 42950,
+            "output": 12653
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 16,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/direct_arylation_no_bo_gpt_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "cebb96ddde6e23a295f6dedf35180f2d2b1a54f83a758a043a78415ab00e50da",
+      "prior_reported_combined_cost_usd": 0.364658,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 16,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 16
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "no_bo_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 14,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_no_bo_gpt_r01",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/ackley_no_bo_gpt_r01/controller.log",
+      "controller_log_sha256": "5574dcaa0207a97944f76258d17ab2742d3edb020b8abdad2fa04f65cba3fdef",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.280922,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.280922,
+          "priced_responses": 14,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 14,
+          "responses_with_usage": 14,
+          "tokens": {
+            "cache_read": 223488,
+            "cache_write": 0,
+            "input": 23336,
+            "output": 11114
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 14,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/ackley_no_bo_gpt_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "c2d89dd350802a8377b462b44e41afcd1d148f6e924423e1877c911f2760bd7c",
+      "prior_reported_combined_cost_usd": 0.280922,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 14,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 14
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "no_bo_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 12,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_no_bo_gpt_r02",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/ackley_no_bo_gpt_r02/controller.log",
+      "controller_log_sha256": "98a1f223b7fe67620a9c9e7cba1780a74041c56fc4069ff1de702dcecf292fc5",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.287933,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.287933,
+          "priced_responses": 12,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 12,
+          "responses_with_usage": 12,
+          "tokens": {
+            "cache_read": 195072,
+            "cache_write": 0,
+            "input": 24908,
+            "output": 11793
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 12,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/ackley_no_bo_gpt_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "67dffd87b1ccaa90b9e8df1f2601eeced733b522bcdc06ca77cebba3c98f3746",
+      "prior_reported_combined_cost_usd": 0.287933,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 12,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 12
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "no_bo_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 17,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_no_bo_gpt_r03",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/ackley_no_bo_gpt_r03/controller.log",
+      "controller_log_sha256": "abe572107c6f7dd1880b35bca2a70912a2fbe6665281253621a697ea15c2375e",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.3667889999999999,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.3667889999999999,
+          "priced_responses": 17,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 17,
+          "responses_with_usage": 17,
+          "tokens": {
+            "cache_read": 331136,
+            "cache_write": 0,
+            "input": 29746,
+            "output": 13976
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 17,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/no_bo_gpt/cells/ackley_no_bo_gpt_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "47789ef66098f78b01d3d85066dfab71c191a67e949874b5e54195b689c22b1b",
+      "prior_reported_combined_cost_usd": 0.3667889999999999,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 0,
+      "task_status_counts": {},
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 17,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 17
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 64,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_deepseek_prompt_v2_r01",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.45607132240000003,
+      "models": {
+        "deepseek/deepseek-v4-pro": {
+          "known_list_cost_usd": 0.0925003224,
+          "priced_responses": 32,
+          "provider": "openrouter",
+          "responses": 32,
+          "responses_with_usage": 32,
+          "tokens": {
+            "cache_read": 1333760,
+            "cache_write": 0,
+            "input": 88505,
+            "output": 14532
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.363571,
+          "priced_responses": 32,
+          "provider": "openai",
+          "responses": 32,
+          "responses_with_usage": 32,
+          "tokens": {
+            "cache_read": 548864,
+            "cache_write": 0,
+            "input": 41672,
+            "output": 8145
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 64,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "5187d38fe762a8ce3bb605852e4cbdbd61f800dadad78a07fad5313a19f84089",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 64,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 64
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 130,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_deepseek_prompt_v2_r02",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.901113399948,
+      "models": {
+        "deepseek/deepseek-v4-pro": {
+          "known_list_cost_usd": 0.45046489994800004,
+          "priced_responses": 93,
+          "provider": "openrouter",
+          "responses": 93,
+          "responses_with_usage": 93,
+          "tokens": {
+            "cache_read": 5854720,
+            "cache_write": 0,
+            "input": 568994,
+            "output": 39044
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.4506485,
+          "priced_responses": 37,
+          "provider": "openai",
+          "responses": 37,
+          "responses_with_usage": 37,
+          "tokens": {
+            "cache_read": 720384,
+            "cache_write": 0,
+            "input": 49655,
+            "output": 9761
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 130,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "cd09049e13dad8316de5b2c59aa25998a7df0734d6376a811b41b82a115277ea",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 130,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 130
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 91,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_deepseek_prompt_v2_r03",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.6195893964439999,
+      "models": {
+        "deepseek/deepseek-v4-pro": {
+          "known_list_cost_usd": 0.20537639644400005,
+          "priced_responses": 56,
+          "provider": "openrouter",
+          "responses": 56,
+          "responses_with_usage": 56,
+          "tokens": {
+            "cache_read": 2708992,
+            "cache_write": 0,
+            "input": 247714,
+            "output": 22553
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.41421300000000005,
+          "priced_responses": 35,
+          "provider": "openai",
+          "responses": 35,
+          "responses_with_usage": 35,
+          "tokens": {
+            "cache_read": 599552,
+            "cache_write": 0,
+            "input": 42736,
+            "output": 10499
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 91,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/direct_arylation_standard_deepseek_prompt_v2_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "ea8cf18fbfc43f330c28aa8c003ede21676d680cdc122795c6989655bbbcfb36",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 91,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 91
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 156,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_deepseek_fixed_r01",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.0857822724999995,
+      "models": {
+        "deepseek/deepseek-v4-pro": {
+          "known_list_cost_usd": 1.6000402724999991,
+          "priced_responses": 118,
+          "provider": "openrouter",
+          "responses": 118,
+          "responses_with_usage": 118,
+          "tokens": {
+            "cache_read": 10258944,
+            "cache_write": 0,
+            "input": 1510699,
+            "output": 43279
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.4857419999999999,
+          "priced_responses": 38,
+          "provider": "openai",
+          "responses": 38,
+          "responses_with_usage": 38,
+          "tokens": {
+            "cache_read": 780288,
+            "cache_write": 0,
+            "input": 66060,
+            "output": 8368
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 156,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/deepseek/arms/standard_deepseek_fixed/cells/ackley_standard_deepseek_fixed_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "a0639e5b46626e1892a154f108fbbe6cbaa6e0064d7f3e95d11c0e919a931746",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 156
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 73,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_deepseek_prompt_v2_r02",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.4156173143999999,
+      "models": {
+        "deepseek/deepseek-v4-pro": {
+          "known_list_cost_usd": 0.1519653144,
+          "priced_responses": 52,
+          "provider": "openrouter",
+          "responses": 52,
+          "responses_with_usage": 52,
+          "tokens": {
+            "cache_read": 2297856,
+            "cache_write": 0,
+            "input": 146199,
+            "output": 19057
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.263652,
+          "priced_responses": 21,
+          "provider": "openai",
+          "responses": 21,
+          "responses_with_usage": 21,
+          "tokens": {
+            "cache_read": 311808,
+            "cache_write": 0,
+            "input": 30216,
+            "output": 7344
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 73,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/ackley_standard_deepseek_prompt_v2_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "8a590e7363fc38db00a0e6ea27484c6906916dbdfb41bd05621160e53a5e7a12",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 73,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 73
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_deepseek",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 158,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_deepseek_prompt_v2_r03",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.0665459026839996,
+      "models": {
+        "deepseek/deepseek-v4-pro": {
+          "known_list_cost_usd": 0.4273699026840001,
+          "priced_responses": 101,
+          "provider": "openrouter",
+          "responses": 101,
+          "responses_with_usage": 101,
+          "tokens": {
+            "cache_read": 6698496,
+            "cache_write": 0,
+            "input": 442022,
+            "output": 38278
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.639176,
+          "priced_responses": 57,
+          "provider": "openai",
+          "responses": 57,
+          "responses_with_usage": 57,
+          "tokens": {
+            "cache_read": 1053184,
+            "cache_write": 0,
+            "input": 76486,
+            "output": 12311
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 158,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_deepseek/arms/standard_deepseek_prompt_v2/cells/ackley_standard_deepseek_prompt_v2_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "6d46267e2a672435265255fce24718e1688f78adc1a3c9af1b9c56eb266ece6d",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 158,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 158
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gemini",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 86,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gemini_fixed_v2_r01",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 4.251132533333336,
+      "models": {
+        "google/gemini-3.5-flash": {
+          "known_list_cost_usd": 3.8490945333333344,
+          "priced_responses": 60,
+          "provider": "openrouter",
+          "responses": 60,
+          "responses_with_usage": 60,
+          "tokens": {
+            "cache_read": 2102143,
+            "cache_write": 2102143,
+            "input": 0,
+            "output": 22830
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.40203800000000006,
+          "priced_responses": 26,
+          "provider": "openai",
+          "responses": 26,
+          "responses_with_usage": 26,
+          "tokens": {
+            "cache_read": 417792,
+            "cache_write": 0,
+            "input": 53042,
+            "output": 10999
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 86,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/direct_arylation_standard_gemini_fixed_v2_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "2e2aec36e3ac804c6b8992007f4bbffe1c652f5fa8e2c162090b726f3ce1cb8d",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 86
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gemini",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 84,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gemini_prompt_v2_r02",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 4.7574288,
+      "models": {
+        "google/gemini-3.5-flash": {
+          "known_list_cost_usd": 4.445617299999999,
+          "priced_responses": 61,
+          "provider": "openrouter",
+          "responses": 61,
+          "responses_with_usage": 61,
+          "tokens": {
+            "cache_read": 2453862,
+            "cache_write": 2453862,
+            "input": 0,
+            "output": 21372
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.3118115000000001,
+          "priced_responses": 23,
+          "provider": "openai",
+          "responses": 23,
+          "responses_with_usage": 23,
+          "tokens": {
+            "cache_read": 370176,
+            "cache_write": 0,
+            "input": 34337,
+            "output": 8895
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 84,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gemini/arms/standard_gemini_prompt_v2/cells/direct_arylation_standard_gemini_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "d1684d922737c60aad25dcc439a856e9cd3c1bbff8c3d93525052f1c18d4c4ab",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 84,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 84
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gemini",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 97,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gemini_fixed_v2_r03",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 5.964238166666665,
+      "models": {
+        "google/gemini-3.5-flash": {
+          "known_list_cost_usd": 5.622359666666667,
+          "priced_responses": 70,
+          "provider": "openrouter",
+          "responses": 70,
+          "responses_with_usage": 70,
+          "tokens": {
+            "cache_read": 3111035,
+            "cache_write": 3111035,
+            "input": 0,
+            "output": 25556
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.3418785,
+          "priced_responses": 27,
+          "provider": "openai",
+          "responses": 27,
+          "responses_with_usage": 27,
+          "tokens": {
+            "cache_read": 469504,
+            "cache_write": 0,
+            "input": 36029,
+            "output": 8962
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 97,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/direct_arylation_standard_gemini_fixed_v2_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "e4d60fc3094bb892ec443ce35f9a1cd259749860663807eb59b290f504c037c2",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 97
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gemini",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 153,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gemini_fixed_v2_r01",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 13.704502766666668,
+      "models": {
+        "google/gemini-3.5-flash": {
+          "known_list_cost_usd": 13.307383766666664,
+          "priced_responses": 123,
+          "provider": "openrouter",
+          "responses": 123,
+          "responses_with_usage": 123,
+          "tokens": {
+            "cache_read": 7451069,
+            "cache_write": 7451069,
+            "input": 0,
+            "output": 43598
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.397119,
+          "priced_responses": 30,
+          "provider": "openai",
+          "responses": 30,
+          "responses_with_usage": 30,
+          "tokens": {
+            "cache_read": 490496,
+            "cache_write": 0,
+            "input": 46894,
+            "output": 10484
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 153,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/ackley_standard_gemini_fixed_v2_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "9161682d2f004be3359a8d51430ff5680999c3aed657886124a336de2fdc53f4",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 153
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gemini",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 131,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gemini_fixed_v2_r02",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 7.057379633333333,
+      "models": {
+        "google/gemini-3.5-flash": {
+          "known_list_cost_usd": 6.4874146333333345,
+          "priced_responses": 89,
+          "provider": "openrouter",
+          "responses": 89,
+          "responses_with_usage": 89,
+          "tokens": {
+            "cache_read": 3289507,
+            "cache_write": 3289507,
+            "input": 0,
+            "output": 87304
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.5699649999999999,
+          "priced_responses": 42,
+          "provider": "openai",
+          "responses": 42,
+          "responses_with_usage": 42,
+          "tokens": {
+            "cache_read": 957440,
+            "cache_write": 0,
+            "input": 74582,
+            "output": 9610
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 131,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gemini/arms/standard_gemini_fixed_v2/cells/ackley_standard_gemini_fixed_v2_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "b8f36e02a80349b44dc214e3caf6161f659bfbde83a455c5e9f6d4ce24692b40",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 131
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gemini",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 84,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gemini_prompt_v2_r03",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 4.102270366666667,
+      "models": {
+        "google/gemini-3.5-flash": {
+          "known_list_cost_usd": 3.8253768666666677,
+          "priced_responses": 58,
+          "provider": "openrouter",
+          "responses": 58,
+          "responses_with_usage": 58,
+          "tokens": {
+            "cache_read": 2086163,
+            "cache_write": 2086163,
+            "input": 0,
+            "output": 23272
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.2768935,
+          "priced_responses": 26,
+          "provider": "openai",
+          "responses": 26,
+          "responses_with_usage": 26,
+          "tokens": {
+            "cache_read": 344064,
+            "cache_write": 0,
+            "input": 27697,
+            "output": 8109
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 84,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gemini/arms/standard_gemini_prompt_v2/cells/ackley_standard_gemini_prompt_v2_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "6547fb1ce271d444ff286922ea42552b40264ec8133be07cf94623b616825766",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 84,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 84
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_glm",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 81,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_glm_prompt_v2_r01",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.8322038768,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.27973600000000004,
+          "priced_responses": 22,
+          "provider": "openai",
+          "responses": 22,
+          "responses_with_usage": 22,
+          "tokens": {
+            "cache_read": 338944,
+            "cache_write": 0,
+            "input": 33438,
+            "output": 7427
+          },
+          "unpriced_responses": 0
+        },
+        "z-ai/glm-5.1": {
+          "known_list_cost_usd": 0.5524678768,
+          "priced_responses": 59,
+          "provider": "openrouter",
+          "responses": 59,
+          "responses_with_usage": 59,
+          "tokens": {
+            "cache_read": 2194496,
+            "cache_write": 0,
+            "input": 128617,
+            "output": 14050
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 81,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "6af35af4a62ded76f3d5278cce0dbf4fbd675e1f4573363a9bb639808977255c",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 81,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 81
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_glm",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 58,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_glm_prompt_v2_r02",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.6943528272,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.240752,
+          "priced_responses": 18,
+          "provider": "openai",
+          "responses": 18,
+          "responses_with_usage": 18,
+          "tokens": {
+            "cache_read": 283648,
+            "cache_write": 0,
+            "input": 24448,
+            "output": 7248
+          },
+          "unpriced_responses": 0
+        },
+        "z-ai/glm-5.1": {
+          "known_list_cost_usd": 0.45360082719999995,
+          "priced_responses": 40,
+          "provider": "openrouter",
+          "responses": 40,
+          "responses_with_usage": 40,
+          "tokens": {
+            "cache_read": 1491584,
+            "cache_write": 0,
+            "input": 155705,
+            "output": 13923
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 58,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "538e6cf984303cea06b344b6f43642182fdfdeb38dad6c98fc3640895a4a37aa",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 58,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 58
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_glm",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 46,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_glm_prompt_v2_r03",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 0.518451388,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.1918225,
+          "priced_responses": 14,
+          "provider": "openai",
+          "responses": 14,
+          "responses_with_usage": 14,
+          "tokens": {
+            "cache_read": 179200,
+            "cache_write": 0,
+            "input": 20637,
+            "output": 6362
+          },
+          "unpriced_responses": 0
+        },
+        "z-ai/glm-5.1": {
+          "known_list_cost_usd": 0.326628888,
+          "priced_responses": 32,
+          "provider": "openrouter",
+          "responses": 32,
+          "responses_with_usage": 32,
+          "tokens": {
+            "cache_read": 1124160,
+            "cache_write": 0,
+            "input": 106517,
+            "output": 8848
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 46,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/direct_arylation_standard_glm_prompt_v2_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "3c4a6fc94c23a7b8aaa19b834e21d994c1f84bcfbd869ab66bf94778cbaf6f6b",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 46,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 46
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_glm",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 139,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_glm_prompt_v2_r01",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.6450838743999996,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.6919545000000001,
+          "priced_responses": 46,
+          "provider": "openai",
+          "responses": 46,
+          "responses_with_usage": 46,
+          "tokens": {
+            "cache_read": 1259008,
+            "cache_write": 0,
+            "input": 79613,
+            "output": 11878
+          },
+          "unpriced_responses": 0
+        },
+        "z-ai/glm-5.1": {
+          "known_list_cost_usd": 1.9531293743999998,
+          "priced_responses": 93,
+          "provider": "openrouter",
+          "responses": 93,
+          "responses_with_usage": 93,
+          "tokens": {
+            "cache_read": 5602688,
+            "cache_write": 0,
+            "input": 587227,
+            "output": 134871
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 139,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/ackley_standard_glm_prompt_v2_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "40882bf88aeb92e350a9232bf4f222b777b5209407c61d43a1ba987cb762c7ed",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 139,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 139
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_glm",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 169,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_glm_prompt_v2_r02",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.7934706760000005,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.7936820000000001,
+          "priced_responses": 46,
+          "provider": "openai",
+          "responses": 46,
+          "responses_with_usage": 46,
+          "tokens": {
+            "cache_read": 1538048,
+            "cache_write": 0,
+            "input": 85218,
+            "output": 13075
+          },
+          "unpriced_responses": 0
+        },
+        "z-ai/glm-5.1": {
+          "known_list_cost_usd": 1.9997886759999997,
+          "priced_responses": 123,
+          "provider": "openrouter",
+          "responses": 123,
+          "responses_with_usage": 123,
+          "tokens": {
+            "cache_read": 6242560,
+            "cache_write": 0,
+            "input": 728615,
+            "output": 66504
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 169,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_glm/arms/standard_glm_prompt_v2/cells/ackley_standard_glm_prompt_v2_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "dec7f488906abff53c57c321b238240c3d622a5c2055dcf5fcd2b8e5360279d5",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 169,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 169
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_glm",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 123,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_glm_baybe_duplicate_fix_r03",
+      "cohort": "baybe_duplicate_fix_20260808",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.6325857608,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.38650850000000003,
+          "priced_responses": 29,
+          "provider": "openai",
+          "responses": 29,
+          "responses_with_usage": 29,
+          "tokens": {
+            "cache_read": 607744,
+            "cache_write": 0,
+            "input": 39841,
+            "output": 8998
+          },
+          "unpriced_responses": 0
+        },
+        "z-ai/glm-5.1": {
+          "known_list_cost_usd": 1.2460772608000004,
+          "priced_responses": 94,
+          "provider": "openrouter",
+          "responses": 94,
+          "responses_with_usage": 94,
+          "tokens": {
+            "cache_read": 4882816,
+            "cache_write": 0,
+            "input": 310092,
+            "output": 29274
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 123,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_glm_ackley_r3_20260808T004854Z_retry1/runs/target/arms/standard_glm_baybe_duplicate_fix/cells/ackley_standard_glm_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "5c493c23583e345be06d458f0ee5952e6004426f6d88ff204f820a7105fecf6f",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 123,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 123
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 75,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gpt_prompt_v2_r01",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.4811070000000004,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.4811070000000004,
+          "priced_responses": 75,
+          "provider": "openai",
+          "responses": 75,
+          "responses_with_usage": 75,
+          "tokens": {
+            "cache_read": 2236928,
+            "cache_write": 0,
+            "input": 175784,
+            "output": 32161
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 75,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gpt/arms/standard_gpt_prompt_v2/cells/direct_arylation_standard_gpt_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "33b47620bcefca18811a5d3317241d1c09e01cd44c5b0923a412612e9a5fdb95",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 75,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 75
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 83,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gpt_prompt_v2_r02",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.565405,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.565405,
+          "priced_responses": 83,
+          "provider": "openai",
+          "responses": 83,
+          "responses_with_usage": 83,
+          "tokens": {
+            "cache_read": 3258880,
+            "cache_write": 0,
+            "input": 123508,
+            "output": 29461
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 83,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_gpt/arms/standard_gpt_prompt_v2/cells/direct_arylation_standard_gpt_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "e74472be32dbe789988b53d3cb69d581878e01b9a3ab6752492daea100956288",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 83,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 83
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 47,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gpt_r03",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/standard_gpt/cells/direct_arylation_standard_gpt_r03/controller.log",
+      "controller_log_sha256": "bc2c83de0444d9bd77bc5c775b457beb92a47ecfd0686e1bd727ccd5db44ea04",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.2673884999999998,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.2673884999999998,
+          "priced_responses": 47,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 47,
+          "responses_with_usage": 47,
+          "tokens": {
+            "cache_read": 1487104,
+            "cache_write": 0,
+            "input": 165171,
+            "output": 32179
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 47,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/standard_gpt/cells/direct_arylation_standard_gpt_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "0a73ec75980b59efb031e2e4b3b96fff0060c2759199d8c8598e784dd7a9b5a5",
+      "prior_reported_combined_cost_usd": 2.0894880000000002,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 1,
+      "task_status_counts": {
+        "completed": 1
+      },
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 47,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 47
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 65,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gpt_r01_replacement_01",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/standard_gpt/cells/ackley_standard_gpt_r01_replacement_01/controller.log",
+      "controller_log_sha256": "7205479bf9fa886f03d0579e7ee55ed97073a3560016cea666f64499da46e07e",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.721918,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.721918,
+          "priced_responses": 65,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 65,
+          "responses_with_usage": 65,
+          "tokens": {
+            "cache_read": 2598912,
+            "cache_write": 0,
+            "input": 213050,
+            "output": 35971
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 65,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/standard_gpt/cells/ackley_standard_gpt_r01_replacement_01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "c7b3ce547110148c2713ead0e87acb96330cd8da67b661746ee49b42a3266fcd",
+      "prior_reported_combined_cost_usd": 2.899437,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 1,
+      "task_status_counts": {
+        "completed": 1
+      },
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 65,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 65
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 89,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gpt_r02",
+      "cohort": "original_matrix",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/standard_gpt/cells/ackley_standard_gpt_r02/controller.log",
+      "controller_log_sha256": "766151fe349bfab697ee21844a7aad0f79516260222e762896ce767c4b83c9ce",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 24,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.3403640000000006,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 2.3403640000000006,
+          "priced_responses": 89,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 89,
+          "responses_with_usage": 89,
+          "tokens": {
+            "cache_read": 3777536,
+            "cache_write": 0,
+            "input": 340730,
+            "output": 36277
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 113,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/full_matrix_20260730T154405Z/arms/standard_gpt/cells/ackley_standard_gpt_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "c7dd421479b57d20ef51222b039093bf4deef370477ee6a8f63f73181e2b9c02",
+      "prior_reported_combined_cost_usd": 3.9504425,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 2,
+      "task_status_counts": {
+        "completed": 2
+      },
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 89,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 89
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 49,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gpt_baybe_duplicate_fix_r03",
+      "cohort": "baybe_duplicate_fix_20260808",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.2808950000000003,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.2808950000000003,
+          "priced_responses": 49,
+          "provider": "openai",
+          "responses": 49,
+          "responses_with_usage": 49,
+          "tokens": {
+            "cache_read": 1553920,
+            "cache_write": 0,
+            "input": 164330,
+            "output": 32106
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 49,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_gpt54_ackley_r3_20260808T002804Z/runs/prompt_gpt/arms/standard_gpt_baybe_duplicate_fix/cells/ackley_standard_gpt_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "a72dc61cbee05c4a3bc48402f68abb6fff468f4a27401945b47b3719ebafd49d",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 49,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 49
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt56",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 61,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gpt56_r01",
+      "cohort": "gpt56_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/direct_arylation_standard_gpt56_r01/controller.log",
+      "controller_log_sha256": "4c340628811c87fc8df99a7bd7aa9da92cedafc9b5682bc2ecdd6c3dd7f06ca3",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.4038297500000008,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.24914499999999995,
+          "priced_responses": 15,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 15,
+          "responses_with_usage": 15,
+          "tokens": {
+            "cache_read": 257280,
+            "cache_write": 0,
+            "input": 41266,
+            "output": 5444
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.6-sol": {
+          "known_list_cost_usd": 2.154684750000001,
+          "priced_responses": 46,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 46,
+          "responses_with_usage": 46,
+          "tokens": {
+            "cache_read": 2176457,
+            "cache_write": 53677,
+            "input": 40997,
+            "output": 17533
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 61,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/direct_arylation_standard_gpt56_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "261aa5f93a3ec88c6f6cbdf207d870adb23a84ba6ed380248ce62faef8f579ac",
+      "prior_reported_combined_cost_usd": 2.3367335,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 1,
+      "task_status_counts": {
+        "completed": 1
+      },
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 61,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 61
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt56",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 64,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gpt56_r02",
+      "cohort": "gpt56_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/direct_arylation_standard_gpt56_r02/controller.log",
+      "controller_log_sha256": "83937d3da4b44fe2cfd7c35d1c3a2241ecc9b67ee447658e502e9d72ea2bf4a9",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.50314725,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.24067499999999997,
+          "priced_responses": 16,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 16,
+          "responses_with_usage": 16,
+          "tokens": {
+            "cache_read": 256640,
+            "cache_write": 0,
+            "input": 37450,
+            "output": 5526
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.6-sol": {
+          "known_list_cost_usd": 2.26247225,
+          "priced_responses": 48,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 48,
+          "responses_with_usage": 48,
+          "tokens": {
+            "cache_read": 1881712,
+            "cache_write": 82257,
+            "input": 65118,
+            "output": 16064
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 64,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/direct_arylation_standard_gpt56_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "5755f54eb1d8fcc5d4768a8c939dc1487cbe12a1188dd0fad2b563c9ff08e7f4",
+      "prior_reported_combined_cost_usd": 2.400326,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 1,
+      "task_status_counts": {
+        "completed": 1
+      },
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 64,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 64
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt56",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 73,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_gpt56_fixed_r03",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.784237249999999,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.2640325,
+          "priced_responses": 19,
+          "provider": "openai",
+          "responses": 19,
+          "responses_with_usage": 19,
+          "tokens": {
+            "cache_read": 253440,
+            "cache_write": 0,
+            "input": 37423,
+            "output": 7141
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.6-sol": {
+          "known_list_cost_usd": 2.520204749999999,
+          "priced_responses": 54,
+          "provider": "openai",
+          "responses": 54,
+          "responses_with_usage": 54,
+          "tokens": {
+            "cache_read": 2225112,
+            "cache_write": 100503,
+            "input": 76821,
+            "output": 13180
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 73,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/gpt56/arms/standard_gpt56_fixed/cells/direct_arylation_standard_gpt56_fixed_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "2e56b8b0ba74c6d97eb388a240c43efb2a138054753ab391676dfabbcf360563",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 73
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt56",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 44,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gpt56_r01",
+      "cohort": "gpt56_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/ackley_standard_gpt56_r01/controller.log",
+      "controller_log_sha256": "e96f7be50a6fef9118ebc3b40a8821b0d697dee8eacec840c3950fdb6f19914e",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.23213925,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.25504799999999994,
+          "priced_responses": 18,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 18,
+          "responses_with_usage": 18,
+          "tokens": {
+            "cache_read": 278912,
+            "cache_write": 0,
+            "input": 33466,
+            "output": 6777
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.6-sol": {
+          "known_list_cost_usd": 0.9770912499999999,
+          "priced_responses": 26,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 26,
+          "responses_with_usage": 26,
+          "tokens": {
+            "cache_read": 775250,
+            "cache_write": 32021,
+            "input": 14111,
+            "output": 10626
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 44,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/ackley_standard_gpt56_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "aaffec5687cd907a49477c11fa13f46c888ed18a98b2fb5d4b77278e31d0049b",
+      "prior_reported_combined_cost_usd": 1.192113,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 1,
+      "task_status_counts": {
+        "completed": 1
+      },
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 44,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 44
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt56",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 58,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gpt56_r02",
+      "cohort": "gpt56_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/ackley_standard_gpt56_r02/controller.log",
+      "controller_log_sha256": "acd387a1ab1f89e7166c48725206b02d0c00b64bddb2193ce82c3c29ba829ee0",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.4262567500000003,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.33183750000000006,
+          "priced_responses": 22,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 22,
+          "responses_with_usage": 22,
+          "tokens": {
+            "cache_read": 340480,
+            "cache_write": 0,
+            "input": 48479,
+            "output": 8368
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.6-sol": {
+          "known_list_cost_usd": 2.09441925,
+          "priced_responses": 36,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 36,
+          "responses_with_usage": 36,
+          "tokens": {
+            "cache_read": 1298221,
+            "cache_write": 95551,
+            "input": 90543,
+            "output": 13180
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 58,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/ackley_standard_gpt56_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "2676cec9c92fb9389334891a28c94ff4e75c08917447c7db9221f9fb534044ae",
+      "prior_reported_combined_cost_usd": 2.3068180000000003,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 1,
+      "task_status_counts": {
+        "completed": 1
+      },
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 58,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 58
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_gpt56",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 49,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_gpt56_r03",
+      "cohort": "gpt56_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/ackley_standard_gpt56_r03/controller.log",
+      "controller_log_sha256": "53cfe288a61eb766f24910ab4976de720abc5e68fbf4f74ca5694589121cb10c",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.3187690000000005,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.24535450000000003,
+          "priced_responses": 13,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 13,
+          "responses_with_usage": 13,
+          "tokens": {
+            "cache_read": 194048,
+            "cache_write": 0,
+            "input": 32975,
+            "output": 7627
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.6-sol": {
+          "known_list_cost_usd": 2.0734145000000006,
+          "priced_responses": 36,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 36,
+          "responses_with_usage": 36,
+          "tokens": {
+            "cache_read": 1182279,
+            "cache_write": 90820,
+            "input": 96206,
+            "output": 14454
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 49,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T025700Z/arms/standard_gpt56/cells/ackley_standard_gpt56_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "126b8585d7a1318d6d21c78a36b412ecb0a01fe52789a2824b8b5a84511485bb",
+      "prior_reported_combined_cost_usd": 2.205244,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 1,
+      "task_status_counts": {
+        "completed": 1
+      },
+      "token_status": "exact",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 0,
+        "openai_responses": 49,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 49
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_nemotron",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 109,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_nemotron_prompt_v2_r01",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "free_endpoint_cost_usd": 0.0,
+      "free_endpoint_unmatched_calls": 0,
+      "known_list_cost_usd": 0.35109499999999993,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.35109499999999993,
+          "priced_responses": 22,
+          "provider": "openai",
+          "responses": 22,
+          "responses_with_usage": 22,
+          "tokens": {
+            "cache_read": 384000,
+            "cache_write": 0,
+            "input": 39056,
+            "output": 10497
+          },
+          "unpriced_responses": 0
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "known_list_cost_usd": 0.0,
+          "priced_responses": 87,
+          "pricing_methods": [
+            "free_provider_endpoint"
+          ],
+          "provider": "openai",
+          "responses": 87,
+          "responses_with_usage": 87,
+          "tokens": {
+            "cache_read": 4342272,
+            "cache_write": 0,
+            "input": 726697,
+            "output": 43519
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 109,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_nemotron/arms/standard_nemotron_prompt_v2/cells/direct_arylation_standard_nemotron_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "0295cc62963f268a66a9d457c504f95e110897fb906d5e066d6760c1d4bea7b6",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 109,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 109
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_nemotron",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 49,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_nemotron_r02",
+      "cohort": "nemotron_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/arms/standard_nemotron/cells/direct_arylation_standard_nemotron_r02/controller.log",
+      "controller_log_sha256": "a201c27f60029e13a0ac537db5d01a6ff3c9896a7086b0b3e06f06a5af59b8c2",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "free_endpoint_cost_usd": 0.0,
+      "free_endpoint_unmatched_calls": 1,
+      "known_list_cost_usd": 0.23588900000000002,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.23588900000000002,
+          "priced_responses": 9,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 9,
+          "responses_with_usage": 9,
+          "tokens": {
+            "cache_read": 167936,
+            "cache_write": 0,
+            "input": 38232,
+            "output": 6555
+          },
+          "unpriced_responses": 0
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "known_list_cost_usd": 0.0,
+          "priced_responses": 40,
+          "pricing_methods": [
+            "free_provider_endpoint"
+          ],
+          "provider": "openai",
+          "responses": 40,
+          "responses_with_usage": 40,
+          "tokens": {
+            "cache_read": 1148928,
+            "cache_write": 0,
+            "input": 319545,
+            "output": 11391
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 49,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/arms/standard_nemotron/cells/direct_arylation_standard_nemotron_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "c1f4aa99d7e92a2811a36c710e755216d897c85f33d8a99b59dfabb47b0e328e",
+      "prior_reported_combined_cost_usd": null,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 1,
+      "task_status_counts": {
+        "completed": 1
+      },
+      "token_status": "lower_bound",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 41,
+        "openai_responses": 9,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 50
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 40
+    },
+    {
+      "arm_id": "standard_nemotron",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 194,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_nemotron_r03",
+      "cohort": "nemotron_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/arms/standard_nemotron/cells/direct_arylation_standard_nemotron_r03/controller.log",
+      "controller_log_sha256": "a9387543f4326e90ea72cf9eec3b98d899bf3e264b4da8e0c5ffa9119fa3db37",
+      "cost_status": "lower_bound",
+      "duplicate_response_records": 680,
+      "failed_task_count": 0,
+      "free_endpoint_cost_usd": 0.0,
+      "free_endpoint_unmatched_calls": 5,
+      "known_list_cost_usd": 0.0,
+      "models": {
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "known_list_cost_usd": 0.0,
+          "priced_responses": 194,
+          "pricing_methods": [
+            "free_provider_endpoint"
+          ],
+          "provider": "openai",
+          "responses": 194,
+          "responses_with_usage": 194,
+          "tokens": {
+            "cache_read": 20245632,
+            "cache_write": 0,
+            "input": 1588355,
+            "output": 80980
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 874,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/arms/standard_nemotron/cells/direct_arylation_standard_nemotron_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "95b1107e64195f919b5b0a4cfda9e6256c977075bf9667771730ab113f825b8d",
+      "prior_reported_combined_cost_usd": null,
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 6,
+      "task_status_counts": {
+        "completed": 6
+      },
+      "token_status": "lower_bound",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 199,
+        "openai_responses": 50,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 249
+      },
+      "unmatched_traced_provider_calls": 50,
+      "unpriced_reasons": {
+        "missing_paid_gpt_5_4_usage": 50
+      },
+      "unpriced_response_count": 194
+    },
+    {
+      "arm_id": "standard_nemotron",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 168,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_nemotron_r01",
+      "cohort": "nemotron_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/arms/standard_nemotron/cells/ackley_standard_nemotron_r01/controller.log",
+      "controller_log_sha256": "90af46b268bfde58763e05a51255c34bc8323b5e4e26f188e8d20e4049f725d4",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 308,
+      "failed_task_count": 0,
+      "free_endpoint_cost_usd": 0.0,
+      "free_endpoint_unmatched_calls": 2,
+      "known_list_cost_usd": 0.7835595,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.7835595,
+          "priced_responses": 31,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 31,
+          "responses_with_usage": 31,
+          "tokens": {
+            "cache_read": 870528,
+            "cache_write": 0,
+            "input": 152013,
+            "output": 12393
+          },
+          "unpriced_responses": 0
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "known_list_cost_usd": 0.0,
+          "priced_responses": 137,
+          "pricing_methods": [
+            "free_provider_endpoint"
+          ],
+          "provider": "openai",
+          "responses": 137,
+          "responses_with_usage": 137,
+          "tokens": {
+            "cache_read": 11506176,
+            "cache_write": 0,
+            "input": 1447743,
+            "output": 58577
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 476,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/arms/standard_nemotron/cells/ackley_standard_nemotron_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "65d40b4a0975a80ddb0d399d3db24a54a7399f84fa0710289c2bb8219fb647ab",
+      "prior_reported_combined_cost_usd": null,
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 4,
+      "task_status_counts": {
+        "completed": 4
+      },
+      "token_status": "lower_bound",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 139,
+        "openai_responses": 31,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 170
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 137
+    },
+    {
+      "arm_id": "standard_nemotron",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 55,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_nemotron_r02",
+      "cohort": "nemotron_extension",
+      "conflicting_duplicate_records": 0,
+      "controller_log_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/arms/standard_nemotron/cells/ackley_standard_nemotron_r02/controller.log",
+      "controller_log_sha256": "e4b0db92c913c806c2d8d4849c3a2fa4d3d33651d4ece482dbcb2d013657692e",
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 2,
+      "free_endpoint_cost_usd": 0.0,
+      "free_endpoint_unmatched_calls": 45,
+      "known_list_cost_usd": 1.1854464999999998,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 1.1854464999999998,
+          "priced_responses": 55,
+          "pricing_methods": [
+            "frozen_public_token_rates"
+          ],
+          "provider": "openai",
+          "responses": 55,
+          "responses_with_usage": 55,
+          "tokens": {
+            "cache_read": 2407936,
+            "cache_write": 0,
+            "input": 132501,
+            "output": 16814
+          },
+          "unpriced_responses": 0
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "known_list_cost_usd": 0.0,
+          "priced_responses": 0,
+          "pricing_methods": [
+            "free_provider_endpoint"
+          ],
+          "provider": "nvidia",
+          "responses": 0,
+          "responses_with_usage": 0,
+          "tokens": {
+            "cache_read": 0,
+            "cache_write": 0,
+            "input": 0,
+            "output": 0
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 55,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-ackley-direct-arylation-evidence-20260729/outputs/bo_mcp_evals/nemotron_extension_20260803T171418Z/arms/standard_nemotron/cells/ackley_standard_nemotron_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "20131d2a00cc10dac067e4f8578e23f4ce14795fc39af27a95481cbe721f7e87",
+      "prior_reported_combined_cost_usd": null,
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "task_count": 2,
+      "task_status_counts": {
+        "failed": 2
+      },
+      "token_status": "lower_bound",
+      "transport_trace": {
+        "anthropic_messages": 0,
+        "nvidia_chat_completions": 45,
+        "openai_responses": 55,
+        "openrouter_chat_completions": 0,
+        "total_llm_posts": 100
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_nemotron",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 103,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_nemotron_baybe_duplicate_fix_r03",
+      "cohort": "baybe_duplicate_fix_20260808",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "free_endpoint_cost_usd": 0.0,
+      "free_endpoint_unmatched_calls": 0,
+      "known_list_cost_usd": 0.544566,
+      "models": {
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.544566,
+          "priced_responses": 33,
+          "provider": "openai",
+          "responses": 33,
+          "responses_with_usage": 33,
+          "tokens": {
+            "cache_read": 817664,
+            "cache_write": 0,
+            "input": 58594,
+            "output": 12911
+          },
+          "unpriced_responses": 0
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b": {
+          "known_list_cost_usd": 0.0,
+          "priced_responses": 70,
+          "pricing_methods": [
+            "free_provider_endpoint"
+          ],
+          "provider": "openai",
+          "responses": 70,
+          "responses_with_usage": 70,
+          "tokens": {
+            "cache_read": 3079296,
+            "cache_write": 0,
+            "input": 516463,
+            "output": 30395
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 103,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/baybe_duplicate_fix_nemotron_ackley_r3_20260808T004854Z_retry1/runs/target/arms/standard_nemotron_baybe_duplicate_fix/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "bd69cf8f2c7621e2a592bf6375ea0b71ed40f3c8c410937dbd88f7d0eeaee8ff",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 103,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 103
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_opus5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 64,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_opus5_fixed_r01",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 3.1209664999999993,
+      "models": {
+        "claude-opus-5": {
+          "known_list_cost_usd": 2.865849999999999,
+          "priced_responses": 46,
+          "provider": "anthropic",
+          "responses": 46,
+          "responses_with_usage": 46,
+          "tokens": {
+            "cache_read": 2717430,
+            "cache_write": 127460,
+            "input": 92,
+            "output": 28402
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.2551165,
+          "priced_responses": 18,
+          "provider": "openai",
+          "responses": 18,
+          "responses_with_usage": 18,
+          "tokens": {
+            "cache_read": 234496,
+            "cache_write": 0,
+            "input": 37965,
+            "output": 6772
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 64,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/direct_arylation_standard_opus5_fixed_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "b1d5aa26382155d9da7776c0aff2c5ac5fc7e5cc522c3ae71c1ba8c3b85c141b",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 64
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_opus5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 63,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_opus5_prompt_v2_r02",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.8808994999999995,
+      "models": {
+        "claude-opus-5": {
+          "known_list_cost_usd": 2.4560785000000003,
+          "priced_responses": 32,
+          "provider": "anthropic",
+          "responses": 32,
+          "responses_with_usage": 32,
+          "tokens": {
+            "cache_read": 1850742,
+            "cache_write": 142502,
+            "input": 64,
+            "output": 25590
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.424821,
+          "priced_responses": 31,
+          "provider": "openai",
+          "responses": 31,
+          "responses_with_usage": 31,
+          "tokens": {
+            "cache_read": 525824,
+            "cache_write": 0,
+            "input": 64024,
+            "output": 8887
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 63,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_opus5/arms/standard_opus5_prompt_v2/cells/direct_arylation_standard_opus5_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "886ad6aa1c0bc38a30cf92ee731c27a0ae06c7e011e3a03015edfd2e36b0d856",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 63,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 63
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_opus5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 56,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_opus5_fixed_r03",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.7323554999999997,
+      "models": {
+        "claude-opus-5": {
+          "known_list_cost_usd": 2.5521714999999996,
+          "priced_responses": 42,
+          "provider": "anthropic",
+          "responses": 42,
+          "responses_with_usage": 42,
+          "tokens": {
+            "cache_read": 2293153,
+            "cache_write": 118236,
+            "input": 84,
+            "output": 26648
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.180184,
+          "priced_responses": 14,
+          "provider": "openai",
+          "responses": 14,
+          "responses_with_usage": 14,
+          "tokens": {
+            "cache_read": 173056,
+            "cache_write": 0,
+            "input": 21846,
+            "output": 5487
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 56,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/direct_arylation_standard_opus5_fixed_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "18623aa9fc28a8243569162b36eb03fe1a6695134cdbe75c742a77d62eef7ff6",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 56
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_opus5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 50,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_opus5_fixed_r01",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 2.3873405,
+      "models": {
+        "claude-opus-5": {
+          "known_list_cost_usd": 2.1327074999999995,
+          "priced_responses": 34,
+          "provider": "anthropic",
+          "responses": 34,
+          "responses_with_usage": 34,
+          "tokens": {
+            "cache_read": 1691835,
+            "cache_write": 122228,
+            "input": 68,
+            "output": 20901
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.254633,
+          "priced_responses": 16,
+          "provider": "openai",
+          "responses": 16,
+          "responses_with_usage": 16,
+          "tokens": {
+            "cache_read": 187392,
+            "cache_write": 0,
+            "input": 42530,
+            "output": 6764
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 50,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "fc74f766880f0228af1e7d8b2af9fc55a8225a1d2967f2a78e3eee01ef428344",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 50
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_opus5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 65,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_opus5_fixed_r02",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 3.0297799999999997,
+      "models": {
+        "claude-opus-5": {
+          "known_list_cost_usd": 2.7169134999999995,
+          "priced_responses": 42,
+          "provider": "anthropic",
+          "responses": 42,
+          "responses_with_usage": 42,
+          "tokens": {
+            "cache_read": 2434712,
+            "cache_write": 138434,
+            "input": 84,
+            "output": 25357
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.3128665,
+          "priced_responses": 23,
+          "provider": "openai",
+          "responses": 23,
+          "responses_with_usage": 23,
+          "tokens": {
+            "cache_read": 324096,
+            "cache_write": 0,
+            "input": 48337,
+            "output": 7400
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 65,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "5ef60f3590ecec20c3fc6d856147107b8ceed61a5444f9589fd58441e74fd4c2",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 65
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_opus5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 150,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_opus5_fixed_r03",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 9.416079000000003,
+      "models": {
+        "claude-opus-5": {
+          "known_list_cost_usd": 8.910077000000001,
+          "priced_responses": 105,
+          "provider": "anthropic",
+          "responses": 105,
+          "responses_with_usage": 105,
+          "tokens": {
+            "cache_read": 8984329,
+            "cache_write": 443338,
+            "input": 210,
+            "output": 65840
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.506002,
+          "priced_responses": 45,
+          "provider": "openai",
+          "responses": 45,
+          "responses_with_usage": 45,
+          "tokens": {
+            "cache_read": 828928,
+            "cache_write": 0,
+            "input": 49560,
+            "output": 11658
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 150,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/opus5/arms/standard_opus5_fixed/cells/ackley_standard_opus5_fixed_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "c1d8db885ec15a6bf97768da795925db6f42825941c7a94805e1f62890910484",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 150
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 67,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_sonnet5_prompt_v2_r01",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.8169015999999998,
+      "models": {
+        "claude-sonnet-5": {
+          "known_list_cost_usd": 1.6007006000000001,
+          "priced_responses": 53,
+          "provider": "anthropic",
+          "responses": 53,
+          "responses_with_usage": 53,
+          "tokens": {
+            "cache_read": 3626218,
+            "cache_write": 190994,
+            "input": 106,
+            "output": 39776
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.21620099999999998,
+          "priced_responses": 14,
+          "provider": "openai",
+          "responses": 14,
+          "responses_with_usage": 14,
+          "tokens": {
+            "cache_read": 175104,
+            "cache_write": 0,
+            "input": 26808,
+            "output": 7027
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 67,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r01/eval/cases/direct_arylation/output.json",
+      "output_sha256": "253df1c21179ba65827c8628015374bed5ba5db66c99ceed6b043fb24f08cc54",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 67,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 67
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 54,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_sonnet5_prompt_v2_r02",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.6591758,
+      "models": {
+        "claude-sonnet-5": {
+          "known_list_cost_usd": 1.4741513000000004,
+          "priced_responses": 42,
+          "provider": "anthropic",
+          "responses": 42,
+          "responses_with_usage": 42,
+          "tokens": {
+            "cache_read": 3085479,
+            "cache_write": 174727,
+            "input": 84,
+            "output": 42007
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.1850245,
+          "priced_responses": 12,
+          "provider": "openai",
+          "responses": 12,
+          "responses_with_usage": 12,
+          "tokens": {
+            "cache_read": 150528,
+            "cache_write": 0,
+            "input": 20341,
+            "output": 6436
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 54,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r02/eval/cases/direct_arylation/output.json",
+      "output_sha256": "036b73a51eba70dc7cc93f96a9db1783e1dc63b6bcba321ec8b61df665bfd41b",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 54,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 54
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 74,
+      "case": "direct_arylation",
+      "cell_id": "direct_arylation_standard_sonnet5_prompt_v2_r03",
+      "cohort": "prompt_clarified_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.8378927000000007,
+      "models": {
+        "claude-sonnet-5": {
+          "known_list_cost_usd": 1.3984397000000004,
+          "priced_responses": 44,
+          "provider": "anthropic",
+          "responses": 44,
+          "responses_with_usage": 44,
+          "tokens": {
+            "cache_read": 2865281,
+            "cache_write": 154435,
+            "input": 88,
+            "output": 43912
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.439453,
+          "priced_responses": 30,
+          "provider": "openai",
+          "responses": 30,
+          "responses_with_usage": 30,
+          "tokens": {
+            "cache_read": 525312,
+            "cache_write": 0,
+            "input": 46954,
+            "output": 12716
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 74,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/prompt_clarified_replacements_20260807T174900Z/runs/prompt_sonnet5/arms/standard_sonnet5_prompt_v2/cells/direct_arylation_standard_sonnet5_prompt_v2_r03/eval/cases/direct_arylation/output.json",
+      "output_sha256": "b4d69cd71a4761971fb876c40d430ab2945e4c78ab0a3befe59391f8e1728894",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 74,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 74
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 50,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_sonnet5_fixed_v2_r01",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.4506080000000001,
+      "models": {
+        "claude-sonnet-5": {
+          "known_list_cost_usd": 1.2373005,
+          "priced_responses": 35,
+          "provider": "anthropic",
+          "responses": 35,
+          "responses_with_usage": 35,
+          "tokens": {
+            "cache_read": 2444540,
+            "cache_write": 171493,
+            "input": 70,
+            "output": 31952
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.2133075,
+          "priced_responses": 15,
+          "provider": "openai",
+          "responses": 15,
+          "responses_with_usage": 15,
+          "tokens": {
+            "cache_read": 181760,
+            "cache_write": 0,
+            "input": 24307,
+            "output": 7140
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 50,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r01/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "907a979f09519d365c0a5452fed3358a4fb1483ea678e570464313f62dc4b91a",
+      "repeat": 1,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 50
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 142,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_sonnet5_fixed_v2_r02",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 3.701625399999998,
+      "models": {
+        "claude-sonnet-5": {
+          "known_list_cost_usd": 3.3960323999999984,
+          "priced_responses": 118,
+          "provider": "anthropic",
+          "responses": 118,
+          "responses_with_usage": 118,
+          "tokens": {
+            "cache_read": 10173527,
+            "cache_write": 312926,
+            "input": 236,
+            "output": 57854
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.30559300000000006,
+          "priced_responses": 24,
+          "provider": "openai",
+          "responses": 24,
+          "responses_with_usage": 24,
+          "tokens": {
+            "cache_read": 315392,
+            "cache_write": 0,
+            "input": 42638,
+            "output": 8010
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 142,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r02/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "11912ab5d14c86bcdaf88c3f943195d061a35e2a06db8cd5164b7bb3432de767",
+      "repeat": 2,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 142
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    },
+    {
+      "arm_id": "standard_sonnet5",
+      "captured_responses_without_trace": 0,
+      "captured_unique_responses": 57,
+      "case": "synthetic_ackley_6d",
+      "cell_id": "ackley_standard_sonnet5_fixed_v2_r03",
+      "cohort": "infrastructure_corrected_20260807",
+      "conflicting_duplicate_records": 0,
+      "cost_status": "exact_calculated",
+      "duplicate_response_records": 0,
+      "failed_task_count": 0,
+      "known_list_cost_usd": 1.7247523,
+      "models": {
+        "claude-sonnet-5": {
+          "known_list_cost_usd": 1.3910683000000004,
+          "priced_responses": 38,
+          "provider": "anthropic",
+          "responses": 38,
+          "responses_with_usage": 38,
+          "tokens": {
+            "cache_read": 2602994,
+            "cache_write": 166507,
+            "input": 76,
+            "output": 45405
+          },
+          "unpriced_responses": 0
+        },
+        "gpt-5.4-2026-03-05": {
+          "known_list_cost_usd": 0.333684,
+          "priced_responses": 19,
+          "provider": "openai",
+          "responses": 19,
+          "responses_with_usage": 19,
+          "tokens": {
+            "cache_read": 278016,
+            "cache_write": 0,
+            "input": 53790,
+            "output": 8647
+          },
+          "unpriced_responses": 0
+        }
+      },
+      "observed_response_records": 57,
+      "output_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/runs/sonnet5/arms/standard_sonnet5_fixed_v2/cells/ackley_standard_sonnet5_fixed_v2_r03/eval/cases/synthetic_ackley_6d/output.json",
+      "output_sha256": "2f4b34cc780493fa0cc9aa6392db2d796cf90233bb6aa47fd30c5636149ab257",
+      "repeat": 3,
+      "response_records_without_id": 0,
+      "responses_without_usage": 0,
+      "token_status": "exact",
+      "transport_trace": {
+        "total_llm_posts": 57
+      },
+      "unmatched_traced_provider_calls": 0,
+      "unpriced_reasons": {},
+      "unpriced_response_count": 0
+    }
+  ],
+  "definition": "Reproducible public/list inference cost at the benchmark date, not account invoice cost after credits, discounts, routing fees, or taxes.",
+  "generated_at": "2026-08-08T02:01:58.652807+00:00",
+  "schema_version": 2
+}

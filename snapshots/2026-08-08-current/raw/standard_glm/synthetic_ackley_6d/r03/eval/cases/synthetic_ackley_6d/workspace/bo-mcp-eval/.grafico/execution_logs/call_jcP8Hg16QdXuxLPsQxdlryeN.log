@@ -1,0 +1,38 @@
+exit_code=0
+
+=== stdout (raw) ===
+17-- Working directory: the workspace containing `run_akg_ackley_6d.py`
+18-
+19:## Execution Command
+20-
+21-### Primary Run (Resume Existing Campaign — 1 eval already consumed by smoke test)
+22-
+23-> **Smoke-test note:** 1 evaluation was consumed during smoke testing (campaign
+24-> `b65bf0cf-fab6-43c9-a84c-f69f435cd5ba`, currently paused). The script will
+25-> load that prior result and run 59 more evaluations for a total of exactly 60.
+--
+109-- **Do not** create a new campaign to continue an existing one.
+110-
+111:## Evaluation Budget
+112-
+113-
+114:## Evaluation Budget
+115-
+116-- **Total attempted evaluations must be exactly 60.**
+117-- 1 evaluation was consumed during smoke testing (campaign `b65bf0cf-fab6-43c9-a84c-f69f435cd5ba`).
+118-- When resuming that campaign with `--max-evals 60`, the script loads the 1 prior result and runs 59 more, for a total of exactly 60.
+119-- The `--max-evals` flag is the **total** budget across all invocations for that campaign; the script subtracts prior results automatically.
+120-
+121:## Duplicate-Point Prevention
+122-
+123-- The script tracks all evaluated coordinates in a `seen_coords` set.
+124-- On resume, prior server results are loaded into the set before the loop starts.
+125-- If the BO backend suggests a point that has already been evaluated, the suggestion is rejected (not counted as an attempted evaluation) and the loop continues to the next suggestion.
+126-- This ensures no point is evaluated more than once, even across resume/reopen invocations.
+127-
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,123 @@
+exit_code=0
+
+=== stdout (raw) ===
+24:        max_evaluations: int = 60,
+34:            max_evaluations: Maximum evaluations for this invocation (CLI budget)
+41:        self.max_evaluations = max_evaluations
+106:        self._log_event(f"Starting optimization loop (max {self.max_evaluations} evaluations this run)")
+108:        while self.evaluations_this_run < self.max_evaluations:
+148:                if self.evaluations_this_run >= self.max_evaluations:
+179:                submission_payload = self.evaluator.to_submission_payload(result)
+198:                        self.client.update_suggestion_status(suggestion_id, status="failed")
+200:                        self._log_alert(f"update_suggestion_status failed for {suggestion_id}: {e}")
+203:            if self.evaluations_this_run >= self.max_evaluations:
+375:    max_evaluations: int = 60,
+387:        max_evaluations: Max evaluations this invocation
+403:        max_evaluations=max_evaluations,
+
+            # Generate suggestions
+            try:
+                suggestion_response = self.client.generate_suggestions(
+                    self.campaign_id, batch_size=1
+                )
+            except (BoMcpClientError, BoMcpOperationError) as e:
+                self._log_alert(f"generate_suggestions failed: {e}")
+                raise
+
+            suggestions = suggestion_response.get("suggestions", [])
+            if not suggestions:
+                self._log_alert("No suggestions returned; pausing")
+                self._pause_campaign()
+                return
+
+            # Evaluate each suggestion
+            for sugg in suggestions:
+                if self.evaluations_this_run >= self.max_evaluations:
+                    self._log_event("Reached evaluation budget for this run")
+                    break
+
+                if self._check_stop_file():
+                    self._pause_campaign()
+                    return
+
+                suggestion_id = sugg["suggestion_id"]
+                parameter_values = sugg["parameter_values"]
+
+                self._log_event(f"Evaluating suggestion {suggestion_id}")
+
+                # Evaluate
+                result = self.evaluator.evaluate(suggestion_id, parameter_values)
+                self.evaluations_this_run += 1
+
+                # Log result
+                status = result["status"]
+                if status == "success":
+                    surface = result["objective_values"]["surface_response"]
+                    raw = result["raw_response"]
+                    params_str = ", ".join(f"{k}={v:.6f}" for k, v in parameter_values.items())
+                    self._log_result(
+                        f"eval={result['evaluation_index']} surface={surface:.6f} raw={raw:.6f} [{params_str}]"
+                    )
+                else:
+                    reason = result["failure_reason"]
+                    self._log_alert(f"eval={result['evaluation_index']} FAILED: {reason}")
+
+                # Submit result to BO-MCP (only successful evaluations with finite values)
+                submission_payload = self.evaluator.to_submission_payload(result)
+                if submission_payload is not None:
+                    idempotency_key = str(uuid.uuid4())
+                    try:
+                        submit_response = self.client.submit_results(
+                            self.campaign_id,
+                            results=[submission_payload],
+                            idempotency_key=idempotency_key,
+                        )
+                    except (BoMcpClientError, BoMcpOperationError) as e:
+                        self._log_alert(f"submit_results failed: {e}")
+                        raise
+
+                    if not submit_response.get("success"):
+                        self._log_alert(f"Result submission rejected: {submit_response.get('errors')}")
+                        # Continue anyway - the server may have accepted it
+                else:
+                    # Failed evaluation (duplicate, error) - mark suggestion as failed in BO-MCP
+                    try:
+                        self.client.update_suggestion_status(suggestion_id, status="failed")
+                    except (BoMcpClientError, BoMcpOperationError) as e:
+                        self._log_alert(f"update_suggestion_status failed for {suggestion_id}: {e}")
+
+            # Check if we should continue after batch
+            if self.evaluations_this_run >= self.max_evaluations:
+                self._log_event("Reached evaluation budget; pausing")
+                self._pause_campaign()
+                return
+
+        # Loop ended naturally
+        self._pause_campaign()
+
+    def _pause_campaign(self) -> None:
+        """Pause the campaign."""
+        self._log_event(f"Pausing campaign {self.campaign_id}")
+        try:
+            self.client.lifecycle(self.campaign_id, action="pause")
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            self._log_alert(f"Pause failed: {e}")
+
+    def finalize_and_report(self) -> Dict[str, Any]:
+        """Fetch all results and generate final report."""
+        self._log_event("Fetching final results for reporting")
+
+        try:
+            results = self.client.get_results(self.campaign_id)
+        except (BoMcpClientError, BoMcpOperationError) as e:
+            self._log_alert(f"get_results failed: {e}")
+            results = []
+
+        # Also get local artifact for complete record
+        local_results = self._load_local_results()
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,31 @@
+exit_code=0
+
+=== stdout (raw) ===
+{
+  "campaign_slug": "akg_ackley_6d",
+  "ownership_marker": "akg-eval-daf20aa41d3740deb3539505c9fed77d",
+  "package_modules": [
+    "akg_ackley_6d/__init__.py",
+    "akg_ackley_6d/evaluator.py",
+    "akg_ackley_6d/campaign.py",
+    "akg_ackley_6d/reporting.py"
+  ],
+  "entrypoint": "run_akg_ackley_6d.py",
+  "how_to_execute": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "artifact_dir_pattern": "artifacts/ackley_6d_*",
+  "backend": "baybe",
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "total_budget": 60,
+  "parameters": ["x_1", "x_2", "x_3", "x_4", "x_5", "x_6"]
+}
+
+
+=== stderr (raw) ===
+bash: line 1: printf: --: invalid option
+printf: usage: printf [-v var] format [arguments]
+
+
+=== stderr (model-visible) ===
+bash: line 1: printf: --: invalid option
+printf: usage: printf [-v var] format [arguments]

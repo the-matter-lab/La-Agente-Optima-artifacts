@@ -1,1 +1,0 @@
-"""Evaluation module for 6D Ackley campaign."""

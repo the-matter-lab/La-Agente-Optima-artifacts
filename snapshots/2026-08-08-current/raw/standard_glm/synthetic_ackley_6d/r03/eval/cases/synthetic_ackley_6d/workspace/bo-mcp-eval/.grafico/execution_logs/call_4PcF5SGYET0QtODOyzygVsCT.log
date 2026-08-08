@@ -1,0 +1,18 @@
+exit_code=0
+
+=== stdout (raw) ===
+latest_log logs/ackley_6d_20260808T010612Z.log
+[RESULT] eval=59 surface_response=0.054984 raw_response=-21.121494 x_1=0.0000 x_2=0.0000 x_3=0.5912 x_4=1.0000 x_5=0.3065 x_6=1.0000
+[RESULT] eval=60 surface_response=0.041800 raw_response=-21.416162 x_1=0.1805 x_2=0.5555 x_3=0.3849 x_4=0.1479 x_5=0.6262 x_6=0.8213
+[EVENT] Budget reached: 60/60
+[EVENT] Loop finished: attempted=60 success=60
+[RESULT] BEST surface_response=0.876998 raw_response=-2.749134 x_1=0.496632 x_2=0.500531 x_3=0.503034 x_4=0.503032 x_5=0.506772 x_6=0.498151
+[EVENT] Campaign paused at end of invocation
+[EVENT] Artifact: artifacts/ackley_6d_20260808T010613Z/results.jsonl
+[EVENT] Resume with: uv run python run_akg_ackley_6d.py --campaign-id b65bf0cf-fab6-43c9-a84c-f69f435cd5ba
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

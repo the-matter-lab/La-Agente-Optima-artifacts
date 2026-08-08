@@ -1,0 +1,680 @@
+[EVENT] Validating Ackley benchmark intake against BO-MCP.
+00:35:48.874 POST api/api/v1/campaigns/validate
+[EVENT] Creating BO-MCP campaign with the BayBE backend.
+00:35:48.884 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[EVENT] Created campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:48.983 Starting Ackley BO-MCP campaign run
+00:35:48.983 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.004 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+[HEARTBEAT] campaign_id=10005311-0bd1-4dc0-a017-2a9fa4db06f2 attempted=0 successful=0
+00:35:49.017 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.024 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.029 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:49.040 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion efd6e9ae-0f46-4895-9a37-c2ee253dbf47 as attempt 1.
+00:35:49.101 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.159 Ackley evaluation submitted
+[RESULT] attempt=1 suggestion_id=efd6e9ae-0f46-4895-9a37-c2ee253dbf47 status=completed surface_response=0.10246067 raw_response=-20.06036511 x_1=0.361866 x_2=0.296168 x_3=0.604714 x_4=0.469926 x_5=0.236611 x_6=0.440526
+00:35:49.160 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.169 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.175 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.181 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.187 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:49.194 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 58b436f5-07f4-4453-8498-f678de7c7e61 as attempt 2.
+00:35:49.253 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.309 Ackley evaluation submitted
+[RESULT] attempt=2 suggestion_id=58b436f5-07f4-4453-8498-f678de7c7e61 status=completed surface_response=0.01919101 raw_response=-21.92147554 x_1=0.908548 x_2=0.169387 x_3=0.643890 x_4=0.081704 x_5=0.110132 x_6=0.336093
+00:35:49.311 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.321 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.328 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.334 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.340 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:49.347 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion f6d8f34a-c74f-4739-b6da-f2f451c72f05 as attempt 3.
+00:35:49.393 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.450 Ackley evaluation submitted
+[RESULT] attempt=3 suggestion_id=f6d8f34a-c74f-4739-b6da-f2f451c72f05 status=completed surface_response=0.02641569 raw_response=-21.76000105 x_1=0.202548 x_2=0.063102 x_3=0.642244 x_4=0.529172 x_5=0.893899 x_6=0.115845
+00:35:49.452 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.462 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.468 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.475 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.480 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:49.487 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion c09ee915-a8d0-49e3-8612-01ceff0935ef as attempt 4.
+00:35:49.534 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.591 Ackley evaluation submitted
+[RESULT] attempt=4 suggestion_id=c09ee915-a8d0-49e3-8612-01ceff0935ef status=completed surface_response=0.02312786 raw_response=-21.83348545 x_1=0.205272 x_2=0.209610 x_3=0.680603 x_4=0.930698 x_5=0.619100 x_6=0.286691
+00:35:49.592 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.605 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.613 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.621 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.627 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:49.635 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 15fd880f-cec3-4a22-9a43-e17e5c2f25c2 as attempt 5.
+00:35:49.676 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.731 Ackley evaluation submitted
+[RESULT] attempt=5 suggestion_id=15fd880f-cec3-4a22-9a43-e17e5c2f25c2 status=completed surface_response=0.02771595 raw_response=-21.73093974 x_1=0.446244 x_2=0.699947 x_3=0.683706 x_4=0.029938 x_5=0.318344 x_6=0.183046
+00:35:49.732 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.740 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.747 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.754 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.760 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:49.768 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion e9dbc87d-e73c-45b3-ba4d-b5ef58c2a65a as attempt 6.
+00:35:49.816 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.874 Ackley evaluation submitted
+[RESULT] attempt=6 suggestion_id=e9dbc87d-e73c-45b3-ba4d-b5ef58c2a65a status=completed surface_response=0.01652123 raw_response=-21.98114622 x_1=0.753614 x_2=0.928441 x_3=0.057909 x_4=0.894080 x_5=0.930844 x_6=0.186381
+00:35:49.875 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.886 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.893 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:49.902 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:49.907 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:49.914 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 68fb2e05-53e5-4284-981e-caaeaacdb2e3 as attempt 7.
+00:35:49.957 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.016 Ackley evaluation submitted
+[RESULT] attempt=7 suggestion_id=68fb2e05-53e5-4284-981e-caaeaacdb2e3 status=completed surface_response=0.02682424 raw_response=-21.75086976 x_1=0.619381 x_2=0.197301 x_3=0.520460 x_4=0.429878 x_5=0.964248 x_6=0.997641
+00:35:50.017 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.026 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.033 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.040 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.046 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:50.053 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 6899f700-bc63-4bad-afb5-b90a77558dc5 as attempt 8.
+00:35:50.100 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.156 Ackley evaluation submitted
+[RESULT] attempt=8 suggestion_id=6899f700-bc63-4bad-afb5-b90a77558dc5 status=completed surface_response=0.01998206 raw_response=-21.90379522 x_1=0.640928 x_2=0.786415 x_3=0.043790 x_4=0.329038 x_5=0.008030 x_6=0.304959
+00:35:50.157 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.166 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.172 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.179 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.186 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:50.193 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 50fb1061-5885-43f5-95f0-c0353849c7a8 as attempt 9.
+00:35:50.241 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.298 Ackley evaluation submitted
+[RESULT] attempt=9 suggestion_id=50fb1061-5885-43f5-95f0-c0353849c7a8 status=completed surface_response=0.06851884 raw_response=-20.81897864 x_1=0.450432 x_2=0.785442 x_3=0.596992 x_4=0.237096 x_5=0.344850 x_6=0.834494
+00:35:50.298 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.308 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.320 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.327 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.333 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:50.340 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 4508f273-09c5-4153-acb4-4f5739f0abf6 as attempt 10.
+00:35:50.381 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.437 Ackley evaluation submitted
+[RESULT] attempt=10 suggestion_id=4508f273-09c5-4153-acb4-4f5739f0abf6 status=completed surface_response=0.06491105 raw_response=-20.89961429 x_1=0.589156 x_2=0.384023 x_3=0.676854 x_4=0.688289 x_5=0.851229 x_6=0.132356
+00:35:50.437 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.450 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.460 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.470 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.479 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:50.490 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 46d47db8-a505-4a9e-8c47-e1bfffacb0ca as attempt 11.
+00:35:50.539 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.597 Ackley evaluation submitted
+[RESULT] attempt=11 suggestion_id=46d47db8-a505-4a9e-8c47-e1bfffacb0ca status=completed surface_response=0.01860316 raw_response=-21.93461418 x_1=0.406802 x_2=0.209576 x_3=0.138287 x_4=0.979160 x_5=0.031726 x_6=0.108392
+00:35:50.599 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.609 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.616 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.623 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.629 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:50.636 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 5c0a7f60-68b3-47ab-84ea-d21e1cbacf52 as attempt 12.
+00:35:50.686 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.764 Ackley evaluation submitted
+[RESULT] attempt=12 suggestion_id=5c0a7f60-68b3-47ab-84ea-d21e1cbacf52 status=completed surface_response=0.04002135 raw_response=-21.45590901 x_1=0.790626 x_2=0.566458 x_3=0.615597 x_4=0.504161 x_5=0.865508 x_6=0.938975
+00:35:50.765 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.777 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.786 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:50.793 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:50.800 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:50.809 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion d90b9892-1b31-4035-abea-b1c7288a2b87 as attempt 13.
+00:35:53.402 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:53.495 Ackley evaluation submitted
+[RESULT] attempt=13 suggestion_id=d90b9892-1b31-4035-abea-b1c7288a2b87 status=completed surface_response=0.15095126 raw_response=-18.97658096 x_1=0.396394 x_2=0.431309 x_3=0.648196 x_4=0.474504 x_5=0.252112 x_6=0.551918
+00:35:53.495 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:53.508 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:53.516 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:53.524 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:53.530 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:53.539 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion de85642b-2a79-467d-a5b2-bfa60045d37a as attempt 14.
+00:35:54.891 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:54.951 Ackley evaluation submitted
+[RESULT] attempt=14 suggestion_id=de85642b-2a79-467d-a5b2-bfa60045d37a status=completed surface_response=0.11551756 raw_response=-19.76853848 x_1=0.362468 x_2=0.454270 x_3=0.699105 x_4=0.495526 x_5=0.223650 x_6=0.602776
+00:35:54.952 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:54.961 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:54.968 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:54.977 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:54.984 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:54.995 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 7d21c1e0-1db8-40e4-8b6f-e038e2c2c6a4 as attempt 15.
+00:35:55.801 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:56.021 Ackley evaluation submitted
+[RESULT] attempt=15 suggestion_id=7d21c1e0-1db8-40e4-8b6f-e038e2c2c6a4 status=completed surface_response=0.27796121 raw_response=-16.13785745 x_1=0.439557 x_2=0.462843 x_3=0.573514 x_4=0.440689 x_5=0.334401 x_6=0.533811
+00:35:56.022 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:56.035 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:56.048 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:56.057 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:56.065 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:56.075 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 5688ec45-0990-42c1-802d-d86b42ba5dec as attempt 16.
+00:35:57.409 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:57.571 Ackley evaluation submitted
+[RESULT] attempt=16 suggestion_id=5688ec45-0990-42c1-802d-d86b42ba5dec status=completed surface_response=0.32219911 raw_response=-15.14912268 x_1=0.456788 x_2=0.466733 x_3=0.561157 x_4=0.467479 x_5=0.362821 x_6=0.532981
+00:35:57.572 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:57.582 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:57.590 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:57.598 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:57.604 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:57.612 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion c3a4d22e-72b0-4ff6-999f-aa8be4788010 as attempt 17.
+00:35:59.216 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:59.414 Ackley evaluation submitted
+[RESULT] attempt=17 suggestion_id=c3a4d22e-72b0-4ff6-999f-aa8be4788010 status=completed surface_response=0.45914031 raw_response=-12.08843178 x_1=0.488182 x_2=0.476625 x_3=0.545359 x_4=0.501986 x_5=0.401066 x_6=0.530632
+00:35:59.415 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:59.427 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:59.442 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:35:59.453 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:35:59.463 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:35:59.473 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion c0b5e298-cbfb-4879-ab84-4c1ef76d13ea as attempt 18.
+00:35:59.976 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:00.043 Ackley evaluation submitted
+[RESULT] attempt=18 suggestion_id=c0b5e298-cbfb-4879-ab84-4c1ef76d13ea status=completed surface_response=0.51403263 raw_response=-10.86156620 x_1=0.534343 x_2=0.493608 x_3=0.528546 x_4=0.541453 x_5=0.443115 x_6=0.528583
+00:36:00.044 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:00.055 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:00.067 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:00.078 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:00.087 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:00.097 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion e924682a-305e-4ff4-a9a0-c4a8858de6bc as attempt 19.
+00:36:01.088 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:01.378 Ackley evaluation submitted
+[RESULT] attempt=19 suggestion_id=e924682a-305e-4ff4-a9a0-c4a8858de6bc status=completed surface_response=0.36302879 raw_response=-14.23656292 x_1=0.630565 x_2=0.524520 x_3=0.471434 x_4=0.561906 x_5=0.459085 x_6=0.510640
+00:36:01.379 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:01.393 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:01.402 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:01.413 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:01.421 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:01.431 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 6e187072-27d6-4ee4-9619-c05854bc14bf as attempt 20.
+00:36:02.444 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:02.501 Ackley evaluation submitted
+[RESULT] attempt=20 suggestion_id=6e187072-27d6-4ee4-9619-c05854bc14bf status=completed surface_response=0.43879527 raw_response=-12.54315154 x_1=0.515518 x_2=0.462886 x_3=0.512889 x_4=0.608986 x_5=0.476935 x_6=0.552056
+00:36:02.502 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:02.512 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:02.522 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:02.532 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:02.540 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:02.550 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 18c32641-b605-48d0-8324-090912fac2ed as attempt 21.
+00:36:03.334 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:03.402 Ackley evaluation submitted
+[RESULT] attempt=21 suggestion_id=18c32641-b605-48d0-8324-090912fac2ed status=completed surface_response=0.38038104 raw_response=-13.84873315 x_1=0.540733 x_2=0.517864 x_3=0.609464 x_4=0.505962 x_5=0.455192 x_6=0.455528
+00:36:03.404 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:03.414 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:03.426 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:03.435 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:03.443 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:03.451 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion de3631ae-cefb-4839-812f-111065b58f3b as attempt 22.
+00:36:04.001 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:04.058 Ackley evaluation submitted
+[RESULT] attempt=22 suggestion_id=de3631ae-cefb-4839-812f-111065b58f3b status=completed surface_response=0.42890176 raw_response=-12.76427554 x_1=0.530849 x_2=0.537620 x_3=0.484188 x_4=0.522746 x_5=0.412835 x_6=0.568309
+00:36:04.059 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:04.070 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:04.079 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:04.087 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:04.095 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:04.104 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 2b951f44-08d9-4050-8cdb-0f6a4bafb14e as attempt 23.
+00:36:04.858 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:04.913 Ackley evaluation submitted
+[RESULT] attempt=23 suggestion_id=2b951f44-08d9-4050-8cdb-0f6a4bafb14e status=completed surface_response=0.35830959 raw_response=-14.34203876 x_1=0.546729 x_2=0.497720 x_3=0.544857 x_4=0.538005 x_5=0.463717 x_6=0.638611
+00:36:04.914 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:04.926 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:04.935 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:04.944 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:04.951 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:04.959 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 40b886c1-5efb-4235-a86a-20859c04721b as attempt 24.
+00:36:06.709 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:06.765 Ackley evaluation submitted
+[RESULT] attempt=24 suggestion_id=40b886c1-5efb-4235-a86a-20859c04721b status=completed surface_response=0.42561875 raw_response=-12.83765213 x_1=0.544560 x_2=0.420160 x_3=0.517796 x_4=0.502141 x_5=0.430642 x_6=0.492334
+00:36:06.766 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:06.778 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:06.787 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:06.796 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:06.804 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:06.812 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 19573bc7-8b52-4b3b-b2ef-7759215825da as attempt 25.
+00:36:07.852 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:07.916 Ackley evaluation submitted
+[RESULT] attempt=25 suggestion_id=19573bc7-8b52-4b3b-b2ef-7759215825da status=completed surface_response=0.64943953 raw_response=-7.83516756 x_1=0.490576 x_2=0.526696 x_3=0.529103 x_4=0.523911 x_5=0.488022 x_6=0.531650
+00:36:07.916 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:07.930 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:07.939 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:07.948 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:07.958 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:07.965 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 2bdb9b75-d3dc-4f59-9252-1543b58f6719 as attempt 26.
+00:36:09.214 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:09.288 Ackley evaluation submitted
+[RESULT] attempt=26 suggestion_id=2bdb9b75-d3dc-4f59-9252-1543b58f6719 status=completed surface_response=0.51147579 raw_response=-10.91871257 x_1=0.435044 x_2=0.548143 x_3=0.528100 x_4=0.504527 x_5=0.536068 x_6=0.537193
+00:36:09.289 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:09.303 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:09.313 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:09.322 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:09.330 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:09.339 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 8e69479b-5e15-4787-9c05-02034784bb00 as attempt 27.
+00:36:11.585 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:11.640 Ackley evaluation submitted
+[RESULT] attempt=27 suggestion_id=8e69479b-5e15-4787-9c05-02034784bb00 status=completed surface_response=0.52919326 raw_response=-10.52272012 x_1=0.473635 x_2=0.577926 x_3=0.505502 x_4=0.499003 x_5=0.478484 x_6=0.536238
+00:36:11.641 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:11.651 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:11.660 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:11.669 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:11.676 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:11.684 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion dc7fd9d0-691e-4496-bbf8-43f88d7f795b as attempt 28.
+00:36:13.996 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:14.061 Ackley evaluation submitted
+[RESULT] attempt=28 suggestion_id=dc7fd9d0-691e-4496-bbf8-43f88d7f795b status=completed surface_response=0.58202872 raw_response=-9.34182621 x_1=0.500410 x_2=0.482467 x_3=0.546151 x_4=0.534331 x_5=0.526132 x_6=0.531503
+00:36:14.062 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:14.073 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:14.082 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:14.092 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:14.099 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:14.108 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion b18b635a-afc6-43ee-855b-f42f5b37e9f6 as attempt 29.
+00:36:15.857 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:15.912 Ackley evaluation submitted
+[RESULT] attempt=29 suggestion_id=b18b635a-afc6-43ee-855b-f42f5b37e9f6 status=completed surface_response=0.67797413 raw_response=-7.19740781 x_1=0.484038 x_2=0.515212 x_3=0.485476 x_4=0.539414 x_5=0.510730 x_6=0.522704
+00:36:15.913 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:15.926 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:15.936 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:15.946 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:15.954 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:15.962 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 2e7e67b0-23ee-486e-801b-8be9eb2bbfd2 as attempt 30.
+00:36:16.794 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:16.850 Ackley evaluation submitted
+[RESULT] attempt=30 suggestion_id=2e7e67b0-23ee-486e-801b-8be9eb2bbfd2 status=completed surface_response=0.50392730 raw_response=-11.08742452 x_1=0.459852 x_2=0.515702 x_3=0.422040 x_4=0.550044 x_5=0.501051 x_6=0.490896
+00:36:16.851 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:16.864 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:16.874 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:16.883 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:16.891 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:16.899 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 65b64eb2-aa0d-4a9e-9804-9127a0c78445 as attempt 31.
+00:36:18.060 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:18.114 Ackley evaluation submitted
+[RESULT] attempt=31 suggestion_id=65b64eb2-aa0d-4a9e-9804-9127a0c78445 status=completed surface_response=0.65877847 raw_response=-7.62643849 x_1=0.501631 x_2=0.518794 x_3=0.497534 x_4=0.528444 x_5=0.533250 x_6=0.477979
+00:36:18.115 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:18.128 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:18.138 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:18.147 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:18.155 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:18.164 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 827d1dc1-e25d-48ca-8742-0311bf2ac3e6 as attempt 32.
+00:36:19.646 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:19.714 Ackley evaluation submitted
+[RESULT] attempt=32 suggestion_id=827d1dc1-e25d-48ca-8742-0311bf2ac3e6 status=completed surface_response=0.55570676 raw_response=-9.93013276 x_1=0.488849 x_2=0.544809 x_3=0.506670 x_4=0.551484 x_5=0.529428 x_6=0.478991
+00:36:19.715 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:19.728 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:19.745 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:19.756 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:19.764 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:19.773 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion cecfc314-28f0-4fc9-ac62-b41c2abfc9ee as attempt 33.
+00:36:21.397 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:21.454 Ackley evaluation submitted
+[RESULT] attempt=33 suggestion_id=cecfc314-28f0-4fc9-ac62-b41c2abfc9ee status=completed surface_response=0.76489048 raw_response=-5.25479245 x_1=0.502368 x_2=0.501221 x_3=0.489172 x_4=0.480491 x_5=0.517867 x_6=0.512935
+00:36:21.455 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:21.464 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:21.474 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:21.483 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:21.496 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:21.506 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 62ce6f62-b22d-48e2-9877-76d9b0344511 as attempt 34.
+00:36:22.548 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:22.712 Ackley evaluation submitted
+[RESULT] attempt=34 suggestion_id=62ce6f62-b22d-48e2-9877-76d9b0344511 status=completed surface_response=0.51868360 raw_response=-10.75761520 x_1=0.506414 x_2=0.496657 x_3=0.482773 x_4=0.419057 x_5=0.519576 x_6=0.514279
+00:36:22.714 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:22.724 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:22.736 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:22.745 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:22.753 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:22.787 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion d6962431-01eb-4b3c-b9d4-a1d51711bff3 as attempt 35.
+00:36:25.309 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:25.391 Ackley evaluation submitted
+[RESULT] attempt=35 suggestion_id=d6962431-01eb-4b3c-b9d4-a1d51711bff3 status=completed surface_response=0.71316250 raw_response=-6.41093354 x_1=0.504106 x_2=0.492206 x_3=0.477771 x_4=0.496745 x_5=0.521302 x_6=0.520228
+00:36:25.391 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:25.403 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:25.413 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:25.422 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:25.431 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:25.440 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 985d08f6-5c4a-4100-a928-5f5323e98531 as attempt 36.
+00:36:28.289 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:28.375 Ackley evaluation submitted
+[RESULT] attempt=36 suggestion_id=985d08f6-5c4a-4100-a928-5f5323e98531 status=completed surface_response=0.82564506 raw_response=-3.89690296 x_1=0.496450 x_2=0.494712 x_3=0.488218 x_4=0.496685 x_5=0.513442 x_6=0.502171
+00:36:28.376 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:28.387 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:28.397 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:28.406 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:28.415 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:28.424 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 68f7efd0-2214-4de2-86e8-55fe2243e31c as attempt 37.
+00:36:30.135 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:30.191 Ackley evaluation submitted
+[RESULT] attempt=37 suggestion_id=68f7efd0-2214-4de2-86e8-55fe2243e31c status=completed surface_response=0.63423620 raw_response=-8.17496809 x_1=0.470059 x_2=0.484596 x_3=0.493255 x_4=0.495518 x_5=0.498951 x_6=0.456019
+00:36:30.193 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:30.205 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:30.215 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:30.227 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:30.237 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:30.245 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion fdc988c8-f809-49c7-a410-1ef8fa034c8e as attempt 38.
+00:36:33.267 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:33.330 Ackley evaluation submitted
+[RESULT] attempt=38 suggestion_id=fdc988c8-f809-49c7-a410-1ef8fa034c8e status=completed surface_response=0.69977848 raw_response=-6.71007167 x_1=0.508114 x_2=0.490569 x_3=0.476406 x_4=0.497199 x_5=0.537262 x_6=0.509711
+00:36:33.331 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:33.341 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:33.352 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:33.361 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:33.370 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:33.379 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 58db959a-8115-4fa2-86dc-7ef29c22db8d as attempt 39.
+00:36:36.068 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:36.124 Ackley evaluation submitted
+[RESULT] attempt=39 suggestion_id=58db959a-8115-4fa2-86dc-7ef29c22db8d status=completed surface_response=0.83491289 raw_response=-3.68976325 x_1=0.501540 x_2=0.496165 x_3=0.486103 x_4=0.497558 x_5=0.510981 x_6=0.511521
+00:36:36.125 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:36.138 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:36.150 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:36.160 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:36.169 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:36.177 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 82320118-c8e1-4895-acd7-89478b0b5107 as attempt 40.
+00:36:36.934 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:37.101 Ackley evaluation submitted
+[RESULT] attempt=40 suggestion_id=82320118-c8e1-4895-acd7-89478b0b5107 status=completed surface_response=0.73325356 raw_response=-5.96189022 x_1=0.462132 x_2=0.485241 x_3=0.496744 x_4=0.499679 x_5=0.500313 x_6=0.505870
+00:36:37.103 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:37.117 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:37.130 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:37.140 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:37.149 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:37.158 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 8796dcc8-2bfc-4e04-9243-9a8f8b0c5cd5 as attempt 41.
+00:36:40.441 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:40.495 Ackley evaluation submitted
+[RESULT] attempt=41 suggestion_id=8796dcc8-2bfc-4e04-9243-9a8f8b0c5cd5 status=completed surface_response=0.83482561 raw_response=-3.69171416 x_1=0.504645 x_2=0.496855 x_3=0.487040 x_4=0.495943 x_5=0.499771 x_6=0.511670
+00:36:40.497 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:40.514 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:40.526 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:40.536 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:40.545 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:40.553 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 48cd702a-307f-4d78-b129-1f5ac05718b6 as attempt 42.
+00:36:42.893 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:42.948 Ackley evaluation submitted
+[RESULT] attempt=42 suggestion_id=48cd702a-307f-4d78-b129-1f5ac05718b6 status=completed surface_response=0.79103300 raw_response=-4.67049647 x_1=0.513086 x_2=0.500641 x_3=0.484692 x_4=0.493242 x_5=0.493513 x_6=0.507081
+00:36:42.949 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:42.960 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:42.972 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:42.983 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:42.992 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:43.000 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 6873ce1f-dc71-420c-8bf0-fd7509fd9b7e as attempt 43.
+00:36:45.664 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:46.278 Ackley evaluation submitted
+[RESULT] attempt=43 suggestion_id=6873ce1f-dc71-420c-8bf0-fd7509fd9b7e status=completed surface_response=0.81295343 raw_response=-4.18056620 x_1=0.509967 x_2=0.499172 x_3=0.486701 x_4=0.494233 x_5=0.495216 x_6=0.508626
+00:36:46.279 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:46.290 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:46.304 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:46.315 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:46.325 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:46.333 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 17b094d8-ae5b-495f-9984-5b702444e4fa as attempt 44.
+00:36:47.646 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:47.706 Ackley evaluation submitted
+[RESULT] attempt=44 suggestion_id=17b094d8-ae5b-495f-9984-5b702444e4fa status=completed surface_response=0.22550791 raw_response=-17.31020989 x_1=0.397673 x_2=0.373841 x_3=0.385985 x_4=0.494850 x_5=0.438178 x_6=0.649914
+00:36:47.708 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:47.720 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:47.731 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:47.741 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:47.751 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:47.759 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 0cc6211e-e0b2-4b46-b148-6180d28487ef as attempt 45.
+00:36:48.552 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:48.607 Ackley evaluation submitted
+[RESULT] attempt=45 suggestion_id=0cc6211e-e0b2-4b46-b148-6180d28487ef status=completed surface_response=0.09268806 raw_response=-20.27878695 x_1=0.431777 x_2=0.325081 x_3=0.500205 x_4=0.824839 x_5=0.478213 x_6=0.746767
+00:36:48.608 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:48.619 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:48.631 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:48.641 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:48.651 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:48.659 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion bb8034fa-f461-44dc-a696-fa9470f7db2b as attempt 46.
+00:36:49.487 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:49.545 Ackley evaluation submitted
+[RESULT] attempt=46 suggestion_id=bb8034fa-f461-44dc-a696-fa9470f7db2b status=completed surface_response=0.04926347 raw_response=-21.24934406 x_1=0.283465 x_2=0.468418 x_3=0.413218 x_4=0.231194 x_5=0.141815 x_6=0.623522
+00:36:49.547 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:49.560 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:49.572 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:49.582 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:49.591 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:49.599 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 70f2b744-16ca-4eef-b3de-2820136ca4a2 as attempt 47.
+00:36:51.363 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:51.420 Ackley evaluation submitted
+[RESULT] attempt=47 suggestion_id=70f2b744-16ca-4eef-b3de-2820136ca4a2 status=completed surface_response=0.14112951 raw_response=-19.19610110 x_1=0.697442 x_2=0.631889 x_3=0.454847 x_4=0.433386 x_5=0.571900 x_6=0.347145
+00:36:51.421 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:51.435 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:51.449 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:51.460 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:51.470 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:51.478 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion a54ce1b0-a15d-4410-a775-be04e459da26 as attempt 48.
+00:36:53.192 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:53.470 Ackley evaluation submitted
+[RESULT] attempt=48 suggestion_id=a54ce1b0-a15d-4410-a775-be04e459da26 status=completed surface_response=0.07802155 raw_response=-20.60658927 x_1=0.211691 x_2=0.306740 x_3=0.810840 x_4=0.252228 x_5=0.387013 x_6=0.699440
+00:36:53.470 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:53.488 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:53.501 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:53.514 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:53.528 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:53.538 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 223d6529-3ed9-4ec0-9cc3-d109924e118b as attempt 49.
+00:36:54.079 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:54.134 Ackley evaluation submitted
+[RESULT] attempt=49 suggestion_id=223d6529-3ed9-4ec0-9cc3-d109924e118b status=completed surface_response=0.06357809 raw_response=-20.92940655 x_1=0.000000 x_2=0.317849 x_3=0.663070 x_4=0.625495 x_5=0.414061 x_6=0.695455
+00:36:54.135 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:54.147 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:54.161 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:54.171 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:54.182 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:54.191 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion b401837b-83fc-4d7c-b60c-ce03c08ed049 as attempt 50.
+00:36:54.949 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:55.007 Ackley evaluation submitted
+[RESULT] attempt=50 suggestion_id=b401837b-83fc-4d7c-b60c-ce03c08ed049 status=completed surface_response=0.08992314 raw_response=-20.34058395 x_1=0.736216 x_2=0.294343 x_3=0.391645 x_4=0.761709 x_5=0.686357 x_6=0.536758
+00:36:55.008 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:55.021 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:55.033 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:55.043 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:55.052 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:55.066 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 7eb231e3-10ab-4508-9b7e-003e5631fdcf as attempt 51.
+00:36:55.966 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:56.023 Ackley evaluation submitted
+[RESULT] attempt=51 suggestion_id=7eb231e3-10ab-4508-9b7e-003e5631fdcf status=completed surface_response=0.07429638 raw_response=-20.68984834 x_1=0.490236 x_2=0.237160 x_3=0.614986 x_4=0.465587 x_5=0.248353 x_6=1.000000
+00:36:56.025 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:56.036 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:56.050 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:56.061 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:56.070 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:56.079 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 97d82b51-eb42-4656-8520-1918b2ffd914 as attempt 52.
+00:36:57.033 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:57.107 Ackley evaluation submitted
+[RESULT] attempt=52 suggestion_id=97d82b51-eb42-4656-8520-1918b2ffd914 status=completed surface_response=0.03044507 raw_response=-21.66994287 x_1=0.644759 x_2=0.477237 x_3=0.924079 x_4=0.204579 x_5=0.120131 x_6=0.771993
+00:36:57.109 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:57.124 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:57.137 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:57.147 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:57.157 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:57.165 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion d9215efe-6ca2-4580-9fb1-82e3c6609b8c as attempt 53.
+00:36:57.763 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:57.830 Ackley evaluation submitted
+[RESULT] attempt=53 suggestion_id=d9215efe-6ca2-4580-9fb1-82e3c6609b8c status=completed surface_response=0.04262724 raw_response=-21.39766652 x_1=0.090691 x_2=0.000000 x_3=0.717874 x_4=0.424388 x_5=0.052702 x_6=0.734542
+00:36:57.831 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:57.846 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:57.861 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:57.871 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:57.882 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:57.890 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 03f75a76-497d-4b7e-9b0a-5f7a90ca3ff6 as attempt 54.
+00:36:58.351 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:58.641 Ackley evaluation submitted
+[RESULT] attempt=54 suggestion_id=03f75a76-497d-4b7e-9b0a-5f7a90ca3ff6 status=completed surface_response=0.04215013 raw_response=-21.40833012 x_1=0.642585 x_2=0.585295 x_3=0.677720 x_4=0.982740 x_5=0.648176 x_6=0.580446
+00:36:58.643 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:58.658 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:58.671 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:58.681 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:58.693 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:58.702 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion c5fe10a0-2875-49fc-a9f7-23294cc90c90 as attempt 55.
+00:36:59.670 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:59.724 Ackley evaluation submitted
+[RESULT] attempt=55 suggestion_id=c5fe10a0-2875-49fc-a9f7-23294cc90c90 status=completed surface_response=0.04202207 raw_response=-21.41119214 x_1=0.260052 x_2=0.360452 x_3=0.348842 x_4=0.735183 x_5=0.068762 x_6=0.817482
+00:36:59.725 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:59.737 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:59.751 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:36:59.762 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:36:59.774 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:36:59.782 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion adb0456b-96cc-4a3f-bfe1-dadf41ade5f2 as attempt 56.
+00:37:00.464 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:00.530 Ackley evaluation submitted
+[RESULT] attempt=56 suggestion_id=adb0456b-96cc-4a3f-bfe1-dadf41ade5f2 status=completed surface_response=0.05283352 raw_response=-21.16955201 x_1=0.000000 x_2=0.508122 x_3=0.897620 x_4=0.304177 x_5=0.150319 x_6=0.348832
+00:37:00.531 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:00.547 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:00.561 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:00.572 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:00.583 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:37:00.591 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 9ea538e1-1e11-4900-9cb8-9a6f68d3c079 as attempt 57.
+00:37:01.595 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:01.649 Ackley evaluation submitted
+[RESULT] attempt=57 suggestion_id=9ea538e1-1e11-4900-9cb8-9a6f68d3c079 status=completed surface_response=0.05173870 raw_response=-21.19402160 x_1=0.000000 x_2=0.604809 x_3=0.810352 x_4=0.383605 x_5=0.174000 x_6=1.000000
+00:37:01.650 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:01.663 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:01.677 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:01.689 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:01.704 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:37:01.714 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion 52cafb32-2bf1-4294-9e3d-4bcdfae66eba as attempt 58.
+00:37:02.263 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:02.329 Ackley evaluation submitted
+[RESULT] attempt=58 suggestion_id=52cafb32-2bf1-4294-9e3d-4bcdfae66eba status=completed surface_response=0.03683958 raw_response=-21.52702293 x_1=0.825959 x_2=0.255009 x_3=0.224559 x_4=0.667036 x_5=0.472587 x_6=0.944140
+00:37:02.331 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:02.346 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:02.360 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:02.371 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:02.383 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:37:02.392 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion f950abde-972a-42e6-87dd-e10906d292c9 as attempt 59.
+00:37:03.085 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:03.151 Ackley evaluation submitted
+[RESULT] attempt=59 suggestion_id=f950abde-972a-42e6-87dd-e10906d292c9 status=completed surface_response=0.07875899 raw_response=-20.59010717 x_1=1.000000 x_2=0.138299 x_3=0.546872 x_4=0.937747 x_5=1.000000 x_6=0.327119
+00:37:03.153 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:03.168 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:03.182 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:03.192 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:03.203 POST api/api/v1/campaigns/status/batch
+[EVENT] Generating one new suggestion for campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:37:03.211 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/generate ? batch_size='1'
+[EVENT] Evaluating suggestion bf6407f9-4839-4cf3-8c85-12cb8832b5ea as attempt 60.
+00:37:03.817 POST api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:03.880 Ackley evaluation submitted
+[RESULT] attempt=60 suggestion_id=bf6407f9-4839-4cf3-8c85-12cb8832b5ea status=completed surface_response=0.05837882 raw_response=-21.04561236 x_1=0.937710 x_2=0.000000 x_3=0.681900 x_4=1.000000 x_5=0.726297 x_6=0.715527
+00:37:03.881 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:03.892 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+[EVENT] Reached the exact attempted-evaluation budget of 60.
+00:37:03.906 POST api/api/v1/suggestions/10005311-0bd1-4dc0-a017-2a9fa4db06f2/query
+00:37:03.919 GET api/api/v1/results/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+00:37:03.936 POST api/api/v1/campaigns/status/batch
+00:37:03.945 POST api/api/v1/campaigns/10005311-0bd1-4dc0-a017-2a9fa4db06f2/lifecycle
+[EVENT] Paused campaign 10005311-0bd1-4dc0-a017-2a9fa4db06f2.
+00:37:03.974 Ackley BO-MCP campaign invocation finished
+[RESULT] best_surface_response=0.8349128938117877 best_raw_response=-3.689763252259422 attempted=60 successful=60 artifact_dir=artifacts/ackley_baybe_bomcp/10005311-0bd1-4dc0-a017-2a9fa4db06f2
+[RESULT] best_parameter_values={'x_1': 0.5015401473325194, 'x_2': 0.4961648720979198, 'x_3': 0.4861031846719859, 'x_4': 0.4975583361796546, 'x_5': 0.5109812418547539, 'x_6': 0.5115207191290951} results_csv=artifacts/ackley_baybe_bomcp/10005311-0bd1-4dc0-a017-2a9fa4db06f2/evaluated_candidates.csv report=artifacts/ackley_baybe_bomcp/10005311-0bd1-4dc0-a017-2a9fa4db06f2/final_report.md

@@ -1,0 +1,62 @@
+exit_code=0
+
+=== stdout (raw) ===
+"""Campaign intake construction for 6D Ackley BO campaign."""
+
+from ackley_6d_bo.search_space import PARAM_NAMES, get_parameter_bounds
+
+
+def build_campaign_intake(
+    name: str = "ackley_6d_baybe_akg-eval-85fb74eb00b449cd9dc81b7e98d95efc",
+    description: str = "6D Ackley function optimization using baybe backend",
+    random_seed: int = 42,
+    batch_size: int = 1,
+    initial_design_size: int = 10,
+) -> dict:
+    """Build the campaign intake payload for BO-MCP.
+
+    Args:
+        name: Campaign name (must include the akg-eval marker)
+        description: Campaign description
+        random_seed: RNG seed for reproducibility
+        batch_size: Number of suggestions per generation
+        initial_design_size: Number of Sobol/random initial points
+
+    Returns:
+        Campaign intake dictionary ready for BO-MCP API
+    """
+    parameters = []
+    for param_name, lower, upper in get_parameter_bounds():
+        parameters.append({
+            "name": param_name,
+            "type": "continuous",
+            "bounds": {"lower": lower, "upper": upper},
+        })
+
+    objectives = [
+        {
+            "name": "surface_response",
+            "target_mode": "maximize",
+            "unit": "normalized_unitless",
+        }
+    ]
+
+    intake = {
+        "name": name,
+        "description": description,
+        "parameters": parameters,
+        "objectives": objectives,
+        "backend": "baybe",
+        "random_seed": random_seed,
+        "batch_size": batch_size,
+        "initial_design_size": initial_design_size,
+        # Use BayBE's default acquisition method (qLogEI for noisy, LogEI for deterministic)
+        # We don't specify acquisition_method to let baybe choose its default
+    }
+
+    return intake
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

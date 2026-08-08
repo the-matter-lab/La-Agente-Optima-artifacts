@@ -1,0 +1,191 @@
+exit_code=0
+
+=== stdout (raw) ===
+"""Candidate evaluation for 6D Ackley benchmark."""
+
+import json
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+from ackley_6d_bo.search_space import PARAM_NAMES, evaluate_ackley_6d
+
+
+class AckleyEvaluator:
+    """Deterministic evaluator for the 6D Ackley function."""
+
+    def __init__(self, results_dir: Optional[Path] = None):
+        """Initialize evaluator.
+
+        Args:
+            results_dir: Directory to write per-evaluation result artifacts.
+                         If None, no local artifacts are written.
+        """
+        self.results_dir = results_dir
+        self.evaluation_count = 0
+        self.seen_points: set = set()
+
+        if self.results_dir:
+            self.results_dir.mkdir(parents=True, exist_ok=True)
+            self._load_existing_artifact_state()
+
+    def _load_existing_artifact_state(self) -> None:
+        """Load evaluation_count and seen_points from existing local artifact."""
+        artifact_path = self.results_dir / "evaluations.jsonl"
+        if not artifact_path.exists():
+            return
+
+        import json
+        max_index = 0
+        with artifact_path.open() as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    record = json.loads(line)
+                    # Track evaluation index
+                    idx = record.get("evaluation_index", 0)
+                    if idx > max_index:
+                        max_index = idx
+                    # Track seen points (successful evaluations only)
+                    if record.get("status") == "success":
+                        param_values = record.get("parameter_values", {})
+                        x_values = [param_values[name] for name in PARAM_NAMES]
+                        point_key = self._point_key(x_values)
+                        self.seen_points.add(point_key)
+                except json.JSONDecodeError:
+                    continue
+
+        self.evaluation_count = max_index
+
+    def _point_key(self, x_values: List[float]) -> tuple:
+        """Create a hashable key for a point (rounded to avoid float issues)."""
+        return tuple(round(x, 12) for x in x_values)
+
+    def evaluate(
+        self,
+        suggestion_id: str,
+        parameter_values: Dict[str, float],
+    ) -> Dict[str, Any]:
+        """Evaluate a single candidate.
+
+        Args:
+            suggestion_id: BO-MCP suggestion ID
+            parameter_values: Dict mapping parameter names to values
+
+        Returns:
+            Full result dictionary with objective values and metadata (for local artifact)
+        """
+        # Extract x values in correct order
+        x_values = [parameter_values[name] for name in PARAM_NAMES]
+
+        # Check for duplicate - but still count this as an attempted evaluation
+        point_key = self._point_key(x_values)
+        self.evaluation_count += 1
+        eval_index = self.evaluation_count
+
+        if point_key in self.seen_points:
+            result = {
+                "suggestion_id": suggestion_id,
+                "parameter_values": parameter_values,
+                "objective_values": {"surface_response": None},
+                "status": "failed",
+                "failure_reason": "Duplicate point - already evaluated",
+                "raw_response": None,
+                "evaluation_index": eval_index,
+            }
+
+            # Write local artifact if directory configured
+            if self.results_dir:
+                self._write_result_artifact(result)
+
+            return result
+
+        self.seen_points.add(point_key)
+
+        try:
+            # Evaluate Ackley function
+            results = evaluate_ackley_6d(x_values)
+            surface = results["surface_response"]
+            raw = results["raw_response"]
+
+            result = {
+                "suggestion_id": suggestion_id,
+                "parameter_values": parameter_values,
+                "objective_values": {"surface_response": surface},
+                "status": "success",
+                "failure_reason": None,
+                "raw_response": raw,
+                "evaluation_index": eval_index,
+            }
+
+        except Exception as e:
+            result = {
+                "suggestion_id": suggestion_id,
+                "parameter_values": parameter_values,
+                "objective_values": {"surface_response": None},
+                "status": "failed",
+                "failure_reason": f"Evaluation error: {str(e)}",
+                "raw_response": None,
+                "evaluation_index": eval_index,
+            }
+
+        # Write local artifact if directory configured
+        if self.results_dir:
+            self._write_result_artifact(result)
+
+        return result
+
+    def to_submission_payload(self, result: Dict[str, Any]) -> Dict[str, Any]:
+        """Convert full result to BO-MCP submission payload.
+
+        BO-MCP only accepts: objective_values, parameter_values, suggestion_id,
+        measurement_uncertainty, metadata
+        """
+        # For failed evaluations (duplicates, errors), we still submit with objective_values=None?
+        # Actually BO-MCP requires finite float values. For failures, we should not submit
+        # or should mark the suggestion as failed via update_suggestion_status.
+        # But the user wants all attempts counted. Let's submit with a sentinel that
+        # BO-MCP might reject, or better - only submit successful evaluations.
+        # For failed evaluations, we'll return None to indicate "don't submit"
+        if result.get("status") != "success":
+            return None
+
+        payload = {
+            "suggestion_id": result["suggestion_id"],
+            "parameter_values": result["parameter_values"],
+            "objective_values": result["objective_values"],
+        }
+        return payload
+
+    def _write_result_artifact(self, result: Dict[str, Any]) -> None:
+        """Write a single result to JSONL artifact file."""
+        artifact_path = self.results_dir / "evaluations.jsonl"
+        with artifact_path.open("a") as f:
+            f.write(json.dumps(result) + "\n")
+
+    def evaluate_batch(
+        self,
+        suggestions: List[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
+        """Evaluate a batch of suggestions.
+
+        Args:
+            suggestions: List of suggestion dicts with 'suggestion_id' and 'parameter_values'
+
+        Returns:
+            List of result dictionaries
+        """
+        results = []
+        for sugg in suggestions:
+            result = self.evaluate(
+                suggestion_id=sugg["suggestion_id"],
+                parameter_values=sugg["parameter_values"],
+            )
+            results.append(result)
+        return results
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

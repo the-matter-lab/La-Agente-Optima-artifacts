@@ -1,0 +1,72 @@
+{
+  "acquisition_method": "expected_improvement",
+  "backend": "baybe",
+  "batch_size": 1,
+  "description": "Synthetic 6D Ackley benchmark optimized through BO-MCP with the BayBE backend. Evaluation is a deterministic local Python function; no chemistry or lab evaluator is used.",
+  "initial_design_size": 12,
+  "name": "ackley-6d-baybe-akg-eval-70cdc98804624dcba309d12599424eab-seed-41729",
+  "objectives": [
+    {
+      "direction": "maximize",
+      "name": "surface_response",
+      "unit": "normalized_unitless"
+    }
+  ],
+  "parameters": [
+    {
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "description": "Normalized Ackley coordinate x_1",
+      "name": "x_1",
+      "type": "continuous"
+    },
+    {
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "description": "Normalized Ackley coordinate x_2",
+      "name": "x_2",
+      "type": "continuous"
+    },
+    {
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "description": "Normalized Ackley coordinate x_3",
+      "name": "x_3",
+      "type": "continuous"
+    },
+    {
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "description": "Normalized Ackley coordinate x_4",
+      "name": "x_4",
+      "type": "continuous"
+    },
+    {
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "description": "Normalized Ackley coordinate x_5",
+      "name": "x_5",
+      "type": "continuous"
+    },
+    {
+      "bounds": {
+        "lower": 0.0,
+        "upper": 1.0
+      },
+      "description": "Normalized Ackley coordinate x_6",
+      "name": "x_6",
+      "type": "continuous"
+    }
+  ],
+  "random_seed": 41729
+}

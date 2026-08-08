@@ -1,0 +1,148 @@
+exit_code=0
+
+=== stdout (raw) ===
+# How to Execute the 6-D Ackley BO-MCP Campaign
+
+## Overview
+
+This campaign optimizes a 6-dimensional Ackley synthetic function via the BO-MCP architecture using the **baybe** backend. The objective (`surface_response`) is maximized over 60 total evaluations.
+
+## Ownership Marker
+
+All campaign names include the exact marker: `akg-eval-daf20aa41d3740deb3539505c9fed77d`
+
+## Environment Requirements
+
+- Docker container with `uv` available
+- Environment variables:
+  - `BO_MCP_API_URL` — BO-MCP server base URL (e.g. `http://api:8000`)
+  - `BO_MCP_API_KEY` — API key for authenticated endpoints
+- Working directory: the workspace containing `run_akg_ackley_6d.py`
+
+## Execution Command
+
+### Primary Run (Resume Existing Campaign — 1 eval already consumed by smoke test)
+
+> **Smoke-test note:** 1 evaluation was consumed during smoke testing (campaign
+> `b65bf0cf-fab6-43c9-a84c-f69f435cd5ba`, currently paused). The script will
+> load that prior result and run 59 more evaluations for a total of exactly 60.
+
+```bash
+uv run python run_akg_ackley_6d.py --campaign-id b65bf0cf-fab6-43c9-a84c-f69f435cd5ba --max-evals 60 --stop-file STOP
+```
+
+### Fresh Run (Start New Campaign — only if starting from scratch)
+
+```bash
+uv run python run_akg_ackley_6d.py --max-evals 60 --stop-file STOP
+```
+
+### Resume After Interruption
+
+```bash
+uv run python run_akg_ackley_6d.py --campaign-id <CAMPAIGN_ID> --max-evals 60 --stop-file STOP
+```
+
+The campaign ID is saved in `artifacts/ackley_6d_<timestamp>/campaign_id.txt` after the first run.
+
+## CLI Arguments
+
+| Argument | Default | Description |
+|---|---|---|
+| `--campaign-id` | None | Existing campaign ID to resume (omit for new campaign) |
+| `--max-evals` | 60 | Total evaluation budget (attempted evaluations) |
+| `--poll-s` | 180 | Poll/sleep interval in seconds |
+| `--heartbeat-s` | 1800 | Heartbeat print interval in seconds |
+| `--stop-file` | `STOP` | Path to stop-file; create this file to gracefully pause |
+
+## Campaign Behavior
+
+1. **Intake validation** — The campaign intake is validated before creation.
+2. **Campaign creation** — A new campaign is created with the baybe backend, 6 continuous parameters, and `surface_response` as the maximize objective.
+3. **Optimization loop** — The script generates one suggestion at a time, evaluates the deterministic Ackley function locally, and submits the result to BO-MCP.
+4. **Budget enforcement** — The loop stops after exactly 60 attempted evaluations.
+5. **Graceful shutdown** — At the end of an invocation, the campaign is paused (not terminated). A paused campaign can be resumed; a completed campaign can be reopened.
+
+## Stop-File Behavior
+
+- Create the stop file (e.g. `touch STOP`) to request a graceful pause.
+- The script checks for the stop file at the top of each loop iteration, **before** generating a new suggestion.
+- When detected, the stop file is deleted, the campaign is paused, and the script exits.
+- Resume by re-running with `--campaign-id`.
+
+## Tagged Output Lines
+
+The script prints unbuffered tagged lines for monitoring:
+
+| Tag | Meaning |
+|---|---|
+| `[EVENT]` | State changes (campaign created, paused, budget reached) |
+| `[ALERT]` | Failures and stop conditions |
+| `[RESULT]` | Per-experiment results and final best |
+| `[HEARTBEAT]` | Liveness check with progress counters |
+
+## Inputs/Outputs
+
+### Inputs
+- None beyond the CLI arguments and environment variables.
+
+### Outputs
+- **Results artifact**: `artifacts/ackley_6d_<timestamp>/results.jsonl`
+  - One JSON line per evaluated candidate with:
+    - `evaluation_index` (1-based)
+    - `parameter_values` (`{x_1, ..., x_6}`)
+    - `objective_values` (`{surface_response}`)
+    - `status` (`"success"` or `"failed"`)
+    - `failure_reason` (non-empty on failure)
+    - `raw_response` (on success)
+  - Final line is a summary object with `best`, `total_attempted`, `total_success`
+- **Campaign ID**: `artifacts/ackley_6d_<timestamp>/campaign_id.txt`
+
+### Final Reported Values
+- Best normalized coordinates (`x_1` through `x_6`)
+- Best `raw_response`
+- Best `surface_response`
+- Number of successful and attempted evaluations
+- Full table of all evaluated candidates
+
+## Resume / Reopen
+
+- **Paused campaign**: Use `--campaign-id <ID>` to resume. The script will call `lifecycle(action="resume")`.
+- **Completed campaign**: Use `--campaign-id <ID>` to reopen. The script will call `lifecycle(action="reopen")`.
+- **Do not** create a new campaign to continue an existing one.
+
+## Evaluation Budget
+
+- **Total attempted evaluations must be exactly 60.**
+- **Total attempted evaluations must be exactly 60.**
+- 1 evaluation was consumed during smoke testing (campaign `b65bf0cf-fab6-43c9-a84c-f69f435cd5ba`).
+- When resuming that campaign with `--max-evals 60`, the script loads the 1 prior result and runs 59 more, for a total of exactly 60.
+- The `--max-evals` flag is the **total** budget across all invocations for that campaign; the script subtracts prior results automatically.
+
+## Search Space
+
+| Parameter | Type | Bounds |
+|---|---|---|
+| x_1 | continuous | [0.0, 1.0] |
+| x_2 | continuous | [0.0, 1.0] |
+| x_3 | continuous | [0.0, 1.0] |
+| x_4 | continuous | [0.0, 1.0] |
+| x_5 | continuous | [0.0, 1.0] |
+| x_6 | continuous | [0.0, 1.0] |
+
+## Objective
+
+- **Name**: `surface_response`
+- **Direction**: maximize
+- **Unit**: normalized_unitless
+- **Evaluator**: Deterministic 6-D Ackley function (no noise)
+
+
+=== stderr (raw) ===
+bash: line 1: printf: --: invalid option
+printf: usage: printf [-v var] format [arguments]
+
+
+=== stderr (model-visible) ===
+bash: line 1: printf: --: invalid option
+printf: usage: printf [-v var] format [arguments]

@@ -1,0 +1,62 @@
+
+[2026-08-08T00:49:49.778209Z] COMMAND ["docker", "compose", "-p", "baybe-fix-standard-nemotron-r3-retry1-20260808", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "up", "-d", "--wait", "--wait-timeout", "240", "db", "api", "mcp", "direct-arylation-oracle"]
+ Volume baybe-fix-standard-nemotron-r3-retry1-20260808_postgres-data Creating 
+ Volume baybe-fix-standard-nemotron-r3-retry1-20260808_postgres-data Created 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-direct-arylation-oracle-1 Creating 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Creating 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-direct-arylation-oracle-1 Created 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Created 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Creating 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Created 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-mcp-1 Creating 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-mcp-1 Created 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Starting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-direct-arylation-oracle-1 Starting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-direct-arylation-oracle-1 Started 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Started 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Waiting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Healthy 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Starting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Started 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Waiting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Healthy 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-mcp-1 Starting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-mcp-1 Started 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Waiting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-mcp-1 Waiting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-direct-arylation-oracle-1 Waiting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Waiting 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Healthy 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-direct-arylation-oracle-1 Healthy 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Healthy 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-mcp-1 Healthy 
+[2026-08-08T00:51:26.757268Z] EXIT 0
+
+[2026-08-08T00:51:26.888572Z] COMMAND ["docker", "compose", "-p", "baybe-fix-standard-nemotron-r3-retry1-20260808", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "run", "--rm", "eval", "python", "-m", "evals.bo_mcp.cli", "--case", "synthetic_ackley_6d", "--dry-run", "--output-dir", "/app/outputs/control/preflight", "--architecture-mode", "standard_subagent_script_bo_mcp", "--bo-api-url", "http://api:8000", "--bo-mcp-repo-path", "/bo-mcp-source", "--tool-registry-config", "tool_registry.gpu4pyscf.toml", "--request-limit", "80", "--agent-timeout-seconds", "3600", "--model", "openai-responses:gpt-5.4", "--repeats", "1", "--repeat-cache-buster", "uuid", "--run-id", "preflight-standard_nemotron_baybe_duplicate_fix-20260803", "--subagent-model", "nvidia:nvidia/nemotron-3-ultra-550b-a55b"]
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-eval-run-5ab5e9a2de75 Creating 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-eval-run-5ab5e9a2de75 Created 
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+00:51:37.833 evaluate bo_mcp_graph_eval
+00:51:37.834   case: synthetic_ackley_6d
+00:51:37.834     execute _run_case
+[2026-08-08T00:51:42.564727Z] EXIT 0
+
+[2026-08-08T01:16:16.425018Z] COMMAND ["docker", "compose", "-p", "baybe-fix-standard-nemotron-r3-retry1-20260808", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-08T01:16:16.645261Z] EXIT 0
+
+[2026-08-08T01:16:16.918269Z] COMMAND ["docker", "compose", "-p", "baybe-fix-standard-nemotron-r3-retry1-20260808", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "exec", "-T", "db", "pg_dump", "-U", "bomcp", "-d", "bomcp", "-Fc", "-f", "/tmp/final.dump"]
+[2026-08-08T01:16:17.135636Z] EXIT 0
+
+[2026-08-08T01:16:17.721570Z] COMMAND ["docker", "compose", "-p", "baybe-fix-standard-nemotron-r3-retry1-20260808", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-gpt56-baybe-extension-20260804/outputs/bo_mcp_evals/gpt56_baybe_extension_20260805T024000Z/control/compose.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/outputs/bo_mcp_evals/infrastructure_replacements_20260807T052449Z/control/compose.override.yml", "-f", "/local-scratch/home/lynnfang00/research/akg4pyscf-claude5-baybe-extension-20260805/evals/bo_mcp/docker-compose.benchmark-sandbox.yml", "stop"]
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-mcp-1 Stopping 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-direct-arylation-oracle-1 Stopping 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-direct-arylation-oracle-1 Stopped 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-mcp-1 Stopped 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Stopping 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-api-1 Stopped 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Stopping 
+ Container baybe-fix-standard-nemotron-r3-retry1-20260808-db-1 Stopped 
+[2026-08-08T01:16:25.308769Z] EXIT 0

@@ -1,0 +1,160 @@
+# Ackley 6D BO-MCP Campaign Execution Guide
+
+This package runs a **synthetic benchmark only**. It uses BO-MCP with the **BayBE** backend and a **deterministic local Python Ackley evaluator**. It does **not** call PySCF, CREST, MOF, RAISE, RoboFlex, or any chemistry/experimental evaluator.
+
+Every campaign created by this package includes the exact ownership marker:
+
+`akg-eval-70cdc98804624dcba309d12599424eab`
+
+## Files
+
+- Entry point: `run_ackley_baybe_bomcp.py`
+- Package: `ackley_baybe_bomcp/`
+- Manifest: `campaign_manifest.json`
+
+## Required environment
+
+The script uses `BoMcpClient.from_env()`, so these environment variables must be set before running:
+
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+
+## Smoke test
+
+This validates BO-MCP connectivity and intake shape without creating a campaign and without consuming objective evaluations.
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_ackley_baybe_bomcp.py --smoke-test
+```
+
+Expected stdout tags:
+
+- `[EVENT]` lifecycle/progress lines
+- `[RESULT]` smoke-test success line
+
+## Production run
+
+Run the full campaign with unbuffered stdout:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_ackley_baybe_bomcp.py
+```
+
+The entry point prints tagged stdout lines intended for monitor forwarding:
+
+- `[EVENT]` state changes
+- `[ALERT]` failures or unexpected stop conditions
+- `[RESULT]` full per-evaluation result lines and final summary
+- `[HEARTBEAT]` periodic liveness lines
+
+## Resume / continue
+
+Re-run the same command with the existing campaign id:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_ackley_baybe_bomcp.py --campaign-id <campaign_id>
+```
+
+If the campaign is paused, the script resumes it. If it is completed, the script reopens it. Campaigns **without** the ownership marker `akg-eval-70cdc98804624dcba309d12599424eab` must not be used for this invocation.
+
+## Stop-file behavior
+
+Default stop file path:
+
+- `STOP`
+
+At the **top of each loop iteration**, before suggestion generation, the script checks for this file. If it exists, the script:
+
+1. prints an `[EVENT]` line,
+2. deletes the stop file,
+3. checkpoints artifacts,
+4. pauses the campaign if needed,
+5. exits cleanly.
+
+Create the stop file from the workspace root to request a clean stop:
+
+```bash
+touch STOP
+```
+
+## Evaluation-budget enforcement: exactly 60 attempted objective evaluations
+
+The hard budget for this run is **exactly 60 attempted objective evaluations**.
+
+The script enforces this as follows:
+
+- The loop stops when the count of **attempted evaluations** reaches 60.
+- Attempted evaluations are derived from BO-MCP server state, not from local loop-state files.
+- A **successful** evaluation is a suggestion with a submitted result.
+- A **failed attempted evaluation** is recorded by marking the suggestion `rejected`.
+- A pre-evaluation skip, such as a duplicate suggestion from the optimizer, is marked `expired` and **does not count** toward the 60 attempted evaluations.
+- The script checks prior attempted points before evaluation and expires any duplicate suggestion so the same point is not evaluated twice.
+
+Because the evaluator is deterministic and local, normal runs should usually end with:
+
+- `attempted_evaluations = 60`
+- `successful_evaluations = 60`
+
+If an evaluation unexpectedly fails, that failed attempt still counts toward the 60-attempt budget.
+
+## BO settings chosen for this benchmark
+
+The generated intake uses:
+
+- backend: `baybe`
+- dimensions: `x_1` to `x_6`, each continuous on `[0.0, 1.0]`
+- objective: `surface_response` (maximize)
+- random seed: `41729`
+- batch size: `1`
+- initial design size: `12`
+- acquisition method: `expected_improvement`
+
+## Artifacts
+
+After a campaign is created, artifacts are written under:
+
+- `artifacts/ackley_baybe_bomcp/<campaign_id>/`
+
+Key artifacts:
+
+- `campaign_intake.json`
+- `evaluation_events.jsonl`
+- `evaluated_candidates.json`
+- `evaluated_candidates.csv`
+- `summary.json`
+- `final_report.md`
+- `run.log`
+
+The required evaluated-candidate artifact is `evaluated_candidates.csv` (also mirrored as JSON), with one row per attempted evaluation and at least:
+
+- `evaluation_index`
+- `parameter_values` (`x_1` … `x_6`)
+- `objective_values.surface_response`
+- `status`
+- `failure_reason`
+- `raw_response`
+
+## Validation after a run
+
+Check final tagged stdout for:
+
+- best normalized coordinates
+- best raw response
+- best surface response
+- attempted evaluation count
+- successful evaluation count
+- artifact paths
+
+Then inspect:
+
+- `artifacts/ackley_baybe_bomcp/<campaign_id>/summary.json`
+- `artifacts/ackley_baybe_bomcp/<campaign_id>/evaluated_candidates.csv`
+- `artifacts/ackley_baybe_bomcp/<campaign_id>/final_report.md`
+
+## Campaign id handoff
+
+When the full run is executed later, the final user-facing response must include exactly one line of the form:
+
+```text
+BO_MCP_CAMPAIGN_ID=<campaign_id>
+```

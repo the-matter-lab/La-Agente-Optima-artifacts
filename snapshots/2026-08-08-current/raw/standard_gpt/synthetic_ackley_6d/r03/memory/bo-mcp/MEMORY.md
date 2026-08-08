@@ -1,0 +1,1 @@
+- BO-MCP intake validation rejects extra keys on `objectives` entries; do not include a free-form `description` field there. Keep objective payloads to documented fields such as `name`, `direction`/`target_mode`, `unit`, and other schema-supported keys only.

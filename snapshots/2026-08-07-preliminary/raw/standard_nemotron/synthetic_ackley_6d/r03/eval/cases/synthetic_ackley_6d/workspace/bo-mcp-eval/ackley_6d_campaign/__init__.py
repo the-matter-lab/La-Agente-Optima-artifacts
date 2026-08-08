@@ -1,1 +1,0 @@
-"""6D Ackley BO-MCP Campaign Package."""

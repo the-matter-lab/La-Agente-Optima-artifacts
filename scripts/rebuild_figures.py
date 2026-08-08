@@ -9,7 +9,7 @@ from pathlib import Path
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
-SNAPSHOT = REPOSITORY_ROOT / "snapshots/2026-08-07-preliminary"
+SNAPSHOT = REPOSITORY_ROOT / "snapshots/2026-08-08-current"
 REPORT = SNAPSHOT / "report"
 BUILDER = REPORT / "control/build_final_report.py"
 
@@ -32,8 +32,13 @@ def main() -> None:
     builder.quality_plot(data["trajectories"])
     builder.convergence_plot(data["trajectories"])
     builder.resource_plot(data["standard_arms"])
-    builder.architecture_quality_plot(data["gpt_architecture_run_rows"])
     builder.reliability_plot(data["standard_arms"])
+    builder.architecture_quality_plot(data["gpt_architecture_run_rows"])
+    builder.architecture_resource_plot(data["gpt_architecture_rows"])
+    builder.architecture_convergence_plot(data["gpt_architecture_trajectories"])
+    builder.architecture_auc_horizons_plot(data["gpt_architecture_trajectories"])
+    builder.architecture_reliability_plot(data["gpt_architecture_run_rows"])
+    builder.architecture_efficiency_plot(data["gpt_architecture_rows"])
 
 
 if __name__ == "__main__":

@@ -1,0 +1,25 @@
+[EVENT] Creating new campaign
+01:03:00.867 POST api/api/v1/campaigns
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+[ALERT] Campaign creation failed: BO-MCP POST /api/v1/campaigns failed with 422: {"detail":[{"type":"value_error","loc":["body","intake","objectives",0],"msg":"Value error, Objective 'surface_response' sets both direction and target_mode; they are mutually exclusive — use exactly one","input":{"name":"surface_response","direction":"maximize","target_mode":"maximize","unit":"normalized_unitless"},"ctx":{"error":{}}},{"type":"too_short","loc":["body","intake","objectives"],"msg":"Tuple should have at least 1 item after validation, not 0","input":[{"name":"surface_response","di
+[ALERT] Campaign failed: BO-MCP POST /api/v1/campaigns failed with 422: {"detail":[{"type":"value_error","loc":["body","intake","objectives",0],"msg":"Value error, Objective 'surface_response' sets both direction and target_mode; they are mutually exclusive — use exactly one","input":{"name":"surface_response","direction":"maximize","target_mode":"maximize","unit":"normalized_unitless"},"ctx":{"error":{}}},{"type":"too_short","loc":["body","intake","objectives"],"msg":"Tuple should have at least 1 item after validation, not 0","input":[{"name":"surface_response","di
+Traceback (most recent call last):
+  File "/app/outputs/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/run_ackley_6d.py", line 47, in main
+    report = run_campaign(
+             ^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_bo/orchestration/__init__.py", line 404, in run_campaign
+    campaign.campaign_id = campaign.create_campaign(intake)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/outputs/cells/ackley_standard_nemotron_baybe_duplicate_fix_r03/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley_6d_bo/orchestration/__init__.py", line 90, in create_campaign
+    response = self.client.create_campaign(intake, idempotency_key=idempotency_key)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 158, in create_campaign
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 338, in _json_request
+    response = self._request(method, path, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 361, in _request
+    raise BoMcpClientError(
+domains.bo_mcp.client.BoMcpClientError: BO-MCP POST /api/v1/campaigns failed with 422: {"detail":[{"type":"value_error","loc":["body","intake","objectives",0],"msg":"Value error, Objective 'surface_response' sets both direction and target_mode; they are mutually exclusive — use exactly one","input":{"name":"surface_response","direction":"maximize","target_mode":"maximize","unit":"normalized_unitless"},"ctx":{"error":{}}},{"type":"too_short","loc":["body","intake","objectives"],"msg":"Tuple should have at least 1 item after validation, not 0","input":[{"name":"surface_response","di
