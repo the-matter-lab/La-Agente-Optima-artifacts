@@ -1,0 +1,45 @@
+exit_code=0
+
+=== stdout (raw) ===
+run_pollice_lowest_conformer_gap.py:28:    parser.add_argument("--random-seed", type=int, default=2021)
+pollice_lowest_conformer_gap/campaign.py:49:def _suggestions_from_response(response: Any) -> list[dict[str, Any]]:
+pollice_lowest_conformer_gap/campaign.py:53:        for key in ("suggestions", "data", "items"):
+pollice_lowest_conformer_gap/campaign.py:216:        random_seed=args.random_seed,
+pollice_lowest_conformer_gap/campaign.py:224:        initial_design_size=min(args.initial_design_size, max(1, len(candidates) - 1)),
+pollice_lowest_conformer_gap/campaign.py:225:        random_seed=args.random_seed,
+pollice_lowest_conformer_gap/campaign.py:262:            pending = client.query_suggestions(campaign_id, status_filter="pending", limit=args.batch_size)
+pollice_lowest_conformer_gap/campaign.py:263:            suggestions = pending[: args.batch_size]
+pollice_lowest_conformer_gap/campaign.py:264:            if suggestions:
+pollice_lowest_conformer_gap/campaign.py:265:                emit("EVENT", f"reusing pending suggestions n={len(suggestions)}", log)
+pollice_lowest_conformer_gap/campaign.py:269:                if action != "bo_generate_suggestions":
+pollice_lowest_conformer_gap/campaign.py:273:                    response = client.generate_suggestions(campaign_id, batch_size=args.batch_size, timeout_s=args.suggestion_timeout_s)
+pollice_lowest_conformer_gap/campaign.py:277:                suggestions = _suggestions_from_response(response)
+pollice_lowest_conformer_gap/campaign.py:278:                emit("EVENT", f"generated suggestions n={len(suggestions)}", log)
+pollice_lowest_conformer_gap/campaign.py:280:            if not suggestions:
+pollice_lowest_conformer_gap/campaign.py:281:                emit("ALERT", "no suggestions available; stopping invocation", log)
+pollice_lowest_conformer_gap/campaign.py:285:            with ThreadPoolExecutor(max_workers=max(1, min(args.batch_size, len(suggestions)))) as pool:
+pollice_lowest_conformer_gap/campaign.py:286:                for suggestion in suggestions:
+pollice_lowest_conformer_gap/intake.py:14:    initial_design_size: int = 5,
+pollice_lowest_conformer_gap/intake.py:15:    random_seed: int = 2021,
+pollice_lowest_conformer_gap/intake.py:28:        "initial_design_size": initial_design_size,
+pollice_lowest_conformer_gap/intake.py:29:        "random_seed": random_seed,
+pollice_lowest_conformer_gap/search_space.py:73:    random_seed: int = 2021,
+pollice_lowest_conformer_gap/search_space.py:100:    fp_features = TruncatedSVD(n_components=n_components, random_state=random_seed).fit_transform(fps)
+pollice_lowest_conformer_gap/evaluation.py:108:    seed = int(hashlib.sha256(candidate.molecule_key.encode()).hexdigest()[:8], 16)
+pollice_lowest_conformer_gap/evaluation.py:109:    s1 = 1.8 + (seed % 1200) / 1000.0
+pollice_lowest_conformer_gap/evaluation.py:110:    t1 = s1 - (0.05 + ((seed // 1200) % 800) / 1000.0)
+pollice_lowest_conformer_gap/evaluation.py:121:        "oscillator_strength": ((seed // 37) % 1000) / 100000.0,
+
+
+=== stderr (raw) ===
+grep: pollice_lowest_conformer_gap/__pycache__/search_space.cpython-312.pyc: binary file matches
+grep: pollice_lowest_conformer_gap/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: pollice_lowest_conformer_gap/__pycache__/intake.cpython-312.pyc: binary file matches
+grep: pollice_lowest_conformer_gap/__pycache__/campaign.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+grep: pollice_lowest_conformer_gap/__pycache__/search_space.cpython-312.pyc: binary file matches
+grep: pollice_lowest_conformer_gap/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: pollice_lowest_conformer_gap/__pycache__/intake.cpython-312.pyc: binary file matches
+grep: pollice_lowest_conformer_gap/__pycache__/campaign.cpython-312.pyc: binary file matches

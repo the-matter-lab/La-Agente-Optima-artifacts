@@ -1,0 +1,35 @@
+/app/domains/pyscf/graph/pyscf_graph.py:25: PydanticGraphDeprecationWarning: Importing `Graph` from `pydantic_graph` is deprecated. The `BaseNode`-based `Graph` runner and its persistence machinery are deprecated and will be removed (or repurposed) in v2; use the builder-based `GraphBuilder` API instead, or pin to `pydantic_graph<2` to keep using them.
+  from pydantic_graph import Graph, GraphRunContext
+/app/grafico/abstraction/graph.py:22: PydanticGraphDeprecationWarning: `pydantic_graph.nodes` is deprecated, import from `pydantic_graph.basenode` (or `pydantic_graph`) instead.
+  from pydantic_graph.nodes import Edge, NodeDef
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/spawn.py", line 122, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/spawn.py", line 131, in _main
+    prepare(preparation_data)
+  File "/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/spawn.py", line 246, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/multiprocessing/spawn.py", line 297, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 254, in _get_code_from_file
+FileNotFoundError: [Errno 2] No such file or directory: '/app/.graphchat-workspaces/gallery_guest_1783043406297/<stdin>'
+{
+  "candidate_id": "A014B065C094",
+  "failure_reason": "Evaluation worker exited without returning a result (exit_code=1)",
+  "metadata": {
+    "candidate_id": "A014B065C094",
+    "wallclock_seconds": 0.04382610321044922
+  },
+  "objective_values": null,
+  "parameter_values": {
+    "bridge_id": "B065",
+    "cap_id": "A014",
+    "core_id": "C094"
+  },
+  "success": false,
+  "suggestion_id": "worker-smoke"
+}

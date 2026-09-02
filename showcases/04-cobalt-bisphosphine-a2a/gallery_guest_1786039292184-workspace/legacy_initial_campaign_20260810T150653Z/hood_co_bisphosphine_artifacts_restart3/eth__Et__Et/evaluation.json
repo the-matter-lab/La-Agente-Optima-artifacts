@@ -1,0 +1,24 @@
+{
+  "candidate": {
+    "candidate_id": "eth__Et__Et",
+    "linker": "ethylene",
+    "r1": "Et",
+    "r2": "Et",
+    "ligand_label": "Et2P-ethylene-PEt2",
+    "ligand_description": "bidentate bisphosphine Et2P-ethylene-PEt2; linker=ethylene; one phosphorus bears two ethyl groups and the other phosphorus bears two ethyl groups",
+    "symmetric": true
+  },
+  "mode": "failed",
+  "validity": {
+    "scf_converged": false,
+    "optimization_success": false,
+    "error": "PySCF workflow execution failed: Traceback (most recent call last):\n  File \"/app/grafico/core/gpu/isolate.py\", line 327, in run_in_gpu_process\n    stdout, stderr = proc.communicate(timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/subprocess.py\", line 1209, in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/subprocess.py\", line 2116, in _communicate\n    self._check_timeout(endtime, orig_timeout, stdout, stderr)\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/subprocess.py\", line 1253, in _check_timeout\n    raise TimeoutExpired(\nsubprocess.TimeoutExpired: Command '['/opt/venv/bin/python3', '-m', 'grafico.core.gpu._child_worker']' timed out after 1800.0 seconds\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/app/domains/pyscf/tools/pyscf_workflow_tools.py\", line 156, in run_pyscf\n    __name__,\n       ^^^^^^\n  File \"/app/grafico/core/gpu/isolate.py\", line 331, in run_in_gpu_process\n    raise TimeoutError(\nTimeoutError: GPU subprocess timeout after 1800.0s (pid=5848)\nSTDOUT:\n\nSTDERR:\n...[5742 chars truncated]...\nFile \"/opt/venv/lib/python3.12/site-packages/beartype/_check/convert/_reduce/_nonpep/rednonpeptype.py\", line 74, in reduce_hint_nonpep_type\n        die_unless_hint(hint=hint, exception_prefix=exception_prefix)\n      File \"/opt/venv/lib/python3.12/site-packages/beartype/_util/hint/utilhinttest.py\", line 107, in die_unless_hint\n        die_unless_hint_nonpep(hint=hint, exception_prefix=exception_prefix)\n      File \"/opt/venv/lib/python3.12/site-packages/beartype/_util/hint/nonpep/utilnonpeptest.py\", line 181, in die_unless_hint_nonpep\n        die_unless_hint_nonpep_type(\n      File \"/opt/venv/lib/python3.12/site-packages/beartype/_util/hint/nonpep/utilnonpeptest.py\", line 275, in die_unless_hint_nonpep_type\n        die_unless_type_isinstanceable(\n      File \"/opt/venv/lib/python3.12/site-packages/beartype/_util/cls/pep/clspep3119.py\", line 336, in die_unless_type_isinstanceable\n        raise exception_cls(exception_message) from exception\n    beartype.roar.BeartypeDecorHintNonpepException: Coroutine factory method key_value.aio.stores.base.BaseContextManagerStore.__aenter__() return <class 'abc.ABC'> uncheckable at runtime (i.e., not passable as second parameter to isinstance(), due to raising \"NPTypingError: Subclass checking is not supported for nptyping.NDArray.\" from metaclass ABCMeta.__instancecheck__() method).\n    \n  class BaseContextManagerStore(BaseStore, ABC):\nECP def2-svp not found for  O\nECP def2-svp not found for  C\nECP def2-svp not found for  P\nECP def2-svp not found for  Co\nECP def2-svp not found for  H\n/opt/venv/lib/python3.12/site-packages/pyscf/dft/libxc.py:511: UserWarning: Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, corresponding to the original definition by Stephens et al. (issue 1480) and the same as the B3LYP functional in Gaussian. To restore the VWN5 definition, you can put the setting \"B3LYP_WITH_VWN5 = True\" in pyscf_conf.py\n  warnings.warn('Since PySCF-2.3, B3LYP (and B3P86) are changed to the VWN-RPA variant, '\n\n"
+  },
+  "objectives": {
+    "electronic_activation": -100.0,
+    "coordination_stability": -100.0,
+    "chelate_geometry": -100.0,
+    "steric_crowding": 100.0
+  },
+  "feasible": false
+}

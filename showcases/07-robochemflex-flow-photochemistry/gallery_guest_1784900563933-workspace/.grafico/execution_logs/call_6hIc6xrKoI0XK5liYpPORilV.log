@@ -1,0 +1,31 @@
+exit_code=0
+
+=== stdout (raw) ===
+(path: 'str') -> 'str'
+def fetch_roboflex_text(path: str) -> str:
+    """Fetch a RoboFlex API path (e.g. `/v1/status`) with required headers.
+
+    The canonical HTTP entry point for RoboFlex: joins `ROBOFLEX_BASE_URL`,
+    sends a custom User-Agent (the platform's Cloudflare edge rejects the
+    default `Python-urllib` agent with 403 `browser_signature_banned`), and
+    attaches the `X-API-Key` header from `ROBOFLEX_API_KEY` when set.
+    Agent-authored scripts must use this instead of raw urllib/requests.
+    """
+    url = f"{_roboflex_base_url()}/{path.lstrip('/')}"
+    headers = {
+        "Accept": "text/plain, application/json, text/html",
+        "User-Agent": "roboflex-agent-tools/0.1",
+    }
+    api_key = os.getenv(ROBOFLEX_API_KEY_ENV, "").strip()
+    if api_key:
+        headers[ROBOFLEX_API_KEY_HEADER] = api_key
+    req = Request(url, headers=headers)
+    with urlopen(req, timeout=30) as resp:
+        return resp.read().decode("utf-8")
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

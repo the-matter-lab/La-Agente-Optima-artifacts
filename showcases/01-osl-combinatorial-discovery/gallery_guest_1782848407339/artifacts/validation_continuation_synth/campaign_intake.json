@@ -1,0 +1,215 @@
+{
+  "backend": "baybe",
+  "batch_size": 2,
+  "description": "Successor campaign for a terminated Digital OSL BO/PySCF run. The predecessor campaign is not resumed directly; instead, its completed observations are reseeded from a CSV export, then new BO suggestions are evaluated in batches of 2 over the same dynamically filtered smallest-fragment active space.",
+  "initial_design_size": 0,
+  "max_iterations": 2,
+  "max_observations": 8,
+  "name": "validation-continuation-synth",
+  "objectives": [
+    {
+      "direction": "maximize",
+      "name": "max_oscillator_strength_s1_s3"
+    },
+    {
+      "direction": "minimize",
+      "name": "color_error_eV"
+    },
+    {
+      "direction": "minimize",
+      "name": "conformational_ambiguity"
+    }
+  ],
+  "parameters": [
+    {
+      "categories": [
+        "A017",
+        "A016",
+        "A012",
+        "A014",
+        "A042",
+        "A041",
+        "A031",
+        "A009",
+        "A011",
+        "A010",
+        "A015",
+        "A013",
+        "A039",
+        "A032",
+        "A005",
+        "A002",
+        "A036",
+        "A007",
+        "A006",
+        "A001",
+        "A008",
+        "A038",
+        "A037",
+        "A020",
+        "A021"
+      ],
+      "name": "cap_id",
+      "parameter_options": {
+        "baybe": {
+          "role": "substance",
+          "substance_data": {
+            "A001": "CC1(C)OB(c2ccc(-n3c4ccccc4c4ccccc43)cc2)OC1(C)C",
+            "A002": "CC1(C)OB(c2ccc(N(c3ccccc3)c3ccccc3)cc2)OC1(C)C",
+            "A005": "OB(O)c1ccc(N(c2ccccc2)c2ccc(-c3ccccc3)cc2)cc1",
+            "A006": "OB(O)c1ccc2c3ccccc3n(-c3ccc(-c4ccccc4)cc3)c2c1",
+            "A007": "OB(O)c1ccc2c(c1)c1cc(-c3ccccc3)ccc1n2-c1ccccc1",
+            "A008": "CC1(C)OB(c2ccc3c(c2)c2ccccc2n3-c2ccccc2)OC1(C)C",
+            "A009": "OB(O)c1cccc(N(c2ccccc2)c2ccccc2)c1",
+            "A010": "OB(O)c1cccc(-n2c3ccccc3c3ccccc32)c1",
+            "A011": "OB(O)c1ccc2c3ccccc3n(-c3ccccc3)c2c1",
+            "A012": "CCn1c2ccccc2c2cc(B(O)O)ccc21",
+            "A013": "OB(O)c1ccc(-n2c(-c3ccccc3)nc3ccccc32)cc1",
+            "A014": "CN(C)c1ccc(B2OC(C)(C)C(C)(C)O2)cc1",
+            "A015": "CN(C)c1ccc(B2OC(C)(C)C(C)(C)O2)c2ccccc12",
+            "A016": "Cn1cnc2ccc(B(O)O)cc21",
+            "A017": "Cn1ccc2cc(B(O)O)ccc21",
+            "A020": "CC1(C)OB(c2ccc(N3c4ccccc4Oc4ccccc43)cc2)OC1(C)C",
+            "A021": "CC1(C)OB(c2ccc(N3c4ccccc4Sc4ccccc43)cc2)OC1(C)C",
+            "A031": "CC1(C)OB(c2ccc(-n3ccnc3)cc2)OC1(C)C",
+            "A032": "CC(C)(C)OC(=O)n1ccc2cc(B3OC(C)(C)C(C)(C)O3)ccc21",
+            "A036": "CC1(C)OB(c2cccc(N(c3ccccc3)c3ccccc3)c2)OC1(C)C",
+            "A037": "CC1(C)OB(c2cccc(-n3c4ccccc4c4ccccc43)c2)OC1(C)C",
+            "A038": "CC1(C)OB(c2ccc3c4ccccc4n(-c4ccccc4)c3c2)OC1(C)C",
+            "A039": "CCn1c2ccccc2c2cc(B3OC(C)(C)C(C)(C)O3)ccc21",
+            "A041": "Cn1cnc2ccc(B3OC(C)(C)C(C)(C)O3)cc21",
+            "A042": "Cn1ccc2cc(B3OC(C)(C)C(C)(C)O3)ccc21"
+          }
+        }
+      },
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "B003",
+        "B030",
+        "B006",
+        "B002",
+        "B028",
+        "B025",
+        "B008",
+        "B026",
+        "B004",
+        "B029",
+        "B021",
+        "B009",
+        "B019",
+        "B018",
+        "B005",
+        "B007",
+        "B065",
+        "B066",
+        "B020",
+        "B022",
+        "B010",
+        "B012",
+        "B016",
+        "B014",
+        "B013"
+      ],
+      "name": "bridge_id",
+      "parameter_options": {
+        "baybe": {
+          "role": "substance",
+          "substance_data": {
+            "B002": "C[N+]12CC(=O)O[B-]1(c1sccc1Br)OC(=O)C2",
+            "B003": "C[N+]12CC(=O)O[B-]1(/C=C/Br)OC(=O)C2",
+            "B004": "C[N+]12CC(=O)O[B-]1(c1cccnc1Br)OC(=O)C2",
+            "B005": "C[N+]12CC(=O)O[B-]1(c1cncc(Br)c1)OC(=O)C2",
+            "B006": "C[N+]12CC(=O)O[B-]1(c1occc1Br)OC(=O)C2",
+            "B007": "Cn1ncc(Br)c1[B-]12OC(=O)C[N+]1(C)CC(=O)O2",
+            "B008": "C[N+]12CC(=O)O[B-]1(c1ccccc1I)OC(=O)C2",
+            "B009": "C[N+]12CC(=O)O[B-]1(c1cccc(I)c1)OC(=O)C2",
+            "B010": "C[N+]12CC(=O)O[B-]1(c1cccc(Br)c1F)OC(=O)C2",
+            "B012": "C[N+]12CC(=O)O[B-]1(c1cc(F)cc(Br)c1)OC(=O)C2",
+            "B013": "C[N+]12CC(=O)O[B-]1(c1cc(Br)ccc1C#N)OC(=O)C2",
+            "B014": "COc1cc(I)cc([B-]23OC(=O)C[N+]2(C)CC(=O)O3)c1",
+            "B016": "C[N+]12CC(=O)O[B-]1(c1cc(Cl)cc(Br)c1)OC(=O)C2",
+            "B018": "C[N+]12CC(=O)O[B-]1(c1ccc(Br)nc1)OC(=O)C2",
+            "B019": "C[N+]12CC(=O)O[B-]1(c1ccc(Br)cn1)OC(=O)C2",
+            "B020": "C[N+]12CC(=O)O[B-]1(c1c(F)cccc1Br)OC(=O)C2",
+            "B021": "C[N+]12CC(=O)O[B-]1(c1ccc(I)cc1)OC(=O)C2",
+            "B022": "C[N+]12CC(=O)O[B-]1(c1cc(Br)ccc1F)OC(=O)C2",
+            "B025": "C[N+]12CC(=O)O[B-]1(c1ccc(Br)s1)OC(=O)C2",
+            "B026": "C[N+]12CC(=O)O[B-]1(c1cccnc1I)OC(=O)C2",
+            "B028": "C[N+]12CC(=O)O[B-]1(c1cc(Br)no1)OC(=O)C2",
+            "B029": "C[N+]12CC(=O)O[B-]1(c1ccncc1Br)OC(=O)C2",
+            "B030": "C[N+]12CC(=O)O[B-]1(/C=C\\Br)OC(=O)C2",
+            "B065": "CC1(C)C(=O)O[B-]2(/C=C/Br)OC(=O)C(C)(C)[N+]21C",
+            "B066": "CC1(C)C(=O)O[B-]2(/C=C\\Br)OC(=O)C(C)(C)[N+]21C"
+          }
+        }
+      },
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "C069",
+        "C070",
+        "C115",
+        "C094",
+        "C025",
+        "C100",
+        "C078",
+        "C080",
+        "C002",
+        "C098",
+        "C031",
+        "C036",
+        "C041",
+        "C097",
+        "C033",
+        "C087",
+        "C065",
+        "C133",
+        "C135",
+        "C029",
+        "C089",
+        "C092",
+        "C129",
+        "C079",
+        "C128"
+      ],
+      "name": "core_id",
+      "parameter_options": {
+        "baybe": {
+          "role": "substance",
+          "substance_data": {
+            "C002": "Ic1ccc(I)cc1",
+            "C025": "Brc1ccc(Br)s1",
+            "C029": "Cc1cc(Br)ccc1Br",
+            "C031": "Brc1ccc(Br)nn1",
+            "C033": "Brc1cnc(Br)nc1",
+            "C036": "Brc1cccc(Br)c1",
+            "C041": "Brc1cccc(Br)n1",
+            "C065": "Cc1csc(Br)c1Br",
+            "C069": "Brc1ccoc1Br",
+            "C070": "Brc1ccsc1Br",
+            "C078": "Brc1csc(Br)n1",
+            "C079": "Cc1ccc(Br)cc1Br",
+            "C080": "Brc1nnc(Br)s1",
+            "C087": "Cc1cc(Br)sc1Br",
+            "C089": "Cc1cc(Br)cnc1Br",
+            "C092": "Cc1cc(Br)ncc1Br",
+            "C094": "Brc1ccc(Br)o1",
+            "C097": "Brc1cnc(Br)cn1",
+            "C098": "Brc1ccc(Br)nc1",
+            "C100": "Brc1cnc(Br)s1",
+            "C115": "Brc1cocc1Br",
+            "C128": "Cc1nc(Br)ccc1Br",
+            "C129": "Cc1cc(Br)nnc1Br",
+            "C133": "Cn1nnc(Br)c1Br",
+            "C135": "Nc1[nH]nc(Br)c1Br"
+          }
+        }
+      },
+      "type": "categorical"
+    }
+  ],
+  "random_seed": 7
+}

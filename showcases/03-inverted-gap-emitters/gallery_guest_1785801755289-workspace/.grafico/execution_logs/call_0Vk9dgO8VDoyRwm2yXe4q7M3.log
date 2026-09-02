@@ -1,0 +1,107 @@
+exit_code=0
+
+=== stdout (raw) ===
+/app/domains/pyscf/pyscf_utils.py:26:    CUDA_GPU_AVAILABLE = True  # Set to False if you want to disable GPU usage
+/app/domains/pyscf/pyscf_utils.py:29:    CUDA_GPU_AVAILABLE = False
+/app/domains/pyscf/pyscf_utils.py:32:def is_mf_on_gpu(mf) -> bool:
+/app/domains/pyscf/pyscf_utils.py:33:    """Check if a mean-field object is actually running on GPU."""
+/app/domains/pyscf/pyscf_utils.py:34:    return mf.__module__.startswith("gpu4pyscf")
+/app/domains/pyscf/pyscf_utils.py:37:def get_mf_gpu(mf):
+/app/domains/pyscf/pyscf_utils.py:38:    """Get mean-field object on GPU if available."""
+/app/domains/pyscf/pyscf_utils.py:39:    if not CUDA_GPU_AVAILABLE:
+/app/domains/pyscf/pyscf_utils.py:42:    if is_mf_on_gpu(mf):
+/app/domains/pyscf/pyscf_utils.py:43:        return mf  # Already on GPU
+/app/domains/pyscf/pyscf_utils.py:46:            return mf.to_gpu()
+/app/domains/pyscf/pyscf_utils.py:48:            logfire.warning(f"Failed to convert to GPU: {e}")
+/app/domains/pyscf/pyscf_utils.py:273:    if is_mf_on_gpu(mf):
+/app/domains/pyscf/pyscf_utils.py:285:    Automatically handles GPU/CPU conversion as needed.
+/app/domains/pyscf/pyscf_utils.py:293:    # Ensure mf is on GPU first if available
+/app/domains/pyscf/pyscf_utils.py:294:    mf = get_mf_gpu(mf)
+/app/domains/pyscf/pyscf_utils.py:299:    logfire.debug(f"Mean-field object is on GPU: {is_mf_on_gpu(mf)}")
+/app/domains/pyscf/pyscf_utils.py:327:    # mf should still be on GPU since we only updated the geometry
+/app/domains/pyscf/pyscf_utils.py:339:    Automatically handles GPU/CPU conversion as needed.
+/app/domains/pyscf/pyscf_utils.py:347:    # Ensure mf is on GPU first if available
+/app/domains/pyscf/pyscf_utils.py:348:    mf = get_mf_gpu(mf)
+/app/domains/pyscf/pyscf_utils.py:350:    logfire.debug(f"Mean-field object is on GPU: {is_mf_on_gpu(mf)}")
+/app/domains/pyscf/pyscf_utils.py:355:        h_gpu = mf_for_hessian.Hessian().kernel()
+/app/domains/pyscf/pyscf_utils.py:358:        h_gpu = mf_for_hessian.Hessian().kernel()
+/app/domains/pyscf/pyscf_utils.py:360:        h_gpu = mf.Hessian().kernel()  # doesn't work for RO
+/app/domains/pyscf/pyscf_utils.py:362:    # Convert to numpy if on GPU
+/app/domains/pyscf/pyscf_utils.py:363:    if is_mf_on_gpu(mf) and CUDA_GPU_AVAILABLE and isinstance(h_gpu, cp.ndarray):
+/app/domains/pyscf/pyscf_utils.py:364:        h = cp.asnumpy(h_gpu)
+/app/domains/pyscf/pyscf_utils.py:366:        h = h_gpu
+/app/domains/pyscf/pyscf_utils.py:395:    Automatically uses GPU version if available.
+/app/domains/pyscf/pyscf_utils.py:397:    # Ensure mf is on GPU first if available
+/app/domains/pyscf/pyscf_utils.py:398:    mf = get_mf_gpu(mf)
+/app/domains/pyscf/pyscf_utils.py:400:    logfire.debug(f"Mean-field object is on GPU: {is_mf_on_gpu(mf)}")
+/app/domains/pyscf/pyscf_utils.py:402:    # Use GPU version for TDDFT if available and object is on GPU
+/app/domains/pyscf/pyscf_utils.py:403:    if is_mf_on_gpu(mf):
+/app/domains/pyscf/pyscf_utils.py:523:    Automatically handles GPU/CPU conversion for operations that require CPU.
+/app/domains/pyscf/pyscf_utils.py:525:    # Ensure mf is on GPU first if available
+/app/domains/pyscf/pyscf_utils.py:526:    mf = get_mf_gpu(mf)
+/app/domains/pyscf/pyscf_utils.py:528:    logfire.debug(f"Mean-field object is on GPU: {is_mf_on_gpu(mf)}")
+/app/domains/pyscf/pyscf_utils.py:579:    # Convert mf to CPU for population analysis as it's not implemented in gpu4pyscf yet
+/app/domains/pyscf/pyscf_utils.py:589:    # Orbital energies - convert from GPU if needed
+/app/domains/pyscf/pyscf_utils.py:592:        is_mf_on_gpu(mf)
+/app/domains/pyscf/pyscf_utils.py:593:        and CUDA_GPU_AVAILABLE
+/app/domains/pyscf/pyscf_utils.py:637:    # Ensure mf is on GPU first if available
+/app/domains/pyscf/pyscf_utils.py:638:    mf = get_mf_gpu(mf)
+/app/domains/pyscf/pyscf_utils.py:640:    logfire.debug(f"Mean-field object is on GPU: {is_mf_on_gpu(mf)}")
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:18:from grafico.core.gpu import (
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:19:    available_gpu_ids,
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:20:    gpu_session_with_slot,
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:21:    run_in_gpu_process,
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:26:from domains.pyscf.tools.modal_gpu import run_pyscf_on_modal
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:61:def get_pyscf_gpu_executor_mode() -> PyscfGpuExecutorMode:
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:62:    mode = os.getenv("AKG_GPU_EXECUTOR", "local").strip().lower()
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:64:        raise ValueError("AKG_GPU_EXECUTOR must be one of local, modal")
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:79:        "AKG_GPU_EXECUTOR=modal with update_graph=True requires SPARQL_ENDPOINT "
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:120:    executor_mode = get_pyscf_gpu_executor_mode()
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:148:            logfire.error(f"Modal GPU function failed: {e}")
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:151:    with gpu_session_with_slot() as (gpu_id, slot_id, snapshot):
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:153:            f"Assigned GPU {gpu_id} slot {slot_id} for this workflow run. Available GPUs: {available_gpu_ids()} | Remaining slots: {snapshot}"
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:156:            return run_in_gpu_process(
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:159:                gpu_id,
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:169:                gpu_id,
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:176:            logfire.error(f"GPU child failed: {e}")
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:190:    parent_gpu_id: int,
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:193:    """Executed inside isolated GPU child process."""
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:195:        f"Running PySCF workflow for: {summarised_user_query} on GPU {parent_gpu_id}"
+/app/domains/pyscf/tools/pyscf_workflow_tools.py:209:        f"Workflow execution completed on GPU {parent_gpu_id}, results: {result}"
+/app/domains/pyscf/tools/modal_gpu.py:11:    """Raised when Modal cannot run the PySCF GPU payload."""
+/app/domains/pyscf/tools/modal_gpu.py:132:    app_name = os.getenv("AKG_PYSCF_MODAL_APP_NAME", "akg-pyscf-gpu")
+/app/domains/pyscf/tools/modal_gpu.py:133:    dockerfile = os.getenv("AKG_PYSCF_MODAL_DOCKERFILE", "Dockerfile.gpu4pyscf")
+/app/domains/pyscf/tools/modal_gpu.py:153:    gpu=os.getenv("AKG_PYSCF_MODAL_GPU", "L4"),
+/app/domains/pyscf/tools/modal_gpu.py:199:    app_name = os.getenv("AKG_PYSCF_MODAL_APP_NAME", "akg-pyscf-gpu")
+/app/domains/pyscf/tools/modal_gpu.py:215:    import gpu4pyscf
+/app/domains/pyscf/tools/modal_gpu.py:223:        "gpu4pyscf_module": str(gpu4pyscf.__name__),
+/app/domains/pyscf/tools/modal_gpu.py:228:def _modal_pyscf_gpu_smoke_impl() -> dict[str, Any]:
+/app/domains/pyscf/tools/modal_gpu.py:232:    import gpu4pyscf
+/app/domains/pyscf/tools/modal_gpu.py:241:    mf = gpu4pyscf.scf.RHF(mol).density_fit()
+/app/domains/pyscf/tools/modal_gpu.py:250:        "gpu4pyscf_module": str(gpu4pyscf.__name__),
+/app/domains/pyscf/tools/modal_gpu.py:275:        raise ModalPyscfExecutionError("Modal PySCF GPU execution failed") from exc
+/app/domains/pyscf/ontopyscf.py:164:        """Build the CPU mean-field object before optional GPU conversion."""
+
+
+=== stderr (raw) ===
+grep: /app/domains/pyscf/tools/__pycache__/modal_gpu.cpython-312.pyc: binary file matches
+grep: /app/domains/pyscf/tools/__pycache__/pyscf_workflow_tools.cpython-312.pyc: binary file matches
+grep: /app/domains/pyscf/chkfiles/0267d396-fdd6-4c8a-af93-0f22372ffd52.chk: binary file matches
+grep: /app/domains/pyscf/chkfiles/858e31b2-79fe-4212-a004-dfba1a6b751e.chk: binary file matches
+grep: /app/domains/pyscf/chkfiles/c85152a8-8ace-4107-8acc-a1c4b92e8e86.chk: binary file matches
+grep: /app/domains/pyscf/chkfiles/38c376bc-0e8e-42ae-afe7-d4dac6e1d211.chk: binary file matches
+grep: /app/domains/pyscf/chkfiles/74cf73b0-52c9-4909-b253-813515caaa94.chk: binary file matches
+grep: /app/domains/pyscf/__pycache__/pyscf_utils.cpython-312.pyc: binary file matches
+grep: /app/domains/pyscf/__pycache__/ontopyscf.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+grep: /app/domains/pyscf/tools/__pycache__/modal_gpu.cpython-312.pyc: binary file matches
+grep: /app/domains/pyscf/tools/__pycache__/pyscf_workflow_tools.cpython-312.pyc: binary file matches
+grep: /app/domains/pyscf/chkfiles/0267d396-fdd6-4c8a-af93-0f22372ffd52.chk: binary file matches
+grep: /app/domains/pyscf/chkfiles/858e31b2-79fe-4212-a004-dfba1a6b751e.chk: binary file matches
+grep: /app/domains/pyscf/chkfiles/c85152a8-8ace-4107-8acc-a1c4b92e8e86.chk: binary file matches
+grep: /app/domains/pyscf/chkfiles/38c376bc-0e8e-42ae-afe7-d4dac6e1d211.chk: binary file matches
+grep: /app/domains/pyscf/chkfiles/74cf73b0-52c9-4909-b253-813515caaa94.chk: binary file matches
+grep: /app/domains/pyscf/__pycache__/pyscf_utils.cpython-312.pyc: binary file matches
+grep: /app/domains/pyscf/__pycache__/ontopyscf.cpython-312.pyc: binary file matches

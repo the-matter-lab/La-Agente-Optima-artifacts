@@ -1,0 +1,77 @@
+18:30:55.995 POST api/api/v1/campaigns/validate
+18:30:56.053 POST api/api/v1/campaigns
+18:30:56.141 GET api/api/v1/campaigns/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+Created campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:30:56.185 Created campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:30:56.188 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+Seeding 18 unique historical results from prior campaigns
+  5be855ea-96e2-4a4b-b564-d06bf18de9a5: seeded 13/13 valid rows, excluded 1, duplicates 0
+  e799b16b-d208-4d60-a115-72a67cac3130: seeded 5/18 valid rows, excluded 2, duplicates 13
+18:30:56.223 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:30:56.262 Seeded historical results for campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:30:56.263 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+Starting state: seeded=18, bo results=0, total=18; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:30:56.280 POST api/api/v1/campaigns/status/batch
+18:30:56.295 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+18:30:56.308 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+BO iteration 1/5: suggestion bac35720-e941-4237-9031-e5bbeb472cad -> Ethanol=32.885169, SDS=0.826341
+Submitting RAISE experiment: {'Ethanol': 32.885169, 'SDS': 0.826341}
+  Measured static contact angle = 68.649°
+18:34:25.052 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:34:25.168 Submitted bo result for campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:34:25.169 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+  Submitted result b5e21d5e-649c-471e-8f2e-00de01930ad2 | seeded=18, bo results=1, total=19; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:34:25.183 POST api/api/v1/campaigns/status/batch
+18:34:25.200 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+18:34:25.212 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/generate ? batch_size='1'
+BO iteration 2/5: suggestion df2c78b9-5fdf-4283-b182-60921aaf2380 -> Ethanol=35.784082, SDS=0.952413
+Submitting RAISE experiment: {'Ethanol': 35.784082, 'SDS': 0.952413}
+  Measured static contact angle = 69.215°
+18:38:32.141 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:38:32.215 Submitted bo result for campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:38:32.216 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+  Submitted result 802fd320-d47f-4d41-97b0-3fe58857da5b | seeded=18, bo results=2, total=20; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:38:32.230 POST api/api/v1/campaigns/status/batch
+18:38:32.247 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+18:38:32.263 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/generate ? batch_size='1'
+BO iteration 3/5: suggestion 31a5873c-f88f-40e9-9369-71bc6f9a0187 -> Ethanol=32.272879, SDS=0.911301
+Submitting RAISE experiment: {'Ethanol': 32.272879, 'SDS': 0.911301}
+  Measured static contact angle = 69.833°
+18:42:34.109 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:42:34.181 Submitted bo result for campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:42:34.182 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+  Submitted result 665cb2bf-5150-44c0-a536-847e1133184e | seeded=18, bo results=3, total=21; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:42:34.193 POST api/api/v1/campaigns/status/batch
+18:42:34.207 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+18:42:34.219 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/generate ? batch_size='1'
+BO iteration 4/5: suggestion 6024f263-5369-4071-ab04-bae80ccd547d -> Ethanol=34.555351, SDS=0.752157
+Submitting RAISE experiment: {'Ethanol': 34.555351, 'SDS': 0.752157}
+  Measured static contact angle = 68.108°
+18:46:49.202 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:46:49.336 Submitted bo result for campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:46:49.338 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+  Submitted result f08830db-f7a8-4c3e-a690-917daaf7ba4e | seeded=18, bo results=4, total=22; best angle 68.108° (|error|=3.108° vs target 65.0°); within ±1.0°=False
+18:46:49.357 POST api/api/v1/campaigns/status/batch
+18:46:49.372 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+18:46:49.386 POST api/api/v1/suggestions/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/generate ? batch_size='1'
+BO iteration 5/5: suggestion 26f8c06c-90e2-4a70-9910-7546185386e6 -> Ethanol=31.478342, SDS=0.711410
+Submitting RAISE experiment: {'Ethanol': 31.478342, 'SDS': 0.71141}
+  Measured static contact angle = 69.519°
+18:50:57.302 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:50:57.409 Submitted bo result for campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:50:57.410 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+  Submitted result f5442de4-7a76-4098-800f-e1fa595bbaad | seeded=18, bo results=5, total=23; best angle 68.108° (|error|=3.108° vs target 65.0°); within ±1.0°=False
+Fetching diagnostics...
+18:50:57.424 GET api/api/v1/diagnostics/0202e089-4124-4fcf-8cf0-6fa6d4411a6d ? use_cache='true' & verbosity='standard'
+18:51:00.399 GET api/api/v1/campaigns/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/export ? format='csv'
+18:51:00.412 GET api/api/v1/campaigns/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:51:00.420 POST api/api/v1/campaigns/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/lifecycle
+Paused campaign 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:51:00.438 GET api/api/v1/campaigns/0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+18:51:00.448 POST api/api/v1/results/0202e089-4124-4fcf-8cf0-6fa6d4411a6d/query
+Stop reason: Reached the requested BO-iteration budget for this invocation.
+Artifacts: artifacts/ethanol_sds_contact_angle_65/20260715T183056Z__0202e089
+Campaign complete: 0202e089-4124-4fcf-8cf0-6fa6d4411a6d
+Final status: paused
+Process exit status: 0

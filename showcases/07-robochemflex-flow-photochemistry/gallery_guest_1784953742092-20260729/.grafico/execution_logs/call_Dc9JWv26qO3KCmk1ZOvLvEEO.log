@@ -1,0 +1,33 @@
+exit_code=0
+
+=== stdout (raw) ===
+EXPORT artifacts/yield_only_robochemflex_bo/continuation_20260727T133832Z/bo_campaign_export.csv
+valid rows 26
+ experiment param_catalyst_type param_oxidant_type  param_catalyst_equiv  param_TFAA_equiv  param_oxidant_equiv  param_light_intensity  param_residence_time_min  obj_yield_percent                        suggestion_id
+         17           Ru bpy Cl              py NO              0.001255          1.615660             1.441060                     50                 16.428333          48.505203                                  NaN
+         18           Ru bpy Cl              py NO              0.001033          1.576839             1.750418                     50                 17.011667          20.175606                                  NaN
+         19           Ru bpy Cl              py NO              0.001156          1.555962             1.299610                     50                 16.805000          45.093425                                  NaN
+         20           Ru bpy Cl              py NO              0.001215          1.404495             1.401166                     25                 19.390000           0.000000                                  NaN
+         21           Ru bpy Cl              py NO              0.001892          1.996781             1.392050                     50                 14.173333          58.811245 cc26e7f1-b8fc-477f-b476-d9e9fe3e1fa9
+         22           Ru bpy Cl              py NO              0.002245          2.301669             1.355257                     50                 21.550000          54.499424 31d5114e-3796-4b21-9d5f-d7e9a31378b0
+         23           Ru bpy Cl              py NO              0.001956          2.511223             1.362263                     50                 14.000000           0.000000 b8a7095d-52d5-4089-9512-d79723c323fe
+         24           Ru bpy Cl              py NO              0.002121          2.143707             1.367687                     50                 20.573333           0.000000 e5d810a1-d39c-4e18-84fd-81e8ba81035c
+         25           Ru bpy Cl              py NO              0.001842          1.969329             1.396193                     50                 13.456667          45.793002 bee540de-5eaf-439f-88c9-5c68c2f2d29d
+         26           Ru bpy Cl              py NO              0.001936          2.010108             1.346801                     50                 21.106667           0.000000 a26ca83f-2e84-4f98-be0f-ffe299ee52ff
+
+ATTEMPTS
+       measurement_dir           sample run_id    status  success                                                                error     yield  pass  catalyst_equiv  TFAA_equiv  oxidant_equiv  light_intensity  residence_time_min                        suggestion_id
+measurement21_attempt1    bo_cc26e7f1-b  R0067 completed     True                                                                 None 58.811245  True        0.001892    1.996781       1.392050               50           14.172989 cc26e7f1-b8fc-477f-b476-d9e9fe3e1fa9
+measurement22_attempt1    bo_31d5114e-3  R0068    failed    False zero-size array to reduction operation minimum which has no identity       NaN  None        0.002245    2.301669       1.355257               50           21.550445 31d5114e-3796-4b21-9d5f-d7e9a31378b0
+measurement22_attempt2 bo_31d5114e-3_r2  R0069 completed     True                                                                 None 54.499424  True        0.002245    2.301669       1.355257               50           21.550445 31d5114e-3796-4b21-9d5f-d7e9a31378b0
+measurement23_attempt1    bo_b8a7095d-5  R0070 completed     True                                                                 None  0.000000  True        0.001956    2.511223       1.362263               50           13.999806 b8a7095d-52d5-4089-9512-d79723c323fe
+measurement24_attempt1    bo_e5d810a1-d  R0071 completed     True                                                                 None  0.000000  True        0.002121    2.143707       1.367687               50           20.572790 e5d810a1-d39c-4e18-84fd-81e8ba81035c
+measurement25_attempt1    bo_bee540de-5  R0072 completed     True                                                                 None 45.793002  True        0.001842    1.969329       1.396193               50           13.456082 bee540de-5eaf-439f-88c9-5c68c2f2d29d
+measurement26_attempt1    bo_a26ca83f-2  R0073 completed     True                                                                 None  0.000000  True        0.001936    2.010108       1.346801               50           21.107287 a26ca83f-2e84-4f98-be0f-ffe299ee52ff
+measurement27_attempt1    bo_86b39c20-a  R0074    failed    False                                                                 None 24.572953 False        0.001947    2.026975       1.392253               50           13.797079 86b39c20-a52d-4495-9e44-384f6196a2c6
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

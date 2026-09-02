@@ -1,0 +1,340 @@
+{
+  "candidate": {
+    "candidate_id": "eth__Me__Me",
+    "linker": "ethylene",
+    "r1": "Me",
+    "r2": "Me",
+    "ligand_label": "Me2P-ethylene-PMe2",
+    "ligand_description": "bidentate bisphosphine Me2P-ethylene-PMe2; linker=ethylene; one phosphorus bears two methyl groups and the other phosphorus bears two methyl groups",
+    "symmetric": true
+  },
+  "mode": "pyscf",
+  "assumptions": {
+    "complex_charge": 1,
+    "spin_multiplicity": 2,
+    "basis_set": "def2-svp",
+    "xc_functional": "b3lyp",
+    "geometry_max_steps": 60
+  },
+  "xyz_path": "hood_co_bisphosphine_artifacts_restart3/eth__Me__Me/eth__Me__Me.xyz",
+  "validity": {
+    "scf_converged": true,
+    "optimization_success": true,
+    "total_energy": -2645.225430883676
+  },
+  "geometry_descriptors": {
+    "atom_count": 39,
+    "valid_geometry": true,
+    "co_p_distances": [
+      2.140000104904175,
+      2.1500000953674316
+    ],
+    "co_o_distances": [
+      1.850675576185459,
+      1.850675576185459
+    ],
+    "both_phosphines_coordinated": true,
+    "acac_coordinated": true,
+    "co_p_asymmetry": 0.009999990463256836,
+    "p_co_p_bite_angle": 90.0,
+    "square_planar_distortion": 0.011622730166446826,
+    "heavy_atoms_near_co_3p5A": 7,
+    "min_heavy_heavy_distance": 1.2747548409920137,
+    "steric_crowding_raw": 7.0,
+    "ligand_remains_bound": true,
+    "severe_collapse": false
+  },
+  "electronic_descriptors": {
+    "somo_energy": null,
+    "homo_energy": null,
+    "co_charge": null,
+    "co_spin_density": null
+  },
+  "objectives": {
+    "electronic_activation": 0.0,
+    "coordination_stability": 9.750000238418579,
+    "chelate_geometry": 9.441886349167765,
+    "steric_crowding": 7.0
+  },
+  "feasible": true,
+  "pyscf_result": {
+    "identifier": "39\nProperties=species:S:1:pos:R:3 Co(acac)(Me2P-ethylene-PMe2)+;=T plausible=T initial=T 3D=T XYZ=T geometry,=T cationic=T Co(II)=T precursor-like=T complex=T pbc=\"F F F\" explicit_bonds=b0_1_1,b0_2_1,b0_3_1,b0_4_1,b1_17_1,b1_23_1,b1_24_1,b2_18_1,b2_25_1,b2_26_1,b3_5_1,b4_7_1,b5_6_1,b5_8_1,b6_7_2,b6_10_1,b7_9_1,b8_11_1,b8_12_1,b8_13_1,b9_14_1,b9_15_1,b9_16_1,b17_18_1,b17_19_1,b17_20_1,b18_21_1,b18_22_1,b23_27_1,b23_28_1,b23_29_1,b24_30_1,b24_31_1,b24_32_1,b25_33_1,b25_34_1,b25_35_1,b26_36_1,b26_37_1,b26_38_1\nCo       0.00000000       0.00000000       0.00000000\nP        2.14000000       0.00000000       0.00000000\nP        0.00000000       2.15000000       0.00000000\nO       -1.85000000       0.00000000       0.05000000\nO        0.00000000      -1.85000000      -0.05000000\nC       -2.80000000      -0.85000000       0.05000000\nC       -2.00000000      -2.00000000       0.00000000\nC       -0.85000000      -2.80000000      -0.05000000\nC       -4.25000000      -0.65000000       0.10000000\nC       -0.65000000      -4.25000000      -0.10000000\nH       -2.25000000      -2.25000000       1.05000000\nH       -4.65000000      -1.20000000       0.95000000\nH       -4.55000000       0.40000000       0.20000000\nH       -4.75000000      -1.05000000      -0.80000000\nH       -1.20000000      -4.65000000      -0.95000000\nH        0.40000000      -4.55000000      -0.20000000\nH       -1.05000000      -4.75000000       0.80000000\nC        2.05000000       1.55000000       0.95000000\nC        1.80000000       2.25000000      -0.35000000\nH        2.95000000       2.10000000       1.25000000\nH        1.20000000       1.48000000       1.65000000\nH        2.35000000       3.15000000      -0.05000000\nH        1.85000000       2.15000000      -1.45000000\nC        3.65000000      -0.80000000       0.75000000\nC        2.95000000      -1.10000000      -1.25000000\nC       -0.80000000       3.65000000       0.75000000\nC       -1.10000000       2.95000000      -1.25000000\nH        4.40000000      -0.05000000       1.05000000\nH        4.15000000      -1.55000000       0.15000000\nH        3.30000000      -1.30000000       1.65000000\nH        3.60000000      -1.95000000      -1.50000000\nH        3.30000000      -0.25000000      -1.85000000\nH        2.10000000      -1.50000000      -1.80000000\nH       -0.05000000       4.40000000       1.05000000\nH       -1.55000000       4.15000000       0.15000000\nH       -1.30000000       3.30000000       1.65000000\nH       -1.95000000       3.60000000      -1.50000000\nH       -0.25000000       3.30000000      -1.85000000\nH       -1.50000000       2.10000000      -1.80000000\n",
+    "identifier_type": "xyz",
+    "final_molecule": {
+      "rdfs_comment": [],
+      "rdfs_label": [],
+      "instance_iri": "https://elagente.ca/grafico/ConceptualAtoms_e734b1a7-82e3-424f-ae71-37cd43439b12",
+      "xyz": {
+        "rdfs_comment": [],
+        "rdfs_label": [],
+        "instance_iri": "https://elagente.ca/grafico/XYZ_c779a44a-d2db-49b7-81e1-abd37a585f68",
+        "atomic_numbers": [
+          27,
+          15,
+          15,
+          8,
+          8,
+          6,
+          6,
+          6,
+          6,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          6,
+          6,
+          1,
+          1,
+          1,
+          1,
+          6,
+          6,
+          6,
+          6,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "positions": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            2.140000104904175,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            2.1500000953674316,
+            0.0
+          ],
+          [
+            -1.850000023841858,
+            0.0,
+            0.05000000074505806
+          ],
+          [
+            0.0,
+            -1.850000023841858,
+            -0.05000000074505806
+          ],
+          [
+            -2.799999952316284,
+            -0.8500000238418579,
+            0.05000000074505806
+          ],
+          [
+            -2.0,
+            -2.0,
+            0.0
+          ],
+          [
+            -0.8500000238418579,
+            -2.799999952316284,
+            -0.05000000074505806
+          ],
+          [
+            -4.25,
+            -0.6499999761581421,
+            0.10000000149011612
+          ],
+          [
+            -0.6499999761581421,
+            -4.25,
+            -0.10000000149011612
+          ],
+          [
+            -2.25,
+            -2.25,
+            1.0499999523162842
+          ],
+          [
+            -4.650000095367432,
+            -1.2000000476837158,
+            0.949999988079071
+          ],
+          [
+            -4.550000190734863,
+            0.4000000059604645,
+            0.20000000298023224
+          ],
+          [
+            -4.75,
+            -1.0499999523162842,
+            -0.800000011920929
+          ],
+          [
+            -1.2000000476837158,
+            -4.650000095367432,
+            -0.949999988079071
+          ],
+          [
+            0.4000000059604645,
+            -4.550000190734863,
+            -0.20000000298023224
+          ],
+          [
+            -1.0499999523162842,
+            -4.75,
+            0.800000011920929
+          ],
+          [
+            2.049999952316284,
+            1.5499999523162842,
+            0.949999988079071
+          ],
+          [
+            1.7999999523162842,
+            2.25,
+            -0.3499999940395355
+          ],
+          [
+            2.950000047683716,
+            2.0999999046325684,
+            1.25
+          ],
+          [
+            1.2000000476837158,
+            1.4800000190734863,
+            1.649999976158142
+          ],
+          [
+            2.3499999046325684,
+            3.1500000953674316,
+            -0.05000000074505806
+          ],
+          [
+            1.850000023841858,
+            2.1500000953674316,
+            -1.4500000476837158
+          ],
+          [
+            3.6500000953674316,
+            -0.800000011920929,
+            0.75
+          ],
+          [
+            2.950000047683716,
+            -1.100000023841858,
+            -1.25
+          ],
+          [
+            -0.800000011920929,
+            3.6500000953674316,
+            0.75
+          ],
+          [
+            -1.100000023841858,
+            2.950000047683716,
+            -1.25
+          ],
+          [
+            4.400000095367432,
+            -0.05000000074505806,
+            1.0499999523162842
+          ],
+          [
+            4.150000095367432,
+            -1.5499999523162842,
+            0.15000000596046448
+          ],
+          [
+            3.299999952316284,
+            -1.2999999523162842,
+            1.649999976158142
+          ],
+          [
+            3.5999999046325684,
+            -1.9500000476837158,
+            -1.5
+          ],
+          [
+            3.299999952316284,
+            -0.25,
+            -1.850000023841858
+          ],
+          [
+            2.0999999046325684,
+            -1.5,
+            -1.7999999523162842
+          ],
+          [
+            -0.05000000074505806,
+            4.400000095367432,
+            1.0499999523162842
+          ],
+          [
+            -1.5499999523162842,
+            4.150000095367432,
+            0.15000000596046448
+          ],
+          [
+            -1.2999999523162842,
+            3.299999952316284,
+            1.649999976158142
+          ],
+          [
+            -1.9500000476837158,
+            3.5999999046325684,
+            -1.5
+          ],
+          [
+            -0.25,
+            3.299999952316284,
+            -1.850000023841858
+          ],
+          [
+            -1.5,
+            2.0999999046325684,
+            -1.7999999523162842
+          ]
+        ],
+        "unit": "angstrom"
+      },
+      "cell": null,
+      "pbc": null,
+      "charge": 1.0,
+      "spin_multiplicity": 2,
+      "identifier": "39\n\nCo 0.000000 0.000000 0.000000\nP 2.140000 0.000000 0.000000\nP 0.000000 2.150000 0.000000\nO -1.850000 0.000000 0.050000\nO 0.000000 -1.850000 -0.050000\nC -2.800000 -0.850000 0.050000\nC -2.000000 -2.000000 0.000000\nC -0.850000 -2.800000 -0.050000\nC -4.250000 -0.650000 0.100000\nC -0.650000 -4.250000 -0.100000\nH -2.250000 -2.250000 1.050000\nH -4.650000 -1.200000 0.950000\nH -4.550000 0.400000 0.200000\nH -4.750000 -1.050000 -0.800000\nH -1.200000 -4.650000 -0.950000\nH 0.400000 -4.550000 -0.200000\nH -1.050000 -4.750000 0.800000\nC 2.050000 1.550000 0.950000\nC 1.800000 2.250000 -0.350000\nH 2.950000 2.100000 1.250000\nH 1.200000 1.480000 1.650000\nH 2.350000 3.150000 -0.050000\nH 1.850000 2.150000 -1.450000\nC 3.650000 -0.800000 0.750000\nC 2.950000 -1.100000 -1.250000\nC -0.800000 3.650000 0.750000\nC -1.100000 2.950000 -1.250000\nH 4.400000 -0.050000 1.050000\nH 4.150000 -1.550000 0.150000\nH 3.300000 -1.300000 1.650000\nH 3.600000 -1.950000 -1.500000\nH 3.300000 -0.250000 -1.850000\nH 2.100000 -1.500000 -1.800000\nH -0.050000 4.400000 1.050000\nH -1.550000 4.150000 0.150000\nH -1.300000 3.300000 1.650000\nH -1.950000 3.600000 -1.500000\nH -0.250000 3.300000 -1.850000\nH -1.500000 2.100000 -1.800000",
+      "identifier_type": "xyz",
+      "chemical_formula": "C11H23CoO2P2"
+    },
+    "total_energy": -2645.225430883676,
+    "frequencies": null,
+    "tddft_results": null,
+    "imaginary_frequencies_removed": false,
+    "workflow_summary": [
+      "Single point energy: -2645.225431 Hartree",
+      "[AI Routing]: SinglePointCalculation -> GeometryOptimisation | The user requested a geometry optimization followed by molecular analysis, explicitly excluding frequency, TDDFT, and other advanced calculations. Since only a single point calculation has been performed so far, the next logical step is to optimize the geometry to obtain a relaxed structure for subsequent analysis.",
+      "Error in geometry optimization: Nuclear gradients of <pyscf.scf.hf.DFUKS_Scanner object at 0x789032b5af60> not converged",
+      "Traceback:\nTraceback (most recent call last):\n  File \"/app/domains/pyscf/graph/pyscf_graph.py\", line 406, in run\n    mf_opt = await asyncio.to_thread(\n             ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/asyncio/threads.py\", line 25, in to_thread\n    return await loop.run_in_executor(None, func_call)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/concurrent/futures/thread.py\", line 59, in run\n    result = self.fn(*self.args, **self.kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/logfire/_internal/integrations/executors.py\", line 53, in _run_with_context\n    return func()\n           ^^^^^^\n  File \"/app/domains/pyscf/pyscf_utils.py\", line 302, in get_optimized_mol\n    opt_mol = optimize(\n              ^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pyscf/geomopt/geometric_solver.py\", line 191, in optimize\n    return kernel(method, assert_convergence=assert_convergence, include_ghost=include_ghost,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pyscf/geomopt/geometric_solver.py\", line 162, in kernel\n    geometric.optimize.run_optimizer(customengine=engine, input=tmpf,\n  File \"/opt/venv/lib/python3.12/site-packages/geometric/optimize.py\", line 1300, in run_optimizer\n    progress = Optimize(coords, M, IC, engine, dirname, params)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/geometric/optimize.py\", line 1116, in Optimize\n    return optimizer.optimizeGeometry()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/geometric/optimize.py\", line 1029, in optimizeGeometry\n    self.calcEnergyForce()\n  File \"/opt/venv/lib/python3.12/site-packages/geometric/optimize.py\", line 311, in calcEnergyForce\n    spcalc = self.engine.calc(self.X, self.dirname, read_data=(self.Iteration==0))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/geometric/engine.py\", line 255, in calc\n    result = self.calc_new(coords, dirname)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/venv/lib/python3.12/site-packages/pyscf/geomopt/geometric_solver.py\", line 93, in calc_new\n    raise RuntimeError('Nuclear gradients of %s not converged' % g_scanner.base)\nRuntimeError: Nuclear gradients of <pyscf.scf.hf.DFUKS_Scanner object at 0x789032b5af60> not converged\n"
+    ],
+    "xc_functional": "b3lyp",
+    "basis_set": "def2-svp",
+    "analysis_results": null,
+    "pyscf_output": {
+      "rdfs_comment": [],
+      "rdfs_label": [],
+      "instance_iri": "https://elagente.ca/ontopyscf/PyscfOutput_4ee74cd9-918d-4099-8b75-89e9085fd051",
+      "energy": -2645.225430883676,
+      "chkfile": "/app/domains/pyscf/chkfiles/963a9502-622d-4ea8-82bb-e9b1fe7ec6a9.chk"
+    }
+  }
+}

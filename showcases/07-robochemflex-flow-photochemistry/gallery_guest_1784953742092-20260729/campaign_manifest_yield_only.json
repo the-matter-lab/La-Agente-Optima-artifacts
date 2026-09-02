@@ -1,0 +1,22 @@
+{
+  "campaign_slug": "robochemflex_yield_only_bo",
+  "package_modules": [
+    "robochemflex_yield_only_bo.intake",
+    "robochemflex_yield_only_bo.history",
+    "robochemflex_yield_only_bo.objectives",
+    "robochemflex_yield_only_bo.recreate",
+    "robochemflex_yield_only_bo.continuation",
+    "robochemflex_yield_only_bo.recreate_clean",
+    "robochemflex_yield_only_bo.campaign"
+  ],
+  "recreation_entrypoint": "recreate_robochemflex_yield_only_bo.py",
+  "continuation_entrypoint": "continue_robochemflex_yield_only_bo.py",
+  "retry22_continuation_entrypoint": "continue_robochemflex_yield_only_bo_retry22.py",
+  "clean21_recreation_entrypoint": "recreate_robochemflex_yield_only_clean21.py",
+  "clean21_continuation_entrypoint": "continue_robochemflex_yield_only_clean21.py",
+  "clean21_plan_document": "HOW_TO_EXECUTE_CLEAN_YIELD_ONLY_CONTINUATION.md",
+  "source_mixed_objective_campaign_id": "ccbfc92e-c646-4943-a44d-9277f2f2d8d4",
+  "active_roboflex_campaign_id": "robochemflex_yield_bo_fresh_20260724T155503Z-20260724-175502",
+  "source_export": "artifacts/recreated_robochemflex_yield_bo_20260725/failed_measurement_retry_continuation_20260726T184638Z/bo_campaign_export.csv",
+  "latest_artifact_dir": "artifacts/yield_only_clean21_smoke_preflight"
+}

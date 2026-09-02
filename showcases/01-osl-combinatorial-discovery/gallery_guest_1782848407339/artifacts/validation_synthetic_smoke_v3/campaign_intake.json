@@ -1,0 +1,83 @@
+{
+  "backend": "baybe",
+  "batch_size": 1,
+  "description": "Closed-loop BO smoke test over dynamically filtered smallest digital OSL fragments. Curated warm-start tuples are seeded explicitly, so server-side initial_design_size is held at 0 to avoid BO-MCP generating an extra initial design after warm-start submission.",
+  "initial_design_size": 0,
+  "max_iterations": 1,
+  "max_observations": 4,
+  "name": "smallest-fragments-digital-osl-bo-smoke-test-20260630-194857-a32e9b7d1dbd",
+  "objectives": [
+    {
+      "direction": "maximize",
+      "name": "max_oscillator_strength_s1_s3"
+    },
+    {
+      "direction": "minimize",
+      "name": "color_error_eV"
+    },
+    {
+      "direction": "minimize",
+      "name": "conformational_ambiguity"
+    }
+  ],
+  "parameters": [
+    {
+      "categories": [
+        "A017",
+        "A016",
+        "A012"
+      ],
+      "name": "cap_id",
+      "parameter_options": {
+        "baybe": {
+          "role": "substance",
+          "substance_data": {
+            "A012": "CCn1c2ccccc2c2cc(B(O)O)ccc21",
+            "A016": "Cn1cnc2ccc(B(O)O)cc21",
+            "A017": "Cn1ccc2cc(B(O)O)ccc21"
+          }
+        }
+      },
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "B003",
+        "B030",
+        "B006"
+      ],
+      "name": "bridge_id",
+      "parameter_options": {
+        "baybe": {
+          "role": "substance",
+          "substance_data": {
+            "B003": "C[N+]12CC(=O)O[B-]1(/C=C/Br)OC(=O)C2",
+            "B006": "C[N+]12CC(=O)O[B-]1(c1occc1Br)OC(=O)C2",
+            "B030": "C[N+]12CC(=O)O[B-]1(/C=C\\Br)OC(=O)C2"
+          }
+        }
+      },
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "C069",
+        "C070",
+        "C115"
+      ],
+      "name": "core_id",
+      "parameter_options": {
+        "baybe": {
+          "role": "substance",
+          "substance_data": {
+            "C069": "Brc1ccoc1Br",
+            "C070": "Brc1ccsc1Br",
+            "C115": "Brc1cocc1Br"
+          }
+        }
+      },
+      "type": "categorical"
+    }
+  ],
+  "random_seed": 7
+}

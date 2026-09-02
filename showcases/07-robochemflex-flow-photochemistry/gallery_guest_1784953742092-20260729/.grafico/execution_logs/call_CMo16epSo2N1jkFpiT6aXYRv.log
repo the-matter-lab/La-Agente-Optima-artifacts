@@ -1,0 +1,27 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- campaign/supervisor processes
+552 sh -c cd /app/.graphchat-workspaces/gallery_guest_1784900563933 && export PYTHONUNBUFFERED=1 && export ROBRIDGE_POST_ADAPTER="$PWD/scripts/robridge_post_adapter.py" && export ROBOCHEMFLEX_TOTAL_SUCCESS_BUDGET=20 && export ROBOCHEMFLEX_ZERO_STOP_N=5 && export ROBOCHEMFLEX_RUN_TIMEOUT_S=21600 && uv run python -u scripts/run_real_campaign_supervised_quiet.py 2>&1 | tee "logs/real_campaign_quiet_supervisor_$(date -u +%Y%m%dT%H%M%SZ).log"; exit ${PIPESTATUS[0]}
+553 uv run python -u scripts/run_real_campaign_supervised_quiet.py
+559 /opt/venv/bin/python3 -u scripts/run_real_campaign_supervised_quiet.py
+658 uv run python -u run_robochemflex_yield_bo.py --mode robridge-real --allow-real-roboflex --max-successes 1 --no-pause-bo-on-exit --campaign-name robochemflex_yield_baybe_fresh_20260724T155503Z --robridge-campaign-name robochemflex_yield_bo_fresh_20260724T155503Z --artifact-dir /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z --run-timeout-s 21600.0 --campaign-id b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+662 /opt/venv/bin/python3 -u run_robochemflex_yield_bo.py --mode robridge-real --allow-real-roboflex --max-successes 1 --no-pause-bo-on-exit --campaign-name robochemflex_yield_baybe_fresh_20260724T155503Z --robridge-campaign-name robochemflex_yield_bo_fresh_20260724T155503Z --artifact-dir /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z --run-timeout-s 21600.0 --campaign-id b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+678 bash -lc echo '--- campaign/supervisor processes'; pgrep -af 'run_real_campaign_supervised_quiet.py|run_real_campaign_supervised.py|run_robochemflex_yield_bo.py|robridge_post_adapter.py' || true  echo '--- python/processes in workspace'; ps -eo pid,ppid,stat,etime,cmd | grep -F '/app/.graphchat-workspaces/gallery_guest_1784900563933' | grep -v grep || true  echo '--- latest artifacts'; latest=$(ls -td artifacts/real_robochemflex_yield_bo_fresh_* 2>/dev/null | head -1); echo "$latest"; [ -n "$latest" ] && { echo 'submitted results:'; wc -l "$latest/submitted_results.jsonl" 2>/dev/null || true; tail -n 5 "$latest/quiet_supervision_summary.jsonl" 2>/dev/null || true; }
+--- python/processes in workspace
+    552       1 Ss      04:45:27 sh -c cd /app/.graphchat-workspaces/gallery_guest_1784900563933 && export PYTHONUNBUFFERED=1 && export ROBRIDGE_POST_ADAPTER="$PWD/scripts/robridge_post_adapter.py" && export ROBOCHEMFLEX_TOTAL_SUCCESS_BUDGET=20 && export ROBOCHEMFLEX_ZERO_STOP_N=5 && export ROBOCHEMFLEX_RUN_TIMEOUT_S=21600 && uv run python -u scripts/run_real_campaign_supervised_quiet.py 2>&1 | tee "logs/real_campaign_quiet_supervisor_$(date -u +%Y%m%dT%H%M%SZ).log"; exit ${PIPESTATUS[0]}
+    658     559 Sl         37:46 uv run python -u run_robochemflex_yield_bo.py --mode robridge-real --allow-real-roboflex --max-successes 1 --no-pause-bo-on-exit --campaign-name robochemflex_yield_baybe_fresh_20260724T155503Z --robridge-campaign-name robochemflex_yield_bo_fresh_20260724T155503Z --artifact-dir /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z --run-timeout-s 21600.0 --campaign-id b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+    662     658 Sl         37:46 /opt/venv/bin/python3 -u run_robochemflex_yield_bo.py --mode robridge-real --allow-real-roboflex --max-successes 1 --no-pause-bo-on-exit --campaign-name robochemflex_yield_baybe_fresh_20260724T155503Z --robridge-campaign-name robochemflex_yield_bo_fresh_20260724T155503Z --artifact-dir /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z --run-timeout-s 21600.0 --campaign-id b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+--- latest artifacts
+artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z
+submitted results:
+3 artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/submitted_results.jsonl
+{"bad_zero_or_no_peak": true, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 1, "green_score": 60.30844155844155, "label": "seed01_b681a41d", "run_id": "R0044", "time": "2026-07-24T17:08:41.098586+00:00", "yield_percent": 0.0, "zero_streak": 1}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 2, "green_score": 98.29545454545455, "label": "seed02_b681a41d", "run_id": "R0045", "time": "2026-07-24T17:56:24.395501+00:00", "yield_percent": 30.037732281591182, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 3, "green_score": 4.261363636363635, "label": "seed03_b681a41d", "run_id": "R0046", "time": "2026-07-24T20:02:44.628308+00:00", "yield_percent": 15.766697453699585, "zero_streak": 0}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

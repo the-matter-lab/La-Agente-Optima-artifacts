@@ -1,0 +1,144 @@
+exit_code=0
+
+=== stdout (raw) ===
+
+==== pattern bo_5c5570bd-d
+ ====
+idx -1
+
+==== pattern bo_5c5570bd-d_r2 ====
+idx 381419
+         N
+                                ├  VARTYPE: INDEPENDENT,           DEPENDENT,           DEPENDENT,        PAGE
+                                ├  VARFORM: AFFN,                AFFN,                AFFN,        AFFN
+                                ├  VARDIM: 16384,               16384,               16384,           2
+                                ├  UNITS: PPM,     ARBITRARY UNITS,     ARBITRARY UNITS,
+                                ├  FIRST: -1.03000e+02, 0.00440547088284655, 0.00272583037906693,           1
+                                ├  LAST: -1.70044e+01, 0.00523457713282963,1.19138528942403e-04,           2
+                                ├  MIN: -1.03000e+02, -0.0315413693463992,  -0.116522832850989,           1
+                                ├  MAX: -1.70044e+01,   0.106509792117092,  0.0235678419265859,           2
+                                ├  FACTOR: 1,                   1,                   1,           1
+                                ├  PAGE: N=1      N=2
+                                ├
+                                ├
+          21:58:37[NMRAnalysis] ├Phase correction applied using model: peak_minima.
+          21:58:37[NMRAnalysis] ├Imaginary components removed
+          21:58:37[NMRAnalysis] ├Gaussian filter applied with kernel standard deviation of: 5.
+          21:58:37[NMRAnalysis] ├Baseline correction applied (median).
+          21:58:37[NMRAnalysis] ├Extrapolated peaks:
+                                ├     height      shift      FWHM  integral
+                                ├0  0.024209 -57.674639  0.278203  0.004651
+                                ├1  0.117949 -76.828682  0.230961  0.020222
+     [OK] 21:58:37[NMRAnalysis] └Processed bo_5c5570bd-d:
+                                └analytes:
+                                └main:
+                                └yield: 27.04
+                                └    yield (IS): NaN
+                                └    concentration: 27.03
+                                └    peak integral: 0.004651
+                                └    peak width: 0.2782
+                                └    peak position: -57.67
+                                └    pass: False
+                                └
+                                └
+                                └yield: 27.04
+                                └pass: False
+                                └.
+          23:05:15[NMRAnalysis] Validating parameter per analyte: sample_name: bo_5c5570bd-d_r2 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: target_peak: -58.0 ppm
+          23:05:15[NMRAnalysis] Validating parameter per analyte: metric: yield 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: yield_calculation_chemical: SM 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: data_folder: \\10.10.29.250\hims-nrg-robochem\nmr_data 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: solvent: None 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: comment:  
+          23:05:15[NMRAnalysis] Validating parameter per analyte: protocol: 1D FLUORINE HDEC 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: Number: 32 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: AcquisitionTime: 1.64 S
+          23:05:15[NMRAnalysis] Validating parameter per analyte: centerFrequency: -60.0 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: PulseAngle: 90 °
+          23:05:15[NMRAnalysis] Validating parameter per analyte: RepetitionTime: 10 S
+          23:05:15[NMRAnalysis] Validating parameter per analyte: target_peak_deviation: 3.0 ppm
+          23:05:15[NMRAnalysis] Validating parameter per analyte: min_SN_ratio: 2 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: max_peak_width: 0.2 ppm
+          23:05:15[NMRAnalysis] Validating parameter per analyte: peak_resolution: 0.01 ppm
+          23:05:15[NMRAnalysis] Validating parameter per analyte: target_peak_calibration_coeff_0: -5.4 mM
+          23:05:15[NMRAnalysis] Validating parameter per analyte: target_peak_calibration_coeff_1: 6973.0 mM/AU
+          23:05:15[NMRAnalysis] Validating parameter per analyte: slug_verification_threshold: 80 %
+          23:05:15[NMRAnalysis] Parameter slug_verification_threshold: 80 % is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: collect_crude: False
+          23:05:15[NMRAnalysis] Parameter collect_crude: False is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: gas_purging_cycles: 3
+          23:05:15[NMRAnalysis] Parameter gas_purging_cycles: 3 is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: collection_vial_volume: 1.5 mL
+          23:05:15[NMRAnalysis] Parameter collection_vial_volume: 1.5 mL is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: mix_before_injection_cycles: 6
+          23:05:15[NMRAnalysis] Parameter mix_before_injection_cycles: 6 is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: reactor_timeout: 5 min
+          23:05:15[NMRAnalysis] Parameter reactor_timeout: 5 min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: mix_before_injection_amplitude: 200 uL
+          23:05:15[NMRAnalysis] Parameter mix_before_injection_amplitude: 200 uL is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: mix_after_injection_cycles: 0
+          23:05:15[NMRAnalysis] Parameter mix_after_injection_cycles: 0 is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: reactor_volume: 3.9 mL
+          23:05:15[NMRAnalysis] Parameter reactor_volume: 3.9 mL is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: slug_volume: 650 uL
+          23:05:15[NMRAnalysis] Parameter slug_volume: 650 uL is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: slug_check: auto
+          23:05:15[NMRAnalysis] Parameter slug_check: auto is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: flowrate_injection: 1 mL/min
+          23:05:15[NMRAnalysis] Parameter flowrate_injection: 1 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: slug_check_max_deviation: 5 %
+          23:05:15[NMRAnalysis] Parameter slug_check_max_deviation: 5 % is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: collection_method: concentration
+          23:05:15[NMRAnalysis] Parameter collection_method: concentration is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: mix_after_injection_flowrate: 2 mL/min
+          23:05:15[NMRAnalysis] Parameter mix_after_injection_flowrate: 2 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: slug_check_volume: 1.1 mL
+          23:05:15[NMRAnalysis] Parameter slug_check_volume: 1.1 mL is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: intercomponent_bubble_volume: 0.2 uL
+          23:05:15[NMRAnalysis] Parameter intercomponent_bubble_volume: 0.2 uL is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: measured_residence_time: 0 S
+          23:05:15[NMRAnalysis] Parameter measured_residence_time: 0 S is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: gas_purging_amplitude: 100 uL
+          23:05:15[NMRAnalysis] Parameter gas_purging_amplitude: 100 uL is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: flowrate_delivery: 2 mL/min
+          23:05:15[NMRAnalysis] Parameter flowrate_delivery: 2 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: sampling: direct
+          23:05:15[NMRAnalysis] Parameter sampling: direct is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: flowrate_collection: 0.5 mL/min
+          23:05:15[NMRAnalysis] Parameter flowrate_collection: 0.5 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: mix_before_injection_flowrate: 2 mL/min
+          23:05:15[NMRAnalysis] Parameter mix_before_injection_flowrate: 2 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: flowrate_analysis_loading: 2 mL/min
+          23:05:15[NMRAnalysis] Parameter flowrate_analysis_loading: 2 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: flowrate_slug_check: 1 mL/min
+          23:05:15[NMRAnalysis] Parameter flowrate_slug_check: 1 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: bubble_volume: 50 uL
+          23:05:15[NMRAnalysis] Parameter bubble_volume: 50 uL is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: flowrate_gas_sampling: 0.5 mL/min
+          23:05:15[NMRAnalysis] Parameter flowrate_gas_sampling: 0.5 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: slug_preparation_sorting_method: middle
+          23:05:15[NMRAnalysis] Parameter slug_preparation_sorting_method: middle is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: flowrate_sampling: 0.5 mL/min
+          23:05:15[NMRAnalysis] Parameter flowrate_sampling: 0.5 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: flowrate_slug_verification: 1 mL/min
+          23:05:15[NMRAnalysis] Parameter flowrate_slug_verification: 1 mL/min is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating parameter per analyte: rinse: 1 bool
+          23:05:15[NMRAnalysis] Parameter rinse: 1 bool is not analytical, skipping check
+          23:05:15[NMRAnalysis] Validating
+
+==== failure keywords near r2 ====
+pass: False 18840
+peak width 18723
+peak position 18780
+fail -1
+False 1981
+target 85
+deviation 1179
+width 1358
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,92 @@
+exit_code=0
+
+=== stdout (raw) ===
+4861 artifacts/phosphine_electronics_20260805_182629/run.log
+2026-08-05 18:26:53,011 INFO evaluation P_0001 success 23.3s
+2026-08-05 18:26:54,002 INFO evaluation P_0002 success 24.3s
+2026-08-05 18:27:11,963 INFO evaluation P_0003 success 19.0s
+2026-08-05 18:27:14,483 INFO evaluation P_0004 success 20.5s
+2026-08-05 18:27:32,561 INFO evaluation P_0005 success 20.6s
+2026-08-05 18:27:37,890 INFO evaluation P_0246 success 23.4s
+2026-08-05 18:27:54,971 INFO evaluation P_0330 success 22.4s
+2026-08-05 18:28:04,648 INFO evaluation P_0361 success 26.8s
+2026-08-05 18:28:04,759 INFO next_action {'status': 'created', 'iteration': 0, 'n_results': 8, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 8 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:28:34,151 INFO evaluation P_0006 success 14.8s
+2026-08-05 18:28:35,467 INFO evaluation P_0007 success 16.1s
+2026-08-05 18:31:35,854 INFO next_action {'status': 'running', 'iteration': 1, 'n_results': 10, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 10 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:32:11,069 INFO evaluation P_0009 success 17.2s
+2026-08-05 18:32:12,148 INFO evaluation P_0008 success 18.3s
+2026-08-05 18:35:12,489 INFO next_action {'status': 'running', 'iteration': 2, 'n_results': 12, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 12 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:35:50,494 INFO evaluation P_0010 success 16.8s
+2026-08-05 18:35:52,884 INFO evaluation P_0012 success 19.2s
+2026-08-05 18:38:53,205 INFO next_action {'status': 'running', 'iteration': 3, 'n_results': 14, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 14 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:39:31,516 INFO evaluation P_0017 success 16.6s
+2026-08-05 18:39:34,999 INFO evaluation P_0186 success 20.1s
+2026-08-05 18:42:35,366 INFO next_action {'status': 'running', 'iteration': 4, 'n_results': 16, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 16 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:43:20,819 INFO evaluation P_0019 success 18.7s
+2026-08-05 18:43:23,317 INFO evaluation P_0346 success 21.2s
+2026-08-05 18:46:23,660 INFO next_action {'status': 'running', 'iteration': 5, 'n_results': 18, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 18 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:47:14,301 INFO evaluation P_0029 success 18.6s
+2026-08-05 18:47:28,931 INFO evaluation P_0364 success 33.2s
+2026-08-05 18:50:29,232 INFO next_action {'status': 'running', 'iteration': 6, 'n_results': 20, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 20 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:51:26,571 INFO evaluation P_0038 success 20.2s
+2026-08-05 18:51:32,567 INFO evaluation P_0247 success 26.2s
+2026-08-05 18:54:32,980 INFO next_action {'status': 'running', 'iteration': 7, 'n_results': 22, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 22 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:55:30,333 INFO evaluation P_0027 success 16.6s
+2026-08-05 18:55:30,822 INFO evaluation P_0011 success 17.1s
+2026-08-05 18:58:31,162 INFO next_action {'status': 'running', 'iteration': 8, 'n_results': 24, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 24 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 18:59:39,400 INFO evaluation P_0199 success 26.0s
+2026-08-05 18:59:39,607 INFO evaluation P_0191 success 26.2s
+2026-08-05 19:02:40,024 INFO next_action {'status': 'running', 'iteration': 9, 'n_results': 26, 'action': 'bo_generate_suggestions', 'reason': "Campaign healthy with 26 result(s); request the next batch. Use bo_get_diagnostics or verbosity='detailed' for convergence/outlier checks.", 'urgency': 'normal'}
+2026-08-05 19:03:42,376 INFO evaluation P_0026 success 18.3s
+2026-08-05 19:03:45,945 INFO evaluation P_0258 success 21.8s
+2026-08-05 19:06:46,163 INFO exported campaign content_type=text/csv; charset=utf-8 bytes=4848
+--- script ---
+from __future__ import annotations
+
+import argparse
+
+import logfire
+from grafico.core.logfire_config import configure_logfire
+
+try:
+    configure_logfire(console=False)
+except TypeError:
+    configure_logfire()
+logfire.instrument_requests()
+
+from phosphine_electronics.campaign import run  # noqa: E402
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(description="BO-MCP + Gráfico PySCF finite phosphine electronic-tuning campaign")
+    p.add_argument("--campaign-id", default="", help="Resume/reopen an existing BO-MCP campaign id")
+    p.add_argument("--campaign-name", default="phosphine_electronics_finite_mobo", help="Name for a new campaign")
+    p.add_argument("--artifact-dir", default="", help="Optional artifact directory; default is artifacts/phosphine_electronics_<UTC>")
+    p.add_argument("--stop-file", default="STOP", help="Stop marker checked before suggestion generation")
+    p.add_argument("--poll-s", type=float, default=180.0, help="Sleep interval between BO batches (keep 120-300 for monitored runs)")
+    p.add_argument("--heartbeat-s", type=float, default=1800.0, help="Tagged liveness interval")
+    p.add_argument("--warm-start-size", type=int, default=8, help="Script-selected initial ligand count")
+    p.add_argument("--batch-size", type=int, default=2, help="BO suggestion batch size")
+    p.add_argument("--max-bo-batches", type=int, default=10, help="Per-invocation cap on BO-guided batches after warm start")
+    p.add_argument("--eval-workers", type=int, default=2, help="Threaded parallel evaluations per batch")
+    p.add_argument("--client-timeout-s", type=float, default=120.0, help="BO-MCP client request timeout")
+    p.add_argument("--suggestion-timeout-s", type=float, default=900.0, help="BO-MCP suggestion-generation timeout")
+    p.add_argument("--pyscf-timeout-s", type=float, default=1800.0, help="Per-ligand Gráfico PySCF workflow timeout")
+    p.add_argument("--geometry-max-steps", type=int, default=100, help="Maximum geometry-optimization steps exposed to PySCF workflow")
+    p.add_argument("--synthetic-evaluator", action="store_true", help="Smoke-test only: replace PySCF with deterministic finite surrogate")
+    p.add_argument("--pyscf-smoke-only", action="store_true", help="Run one real PySCF evaluator call and exit without BO-MCP")
+    p.add_argument("--pyscf-smoke-candidate", default="P_0001", help="Candidate id for --pyscf-smoke-only")
+    p.add_argument("--terminate-on-exit", action="store_true", help="Terminate instead of pausing at the end; intended for smoke tests only")
+    return p
+
+
+if __name__ == "__main__":
+    run(build_parser().parse_args())
+--- grep event ---
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

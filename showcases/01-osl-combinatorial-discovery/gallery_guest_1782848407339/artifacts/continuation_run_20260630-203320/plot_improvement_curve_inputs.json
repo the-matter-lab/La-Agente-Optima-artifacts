@@ -1,0 +1,14 @@
+{
+  "script": "artifacts/continuation_run_20260630-203320/plot_improvement_curve.py",
+  "required_input_files": [
+    "artifacts/continuation_run_20260630-203320/campaign_export.csv",
+    "artifacts/continuation_run_20260630-203320/final_report.json"
+  ],
+  "outputs_when_run": [
+    "artifacts/continuation_run_20260630-203320/updated_improvement_curve_reproducible.png",
+    "artifacts/continuation_run_20260630-203320/updated_improvement_curve_reproducible.csv",
+    "artifacts/continuation_run_20260630-203320/pareto_front_updated_reproducible.csv",
+    "artifacts/continuation_run_20260630-203320/updated_improvement_curve_reproducible_metadata.json"
+  ],
+  "reproducibility_note": "The script rebuilds the improvement curve using only campaign_export.csv and final_report.json already written to disk. It does not depend on in-memory state or external tool outputs."
+}

@@ -1,0 +1,470 @@
+exit_code=0
+
+=== stdout (raw) ===
+from typing import Callable, List, Optional, Tuple
+
+import numpy as np
+from numpydantic import NDArray, Shape
+from pydantic import BaseModel, Field, field_validator
+from pyscf import dft, scf, symm, tddft
+from pyscf.geomopt.geometric_solver import optimize
+from pyscf.hessian import thermo
+
+symm.geom.TOLERANCE = 1e-2
+
+import importlib.resources as ir
+import os
+
+import logfire
+import pandas as pd
+from pyscf import lo
+from pyscf import lib as pyscf_lib
+
+# from domains.pyscf.ontopyscf import PyscfMolecule
+from grafico.matter.geomt import change_bohr_to_angstrom
+
+try:
+    import cupy as cp
+
+    CUDA_GPU_AVAILABLE = True  # Set to False if you want to disable GPU usage
+except ImportError:
+    cp = None
+    CUDA_GPU_AVAILABLE = False
+
+
+def is_mf_on_gpu(mf) -> bool:
+    """Check if a mean-field object is actually running on GPU."""
+    return mf.__module__.startswith("gpu4pyscf")
+
+
+def get_mf_gpu(mf):
+    """Get mean-field object on GPU if available."""
+    if not CUDA_GPU_AVAILABLE:
+        return mf
+
+    if is_mf_on_gpu(mf):
+        return mf  # Already on GPU
+    else:
+        try:
+            return mf.to_gpu()
+        except (AttributeError, RuntimeError) as e:
+            logfire.warning(f"Failed to convert to GPU: {e}")
+            return mf
+
+
+class CompactFrequencyAnalysis(BaseModel):
+    """Compact version of frequency analysis results without norm_mode to save LLM API costs"""
+
+    H_tot: Tuple[float, str] = Field(..., description="Total enthalpy with units")
+    G_tot: Tuple[float, str] = Field(
+        ..., description="Total Gibbs free energy with units"
+    )
+    freq_wavenumber: NDArray[Shape["*"], float | complex] = Field(  # type: ignore
+        ..., description="Frequency wavenumbers in cm^-1"
+    )
+
+    @field_validator("freq_wavenumber", mode="before")
+    @classmethod
+    def _coerce_complex_array(cls, v):
+        # workaround for numpydantic not supporting complex arrays directly
+        # https://numpydantic.readthedocs.io/en/latest/dtype.html#complex-numbers
+        # it gets serialized as list of strings, e.g. ['100.0', '-50.0+20.0j']
+        # which could give the following error during model_validate_json:
+        # ```
+        # ValidationError: 1 validation error for CompactFrequencyAnalysis
+        # freq_wavenumber
+        # Value error, Invalid dtype! expected float | complex, got <U7 [type=value_error, input_value=['100+0j', '-50+20j', '0j'], input_type=list]
+        #     For further information visit https://errors.pydantic.dev/2.11/v/value_error
+        # ```
+        if isinstance(v, list) and len(v) > 0:
+            if isinstance(v[0], str):
+                return [complex(x) for x in v]
+        return v
+
+    def get_imaginary_frequencies(self, freq_threshold=50.0) -> List[complex]:
+        imaginary_freqs = [
+            freq
+            for freq in self.freq_wavenumber
+            if issubclass(type(freq), complex) and freq.imag > freq_threshold
+        ]
+        return imaginary_freqs
+
+    def has_imaginary_frequencies(self, freq_threshold=50.0) -> bool:
+        return any(
+            issubclass(type(freq), complex) and freq.imag > freq_threshold
+            for freq in self.freq_wavenumber
+        )
+
+
+class FrequencyAnalysis(CompactFrequencyAnalysis):
+    """Complete version of frequency analysis results"""
+
+    norm_mode: NDArray[Shape["*, *, 3"], float] = Field(  # type: ignore
+        ..., description="Normal mode of the molecule"
+    )
+
+    def to_compact_analysis(self) -> "CompactFrequencyAnalysis":
+        """Create compact analysis from full FrequencyAnalysis"""
+        return CompactFrequencyAnalysis(
+            H_tot=self.H_tot,
+            G_tot=self.G_tot,
+            freq_wavenumber=self.freq_wavenumber,
+        )
+
+
+class CompactMolecularAnalysisResult(BaseModel):
+    """Pydantic model for molecular analysis results with proper numpy array handling"""
+
+    homo_lumo_gap: float = Field(..., description="HOMO-LUMO gap in Hartree")
+    point_group_symmetry: str = Field(
+        ..., description="Point group symmetry of the molecule"
+    )
+    dipole_moment: NDArray[Shape["3"], float] = Field(
+        ..., description="Dipole moment vector in Debye"
+from __future__ import annotations
+
+import traceback
+import os
+from pathlib import Path
+from typing import Annotated, Literal, Optional
+
+import logfire
+from grafico.akg.ogm import KnowledgeGraph
+from pydantic import Field
+from pydantic_ai import Agent, FunctionToolset, ModelRetry, RunContext, Tool
+
+from domains.pyscf.graph.pyscf_graph import (
+    pyscf_workflow_graph,
+    run_pyscf_workflow_sync,
+)
+from domains.pyscf.ontopyscf import PyscfInput, PyscfOutput, QCMolecule
+from grafico.core.gpu import (
+    available_gpu_ids,
+    gpu_session_with_slot,
+    run_in_gpu_process,
+)
+from grafico.core.tracing import ensure_run_id, get_context_headers
+from grafico.matter.conceptual_atoms import ConceptualAtoms
+from grafico.deps import GraficoDeps
+from domains.pyscf.tools.modal_gpu import run_pyscf_on_modal
+from grafico.tools.toolset_registration import register_dynamic_toolset
+
+PYSCF_WORKFLOW_TOOLSET_ID = "pyscf_workflow_toolset"
+PyscfGpuExecutorMode = Literal["local", "modal"]
+
+
+def _build_run_pyscf_workflow_docstring() -> str:
+    diagram = pyscf_workflow_graph.render()
+    return f"""Run PySCF calculations using the workflow graph with dynamic routing capabilities.
+
+Workflow graph (Mermaid):
+```mermaid
+{diagram}
+```
+
+Parameters:
+- `summarised_user_query`: Short summary of user intent for routing.
+- `identifier_type`: One of `name | smiles | xyz | xyz_filename | conceptual_atoms_iri`.
+- `identifier`: Identifier payload based on `identifier_type`.
+- `exit_node`: Optional hard-stop node name in the workflow graph.
+- `update_graph`: If true, push final `PyscfOutput` and final molecule to KG at graph end.
+
+Notes:
+- Dynamic routing is enabled by default.
+- Imaginary-frequency handling/re-optimization loops are managed by the workflow graph.
+- Optional workflow-control parameters exposed to the main agent:
+  - `geometry_max_steps` (default: 100)
+  - `freq_threshold` (default: 50.0)
+  - `tddft_nstates` (default: 10)
+  - `imag_removal_max_attempts` (default: 3)
+  - `workflow_timeout_s` (default: None; kill the isolated workflow child after this many seconds)
+	"""
+
+
+def get_pyscf_gpu_executor_mode() -> PyscfGpuExecutorMode:
+    mode = os.getenv("AKG_GPU_EXECUTOR", "local").strip().lower()
+    if mode not in {"local", "modal"}:
+        raise ValueError("AKG_GPU_EXECUTOR must be one of local, modal")
+    return mode  # type: ignore[return-value]
+
+
+def _require_modal_kg_connectivity(
+    update_graph: bool,
+    deps_obj: Optional[GraficoDeps],
+) -> None:
+    if not update_graph:
+        return
+    if deps_obj and deps_obj.sparql_endpoint:
+        return
+    if os.getenv("SPARQL_ENDPOINT"):
+        return
+    raise RuntimeError(
+        "AKG_GPU_EXECUTOR=modal with update_graph=True requires SPARQL_ENDPOINT "
+        "or GraficoDeps.sparql_endpoint inside the Modal function"
+    )
+
+
+def run_pyscf(
+    ctx: RunContext[GraficoDeps],
+    pyscf_input: PyscfInput,
+    summarised_user_query: str,
+    exit_node: Optional[str] = None,
+    update_graph: bool = False,
+    geometry_max_steps: int = 100,
+    freq_threshold: float = 50.0,
+    tddft_nstates: int = 10,
+    imag_removal_max_attempts: int = 3,
+    workflow_timeout_s: Optional[float] = None,
+) -> list[PyscfOutput]:
+    """Run PySCF calculations using the workflow graph with dynamic routing capabilities."""
+    print("Running PySCF workflow:")
+    # this print statement causes a problem with computed_field in ConceptualAtoms if repr(pyscf_input) is called
+    # see issue: https://github.com/jb2197/akg4pyscf/issues/128
+    print(f"  - Input: {pyscf_input}")
+    print(f"  - Summarised user query: {summarised_user_query}")
+    print(f"  - Hard exit node: {exit_node}")
+    print(f"  - Update knowledge graph: {update_graph}")
+    print(f"  - Geometry max steps: {geometry_max_steps}")
+    print(f"  - Frequency threshold: {freq_threshold}")
+    print(f"  - TDDFT nstates: {tddft_nstates}")
+    print(f"  - Imag. removal max attempts: {imag_removal_max_attempts}")
+    print(f"  - Workflow timeout: {workflow_timeout_s}")
+
+    deps_obj = getattr(ctx, "deps", None)
+    if deps_obj:
+        # Rebuild deps to avoid pickling non-serializable runtime objects.
+        deps_obj = GraficoDeps(
+            ws_url=deps_obj.ws_url,
+            room=deps_obj.room,
+            sparql_endpoint=deps_obj.sparql_endpoint,
+            service_token=deps_obj.service_token,
+        )
+
+    executor_mode = get_pyscf_gpu_executor_mode()
+    run_id = ensure_run_id()
+    headers = get_context_headers(run_id)
+    if executor_mode == "modal":
+        _require_modal_kg_connectivity(update_graph, deps_obj)
+        try:
+            return run_pyscf_on_modal(
+                target_module=__name__,
+                target_function="_child_run_impl",
+                args=(
+                    pyscf_input,
+                    summarised_user_query,
+                    exit_node,
+                    update_graph,
+                    geometry_max_steps,
+                    freq_threshold,
+                    tddft_nstates,
+                    imag_removal_max_attempts,
+                    run_id,
+                    -1,
+                ),
+                kwargs={"deps": deps_obj},
+                headers=headers,
+            )
+        except Exception as e:
+            # format_exc() already ends with the exception message, so embedding
+            # str(e) separately would duplicate it (large when child stdio is attached).
+            tb = traceback.format_exc()
+            logfire.error(f"Modal GPU function failed: {e}")
+            raise ModelRetry(f"PySCF workflow execution failed: {tb}") from e
+
+    with gpu_session_with_slot() as (gpu_id, slot_id, snapshot):
+        logfire.info(
+            f"Assigned GPU {gpu_id} slot {slot_id} for this workflow run. Available GPUs: {available_gpu_ids()} | Remaining slots: {snapshot}"
+        )
+        try:
+            return run_in_gpu_process(
+                __name__,
+                "_child_run_impl",
+                gpu_id,
+                pyscf_input,
+                summarised_user_query,
+                exit_node,
+                update_graph,
+                geometry_max_steps,
+                freq_threshold,
+                tddft_nstates,
+                imag_removal_max_attempts,
+                run_id,
+                gpu_id,
+                headers=headers,
+                timeout=workflow_timeout_s,
+                deps=deps_obj,
+            )
+        except Exception as e:
+            tb = traceback.format_exc()
+            logfire.error(f"GPU child failed: {e}")
+            raise ModelRetry(f"PySCF workflow execution failed: {tb}")
+
+
+def _child_run_impl(
+    pyscf_input: PyscfInput,
+    summarised_user_query: str,
+    exit_node: Optional[str],
+    update_graph: bool,
+    geometry_max_steps: int,
+    freq_threshold: float,
+    tddft_nstates: int,
+    imag_removal_max_attempts: int,
+    run_id: str,
+    parent_gpu_id: int,
+            If mean-field object already exists, this method will return False
+            but won't raise an error, allowing for flexible workflow management.
+        """
+        if self._mf is not None:
+            # Mean-field object already exists, cannot change checkfile path
+            return False
+
+        if self._checkfile_path is not None:
+            return False  # Path already set, cannot override
+
+        self._checkfile_path = path
+        return True
+
+    @property
+    def checkfile_path(self) -> Optional[str]:
+        """Get current checkfile path (read-only)"""
+        return self._checkfile_path
+
+    @property
+    def molecule_identifier(self) -> str:
+        """Get the molecule identifier for easy access."""
+        return self.qcmolecule.identifier
+
+    def build_base_mf(self, mol: gto.Mole) -> scf.hf.SCF:
+        """Build the CPU mean-field object before optional GPU conversion."""
+        if self.xc_functional is None:
+            return scf.RHF(mol) if self.restricted else scf.UHF(mol)
+
+        mf = dft.RKS(mol) if self.restricted else dft.UKS(mol)
+        mf.xc = self.xc_functional
+        return mf
+
+    def build_smd_solvent(self, mol: gto.Mole) -> pyscf_smd.SMD:
+        """Build the CPU SMD object; PySCF upgrades it during `mf.to_gpu()`."""
+        solvent_name = "water"
+        if self.implicit_solvent is not None:
+            solvent_name = SMD_SOLVENT_ALIASES.get(
+                self.implicit_solvent.lower(),
+                self.implicit_solvent.lower(),
+            )
+
+        if solvent_name not in pyscf_smd.solvent_db:
+            raise ValueError(f"SMD solvent '{solvent_name}' is not available in PySCF.")
+        return pyscf_smd.SMD(mol, solvent=solvent_name)
+
+    @property
+    def pyscf_mol(self) -> gto.Mole:
+        """Returns a PySCF Mole object from the mean-field calculation.
+
+        This property always returns the mol object associated with the current
+        mean-field calculation, ensuring that any computed results (like optimized
+        geometries) are preserved. The mol object cannot be set directly to prevent
+        loss of calculation results.
+        """
+        # Always get mol from the mean-field object to ensure we have
+        # the mol that contains any calculation results
+        return self.pyscf_mf.mol
+
+    @property
+    def pyscf_mf(self) -> scf.hf.SCF:
+        """Returns a PySCF mean-field object based on the method and restrictions.
+        GPU-enabled by default when available.
+        """
+        if self._mf is None:
+            logfire.debug(
+                f"Creating PySCF mean-field object for {self.qcmolecule.identifier}"
+            )
+
+            # Create initial mol object from QCMolecule
+            qcem = self.qcmolecule.to_qcelemental_molecule()
+            mol = gto.Mole(
+                atom=list(zip(qcem.symbols, qcem.geometry)),
+                basis=self.qcmolecule.basis_set,
+                charge=qcem.molecular_charge,
+                # Spin multiplicity in PySCF is 2S, not 2S + 1
+                spin=qcem.molecular_multiplicity - 1,
+                unit="Bohr",  # qcelemental uses Bohr by default
+            )
+            try:
+                mol.ecp = self.qcmolecule.basis_set
+                mol.build()
+            except Exception:
+                mol.ecp = None
+                mol.build()
+
+            # Build the CPU object first, then let PySCF upgrade the full
+            # solvent-wrapped stack to GPU in one pass when the runtime allows it.
+            mf = self.build_base_mf(mol)
+
+            # NOTE call `density_fit` here so that it doesn't raise error if running on GPU
+            # which might complain if we do `self._mf = mf.density_fit().to_gpu()` after specifying the solvation
+            # ```
+            # File ".../lib/python3.12/site-packages/pyscf/df/df_jk.py", line 267, in to_gpu
+            #     obj = self.undo_df().to_gpu().density_fit()
+            #           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            #   File ".../lib/python3.12/site-packages/gpu4pyscf/scf/hf.py", line 759, in density_fit
+            #     raise RuntimeError(
+            #           RuntimeError: It is recommended to call density_fit() before applying a solvent model.
+            #           Calling density_fit() after the solvent model may result in incorrect nuclear gradients,
+            #           TDDFT, and other methods.
+            # ```
+            mf = mf.density_fit()
+
+            # add solvation model if specified
+            if self.solvation_model == "SMD":
+                mf = mf.SMD(self.build_smd_solvent(mol))
+            elif bool(self.solvation_model) or bool(self.implicit_solvent):
+                mf = mf.PCM()
+                if self.solvation_model is not None:
+                    mf.with_solvent.method = self.solvation_model
+                else:
+                    mf.with_solvent.method = "IEF-PCM"
+                    logfire.debug("No solvation model specified, defaulting to IEF-PCM")
+
+                # below is to support implicit solvent that's not water.
+                if (
+                    bool(self.implicit_solvent)
+                    and self.implicit_solvent.lower() != "water"
+                ):
+                    if self.implicit_solvent.lower() == "dmf":
+                        # terrible hack for now
+                        mf.with_solvent.eps = 38.3
+                    else:
+                        solvent_row = load_solvent(self.implicit_solvent)
+                        mf.with_solvent.eps = solvent_row[
+                            "eps_static"
+                        ]  # Dielectric constant
+
+            # Use workflow-provided checkfile path if available
+            if self._checkfile_path:
+                os.makedirs(os.path.dirname(self._checkfile_path), exist_ok=True)
+                mf.chkfile = self._checkfile_path
+            mf.verbose = 0
+
+            # Enable GPU and density fitting by default when available
+            try:
+                self._mf = mf.to_gpu()
+                logfire.debug("Mean-field object initialized with GPU acceleration")
+            except ImportError:
+                self._mf = mf
+                logfire.debug(
+                    "Mean-field object initialized on CPU (GPU not available)"
+                )
+        return self._mf
+
+    @pyscf_mf.setter
+    def pyscf_mf(self, mf_obj: scf.hf.SCF) -> None:
+        """Sets a PySCF mean-field object.
+
+        This setter allows external code to provide a pre-configured mean-field object,
+        which is useful for cases where the mean-field calculation has already been
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

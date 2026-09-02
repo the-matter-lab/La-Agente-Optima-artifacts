@@ -1,0 +1,32 @@
+exit_code=0
+
+=== stdout (raw) ===
+hood_co_bisphosphine_bo/descriptors.py:137:            "steric_crowding_raw": crowding_score,
+hood_co_bisphosphine_bo/descriptors.py:149:            "electronic_activation": -100.0,
+hood_co_bisphosphine_bo/descriptors.py:150:            "coordination_stability": -100.0,
+hood_co_bisphosphine_bo/descriptors.py:151:            "chelate_geometry": -100.0,
+hood_co_bisphosphine_bo/descriptors.py:152:            "steric_crowding": 100.0,
+hood_co_bisphosphine_bo/descriptors.py:166:    crowd = float(geom.get("steric_crowding_raw") or 0.0)
+hood_co_bisphosphine_bo/descriptors.py:168:        "electronic_activation": float(homo_score + charge_score + spin_score),
+hood_co_bisphosphine_bo/descriptors.py:169:        "coordination_stability": float(stability),
+hood_co_bisphosphine_bo/descriptors.py:170:        "chelate_geometry": float(chelate),
+hood_co_bisphosphine_bo/descriptors.py:171:        "steric_crowding": float(crowd),
+hood_co_bisphosphine_bo/intake.py:6:    ("electronic_activation", "maximize", "higher SOMO/HOMO, lower positive Co charge, appropriate Co spin density"),
+hood_co_bisphosphine_bo/intake.py:7:    ("coordination_stability", "maximize", "successful optimization and chemically reasonable Co-P/Co-O binding"),
+hood_co_bisphosphine_bo/intake.py:8:    ("chelate_geometry", "maximize", "reasonable P-Co-P bite angle and limited square-planar distortion"),
+hood_co_bisphosphine_bo/intake.py:9:    ("steric_crowding", "minimize", "heavy-atom crowding near Co and ligand strain"),
+hood_co_bisphosphine_bo/evaluation.py:241:        "electronic_activation": 1.0 + elec_map[candidate.r1] + elec_map[candidate.r2] - 0.1 * crowd,
+hood_co_bisphosphine_bo/evaluation.py:242:        "coordination_stability": 8.0 - 2.0 * asym - 0.3 * crowd,
+hood_co_bisphosphine_bo/evaluation.py:243:        "chelate_geometry": linker_geom[candidate.linker] - asym,
+hood_co_bisphosphine_bo/evaluation.py:244:        "steric_crowding": crowd,
+hood_co_bisphosphine_bo/evaluation.py:292:        feasible = all(v > -99.0 for k, v in objectives.items() if k != "steric_crowding") and objectives["steric_crowding"] < 99.0
+hood_co_bisphosphine_bo/evaluation.py:327:                "electronic_activation": -100.0,
+hood_co_bisphosphine_bo/evaluation.py:328:                "coordination_stability": -100.0,
+hood_co_bisphosphine_bo/evaluation.py:329:                "chelate_geometry": -100.0,
+hood_co_bisphosphine_bo/evaluation.py:330:                "steric_crowding": 100.0,
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,56 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- ./chemical_identities.csv
+rows_preview=8
+'role','short_name','full_name','CAS','MW_g_per_mol','availability'
+'starting_material','SM','Starting material / substrate (see CAS)','75400-61-2','209.25','ordered'
+'catalyst','Ru bpy Cl',"Tris(2,2'-bipyridine)ruthenium(II) chloride, [Ru(bpy)3]Cl2",'50525-27-4','748.62','Available'
+'catalyst','Ru bpy PF6',"Tris(2,2'-bipyridine)ruthenium(II) hexafluorophosphate, [Ru(bpy)3](PF6)2",'60804-74-2','859.55','Available'
+'catalyst','Ir ppy','Tris(2-phenylpyridine)iridium(III), Ir(ppy)3','94928-86-6','654.78','Available'
+'catalyst','Ir CF3 ppy','Ir[dF(CF3)ppy]2(dtbbpy)PF6','870987-63-6','1121.91','Available'
+'catalyst','4CzIPN','2,4,5,6-Tetrakis(9H-carbazol-9-yl)isophthalonitrile','1416881-52-1','763.9','Available'
+'activator','TFAA','Trifluoroacetic anhydride','407-25-0','210.03','Available'
+--- ./chemical_space_process_variables.csv
+rows_preview=8
+'variable','min','max','steps','scope','notes'
+'light intensity','0','100','5','within_campaign','for Eagle reactor is continuous'
+'catalyst loading','0.001 equiv','0.004 equiv','','within_campaign',''
+'catalyst type','see below','','','within_campaign','see stock_solutions concentrations file'
+'TFAA','0.9 equiv','3.5 equiv','','within_campaign',''
+'oxydant loading','0.9 equiv','3.0 equiv','','within_campaign',''
+'oxydant type','see below','','','within_campaign',''
+'reaction time','2 min','2 h','','within_campaign','depends on reactor length; pump flowrate 10 uL/min to 2 mL/min'
+--- ./chemical_space_reagent_bounds.csv
+rows_preview=5
+'role','MW_g_per_mol','equiv_min','equiv_max','conc_min_mM','conc_max_mM','vol_fraction_min','vol_fraction_max','vol_min_uL','vol_max_uL','slug_vol_uL'
+'SM','209.25','','','100','100','0.1','0.1','65','65','650'
+'Catalyst','748.62','0.001','0.004','0.1','0.4','0.033333','0.133333','21.666667','86.666667','314.166667'
+'TFAA','210.03','0.9','3.5','90','350','0.025714','0.1','16.714286','65',''
+'oxydant','171.2','0.9','3.0','90','300','0.045','0.15','29.25','97.5',''
+--- ./constants.csv
+rows_preview=8
+'constant','value','unit'
+'slug_size','650','uL'
+'AcquisitionTime','1.64',''
+'Number','32',''
+'yield_calculation_chemical','SM',''
+'target_peak','-58','ppm'
+'target_peak_deviation','3','ppm'
+'collect_crude','FALSE',''
+--- ./stock_solutions_concentrations.csv
+rows_preview=8
+'reagent','MW_g_per_mol','stock_mass_target_g','stock_vol_mL','stock_conc_target_mM','vol_at_25C_mL','CAS','real_mass_g','real_conc_mM','catalyst_type','availability'
+'SM','209.25','1.04625','5','1000','','75400-61-2','1.0417','995.6511350059739','','ordered'
+'Ru bpy Cl','748.62','0.0112293','5','3','','50525-27-4','0.0106','2.831877320937191','Catalyst Type','Available'
+'Ru bpy PF6','859.55','0.01289325','5','3','','60804-74-2','0.015','3.490198359606771','Catalyst Type','Available'
+'Ir ppy','654.78','0.0098217','5','3','','94928-86-6','0.0094','2.871193377928465','Catalyst Type','Available'
+'Ir CF3 ppy','1121.91','0.01682865','5','3','','870987-63-6','0.0139','2.4779171234769275','Catalyst Type','Available'
+'4CzIPN','763.9','0.022917','5','6','','1416881-52-1','0.0235','6.152637779814111','Catalyst Type','Available'
+'TFAA','210.03','3.675525','5','3500','2.466795302013423','407-25-0','3.7129','3535.590153787554','','Available'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

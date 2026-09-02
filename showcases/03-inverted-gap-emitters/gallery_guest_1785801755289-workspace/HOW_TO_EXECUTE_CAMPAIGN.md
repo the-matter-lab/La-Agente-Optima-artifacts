@@ -1,0 +1,149 @@
+# Pollice 2021 lowest-conformer TD-DFT gap BO-MCP campaign
+
+This workspace contains a ready-to-run BO-MCP campaign package. Running the production command below **will start the Bayesian optimization campaign** and will evaluate BO-suggested molecules with CREST/GFN2 followed by PySCF TD-DFT.
+
+## Entry point
+
+```bash
+uv run python run_pollice_lowest_conformer_gap.py
+```
+
+Default production settings encoded in the entry point/package:
+
+- Input CSV: `pollice_2021_geometry_available.csv`
+- Candidate ID: `molecule_key`
+- Structure input: `smiles_canonical` only
+- RDKit heavy-atom filter: keep `heavy_atoms < 56`
+- Search variable: one categorical `molecule_key` over the filtered rows
+- BO backend: BO-MCP through `BoMcpClient.from_env()` / BayBE categorical custom descriptors
+- BO initial design: 5 random molecules
+- BO batch size: 2
+- Per-invocation BO loop budget: 10 suggestion/evaluation loops (`--max-iterations 10`)
+- Objective: maximize `negative_singlet_triplet_gap = -(S1_ev - T1_ev)`
+- Evaluation protocol: CREST/GFN2 conformer generation from SMILES, select the lowest-energy conformer, then restricted closed-shell PBE0/def2-SVP gas-phase TD-DFT with charge 0 and spin multiplicity 1.
+
+The campaign intake intentionally leaves BO-MCP `max_iterations` unset so the user can continue/reopen later. The `--max-iterations` value is only a per-command runtime budget.
+
+## Required environment
+
+Run from the workspace directory containing this file. The active container must provide:
+
+- `uv`
+- BO-MCP client environment variables: `BO_MCP_API_URL` and `BO_MCP_API_KEY`
+- Graph/chemistry service defaults, unless overridden:
+  - `GRAPHCHAT_AGENT_WS_URL` or `VITE_WS_URL` (default `ws://graphchat:3000`)
+  - `GRAPHCHAT_ROOM` (default `room`)
+  - `SPARQL_ENDPOINT` (default `http://blazegraph:8080/blazegraph/namespace/kb/sparql`)
+- CREST/xTB and PySCF workflow dependencies available in the configured environment.
+
+This is expected to be a multi-hour/overnight campaign. The manual test molecule took about 1 min 52 sec in CREST and about 11 min in PySCF.
+
+## Production command
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_pollice_lowest_conformer_gap.py \
+  --csv-path pollice_2021_geometry_available.csv \
+  --artifact-dir pollice_lowest_conformer_gap_artifacts \
+  --max-iterations 10 \
+  --batch-size 2 \
+  --initial-design-size 5 \
+  --poll-s 180 \
+  --heartbeat-s 1800 \
+  --stop-file STOP
+```
+
+Stdout is concise and monitor-friendly. It emits only tagged lines:
+
+- `[EVENT]` campaign state changes, artifact paths, stop/resume actions
+- `[HEARTBEAT]` long-run liveness
+- `[RESULT]` one line per evaluated molecule
+- `[ALERT]` failures, rejected suggestions, stop conditions, or best-effort cleanup warnings
+
+A suitable monitor pattern is:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_pollice_lowest_conformer_gap.py 2>&1 | grep -E '^\[(EVENT|HEARTBEAT|RESULT|ALERT)\]'
+```
+
+## Graceful stop
+
+At the top of each BO loop, before generating a new suggestion, the script checks for the stop file (default `STOP`). To request a graceful stop:
+
+```bash
+touch STOP
+```
+
+When detected, the script prints `[EVENT]`, deletes `STOP` to prevent stale-stop resumes, exports artifacts if possible, and pauses the campaign if it is running. It does **not** stop between evaluation and result submission, so completed evaluations can be submitted safely.
+
+## Resume / continue
+
+If the process is killed or stopped after a campaign has been created, resume with the campaign id printed in `[EVENT]` lines:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_pollice_lowest_conformer_gap.py \
+  --campaign-id <CAMPAIGN_ID> \
+  --artifact-dir pollice_lowest_conformer_gap_artifacts \
+  --max-iterations 10
+```
+
+The script asks BO-MCP for pending suggestions before generating new ones. If the campaign is paused, it resumes it; if completed, it reopens it. Do not create a new campaign by replaying old results.
+
+## Outputs
+
+Default artifact directory: `pollice_lowest_conformer_gap_artifacts/`
+
+Important files:
+
+- `run.log` — tagged stdout mirror and alerts
+- `campaign_intake.json` — exact BO-MCP intake payload
+- `evaluation_results.csv` — one row per evaluated molecule with required and debug columns:
+  - `molecule_key`
+  - `smiles_canonical`
+  - `n_conformers_generated`
+  - `selected_conformer_energy`
+  - `S1_ev`
+  - `T1_ev`
+  - `delta_est_ev`
+  - `objective`
+  - `oscillator_strength`
+  - `status`
+  - `crest_wall_s`
+  - `pyscf_wall_s`
+  - `total_eval_wall_s`
+  - `error_message`
+- `evaluation_results.jsonl` — append-only per-evaluation provenance
+- `worker_logs/` and `pyscf_smoke_raw.log` — raw CREST/PySCF helper output kept off stdout so monitors see only tagged lines
+- `bo_export.csv` — best-effort BO-MCP campaign export
+- `invocation_report.md` — best molecule summary for rows in the artifact CSV
+
+After execution, report the best `molecule_key`, `smiles_canonical`, `delta_est_ev`, objective value, conformer count, oscillator strength if available, and the full evaluated-molecule/objective table from `evaluation_results.csv`.
+
+## Validation / smoke-test commands
+
+These commands are for maintainer validation and do not launch the full chemistry campaign:
+
+```bash
+uv run python -m py_compile run_pollice_lowest_conformer_gap.py pollice_lowest_conformer_gap/*.py
+```
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_pollice_lowest_conformer_gap.py \
+  --synthetic-evaluator \
+  --limit-candidates 12 \
+  --max-iterations 1 \
+  --batch-size 2 \
+  --initial-design-size 5 \
+  --artifact-dir pollice_lowest_conformer_gap_smoke_artifacts \
+  --poll-s 0 \
+  --heartbeat-s 120 \
+  --terminate-on-exit
+```
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_pollice_lowest_conformer_gap.py \
+  --pyscf-smoke-only \
+  --artifact-dir pollice_lowest_conformer_gap_pyscf_smoke_artifacts \
+  --pyscf-smoke-timeout-s 120
+```
+
+The synthetic smoke test creates and terminates a temporary BO-MCP campaign over 12 filtered candidates and uses fake deterministic objectives. The PySCF smoke test runs a tiny water TD-DFT calculation to validate workflow call/result-shape handling; it does not touch BO-MCP.

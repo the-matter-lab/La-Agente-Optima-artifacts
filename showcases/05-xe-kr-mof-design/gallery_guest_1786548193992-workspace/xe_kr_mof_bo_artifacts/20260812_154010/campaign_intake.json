@@ -1,0 +1,111 @@
+{
+  "backend": "baybe",
+  "batch_size": 3,
+  "description": "BayBE campaign over PORMAKE topology + node building block + edge building block. External evaluator constructs MOFs with PORMAKE and scores Zeo++ pore metrics for Xe/Kr separation.",
+  "initial_design_size": 9,
+  "max_iterations": 10,
+  "max_observations": 30,
+  "name": "xe-kr-pormake-mof-baybe",
+  "objectives": [
+    {
+      "direction": "maximize",
+      "name": "selectivity_proxy",
+      "normalization_bounds": [
+        0.0,
+        1.0
+      ],
+      "unit": "0-1 proxy",
+      "weight": 0.6
+    },
+    {
+      "direction": "maximize",
+      "name": "capacity_proxy",
+      "normalization_bounds": [
+        0.0,
+        10.0
+      ],
+      "unit": "cm^3/g pore volume proxy",
+      "weight": 0.4
+    }
+  ],
+  "parameters": [
+    {
+      "categories": [
+        "pcu",
+        "dia",
+        "ths",
+        "bcu",
+        "srs",
+        "nbo",
+        "pts"
+      ],
+      "name": "topology",
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "N12",
+        "N124",
+        "N126",
+        "N16",
+        "N17",
+        "N171",
+        "N180",
+        "N199",
+        "N20",
+        "N202",
+        "N214",
+        "N257",
+        "N259",
+        "N295",
+        "N307",
+        "N321",
+        "N367",
+        "N404",
+        "N440",
+        "N450",
+        "N47",
+        "N470",
+        "N474",
+        "N477",
+        "N495",
+        "N512",
+        "N52",
+        "N59",
+        "N601",
+        "N632",
+        "N639",
+        "N642",
+        "N672",
+        "N679",
+        "N682",
+        "N689",
+        "N693",
+        "N717",
+        "N718",
+        "N81"
+      ],
+      "name": "node",
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "E226",
+        "E88",
+        "E73",
+        "E85",
+        "E177",
+        "E174",
+        "E78",
+        "E4",
+        "E129",
+        "E161"
+      ],
+      "name": "edge",
+      "type": "categorical"
+    }
+  ],
+  "random_seed": 20260812,
+  "scalarization": "desirability",
+  "scalarizer": "geom_mean"
+}

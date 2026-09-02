@@ -1,0 +1,91 @@
+exit_code=0
+
+=== stdout (raw) ===
+278:  |   MD simulation time   :     2.5 ps       |
+280:  |   timestep dt          :     5.0 fs       |
+287:  |   MD simulation time   :     2.5 ps       |
+289:  |   timestep dt          :     5.0 fs       |
+296:  |   MD simulation time   :     2.5 ps       |
+298:  |   timestep dt          :     5.0 fs       |
+305:  |   MD simulation time   :     2.5 ps       |
+307:  |   timestep dt          :     5.0 fs       |
+314:  |   MD simulation time   :     2.5 ps       |
+316:  |   timestep dt          :     5.0 fs       |
+343:> Total runtime for 144 optimizations:
+344: * wall-time:     0 d,  0 h,  0 min,  9.615 sec
+345: *  cpu-time:     0 d,  0 h,  1 min, 54.566 sec
+362:> Total runtime for 54 optimizations:
+363: * wall-time:     0 d,  0 h,  0 min, 12.988 sec
+364: *  cpu-time:     0 d,  0 h,  2 min, 35.276 sec
+390:  |   MD simulation time   :     1.2 ps       |
+392:  |   timestep dt          :     5.0 fs       |
+396:  |   MD simulation time   :     1.2 ps       |
+398:  |   timestep dt          :     5.0 fs       |
+415:> Total runtime for 26 optimizations:
+416: * wall-time:     0 d,  0 h,  0 min,  8.062 sec
+417: *  cpu-time:     0 d,  0 h,  1 min, 36.376 sec
+442: finished.
+464:> Total runtime for 1 optimizations:
+465: * wall-time:     0 d,  0 h,  0 min,  0.067 sec
+466: *  cpu-time:     0 d,  0 h,  0 min,  0.801 sec
+483:> Total runtime for 1 optimizations:
+484: * wall-time:     0 d,  0 h,  0 min,  0.107 sec
+485: *  cpu-time:     0 d,  0 h,  0 min,  1.279 sec
+511:> Total runtime for 2 optimizations:
+512: * wall-time:     0 d,  0 h,  0 min,  0.136 sec
+513: *  cpu-time:     0 d,  0 h,  0 min,  1.626 sec
+538: total number unique points considered further :           2
+552: Wall Time Summary
+554: CREST runtime (total)               0 d,  0 h,  1 min, 52.150 sec
+563: * wall-time:     0 d,  0 h,  1 min, 52.150 sec
+564: *  cpu-time:     0 d,  0 h, 20 min, 52.697 sec
+567: * Total number of energy+grad calls: 16461
+569: CREST terminated normally.
+
+LAST 40 LINES
+ Bconst threshold               :   0.0100
+ population threshold           :   0.0500
+ # fragment in coord            :     1
+ # bonds in reference structure :    43
+ number of reliable points      :     2
+ sorting energy window (EWIN)   :    5.0000 / kcal*mol⁻¹
+ reference state Etot           :  -66.5789444800000
+ number of doubles removed by rot/RMSD         :           0
+ total number unique points considered further :           2
+       Erel/kcal        Etot weight/tot  conformer     set   degen     origin
+       1   0.000   -66.57894    0.50002    1.00000       1       2
+       2   0.000   -66.57894    0.49998
+T /K                                  :   298.15
+E lowest                              :   -66.57894
+ensemble average energy (kcal)        :    0.000
+ensemble entropy (J/mol K, cal/mol K) :    5.763    1.377
+ensemble free energy (kcal/mol)       :   -0.411
+population of lowest in %             :  100.000
+ number of unique conformers for further calc            1
+ list of relative energies saved as "crest.energies"
+ 
+ -----------------
+ Wall Time Summary
+ -----------------
+ CREST runtime (total)               0 d,  0 h,  1 min, 52.150 sec
+ ------------------------------------------------------------------
+ Trial metadynamics (MTD)   ...        0 min,  7.493 sec (  6.682%)
+ Metadynamics (MTD)         ...        0 min, 42.793 sec ( 38.157%)
+ Geometry optimization      ...        0 min, 54.442 sec ( 48.544%)
+ Molecular dynamics (MD)    ...        0 min,  6.993 sec (  6.236%)
+ Genetic crossing (GC)      ...        0 min,  0.183 sec (  0.163%)
+ I/O and setup              ...        0 min,  0.246 sec (  0.219%)
+ ------------------------------------------------------------------
+ * wall-time:     0 d,  0 h,  1 min, 52.150 sec
+ *  cpu-time:     0 d,  0 h, 20 min, 52.697 sec
+ * ratio c/w:    11.170 speedup
+ ------------------------------------------------------------------
+ * Total number of energy+grad calls: 16461
+ 
+ CREST terminated normally.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,12 @@
+[EVENT] loaded candidates n=1512 heavy_atom_cutoff=<56 csv=pollice_2021_geometry_available.csv
+[EVENT] resuming paused campaign_id=f023cf90-a1a1-470a-987d-134a38919812
+[EVENT] generated suggestions n=2
+[RESULT] molecule_key=XDPCAOJHJFQBCS-UHFFFAOYSA-N status=failed rejected_suggestion_id=f86f3670-21dd-4c33-884e-150942350162 error=ModelRetry: run_pyscf_workflow failed: Traceback (most recent call last):   File "/app/domains/pyscf/tools/pyscf_workflow_tools.py", line 442, in run_pyscf_workflow     return run_pyscf(            ^^
+[RESULT] molecule_key=OPPMQHHCEYGRSM-UHFFFAOYSA-N status=failed rejected_suggestion_id=fe0a8dc3-3e27-461e-b38b-eb9c1711cb1b error=ModelRetry: run_pyscf_workflow failed: Traceback (most recent call last):   File "/app/domains/pyscf/tools/pyscf_workflow_tools.py", line 442, in run_pyscf_workflow     return run_pyscf(            ^^
+[EVENT] generated suggestions n=2
+[RESULT] molecule_key=DYHLIWPSYMMWJV-UHFFFAOYSA-N status=failed rejected_suggestion_id=6be171c1-f3c7-4aff-92da-aaae15004f11 error=ModelRetry: run_pyscf_workflow failed: Traceback (most recent call last):   File "/app/domains/pyscf/tools/pyscf_workflow_tools.py", line 442, in run_pyscf_workflow     return run_pyscf(            ^^
+[RESULT] molecule_key=VJPYKUZBOIDYFX-UHFFFAOYSA-N status=failed rejected_suggestion_id=bd97f2ca-cbd2-4b9f-8461-8919a140eb29 error=ModelRetry: run_pyscf_workflow failed: Traceback (most recent call last):   File "/app/domains/pyscf/tools/pyscf_workflow_tools.py", line 442, in run_pyscf_workflow     return run_pyscf(            ^^
+[EVENT] stop file detected path=STOP; removing marker and stopping before suggestion generation
+[EVENT] exported campaign CSV path=pollice_lowest_conformer_gap_artifacts/bo_export.csv content_type=text/csv; charset=utf-8
+[EVENT] paused campaign_id=f023cf90-a1a1-470a-987d-134a38919812
+[EVENT] artifacts_dir=pollice_lowest_conformer_gap_artifacts results_csv=pollice_lowest_conformer_gap_artifacts/evaluation_results.csv campaign_id=f023cf90-a1a1-470a-987d-134a38919812

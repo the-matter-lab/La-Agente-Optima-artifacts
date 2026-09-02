@@ -1,0 +1,148 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Hood-inspired cationic Co(II) bisphosphine BO campaign
+
+## Files
+
+- Entry point: `run_hood_co_bisphosphine_bo.py`
+- Package: `hood_co_bisphosphine_bo/`
+- Manifest: `campaign_manifest.json`
+- Default artifacts directory: `hood_co_bisphosphine_artifacts/`
+
+## What the script does before any calculation
+
+Every invocation first constructs the full finite ligand library and writes:
+
+- `hood_co_bisphosphine_artifacts/candidate_library.json`
+- `hood_co_bisphosphine_artifacts/candidate_library.csv`
+
+It prints an `[EVENT]` line reporting:
+
+- total candidates = 144
+- candidates per linker = 36 for each of ethylene, propylene, 1,2-phenylene, cis-1,2-cyclohexylene
+- symmetric `R1=R2` candidates = 32
+- unsymmetric `R1!=R2` candidates = 112
+- duplicate candidate ids = 0
+- duplicate unordered `R1/R2` permutations remaining = 0
+
+The ligand library is `R1_2P-linker-PR2_2`, where `R1/R2` are unordered pairs with repetition from `Me, Et, iPr, Cy, Ph, p-Tol, p-Anisyl, p-CF3-Ph`. Definitions used in prompts: `p-Tol = 4-methylphenyl`, `p-Anisyl = 4-methoxyphenyl`, `p-CF3-Ph = 4-trifluoromethylphenyl`.
+
+## Safety modes and whether calculations start
+
+Default behavior is safe: if no execution flag is supplied, the script reports the library and exits. It does **not** create BO suggestions, call Estructural, or run PySCF.
+
+Library-only dry run:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py --library-only
+```
+
+Create/validate BO campaign only, with no suggestions or calculations:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py --create-only
+```
+
+Smoke-test one BO iteration without chemistry calculations:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py \
+  --mock-evaluator \
+  --max-successes 1 \
+  --poll-s 0 \
+  --terminate-on-exit
+```
+
+Production calculation mode, one selected candidate this invocation:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py \
+  --run-calculations \
+  --max-successes 1
+```
+
+Resume a paused/completed campaign:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py \
+  --campaign-id <CAMPAIGN_ID> \
+  --run-calculations \
+  --max-successes 1
+```
+
+## Environment requirements
+
+The active `uv` environment must provide:
+
+- BO-MCP client and API access: `BO_MCP_API_URL`, `BO_MCP_API_KEY`
+- Estructural A2A service access for production calculations: `ESTRUCTURAL_A2A_URL` or its default in-network endpoint
+- Workspace/room context: `GRAPHCHAT_ROOM` is used as Estructural `context_id`
+- PySCF workflow dependencies available in the repository environment
+
+## Computational assumptions
+
+The production evaluator builds precursor-like cationic complexes `[Co(acac)(P2)]+` with Estructural and evaluates them with the repository PySCF workflow. Defaults are intentionally modest and adjustable:
+
+- charge: `+1` (`--charge 1`)
+- Co(II) spin multiplicity: doublet (`--spin-multiplicity 2`)
+- DFT functional: `b3lyp` (`--xc-functional b3lyp`)
+- basis set: `def2-svp` (`--basis-set def2-svp`)
+- geometry optimization max steps: `60` (`--geometry-max-steps 60`)
+- per-candidate PySCF workflow timeout: `1800 s` (`--workflow-timeout-s 1800`)
+
+The script requests geometry optimization plus descriptor analysis only. It explicitly does **not** request transition states, frequency calculations, TDDFT, full catalytic-cycle calculations, or energy-span calculations.
+
+## Objectives and feasibility handling
+
+BO-MCP is configured with BayBE over one finite categorical parameter, `candidate_id`, using custom descriptor vectors for the candidate library and Pareto multi-objective optimization.
+
+Objectives:
+
+1. `electronic_activation` — maximize. Uses higher SOMO/HOMO energy, lower positive Co charge, and appropriate Co-centered spin density when available.
+2. `coordination_stability` — maximize. Rewards successful optimization, both Co-P distances in a chemically reasonable range, low Co-P asymmetry, acac O,O coordination, and no ligand dissociation.
+3. `chelate_geometry` — maximize. Rewards reasonable P-Co-P bite angle and limited square-planar distortion.
+4. `steric_crowding` — minimize. Penalizes heavy atoms close to Co, low nonbonded distances, and bulky substituents that distort the coordination region.
+
+Failed SCF, failed optimization, ligand/acac dissociation, unrealistic Co-P/Co-O distances, severe collapse, or infeasible geometry receive finite heavy penalties before submission to BO-MCP.
+
+## Runtime output tags
+
+The entry point prints concise monitor-friendly tagged stdout lines:
+
+- `[EVENT]` state changes, library reports, campaign create/resume/pause/export
+- `[RESULT]` one-line per-experiment objective summary
+- `[ALERT]` recoverable failures or rejected suggestions
+- `[HEARTBEAT]` liveness during long invocations
+
+Detailed per-candidate provenance is written to artifacts, not dumped to stdout.
+
+## Artifacts
+
+Default artifact paths:
+
+- `hood_co_bisphosphine_artifacts/candidate_library.json`
+- `hood_co_bisphosphine_artifacts/candidate_library.csv`
+- `hood_co_bisphosphine_artifacts/campaign_id.txt`
+- `hood_co_bisphosphine_artifacts/evaluations.jsonl`
+- `hood_co_bisphosphine_artifacts/<candidate_id>/evaluation.json`
+- `hood_co_bisphosphine_artifacts/<candidate_id>/<candidate_id>.xyz` for Estructural-generated structures in production mode
+- `hood_co_bisphosphine_artifacts/campaign_export.csv`
+
+## Stop file
+
+Default stop file: `STOP` in the current working directory.
+
+The script checks for this file at the top of each BO loop before requesting a suggestion. If present, it prints `[EVENT]`, deletes the file to avoid a stale stop on resume, and exits through normal shutdown. It does not check the stop file between evaluation and BO-MCP result submission, so completed evaluations are submitted before pausing/exiting.
+
+## Notes
+
+- Use `--max-successes` as a per-invocation budget. It does not alter the immutable BO campaign intake.
+- The script pauses a running campaign at the end of a normal invocation. Use `--campaign-id` to continue later.
+- `--terminate-on-exit` is intended for bounded smoke tests, not production campaigns.
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

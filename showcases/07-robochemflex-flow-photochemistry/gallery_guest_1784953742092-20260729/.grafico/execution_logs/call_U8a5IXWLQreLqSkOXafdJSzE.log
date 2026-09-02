@@ -1,0 +1,119 @@
+exit_code=0
+
+=== stdout (raw) ===
+{
+  "candidate": {
+    "catalyst_type": "4CzIPN",
+    "oxidant_type": "py NO",
+    "catalyst_equiv": 0.0025,
+    "TFAA_equiv": 2.2,
+    "oxidant_equiv": 1.8,
+    "light_intensity": 50,
+    "residence_time_min": 30.0
+  },
+  "post_v1_runs_payload": {
+    "parameters": [
+      {
+        "name": "light_intensity",
+        "value": 50,
+        "units": "%",
+        "kind": "physical"
+      },
+      {
+        "name": "residence_time",
+        "value": 1800.0,
+        "units": "S",
+        "kind": "physical"
+      },
+      {
+        "name": "slug_volume",
+        "value": 650.0,
+        "units": "uL",
+        "kind": "physical"
+      },
+      {
+        "name": "collect_crude",
+        "value": false,
+        "kind": "physical"
+      },
+      {
+        "name": "SM",
+        "value": 100.0,
+        "units": "mM",
+        "kind": "chemical",
+        "role": "Limiting Reagent"
+      },
+      {
+        "name": "4CzIPN",
+        "value": 0.0025,
+        "units": "eq",
+        "kind": "chemical",
+        "role": "Catalyst"
+      },
+      {
+        "name": "TFAA",
+        "value": 2.2,
+        "units": "eq",
+        "kind": "chemical",
+        "role": "Anhydride"
+      },
+      {
+        "name": "PyNO",
+        "value": 1.8,
+        "units": "eq",
+        "kind": "chemical",
+        "role": "Oxidant"
+      },
+      {
+        "name": "sample_name",
+        "value": "seed01_<bo_campaign_id_prefix>"
+      },
+      {
+        "name": "target_peak",
+        "value": -58.0,
+        "units": "ppm"
+      },
+      {
+        "name": "metric",
+        "value": "yield"
+      },
+      {
+        "name": "yield_calculation_chemical",
+        "value": "SM"
+      },
+      {
+        "name": "target_peak_deviation",
+        "value": 3.0,
+        "units": "ppm"
+      },
+      {
+        "name": "centerFrequency",
+        "value": -60.0
+      },
+      {
+        "name": "target_peak_calibration_coeff_1",
+        "value": 6973.0
+      },
+      {
+        "name": "target_peak_calibration_coeff_0",
+        "value": -5.4
+      },
+      {
+        "name": "AcquisitionTime",
+        "value": "1.64",
+        "units": "S"
+      },
+      {
+        "name": "Number",
+        "value": "32"
+      }
+    ],
+    "note": "BO-MCP RoboChemFlex yield optimization seed01_<bo_campaign_id_prefix>"
+  }
+}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

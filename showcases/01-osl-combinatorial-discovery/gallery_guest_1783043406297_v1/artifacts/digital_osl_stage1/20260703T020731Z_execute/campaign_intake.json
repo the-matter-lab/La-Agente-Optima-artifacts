@@ -1,0 +1,107 @@
+{
+  "backend": "baybe",
+  "batch_size": 1,
+  "description": "Stage 1 bounded, cheap, first-pass digital OSL campaign over fragment-assembled A-B-C-B-A molecules. Uses CREST/GFN-FF plus cheap TDDFT/PBE/def2-SVP without geometry optimization or frequency validation.",
+  "initial_design_size": 0,
+  "name": "digital-osl-stage1",
+  "objectives": [
+    {
+      "direction": "maximize",
+      "name": "bright_osc_strength",
+      "unit": "dimensionless"
+    },
+    {
+      "direction": "minimize",
+      "name": "color_error_ev",
+      "unit": "eV"
+    },
+    {
+      "direction": "minimize",
+      "name": "ambiguity_penalty",
+      "unit": "arb"
+    }
+  ],
+  "parameters": [
+    {
+      "categories": [
+        "A014",
+        "A042"
+      ],
+      "name": "cap_id",
+      "parameter_options": {
+        "baybe": {
+          "custom_descriptors": {
+            "A014": {
+              "aromatic_rings": 1.0,
+              "clogp": 2.0518,
+              "exact_mw": 247.174359344,
+              "fraction_csp3": 0.5714285714285714,
+              "heavy_atoms": 18.0,
+              "rotatable_bonds": 2.0,
+              "tpsa": 21.700000000000003
+            },
+            "A042": {
+              "aromatic_rings": 2.0,
+              "clogp": 2.4775,
+              "exact_mw": 257.15870928000004,
+              "fraction_csp3": 0.4666666666666667,
+              "heavy_atoms": 19.0,
+              "rotatable_bonds": 1.0,
+              "tpsa": 23.39
+            }
+          },
+          "decorrelate": false,
+          "role": "custom"
+        }
+      },
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "B065",
+        "B066"
+      ],
+      "name": "bridge_id",
+      "parameter_options": {
+        "baybe": {
+          "custom_descriptors": {
+            "B065": {
+              "identity_code": 65.0
+            },
+            "B066": {
+              "identity_code": 66.0
+            }
+          },
+          "decorrelate": false,
+          "role": "custom"
+        }
+      },
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "C069",
+        "C094"
+      ],
+      "name": "core_id",
+      "parameter_options": {
+        "baybe": {
+          "custom_descriptors": {
+            "C069": {
+              "clogp": 2.8045999999999998,
+              "identity_code": 69.0
+            },
+            "C094": {
+              "clogp": 2.8046000000000006,
+              "identity_code": 94.0
+            }
+          },
+          "decorrelate": false,
+          "role": "custom"
+        }
+      },
+      "type": "categorical"
+    }
+  ],
+  "random_seed": 9227
+}

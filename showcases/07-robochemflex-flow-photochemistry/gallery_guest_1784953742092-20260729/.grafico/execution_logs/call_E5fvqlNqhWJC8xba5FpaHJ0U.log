@@ -1,0 +1,106 @@
+exit_code=0
+
+=== stdout (raw) ===
+        logfire.info("Submitted RoboFlex run", run_id=run_id, label=label)
+        record = wait_for_run(client, run_id, timeout_s=timeout_s)
+        result = _safe_result(client, run_id)
+        failure = _failure_message(record, result)
+        if failure:
+            _write_json(artifact_dir / "failed_evaluations.jsonl", {"label": label, "run_id": run_id, "candidate": candidate, "record": record, "result": result, "failure": failure})
+            return EvalOutcome(False, run_id=run_id, error=failure, platform_failure=True)
+        y = extract_yield_percent(result.get("result"))
+        actual = _actual_parameters(candidate, result.get("parameters") or [])
+        _write_json(artifact_dir / "robridge_results.jsonl", {"label": label, "run_id": run_id, "candidate": candidate, "result": result})
+        return EvalOutcome(True, actual, objective_values(actual, y), run_id=run_id)
+    except Exception as exc:
+        _write_json(artifact_dir / "failed_evaluations.jsonl", {"label": label, "run_id": run_id, "candidate": candidate, "failure": str(exc)})
+        return EvalOutcome(False, run_id=run_id, error=str(exc), platform_failure=True)
+
+
+def _safe_result(client: RobridgeClient, run_id: str) -> dict:
+    try:
+        return client.result(run_id)
+    except Exception as exc:
+        return {"run_id": run_id, "status": "unknown", "success": False, "error": f"result fetch failed: {exc}"}
+
+
+def _failure_message(record: dict, result: dict) -> str | None:
+    payload = result.get("result") if isinstance(result, dict) else None
+    if record.get("status") == "failed" or record.get("success") is False:
+        return record.get("error") or _result_failure(payload) or "RoboFlex run failed"
+    if result.get("status") == "failed" or result.get("success") is False:
+        return result.get("error") or _result_failure(payload) or "RoboFlex analysis failed"
+    return _result_failure(payload)
+
+
+def _result_failure(payload: object) -> str | None:
+    if isinstance(payload, dict) and payload.get("pass") is False:
+        return str(payload.get("failure_message") or "analysis result reported pass=false")
+    return None
+
+
+def _duplicate_run(client: RobridgeClient, label: str) -> dict | None:
+    try:
+        runs = client.list_runs().get("runs", [])
+    except Exception:
+        return None
+    for run in runs:
+        note = str(run.get("note") or "")
+        sample_names = [p.get("value") for p in run.get("parameters", []) if isinstance(p, dict) and p.get("name") == "sample_name"]
+        if label in note or label in sample_names:
+            return run
+    return None
+
+
+def _actual_parameters(candidate: dict, parameters: list[dict]) -> dict:
+    actual = dict(candidate)
+    by_name = {p.get("name"): p for p in parameters if isinstance(p, dict)}
+    if "light_intensity" in by_name:
+        actual["light_intensity"] = by_name["light_intensity"].get("value", actual["light_intensity"])
+            logfire.info("Transient RoboFlex status poll error", run_id=run_id, error=str(exc))
+        if state in {"completed", "failed"}:
+            _write_json(measurement_dir / "roboflex_final_run_record.json", rec)
+            return rec
+        if now - last_heartbeat >= heartbeat_s:
+            print(f"Heartbeat: RoboFlex run {run_id} still {state}; polling every {poll_s:.0f}s; detailed trail on disk.")
+            _append_json(measurement_dir / "run_poll_trail.jsonl", {"kind": "heartbeat", "time": _iso_now(), "run_status": state})
+            last_heartbeat = now
+        time.sleep(poll_s)
+    if last_error:
+        raise StopRequested(f"RoboFlex run {run_id} did not finish within {timeout_s} seconds; last poll error: {last_error}")
+    raise StopRequested(f"RoboFlex run {run_id} did not finish within {timeout_s} seconds.")
+
+
+def _fetch_result(rb: RobridgeClient, run_id: str) -> dict:
+    try:
+        return rb.result(run_id)
+    except Exception as exc:
+        return {"run_id": run_id, "status": "unknown", "success": False, "error": f"result fetch failed: {exc}"}
+
+
+def _failure_message(record: dict, result: dict) -> str | None:
+    payload = result.get("result") if isinstance(result, dict) else None
+    if record.get("status") == "failed" or record.get("success") is False:
+        return record.get("error") or _result_failure(payload) or "RoboFlex run failed"
+    if result.get("status") == "failed" or result.get("success") is False:
+        return result.get("error") or _result_failure(payload) or "RoboFlex analysis failed"
+    return _result_failure(payload)
+
+
+def _result_failure(payload: object) -> str | None:
+    if isinstance(payload, dict) and payload.get("pass") is False:
+        return str(payload.get("failure_message") or "analysis result reported pass=false")
+    return None
+
+
+def _result_analysis(payload: object, objectives: dict[str, float]) -> dict:
+    analyte = _main_analyte(payload)
+    peak_source = analyte if isinstance(analyte, dict) else payload if isinstance(payload, dict) else {}
+    peak_position = _first_value(peak_source, ("peak_position", "peak_position_ppm", "position_ppm"))
+    peak_integral = _first_number(peak_source, ("peak_integral", "integral"))
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

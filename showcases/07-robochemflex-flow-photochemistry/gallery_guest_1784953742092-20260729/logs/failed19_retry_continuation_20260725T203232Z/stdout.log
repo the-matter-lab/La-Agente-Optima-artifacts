@@ -1,0 +1,29 @@
+20:32:33.320 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+20:32:33.329 POST api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/lifecycle
+BO campaign resumed from paused state.
+20:32:33.342 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+20:32:33.349 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+20:32:33.358 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/query
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+Submitting measurement #19: bo_5c5570bd-d_r2 (5c5570bd-dd17-4366-8685-0863402167f6)
+20:32:33.905 Submitting RoboFlex measurement
+RoboFlex run R0064: state changed to queued
+20:32:34.291 RoboFlex run state changed
+RoboFlex platform: phase=running state=executing blocked_on=robot overdue=False
+20:32:34.437 RoboFlex platform state changed
+RoboFlex run R0064: state changed to running
+20:35:34.797 RoboFlex run state changed
+Heartbeat: RoboFlex run R0064 still running; polling every 180s; detailed trail on disk.
+RoboFlex run R0064: state changed to failed
+21:14:43.317 RoboFlex run state changed
+RoboFlex platform: phase=running state=awaiting_run blocked_on=agent overdue=False
+21:14:43.643 RoboFlex platform state changed
+Stopped safely: RoboFlex run R0064 failed; no BO result submitted. Failure: analysis result reported pass=false
+21:14:43.787 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/export ? format='csv'
+21:14:43.826 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+21:14:43.832 POST api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/lifecycle
+BO campaign paused.
+New completed experiments this invocation: 0
+Artifacts: artifacts/recreated_robochemflex_yield_bo_20260725/failed_measurement_retry_continuation_20260725T203233Z
+RoboFlex run R0064 failed; no BO result submitted. Failure: analysis result reported pass=false
+[orchestrator] EXIT_STATUS=1

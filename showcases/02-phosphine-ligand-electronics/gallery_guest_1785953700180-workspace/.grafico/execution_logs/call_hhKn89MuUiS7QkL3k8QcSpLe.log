@@ -1,0 +1,152 @@
+exit_code=0
+
+=== stdout (raw) ===
+# BO-MCP + Gráfico PySCF phosphine electronic-tuning campaign
+
+## Files
+
+- Entry point: `run_phosphine_electronics.py`
+- Package: `phosphine_electronics/`
+- Candidate table: `phosphine_electronics/candidate_table.csv` (364 symmetry-reduced unordered triples)
+- Manifest: `campaign_manifest.json`
+
+The CSV includes the requested sample rows `P_0001` through `P_0005` and then all unique unordered triples from Me, Et, iPr, tBu, Cy, Ph, pMePh, pOMePh, pFPh, pClPh, pCF3Ph, and pCNPh. The BO search space is the single categorical parameter `candidate_id`; ligand graphs are not assembled during optimization.
+
+## Strategy
+
+The script creates a finite discrete BO-MCP campaign with true multi-objective Pareto optimization over four raw transformed objectives:
+
+1. `donor_homo_error = abs(homo_energy_eV - -5.8)`; target-region tolerance: 0.4 eV.
+2. `gap_error = abs(homo_lumo_gap_eV - 5.0)`; target-region tolerance: 1.5 eV.
+3. `steric_excess = max(0, molecular_volume_ang3 - 350)`.
+4. `heavy_atom_count`.
+
+`phosphorus_partial_charge` is tracked in artifacts as an auxiliary donor descriptor and interpreted together with HOMO; it is not an independent optimization target.
+
+The campaign uses BO-MCP Pareto scalarization with hypervolume-improvement acquisition where the backend supports it. This is appropriate for a finite candidate table because every proposed point is a pre-enumerated `candidate_id`, while the model-driven acquisition uses measured objective values after the script-selected warm start instead of LLM chemical judgment.
+
+## Digital evaluation protocol
+
+Production evaluations call Gráfico PySCF from SMILES with:
+
+- `identifier_type='smiles'`
+- `charge=0`
+- `spin_multiplicity=1`
+- `xc_functional='PBE'`
+- `basis_set='def2-SVP'`
+- `restricted=True`
+- molecular analysis only; no frequency, TDDFT, metal-complex, catalytic-cycle, or reaction calculations
+
+The script extracts HOMO/LUMO from PySCF orbital energies and converts Hartree to eV. Phosphorus charge uses the PySCF Lowdin charge on P when available. Molecular volume is recorded as the proxy `rdkit_ETKDG_UFF_ComputeMolVolume_proxy` because the workflow does not expose a direct molecular volume field; heavy-atom count comes from RDKit.
+
+## Environment
+
+Run from the workspace directory with the active `uv` environment. Required variables:
+
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+
+The PySCF workflow also uses these defaults unless already set:
+
+- `GRAPHCHAT_AGENT_WS_URL` or `VITE_WS_URL` (default `ws://graphchat:3000`)
+- `GRAPHCHAT_ROOM` (default `room`)
+- `SPARQL_ENDPOINT` (default `http://blazegraph:8080/blazegraph/namespace/kb/sparql`)
+
+## Recommended production command
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_phosphine_electronics.py \
+  --poll-s 180 \
+  --heartbeat-s 1800 \
+  --warm-start-size 8 \
+  --batch-size 2 \
+  --max-bo-batches 10 \
+  --eval-workers 2 \
+  --pyscf-timeout-s 1800
+```
+
+At normal shutdown, the script pauses a running campaign and prints a resume command. To resume explicitly:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_phosphine_electronics.py --campaign-id <campaign_id>
+```
+
+If a campaign is paused, the script resumes it. If it is completed, the script reopens it. It never rebuilds an existing campaign by replaying results.
+
+## Safe stop behavior
+
+The script checks `--stop-file` (default `STOP`) at the top of each BO loop before requesting a new suggestion. To request a safe stop:
+
+```bash
+touch STOP
+```
+
+When the marker is detected, the script prints `[EVENT]`, deletes the marker to avoid stale-stop resumes, writes reports/exports, and exits normally. It does **not** check the stop file between evaluation and result submission, so successful evaluations are submitted before pause/shutdown.
+
+## Monitor tags
+
+The entry point prints concise, unbuffered tagged lines suitable for `start_monitor`:
+
+- `[EVENT]`: campaign creation/resume, artifacts, warm start, batch state, pause/terminate, stop-file handling.
+- `[RESULT]`: one line per successful ligand evaluation with objective values.
+- `[ALERT]`: failed candidates, rejected suggestions, BO-MCP stop conditions, best-effort export failures.
+- `[HEARTBEAT]`: liveness during long invocations.
+
+Detailed logs go to `artifacts/<run>/run.log`; stdout should remain monitor-friendly.
+
+## Outputs
+
+Each run writes an artifact directory such as `artifacts/phosphine_electronics_YYYYMMDD_HHMMSS/` containing:
+
+- `campaign_id.txt`
+- `warm_start_rationale.csv`
+- `evaluation_records.jsonl` with descriptors, objectives, proxies, failures, and rationale
+- `bo_mcp_export.csv` (best effort)
+- `report.csv` with Pareto/trade-off flags and descriptor columns
+- `report.md` with observed Pareto front size, representative trade-off ligands, failed candidates, improvement check, and substituent trend summary
+- `run.log`
+
+## Bounded validation commands
+
+A BO-MCP end-to-end smoke test uses the deterministic surrogate evaluator and terminates the temporary campaign:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_phosphine_electronics.py \
+  --campaign-name phosphine_electronics_smoke \
+  --synthetic-evaluator \
+  --warm-start-size 2 \
+  --batch-size 1 \
+  --max-bo-batches 1 \
+  --poll-s 0 \
+  --terminate-on-exit
+```
+
+A separate PySCF smoke test validates the real Gráfico PySCF result-shape handling without running a full campaign:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_phosphine_electronics.py \
+  --pyscf-smoke-only \
+  --pyscf-smoke-candidate P_0001 \
+  --pyscf-timeout-s 180
+```
+--- manifest ---
+{
+  "campaign_slug": "phosphine_electronics",
+  "run_entrypoint": "run_phosphine_electronics.py",
+  "latest_artifact_dir": "artifacts/phosphine_electronics_20260805_182529",
+  "package_modules": [
+    "phosphine_electronics/__init__.py",
+    "phosphine_electronics/space.py",
+    "phosphine_electronics/intake.py",
+    "phosphine_electronics/evaluator.py",
+    "phosphine_electronics/reporting.py",
+    "phosphine_electronics/campaign.py",
+    "phosphine_electronics/candidate_table.csv"
+  ]
+}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

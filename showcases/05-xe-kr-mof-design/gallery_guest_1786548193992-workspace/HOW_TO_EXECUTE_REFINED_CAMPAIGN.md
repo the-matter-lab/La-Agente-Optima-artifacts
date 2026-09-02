@@ -1,0 +1,153 @@
+# Refined Xe/Kr PORMAKE/Zeo++ BayBE Follow-up Campaign
+
+## Intended behavior
+
+This is the Option A follow-up to the existing Xe/Kr PORMAKE/Zeo++ BayBE MOF campaign. It reuses the existing `xe_kr_mof_bo/` package and evaluator, but changes the search-space concern to a refined finite compatible-candidate campaign informed by the prior artifacts in:
+
+```text
+xe_kr_mof_bo_artifacts/20260812_154010
+```
+
+The prior run contained many invalid cross-products of `topology`, `node`, and `edge`. The follow-up avoids those incompatible topology-node-edge choices by optimizing a finite `candidate_id` category that decodes exactly to:
+
+```text
+topology|node|edge
+```
+
+The underlying MOF candidate is still the exact PORMAKE-style triple: topology + node building block + edge building block. The encoded `candidate_id` is only the BO-MCP/BayBE-safe way to enumerate compatible triples without conditional-categorical invalid combinations.
+
+The refined space is built by:
+
+1. Reading prior `evaluations.jsonl` and `candidate_space.json` from the prior artifact directory.
+2. Keeping only prior successful PORMAKE/Zeo++ evaluations as historical seeds.
+3. Identifying the validated topology family from those successes. In the supplied prior artifacts this is `pcu`.
+4. Keeping compatible PORMAKE node building blocks for that topology from the prior ranked candidate-space inspection.
+5. Expanding edge choices around prior good trade-off edge lengths using the installed PORMAKE edge database.
+6. Creating a finite list of compatible `topology|node|edge` candidates for BayBE.
+
+The evaluator remains the same: construct with PORMAKE through `domains.mofs.ontomofs.MOFBuilder.build_by_type(...)`, analyze with Zeo++ pore diameter and pore volume wrappers, and submit two objectives:
+
+- `selectivity_proxy` — maximize; rewards Xe/Kr-relevant PLD/LCD windows.
+- `capacity_proxy` — maximize; uses pore volume in cm³/g.
+
+BO-MCP uses the BayBE backend with desirability scalarization (`geom_mean`) to balance selectivity and capacity.
+
+## Budget and seeding
+
+The default follow-up budget is **50 new MOF evaluations**. Historical successful results from the prior campaign are submitted as seed rows to the new BO-MCP campaign before new suggestions are requested.
+
+Defaults:
+
+- New evaluation budget: `50`
+- Batch size: `5`
+- Max BO iterations for new work: `10`
+- Historical seed rows: all successful prior rows, unless `--seed-limit` is set
+- BO-MCP `max_observations`: `seed_count + 50`
+
+For smoke tests, use `--seed-limit 0 --new-budget 1 --max-evaluations 1 --batch-size 1 --terminate-on-exit` so exactly one new BO suggestion is evaluated without submitting historical seeds.
+
+## Files
+
+- `continue_xe_kr_mof_bo_refined.py` — thin follow-up executable entrypoint.
+- `xe_kr_mof_bo/refined_space.py` — prior-artifact parsing and compatible candidate-space construction.
+- `xe_kr_mof_bo/followup_intake.py` — BO-MCP/BayBE intake for the refined candidate campaign.
+- `xe_kr_mof_bo/followup_campaign.py` — orchestration, seeding, stop/resume, evaluation, submission, export.
+- Existing evaluator reused: `xe_kr_mof_bo/evaluation.py`.
+- Updated manifest: `campaign_manifest.json`.
+
+## Environment requirements
+
+Run from this workspace in the deployment container with `uv`. Required environment variables:
+
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+
+The deployment must also provide the installed PORMAKE database, ontomofs/Zeo++ wrappers, and the active `uv` environment.
+
+## Exact execution command
+
+Start the refined 50-new-evaluation follow-up campaign:
+
+```bash
+uv run python -u continue_xe_kr_mof_bo_refined.py
+```
+
+Equivalent explicit command:
+
+```bash
+uv run python -u continue_xe_kr_mof_bo_refined.py \
+  --prior-artifact-dir xe_kr_mof_bo_artifacts/20260812_154010 \
+  --new-budget 50 \
+  --max-evaluations 50 \
+  --batch-size 5
+```
+
+Resume a paused or completed follow-up campaign:
+
+```bash
+uv run python -u continue_xe_kr_mof_bo_refined.py --campaign-id <CAMPAIGN_ID>
+```
+
+Bound smoke/validation command:
+
+```bash
+uv run python -u continue_xe_kr_mof_bo_refined.py \
+  --seed-limit 0 \
+  --new-budget 1 \
+  --max-evaluations 1 \
+  --batch-size 1 \
+  --edge-limit 4 \
+  --artifact-dir xe_kr_mof_bo_refined_smoke_artifacts \
+  --terminate-on-exit
+```
+
+## Inputs and tunable CLI options
+
+- `--prior-artifact-dir`: directory containing prior `evaluations.jsonl` and `candidate_space.json`.
+- `--campaign-id`: resume/reopen an existing follow-up BO-MCP campaign.
+- `--new-budget 50`: new evaluations after historical seeds.
+- `--max-evaluations 50`: per-invocation cap; use this to run only part of the 50 without changing the campaign.
+- `--batch-size 5`: suggestions per BO iteration.
+- `--seed-limit -1`: number of successful prior rows to seed; `-1` means all, `0` disables seeding.
+- `--node-limit-per-topology 6`: compatible ranked node BBs retained per validated topology.
+- `--edge-limit 18`: edge choices retained after expanding around prior good edge lengths.
+- `--min-seed-balance 0.0`: optional threshold for which prior successes define edge neighborhoods.
+- `--artifact-dir`: output directory root.
+- `--stop-file STOP`: cooperative stop marker.
+- `--heartbeat-s 1800`: liveness interval.
+
+## Outputs
+
+Each invocation writes a timestamped artifact directory under `xe_kr_mof_bo_refined_artifacts/` unless overridden. Outputs include:
+
+- `refined_candidate_space.json`: decoded compatible candidate triples and historical seed mapping.
+- `campaign_intake.json`: BO-MCP intake for fresh follow-up campaigns.
+- `validation.json`: BO-MCP validation response.
+- `evaluations.jsonl`: append-only per-new-evaluation provenance.
+- `*.cif`: CIF files for successfully constructed new MOFs.
+- `campaign_export.csv`: best-effort BO-MCP export, including seed and new results.
+
+Stdout is tagged for monitor compatibility:
+
+- `[EVENT]`: state changes, artifact paths, seeding, lifecycle actions.
+- `[ALERT]`: validation or cleanup/export failures.
+- `[RESULT]`: per-evaluation decoded candidate, objectives, and Zeo++ metrics.
+- `[HEARTBEAT]`: liveness during long invocations.
+
+## Stop and resume behavior
+
+At the top of each BO loop iteration, before requesting suggestions, the script checks for the stop file, default `STOP`:
+
+```bash
+touch STOP
+```
+
+When detected, the script prints `[EVENT]`, deletes the marker, exports artifacts if possible, and pauses a running campaign. It does not check the stop file between evaluation and result submission, so evaluated suggestions are submitted before shutdown.
+
+Resume with:
+
+```bash
+uv run python -u continue_xe_kr_mof_bo_refined.py --campaign-id <CAMPAIGN_ID>
+```
+
+A paused campaign is resumed; a completed campaign is reopened. Campaign progress is derived from BO-MCP `next_action`, not local state files.

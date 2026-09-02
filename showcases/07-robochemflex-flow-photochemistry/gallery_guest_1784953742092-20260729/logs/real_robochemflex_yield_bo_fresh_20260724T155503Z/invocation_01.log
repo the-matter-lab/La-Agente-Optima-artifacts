@@ -1,0 +1,25 @@
+15:55:05.759 POST api/api/v1/campaigns/validate
+15:55:05.769 POST api/api/v1/campaigns
+BO campaign: b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+Started RoboFlex campaign from existing setup; vial setup was not modified.
+15:55:06.414 GET api/api/v1/results/b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+15:55:06.443 Evaluating candidate
+RoboFlex run submitted: R0044 (seed01_b681a41d)
+15:55:07.027 Submitted RoboFlex run
+RoboFlex run R0044: queued
+RoboFlex run R0044: still queued; polling quietly
+RoboFlex platform: state=building_platform, blocked_on=robot, overdue=False
+RoboFlex platform: state=preparing_platform, blocked_on=robot, overdue=False
+RoboFlex run R0044: still queued; polling quietly
+RoboFlex run R0044: running
+RoboFlex platform: state=executing, blocked_on=robot, overdue=False
+RoboFlex run R0044: still running; polling quietly
+RoboFlex run R0044: still running; polling quietly
+RoboFlex run R0044: still running; polling quietly
+RoboFlex run R0044: completed
+17:08:40.411 POST api/api/v1/results/b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Submitted seed01_b681a41d: yield=0.0, green=60.3
+17:08:40.475 GET api/api/v1/campaigns/b681a41d-90db-4eb9-a9a9-3cc91098f3c0/export ? format='csv'
+Completed 1 successful evaluation(s) in this invocation.
+Artifacts: /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z

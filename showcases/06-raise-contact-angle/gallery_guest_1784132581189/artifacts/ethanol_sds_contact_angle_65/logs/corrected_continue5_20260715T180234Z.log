@@ -1,0 +1,76 @@
+18:02:37.742 GET api/api/v1/campaigns/e799b16b-d208-4d60-a115-72a67cac3130
+18:02:37.791 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130/query
+Existing campaign already has 15 results; skipping seed upload.
+Starting state: seeded=13, bo results=2, total=15; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:02:37.822 POST api/api/v1/campaigns/e799b16b-d208-4d60-a115-72a67cac3130/lifecycle
+Resumed paused campaign e799b16b-d208-4d60-a115-72a67cac3130
+18:02:37.843 POST api/api/v1/campaigns/status/batch
+18:02:37.876 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/query
+18:02:37.888 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+BO iteration 1/5: suggestion dc89fa1a-989a-4f37-aef2-99356081b700 -> Ethanol=29.858290, SDS=1.000000
+Submitting RAISE experiment: {'Ethanol': 29.85829, 'SDS': 1.0}
+  Measured static contact angle = 68.859°
+18:06:48.883 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130
+18:06:49.070 Submitted bo result for campaign e799b16b-d208-4d60-a115-72a67cac3130
+18:06:49.072 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130/query
+  Submitted result c3e34fc9-05db-4afc-91a1-589e5555808e | seeded=13, bo results=3, total=16; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:06:49.088 POST api/api/v1/campaigns/status/batch
+18:06:49.106 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/query
+18:06:49.132 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/generate ? batch_size='1'
+BO iteration 2/5: suggestion 60772528-9f79-4966-8a6a-cda06f493962 -> Ethanol=35.616705, SDS=1.000000
+Submitting RAISE experiment: {'Ethanol': 35.616705, 'SDS': 1.0}
+  Evaluation fallback -> submitted penalty angle 180.000° (run_raise_experiment failed: 1 validation error for dict[str,list[float]]
+Error.0
+  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='Contact Angle Measuremen...ailed, retry experiment', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/float_parsing)
+18:10:48.646 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130
+18:10:48.712 Submitted bo result for campaign e799b16b-d208-4d60-a115-72a67cac3130
+18:10:48.712 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130/query
+  Submitted result 274f33ac-be59-44db-9757-2419ba5bb868 | seeded=13, bo results=4, total=17; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:10:48.728 POST api/api/v1/campaigns/status/batch
+18:10:48.743 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/query
+18:10:48.755 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/generate ? batch_size='1'
+BO iteration 3/5: suggestion 28f55dc9-281b-4343-b701-0075a9bd614c -> Ethanol=30.102219, SDS=0.999948
+Submitting RAISE experiment: {'Ethanol': 30.102219, 'SDS': 0.999948}
+  Measured static contact angle = 69.013°
+18:14:48.176 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130
+18:14:48.262 Submitted bo result for campaign e799b16b-d208-4d60-a115-72a67cac3130
+18:14:48.263 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130/query
+  Submitted result 513cf280-f0bb-4e9c-a8b2-b4ba056942c3 | seeded=13, bo results=5, total=18; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:14:48.276 POST api/api/v1/campaigns/status/batch
+18:14:48.291 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/query
+18:14:48.303 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/generate ? batch_size='1'
+BO iteration 4/5: suggestion 1b32257d-488e-494c-ab02-611fcf373e30 -> Ethanol=30.473108, SDS=0.999931
+Submitting RAISE experiment: {'Ethanol': 30.473108, 'SDS': 0.999931}
+  Evaluation fallback -> submitted penalty angle 180.000° (run_raise_experiment failed: 1 validation error for dict[str,list[float]]
+Error.0
+  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='Contact Angle Measuremen...ailed, retry experiment', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/float_parsing)
+18:18:58.502 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130
+18:18:58.561 Submitted bo result for campaign e799b16b-d208-4d60-a115-72a67cac3130
+18:18:58.562 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130/query
+  Submitted result d7736cb0-6483-4381-bf98-576c40deeae3 | seeded=13, bo results=6, total=19; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+18:18:58.582 POST api/api/v1/campaigns/status/batch
+18:18:58.597 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/query
+18:18:58.610 POST api/api/v1/suggestions/e799b16b-d208-4d60-a115-72a67cac3130/generate ? batch_size='1'
+BO iteration 5/5: suggestion 1b8d061a-8553-4ed9-b4b1-fafac5252a5a -> Ethanol=1.553901, SDS=0.809939
+Submitting RAISE experiment: {'Ethanol': 1.553901, 'SDS': 0.809939}
+  Measured static contact angle = 71.763°
+18:22:30.680 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130
+18:22:30.788 Submitted bo result for campaign e799b16b-d208-4d60-a115-72a67cac3130
+18:22:30.788 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130/query
+  Submitted result 09b5ceef-bd75-46bc-9b73-640617aa2bfa | seeded=13, bo results=7, total=20; best angle 68.610° (|error|=3.610° vs target 65.0°); within ±1.0°=False
+Fetching diagnostics...
+18:22:30.802 GET api/api/v1/diagnostics/e799b16b-d208-4d60-a115-72a67cac3130 ? use_cache='true' & verbosity='standard'
+18:22:32.999 GET api/api/v1/campaigns/e799b16b-d208-4d60-a115-72a67cac3130/export ? format='csv'
+18:22:33.012 GET api/api/v1/campaigns/e799b16b-d208-4d60-a115-72a67cac3130
+18:22:33.019 POST api/api/v1/campaigns/e799b16b-d208-4d60-a115-72a67cac3130/lifecycle
+Paused campaign e799b16b-d208-4d60-a115-72a67cac3130
+18:22:33.033 GET api/api/v1/campaigns/e799b16b-d208-4d60-a115-72a67cac3130
+18:22:33.043 POST api/api/v1/results/e799b16b-d208-4d60-a115-72a67cac3130/query
+Stop reason: Reached the requested BO-iteration budget for this invocation.
+Artifacts: artifacts/ethanol_sds_contact_angle_65/20260715T180237Z__e799b16b
+Campaign complete: e799b16b-d208-4d60-a115-72a67cac3130
+Final status: paused
+Process exit status: 0

@@ -1,0 +1,21 @@
+{
+  "package": "xe_kr_mof_bo",
+  "modules": {
+    "search_space": "xe_kr_mof_bo/search_space.py",
+    "intake": "xe_kr_mof_bo/intake.py",
+    "evaluation": "xe_kr_mof_bo/evaluation.py",
+    "reporting": "xe_kr_mof_bo/reporting.py",
+    "campaign": "xe_kr_mof_bo/campaign.py",
+    "refined_space": "xe_kr_mof_bo/refined_space.py",
+    "followup_intake": "xe_kr_mof_bo/followup_intake.py",
+    "followup_campaign": "xe_kr_mof_bo/followup_campaign.py"
+  },
+  "entrypoint": "run_xe_kr_mof_bo.py",
+  "followup_entrypoint": "continue_xe_kr_mof_bo_refined.py",
+  "execution_guides": [
+    "HOW_TO_EXECUTE_CAMPAIGN.md",
+    "HOW_TO_EXECUTE_REFINED_CAMPAIGN.md"
+  ],
+  "prior_artifact_dir": "xe_kr_mof_bo_artifacts/20260812_154010",
+  "latest_artifact_dir": "xe_kr_mof_bo_refined_smoke_artifacts/20260812_163359"
+}

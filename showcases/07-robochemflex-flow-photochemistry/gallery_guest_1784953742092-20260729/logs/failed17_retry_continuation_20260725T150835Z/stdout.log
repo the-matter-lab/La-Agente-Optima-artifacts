@@ -1,0 +1,134 @@
+15:08:37.395 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+15:08:37.402 POST api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/lifecycle
+BO campaign resumed from paused state.
+15:08:37.416 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+15:08:37.421 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+15:08:37.428 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/query
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+Submitting measurement #17: bo_a9f8598d-e_r2 (a9f8598d-edd7-48fa-bbf6-b94ca3618912)
+15:08:37.951 Submitting RoboFlex measurement
+RoboFlex run R0061: state changed to queued
+15:08:38.493 RoboFlex run state changed
+RoboFlex platform: phase=running state=executing blocked_on=robot overdue=False
+15:08:38.622 RoboFlex platform state changed
+RoboFlex run R0061: state changed to running
+15:11:38.979 RoboFlex run state changed
+Heartbeat: RoboFlex run R0061 still running; polling every 180s; detailed trail on disk.
+RoboFlex run R0061: state changed to completed
+15:50:46.810 RoboFlex run state changed
+RoboFlex platform: phase=running state=awaiting_run blocked_on=agent overdue=False
+15:50:46.951 RoboFlex platform state changed
+Completed measurement #17: bo_a9f8598d-e_r2 run=R0061
+  analysis: yield=48.51; green=82.50; pass=True; peak_found=True; peak_position=-57.564407780335465; integral=0.007727725249628284; width=0.10498242326139717; concentration=48.48542816565802
+15:50:47.339 POST api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+Submitted BO result for bo_a9f8598d-e_r2: yield=48.51, green=82.50
+15:50:47.416 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+15:50:47.426 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+15:50:47.435 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/query
+15:50:47.443 POST api/api/v1/campaigns/status/batch
+15:50:47.454 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/generate ? batch_size='1'
+Submitting measurement #18: bo_bb5d0b0c-c (bb5d0b0c-c29a-4870-8290-da40f5082502)
+15:53:05.804 Submitting RoboFlex measurement
+RoboFlex run R0062: state changed to queued
+15:53:06.167 RoboFlex run state changed
+RoboFlex platform: phase=running state=executing blocked_on=robot overdue=False
+15:53:06.310 RoboFlex platform state changed
+RoboFlex run R0062: state changed to running
+16:05:08.685 RoboFlex run state changed
+Heartbeat: RoboFlex run R0062 still running; polling every 180s; detailed trail on disk.
+RoboFlex run R0062: state changed to completed
+16:47:17.412 RoboFlex run state changed
+RoboFlex platform: phase=running state=awaiting_run blocked_on=agent overdue=False
+16:47:17.565 RoboFlex platform state changed
+Completed measurement #18: bo_bb5d0b0c-c run=R0062
+  analysis: yield=20.18; green=80.96; pass=True; peak_found=True; peak_position=-57.564407780335465; integral=0.0036666256350028487; width=0.17322099838130356; concentration=20.16738055287486
+16:47:17.951 POST api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+Submitted BO result for bo_bb5d0b0c-c: yield=20.18, green=80.96
+16:47:18.028 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+16:47:18.036 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+16:47:18.043 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/query
+16:47:18.051 POST api/api/v1/campaigns/status/batch
+16:47:18.063 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/generate ? batch_size='1'
+16:51:18.169 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/export ? format='csv'
+16:51:18.184 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+16:51:18.192 POST api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/lifecycle
+BO campaign paused.
+New completed experiments this invocation: 2
+Artifacts: artifacts/recreated_robochemflex_yield_bo_20260725/failed17_retry_continuation_20260725T150837Z
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/http/client.py", line 1450, in getresponse
+    response.begin()
+  File "/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/http/client.py", line 297, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/python/cpython-3.12.13-linux-x86_64-gnu/lib/python3.12/socket.py", line 720, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/opt/venv/lib/python3.12/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/urllib3/util/retry.py", line 490, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/urllib3/util/util.py", line 39, in reraise
+    raise value
+  File "/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 536, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "/opt/venv/lib/python3.12/site-packages/urllib3/connectionpool.py", line 367, in _raise_timeout
+    raise ReadTimeoutError(
+urllib3.exceptions.ReadTimeoutError: HTTPConnectionPool(host='api', port=8000): Read timed out. (read timeout=240.0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/.graphchat-workspaces/gallery_guest_1784953742092/continue_robochemflex_yield_bo_failed17_retry.py", line 53, in <module>
+    main()
+  File "/app/.graphchat-workspaces/gallery_guest_1784953742092/continue_robochemflex_yield_bo_failed17_retry.py", line 49, in main
+    run(args)
+  File "/app/.graphchat-workspaces/gallery_guest_1784953742092/robochemflex_yield_bo/failed_measurement_resume.py", line 101, in run
+    response = bo.generate_suggestions(args.campaign_id, batch_size=1)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 185, in generate_suggestions
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 322, in _json_request
+    response = self._request(method, path, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 338, in _request
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/opentelemetry/instrumentation/requests/__init__.py", line 388, in instrumented_send
+    raise exception.with_traceback(exception.__traceback__)
+  File "/opt/venv/lib/python3.12/site-packages/opentelemetry/instrumentation/requests/__init__.py", line 323, in instrumented_send
+    result = wrapped_send(
+             ^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/requests/adapters.py", line 690, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPConnectionPool(host='api', port=8000): Read timed out. (read timeout=240.0)
+[orchestrator] EXIT_STATUS=1

@@ -1,0 +1,152 @@
+{
+  "collection_vial_id": null,
+  "error": null,
+  "finished_at": "2026-07-25T07:27:50.586785+00:00",
+  "monitoring": [],
+  "parameters": [
+    {
+      "name": "light_intensity",
+      "type": "NumericalParameter",
+      "units": "%",
+      "value": 75.0
+    },
+    {
+      "name": "residence_time",
+      "type": "NumericalParameter",
+      "units": "S",
+      "value": 923.1
+    },
+    {
+      "name": "slug_volume",
+      "type": "NumericalParameter",
+      "units": "uL",
+      "value": 650.0
+    },
+    {
+      "name": "collect_crude",
+      "type": "ExperimentalParameter",
+      "value": false
+    },
+    {
+      "kind": "chemical",
+      "name": "SM",
+      "role": "Limiting Reagent",
+      "sampling_priority": 1000,
+      "type": "ChemicalParameter",
+      "units": "mM",
+      "value": 100.0
+    },
+    {
+      "kind": "chemical",
+      "name": "Ru-bpy-Cl",
+      "role": "Catalyst",
+      "sampling_priority": 1000,
+      "type": "ChemicalParameter",
+      "units": "eq",
+      "value": 0.001
+    },
+    {
+      "kind": "chemical",
+      "name": "TFAA",
+      "role": "Anhydride",
+      "sampling_priority": 1000,
+      "type": "ChemicalParameter",
+      "units": "eq",
+      "value": 0.9392429564290667
+    },
+    {
+      "kind": "chemical",
+      "name": "PyNO",
+      "role": "Oxidant",
+      "sampling_priority": 1000,
+      "type": "ChemicalParameter",
+      "units": "eq",
+      "value": 0.9
+    },
+    {
+      "name": "sample_name",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "bo_8d4c74c6-0"
+    },
+    {
+      "name": "target_peak",
+      "type": "AnalyticalParameter",
+      "units": "ppm",
+      "value": -58.0
+    },
+    {
+      "name": "metric",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "yield"
+    },
+    {
+      "name": "yield_calculation_chemical",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "SM"
+    },
+    {
+      "name": "target_peak_deviation",
+      "type": "AnalyticalParameter",
+      "units": "ppm",
+      "value": 3.0
+    },
+    {
+      "name": "centerFrequency",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": -60.0
+    },
+    {
+      "name": "target_peak_calibration_coeff_1",
+      "type": "AnalyticalParameter",
+      "units": "mM/AU",
+      "value": 6973.0
+    },
+    {
+      "name": "target_peak_calibration_coeff_0",
+      "type": "AnalyticalParameter",
+      "units": "mM",
+      "value": -5.4
+    },
+    {
+      "name": "protocol",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "1D FLUORINE HDEC"
+    },
+    {
+      "name": "AcquisitionTime",
+      "type": "AnalyticalParameter",
+      "units": "S",
+      "value": "1.64"
+    },
+    {
+      "name": "Number",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "32"
+    }
+  ],
+  "result": {
+    "analytes": {
+      "main": {
+        "concentration": 32.9447820985309,
+        "pass": "True",
+        "peak integral": 0.005499036583756045,
+        "peak position": -57.5591586591724,
+        "peak width": 0.10498242326139717,
+        "yield": 32.9582189108561,
+        "yield (IS)": null
+      }
+    },
+    "pass": true,
+    "yield": 32.9582189108561
+  },
+  "run_id": "R0055",
+  "started_at": "2026-07-25T06:48:57.923606+00:00",
+  "status": "completed",
+  "success": true
+}

@@ -1,0 +1,95 @@
+exit_code=0
+
+=== stdout (raw) ===
+ART=artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z
+LOG=logs/real_robochemflex_yield_bo_fresh_20260724T155503Z
+--- invocation 09 tail
+BO campaign: b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+Using current RoboFlex campaign; vial setup was not modified.
+02:50:27.864 GET api/api/v1/results/b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+02:50:27.876 POST api/api/v1/suggestions/b681a41d-90db-4eb9-a9a9-3cc91098f3c0/query
+02:50:27.884 POST api/api/v1/campaigns/status/batch
+02:50:27.895 POST api/api/v1/suggestions/b681a41d-90db-4eb9-a9a9-3cc91098f3c0/generate ? batch_size='1'
+02:51:53.969 Evaluating candidate
+RoboFlex run submitted: R0052 (bo_b5aa81fc-1)
+02:51:54.720 Submitted RoboFlex run
+RoboFlex run R0052: queued
+RoboFlex run R0052: still queued; polling quietly
+RoboFlex platform: state=executing, blocked_on=robot, overdue=False
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: running
+RoboFlex run R0052: still running; polling quietly
+RoboFlex run R0052: completed
+03:29:16.628 POST api/api/v1/results/b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Traceback (most recent call last):
+  File "/app/.graphchat-workspaces/gallery_guest_1784900563933/run_robochemflex_yield_bo.py", line 39, in <module>
+    main()
+  File "/app/.graphchat-workspaces/gallery_guest_1784900563933/run_robochemflex_yield_bo.py", line 35, in main
+    run(args)
+  File "/app/.graphchat-workspaces/gallery_guest_1784900563933/robochemflex_yield_bo/campaign.py", line 75, in run
+    submitted = _evaluate_and_submit(client, campaign_id, candidate, artifact_dir, label, sid, args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.graphchat-workspaces/gallery_guest_1784900563933/robochemflex_yield_bo/campaign.py", line 153, in _evaluate_and_submit
+    client.submit_results(campaign_id, results=[row], idempotency_key=key, force=bool(suggestion_id))
+  File "/app/domains/bo_mcp/client.py", line 198, in submit_results
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 289, in _json_request
+    response = self._request(method, path, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 312, in _request
+    raise BoMcpClientError(
+domains.bo_mcp.client.BoMcpClientError: BO-MCP POST /api/v1/results/b681a41d-90db-4eb9-a9a9-3cc91098f3c0 failed with 404: {"detail":"Campaign b681a41d-90db-4eb9-a9a9-3cc91098f3c0 not found"}
+--- supervision summary tail
+{"bad_zero_or_no_peak": true, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 1, "green_score": 60.30844155844155, "label": "seed01_b681a41d", "run_id": "R0044", "time": "2026-07-24T17:08:41.098586+00:00", "yield_percent": 0.0, "zero_streak": 1}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 2, "green_score": 98.29545454545455, "label": "seed02_b681a41d", "run_id": "R0045", "time": "2026-07-24T17:56:24.395501+00:00", "yield_percent": 30.037732281591182, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 3, "green_score": 4.261363636363635, "label": "seed03_b681a41d", "run_id": "R0046", "time": "2026-07-24T20:02:44.628308+00:00", "yield_percent": 15.766697453699585, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 4, "green_score": 65.94785422910422, "label": "seed04_b681a41d", "run_id": "R0047", "time": "2026-07-24T21:33:05.576269+00:00", "yield_percent": 11.930255522523904, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 5, "green_score": 51.567703130203135, "label": "seed05_b681a41d", "run_id": "R0048", "time": "2026-07-24T22:34:33.421072+00:00", "yield_percent": 13.136061617657441, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 6, "green_score": 56.59340659340659, "label": "seed06_b681a41d", "run_id": "R0049", "time": "2026-07-25T00:57:06.664727+00:00", "yield_percent": 7.574024955754647, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 7, "green_score": 100.0, "label": "bo_761b6759-b", "run_id": "R0050", "time": "2026-07-25T01:35:47.475858+00:00", "yield_percent": 15.229219976533518, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 8, "green_score": 93.57670454545455, "label": "bo_6185a2d1-0", "run_id": "R0051", "time": "2026-07-25T02:50:25.532577+00:00", "yield_percent": 27.638363856448734, "zero_streak": 0}
+{"bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "invocation_failed", "exit_code": 1, "index": 9, "time": "2026-07-25T03:29:17.058638+00:00"}
+--- failed eval tail
+--- submitted count/tail
+8 artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/submitted_results.jsonl
+{"metadata": {"external_ref": {"id": "R0049", "system": "roboflex"}, "notes": "informed seed"}, "objective_values": {"green_score": 56.59340659340659, "yield_percent": 7.574024955754647}, "parameter_values": {"TFAA_equiv": 1.7, "catalyst_equiv": 0.0015, "catalyst_type": "4CzIPN", "light_intensity": 50, "oxidant_equiv": 2.5, "oxidant_type": "4-Ph py NO", "residence_time_min": 90.0}}
+{"metadata": {"external_ref": {"id": "R0050", "system": "roboflex"}, "notes": "BO-MCP suggestion"}, "objective_values": {"green_score": 100.0, "yield_percent": 15.229219976533518}, "parameter_values": {"TFAA_equiv": 0.9, "catalyst_equiv": 0.001, "catalyst_type": "Ru bpy Cl", "light_intensity": 100, "oxidant_equiv": 0.9, "oxidant_type": "py NO", "residence_time_min": 2.0}, "suggestion_id": "761b6759-b475-41f7-8049-92dc5e92eac7"}
+{"metadata": {"external_ref": {"id": "R0051", "system": "roboflex"}, "notes": "BO-MCP suggestion"}, "objective_values": {"green_score": 93.57670454545455, "yield_percent": 27.638363856448734}, "parameter_values": {"TFAA_equiv": 0.9, "catalyst_equiv": 0.001, "catalyst_type": "Ru bpy Cl", "light_intensity": 75, "oxidant_equiv": 0.9, "oxidant_type": "py NO", "residence_time_min": 32.14666666666667}, "suggestion_id": "6185a2d1-035a-43a6-a7ae-20b21ae56db6"}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

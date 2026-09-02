@@ -1,0 +1,26 @@
+exit_code=0
+
+=== stdout (raw) ===
+run_hood_co_bisphosphine_bo.py:14:    parser.add_argument("--campaign-id", default=None, help="Resume an existing BO-MCP campaign id.")
+run_hood_co_bisphosphine_bo.py:28:    parser.add_argument("--random-seed", type=int, default=2020)
+hood_co_bisphosphine_bo/campaign.py:121:        intake = build_intake(args.campaign_name, random_seed=args.random_seed, batch_size=args.batch_size)
+hood_co_bisphosphine_bo/campaign.py:190:            submit_key = BoMcpClient.make_idempotency_key("result", campaign_id, sid or cid, uuid.uuid4().hex[:8])
+hood_co_bisphosphine_bo/campaign.py:191:            client.submit_results(campaign_id, results=[result_row], idempotency_key=submit_key, force=True)
+hood_co_bisphosphine_bo/intake.py:13:def build_intake(name: str, random_seed: int | None = None, batch_size: int = 1) -> dict:
+hood_co_bisphosphine_bo/intake.py:24:        "random_seed": random_seed,
+hood_co_bisphosphine_bo/evaluation.py:81:Use acac = acetylacetonate bound O,O to Co. Ensure both phosphorus donors bind to Co, acac remains O,O-bound, and the structure is suitable as an initial geometry for modest DFT optimization.
+HOW_TO_EXECUTE_CAMPAIGN.md:66:  --campaign-id <CAMPAIGN_ID> \
+HOW_TO_EXECUTE_CAMPAIGN.md:133:The script checks for this file at the top of each BO loop before requesting a suggestion. If present, it prints `[EVENT]`, deletes the file to avoid a stale stop on resume, and exits through normal shutdown. It does not check the stop file between evaluation and BO-MCP result submission, so completed evaluations are submitted before pausing/exiting.
+HOW_TO_EXECUTE_CAMPAIGN.md:138:- The script pauses a running campaign at the end of a normal invocation. Use `--campaign-id` to continue later.
+
+
+=== stderr (raw) ===
+grep: hood_co_bisphosphine_bo/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: hood_co_bisphosphine_bo/__pycache__/intake.cpython-312.pyc: binary file matches
+grep: hood_co_bisphosphine_bo/__pycache__/campaign.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+grep: hood_co_bisphosphine_bo/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: hood_co_bisphosphine_bo/__pycache__/intake.cpython-312.pyc: binary file matches
+grep: hood_co_bisphosphine_bo/__pycache__/campaign.cpython-312.pyc: binary file matches

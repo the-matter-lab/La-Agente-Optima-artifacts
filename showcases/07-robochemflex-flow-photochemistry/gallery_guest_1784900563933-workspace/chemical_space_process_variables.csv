@@ -1,0 +1,11 @@
+variable,min,max,steps,scope,notes
+light intensity,0,100,5,within_campaign,for Eagle reactor is continuous
+catalyst loading,0.001 equiv,0.004 equiv,,within_campaign,
+catalyst type,see below,,,within_campaign,see stock_solutions concentrations file
+TFAA,0.9 equiv,3.5 equiv,,within_campaign,
+oxydant loading,0.9 equiv,3.0 equiv,,within_campaign,
+oxydant type,see below,,,within_campaign,
+reaction time,2 min,2 h,,within_campaign,depends on reactor length; pump flowrate 10 uL/min to 2 mL/min
+wavelength,,,,between_campaign,"370nm,390nm,456nm,525nm in Uflow (7W) or 365nm,456nm in Eagle (144W)"
+reactor type,,,,between_campaign,"Eagle reactor, Uflow reactor"
+reactor volume,1 mL,10 mL,,between_campaign,

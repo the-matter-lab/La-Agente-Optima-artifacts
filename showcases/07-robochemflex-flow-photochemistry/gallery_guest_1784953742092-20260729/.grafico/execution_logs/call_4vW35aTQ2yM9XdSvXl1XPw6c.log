@@ -1,0 +1,89 @@
+exit_code=0
+
+=== stdout (raw) ===
+LOGDIR=logs/real_robochemflex_yield_bo_fresh_20260724T155503Z
+total 36K
+-rw-r--r-- 1 root root 1.5K Jul 24 17:08 invocation_01.log
+-rw-r--r-- 1 root root 1.2K Jul 24 17:56 invocation_02.log
+-rw-r--r-- 1 root root 1.4K Jul 24 20:02 invocation_03.log
+-rw-r--r-- 1 root root 1.3K Jul 24 21:33 invocation_04.log
+-rw-r--r-- 1 root root 1.2K Jul 24 22:34 invocation_05.log
+-rw-r--r-- 1 root root 1.5K Jul 25 00:57 invocation_06.log
+-rw-r--r-- 1 root root 1.3K Jul 25 01:35 invocation_07.log
+-rw-r--r-- 1 root root 1.4K Jul 25 02:50 invocation_08.log
+-rw-r--r-- 1 root root 3.9K Jul 25 03:29 invocation_09.log
+--- invocation 09 tail ---
+BO campaign: b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+Using current RoboFlex campaign; vial setup was not modified.
+02:50:27.864 GET api/api/v1/results/b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+02:50:27.876 POST api/api/v1/suggestions/b681a41d-90db-4eb9-a9a9-3cc91098f3c0/query
+02:50:27.884 POST api/api/v1/campaigns/status/batch
+02:50:27.895 POST api/api/v1/suggestions/b681a41d-90db-4eb9-a9a9-3cc91098f3c0/generate ? batch_size='1'
+02:51:53.969 Evaluating candidate
+RoboFlex run submitted: R0052 (bo_b5aa81fc-1)
+02:51:54.720 Submitted RoboFlex run
+RoboFlex run R0052: queued
+RoboFlex run R0052: still queued; polling quietly
+RoboFlex platform: state=executing, blocked_on=robot, overdue=False
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: running
+RoboFlex run R0052: still running; polling quietly
+RoboFlex run R0052: completed
+03:29:16.628 POST api/api/v1/results/b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Traceback (most recent call last):
+  File "/app/.graphchat-workspaces/gallery_guest_1784900563933/run_robochemflex_yield_bo.py", line 39, in <module>
+    main()
+  File "/app/.graphchat-workspaces/gallery_guest_1784900563933/run_robochemflex_yield_bo.py", line 35, in main
+    run(args)
+  File "/app/.graphchat-workspaces/gallery_guest_1784900563933/robochemflex_yield_bo/campaign.py", line 75, in run
+    submitted = _evaluate_and_submit(client, campaign_id, candidate, artifact_dir, label, sid, args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.graphchat-workspaces/gallery_guest_1784900563933/robochemflex_yield_bo/campaign.py", line 153, in _evaluate_and_submit
+    client.submit_results(campaign_id, results=[row], idempotency_key=key, force=bool(suggestion_id))
+  File "/app/domains/bo_mcp/client.py", line 198, in submit_results
+    return self._json_request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 289, in _json_request
+    response = self._request(method, path, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/domains/bo_mcp/client.py", line 312, in _request
+    raise BoMcpClientError(
+domains.bo_mcp.client.BoMcpClientError: BO-MCP POST /api/v1/results/b681a41d-90db-4eb9-a9a9-3cc91098f3c0 failed with 404: {"detail":"Campaign b681a41d-90db-4eb9-a9a9-3cc91098f3c0 not found"}
+--- monitor status maybe
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

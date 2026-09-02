@@ -1,0 +1,100 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Autonomous continuation: recreated RoboChemFlex BO campaign
+
+This script is prepared but has **not** been executed and has **not** submitted any hardware runs.
+
+## What it will do
+
+- BO-MCP campaign: `ccbfc92e-c646-4943-a44d-9277f2f2d8d4`.
+- Starts with the reviewed measurement #10 preview artifacts in `artifacts/recreated_robochemflex_yield_bo_20260725/measurement10_preview/`.
+- Uses the existing pending suggestion id `98f9b554-6ff2-4a08-8e32-2fdecd211e10` and the exact reviewed RoboFlex request JSON for sample `bo_98f9b554-6`.
+- Submits #10 first, polls the RoboFlex run, fetches results, computes `yield_percent` and `green_score`, then submits the BO-MCP result with the matching suggestion id.
+- After #10, continues one experiment at a time: reuse exactly one pending suggestion if present, otherwise ask BO-MCP for one new suggestion, construct/validate the RoboFlex request, submit, poll, fetch, compute, and submit BO result.
+- Stops when either 11 new experiments have been completed in this invocation or BO-MCP reaches 20 total results.
+
+## Safety gates
+
+Before each hardware submission the script stops unless all checks pass:
+
+1. RoboFlex is in `hardware` mode.
+2. Active RoboFlex campaign id/name matches `robochemflex_yield_bo_fresh_20260724T155503Z-20260724-175502`.
+3. Phase/progress is `running` / `awaiting_run`.
+4. Queue depth, queued/running counts, and active run ids are all zero/empty.
+5. The sample name is not already visible in RoboFlex run notes or run parameters.
+6. Request fixed fields/schema match the historical `robridge_results.jsonl` reference.
+7. BO-MCP result count and pending suggestion shape are as expected.
+
+The script requires both `--execute` and `--confirm-autonomous-hardware` before it can submit hardware runs. In this environment, `ROBRIDGE_POST_ADAPTER` must also be set by the operator for RoboFlex POST calls.
+
+## Dry-run / preflight
+
+Static dry-run, no live BO/RoboFlex contact and no hardware writes:
+
+```bash
+uv run python continue_robochemflex_yield_bo_autonomous.py
+```
+
+Optional live read-only checks (no submissions, but contacts BO-MCP and RoboFlex GET endpoints):
+
+```bash
+uv run python continue_robochemflex_yield_bo_autonomous.py --live-read-checks
+```
+
+## Actual autonomous continuation command
+
+Run only after operator review and after setting the approved RoboFlex POST adapter:
+
+```bash
+ROBRIDGE_POST_ADAPTER=/path/to/operator_approved_robridge_post_adapter \
+uv run python continue_robochemflex_yield_bo_autonomous.py \
+  --execute \
+  --confirm-autonomous-hardware
+```
+
+## Artifacts
+
+Actual execution creates a timestamped directory under:
+
+`artifacts/recreated_robochemflex_yield_bo_20260725/autonomous_continuation_<UTCSTAMP>/`
+
+Each measurement subdirectory contains:
+
+- `suggestion.json`
+- `candidate.json`
+- `roboflex_request.json`
+- `equivalence_report.json`
+- `roboflex_status_before_submit.json`
+- `roboflex_submission_response.json`
+- `run_poll_trail.jsonl`
+- `roboflex_final_run_record.json`
+- `roboflex_result.json`
+- `bo_result_payload.json`
+- `bo_result_response.json`
+
+The run directory also contains `plan.json`, `COMMAND_NOTES.txt`, `summary.jsonl`, `summary.json`, and a best-effort BO campaign export.
+--- dry run ---
+Dry-run plan only; no BO/RoboFlex writes performed.
+{
+  "bo_campaign_id": "ccbfc92e-c646-4943-a44d-9277f2f2d8d4",
+  "expected_initial_results": 9,
+  "max_new_experiments": 11,
+  "mode": "dry-run",
+  "starts_with_measurement10_preview": {
+    "preview_dir": "artifacts/recreated_robochemflex_yield_bo_20260725/measurement10_preview",
+    "request_file_is_source_of_truth": true,
+    "sample_name": "bo_98f9b554-6",
+    "suggestion_id": "98f9b554-6ff2-4a08-8e32-2fdecd211e10"
+  },
+  "target_total_results": 20,
+  "then": "after #10 result submission, query/reuse exactly one pending suggestion or generate one BO suggestion at a time until 20 total BO results or 11 new completions"
+}
+
+
+=== stderr (raw) ===
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+
+
+=== stderr (model-visible) ===
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico

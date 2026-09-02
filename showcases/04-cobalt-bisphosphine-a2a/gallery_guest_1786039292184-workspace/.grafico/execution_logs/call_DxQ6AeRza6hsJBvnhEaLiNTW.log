@@ -1,0 +1,15 @@
+exit_code=0
+
+=== stdout (raw) ===
+STOP_EXISTS
+root         597       1  0 18:34 ?        00:00:00 sh -c bash -lc 'set -o pipefail mkdir -p hood_co_bisphosphine_artifacts/logs LOG="hood_co_bisphosphine_artifacts/logs/production_$(date -u +%Y%m%dT%H%M%SZ).log" export PYTHONUNBUFFERED=1 export BO_MCP_API_URL="${BO_MCP_API_URL:?BO_MCP_API_URL is required}" export BO_MCP_API_KEY="${BO_MCP_API_KEY:?BO_MCP_API_KEY is required}" export GRAPHCHAT_ROOM="${GRAPHCHAT_ROOM:-room}" export GRAPHCHAT_AGENT_WS_URL="${GRAPHCHAT_AGENT_WS_URL:-ws://graphchat:3000}" export VITE_WS_URL="${VITE_WS_URL:-ws://graphchat:3000}" export SPARQL_ENDPOINT="${SPARQL_ENDPOINT:-http://blazegraph:8080/blazegraph/namespace/kb/sparql}" export ESTRUCTURAL_A2A_URL="${ESTRUCTURAL_A2A_URL:-http://estructural:8000}" echo "[EVENT] launching Hood Co bisphosphine campaign: 4 warm-start + 10 BO iterations; log=${LOG}" uv run python -u run_hood_co_bisphosphine_bo.py --hood-warm-start-bo10 --run-calculations 2>&1 | tee "$LOG" status=${PIPESTATUS[0]} echo "[EVENT] campaign process exited status=${status}; log=${LOG}" exit "$status" '
+root         598     597  0 18:34 ?        00:00:00 bash -lc set -o pipefail mkdir -p hood_co_bisphosphine_artifacts/logs LOG="hood_co_bisphosphine_artifacts/logs/production_$(date -u +%Y%m%dT%H%M%SZ).log" export PYTHONUNBUFFERED=1 export BO_MCP_API_URL="${BO_MCP_API_URL:?BO_MCP_API_URL is required}" export BO_MCP_API_KEY="${BO_MCP_API_KEY:?BO_MCP_API_KEY is required}" export GRAPHCHAT_ROOM="${GRAPHCHAT_ROOM:-room}" export GRAPHCHAT_AGENT_WS_URL="${GRAPHCHAT_AGENT_WS_URL:-ws://graphchat:3000}" export VITE_WS_URL="${VITE_WS_URL:-ws://graphchat:3000}" export SPARQL_ENDPOINT="${SPARQL_ENDPOINT:-http://blazegraph:8080/blazegraph/namespace/kb/sparql}" export ESTRUCTURAL_A2A_URL="${ESTRUCTURAL_A2A_URL:-http://estructural:8000}" echo "[EVENT] launching Hood Co bisphosphine campaign: 4 warm-start + 10 BO iterations; log=${LOG}" uv run python -u run_hood_co_bisphosphine_bo.py --hood-warm-start-bo10 --run-calculations 2>&1 | tee "$LOG" status=${PIPESTATUS[0]} echo "[EVENT] campaign process exited status=${status}; log=${LOG}" exit "$status" 
+root         603     598  0 18:34 ?        00:00:00 uv run python -u run_hood_co_bisphosphine_bo.py --hood-warm-start-bo10 --run-calculations
+root         604     598  0 18:34 ?        00:00:00 tee hood_co_bisphosphine_artifacts/logs/production_20260806T183444Z.log
+root         608     603 20 18:34 ?        00:00:10 /opt/venv/bin/python3 -u run_hood_co_bisphosphine_bo.py --hood-warm-start-bo10 --run-calculations
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

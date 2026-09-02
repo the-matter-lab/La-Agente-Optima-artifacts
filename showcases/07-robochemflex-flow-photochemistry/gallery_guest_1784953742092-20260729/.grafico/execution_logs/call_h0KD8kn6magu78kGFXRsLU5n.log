@@ -1,0 +1,35 @@
+exit_code=0
+
+=== stdout (raw) ===
+Yield-only continuation dry-run; no BO/RoboFlex writes performed.
+{
+  "expected_roboflex_campaign_id": "roboflex_yield_BO_fresh_refilled_stocks-20260728-112201",
+  "expected_seed_count": 21,
+  "max_new_measurements_this_invocation": 7,
+  "mode": "dry-run",
+  "nmr_retry_policy": "initial attempt plus up to max_nmr_retries retry submissions; pass=true with valid yield is submitted; analysis/QC pass=false with finite yield/peak evidence is retryable; null-result failure 'zero-size array to reduction operation minimum which has no identity' is retryable only when RoboFlex remains mode=hardware, phase=running, progress.state=awaiting_run with no queued/active runs; stop without BO result on retry exhaustion or unsafe platform state",
+  "operator_confirmation_required": true,
+  "required_pending_suggestion_id": null,
+  "retry_base_sample_name": null,
+  "source_mixed_objective_campaign_id": "ccbfc92e-c646-4943-a44d-9277f2f2d8d4",
+  "target_total_results": 28,
+  "will_submit_hardware": false,
+  "yield_only_campaign_id": "13bb9fef-7bd3-4db2-8e99-2e39e469dc92"
+}
+15:59:21.897 GET api/api/v1/campaigns/13bb9fef-7bd3-4db2-8e99-2e39e469dc92
+15:59:21.906 GET api/api/v1/results/13bb9fef-7bd3-4db2-8e99-2e39e469dc92
+15:59:21.915 POST api/api/v1/suggestions/13bb9fef-7bd3-4db2-8e99-2e39e469dc92/query
+Yield-only BO status: created; results=21; pending=[]
+Yield-only target total: 28; remaining valid results: 7
+15:59:21.927 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+15:59:21.933 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+Source mixed-objective BO status: paused; results=20
+RoboFlex: mode=hardware phase=running state=awaiting_run campaign=roboflex_yield_BO_fresh_refilled_stocks-20260728-112201
+
+
+=== stderr (raw) ===
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+
+
+=== stderr (model-visible) ===
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico

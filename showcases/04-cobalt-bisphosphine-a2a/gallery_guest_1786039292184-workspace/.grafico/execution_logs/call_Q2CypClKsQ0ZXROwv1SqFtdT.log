@@ -1,0 +1,35 @@
+exit_code=0
+
+=== stdout (raw) ===
+hood_co_bisphosphine_artifacts_restart2/eth__Me__Me/evaluation.json True
+--- candidate_id ---
+null
+--- feasible ---
+false
+--- validity ---
+{
+  "scf_converged": false,
+  "optimization_success": false,
+  "error": "run_pyscf_workflow failed: Traceback (most recent call last):\n  File \"/app/domains/pyscf/tools/pyscf_workflow_tools.py\", line 417, in run_pyscf_workflow\n    raise FileNotFoundError(\nFileNotFoundError: XYZ file not found: /app/evals/pyscf/xyz_files / hood_co_bisphosphine_artifacts_restart2/eth__Me__Me/eth__Me__Me.xyz\n"
+}
+--- objectives ---
+{
+  "electronic_activation": -100.0,
+  "coordination_stability": -100.0,
+  "chelate_geometry": -100.0,
+  "steric_crowding": 100.0
+}
+--- descriptors ---
+null
+--- calculation ---
+null
+--- failure_reason ---
+null
+--- error ---
+null
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

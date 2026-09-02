@@ -1,0 +1,95 @@
+from __future__ import annotations
+
+import csv
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+ROBRIDGE_ALIASES = {
+    "Ru bpy Cl": "Ru-bpy-Cl",
+    "Ru bpy PF6": "Ru-bpy-PF",
+    "Ir ppy": "Ir-ppy",
+    "Ir CF3 ppy": "IrCF3ppy",
+    "py NO": "PyNO",
+    "4-Ph py NO": "4PhPyNO",
+}
+
+
+def _rows(name: str) -> list[dict[str, str]]:
+    with (ROOT / name).open(newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def constants() -> dict[str, str]:
+    return {r["constant"]: r["value"] for r in _rows("constants.csv")}
+
+
+def nmr_value(name: str) -> str:
+    return constants()[name]
+
+
+def catalyst_categories() -> list[str]:
+    return [
+        r["reagent"]
+        for r in _rows("stock_solutions_concentrations.csv")
+        if r.get("catalyst_type") == "Catalyst Type" and r.get("availability", "").lower() == "available"
+    ]
+
+
+def oxidant_categories() -> list[str]:
+    return ["py NO", "4-Ph py NO"]
+
+
+def robridge_name(label: str) -> str:
+    return ROBRIDGE_ALIASES.get(label, label)
+
+
+def bo_parameters(light_values: list[int] | None = None) -> list[dict]:
+    light_values = light_values or [0, 25, 50, 75, 100]
+    return [
+        {"name": "catalyst_type", "type": "categorical", "categories": catalyst_categories()},
+        {"name": "oxidant_type", "type": "categorical", "categories": oxidant_categories()},
+        {"name": "catalyst_equiv", "type": "continuous", "bounds": {"lower": 0.001, "upper": 0.004}},
+        {"name": "TFAA_equiv", "type": "continuous", "bounds": {"lower": 0.9, "upper": 3.5}},
+        {"name": "oxidant_equiv", "type": "continuous", "bounds": {"lower": 0.9, "upper": 3.0}},
+        {"name": "light_intensity", "type": "discrete", "values": light_values},
+        {"name": "residence_time_min", "type": "continuous", "bounds": {"lower": 2.0, "upper": 90.0}},
+    ]
+
+
+def normalize_candidate(candidate: dict) -> dict:
+    return {
+        "catalyst_type": str(candidate["catalyst_type"]),
+        "oxidant_type": str(candidate["oxidant_type"]),
+        "catalyst_equiv": float(candidate["catalyst_equiv"]),
+        "TFAA_equiv": float(candidate["TFAA_equiv"]),
+        "oxidant_equiv": float(candidate["oxidant_equiv"]),
+        "light_intensity": int(round(float(candidate["light_intensity"]))),
+        "residence_time_min": float(candidate["residence_time_min"]),
+    }
+
+
+def robridge_parameters(candidate: dict, sample_name: str) -> list[dict]:
+    c = normalize_candidate(candidate)
+    k = constants()
+    return [
+        {"name": "light_intensity", "value": c["light_intensity"], "units": "%", "kind": "physical"},
+        {"name": "residence_time", "value": c["residence_time_min"] * 60.0, "units": "S", "kind": "physical"},
+        {"name": "slug_volume", "value": float(k["slug_size"]), "units": "uL", "kind": "physical"},
+        {"name": "collect_crude", "value": k["collect_crude"].upper() == "TRUE", "kind": "physical"},
+        {"name": "SM", "value": 100.0, "units": "mM", "kind": "chemical", "role": "Limiting Reagent"},
+        {"name": robridge_name(c["catalyst_type"]), "value": c["catalyst_equiv"], "units": "eq", "kind": "chemical", "role": "Catalyst"},
+        {"name": "TFAA", "value": c["TFAA_equiv"], "units": "eq", "kind": "chemical", "role": "Anhydride"},
+        {"name": robridge_name(c["oxidant_type"]), "value": c["oxidant_equiv"], "units": "eq", "kind": "chemical", "role": "Oxidant"},
+        {"name": "sample_name", "value": sample_name},
+        {"name": "target_peak", "value": float(k["target_peak"]), "units": "ppm"},
+        {"name": "metric", "value": "yield"},
+        {"name": "yield_calculation_chemical", "value": k["yield_calculation_chemical"]},
+        {"name": "target_peak_deviation", "value": float(k["target_peak_deviation"]), "units": "ppm"},
+        {"name": "centerFrequency", "value": float(k["centerFrequency"])},
+        {"name": "target_peak_calibration_coeff_1", "value": float(k["target_peak_calibration_coeff_1"])},
+        {"name": "target_peak_calibration_coeff_0", "value": float(k["target_peak_calibration_coeff_0"])},
+        {"name": "protocol", "value": nmr_value("Protocol")},
+        {"name": "AcquisitionTime", "value": nmr_value("AcquisitionTime"), "units": "S"},
+        {"name": "Number", "value": nmr_value("Number")},
+    ]

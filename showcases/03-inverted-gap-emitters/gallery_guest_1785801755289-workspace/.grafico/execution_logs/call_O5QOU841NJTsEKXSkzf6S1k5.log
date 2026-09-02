@@ -1,0 +1,173 @@
+exit_code=0
+
+=== stdout (raw) ===
+OBJECTIVES:
+[
+  {
+    "name": "negative_singlet_triplet_gap",
+    "direction": "maximize",
+    "unit": "eV"
+  }
+]
+
+PARAM sample keys:
+{
+  "name": "molecule_key",
+  "type": "categorical",
+  "description": "Filtered CSV molecule_key; smiles_canonical is looked up locally for evaluation.",
+  "parameter_options": {
+    "baybe": {
+      "role": "custom",
+      "custom_descriptors": {
+        "ABGKQRIFJNWBPG-UHFFFAOYSA-N": {
+          "mol_wt": -0.9772836875912013,
+          "exact_mol_wt": -0.9770846614571582,
+          "heavy_atoms": -0.963925189651255,
+          "hetero_atoms": -0.5383349653136261,
+          "hbd": -0.6825744805644252,
+          "hba": -0.3971615207244157,
+          "tpsa": -0.40279552325456175,
+          "logp": -0.5099976043502549,
+          "rotatable_bonds": -0.7669151400511007,
+          "ring_count": -0.9666062767194769,
+          "aromatic_rings": -1.1384912309982205,
+          "fraction_csp3": -0.5903353601053163,
+          "ecfp4_svd_00": -1.0549933333505481,
+          "ecfp4_svd_01": 0.7090579974966836,
+          "ecfp4_svd_02": -0.6047934195897837,
+          "ecfp4_svd_03": -0.7562473492304393,
+          "ecfp4_svd_04": 0.8378539031193257,
+          "ecfp4_svd_05": 0.6798473925279297,
+          "ecfp4_svd_06": 1.351451163367899,
+          "ecfp4_svd_07": 0.4143497475189201,
+          "ecfp4_svd_08": -0.5672708471592309,
+          "ecfp4_svd_09": -1.4244840327629982,
+          "ecfp4_svd_10": -0.10990824904824317,
+          "ecfp4_svd_11": -1.8109345705382833,
+          "ecfp4_svd_12": 0.691209815736318,
+          "ecfp4_svd_13": -0.9162920578942124,
+          "ecfp4_svd_14": -1.9743896251167294,
+          "ecfp4_svd_15": -2.3268124960499,
+          "ecfp4_svd_16": 1.3002129514685714,
+          "ecfp4_svd_17": -0.44178127840285,
+          "ecfp4_svd_18": 0.2962326395995041,
+          "ecfp4_svd_19": 0.2315023395851807,
+          "ecfp4_svd_20": -0.6657136905853905,
+          "ecfp4_svd_21": 0.19469858682331315,
+          "ecfp4_svd_22": 0.3980423684825224,
+          "ecfp4_svd_23": 0.801179863434372,
+          "ecfp4_svd_24": -0.14569630461600122,
+          "ecfp4_svd_25": 0.5263948207858921,
+          "ecfp4_svd_26": -0.14673359046470427,
+          "ecfp4_svd_27": -1.3231542896554147,
+          "ecfp4_svd_28": 0.03909904754232418,
+          "ecfp4_svd_29": 0.6920422818877047,
+          "ecfp4_svd_30": 0.33900253311165435,
+          "ecfp4_svd_31": -0.8366599611866359,
+          "identity_code": 0.0
+        },
+        "ABLZNTPTIOQSLC-UHFFFAOYSA-N": {
+          "mol_wt": -0.8510514866476575,
+          "exact_mol_wt": -0.8508677168902832,
+          "heavy_atoms": -0.8248749690957335,
+          "hetero_atoms": -0.5383349653136261,
+          "hbd": -0.6825744805644252,
+          "hba": -0.3971615207244157,
+          "tpsa": -0.30369201969530124,
+          "logp": -0.8929509341725842,
+          "rotatable_bonds": -0.7669151400511007,
+          "ring_count": -0.5830081952497003,
+          "aromatic_rings": 0.030143352348221745,
+          "fraction_csp3": -0.5903353601053163,
+          "ecfp4_svd_00": -0.39123812467619534,
+          "ecfp4_svd_01": -0.5472319927025248,
+          "ecfp4_svd_02": -1.0903815092888827,
+          "ecfp4_svd_03": 1.8981948752520859,
+          "ecfp4_svd_04": -0.1270697510431941,
+          "ecfp4_svd_05": -0.14166474224724107,
+          "ecfp4_svd_06": 0.42281598303170076,
+          "ecfp4_svd_07": -0.649308110861398,
+          "ecfp4_svd_08": 0.287579736700865,
+          "ecfp4_svd_09": 0.13104779762320626,
+          "ecfp4_svd_10": 0.041641813749168956,
+          "ecfp4_svd_11": -0.39142198688862084,
+          "ecfp4_svd_12": -1.1474541443976125,
+          "ecfp4_svd_13": -0.4572265508088386,
+          "ecfp4_svd_14": -0.36269486304803217,
+          "ecfp4_svd_15": -0.1160787349238153,
+          "ecfp4_svd_16": 0.136741243116456,
+          "ecfp4_svd_17": 0.4365097554520543,
+          "ecfp4_svd_18": -0.07012842157226823,
+          "ecfp4_svd_19": -0.09982228335948848,
+          "ecfp4_svd_20": -0.05464239271017416,
+          "ecfp4_svd_21": -1.231034164181466,
+          "ecfp4_svd_22": -0.1554370338568798,
+     
+
+--- pollice_lowest_conformer_gap/intake.py ---
+5: OBJECTIVE_NAME = "negative_singlet_triplet_gap"
+23:             "Objective maximizes -(S1_ev - T1_ev) from CREST/GFN2 lowest conformer followed by "
+45:         "objectives": [
+47:                 "name": OBJECTIVE_NAME,
+48:                 "direction": "maximize",
+
+--- pollice_lowest_conformer_gap/objective.py ---
+14:     if hasattr(value, "model_dump"):
+15:         return value.model_dump(mode="json")
+93:         "objective": float(-delta_est_ev),
+
+--- pollice_lowest_conformer_gap/campaign.py ---
+16: from .intake import OBJECTIVE_NAME, PARAMETER_NAME, build_intake
+150:     successes = [row for row in rows if row.get("status") == "success" and row.get("objective") not in (None, "")]
+153:         best = max(successes, key=lambda row: float(row["objective"]))
+158:             f"Best objective: {best.get('objective')}",
+167: def _submit_success(
+174:     return client.submit_results(
+180:                 "objective_values": {OBJECTIVE_NAME: float(result["objective"])},
+208:         emit("RESULT", f"pyscf_smoke status=success delta={result['delta_est_ev']:.6g} objective={result['objective']:.6g} wall_s={result['wall_s']:.1f}", log)
+290:                     futures[pool.submit(
+305:                         _submit_success(client, campaign_id, sid, result, run_nonce)
+306:                         emit("RESULT", f"molecule_key={key} status=success objective={result['objective']:.8g} delta_est_ev={result['delta_est_ev']:.8g} S1_ev={result['S1_ev']:.8g} T1_ev={result['T1_ev']:.8g}", log)
+
+--- pollice_lowest_conformer_gap/evaluation.py ---
+19: from .objective import as_dict, extract_gap
+30:     "objective",
+51:     if hasattr(value, "model_dump"):
+52:         return value.model_dump(mode="json")
+120:         "objective": -gap,
+147:         "objective": None,
+192:                 solvation_model=None,
+222:     proc = ctx.Process(target=_worker, args=(asdict(candidate), queue_out, pyscf_timeout_s, crest_threads, child_log_path))
+239:             "objective": None,
+258:             "objective": None,
+283:             solvation_model=None,
+
+first/last objective stats
+                   molecule_key  objective  delta_est_ev
+0   NSFPKBSRRKTUCK-UHFFFAOYSA-N  -0.226787      0.226787
+1   TYRQLYOWVMBGNA-UHFFFAOYSA-N  -0.922703      0.922703
+2   HXWXPNZYXZHKRZ-UHFFFAOYSA-N  -0.436449      0.436449
+3   ZAGUESFSZZNNGP-UHFFFAOYSA-N  -0.272006      0.272006
+4   UKMKRHRCQLZPGT-UHFFFAOYSA-N  -0.286789      0.286789
+6   STACUZZGKSWALO-UHFFFAOYSA-N  -0.402462      0.402462
+7   BKUMJJLBFBDXGD-UHFFFAOYSA-N  -0.281415      0.281415
+8   XFLQTXGZQAAHAI-UHFFFAOYSA-N  -0.249702      0.249702
+9   AMGVEBPJFUEWLX-UHFFFAOYSA-N  -0.267251      0.267251
+10  OHQFVBCXZCGROC-UHFFFAOYSA-N  -0.328685      0.328685
+11  MDBVXVGLLQXSTQ-UHFFFAOYSA-N  -0.308572      0.308572
+12  NNFSKHBTJWXTQJ-UHFFFAOYSA-N  -0.308159      0.308159
+13  XGPVIOJANRNKMD-UHFFFAOYSA-N  -0.263194      0.263194
+14  MLHIMDRRGDRXQW-UHFFFAOYSA-N  -0.229804      0.229804
+15  YSKSYGZSFISTGH-UHFFFAOYSA-N  -0.269555      0.269555
+16  YVDLTBKGQDBKQW-UHFFFAOYSA-N  -0.306638      0.306638
+17  NMHQWTLWOWSATB-UHFFFAOYSA-N  -0.254056      0.254056
+18  VQJCMFYAJLAEFQ-UHFFFAOYSA-N  -0.315291      0.315291
+19  SUVXEVRKTOAMPY-UHFFFAOYSA-N  -0.246550      0.246550
+best by objective max: {'molecule_key': 'NSFPKBSRRKTUCK-UHFFFAOYSA-N', 'objective': -0.2267869324879579, 'delta_est_ev': 0.2267869324879579}
+best by delta min: {'molecule_key': 'NSFPKBSRRKTUCK-UHFFFAOYSA-N', 'objective': -0.2267869324879579, 'delta_est_ev': 0.2267869324879579}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

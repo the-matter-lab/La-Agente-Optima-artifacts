@@ -1,0 +1,85 @@
+{
+  "_metadata": {
+    "backend": "baybe",
+    "protocol": "mcp",
+    "server_version": "0.1.0"
+  },
+  "best_parameters": {
+    "Ethanol": 0.0,
+    "SDS": 1.0
+  },
+  "best_value": 70.268,
+  "campaign_status": "running",
+  "constraint_satisfaction": null,
+  "convergence": {
+    "avg_improvement": 0.0,
+    "converged": true,
+    "convergence_score": 1.0,
+    "iterations_without_improvement": 10,
+    "reason": "No improvement in 10 consecutive iterations",
+    "recommendation": "Optimization stagnant for 10 iterations. Consider stopping or trying different acquisition parameters."
+  },
+  "errors": [],
+  "exploration_exploitation": {
+    "average_distance_to_best": 0.566,
+    "balance_assessment": "balanced",
+    "diversity_score": 0.7981,
+    "exploration_ratio": 0.5,
+    "recommendation": "Good balance between exploration and exploitation."
+  },
+  "feature_importance": null,
+  "health_status": "critical",
+  "hypervolume": null,
+  "improvement_history": [
+    6.403000000000006,
+    6.403000000000006,
+    5.591999999999999,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001
+  ],
+  "improvement_rate": 0.0,
+  "iteration": 12,
+  "model_correlation": 0.9768982809108382,
+  "model_info": {
+    "acquisition_function": "qLogNoisyExpectedImprovement",
+    "backend": "baybe",
+    "batch_strategy": "BotorchRecommender (GP-based)",
+    "input_warping": false,
+    "kernel": "MaternKernel",
+    "type": "BayBE GP"
+  },
+  "n_pareto_points": null,
+  "n_pending_suggestions": 0,
+  "n_results": 14,
+  "next_action_recommendation": {
+    "action": "review_outliers",
+    "reason": "Detected 1 potential outlier(s). Verify measurements for errors.",
+    "urgency": "normal"
+  },
+  "objective_ranges": {
+    "static_contact_angle": {
+      "direction": "match",
+      "max": 180.0,
+      "min": 70.268
+    }
+  },
+  "outcome_constraint_calibration": null,
+  "pareto_front": null,
+  "progress_status": "stable",
+  "schema_version": 1,
+  "success": true,
+  "suggestion_diversity": null,
+  "uncertainty_trend": null,
+  "warnings": [
+    "Optimization has not improved in 5 iterations. Consider: reviewing constraints, expanding search space, or stopping."
+  ]
+}

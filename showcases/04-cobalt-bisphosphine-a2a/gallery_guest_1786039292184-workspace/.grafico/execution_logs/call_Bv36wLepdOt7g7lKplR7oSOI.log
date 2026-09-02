@@ -1,0 +1,141 @@
+exit_code=0
+
+=== stdout (raw) ===
+8:- Default artifacts directory: `hood_co_bisphosphine_artifacts/`
+14:- `hood_co_bisphosphine_artifacts/candidate_library.json`
+15:- `hood_co_bisphosphine_artifacts/candidate_library.csv`
+71:If preflight fails, the script prints `[ALERT]` and exits before campaign creation/evaluation submission, so infrastructure, workspace-context, or PySCF handoff failures are not converted into penalized fake chemistry failures. During candidate evaluation, an Estructural response that does not create a parseable XYZ file, or a PySCF file/path handoff failure, is also treated as non-submittable infrastructure/output failure; it is not submitted to BO-MCP as a hard-penalty chemistry observation. The evaluator passes XYZ **literal content** to PySCF (`identifier_type="xyz"`) rather than a relative `xyz_filename`, avoiding PySCF's internal `/app/evals/pyscf/xyz_files` path resolution.
+80:With `--hood-warm-start-bo10`, the script first evaluates and submits exactly these four warm-start candidates as completed BO-MCP observations, then requests BO-MCP/BayBE suggestions for ten additional BO-selected iterations. Warm-start evaluations are counted separately from BO-selected iterations: `4 warm_start + 10 bo = 14 total evaluations` for a fresh production run. The warm-start list is also written to `hood_co_bisphosphine_artifacts/warm_start_candidates.json`.
+112:Recommended fresh campaign after the convergence/electronic-parser update:
+121:  --campaign-name hood-co-bisphosphine-cationic-coii-pbe-converged \
+122:  --artifacts-dir hood_co_bisphosphine_artifacts_pbe_converged
+133:  --artifacts-dir hood_co_bisphosphine_artifacts_restart3
+148:The production evaluator builds precursor-like cationic complexes `[Co(acac)(P2)]+` with Estructural and evaluates them with the repository PySCF workflow. Defaults are intentionally more generous after direct convergence testing on the smallest candidate:
+157:The script requests unrestricted DFT geometry optimization to actual convergence followed by molecular/electronic analysis. It explicitly does **not** request transition states, frequency calculations, TDDFT, full catalytic-cycle calculations, or energy-span calculations. XYZ is passed to PySCF as literal content rather than a relative filename.
+170:Failed SCF, failed or unconverged geometry optimization, ligand/acac dissociation, unrealistic Co-P/Co-O distances, severe collapse, or infeasible geometry receive finite heavy penalties before submission to BO-MCP. Geometry optimization is marked successful only when `workflow_summary` contains `Geometry optimization completed` and does not contain failure indicators such as `Error in geometry optimization`, `Nuclear gradients`, `not converged`, timeout, or traceback/exception text; total energy alone is not sufficient.
+181:Detailed per-candidate provenance is written to artifacts, not dumped to stdout.
+187:- `hood_co_bisphosphine_artifacts/candidate_library.json`
+188:- `hood_co_bisphosphine_artifacts/candidate_library.csv`
+189:- `hood_co_bisphosphine_artifacts/campaign_id.txt`
+190:- `hood_co_bisphosphine_artifacts/warm_start_candidates.json` when `--hood-warm-start-bo10` is used
+191:- `hood_co_bisphosphine_artifacts/evaluations.jsonl`
+192:- `hood_co_bisphosphine_artifacts/<candidate_id>/evaluation.json`
+193:- `hood_co_bisphosphine_artifacts/<candidate_id>/<candidate_id>.xyz` for Estructural-generated structures in production mode
+194:- `hood_co_bisphosphine_artifacts/estructural_preflight_response.json` and `estructural_preflight_<pid>.xyz` after production preflight
+195:- `hood_co_bisphosphine_artifacts/pyscf_literal_preflight_result.json` and optional console log after production preflight
+196:- `hood_co_bisphosphine_artifacts/<candidate_id>/estructural_response.json` and `.txt` for Estructural task output provenance
+197:- `hood_co_bisphosphine_artifacts/campaign_export.csv`
+210:- Do not continue campaign `0030e8d9-f737-49e8-a7dd-0bc3c89c146e`; it contains five submitted infrastructure-failure penalty observations from an invalid Estructural endpoint (`http://estructural:8000`). Do not continue campaign `90bb2180-9aaa-40cd-832d-a26137d410a7`; it contains two submitted Estructural workspace-output failure penalty observations from the previous context/path handling bug. Do not continue campaign `e446f8a5-02f4-4e4c-ac02-48eb95c904ee`; it contains two submitted PySCF path-resolution infrastructure penalty observations from the previous `xyz_filename` handoff bug. Start a fresh campaign after all preflights succeed.
+211:- Campaign `9f89066d-ee9e-4791-9491-a446a82cd3ea` is a technically valid paused campaign, but it used older B3LYP/60-step settings and an older electronic objective parser that often submitted `electronic_activation=0` when analysis was missing. Prefer starting a fresh campaign for internally consistent PBE/def2-SVP, converged-geometry, chkfile-parsed objective values. If you continue `9f89066d-ee9e-4791-9491-a446a82cd3ea`, treat it as a mixed-objective-definition campaign.
+uv run python run_hood_co_bisphosphine_bo.py --library-only
+```
+
+Create/validate BO campaign only, with no suggestions or calculations:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py --create-only
+```
+
+Smoke-test one BO iteration without chemistry calculations:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py \
+  --mock-evaluator \
+  --max-successes 1 \
+  --poll-s 0 \
+  --terminate-on-exit
+```
+
+Warm-start preset requested for production: exactly four documented warm-start evaluations followed by ten BO-selected evaluations:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py \
+  --hood-warm-start-bo10 \
+  --run-calculations
+```
+
+Before creating a campaign or submitting any production evaluation, this mode performs three preflights: (1) socket connectivity to `ESTRUCTURAL_A2A_URL`, (2) a trivial water XYZ write/read round trip in the current workspace context, and (3) a tiny PySCF literal-XYZ handoff check using that Estructural-produced XYZ. Do not override `ESTRUCTURAL_A2A_URL` to `http://estructural:8000` in this Docker network; that host may not resolve. Use the default `http://a2a:8033` or explicitly set it. Also ensure `GRAPHCHAT_ROOM`, if set, matches this workspace; if it is unset, the script falls back to the current workspace directory name.
+
+```bash
+ESTRUCTURAL_A2A_URL=http://a2a:8033 \
+uv run python -u run_hood_co_bisphosphine_bo.py \
+  --hood-warm-start-bo10 \
+  --run-calculations
+```
+
+If preflight fails, the script prints `[ALERT]` and exits before campaign creation/evaluation submission, so infrastructure, workspace-context, or PySCF handoff failures are not converted into penalized fake chemistry failures. During candidate evaluation, an Estructural response that does not create a parseable XYZ file, or a PySCF file/path handoff failure, is also treated as non-submittable infrastructure/output failure; it is not submitted to BO-MCP as a hard-penalty chemistry observation. The evaluator passes XYZ **literal content** to PySCF (`identifier_type="xyz"`) rather than a relative `xyz_filename`, avoiding PySCF's internal `/app/evals/pyscf/xyz_files` path resolution.
+
+The four warm-start candidate IDs are chemically diverse across linkers, steric profiles, and electronics:
+
+1. `eth__Me__Me` — ethylene linker, smallest symmetric alkyl substituents.
+2. `prop__iPr__Ph` — propylene linker, unsymmetric alkyl/aryl substituents.
+3. `ophen__pAnisyl__pCF3Ph` — rigid 1,2-phenylene linker with electron-rich/electron-poor aryl contrast.
+4. `cchex__Cy__pTol` — cis-1,2-cyclohexylene linker with bulky cycloalkyl/aryl substituents.
+
+With `--hood-warm-start-bo10`, the script first evaluates and submits exactly these four warm-start candidates as completed BO-MCP observations, then requests BO-MCP/BayBE suggestions for ten additional BO-selected iterations. Warm-start evaluations are counted separately from BO-selected iterations: `4 warm_start + 10 bo = 14 total evaluations` for a fresh production run. The warm-start list is also written to `hood_co_bisphosphine_artifacts/warm_start_candidates.json`.
+
+Mock-only bounded test of the warm-start workflow, with only one BO-selected suggestion after the four mock warm starts:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py \
+  --hood-warm-start-bo10 \
+  --mock-evaluator \
+  --bo-iterations 1 \
+  --poll-s 0 \
+  --terminate-on-exit
+```
+
+`--bo-iterations` overrides the post-warm-start BO count and is intended for bounded smoke tests; omit it in production to use the preset value of 10.
+
+Production calculation mode, one selected candidate this invocation:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py \
+  --run-calculations \
+  --max-successes 1
+```
+
+Resume a paused/completed campaign:
+
+```bash
+uv run python run_hood_co_bisphosphine_bo.py \
+  --campaign-id <CAMPAIGN_ID> \
+  --run-calculations \
+  --max-successes 1
+```
+
+Recommended fresh campaign after the convergence/electronic-parser update:
+
+```bash
+rm -f STOP
+unset GRAPHCHAT_ROOM
+ESTRUCTURAL_A2A_URL=http://a2a:8033 \
+uv run python -u run_hood_co_bisphosphine_bo.py \
+  --hood-warm-start-bo10 \
+  --run-calculations \
+  --campaign-name hood-co-bisphosphine-cationic-coii-pbe-converged \
+  --artifacts-dir hood_co_bisphosphine_artifacts_pbe_converged
+```
+
+If you intentionally accept mixed objective definitions and want to continue the paused campaign `9f89066d-ee9e-4791-9491-a446a82cd3ea`, use:
+
+```bash
+ESTRUCTURAL_A2A_URL=http://a2a:8033 \
+uv run python -u run_hood_co_bisphosphine_bo.py \
+  --campaign-id 9f89066d-ee9e-4791-9491-a446a82cd3ea \
+  --run-calculations \
+  --max-successes 1 \
+  --artifacts-dir hood_co_bisphosphine_artifacts_restart3
+```
+
+
+## Environment requirements
+
+The active `uv` environment must provide:
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

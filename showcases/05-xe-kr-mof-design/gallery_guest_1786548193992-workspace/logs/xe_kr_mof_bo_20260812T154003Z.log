@@ -1,0 +1,67 @@
+[EVENT] artifacts=xe_kr_mof_bo_artifacts/20260812_154010 log=xe_kr_mof_bo_artifacts/20260812_154010/run.log
+[EVENT] candidate space: 7 topologies, 40 nodes, 10 edges
+[ALERT] excluded exact-single-node topologies: {'rtl': 'No single node building block can satisfy all unique node local structures.', 'tbo': 'No single node building block can satisfy all unique node local structures.'}
+[EVENT] created campaign fe6e1020-d1e6-417e-ad5f-afa1cdf3ac5e
+[EVENT] evaluating suggestion=8be0cc48-43e7-41e7-9138-f14502c781d5 params={'topology': 'ths', 'node': 'N718', 'edge': 'E4'}
+[RESULT] ths_N718_E4 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=2723d80f-fe9e-49a5-84b5-148f40bbbbdc params={'topology': 'pts', 'node': 'N59', 'edge': 'E88'}
+[RESULT] pts_N59_E88 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=fc2b09c5-a5da-4e72-bfe3-04bbdeaf44db params={'topology': 'nbo', 'node': 'N632', 'edge': 'E85'}
+[RESULT] nbo_N632_E85 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=1accb772-d551-4c0a-9bf1-26037b02a70b params={'topology': 'pcu', 'node': 'N295', 'edge': 'E161'}
+[RESULT] pcu_N295_E161 ok=True objectives={'selectivity_proxy': 0.0054053626023808565, 'capacity_proxy': 5.02762} metrics={'PLD_A': 17.54474, 'LCD_A': 25.98732, 'LFPD_A': 25.97486, 'pore_volume_cm3_g': 5.02762}
+[EVENT] evaluating suggestion=5f883ce8-ce3a-4617-a97e-53f4b6142b24 params={'topology': 'bcu', 'node': 'N12', 'edge': 'E78'}
+[RESULT] bcu_N12_E78 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=69031a0e-03b6-422b-8dd8-7b00d042eae4 params={'topology': 'bcu', 'node': 'N682', 'edge': 'E88'}
+[RESULT] bcu_N682_E88 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=ad1f7678-851e-4b8c-b7c4-aaf723f66cb0 params={'topology': 'pcu', 'node': 'N679', 'edge': 'E4'}
+[RESULT] pcu_N679_E4 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=a44d2806-232b-49bf-8e7e-83ab7142fadf params={'topology': 'pts', 'node': 'N679', 'edge': 'E161'}
+[RESULT] pts_N679_E161 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=b6483c2c-095c-4ea6-ba3c-7e7419865e0e params={'topology': 'pts', 'node': 'N477', 'edge': 'E177'}
+[RESULT] pts_N477_E177 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=ec165d51-be15-4699-82b2-a80b2863683e params={'topology': 'pcu', 'node': 'N295', 'edge': 'E88'}
+[RESULT] pcu_N295_E88 ok=True objectives={'selectivity_proxy': 1.0, 'capacity_proxy': 1.52422} metrics={'PLD_A': 6.32426, 'LCD_A': 9.8016, 'LFPD_A': 9.70317, 'pore_volume_cm3_g': 1.52422}
+[EVENT] evaluating suggestion=5bb1102f-58e6-469f-92b4-311c22826678 params={'topology': 'bcu', 'node': 'N295', 'edge': 'E161'}
+[RESULT] bcu_N295_E161 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=eb3ff06f-d3d6-4935-ba86-7e82d94b2208 params={'topology': 'pcu', 'node': 'N295', 'edge': 'E177'}
+[RESULT] pcu_N295_E177 ok=True objectives={'selectivity_proxy': 0.9341337807673986, 'capacity_proxy': 1.8325} metrics={'PLD_A': 8.30514, 'LCD_A': 11.30875, 'LFPD_A': 11.30875, 'pore_volume_cm3_g': 1.8325}
+[EVENT] evaluating suggestion=a9f6c348-85fe-4492-acf0-f2278b62e27f params={'topology': 'pcu', 'node': 'N295', 'edge': 'E78'}
+[RESULT] pcu_N295_E78 ok=True objectives={'selectivity_proxy': 0.3748211340634533, 'capacity_proxy': 3.31831} metrics={'PLD_A': 11.131, 'LCD_A': 16.17726, 'LFPD_A': 15.4236, 'pore_volume_cm3_g': 3.31831}
+[EVENT] evaluating suggestion=e87f8513-fbdf-4d80-bb08-83f24e9bd201 params={'topology': 'pcu', 'node': 'N295', 'edge': 'E85'}
+[RESULT] pcu_N295_E85 ok=True objectives={'selectivity_proxy': 0.948510625994111, 'capacity_proxy': 1.35866} metrics={'PLD_A': 8.14959, 'LCD_A': 10.24415, 'LFPD_A': 10.23867, 'pore_volume_cm3_g': 1.35866}
+[EVENT] evaluating suggestion=a085f44a-a67e-42de-a40b-efd1d7775697 params={'topology': 'pcu', 'node': 'N295', 'edge': 'E129'}
+[RESULT] pcu_N295_E129 ok=True objectives={'selectivity_proxy': 0.42651309205608096, 'capacity_proxy': 2.99354} metrics={'PLD_A': 10.87907, 'LCD_A': 15.41177, 'LFPD_A': 15.21943, 'pore_volume_cm3_g': 2.99354}
+[EVENT] evaluating suggestion=e7b6ee74-3932-4be5-8edc-c27550e0e4bb params={'topology': 'pcu', 'node': 'N295', 'edge': 'E174'}
+[RESULT] pcu_N295_E174 ok=True objectives={'selectivity_proxy': 0.5490265191803749, 'capacity_proxy': 1.84969} metrics={'PLD_A': 10.45572, 'LCD_A': 13.55608, 'LFPD_A': 13.47371, 'pore_volume_cm3_g': 1.84969}
+[EVENT] evaluating suggestion=b4d0ce05-1d5e-42d0-b946-f44f463e0ac0 params={'topology': 'pcu', 'node': 'N295', 'edge': 'E226'}
+[RESULT] pcu_N295_E226 ok=True objectives={'selectivity_proxy': 1.0, 'capacity_proxy': 0.523159} metrics={'PLD_A': 4.15375, 'LCD_A': 6.70482, 'LFPD_A': 6.70482, 'pore_volume_cm3_g': 0.523159}
+[EVENT] evaluating suggestion=271a1bd0-dc08-4b7b-b531-5c6e20aca415 params={'topology': 'pcu', 'node': 'N295', 'edge': 'E73'}
+[RESULT] pcu_N295_E73 ok=True objectives={'selectivity_proxy': 1.0, 'capacity_proxy': 1.23157} metrics={'PLD_A': 5.96203, 'LCD_A': 9.1277, 'LFPD_A': 8.839, 'pore_volume_cm3_g': 1.23157}
+[EVENT] evaluating suggestion=16c43867-9db3-4d02-bd57-445da5ddcee8 params={'topology': 'pcu', 'node': 'N295', 'edge': 'E4'}
+[RESULT] pcu_N295_E4 ok=True objectives={'selectivity_proxy': 0.2807803317417302, 'capacity_proxy': 4.02068} metrics={'PLD_A': 11.64632, 'LCD_A': 18.02136, 'LFPD_A': 18.01413, 'pore_volume_cm3_g': 4.02068}
+[EVENT] evaluating suggestion=577f3721-f25b-4ce9-9826-469b4cbda26b params={'topology': 'dia', 'node': 'N295', 'edge': 'E226'}
+[RESULT] dia_N295_E226 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=ffc5f83a-0f65-4f8f-ace2-5f8cc31707b1 params={'topology': 'srs', 'node': 'N295', 'edge': 'E73'}
+[RESULT] srs_N295_E73 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=0941bc44-4aed-4e57-8979-4f4f609a2ca8 params={'topology': 'pcu', 'node': 'N477', 'edge': 'E88'}
+[RESULT] pcu_N477_E88 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=69387629-940e-4820-9a73-4eb580e4ec90 params={'topology': 'pcu', 'node': 'N59', 'edge': 'E177'}
+[RESULT] pcu_N59_E177 ok=True objectives={'selectivity_proxy': 0.7915711544709508, 'capacity_proxy': 1.44941} metrics={'PLD_A': 9.41731, 'LCD_A': 11.05517, 'LFPD_A': 11.05517, 'pore_volume_cm3_g': 1.44941}
+[EVENT] evaluating suggestion=92886f44-3815-44c6-8444-d090693a63bb params={'topology': 'pcu', 'node': 'N124', 'edge': 'E177'}
+[RESULT] pcu_N124_E177 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=63a86037-bf40-4cbd-8923-0b68318daff7 params={'topology': 'pcu', 'node': 'N59', 'edge': 'E73'}
+[RESULT] pcu_N59_E73 ok=True objectives={'selectivity_proxy': 1.0, 'capacity_proxy': 0.926527} metrics={'PLD_A': 6.23746, 'LCD_A': 9.09425, 'LFPD_A': 9.07834, 'pore_volume_cm3_g': 0.926527}
+[EVENT] evaluating suggestion=3bcba3e3-6560-49e4-a43d-bef4e15c08e6 params={'topology': 'pcu', 'node': 'N59', 'edge': 'E85'}
+[RESULT] pcu_N59_E85 ok=True objectives={'selectivity_proxy': 1.0, 'capacity_proxy': 1.03986} metrics={'PLD_A': 6.49178, 'LCD_A': 8.95511, 'LFPD_A': 8.95511, 'pore_volume_cm3_g': 1.03986}
+[EVENT] evaluating suggestion=1183c81e-2623-4995-9170-eca39af2b316 params={'topology': 'pcu', 'node': 'N682', 'edge': 'E177'}
+[RESULT] pcu_N682_E177 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] evaluating suggestion=3953dd82-5fcc-4137-9580-cf6e3e70b080 params={'topology': 'pcu', 'node': 'N59', 'edge': 'E88'}
+[RESULT] pcu_N59_E88 ok=True objectives={'selectivity_proxy': 1.0, 'capacity_proxy': 1.15889} metrics={'PLD_A': 6.64914, 'LCD_A': 10.20172, 'LFPD_A': 10.20172, 'pore_volume_cm3_g': 1.15889}
+[EVENT] evaluating suggestion=c2b80b67-46ff-41e3-91a1-1ef8075f4ea6 params={'topology': 'pcu', 'node': 'N59', 'edge': 'E129'}
+[RESULT] pcu_N59_E129 ok=True objectives={'selectivity_proxy': 0.30404293917071, 'capacity_proxy': 2.48678} metrics={'PLD_A': 12.00178, 'LCD_A': 14.50917, 'LFPD_A': 14.50917, 'pore_volume_cm3_g': 2.48678}
+[EVENT] evaluating suggestion=3f512585-6ae9-4c1d-8439-2e46df94efbd params={'topology': 'pcu', 'node': 'N12', 'edge': 'E85'}
+[RESULT] pcu_N12_E85 ok=False objectives={'selectivity_proxy': 0.0, 'capacity_proxy': 0.0} metrics={}
+[EVENT] exported campaign csv (text/csv; charset=utf-8)
+[EVENT] paused campaign fe6e1020-d1e6-417e-ad5f-afa1cdf3ac5e; resume with --campaign-id fe6e1020-d1e6-417e-ad5f-afa1cdf3ac5e
+[EVENT] done campaign_id=fe6e1020-d1e6-417e-ad5f-afa1cdf3ac5e completed_this_invocation=30

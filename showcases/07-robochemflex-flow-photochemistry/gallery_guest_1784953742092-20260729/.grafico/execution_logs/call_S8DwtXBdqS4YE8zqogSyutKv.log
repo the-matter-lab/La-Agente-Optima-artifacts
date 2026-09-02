@@ -1,0 +1,18 @@
+exit_code=0
+
+=== stdout (raw) ===
+377 bash -lc pgrep -af 'scripts/run_real_campaign_supervised.py|run_robochemflex_yield_bo.py' || true latest=$(ls -td artifacts/real_robochemflex_yield_bo_* 2>/dev/null | head -1); echo ART=$latest; find "$latest" -maxdepth 1 -type f -printf '%f %s bytes\n' 2>/dev/null | sort; echo '---summary'; cat "$latest/supervision_summary.jsonl" 2>/dev/null || true
+ART=artifacts/real_robochemflex_yield_bo_20260724T141938Z
+bo_campaign_export.content_type.txt 23 bytes
+bo_campaign_export.csv 0 bytes
+intake.json 1830 bytes
+seed_plan.json 1263 bytes
+supervision_summary.jsonl 295 bytes
+---summary
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "1d62df6d-764a-4cf3-b857-b21482da74a0", "event": "experiment_analyzed", "green_score": null, "invocation": 1, "label": null, "run_id": null, "success_count": 1, "time": "2026-07-24T15:27:48.837811+00:00", "yield_percent": null, "zero_streak": 0}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

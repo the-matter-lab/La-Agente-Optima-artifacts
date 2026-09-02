@@ -1,0 +1,37 @@
+/app/domains/pyscf/graph/pyscf_graph.py:25: PydanticGraphDeprecationWarning: Importing `Graph` from `pydantic_graph` is deprecated. The `BaseNode`-based `Graph` runner and its persistence machinery are deprecated and will be removed (or repurposed) in v2; use the builder-based `GraphBuilder` API instead, or pin to `pydantic_graph<2` to keep using them.
+  from pydantic_graph import Graph, GraphRunContext
+/app/grafico/abstraction/graph.py:22: PydanticGraphDeprecationWarning: `pydantic_graph.nodes` is deprecated, import from `pydantic_graph.basenode` (or `pydantic_graph`) instead.
+  from pydantic_graph.nodes import Edge, NodeDef
+=== A014B056C078: CREST/GFN2-xTB ===
+=== A014B056C078: wB97X-D4/def2-SVP geometry optimization ===
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_eeed53ac-3308-420f-a6e1-fbd78cbf01d5
+  - Summarised user query: Optimize the geometry of this conformer with DFT. Skip frequency analysis and stop after geometry optimization.
+  - Hard exit node: GeometryOptimisation
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 10
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 3600
+=== A014B056C078: wB97X-D4/def2-TZVP excited states on optimized geometry ===
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_11bc6a96-9875-410a-b55c-b18e1d399244
+  - Summarised user query: Compute low-lying singlet excited states for this already optimized geometry. Do not re-optimize and skip frequency analysis.
+  - Hard exit node: TDDFT
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 10
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 3600
+Traceback (most recent call last):
+  File "/app/.graphchat-workspaces/gallery_guest_1783043406297/scripts/confirm_four_candidates_wb97xd4.py", line 145, in <module>
+    main()
+  File "/app/.graphchat-workspaces/gallery_guest_1783043406297/scripts/confirm_four_candidates_wb97xd4.py", line 106, in main
+    bright = pick_bright_state(excit.model_dump())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.graphchat-workspaces/gallery_guest_1783043406297/scripts/confirm_four_candidates_wb97xd4.py", line 37, in pick_bright_state
+    sing_e = result.tddft_results['tddft_singlet_energies']
+             ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'dict' object has no attribute 'tddft_results'

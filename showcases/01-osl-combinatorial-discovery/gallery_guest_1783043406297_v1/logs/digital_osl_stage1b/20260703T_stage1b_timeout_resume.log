@@ -1,0 +1,24 @@
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+14:03:39.461 POST api/api/v1/campaigns/validate
+Stage 1b preview prepared successfully.
+Active caps/bridges/cores: 12/12/18
+Candidate count: 2592
+Legacy observations planned for import: 16 / 16
+Validated intake backend: baybe
+Artifacts: artifacts/digital_osl_stage1b_validation/20260703T_stage1b_timeout_resume
+14:03:39.512 GET api/api/v1/campaigns/2cbfb9d2-b24c-4f93-a6cc-f472226b8932
+14:03:39.524 POST api/api/v1/campaigns/2cbfb9d2-b24c-4f93-a6cc-f472226b8932/lifecycle
+14:03:39.557 GET api/api/v1/campaigns/2cbfb9d2-b24c-4f93-a6cc-f472226b8932
+14:03:39.569 GET api/api/v1/campaigns/2cbfb9d2-b24c-4f93-a6cc-f472226b8932/export ? format='csv'
+14:03:39.599 BO API read timeout; retrying
+14:03:44.600 BO API read timeout; retrying
+14:03:54.605 Optional BO API call timed out; continuing without this step
+14:03:54.608 Campaign diagnostics unavailable after BO API timeout
+14:03:54.609 POST api/api/v1/suggestions/2cbfb9d2-b24c-4f93-a6cc-f472226b8932/query
+14:03:54.630 POST api/api/v1/campaigns/status/batch
+14:03:54.653 POST api/api/v1/suggestions/2cbfb9d2-b24c-4f93-a6cc-f472226b8932/generate ? batch_size='1'
+14:04:04.899 POST api/api/v1/results/2cbfb9d2-b24c-4f93-a6cc-f472226b8932
+14:04:04.956 GET api/api/v1/campaigns/2cbfb9d2-b24c-4f93-a6cc-f472226b8932/export ? format='csv'
+14:04:04.973 GET api/api/v1/campaigns/2cbfb9d2-b24c-4f93-a6cc-f472226b8932
+14:04:04.983 POST api/api/v1/campaigns/2cbfb9d2-b24c-4f93-a6cc-f472226b8932/lifecycle
+Execution finished for campaign 2cbfb9d2-b24c-4f93-a6cc-f472226b8932. New BO successes this invocation: 1. Artifacts: artifacts/digital_osl_stage1b_validation/20260703T_stage1b_timeout_resume

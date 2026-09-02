@@ -1,0 +1,192 @@
+from __future__ import annotations
+
+import contextlib
+import io
+import math
+import os
+import time
+import threading
+from dataclasses import dataclass
+from types import SimpleNamespace
+from typing import Any
+
+import logfire
+from rdkit import Chem
+from rdkit.Chem import AllChem, Descriptors
+
+HOMO_TARGET_EV = -5.8
+GAP_TARGET_EV = 5.0
+VOLUME_LIMIT_A3 = 350.0
+_PYSCF_STDIO_LOCK = threading.Lock()
+
+
+@dataclass
+class Evaluation:
+    candidate_id: str
+    status: str
+    descriptors: dict[str, Any]
+    objectives: dict[str, float]
+    proxies: dict[str, str]
+    elapsed_s: float
+    error: str | None = None
+
+
+def _ctx():
+    from grafico.deps import GraficoDeps
+
+    return SimpleNamespace(
+        deps=GraficoDeps(
+            ws_url=os.getenv("GRAPHCHAT_AGENT_WS_URL") or os.getenv("VITE_WS_URL", "ws://graphchat:3000"),
+            room=os.getenv("GRAPHCHAT_ROOM", "room"),
+            sparql_endpoint=os.getenv("SPARQL_ENDPOINT", "http://blazegraph:8080/blazegraph/namespace/kb/sparql"),
+        )
+    )
+
+
+def _rdkit_volume_and_heavy_atoms(smiles: str) -> tuple[float, int]:
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        raise ValueError(f"RDKit could not parse ligand_smiles={smiles!r}")
+    heavy = int(Descriptors.HeavyAtomCount(mol))
+    mol_h = Chem.AddHs(mol)
+    params = AllChem.ETKDGv3()
+    params.randomSeed = 31841
+    code = AllChem.EmbedMolecule(mol_h, params)
+    if code != 0:
+        code = AllChem.EmbedMolecule(mol_h, randomSeed=31841, useRandomCoords=True)
+    if code != 0:
+        raise ValueError("RDKit 3D embedding failed for volume proxy")
+    try:
+        AllChem.UFFOptimizeMolecule(mol_h, maxIters=200)
+    except Exception as exc:  # noqa: BLE001
+        logfire.debug("UFF volume pre-optimization failed; using embedded geometry", error=str(exc))
+    return float(AllChem.ComputeMolVolume(mol_h)), heavy
+
+
+def _hartree_to_ev(values: list[float]) -> list[float]:
+    from domains.pyscf.tools.conversion_tools import UnitConvPair, get_conversion_factor
+
+    pairs = [UnitConvPair(value=float(v), from_unit="hartree", to_unit="eV") for v in values]
+    converted = get_conversion_factor(pairs)
+    if isinstance(converted, str):
+        raise ValueError(converted)
+    return [float(x) for x in converted]
+
+
+def _dump_model(obj: Any) -> dict[str, Any]:
+    if hasattr(obj, "model_dump"):
+        return obj.model_dump(mode="json")
+    if isinstance(obj, dict):
+        return obj
+    raise TypeError(f"Unexpected PySCF result type: {type(obj)!r}")
+
+
+def _pyscf_descriptors(row: dict[str, str], *, timeout_s: float, geometry_max_steps: int) -> tuple[dict[str, Any], dict[str, str]]:
+    from domains.pyscf.tools.pyscf_workflow_tools import run_pyscf_workflow
+
+    captured = io.StringIO()
+    # contextlib.redirect_stdout/stderr mutates process-global sys.stdout/sys.stderr.
+    # PySCF evaluations run in worker threads, so unsynchronized redirects can
+    # swallow tagged monitor lines emitted by the main thread or leave stdout
+    # restored to the wrong StringIO. Serialize only the redirected workflow
+    # section so tagged [EVENT]/[RESULT]/[ALERT]/[HEARTBEAT] output remains
+    # monitor-visible.
+    with _PYSCF_STDIO_LOCK:
+        with contextlib.redirect_stdout(captured), contextlib.redirect_stderr(captured):
+            result = run_pyscf_workflow(
+                _ctx(),
+                summarised_user_query=(
+                    "For this neutral monodentate phosphine ligand, generate and optimize a 3D structure, then run "
+                    "restricted PBE/def2-SVP single-point molecular analysis for orbital energies and charges only. "
+                    "Do not run frequency calculations, TDDFT, metal-complex, catalytic-cycle, or reaction calculations."
+                ),
+                identifier_type="smiles",
+                identifier=row["ligand_smiles"],
+                charge=0,
+                spin_multiplicity=1,
+                xc_functional="PBE",
+                basis_set="def2-SVP",
+                restricted=True,
+                geometry_max_steps=geometry_max_steps,
+                workflow_timeout_s=timeout_s,
+                update_graph=False,
+            )
+    if captured.getvalue().strip():
+        logfire.debug("captured PySCF workflow console output", candidate_id=row["candidate_id"], output=captured.getvalue()[-4000:])
+    data = _dump_model(result)
+    analysis = data.get("analysis_results") or {}
+    final = data.get("final_molecule") or {}
+    atom_nums = (final.get("xyz") or {}).get("atomic_numbers") or []
+    electrons = int(sum(int(z) for z in atom_nums) - int(final.get("charge") or 0))
+    orbital_h = [float(x) for x in (analysis.get("orbital_energies") or [])]
+    if electrons <= 0 or not orbital_h:
+        raise ValueError("PySCF molecular analysis did not return orbital energies/electron count")
+    homo_i = electrons // 2 - 1
+    lumo_i = homo_i + 1
+    if homo_i < 0 or lumo_i >= len(orbital_h):
+        raise ValueError("Orbital list too short for closed-shell HOMO/LUMO extraction")
+    homo_ev, lumo_ev, gap_ev = _hartree_to_ev([orbital_h[homo_i], orbital_h[lumo_i], orbital_h[lumo_i] - orbital_h[homo_i]])
+    charges = analysis.get("atomic_charges_lowdin") or analysis.get("atomic_charges_mulliken") or []
+    p_indices = [i for i, z in enumerate(atom_nums) if int(z) == 15]
+    p_charge = float(charges[p_indices[0]]) if p_indices and len(charges) > p_indices[0] else float("nan")
+    volume, heavy = _rdkit_volume_and_heavy_atoms(row["ligand_smiles"])
+    return (
+        {
+            "homo_energy_eV": homo_ev,
+            "lumo_energy_eV": lumo_ev,
+            "homo_lumo_gap_eV": gap_ev,
+            "phosphorus_partial_charge": p_charge,
+            "molecular_volume_ang3": volume,
+            "heavy_atom_count": heavy,
+            "total_energy_hartree": data.get("total_energy"),
+            "workflow_summary": data.get("workflow_summary"),
+        },
+        {
+            "phosphorus_partial_charge": "pyscf_lowdin_atomic_charge_on_P" if charges else "unavailable",
+            "molecular_volume_ang3": "rdkit_ETKDG_UFF_ComputeMolVolume_proxy",
+        },
+    )
+
+
+def _synthetic_descriptors(row: dict[str, str]) -> tuple[dict[str, Any], dict[str, str]]:
+    donor = {"Me": 0.35, "Et": 0.32, "iPr": 0.30, "tBu": 0.28, "Cy": 0.31, "Ph": 0.0, "pMePh": 0.08, "pOMePh": 0.14, "pFPh": -0.12, "pClPh": -0.10, "pCF3Ph": -0.25, "pCNPh": -0.30}
+    bulk = {"Me": 1.0, "Et": 1.5, "iPr": 2.1, "tBu": 3.0, "Cy": 3.4, "Ph": 2.6, "pMePh": 2.9, "pOMePh": 3.1, "pFPh": 2.8, "pClPh": 3.0, "pCF3Ph": 3.4, "pCNPh": 3.0}
+    groups = [row["R1"], row["R2"], row["R3"]]
+    d = sum(donor[g] for g in groups)
+    b = sum(bulk[g] for g in groups)
+    volume, heavy = _rdkit_volume_and_heavy_atoms(row["ligand_smiles"])
+    desc = {
+        "homo_energy_eV": -6.05 + 0.45 * d,
+        "lumo_energy_eV": -1.2 - 0.2 * d,
+        "homo_lumo_gap_eV": 4.7 + 0.08 * b - 0.35 * d,
+        "phosphorus_partial_charge": 0.12 - 0.08 * d,
+        "molecular_volume_ang3": volume,
+        "heavy_atom_count": heavy,
+        "total_energy_hartree": None,
+        "workflow_summary": ["synthetic evaluator smoke-test surrogate; not a production PySCF result"],
+    }
+    return desc, {"synthetic_evaluator": "deterministic smoke-test surrogate"}
+
+
+def objectives_from_descriptors(desc: dict[str, Any]) -> dict[str, float]:
+    return {
+        "donor_homo_error": abs(float(desc["homo_energy_eV"]) - HOMO_TARGET_EV),
+        "gap_error": abs(float(desc["homo_lumo_gap_eV"]) - GAP_TARGET_EV),
+        "steric_excess": max(0.0, float(desc["molecular_volume_ang3"]) - VOLUME_LIMIT_A3),
+        "heavy_atom_count": float(desc["heavy_atom_count"]),
+    }
+
+
+def evaluate(row: dict[str, str], *, synthetic: bool = False, timeout_s: float = 900.0, geometry_max_steps: int = 100) -> Evaluation:
+    t0 = time.time()
+    try:
+        if synthetic:
+            desc, proxies = _synthetic_descriptors(row)
+        else:
+            desc, proxies = _pyscf_descriptors(row, timeout_s=timeout_s, geometry_max_steps=geometry_max_steps)
+        objectives = objectives_from_descriptors(desc)
+        if not all(math.isfinite(v) for v in objectives.values()):
+            raise ValueError("Non-finite objective value produced")
+        return Evaluation(row["candidate_id"], "success", desc, objectives, proxies, time.time() - t0)
+    except Exception as exc:  # noqa: BLE001
+        return Evaluation(row["candidate_id"], "failed", {}, {}, {}, time.time() - t0, str(exc))

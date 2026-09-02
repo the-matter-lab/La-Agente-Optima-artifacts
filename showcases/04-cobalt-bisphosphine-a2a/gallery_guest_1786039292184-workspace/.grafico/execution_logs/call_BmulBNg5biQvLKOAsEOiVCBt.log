@@ -1,0 +1,19 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+Traceback (most recent call last):
+  File "/app/.graphchat-workspaces/gallery_guest_1786039292184/hood_co_bisphosphine_artifacts_pbe_converged/plot_feasible_improvement_so_far.py", line 51, in <module>
+    r['feasible_index']=i+1; r['hypervolume']=hvs[i]; r['norm_hv']=float(norm[i]); r['pareto']=bool(pareto(Y[:i])[-1])
+                                                                                                    ~~~~~~~~~~~~~^^^^
+IndexError: index -1 is out of bounds for axis 0 with size 0
+
+
+=== stderr (model-visible) ===
+Traceback (most recent call last):
+  File "/app/.graphchat-workspaces/gallery_guest_1786039292184/hood_co_bisphosphine_artifacts_pbe_converged/plot_feasible_improvement_so_far.py", line 51, in <module>
+    r['feasible_index']=i+1; r['hypervolume']=hvs[i]; r['norm_hv']=float(norm[i]); r['pareto']=bool(pareto(Y[:i])[-1])
+                                                                                                    ~~~~~~~~~~~~~^^^^
+IndexError: index -1 is out of bounds for axis 0 with size 0

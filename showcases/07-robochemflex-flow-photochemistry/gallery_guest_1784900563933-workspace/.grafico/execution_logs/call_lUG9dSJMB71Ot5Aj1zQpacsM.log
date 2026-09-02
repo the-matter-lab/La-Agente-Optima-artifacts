@@ -1,0 +1,54 @@
+exit_code=0
+
+=== stdout (raw) ===
+./constants.csv:3:AcquisitionTime,1.64,
+./constants.csv:4:Number,32,
+./constants.csv:5:yield_calculation_chemical,SM,
+./constants.csv:6:target_peak,-58,ppm
+./constants.csv:7:target_peak_deviation,3,ppm
+./constants.csv:9:centerFrequency,-60,
+./constants.csv:10:target_peak_calibration_coeff_1,6973,
+./constants.csv:11:target_peak_calibration_coeff_0,-5.4,
+./scripts/run_real_campaign_supervised.py:4:Stops early on repeated zero/no-peak NMR results or runtime failure.
+./scripts/run_real_campaign_supervised.py:90:def nmr_bad_zero(result_obj) -> bool:
+./scripts/run_real_campaign_supervised.py:160:        bad = nmr_bad_zero(result_obj)
+./scripts/run_real_campaign_supervised.py:167:            print(f"[{now()}] STOPPING EARLY: {zero_streak} consecutive zero/no-peak-like NMR results.", flush=True)
+./robochemflex_yield_bo/space.py:81:        {"name": "target_peak", "value": float(k["target_peak"]), "units": "ppm"},
+./robochemflex_yield_bo/space.py:82:        {"name": "metric", "value": "yield"},
+./robochemflex_yield_bo/space.py:83:        {"name": "yield_calculation_chemical", "value": k["yield_calculation_chemical"]},
+./robochemflex_yield_bo/space.py:84:        {"name": "target_peak_deviation", "value": float(k["target_peak_deviation"]), "units": "ppm"},
+./robochemflex_yield_bo/space.py:85:        {"name": "centerFrequency", "value": float(k["centerFrequency"])},
+./robochemflex_yield_bo/space.py:86:        {"name": "target_peak_calibration_coeff_1", "value": float(k["target_peak_calibration_coeff_1"])},
+./robochemflex_yield_bo/space.py:87:        {"name": "target_peak_calibration_coeff_0", "value": float(k["target_peak_calibration_coeff_0"])},
+./robochemflex_yield_bo/space.py:88:        {"name": "AcquisitionTime", "value": k["AcquisitionTime"], "units": "S"},
+./robochemflex_yield_bo/space.py:89:        {"name": "Number", "value": k["Number"]},
+./robochemflex_yield_bo/campaign.py:93:        rb.start_campaign(args.experiment_type, args.analytical_method, args.robridge_campaign_name)
+./robochemflex_yield_bo/robridge_client.py:35:    def start_campaign(self, experiment_type: str, analytical_method: str, campaign_name: str) -> dict:
+./robochemflex_yield_bo/robridge_client.py:38:            {"experiment_type": experiment_type, "analytical_method": analytical_method, "campaign_name": campaign_name},
+./HOW_TO_EXECUTE_CAMPAIGN.md:15:- The campaign uses `Flow Photochemical Reaction` with `NMR` by default. The current Perry `Flow Photochemical Reaction` capability advertises `light_intensity` allowed values `[0, 25, 50, 75, 100]` on the UFlow light array; the user requested no reactor/wavelength setup change, so the script treats light as a discrete BO parameter over those values rather than a continuous 0--100 parameter.
+./HOW_TO_EXECUTE_CAMPAIGN.md:23:- `yield_calculation_chemical = SM`
+./HOW_TO_EXECUTE_CAMPAIGN.md:24:- `target_peak = -58 ppm`
+./HOW_TO_EXECUTE_CAMPAIGN.md:25:- `target_peak_deviation = 3 ppm`
+./HOW_TO_EXECUTE_CAMPAIGN.md:26:- `centerFrequency = -60`
+./HOW_TO_EXECUTE_CAMPAIGN.md:27:- `AcquisitionTime = 1.64`
+./HOW_TO_EXECUTE_CAMPAIGN.md:28:- `Number = 32`
+./HOW_TO_EXECUTE_CAMPAIGN.md:29:- `target_peak_calibration_coeff_1 = 6973`
+./HOW_TO_EXECUTE_CAMPAIGN.md:30:- `target_peak_calibration_coeff_0 = -5.4`
+./HOW_TO_EXECUTE_CAMPAIGN.md:58:Justification: this metric rewards candidates that use less catalyst, less anhydride, less oxidant, and lower photonic residence-time burden while preserving yield as the dominant objective. It is not a formal process mass-intensity or life-cycle metric because product mass and actual energy draw are not returned by the platform, but it is transparent, monotonic in condition resource use, and computable before/after every experiment from submitted or executed conditions.
+./roboflex_hypothetical_request_seed01.json:8:      "analytical_method": "NMR",
+./roboflex_hypothetical_request_seed01.json:82:          "name": "target_peak",
+./roboflex_hypothetical_request_seed01.json:87:          "name": "metric",
+./roboflex_hypothetical_request_seed01.json:91:          "name": "yield_calculation_chemical",
+./roboflex_hypothetical_request_seed01.json:95:          "name": "target_peak_deviation",
+./roboflex_hypothetical_request_seed01.json:100:          "name": "centerFrequency",
+./roboflex_hypothetical_request_seed01.json:104:          "name": "target_peak_calibration_coeff_1",
+./roboflex_hypothetical_request_seed01.json:108:          "name": "target_peak_calibration_coeff_0",
+./roboflex_hypothetical_request_seed01.json:112:          "name": "AcquisitionTime",
+./roboflex_hypothetical_request_seed01.json:117:          "name": "Number",
+./run_robochemflex_yield_bo.py:30:    parser.add_argument("--analytical-method", default="NMR")
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,275 @@
+exit_code=0
+
+=== stdout (raw) ===
+from __future__ import annotations
+
+import csv
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+ROBRIDGE_ALIASES = {
+    "Ru bpy Cl": "Ru-bpy-Cl",
+    "Ru bpy PF6": "Ru-bpy-PF",
+    "Ir ppy": "Ir-ppy",
+    "Ir CF3 ppy": "IrCF3ppy",
+    "py NO": "PyNO",
+    "4-Ph py NO": "4PhPyNO",
+}
+
+
+def _rows(name: str) -> list[dict[str, str]]:
+    with (ROOT / name).open(newline="") as f:
+        return list(csv.DictReader(f))
+
+
+def constants() -> dict[str, str]:
+    return {r["constant"]: r["value"] for r in _rows("constants.csv")}
+
+
+def catalyst_categories() -> list[str]:
+    return [
+        r["reagent"]
+        for r in _rows("stock_solutions_concentrations.csv")
+        if r.get("catalyst_type") == "Catalyst Type" and r.get("availability", "").lower() == "available"
+    ]
+
+
+def oxidant_categories() -> list[str]:
+    return ["py NO", "4-Ph py NO"]
+
+
+def robridge_name(label: str) -> str:
+    return ROBRIDGE_ALIASES.get(label, label)
+
+
+def bo_parameters(light_values: list[int] | None = None) -> list[dict]:
+    light_values = light_values or [0, 25, 50, 75, 100]
+    return [
+        {"name": "catalyst_type", "type": "categorical", "categories": catalyst_categories()},
+        {"name": "oxidant_type", "type": "categorical", "categories": oxidant_categories()},
+        {"name": "catalyst_equiv", "type": "continuous", "bounds": {"lower": 0.001, "upper": 0.004}},
+        {"name": "TFAA_equiv", "type": "continuous", "bounds": {"lower": 0.9, "upper": 3.5}},
+        {"name": "oxidant_equiv", "type": "continuous", "bounds": {"lower": 0.9, "upper": 3.0}},
+        {"name": "light_intensity", "type": "discrete", "values": light_values},
+        {"name": "residence_time_min", "type": "continuous", "bounds": {"lower": 2.0, "upper": 90.0}},
+    ]
+
+
+def normalize_candidate(candidate: dict) -> dict:
+    return {
+        "catalyst_type": str(candidate["catalyst_type"]),
+        "oxidant_type": str(candidate["oxidant_type"]),
+        "catalyst_equiv": float(candidate["catalyst_equiv"]),
+        "TFAA_equiv": float(candidate["TFAA_equiv"]),
+        "oxidant_equiv": float(candidate["oxidant_equiv"]),
+        "light_intensity": int(round(float(candidate["light_intensity"]))),
+        "residence_time_min": float(candidate["residence_time_min"]),
+    }
+
+
+def robridge_parameters(candidate: dict, sample_name: str) -> list[dict]:
+    c = normalize_candidate(candidate)
+    k = constants()
+    return [
+        {"name": "light_intensity", "value": c["light_intensity"], "units": "%", "kind": "physical"},
+        {"name": "residence_time", "value": c["residence_time_min"] * 60.0, "units": "S", "kind": "physical"},
+        {"name": "slug_volume", "value": float(k["slug_size"]), "units": "uL", "kind": "physical"},
+        {"name": "collect_crude", "value": k["collect_crude"].upper() == "TRUE", "kind": "physical"},
+        {"name": "SM", "value": 100.0, "units": "mM", "kind": "chemical", "role": "Limiting Reagent"},
+        {"name": robridge_name(c["catalyst_type"]), "value": c["catalyst_equiv"], "units": "eq", "kind": "chemical", "role": "Catalyst"},
+        {"name": "TFAA", "value": c["TFAA_equiv"], "units": "eq", "kind": "chemical", "role": "Anhydride"},
+        {"name": robridge_name(c["oxidant_type"]), "value": c["oxidant_equiv"], "units": "eq", "kind": "chemical", "role": "Oxidant"},
+        {"name": "sample_name", "value": sample_name},
+        {"name": "target_peak", "value": float(k["target_peak"]), "units": "ppm"},
+        {"name": "metric", "value": "yield"},
+        {"name": "yield_calculation_chemical", "value": k["yield_calculation_chemical"]},
+        {"name": "target_peak_deviation", "value": float(k["target_peak_deviation"]), "units": "ppm"},
+        {"name": "centerFrequency", "value": float(k["centerFrequency"])},
+        {"name": "target_peak_calibration_coeff_1", "value": float(k["target_peak_calibration_coeff_1"])},
+        {"name": "target_peak_calibration_coeff_0", "value": float(k["target_peak_calibration_coeff_0"])},
+        {"name": "AcquisitionTime", "value": k["AcquisitionTime"], "units": "S"},
+        {"name": "Number", "value": k["Number"]},
+    ]
+from __future__ import annotations
+
+
+def informed_seeds() -> list[dict]:
+    return [
+        {"catalyst_type": "4CzIPN", "oxidant_type": "py NO", "catalyst_equiv": 0.0025, "TFAA_equiv": 2.2, "oxidant_equiv": 1.8, "light_intensity": 50, "residence_time_min": 30.0},
+        {"catalyst_type": "Ru bpy Cl", "oxidant_type": "py NO", "catalyst_equiv": 0.0010, "TFAA_equiv": 0.9, "oxidant_equiv": 0.9, "light_intensity": 75, "residence_time_min": 10.0},
+        {"catalyst_type": "Ir CF3 ppy", "oxidant_type": "4-Ph py NO", "catalyst_equiv": 0.0040, "TFAA_equiv": 3.5, "oxidant_equiv": 3.0, "light_intensity": 100, "residence_time_min": 75.0},
+        {"catalyst_type": "Ir ppy", "oxidant_type": "py NO", "catalyst_equiv": 0.0020, "TFAA_equiv": 1.4, "oxidant_equiv": 2.4, "light_intensity": 25, "residence_time_min": 45.0},
+        {"catalyst_type": "Ru bpy PF6", "oxidant_type": "4-Ph py NO", "catalyst_equiv": 0.0035, "TFAA_equiv": 3.0, "oxidant_equiv": 1.2, "light_intensity": 75, "residence_time_min": 20.0},
+        {"catalyst_type": "4CzIPN", "oxidant_type": "4-Ph py NO", "catalyst_equiv": 0.0015, "TFAA_equiv": 1.7, "oxidant_equiv": 2.5, "light_intensity": 50, "residence_time_min": 90.0},
+    ]
+from __future__ import annotations
+
+import argparse
+import json
+from datetime import datetime, timezone
+from pathlib import Path
+from uuid import uuid4
+
+import logfire
+from domains.bo_mcp.client import BoMcpClient
+
+from .evaluation import evaluate
+from .intake import build_intake
+from .robridge_client import RobridgeClient
+from .seed_design import informed_seeds
+from .space import normalize_candidate
+
+
+def run(args: argparse.Namespace) -> None:
+    if args.mode == "robridge-real" and not args.allow_real_roboflex:
+        raise SystemExit("Refusing real RoboFlex execution without --allow-real-roboflex")
+
+    artifact_dir = Path(args.artifact_dir or f"artifacts/robochemflex_yield_bo_{_stamp()}")
+    artifact_dir.mkdir(parents=True, exist_ok=True)
+    client = BoMcpClient.from_env(timeout_s=args.bo_timeout_s)
+    intake = build_intake(args.campaign_name)
+    _write_json(artifact_dir / "intake.json", intake)
+    _write_json(artifact_dir / "seed_plan.json", informed_seeds())
+
+    if args.validate_only:
+        print("Validating BO-MCP intake only...")
+        print(client.validate_intake(intake))
+        return
+
+    campaign_id = args.campaign_id or _create_campaign(client, intake, args.run_nonce)
+    print(f"BO campaign: {campaign_id}")
+    if args.mode == "robridge-real":
+        _ensure_robridge_campaign(args)
+
+    successes = 0
+    while successes < args.max_successes:
+        existing = _list_results(client, campaign_id)
+        if (not args.skip_informed_seeds) and len(existing) < len(informed_seeds()):
+            idx = len(existing)
+            candidate = informed_seeds()[idx]
+            label = f"seed{idx + 1:02d}_{campaign_id[:8]}"
+            submitted = _evaluate_and_submit(client, campaign_id, candidate, artifact_dir, label, None, args)
+            if not submitted:
+                break
+            successes += 1
+            continue
+
+        pending = client.query_suggestions(campaign_id, status_filter="pending", limit=1)
+        if pending:
+            suggestion = pending[0]
+        else:
+            decision = client.next_action(campaign_id)
+            if decision.get("action") != "bo_generate_suggestions":
+                print(f"BO next action: {decision.get('action')}; stopping this invocation.")
+                break
+            response = client.generate_suggestions(campaign_id, batch_size=1)
+            suggestions = response.get("suggestions", [])
+            if not suggestions:
+                print("No BO suggestion returned; stopping this invocation.")
+                break
+            suggestion = suggestions[0]
+        candidate = suggestion["parameter_values"]
+        sid = suggestion["suggestion_id"]
+        label = f"bo_{sid[:10]}"
+        submitted = _evaluate_and_submit(client, campaign_id, candidate, artifact_dir, label, sid, args)
+        if not submitted:
+            break
+        successes += 1
+
+    _export(client, campaign_id, artifact_dir)
+    _finish(client, campaign_id, args)
+    print(f"Completed {successes} successful evaluation(s) in this invocation.")
+    print(f"Artifacts: {artifact_dir}")
+
+
+def _create_campaign(client: BoMcpClient, intake: dict, run_nonce: str | None) -> str:
+    nonce = run_nonce or uuid4().hex[:10]
+    client.validate_intake(intake)
+    key = BoMcpClient.make_idempotency_key("create", intake["name"], nonce)
+    response = client.create_campaign(intake, idempotency_key=key)
+    return response["campaign_id"]
+
+
+def _ensure_robridge_campaign(args: argparse.Namespace) -> None:
+    rb = RobridgeClient()
+    status = rb.status()
+    if status.get("phase") == "ready" and not status.get("campaign"):
+        rb.start_campaign(args.experiment_type, args.analytical_method, args.robridge_campaign_name)
+        print("Started RoboFlex campaign from existing setup; vial setup was not modified.")
+    elif status.get("campaign"):
+        print("Using current RoboFlex campaign; vial setup was not modified.")
+    else:
+        raise RuntimeError(f"RoboFlex is not ready for run submission: phase={status.get('phase')}")
+
+
+def _evaluate_and_submit(client, campaign_id, candidate, artifact_dir, label, suggestion_id, args) -> bool:
+    candidate = normalize_candidate(candidate)
+    logfire.info("Evaluating candidate", label=label, mode=args.mode)
+    outcome = evaluate(candidate, mode=args.mode, artifact_dir=artifact_dir, label=label, timeout_s=args.run_timeout_s)
+    if not outcome.success:
+        print(f"Evaluation failed for {label}: {outcome.error}")
+        if suggestion_id and not outcome.platform_failure:
+            client.update_suggestion_status(suggestion_id, "rejected")
+        return False
+    row = {
+        "parameter_values": outcome.parameter_values,
+        "objective_values": outcome.objective_values,
+        "metadata": {
+            "external_ref": {"system": "roboflex" if args.mode == "robridge-real" else "local-simulation", "id": outcome.run_id or label},
+            "notes": "informed seed" if suggestion_id is None else "BO-MCP suggestion",
+        },
+    }
+    if suggestion_id:
+        row["suggestion_id"] = suggestion_id
+    key = BoMcpClient.make_idempotency_key("result", campaign_id, label)
+    client.submit_results(campaign_id, results=[row], idempotency_key=key, force=bool(suggestion_id))
+    _append_json(artifact_dir / "submitted_results.jsonl", row)
+    print(f"Submitted {label}: yield={outcome.objective_values['yield_percent']:.1f}, green={outcome.objective_values['green_score']:.1f}")
+    return True
+
+
+def _list_results(client: BoMcpClient, campaign_id: str) -> list[dict]:
+    return client._json_request("GET", f"/api/v1/results/{campaign_id}")
+
+
+def _export(client: BoMcpClient, campaign_id: str, artifact_dir: Path) -> None:
+    try:
+        content, content_type = client.export_campaign(campaign_id, fmt="csv")
+        (artifact_dir / "bo_campaign_export.csv").write_bytes(content)
+        (artifact_dir / "bo_campaign_export.content_type.txt").write_text(content_type)
+    except Exception as exc:
+        print(f"Export skipped: {exc}")
+
+
+def _finish(client: BoMcpClient, campaign_id: str, args: argparse.Namespace) -> None:
+    if args.terminate_bo_on_exit:
+        client.lifecycle(campaign_id, action="terminate")
+        print("BO campaign terminated.")
+    elif args.pause_bo_on_exit:
+        try:
+            status = client.get_campaign(campaign_id).get("status")
+            if status == "running":
+                client.lifecycle(campaign_id, action="pause")
+                print("BO campaign paused.")
+        except Exception as exc:
+            print(f"Pause skipped: {exc}")
+
+
+def _stamp() -> str:
+    return datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+
+
+def _write_json(path: Path, payload) -> None:
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+
+
+def _append_json(path: Path, payload) -> None:
+    with path.open("a") as f:
+        f.write(json.dumps(payload, sort_keys=True) + "\n")
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

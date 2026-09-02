@@ -1,0 +1,64 @@
+exit_code=0
+
+=== stdout (raw) ===
+./artifacts/smoke_robochemflex_yield_bo_patch/intake.json:11:      "normalization_bounds": [
+./artifacts/smoke_robochemflex_yield_bo_patch/intake.json:21:      "normalization_bounds": [
+./artifacts/smoke_robochemflex_yield_bo_patch/intake.json:94:  "scalarization": "desirability",
+./artifacts/smoke_robochemflex_yield_bo_patch/intake.json:95:  "scalarizer": "geom_mean"
+./artifacts/smoke_robochemflex_yield_protocol_patch/intake.json:11:      "normalization_bounds": [
+./artifacts/smoke_robochemflex_yield_protocol_patch/intake.json:21:      "normalization_bounds": [
+./artifacts/smoke_robochemflex_yield_protocol_patch/intake.json:94:  "scalarization": "desirability",
+./artifacts/smoke_robochemflex_yield_protocol_patch/intake.json:95:  "scalarizer": "geom_mean"
+./artifacts/real_robochemflex_yield_bo_20260724T141938Z/intake.json:11:      "normalization_bounds": [
+./artifacts/real_robochemflex_yield_bo_20260724T141938Z/intake.json:21:      "normalization_bounds": [
+./artifacts/real_robochemflex_yield_bo_20260724T141938Z/intake.json:94:  "scalarization": "desirability",
+./artifacts/real_robochemflex_yield_bo_20260724T141938Z/intake.json:95:  "scalarizer": "geom_mean"
+./artifacts/recreated_robochemflex_yield_bo_preflight/intake.json:11:      "normalization_bounds": [
+./artifacts/recreated_robochemflex_yield_bo_preflight/intake.json:21:      "normalization_bounds": [
+./artifacts/recreated_robochemflex_yield_bo_preflight/intake.json:94:  "scalarization": "desirability",
+./artifacts/recreated_robochemflex_yield_bo_preflight/intake.json:95:  "scalarizer": "geom_mean"
+./artifacts/smoke_robochemflex_yield_bo/intake.json:11:      "normalization_bounds": [
+./artifacts/smoke_robochemflex_yield_bo/intake.json:21:      "normalization_bounds": [
+./artifacts/smoke_robochemflex_yield_bo/intake.json:94:  "scalarization": "desirability",
+./artifacts/smoke_robochemflex_yield_bo/intake.json:95:  "scalarizer": "geom_mean"
+./artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:11:      "normalization_bounds": [
+./artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:21:      "normalization_bounds": [
+./artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:94:  "scalarization": "desirability",
+./artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:95:  "scalarizer": "geom_mean"
+./artifacts/recreated_robochemflex_yield_bo_20260725/intake.json:11:      "normalization_bounds": [
+./artifacts/recreated_robochemflex_yield_bo_20260725/intake.json:21:      "normalization_bounds": [
+./artifacts/recreated_robochemflex_yield_bo_20260725/intake.json:94:  "scalarization": "desirability",
+./artifacts/recreated_robochemflex_yield_bo_20260725/intake.json:95:  "scalarizer": "geom_mean"
+./robochemflex_yield_bo/intake.py:13:        "scalarization": "desirability",
+./robochemflex_yield_bo/intake.py:14:        "scalarizer": "geom_mean",
+./robochemflex_yield_bo/intake.py:22:                "normalization_bounds": [0.0, 100.0],
+./robochemflex_yield_bo/intake.py:29:                "normalization_bounds": [0.0, 100.0],
+./HOW_TO_EXECUTE_CAMPAIGN.md:61:The BO-MCP intake uses BayBE with desirability scalarization, weights `yield_percent = 0.8` and `green_score = 0.2`, and normalized objective bounds `[0, 100]` for both. This keeps yield primary while allowing the optimizer to prefer greener conditions when yields are comparable.
+./.grafico/execution_logs/call_V8ZoaitULT4CKZvqev5ByeiU.log:5:keys ['acquisition_method', 'backend', 'batch_size', 'description', 'name', 'objectives', 'parameters', 'random_seed', 'scalarization', 'scalarizer']
+./.grafico/execution_logs/call_V8ZoaitULT4CKZvqev5ByeiU.log:7:keys ['acquisition_method', 'backend', 'batch_size', 'description', 'name', 'objectives', 'parameters', 'random_seed', 'scalarization', 'scalarizer']
+./.grafico/execution_logs/call_x96TQq6vxsaRiwUR9qyC5niq.log:15:      "normalization_bounds": [
+./.grafico/execution_logs/call_x96TQq6vxsaRiwUR9qyC5niq.log:25:      "normalization_bounds": [
+./.grafico/execution_logs/call_x96TQq6vxsaRiwUR9qyC5niq.log:98:  "scalarization": "desirability",
+./.grafico/execution_logs/call_x96TQq6vxsaRiwUR9qyC5niq.log:99:  "scalarizer": "geom_mean"
+./.grafico/execution_logs/call_x96TQq6vxsaRiwUR9qyC5niq.log:113:      "normalization_bounds": [
+./.grafico/execution_logs/call_x96TQq6vxsaRiwUR9qyC5niq.log:123:      "normalization_bounds": [
+./.grafico/execution_logs/call_x96TQq6vxsaRiwUR9qyC5niq.log:196:  "scalarization": "desirability",
+./.grafico/execution_logs/call_x96TQq6vxsaRiwUR9qyC5niq.log:197:  "scalarizer": "geom_mean"
+./.grafico/execution_logs/call_qvfHK3ZtUze8fDk0dIUQvNlJ.log:53:        "scalarization": "desirability",
+./.grafico/execution_logs/call_qvfHK3ZtUze8fDk0dIUQvNlJ.log:54:        "scalarizer": "geom_mean",
+./.grafico/execution_logs/call_qvfHK3ZtUze8fDk0dIUQvNlJ.log:62:                "normalization_bounds": [0.0, 100.0],
+./.grafico/execution_logs/call_qvfHK3ZtUze8fDk0dIUQvNlJ.log:69:                "normalization_bounds": [0.0, 100.0],
+./.grafico/execution_logs/call_ayBW2CEmzMYHnv954pMypdq6.log:28:artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:94:  "scalarization": "desirability",
+./.grafico/execution_logs/call_KV006JGU1RNToyEfqHAcXzYe.log:60:      "normalization_bounds": [
+./.grafico/execution_logs/call_KV006JGU1RNToyEfqHAcXzYe.log:70:      "normalization_bounds": [
+./.grafico/execution_logs/call_KV006JGU1RNToyEfqHAcXzYe.log:143:  "scalarization": "desirability",
+./.grafico/execution_logs/call_KV006JGU1RNToyEfqHAcXzYe.log:144:  "scalarizer": "geom_mean"
+./.grafico/execution_logs/call_NTpP3xrWkHTF4SQF3Zy1fpee.log:63:The BO-MCP intake uses BayBE with desirability scalarization, weights `yield_percent = 0.8` and `green_score = 0.2`, and normalized objective bounds `[0, 100]` for both. This keeps yield primary while allowing the optimizer to prefer greener conditions when yields are comparable.
+
+
+=== stderr (raw) ===
+grep: ./robochemflex_yield_bo/__pycache__/intake.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+grep: ./robochemflex_yield_bo/__pycache__/intake.cpython-312.pyc: binary file matches

@@ -1,0 +1,27 @@
+{
+  "campaign_slug": "robochemflex_yield_bo",
+  "run_entrypoint": "run_robochemflex_yield_bo.py",
+  "plan_document": "HOW_TO_EXECUTE_CAMPAIGN.md",
+  "recreation_entrypoint": "recreate_robochemflex_yield_bo_from_history.py",
+  "continuation_entrypoint": "continue_robochemflex_yield_bo.py",
+  "autonomous_continuation_entrypoint": "continue_robochemflex_yield_bo_autonomous.py",
+  "failed_measurement_retry_entrypoint": "continue_robochemflex_yield_bo_failed17_retry.py",
+  "from18_resume_entrypoint": "continue_robochemflex_yield_bo_from18.py",
+  "failed19_retry_entrypoint": "continue_robochemflex_yield_bo_failed19_retry.py",
+  "failed19_r3_retry_entrypoint": "continue_robochemflex_yield_bo_failed19_retry_r3.py",
+  "package_modules": [
+    "robochemflex_yield_bo.space",
+    "robochemflex_yield_bo.intake",
+    "robochemflex_yield_bo.seed_design",
+    "robochemflex_yield_bo.objectives",
+    "robochemflex_yield_bo.robridge_client",
+    "robochemflex_yield_bo.evaluation",
+    "robochemflex_yield_bo.campaign",
+    "robochemflex_yield_bo.recreate_history",
+    "robochemflex_yield_bo.continuation",
+    "robochemflex_yield_bo.autonomous_continuation",
+    "robochemflex_yield_bo.failed_measurement_resume",
+    "robochemflex_yield_bo.current_resume"
+  ],
+  "latest_artifact_dir": "artifacts/recreated_robochemflex_yield_bo_20260725"
+}

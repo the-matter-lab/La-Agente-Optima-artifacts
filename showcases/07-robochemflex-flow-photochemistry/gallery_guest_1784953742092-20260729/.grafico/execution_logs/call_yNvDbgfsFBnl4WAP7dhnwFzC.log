@@ -1,0 +1,12 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- campaign/supervisor processes
+512 bash -lc echo '--- campaign/supervisor processes'; pgrep -af 'run_real_campaign_supervised.py|run_robochemflex_yield_bo.py|robridge_post_adapter.py|quiet stop-wait|uv run python -u -' || true  echo '--- python processes in workspace'; ps -eo pid,ppid,stat,etime,cmd | grep -F '/app/.graphchat-workspaces/gallery_guest_1784900563933' | grep -v grep || true
+--- python processes in workspace
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

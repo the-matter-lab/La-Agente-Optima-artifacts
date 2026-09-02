@@ -1,0 +1,316 @@
+Command: uv run python run_digital_osl_stage1b.py --execute --max-new-bo-successes 30 
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+04:57:49.586 POST api/api/v1/campaigns/validate
+Stage 1b preview prepared successfully.
+Active caps/bridges/cores: 12/12/18
+Candidate count: 2592
+Legacy observations planned for import: 16 / 16
+Validated intake backend: baybe
+Artifacts: artifacts/digital_osl_stage1b/20260703T045736Z_execute
+04:57:49.642 POST api/api/v1/campaigns
+04:57:49.693 GET api/api/v1/campaigns/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:49.702 GET api/api/v1/campaigns/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/export ? format='csv'
+04:57:49.714 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:49.765 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:49.802 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:49.832 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:49.869 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:49.903 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:49.938 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:49.973 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.004 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.035 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.066 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.097 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.129 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.166 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.204 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.240 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+04:57:50.278 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+04:58:44.119 Campaign diagnostics
+04:58:44.120 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+04:58:44.131 POST api/api/v1/campaigns/status/batch
+04:58:44.148 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+04:59:01.685 Evaluating digital OSL candidate
+04:59:01.688 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+04:59:02.160 Error querying PubChem for 'CN(C)c1ccc(C=Cc2ccc(F)c(C=Cc3ccc(N(C)C)cc3)c2)cc1': 'PUGREST.Unimplemented'
+04:59:02.288 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_8d349bd0-7343-40fc-9a21-b540d60996cb
+04:59:02.290 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_8d349bd0-7343-40fc-9a21-b540d60996cb...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_d18db1ba-717d-4d5f-a547-c198cca0b177
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+04:59:09.902 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+04:59:09.925 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-62927331684b', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+04:59:09.925 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+04:59:09.928 Spawned strict child pid=10737 physical_gpu=0
+05:01:52.740 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:01:52.797 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:02:52.882 Campaign diagnostics
+05:02:52.882 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:02:52.900 POST api/api/v1/campaigns/status/batch
+05:02:52.924 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:03:10.363 Evaluating digital OSL candidate
+05:03:10.365 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:03:10.801 Error querying PubChem for 'CN(C)c1ccc(C=Cc2cccc(C=Cc3ccc(N(C)C)c4ccccc34)n2)c2ccccc12': 'PUGREST.Unimplemented'
+05:03:10.938 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_63fdd4b7-70ec-479b-9af5-1bbb20c6f52f
+05:03:10.942 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_63fdd4b7-70ec-479b-9af5-1bbb20c6f52f...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_e122bcf1-0914-4946-98df-4bb4cddaf44a
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:03:19.044 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:03:19.067 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-ccf69216c09a', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:03:19.067 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:03:19.071 Spawned strict child pid=10931 physical_gpu=0
+05:07:33.309 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:07:33.421 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:08:36.088 Campaign diagnostics
+05:08:36.088 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:08:36.105 POST api/api/v1/campaigns/status/batch
+05:08:36.125 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:08:52.724 Evaluating digital OSL candidate
+05:08:52.726 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:08:53.131 Error querying PubChem for 'CCn1c2ccccc2c2cc(C=Cc3cccc(C=Cc4ccc5c(c4)c4ccccc4n5CC)n3)ccc21': 'PUGREST.Unimplemented'
+05:08:53.297 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_f8e6e07c-e9b4-4338-9a6f-8c04acf10395
+05:08:53.299 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_f8e6e07c-e9b4-4338-9a6f-8c04acf10395...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_38b13cd1-50ed-42f5-abc4-6f421dfede97
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:09:10.715 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:09:10.738 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-0f8213936331', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:09:10.738 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:09:10.741 Spawned strict child pid=11129 physical_gpu=0
+05:14:05.746 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:14:05.821 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:15:18.065 Campaign diagnostics
+05:15:18.066 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:15:18.102 POST api/api/v1/campaigns/status/batch
+05:15:18.124 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:15:35.303 Evaluating digital OSL candidate
+05:15:35.305 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:15:35.750 Error querying PubChem for 'CN(C)c1ccc(C=Cc2cccc(C=Cc3ccc(N(C)C)c4ccccc34)c2)c2ccccc12': 'PUGREST.Unimplemented'
+05:15:35.904 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_59e2aae6-9326-4dc5-9b24-a55228b70eed
+05:15:35.909 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_59e2aae6-9326-4dc5-9b24-a55228b70eed...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_e28969ea-a5cf-4da3-b365-5fb309ca7b44
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:15:44.564 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:15:44.578 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-03c767a6a7e2', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:15:44.578 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:15:44.581 Spawned strict child pid=11326 physical_gpu=0
+05:20:03.972 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:20:04.047 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:21:31.696 Campaign diagnostics
+05:21:31.696 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:21:31.714 POST api/api/v1/campaigns/status/batch
+05:21:31.738 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:21:49.293 Evaluating digital OSL candidate
+05:21:49.295 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:21:49.697 Error querying PubChem for 'CN(C)c1ccc(C=Cc2ccc(F)c(C=Cc3ccc(N(C)C)c4ccccc34)c2)c2ccccc12': 'PUGREST.Unimplemented'
+05:21:49.852 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_902c75f6-2c67-4cf7-b52a-2022ead2ac0e
+05:21:49.855 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_902c75f6-2c67-4cf7-b52a-2022ead2ac0e...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_34503b27-b338-44f6-9574-53cd5e04d503
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:22:00.340 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:22:00.353 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-316b7a44d7eb', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:22:00.354 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:22:00.356 Spawned strict child pid=11525 physical_gpu=0
+05:26:54.069 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:26:54.180 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:28:15.744 Campaign diagnostics
+05:28:15.745 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:28:15.765 POST api/api/v1/campaigns/status/batch
+05:28:15.790 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:28:33.661 Evaluating digital OSL candidate
+05:28:33.664 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:28:34.087 Error querying PubChem for 'CN(C)c1ccc(C=Cc2ccc(C=Cc3ccc(N(C)C)c4ccccc34)nn2)c2ccccc12': 'PUGREST.Unimplemented'
+05:28:34.223 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_173f304c-e0b4-4007-84a9-68ddf564f219
+05:28:34.225 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_173f304c-e0b4-4007-84a9-68ddf564f219...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_2977dd71-cf58-4d74-a09c-252a86537e18
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:28:43.687 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:28:43.703 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-047fa807311b', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:28:43.703 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:28:43.706 Spawned strict child pid=11724 physical_gpu=0
+05:33:31.901 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:33:31.967 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:35:09.550 Campaign diagnostics
+05:35:09.550 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:35:09.589 POST api/api/v1/campaigns/status/batch
+05:35:09.612 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:35:28.115 Evaluating digital OSL candidate
+05:35:28.118 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:35:28.534 Error querying PubChem for 'c1cn(-c2ccc(-c3ccc(-c4nnc(-c5ccc(-c6ccc(-n7ccnc7)cc6)s5)s4)s3)cc2)cn1': 'PUGREST.Unimplemented'
+05:35:28.650 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_426ef704-1a5d-43b1-b5d7-a35e1dd1523a
+05:35:28.652 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_426ef704-1a5d-43b1-b5d7-a35e1dd1523a...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_e7fb4336-18c0-4b40-90d9-4284ccdc7370
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:35:33.293 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:35:33.311 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-fc5fe3d0214f', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:35:33.312 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:35:33.314 Spawned strict child pid=11922 physical_gpu=0
+05:39:05.110 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:39:05.181 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:40:46.767 Campaign diagnostics
+05:40:46.767 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:40:46.783 POST api/api/v1/campaigns/status/batch
+05:40:46.807 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:41:05.404 Evaluating digital OSL candidate
+05:41:05.407 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:41:05.814 Error querying PubChem for 'CN(C)c1ccc(-c2ccc(-c3ccc(-c4ccc(-c5ccc(N(C)C)c6ccccc56)s4)s3)s2)c2ccccc12': 'PUGREST.Unimplemented'
+05:41:06.009 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_218da4f3-5050-4d11-b8a0-1c9d209d6d5f
+05:41:06.011 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_218da4f3-5050-4d11-b8a0-1c9d209d6d5f...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_a9adad15-23d9-402a-ae99-b103480c2484
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:41:14.724 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:41:14.740 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-61a9c228d402', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:41:14.741 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:41:14.744 Spawned strict child pid=12122 physical_gpu=0
+05:46:15.384 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:46:15.494 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:48:05.856 Campaign diagnostics
+05:48:05.856 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:48:05.875 POST api/api/v1/campaigns/status/batch
+05:48:05.899 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:48:24.626 Evaluating digital OSL candidate
+05:48:24.628 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:48:25.054 Error querying PubChem for 'Fc1ccc(C=Cc2ccc(-n3ccnc3)cc2)cc1C=Cc1ccc(-n2ccnc2)cc1': 'PUGREST.Unimplemented'
+05:48:25.184 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_557a0fd3-5d4b-4df7-8f4a-99ab5edc97b8
+05:48:25.186 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_557a0fd3-5d4b-4df7-8f4a-99ab5edc97b8...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_62b8e4d1-1c3f-4810-8764-d685729657d0
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:48:30.290 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:48:30.304 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-112a17143f5c', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:48:30.304 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:48:30.307 Spawned strict child pid=12322 physical_gpu=0
+05:51:19.126 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:51:19.189 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+05:53:07.130 Campaign diagnostics
+05:53:07.131 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+05:53:07.149 POST api/api/v1/campaigns/status/batch
+05:53:07.170 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+05:53:25.945 Evaluating digital OSL candidate
+05:53:25.948 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+05:53:26.447 Error querying PubChem for 'CN(C)c1ccc(C=Cc2ccsc2C=Cc2ccc(N(C)C)c3ccccc23)c2ccccc12': 'PUGREST.Unimplemented'
+05:53:26.594 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_9886aa20-5705-4d85-bc3c-a95ce068b112
+05:53:26.597 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_9886aa20-5705-4d85-bc3c-a95ce068b112...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_408182d0-e8a1-46d6-8313-4eed1ea1f90b
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+05:53:36.254 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+05:53:36.274 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-8d70b088c9f1', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+05:53:36.274 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+05:53:36.277 Spawned strict child pid=12516 physical_gpu=0
+05:59:10.675 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+05:59:10.783 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+06:01:05.298 Campaign diagnostics
+06:01:05.299 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/query
+06:01:05.317 POST api/api/v1/campaigns/status/batch
+06:01:05.344 POST api/api/v1/suggestions/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+06:01:24.726 Evaluating digital OSL candidate
+06:01:24.728 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+06:01:25.178 Error querying PubChem for 'CN(C)c1ccc(C=Cc2ccc(C=Cc3ccc(N(C)C)c4ccccc34)c(N)c2)c2ccccc12': 'PUGREST.Unimplemented'
+06:01:25.335 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_72b9e2f0-66d4-4983-81cc-1e1c380dbc01
+06:01:25.337 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_72b9e2f0-66d4-4983-81cc-1e1c380dbc01...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_88f6e7de-9445-4369-98a6-d60a40b57bbe
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+06:01:34.581 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+06:01:34.595 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-51f6a4b47f9e', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+06:01:34.596 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+06:01:34.599 Spawned strict child pid=12714 physical_gpu=0
+06:06:01.881 POST api/api/v1/results/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+06:06:01.988 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+Unhandled error: HTTPConnectionPool(host='api', port=8000): Read timed out. (read timeout=120.0)

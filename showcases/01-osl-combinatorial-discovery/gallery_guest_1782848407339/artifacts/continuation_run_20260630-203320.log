@@ -1,0 +1,183 @@
+/app/domains/pyscf/graph/pyscf_graph.py:25: PydanticGraphDeprecationWarning: Importing `Graph` from `pydantic_graph` is deprecated. The `BaseNode`-based `Graph` runner and its persistence machinery are deprecated and will be removed (or repurposed) in v2; use the builder-based `GraphBuilder` API instead, or pin to `pydantic_graph<2` to keep using them.
+  from pydantic_graph import Graph, GraphRunContext
+/app/grafico/abstraction/graph.py:22: PydanticGraphDeprecationWarning: `pydantic_graph.nodes` is deprecated, import from `pydantic_graph.basenode` (or `pydantic_graph`) instead.
+  from pydantic_graph.nodes import Edge, NodeDef
+20:33:30.369 POST api/api/v1/campaigns/validate
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+20:33:30.383 POST api/api/v1/campaigns
+20:33:30.484 Created successor campaign
+20:33:30.486 POST api/api/v1/results/3dd7b1a5-4641-4581-8560-e7bef19eb77c
+seeded_successor_campaign: 6 completed predecessor results copied into successor 3dd7b1a5-4641-4581-8560-e7bef19eb77c
+20:33:30.536 Seeded successor campaign
+20:33:30.538 GET api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c ? status='pending'
+20:33:30.548 POST api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c/generate ? batch_size='2'
+continuation_batch 1: evaluating 2 candidates (0/10 completed so far)
+20:34:19.232 Evaluating candidate
+20:34:19.233 Evaluating candidate
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_8d09bfb4-cd28-408c-9d3a-ae8554d9794a
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+20:34:20.721 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+20:34:20.743 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-5087591468ef', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+20:34:20.746 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+20:34:20.755 Spawned strict child pid=1429 physical_gpu=0
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_255e474c-b9d2-4650-b71a-213b960acc5c
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+20:34:20.756 Assigned GPU 0 slot 1 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 1}
+20:34:20.764 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-b9a2451c4848', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+20:34:20.768 Spawned strict child pid=1430 physical_gpu=0
+20:42:41.684 POST api/api/v1/results/3dd7b1a5-4641-4581-8560-e7bef19eb77c
+20:42:42.751 GET api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c ? status='pending'
+20:42:42.987 POST api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c/generate ? batch_size='2'
+continuation_batch 2: evaluating 2 candidates (2/10 completed so far)
+20:43:41.528 Evaluating candidate
+20:43:41.528 Evaluating candidate
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_b7831bba-0d5a-4f71-9a29-ead0f9f22d4a
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+20:43:42.893 Assigned GPU 0 slot 2 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+20:43:42.897 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-345d8f6642c7', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+20:43:42.900 Spawned strict child pid=1589 physical_gpu=0
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_723e8086-9a9e-4403-857e-c5c9407d7fe2
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+20:43:42.999 Assigned GPU 0 slot 1 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 1}
+20:43:43.007 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-8c4a0e3bad0e', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+20:43:43.013 Spawned strict child pid=1590 physical_gpu=0
+20:51:09.920 POST api/api/v1/results/3dd7b1a5-4641-4581-8560-e7bef19eb77c
+20:51:10.965 GET api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c ? status='pending'
+20:51:11.195 POST api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c/generate ? batch_size='2'
+continuation_batch 3: evaluating 2 candidates (4/10 completed so far)
+20:52:15.883 Evaluating candidate
+20:52:15.884 Evaluating candidate
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_5d8178c4-db79-488e-bd72-43eba9dfc05b
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+20:52:17.448 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+20:52:17.457 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-0841f698aff6', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+20:52:17.461 Spawned strict child pid=1754 physical_gpu=0
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_48c04c92-d65a-46b9-85f8-38dff83af301
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+20:52:17.517 Assigned GPU 0 slot 2 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 1}
+20:52:17.521 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-be11964bdb1d', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+20:52:17.526 Spawned strict child pid=1755 physical_gpu=0
+21:00:14.399 POST api/api/v1/results/3dd7b1a5-4641-4581-8560-e7bef19eb77c
+21:00:15.460 GET api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c ? status='pending'
+21:00:15.687 POST api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c/generate ? batch_size='2'
+continuation_batch 4: evaluating 2 candidates (6/10 completed so far)
+21:01:29.299 Evaluating candidate
+21:01:29.301 Evaluating candidate
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_abf39ac0-cc5d-4b20-894c-3628d3ad8fd3
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+21:01:29.942 Assigned GPU 0 slot 1 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+21:01:29.946 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-b200d0c10062', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+21:01:29.948 Spawned strict child pid=1916 physical_gpu=0
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_4614c30e-39a0-4d76-8ee5-7b2665211c91
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+21:01:30.735 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 1}
+21:01:30.742 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-f4188fbb68af', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+21:01:30.747 Spawned strict child pid=1919 physical_gpu=0
+21:07:33.315 POST api/api/v1/results/3dd7b1a5-4641-4581-8560-e7bef19eb77c
+21:07:34.374 GET api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c ? status='pending'
+21:07:34.598 POST api/api/v1/suggestions/3dd7b1a5-4641-4581-8560-e7bef19eb77c/generate ? batch_size='2'
+continuation_batch 5: evaluating 2 candidates (8/10 completed so far)
+21:08:56.065 Evaluating candidate
+21:08:56.066 Evaluating candidate
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_1ac7b9b2-6a35-4e1e-ae6d-19b3a2d7c163
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+21:08:57.175 Assigned GPU 0 slot 2 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+21:08:57.182 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-9ec37d9427ac', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+21:08:57.187 Spawned strict child pid=2077 physical_gpu=0
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_75355ecd-75dd-4f99-924e-244100a1e9c8
+  - Summarised user query: RKS PBE/3-21G single point on the supplied geometry, followed by 3-state singlet TDA-TDDFT and molecular analysis. Do not optimize geometry or run frequencies.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 3
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+21:08:57.626 Assigned GPU 0 slot 1 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 1}
+21:08:57.632 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 3, 3, 'run-5ecb1945048b', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='gallery_...ne, active_message_id=None, service_token='', graphchat=None)}
+21:08:57.637 Spawned strict child pid=2078 physical_gpu=0
+21:15:30.884 POST api/api/v1/results/3dd7b1a5-4641-4581-8560-e7bef19eb77c
+21:15:31.945 GET api/api/v1/campaigns/3dd7b1a5-4641-4581-8560-e7bef19eb77c/export ? format='csv'
+predecessor_campaign_id: d661d8e6-34c2-476f-a065-4c485509e50f
+successor_campaign_id: 3dd7b1a5-4641-4581-8560-e7bef19eb77c
+active_space_sizes: caps=25, bridges=25, cores=25
+seeded_completed_results: 6
+live_attempted: 10 / 10
+live_successful: 10
+live_failed: 0
+duplicate_suggestions: 0
+pareto_candidates: 8
+artifact_dir: artifacts/continuation_run_20260630-203320

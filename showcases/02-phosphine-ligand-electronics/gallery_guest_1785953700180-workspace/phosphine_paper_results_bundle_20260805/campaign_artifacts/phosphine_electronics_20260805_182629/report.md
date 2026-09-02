@@ -1,0 +1,29 @@
+# Phosphine electronic-tuning BO report
+
+## Multi-objective strategy
+Finite discrete `candidate_id` categorical campaign using BO-MCP with Pareto scalarization and hypervolume-improvement acquisition where supported. The evaluator submits raw transformed objectives, so post-warm-start proposals are based on measured HOMO-target error, gap-target error, steric excess, and heavy-atom count rather than LLM chemical judgement.
+
+Successful evaluations in this artifact: 48; failed evaluations: 0.
+Observed Pareto-front size: 17.
+BO-discovered Pareto members after warm start: 14. Initial-design Pareto members still present: 3.
+
+## Representative trade-off ligands (up to 10)
+- P_0001 Me/Me/Me pareto=True HOMO=-4.984 eV gap=5.894 eV P_charge=0.351 volume=88.2 A^3 heavy=4
+- P_0006 Me/Me/Et pareto=True HOMO=-4.990 eV gap=5.816 eV P_charge=0.344 volume=105.1 A^3 heavy=5
+- P_0018 Me/Et/tBu pareto=True HOMO=-5.022 eV gap=5.636 eV P_charge=0.321 volume=155.8 A^3 heavy=8
+- P_0007 Me/Me/iPr pareto=True HOMO=-4.992 eV gap=5.798 eV P_charge=0.341 volume=121.8 A^3 heavy=6
+- P_0008 Me/Me/tBu pareto=True HOMO=-5.032 eV gap=5.789 eV P_charge=0.329 volume=139.4 A^3 heavy=7
+- P_0017 Me/Et/iPr pareto=True HOMO=-4.981 eV gap=5.719 eV P_charge=0.333 volume=138.8 A^3 heavy=7
+- P_0027 Me/iPr/iPr pareto=True HOMO=-5.050 eV gap=5.747 eV P_charge=0.337 volume=155.3 A^3 heavy=8
+- P_0029 Me/iPr/Cy pareto=True HOMO=-5.027 eV gap=5.743 eV P_charge=0.324 volume=195.1 A^3 heavy=11
+- P_0025 Me/Et/pCF3Ph pareto=True HOMO=-5.393 eV gap=3.597 eV P_charge=0.329 volume=192.8 A^3 heavy=14
+- P_0210 tBu/Cy/Cy pareto=True HOMO=-4.866 eV gap=5.276 eV P_charge=0.301 volume=285.1 A^3 heavy=17
+
+## Failed candidates
+- None recorded in this artifact.
+
+## Initial-design improvement check
+BO improved the observed front/trade-off set if at least one `phase=bo` row is marked Pareto or representative in `report.csv`; inspect the CSV for the definitive row-level status.
+
+## Substituent trend summary near the current trade-off set
+Representative substituent counts: Cy:3, Et:4, Me:14, iPr:5, pCF3Ph:1, tBu:3. Interpret phosphorus charge together with HOMO: less negative HOMO values and less positive/more negative P charges both indicate stronger donor character, but no standalone P-charge target was imposed.

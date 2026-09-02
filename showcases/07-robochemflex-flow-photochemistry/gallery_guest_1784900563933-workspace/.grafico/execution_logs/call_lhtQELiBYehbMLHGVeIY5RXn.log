@@ -1,0 +1,142 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- monitor
+860 bash -lc echo '--- monitor'; pgrep -af 'run_real_campaign_supervised_quiet.py|run_robochemflex_yield_bo.py' || true  echo '--- latest invocation log tail'; latestlog=$(ls -t logs/real_robochemflex_yield_bo_fresh_20260724T155503Z/invocation_09.log logs/real_campaign_quiet_supervisor_*.log 2>/dev/null | head -1); echo $latestlog; tail -n 120 "$latestlog" 2>/dev/null || true  echo '--- artifact summary'; art=artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z; wc -l "$art/submitted_results.jsonl" "$art/quiet_supervision_summary.jsonl" 2>/dev/null || true; tail -n 5 "$art/failed_evaluations.jsonl" 2>/dev/null || true; tail -n 5 "$art/quiet_supervision_summary.jsonl" 2>/dev/null || true
+--- latest invocation log tail
+logs/real_campaign_quiet_supervisor_20260724T155503Z.log
+[2026-07-24T21:33:05.576216+00:00] ANALYSIS experiment=4 run_id=R0047 label=seed04_b681a41d yield=11.930255522523904 green_score=65.94785422910422 bad_zero_or_no_peak=False zero_streak=0
+[2026-07-24T21:33:05.576581+00:00] EVENT invocation_start index=5 bo_campaign_id=b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+BO campaign: b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Using current RoboFlex campaign; vial setup was not modified.
+RoboFlex run submitted: R0048 (seed05_b681a41d)
+21:33:07.830 Submitted RoboFlex run
+RoboFlex run R0048: queued
+RoboFlex run R0048: still queued; polling quietly
+RoboFlex platform: state=executing, blocked_on=robot, overdue=False
+RoboFlex run R0048: running
+RoboFlex run R0048: still running; polling quietly
+RoboFlex run R0048: still running; polling quietly
+RoboFlex run R0048: still running; polling quietly
+RoboFlex run R0048: still running; polling quietly
+RoboFlex run R0048: completed
+Submitted seed05_b681a41d: yield=13.1, green=51.6
+Completed 1 successful evaluation(s) in this invocation.
+Artifacts: /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z
+[2026-07-24T22:34:33.421022+00:00] ANALYSIS experiment=5 run_id=R0048 label=seed05_b681a41d yield=13.136061617657441 green_score=51.567703130203135 bad_zero_or_no_peak=False zero_streak=0
+[2026-07-24T22:34:33.421387+00:00] EVENT invocation_start index=6 bo_campaign_id=b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+BO campaign: b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Using current RoboFlex campaign; vial setup was not modified.
+RoboFlex run submitted: R0049 (seed06_b681a41d)
+22:34:35.817 Submitted RoboFlex run
+RoboFlex run R0049: queued
+RoboFlex run R0049: still queued; polling quietly
+RoboFlex platform: state=executing, blocked_on=robot, overdue=False
+RoboFlex run R0049: running
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: still running; polling quietly
+RoboFlex run R0049: completed
+Submitted seed06_b681a41d: yield=7.6, green=56.6
+Completed 1 successful evaluation(s) in this invocation.
+Artifacts: /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z
+[2026-07-25T00:57:06.664706+00:00] ANALYSIS experiment=6 run_id=R0049 label=seed06_b681a41d yield=7.574024955754647 green_score=56.59340659340659 bad_zero_or_no_peak=False zero_streak=0
+[2026-07-25T00:57:06.664828+00:00] EVENT invocation_start index=7 bo_campaign_id=b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+BO campaign: b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Using current RoboFlex campaign; vial setup was not modified.
+RoboFlex run submitted: R0050 (bo_761b6759-b)
+00:58:43.801 Submitted RoboFlex run
+RoboFlex run R0050: queued
+RoboFlex run R0050: still queued; polling quietly
+RoboFlex platform: state=executing, blocked_on=robot, overdue=False
+RoboFlex run R0050: running
+RoboFlex run R0050: still running; polling quietly
+RoboFlex run R0050: still running; polling quietly
+RoboFlex run R0050: completed
+Submitted bo_761b6759-b: yield=15.2, green=100.0
+Completed 1 successful evaluation(s) in this invocation.
+Artifacts: /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z
+[2026-07-25T01:35:47.475828+00:00] ANALYSIS experiment=7 run_id=R0050 label=bo_761b6759-b yield=15.229219976533518 green_score=100.0 bad_zero_or_no_peak=False zero_streak=0
+[2026-07-25T01:35:47.476020+00:00] EVENT invocation_start index=8 bo_campaign_id=b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+BO campaign: b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Using current RoboFlex campaign; vial setup was not modified.
+RoboFlex run submitted: R0051 (bo_6185a2d1-0)
+01:37:21.725 Submitted RoboFlex run
+RoboFlex run R0051: queued
+RoboFlex run R0051: still queued; polling quietly
+RoboFlex platform: state=executing, blocked_on=robot, overdue=False
+RoboFlex run R0051: running
+RoboFlex run R0051: still running; polling quietly
+RoboFlex run R0051: still running; polling quietly
+RoboFlex run R0051: still running; polling quietly
+RoboFlex run R0051: still running; polling quietly
+RoboFlex run R0051: completed
+Submitted bo_6185a2d1-0: yield=27.6, green=93.6
+Completed 1 successful evaluation(s) in this invocation.
+Artifacts: /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z
+[2026-07-25T02:50:25.532524+00:00] ANALYSIS experiment=8 run_id=R0051 label=bo_6185a2d1-0 yield=27.638363856448734 green_score=93.57670454545455 bad_zero_or_no_peak=False zero_streak=0
+[2026-07-25T02:50:25.532808+00:00] EVENT invocation_start index=9 bo_campaign_id=b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+BO campaign: b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+Using current RoboFlex campaign; vial setup was not modified.
+RoboFlex run submitted: R0052 (bo_b5aa81fc-1)
+02:51:54.720 Submitted RoboFlex run
+RoboFlex run R0052: queued
+RoboFlex run R0052: still queued; polling quietly
+RoboFlex platform: state=executing, blocked_on=robot, overdue=False
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: transient poll error; retrying
+RoboFlex run R0052: running
+RoboFlex run R0052: still running; polling quietly
+RoboFlex run R0052: completed
+[2026-07-25T03:29:17.058615+00:00] ALERT invocation_failed index=9 exit_code=1; stopping supervision
+[2026-07-25T03:29:17.058700+00:00] QUIET_SUPERVISOR_DONE successes=8 bo_campaign_id=b681a41d-90db-4eb9-a9a9-3cc91098f3c0
+--- artifact summary
+   8 artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/submitted_results.jsonl
+   9 artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/quiet_supervision_summary.jsonl
+  17 total
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 5, "green_score": 51.567703130203135, "label": "seed05_b681a41d", "run_id": "R0048", "time": "2026-07-24T22:34:33.421072+00:00", "yield_percent": 13.136061617657441, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 6, "green_score": 56.59340659340659, "label": "seed06_b681a41d", "run_id": "R0049", "time": "2026-07-25T00:57:06.664727+00:00", "yield_percent": 7.574024955754647, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 7, "green_score": 100.0, "label": "bo_761b6759-b", "run_id": "R0050", "time": "2026-07-25T01:35:47.475858+00:00", "yield_percent": 15.229219976533518, "zero_streak": 0}
+{"bad_zero_or_no_peak": false, "bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "experiment_analyzed", "experiment": 8, "green_score": 93.57670454545455, "label": "bo_6185a2d1-0", "run_id": "R0051", "time": "2026-07-25T02:50:25.532577+00:00", "yield_percent": 27.638363856448734, "zero_streak": 0}
+{"bo_campaign_id": "b681a41d-90db-4eb9-a9a9-3cc91098f3c0", "event": "invocation_failed", "exit_code": 1, "index": 9, "time": "2026-07-25T03:29:17.058638+00:00"}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

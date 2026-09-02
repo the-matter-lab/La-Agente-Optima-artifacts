@@ -1,0 +1,47 @@
+exit_code=0
+
+=== stdout (raw) ===
+curve tail
+ eval_index  successful_eval_count latest_candidate_id latest_phase  cumulative_pareto_count  normalized_hypervolume  best_donor_homo_error  best_gap_error  best_heavy_atom_count
+         17                     17              P_0019           bo                       10                0.818080                0.08519        0.274085                    4.0
+         18                     18              P_0346           bo                       11                0.818621                0.08519        0.274085                    4.0
+         19                     19              P_0029           bo                       12                0.818932                0.08519        0.274085                    4.0
+         20                     20              P_0364           bo                       13                0.842388                0.08519        0.274085                    4.0
+         21                     21              P_0038           bo                       14                0.843568                0.08519        0.274085                    4.0
+         22                     22              P_0247           bo                       14                0.843568                0.08519        0.274085                    4.0
+         23                     23              P_0027           bo                       14                0.852263                0.08519        0.274085                    4.0
+         24                     24              P_0011           bo                       14                0.852263                0.08519        0.274085                    4.0
+         25                     25              P_0199           bo                       14                0.868984                0.08519        0.274085                    4.0
+         26                     26              P_0191           bo                       14                0.868984                0.08519        0.274085                    4.0
+         27                     27              P_0026           bo                       15                0.870571                0.08519        0.274085                    4.0
+         28                     28              P_0258           bo                       16                0.871021                0.08519        0.274085                    4.0
+
+phase counts
+phase       pareto
+bo          False      7
+            True      13
+warm_start  False      5
+            True       3
+dtype: int64
+
+BO pareto candidates
+candidate_id   R1     R2     R3  donor_homo_error  gap_error  heavy_atom_count  molecular_volume_ang3
+      P_0006   Me     Me     Et          0.810004   0.815992               5.0                105.136
+      P_0007   Me     Me    iPr          0.808157   0.798448               6.0                121.808
+      P_0008   Me     Me    tBu          0.768077   0.789177               7.0                139.352
+      P_0017   Me     Et    iPr          0.818724   0.719091               7.0                138.840
+      P_0186  iPr  pMePh  pCNPh          0.365963   1.752467              19.0                266.336
+      P_0019   Me     Et     Cy          0.799221   0.690380              10.0                178.432
+      P_0346 pFPh   pFPh  pClPh          0.596504   1.728187              22.0                279.144
+      P_0029   Me    iPr     Cy          0.772559   0.742752              11.0                195.104
+      P_0038   Me    tBu     Cy          0.821629   0.671971              12.0                212.160
+      P_0027   Me    iPr    iPr          0.749813   0.747164               8.0                155.296
+      P_0199  iPr pCF3Ph pCF3Ph          0.115273   1.760187              24.0                297.616
+      P_0026   Me     Et  pCNPh          0.725387   2.449406              12.0                178.240
+      P_0258   Cy     Ph  pClPh          0.721875   1.625744              20.0                286.144
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,154 @@
+{
+  "campaign_id": "robochemflex_yield_bo_fresh_20260724T155503Z-20260724-175502",
+  "collection_vial_id": null,
+  "error": null,
+  "finished_at": "2026-07-27T14:26:10.726648+00:00",
+  "note": "BO-MCP RoboChemFlex yield-only optimization bo_31d5114e-3_r2",
+  "parameters": [
+    {
+      "name": "light_intensity",
+      "type": "NumericalParameter",
+      "units": "%",
+      "value": 50.0
+    },
+    {
+      "name": "residence_time",
+      "type": "NumericalParameter",
+      "units": "S",
+      "value": 1293.0267268947468
+    },
+    {
+      "name": "slug_volume",
+      "type": "NumericalParameter",
+      "units": "uL",
+      "value": 650.0
+    },
+    {
+      "name": "collect_crude",
+      "type": "ExperimentalParameter",
+      "value": false
+    },
+    {
+      "kind": "chemical",
+      "name": "SM",
+      "role": "Limiting Reagent",
+      "sampling_priority": 1000,
+      "type": "ChemicalParameter",
+      "units": "mM",
+      "value": 100.0
+    },
+    {
+      "kind": "chemical",
+      "name": "Ru-bpy-Cl",
+      "role": "Catalyst",
+      "sampling_priority": 1000,
+      "type": "ChemicalParameter",
+      "units": "eq",
+      "value": 0.0022452457086006112
+    },
+    {
+      "kind": "chemical",
+      "name": "TFAA",
+      "role": "Anhydride",
+      "sampling_priority": 1000,
+      "type": "ChemicalParameter",
+      "units": "eq",
+      "value": 2.301668795918735
+    },
+    {
+      "kind": "chemical",
+      "name": "PyNO",
+      "role": "Oxidant",
+      "sampling_priority": 1000,
+      "type": "ChemicalParameter",
+      "units": "eq",
+      "value": 1.355256776264335
+    },
+    {
+      "name": "sample_name",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "bo_31d5114e-3_r2"
+    },
+    {
+      "name": "target_peak",
+      "type": "AnalyticalParameter",
+      "units": "ppm",
+      "value": -58.0
+    },
+    {
+      "name": "metric",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "yield"
+    },
+    {
+      "name": "yield_calculation_chemical",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "SM"
+    },
+    {
+      "name": "target_peak_deviation",
+      "type": "AnalyticalParameter",
+      "units": "ppm",
+      "value": 3.0
+    },
+    {
+      "name": "centerFrequency",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": -60.0
+    },
+    {
+      "name": "target_peak_calibration_coeff_1",
+      "type": "AnalyticalParameter",
+      "units": "mM/AU",
+      "value": 6973.0
+    },
+    {
+      "name": "target_peak_calibration_coeff_0",
+      "type": "AnalyticalParameter",
+      "units": "mM",
+      "value": -5.4
+    },
+    {
+      "name": "protocol",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "1D FLUORINE HDEC"
+    },
+    {
+      "name": "AcquisitionTime",
+      "type": "AnalyticalParameter",
+      "units": "S",
+      "value": "1.64"
+    },
+    {
+      "name": "Number",
+      "type": "AnalyticalParameter",
+      "units": "",
+      "value": "32"
+    }
+  ],
+  "progress": {
+    "active_run_ids": [],
+    "blocked_on": "agent",
+    "busy": false,
+    "elapsed_s": 33.2,
+    "expected_s": null,
+    "message": "Campaign 'robochemflex_yield_bo_fresh_20260724T155503Z-20260724-175502' is active and the robot is idle: every submitted run has finished. The robot is waiting for you to submit the next run.",
+    "next_action": "POST /v1/runs to submit a run, or POST /v1/campaigns/current/stop.",
+    "overdue": false,
+    "poll_after_s": 0.0,
+    "queue_depth": 0,
+    "since": "2026-07-27T14:26:10.695306+00:00",
+    "state": "awaiting_run"
+  },
+  "requested_at": "2026-07-27T13:38:32.731851+00:00",
+  "requested_by": "MatterLabBeta",
+  "run_id": "R0069",
+  "started_at": "2026-07-27T13:38:34.024299+00:00",
+  "status": "completed",
+  "success": true
+}

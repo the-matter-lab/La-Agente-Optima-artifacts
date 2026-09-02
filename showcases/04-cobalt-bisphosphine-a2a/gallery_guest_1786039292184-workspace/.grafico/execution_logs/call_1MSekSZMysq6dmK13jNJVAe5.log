@@ -1,0 +1,44 @@
+exit_code=0
+
+=== stdout (raw) ===
+ iteration     param_candidate_id      phase  feasible_like  hypervolume_normalized_to_final  pareto_set_size_so_far
+         1            eth__Me__Me warm-start           True                         0.999888                       1
+         2          prop__iPr__Ph warm-start           True                         1.000000                       2
+         3 ophen__pAnisyl__pCF3Ph warm-start          False                         1.000000                       2
+         4        cchex__Cy__pTol warm-start           True                         1.000000                       2
+         5         cchex__iPr__Ph         BO           True                         1.000000                       2
+         6           prop__Et__Et         BO           True                         1.000000                       2
+         7          eth__iPr__iPr         BO           True                         1.000000                       2
+         8          prop__iPr__Cy         BO           True                         1.000000                       2
+         9           prop__Me__Et         BO           True                         1.000000                       2
+        10           eth__Et__iPr         BO           True                         1.000000                       2
+        11         prop__Et__pTol         BO           True                         1.000000                       2
+        12     prop__iPr__pAnisyl         BO           True                         1.000000                       2
+        13           prop__Cy__Cy         BO          False                         1.000000                       2
+        14            eth__Et__Et         BO          False                         1.000000                       2
+
+
+=== stderr (raw) ===
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/opt/venv/lib/python3.12/site-packages/PIL/Image.py", line 3559, in open
+    im = _open_core(fp, filename, prefix, formats)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/PIL/Image.py", line 3548, in _open_core
+    _decompression_bomb_check(im.size)
+  File "/opt/venv/lib/python3.12/site-packages/PIL/Image.py", line 3449, in _decompression_bomb_check
+    raise DecompressionBombError(msg)
+PIL.Image.DecompressionBombError: Image size (13085232826 pixels) exceeds limit of 178956970 pixels, could be decompression bomb DOS attack.
+
+
+=== stderr (model-visible) ===
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/opt/venv/lib/python3.12/site-packages/PIL/Image.py", line 3559, in open
+    im = _open_core(fp, filename, prefix, formats)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/venv/lib/python3.12/site-packages/PIL/Image.py", line 3548, in _open_core
+    _decompression_bomb_check(im.size)
+  File "/opt/venv/lib/python3.12/site-packages/PIL/Image.py", line 3449, in _decompression_bomb_check
+    raise DecompressionBombError(msg)
+PIL.Image.DecompressionBombError: Image size (13085232826 pixels) exceeds limit of 178956970 pixels, could be decompression bomb DOS attack.

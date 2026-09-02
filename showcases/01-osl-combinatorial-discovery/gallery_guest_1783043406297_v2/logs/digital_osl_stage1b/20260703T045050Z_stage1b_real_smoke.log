@@ -1,0 +1,57 @@
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+04:51:11.901 POST api/api/v1/campaigns/validate
+Stage 1b preview prepared successfully.
+Active caps/bridges/cores: 12/12/18
+Candidate count: 2592
+Legacy observations planned for import: 16 / 16
+Validated intake backend: baybe
+Artifacts: artifacts/digital_osl_stage1b/20260703T045050Z_execute_smoke
+04:51:11.950 POST api/api/v1/campaigns
+04:51:11.997 GET api/api/v1/campaigns/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.006 GET api/api/v1/campaigns/08d4f86b-bdd8-4839-a48c-523c4df483c7/export ? format='csv'
+04:51:12.015 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.045 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.080 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.122 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.155 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.185 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.218 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.251 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.279 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.309 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.339 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.369 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.400 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.445 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.486 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.522 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:51:12.555 GET api/api/v1/diagnostics/08d4f86b-bdd8-4839-a48c-523c4df483c7 ? use_cache='false' & verbosity='standard'
+04:52:05.594 Campaign diagnostics
+04:52:05.595 POST api/api/v1/suggestions/08d4f86b-bdd8-4839-a48c-523c4df483c7/query
+04:52:05.604 POST api/api/v1/campaigns/status/batch
+04:52:05.621 POST api/api/v1/suggestions/08d4f86b-bdd8-4839-a48c-523c4df483c7/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+04:52:23.410 Evaluating digital OSL candidate
+04:52:23.413 POST pubchem.ncbi.nlm.nih.gov/rest/pug/compound/smiles/JSON ? record_type='3d'
+04:52:23.935 Error querying PubChem for 'CN(C)c1ccc(C=Cc2ccc(F)c(C=Cc3ccc(N(C)C)cc3)c2)cc1': 'PUGREST.Unimplemented'
+04:52:24.090 Created ConceptualAtoms for CREST: https://elagente.ca/grafico/ConceptualAtoms_0d33527f-2fba-4791-bc58-9ffdd2768bad
+04:52:24.093 Running CREST calculation in /app/crest_workdir/ConceptualAtoms_0d33527f-2fba-4791-bc58-9ffdd2768bad...
+Running PySCF workflow:
+  - Input: https://elagente.ca/ontopyscf/PyscfInput_b3b0a7e1-269b-4fee-9cd8-1c4fadfcb528
+  - Summarised user query: Compute a cheap single-point DFT, low-lying TDDFT singlet excited states, and molecular analysis for the provided conformer. Skip geometry optimization and skip frequency analysis.
+  - Hard exit node: MolecularAnalysis
+  - Update knowledge graph: False
+  - Geometry max steps: 100
+  - Frequency threshold: 50.0
+  - TDDFT nstates: 6
+  - Imag. removal max attempts: 3
+  - Workflow timeout: 900
+04:52:31.835 Assigned GPU 0 slot 0 for this workflow run. Available GPUs: [0] | Remaining slots: {0: 2}
+04:52:31.861 AKG_SUBPROCESS_ISOLATION env=1 force_flag=True running domains.pyscf.tools.pyscf_workflow_tools._child_run_impl on GPU 0 with args=[[LOADED] PyscfInput(rdfs_comment=set(), rdfs_label=set(), ins...cularAnalysis', False, 100, 50.0, 6, 3, 'run-2691754ff8bb', 0], kwargs={deps=GraficoDeps(ws_url='ws://graphchat:3000', room='room', s...ne, active_message_id=None, service_token='', graphchat=None)}
+04:52:31.862 [AKG GPU MAP] logical_id=0 name=b'NVIDIA GeForce RTX 3090' bus=179 total_mem=25414860800
+04:52:31.867 Spawned strict child pid=10479 physical_gpu=0
+04:55:14.974 POST api/api/v1/results/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:55:15.077 GET api/api/v1/campaigns/08d4f86b-bdd8-4839-a48c-523c4df483c7/export ? format='csv'
+04:55:15.102 GET api/api/v1/campaigns/08d4f86b-bdd8-4839-a48c-523c4df483c7
+04:55:15.113 POST api/api/v1/campaigns/08d4f86b-bdd8-4839-a48c-523c4df483c7/lifecycle
+Execution finished for campaign 08d4f86b-bdd8-4839-a48c-523c4df483c7. New BO successes this invocation: 1. Artifacts: artifacts/digital_osl_stage1b/20260703T045050Z_execute_smoke

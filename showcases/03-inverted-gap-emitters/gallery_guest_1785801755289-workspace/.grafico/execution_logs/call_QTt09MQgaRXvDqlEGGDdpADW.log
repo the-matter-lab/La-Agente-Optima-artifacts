@@ -1,0 +1,53 @@
+exit_code=0
+
+=== stdout (raw) ===
+
+MAX_BY heavy_atoms
+               molecule_key  heavy_atoms  total_atoms_including_H   mol_wt  rings
+OLAWGZWEEFANRL-UHFFFAOYSA-N           85                      126 1172.055     14
+LAKBQBAEICFKKV-UHFFFAOYSA-N           81                      122 1080.055     14
+KBZGXPBUFDIORM-UHFFFAOYSA-N           73                      114  972.027     14
+RXLULIYWYCZGPO-UHFFFAOYSA-N           73                      110  940.047     16
+OHAKYDBULWTMLA-UHFFFAOYSA-N           73                      134  964.239     12
+
+MAX_BY total_atoms_including_H
+               molecule_key  heavy_atoms  total_atoms_including_H   mol_wt  rings
+OHAKYDBULWTMLA-UHFFFAOYSA-N           73                      134  964.239     12
+SGELIDCGRKUSDG-UHFFFAOYSA-N           73                      126  956.175     14
+OLAWGZWEEFANRL-UHFFFAOYSA-N           85                      126 1172.055     14
+QUHXUBZBLVPTFL-UHFFFAOYSA-N           67                      124  888.141      9
+LAKBQBAEICFKKV-UHFFFAOYSA-N           81                      122 1080.055     14
+
+MAX_BY mol_wt
+               molecule_key  heavy_atoms  total_atoms_including_H   mol_wt  rings
+OLAWGZWEEFANRL-UHFFFAOYSA-N           85                      126 1172.055     14
+LAKBQBAEICFKKV-UHFFFAOYSA-N           81                      122 1080.055     14
+IUIZKVKWVJNSEV-UHFFFAOYSA-N           71                      104  987.853      9
+KBZGXPBUFDIORM-UHFFFAOYSA-N           73                      114  972.027     14
+OHAKYDBULWTMLA-UHFFFAOYSA-N           73                      134  964.239     12
+
+MAX_BY rings
+               molecule_key  heavy_atoms  total_atoms_including_H   mol_wt  rings
+RXLULIYWYCZGPO-UHFFFAOYSA-N           73                      110  940.047     16
+ZHFDNCLMAMMGFB-UHFFFAOYSA-N           71                      106  918.001     16
+SGELIDCGRKUSDG-UHFFFAOYSA-N           73                      126  956.175     14
+RZEDWTAYLVSDQZ-UHFFFAOYSA-N           67                      104  859.997     14
+LAKBQBAEICFKKV-UHFFFAOYSA-N           81                      122 1080.055     14
+
+counts thresholds
+heavy_atoms >= 50: 344
+heavy_atoms >= 60: 54
+heavy_atoms >= 70: 9
+heavy_atoms >= 80: 2
+total_atoms >= 80: 380
+total_atoms >= 100: 59
+total_atoms >= 120: 5
+MW >= 600: 460
+MW >= 800: 52
+MW >= 1000: 2
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

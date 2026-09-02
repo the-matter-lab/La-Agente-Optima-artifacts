@@ -1,0 +1,20 @@
+{
+  "bo_campaign_id": "ccbfc92e-c646-4943-a44d-9277f2f2d8d4",
+  "expected_current_results": 16,
+  "failed_measurement_dir": "artifacts/recreated_robochemflex_yield_bo_20260725/autonomous_continuation_20260725T053043Z/measurement17",
+  "failed_run_id": "R0060",
+  "failed_suggestion_id": "a9f8598d-edd7-48fa-bbf6-b94ca3618912",
+  "max_new_measurements": 4,
+  "mode": "hardware",
+  "monitoring": {
+    "heartbeat_s": 1800.0,
+    "poll_s": 180.0,
+    "quiet_stdout": true,
+    "zero_no_peak_streak_limit": 5
+  },
+  "resume_bo_if_paused": true,
+  "retry_request_file_is_source_of_truth_except_sample_name_and_note": true,
+  "retry_sample_name": "bo_a9f8598d-e_r2",
+  "target_total_results": 20,
+  "then": "if retry passes, submit it for the original pending suggestion, then continue one BO suggestion at a time until 20 total BO results or 4 completed new measurements"
+}

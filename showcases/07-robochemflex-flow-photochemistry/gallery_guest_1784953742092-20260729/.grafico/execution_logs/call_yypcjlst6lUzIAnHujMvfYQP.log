@@ -1,0 +1,16 @@
+exit_code=0
+
+=== stdout (raw) ===
+259 sh -c cd /app/.graphchat-workspaces/gallery_guest_1784900563933 && export PYTHONUNBUFFERED=1 && export ROBRIDGE_POST_ADAPTER="$PWD/scripts/robridge_post_adapter.py" && export ROBOCHEMFLEX_TOTAL_SUCCESS_BUDGET=20 && export ROBOCHEMFLEX_ZERO_STOP_N=5 && export ROBOCHEMFLEX_STATUS_POLL_S=120 && uv run python -u scripts/run_real_campaign_supervised.py 2>&1 | tee "logs/real_campaign_supervisor_$(date -u +%Y%m%dT%H%M%SZ).log"; exit ${PIPESTATUS[0]}
+260 uv run python -u scripts/run_real_campaign_supervised.py
+266 /opt/venv/bin/python3 -u scripts/run_real_campaign_supervised.py
+267 uv run python -u run_robochemflex_yield_bo.py --mode robridge-real --allow-real-roboflex --max-successes 1 --no-pause-bo-on-exit --campaign-name robochemflex_yield_baybe_real_20260724T141938Z --robridge-campaign-name robochemflex_yield_bo_20260724T141938Z --artifact-dir /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_20260724T141938Z --run-timeout-s 10800.0
+271 /opt/venv/bin/python3 -u run_robochemflex_yield_bo.py --mode robridge-real --allow-real-roboflex --max-successes 1 --no-pause-bo-on-exit --campaign-name robochemflex_yield_baybe_real_20260724T141938Z --robridge-campaign-name robochemflex_yield_bo_20260724T141938Z --artifact-dir /app/.graphchat-workspaces/gallery_guest_1784900563933/artifacts/real_robochemflex_yield_bo_20260724T141938Z --run-timeout-s 10800.0
+327 bash -lc pgrep -af 'scripts/run_real_campaign_supervised.py|run_robochemflex_yield_bo.py' || true latest=$(ls -td artifacts/real_robochemflex_yield_bo_* 2>/dev/null | head -1); echo latest=$latest; wc -l "$latest/submitted_results.jsonl" 2>/dev/null || true
+latest=artifacts/real_robochemflex_yield_bo_20260724T141938Z
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

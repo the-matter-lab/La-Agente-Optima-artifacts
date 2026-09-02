@@ -1,0 +1,28 @@
+{
+  "blocked_suggestion_ids": [
+    "a9f8598d-edd7-48fa-bbf6-b94ca3618912"
+  ],
+  "bo_campaign_id": "ccbfc92e-c646-4943-a44d-9277f2f2d8d4",
+  "expected_current_results": 18,
+  "expected_roboflex_campaign_id": "robochemflex_yield_bo_fresh_20260724T155503Z-20260724-175502",
+  "max_new_measurements": 2,
+  "mode": "hardware",
+  "monitoring": {
+    "heartbeat_s": 1800.0,
+    "initial_zero_no_peak_streak": 0,
+    "poll_s": 180.0,
+    "quiet_stdout": true,
+    "zero_no_peak_streak_limit": 5
+  },
+  "resume_bo_if_paused": true,
+  "safety": [
+    "start only from exactly expected_current_results and zero pending suggestions",
+    "generate one BO suggestion at a time",
+    "after generate_suggestions timeout, query BO results and pending suggestions before any RoboFlex submission",
+    "reuse only exactly one pending suggestion after timeout; otherwise pause/stop safely",
+    "verify RoboFlex idle/awaiting_run and expected campaign before every hardware submission",
+    "write request/history equivalence report before every hardware submission",
+    "never submit blocked failed17 suggestion id"
+  ],
+  "target_total_results": 20
+}

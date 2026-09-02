@@ -1,0 +1,68 @@
+exit_code=0
+
+=== stdout (raw) ===
+ exp param_catalyst_type param_oxidant_type  param_catalyst_equiv  param_TFAA_equiv  param_oxidant_equiv  param_light_intensity  param_residence_time_min  obj_yield_percent  obj_green_score
+   1              4CzIPN              py NO              0.002500          2.200000             1.800000                     50                 30.000000           0.000000        60.308442
+   2           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                     75                 10.000000          30.037732        98.295455
+   3          Ir CF3 ppy         4-Ph py NO              0.004000          3.500000             3.000000                    100                 75.000000          15.766697         4.261364
+   4              Ir ppy              py NO              0.002000          1.400000             2.400000                     25                 45.000000          11.930256        65.947854
+   5          Ru bpy PF6         4-Ph py NO              0.003500          3.000000             1.200000                     75                 20.000000          13.136062        51.567703
+   6              4CzIPN         4-Ph py NO              0.001500          1.700000             2.500000                     50                 90.000000           7.574025        56.593407
+   7           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                    100                  2.000000          15.229220       100.000000
+   8           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                     75                 32.147054          27.638364        93.576622
+   9           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                     50                  2.000000          11.557190       100.000000
+  10           Ru bpy Cl              py NO              0.001000          0.900000             1.348152                     75                  2.000000          14.699272        94.664859
+  11           Ru bpy Cl              py NO              0.001000          1.387955             0.900000                     75                  2.000000          15.823225        95.308125
+  12           Ru bpy Cl              py NO              0.001000          0.939243             0.900000                     75                 15.385000          32.958219        96.770746
+  13           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                    100                 17.148333          27.198493        95.696496
+  14           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                     50                 20.791667          32.682877        97.330729
+  15           Ru bpy Cl              py NO              0.001000          1.577915             0.900000                     50                 17.890000          35.775953        91.224483
+  16           Ru bpy Cl              py NO              0.001590          1.588656             0.900000                     50                 16.396667          36.547685        86.420055
+  17           Ru bpy Cl              py NO              0.001255          1.615660             1.441060                     50                 16.428333          48.505203        82.501678
+  18           Ru bpy Cl              py NO              0.001033          1.576839             1.750418                     50                 17.011667          20.175606        80.962537
+  19           Ru bpy Cl              py NO              0.001156          1.555962             1.299610                     50                 16.805000          45.093425        85.530344
+  20           Ru bpy Cl              py NO              0.001215          1.404495             1.401166                     25                 19.390000           0.000000        86.157035
+
+Top yield
+ exp param_catalyst_type param_oxidant_type  param_catalyst_equiv  param_TFAA_equiv  param_oxidant_equiv  param_light_intensity  param_residence_time_min  obj_yield_percent  obj_green_score
+  17           Ru bpy Cl              py NO              0.001255          1.615660             1.441060                     50                 16.428333          48.505203        82.501678
+  19           Ru bpy Cl              py NO              0.001156          1.555962             1.299610                     50                 16.805000          45.093425        85.530344
+  16           Ru bpy Cl              py NO              0.001590          1.588656             0.900000                     50                 16.396667          36.547685        86.420055
+  15           Ru bpy Cl              py NO              0.001000          1.577915             0.900000                     50                 17.890000          35.775953        91.224483
+  12           Ru bpy Cl              py NO              0.001000          0.939243             0.900000                     75                 15.385000          32.958219        96.770746
+  14           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                     50                 20.791667          32.682877        97.330729
+   2           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                     75                 10.000000          30.037732        98.295455
+   8           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                     75                 32.147054          27.638364        93.576622
+  13           Ru bpy Cl              py NO              0.001000          0.900000             0.900000                    100                 17.148333          27.198493        95.696496
+  18           Ru bpy Cl              py NO              0.001033          1.576839             1.750418                     50                 17.011667          20.175606        80.962537
+
+Group catalyst
+                     count       mean        max
+param_catalyst_type                             
+4CzIPN                   2   3.787012   7.574025
+Ir CF3 ppy               1  15.766697  15.766697
+Ir ppy                   1  11.930256  11.930256
+Ru bpy Cl               15  26.261498  48.505203
+Ru bpy PF6               1  13.136062  13.136062
+
+Group oxidant
+                    count       mean        max
+param_oxidant_type                             
+4-Ph py NO              3  12.158928  15.766697
+py NO                  17  23.873689  48.505203
+
+Correlations numeric with yield
+obj_yield_percent           1.000000
+obj_green_score             0.334514
+param_light_intensity       0.075272
+param_TFAA_equiv           -0.228087
+param_residence_time_min   -0.261258
+param_catalyst_equiv       -0.340265
+param_oxidant_equiv        -0.404139
+Name: obj_yield_percent, dtype: float64
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

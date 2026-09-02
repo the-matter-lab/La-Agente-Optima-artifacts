@@ -1,0 +1,49 @@
+exit_code=0
+
+=== stdout (raw) ===
+run_id, parameters_same, objectives_same, max_abs_objective_delta
+R0044 True True 0.0
+R0045 True True 0.0
+R0046 True True 0.0
+R0047 True True 0.0
+R0048 True True 0.0
+R0049 True True 0.0
+R0050 True True 0.0
+R0051 False False 8.253791236256802e-05
+new-only ids ['R0052']
+R0052 payload
+{
+  "metadata": {
+    "conditions": {
+      "finished_at": "2026-07-25T03:28:55.973676+00:00",
+      "original_note": "BO-MCP RoboChemFlex yield optimization bo_b5aa81fc-1",
+      "sample_name": "bo_b5aa81fc-1"
+    },
+    "external_ref": {
+      "id": "R0052",
+      "system": "roboflex"
+    },
+    "notes": "historical RoboFlex import; no new hardware run; no BO suggestion generated",
+    "source_file": "roboflex_experiment_log_latest.csv",
+    "source_row": 10
+  },
+  "objective_values": {
+    "green_score": 100.0,
+    "yield_percent": 11.557190298459707
+  },
+  "parameter_values": {
+    "TFAA_equiv": 0.9,
+    "catalyst_equiv": 0.001,
+    "catalyst_type": "Ru bpy Cl",
+    "light_intensity": 50,
+    "oxidant_equiv": 0.9,
+    "oxidant_type": "py NO",
+    "residence_time_min": 2.0
+  }
+}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

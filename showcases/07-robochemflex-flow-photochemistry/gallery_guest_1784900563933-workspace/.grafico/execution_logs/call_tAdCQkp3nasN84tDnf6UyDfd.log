@@ -1,0 +1,203 @@
+exit_code=0
+
+=== stdout (raw) ===
+robochemflex_yield_bo/space.py:43:def bo_parameters(light_values: list[int] | None = None) -> list[dict]:
+robochemflex_yield_bo/space.py:68:def robridge_parameters(candidate: dict, sample_name: str) -> list[dict]:
+robochemflex_yield_bo/intake.py:3:from .space import bo_parameters
+robochemflex_yield_bo/intake.py:15:        "parameters": bo_parameters(light_values),
+robochemflex_yield_bo/campaign.py:158:def _write_json(path: Path, payload) -> None:
+robochemflex_yield_bo/campaign.py:162:def _append_json(path: Path, payload) -> None:
+robochemflex_yield_bo/evaluation.py:13:from .space import normalize_candidate, robridge_parameters
+robochemflex_yield_bo/evaluation.py:37:    params = robridge_parameters(candidate, sample_name=label)
+robochemflex_yield_bo/evaluation.py:47:        actual = _actual_parameters(candidate, result.get("parameters") or [])
+robochemflex_yield_bo/evaluation.py:54:def _actual_parameters(candidate: dict, parameters: list[dict]) -> dict:
+robochemflex_yield_bo/evaluation.py:56:    by_name = {p.get("name"): p for p in parameters if isinstance(p, dict)}
+robochemflex_yield_bo/robridge_client.py:15:    def post_json(self, path: str, payload: dict | None = None) -> dict:
+robochemflex_yield_bo/robridge_client.py:16:        adapter = os.environ.get("ROBRIDGE_POST_ADAPTER")
+robochemflex_yield_bo/robridge_client.py:19:                "Real RoboFlex mutation requires ROBRIDGE_POST_ADAPTER. "
+robochemflex_yield_bo/robridge_client.py:24:            [adapter, "POST", path],
+robochemflex_yield_bo/robridge_client.py:37:            "/v1/campaigns",
+robochemflex_yield_bo/robridge_client.py:41:    def submit_run(self, parameters: list[dict], note: str) -> dict:
+robochemflex_yield_bo/robridge_client.py:42:        return self.post_json("/v1/runs", {"parameters": parameters, "note": note})
+robochemflex_yield_bo/robridge_client.py:45:        return self.get_json(f"/v1/runs/{run_id}")
+robochemflex_yield_bo/robridge_client.py:51:        return self.get_json("/v1/campaigns/current")
+robochemflex_yield_bo/robridge_client.py:57:        return self.post_json("/v1/campaigns/current/stop")
+run_robochemflex_yield_bo.py:24:    parser.add_argument("--terminate-bo-on-exit", action="store_true", help="Use for smoke campaigns only.")
+from __future__ import annotations
+
+import hashlib
+import json
+import math
+from dataclasses import dataclass
+from pathlib import Path
+
+import logfire
+
+from .objectives import extract_yield_percent, objective_values
+from .robridge_client import RobridgeClient, wait_for_run
+from .space import normalize_candidate, robridge_parameters
+
+
+@dataclass
+class EvalOutcome:
+    success: bool
+    parameter_values: dict | None = None
+    objective_values: dict | None = None
+    run_id: str | None = None
+    error: str | None = None
+    platform_failure: bool = False
+
+
+def evaluate(candidate: dict, *, mode: str, artifact_dir: Path, label: str, timeout_s: float) -> EvalOutcome:
+    c = normalize_candidate(candidate)
+    if mode == "local-simulation":
+        y = _synthetic_yield(c)
+        _write_json(artifact_dir / "simulated_evaluations.jsonl", {"label": label, "candidate": c, "yield_percent": y})
+        return EvalOutcome(True, c, objective_values(c, y))
+    return _evaluate_robridge(c, artifact_dir=artifact_dir, label=label, timeout_s=timeout_s)
+
+
+def _evaluate_robridge(candidate: dict, *, artifact_dir: Path, label: str, timeout_s: float) -> EvalOutcome:
+    client = RobridgeClient()
+    params = robridge_parameters(candidate, sample_name=label)
+    try:
+        submitted = client.submit_run(params, note=f"BO-MCP RoboChemFlex yield optimization {label}")
+        run_id = submitted["run"]["run_id"]
+        logfire.info("Submitted RoboFlex run", run_id=run_id)
+        record = wait_for_run(client, run_id, timeout_s=timeout_s)
+        if record.get("status") == "failed" or record.get("success") is False:
+            return EvalOutcome(False, run_id=run_id, error=record.get("error", "RoboFlex run failed"), platform_failure=True)
+        result = client.result(run_id)
+        y = extract_yield_percent(result.get("result"))
+        actual = _actual_parameters(candidate, result.get("parameters") or [])
+        _write_json(artifact_dir / "robridge_results.jsonl", {"label": label, "run_id": run_id, "candidate": candidate, "result": result})
+        return EvalOutcome(True, actual, objective_values(actual, y), run_id=run_id)
+    except Exception as exc:
+        return EvalOutcome(False, error=str(exc), platform_failure=True)
+
+
+def _actual_parameters(candidate: dict, parameters: list[dict]) -> dict:
+    actual = dict(candidate)
+    by_name = {p.get("name"): p for p in parameters if isinstance(p, dict)}
+    if "light_intensity" in by_name:
+        actual["light_intensity"] = by_name["light_intensity"].get("value", actual["light_intensity"])
+    if "residence_time" in by_name:
+        actual["residence_time_min"] = float(by_name["residence_time"].get("value", actual["residence_time_min"] * 60.0)) / 60.0
+    return normalize_candidate(actual)
+
+
+def _synthetic_yield(candidate: dict) -> float:
+    catalyst_bonus = {"4CzIPN": 12, "Ir CF3 ppy": 10, "Ru bpy PF6": 7, "Ir ppy": 6, "Ru bpy Cl": 4}[candidate["catalyst_type"]]
+    oxidant_bonus = 4 if candidate["oxidant_type"] == "4-Ph py NO" else 0
+    opt = 72
+    opt -= 1800 * (candidate["catalyst_equiv"] - 0.0028) ** 2
+    opt -= 5.5 * (candidate["TFAA_equiv"] - 2.3) ** 2
+    opt -= 4.5 * (candidate["oxidant_equiv"] - 1.8) ** 2
+    opt -= 0.010 * (candidate["residence_time_min"] - 42) ** 2
+    opt -= 0.0035 * (candidate["light_intensity"] - 75) ** 2
+    digest = hashlib.sha256(json.dumps(candidate, sort_keys=True).encode()).hexdigest()
+    noise = (int(digest[:8], 16) / 0xFFFFFFFF - 0.5) * 3.0
+    return max(0.0, min(100.0, opt + catalyst_bonus + oxidant_bonus + noise))
+
+
+def _write_json(path: Path, row: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a") as f:
+        f.write(json.dumps(_clean(row), sort_keys=True) + "\n")
+
+
+def _clean(obj):
+    if isinstance(obj, float) and not math.isfinite(obj):
+        return None
+    if isinstance(obj, dict):
+        return {k: _clean(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_clean(v) for v in obj]
+    return obj
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import time
+
+from domains.roboflex.tools import fetch_roboflex_text
+
+
+class RobridgeClient:
+    def get_json(self, path: str) -> dict:
+        return json.loads(fetch_roboflex_text(path))
+
+    def post_json(self, path: str, payload: dict | None = None) -> dict:
+        adapter = os.environ.get("ROBRIDGE_POST_ADAPTER")
+        if not adapter:
+            raise RuntimeError(
+                "Real RoboFlex mutation requires ROBRIDGE_POST_ADAPTER. "
+                "The canonical RoboFlex helper is GET-only in this environment; provide an operator-approved adapter "
+                "that sends the exact OpenAPI JSON body and required X-API-Key/User-Agent headers."
+            )
+        proc = subprocess.run(
+            [adapter, "POST", path],
+            input=json.dumps(payload or {}),
+            text=True,
+            capture_output=True,
+            check=False,
+            timeout=120,
+        )
+        if proc.returncode:
+            raise RuntimeError(proc.stderr.strip() or proc.stdout.strip() or f"adapter exited {proc.returncode}")
+        return json.loads(proc.stdout or "{}")
+
+    def start_campaign(self, experiment_type: str, analytical_method: str, campaign_name: str) -> dict:
+        return self.post_json(
+            "/v1/campaigns",
+            {"experiment_type": experiment_type, "analytical_method": analytical_method, "campaign_name": campaign_name},
+        )
+
+    def submit_run(self, parameters: list[dict], note: str) -> dict:
+        return self.post_json("/v1/runs", {"parameters": parameters, "note": note})
+
+    def run_record(self, run_id: str) -> dict:
+        return self.get_json(f"/v1/runs/{run_id}")
+
+    def result(self, run_id: str) -> dict:
+        return self.get_json(f"/v1/results/{run_id}")
+
+    def current_campaign(self) -> dict:
+        return self.get_json("/v1/campaigns/current")
+
+    def status(self) -> dict:
+        return self.get_json("/v1/status")
+
+    def stop_current(self) -> dict:
+        return self.post_json("/v1/campaigns/current/stop")
+
+
+def wait_for_run(client: RobridgeClient, run_id: str, timeout_s: float, poll_s: float = 30.0) -> dict:
+    deadline = time.monotonic() + timeout_s
+    last_error = None
+    while time.monotonic() < deadline:
+        try:
+            rec = client.run_record(run_id)
+            if rec.get("status") in {"completed", "failed"}:
+                return rec
+        except Exception as exc:  # transient 502/503/504-like GET failures are retried
+            last_error = exc
+        time.sleep(poll_s)
+    if last_error:
+        raise TimeoutError(f"run {run_id} did not finish before timeout; last poll error: {last_error}")
+    raise TimeoutError(f"run {run_id} did not finish before timeout")
+
+
+=== stderr (raw) ===
+grep: robochemflex_yield_bo/__pycache__/space.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/intake.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/robridge_client.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+grep: robochemflex_yield_bo/__pycache__/space.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/intake.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/robridge_client.cpython-312.pyc: binary file matches

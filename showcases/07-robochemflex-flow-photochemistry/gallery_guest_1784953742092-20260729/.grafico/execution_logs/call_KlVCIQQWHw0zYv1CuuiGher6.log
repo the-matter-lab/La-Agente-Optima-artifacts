@@ -1,0 +1,114 @@
+exit_code=0
+
+=== stdout (raw) ===
+old submitted count 8 new import count 9
+old item keys dict_keys(['metadata', 'objective_values', 'parameter_values'])
+new item keys dict_keys(['metadata', 'objective_values', 'parameter_values'])
+OLD sample 0 {
+  "metadata": {
+    "external_ref": {
+      "id": "R0044",
+      "system": "roboflex"
+    },
+    "notes": "informed seed"
+  },
+  "objective_values": {
+    "green_score": 60.30844155844155,
+    "yield_percent": 0.0
+  },
+  "parameter_values": {
+    "TFAA_equiv": 2.2,
+    "catalyst_equiv": 0.0025,
+    "catalyst_type": "4CzIPN",
+    "light_intensity": 50,
+    "oxidant_equiv": 1.8,
+    "oxidant_type": "py NO",
+    "residence_time_min": 30.0
+  }
+}
+OLD sample 1 {
+  "metadata": {
+    "external_ref": {
+      "id": "R0045",
+      "system": "roboflex"
+    },
+    "notes": "informed seed"
+  },
+  "objective_values": {
+    "green_score": 98.29545454545455,
+    "yield_percent": 30.037732281591182
+  },
+  "parameter_values": {
+    "TFAA_equiv": 0.9,
+    "catalyst_equiv": 0.001,
+    "catalyst_type": "Ru bpy Cl",
+    "light_intensity": 75,
+    "oxidant_equiv": 0.9,
+    "oxidant_type": "py NO",
+    "residence_time_min": 10.0
+  }
+}
+NEW sample 0 {
+  "metadata": {
+    "conditions": {
+      "finished_at": "2026-07-24T17:08:15.466857+00:00",
+      "original_note": "BO-MCP RoboChemFlex yield optimization seed01_b681a41d",
+      "sample_name": "seed01_b681a41d"
+    },
+    "external_ref": {
+      "id": "R0044",
+      "system": "roboflex"
+    },
+    "notes": "historical RoboFlex import; no new hardware run; no BO suggestion generated",
+    "source_file": "roboflex_experiment_log_latest.csv",
+    "source_row": 2
+  },
+  "objective_values": {
+    "green_score": 60.30844155844155,
+    "yield_percent": 0.0
+  },
+  "parameter_values": {
+    "TFAA_equiv": 2.2,
+    "catalyst_equiv": 0.0025,
+    "catalyst_type": "4CzIPN",
+    "light_intensity": 50,
+    "oxidant_equiv": 1.8,
+    "oxidant_type": "py NO",
+    "residence_time_min": 30.0
+  }
+}
+NEW sample 1 {
+  "metadata": {
+    "conditions": {
+      "finished_at": "2026-07-24T17:56:12.086325+00:00",
+      "original_note": "BO-MCP RoboChemFlex yield optimization seed02_b681a41d",
+      "sample_name": "seed02_b681a41d"
+    },
+    "external_ref": {
+      "id": "R0045",
+      "system": "roboflex"
+    },
+    "notes": "historical RoboFlex import; no new hardware run; no BO suggestion generated",
+    "source_file": "roboflex_experiment_log_latest.csv",
+    "source_row": 3
+  },
+  "objective_values": {
+    "green_score": 98.29545454545455,
+    "yield_percent": 30.037732281591182
+  },
+  "parameter_values": {
+    "TFAA_equiv": 0.9,
+    "catalyst_equiv": 0.001,
+    "catalyst_type": "Ru bpy Cl",
+    "light_intensity": 75,
+    "oxidant_equiv": 0.9,
+    "oxidant_type": "py NO",
+    "residence_time_min": 10.0
+  }
+}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

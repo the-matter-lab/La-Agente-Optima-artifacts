@@ -1,0 +1,23 @@
+exit_code=0
+
+=== stdout (raw) ===
+{"campaign_id": "fe6e1020-d1e6-417e-ad5f-afa1cdf3ac5e", "name": "ths_N718_E4", "notes": "penalized incompatible candidate: node 'N718' is not compatible with topology 'ths'", "objectives": {"capacity_proxy": 0.0, "selectivity_proxy": 0.0}, "ok": false, "parameters": {"edge": "E4", "node": "N718", "topology": "ths"}, "suggestion_id": "8be0cc48-43e7-41e7-9138-f14502c781d5"}
+
+{"campaign_id": "fe6e1020-d1e6-417e-ad5f-afa1cdf3ac5e", "name": "pts_N59_E88", "notes": "penalized incompatible candidate: node 'N59' is not compatible with topology 'pts'", "objectives": {"capacity_proxy": 0.0, "selectivity_proxy": 0.0}, "ok": false, "parameters": {"edge": "E88", "node": "N59", "topology": "pts"}, "suggestion_id": "2723d80f-fe9e-49a5-84b5-148f40bbbbdc"}
+
+{"campaign_id": "fe6e1020-d1e6-417e-ad5f-afa1cdf3ac5e", "name": "nbo_N632_E85", "notes": "penalized incompatible candidate: node 'N632' is not compatible with topology 'nbo'", "objectives": {"capacity_proxy": 0.0, "selectivity_proxy": 0.0}, "ok": false, "parameters": {"edge": "E85", "node": "N632", "topology": "nbo"}, "suggestion_id": "fc2b09c5-a5da-4e72-bfe3-04bbdeaf44db"}
+
+--- csv head
+  param_topology param_node param_edge  obj_selectivity_proxy  obj_capacity_proxy                             result_id                         suggestion_id                        created_at
+0            ths       N718         E4               0.000000             0.00000  5d0f9cc3-b3ca-4d7e-9c56-31f2466d9e7d  8be0cc48-43e7-41e7-9138-f14502c781d5  2026-08-12T15:40:56.514553+00:00
+1            pts        N59        E88               0.000000             0.00000  9a421355-e022-4f74-a73a-84a69b7a3de2  2723d80f-fe9e-49a5-84b5-148f40bbbbdc  2026-08-12T15:40:56.651023+00:00
+2            nbo       N632        E85               0.000000             0.00000  33f41a6b-74a3-4de2-a5a2-01b3c4422246  fc2b09c5-a5da-4e72-bfe3-04bbdeaf44db  2026-08-12T15:40:56.782314+00:00
+3            pcu       N295       E161               0.005405             5.02762  3d222559-f266-4323-996e-929f7c9ce0e3  1accb772-d551-4c0a-9bf1-26037b02a70b  2026-08-12T15:41:05.640323+00:00
+4            bcu        N12        E78               0.000000             0.00000  7e340e6d-2daa-4fe2-9540-843c781143fe  5f883ce8-ce3a-4617-a97e-53f4b6142b24  2026-08-12T15:41:05.766064+00:00
+['param_topology', 'param_node', 'param_edge', 'obj_selectivity_proxy', 'obj_capacity_proxy', 'result_id', 'suggestion_id', 'created_at']
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

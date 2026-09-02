@@ -1,0 +1,15 @@
+Command: uv run python run_digital_osl_stage1b.py --execute --campaign-id ef784cc0-1af2-43f8-9ef1-383dec87c6ca --max-new-bo-successes 19 
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+13:56:37.278 POST api/api/v1/campaigns/validate
+Stage 1b preview prepared successfully.
+Active caps/bridges/cores: 12/12/18
+Candidate count: 2592
+Legacy observations planned for import: 16 / 16
+Validated intake backend: baybe
+Artifacts: artifacts/digital_osl_stage1b/20260703T135624Z_execute
+13:56:37.326 GET api/api/v1/campaigns/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+13:56:37.353 POST api/api/v1/campaigns/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/lifecycle
+13:56:37.396 GET api/api/v1/campaigns/ef784cc0-1af2-43f8-9ef1-383dec87c6ca
+13:56:37.408 GET api/api/v1/campaigns/ef784cc0-1af2-43f8-9ef1-383dec87c6ca/export ? format='csv'
+13:56:37.435 GET api/api/v1/diagnostics/ef784cc0-1af2-43f8-9ef1-383dec87c6ca ? use_cache='false' & verbosity='standard'
+Unhandled error: HTTPConnectionPool(host='api', port=8000): Read timed out. (read timeout=120.0)

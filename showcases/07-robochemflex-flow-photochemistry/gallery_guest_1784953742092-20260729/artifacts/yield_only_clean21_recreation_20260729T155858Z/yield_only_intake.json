@@ -1,0 +1,83 @@
+{
+  "acquisition_method": "expected_improvement",
+  "backend": "baybe",
+  "batch_size": 1,
+  "description": "Yield-only RoboChemFlex photochemical-flow optimization seeded from valid historical RoboFlex results.",
+  "name": "robochemflex_yield_only_clean21_20260729T155859Z",
+  "objectives": [
+    {
+      "direction": "maximize",
+      "name": "yield_percent",
+      "normalization_bounds": [
+        0.0,
+        100.0
+      ],
+      "unit": "%"
+    }
+  ],
+  "parameters": [
+    {
+      "categories": [
+        "Ru bpy Cl",
+        "Ru bpy PF6",
+        "Ir ppy",
+        "Ir CF3 ppy",
+        "4CzIPN"
+      ],
+      "name": "catalyst_type",
+      "type": "categorical"
+    },
+    {
+      "categories": [
+        "py NO",
+        "4-Ph py NO"
+      ],
+      "name": "oxidant_type",
+      "type": "categorical"
+    },
+    {
+      "bounds": {
+        "lower": 0.001,
+        "upper": 0.004
+      },
+      "name": "catalyst_equiv",
+      "type": "continuous"
+    },
+    {
+      "bounds": {
+        "lower": 0.9,
+        "upper": 3.5
+      },
+      "name": "TFAA_equiv",
+      "type": "continuous"
+    },
+    {
+      "bounds": {
+        "lower": 0.9,
+        "upper": 3.0
+      },
+      "name": "oxidant_equiv",
+      "type": "continuous"
+    },
+    {
+      "name": "light_intensity",
+      "type": "discrete",
+      "values": [
+        0,
+        25,
+        50,
+        75,
+        100
+      ]
+    },
+    {
+      "bounds": {
+        "lower": 2.0,
+        "upper": 90.0
+      },
+      "name": "residence_time_min",
+      "type": "continuous"
+    }
+  ],
+  "random_seed": 650
+}

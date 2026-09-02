@@ -1,0 +1,17 @@
+exit_code=0
+
+=== stdout (raw) ===
+['candidate_id', 'R1', 'R2', 'R3', 'ligand_smiles', 'phase', 'status', 'pareto', 'representative_tradeoff', 'homo_energy_eV', 'lumo_energy_eV', 'homo_lumo_gap_eV', 'phosphorus_partial_charge', 'molecular_volume_ang3', 'heavy_atom_count', 'donor_homo_error', 'gap_error', 'steric_excess', 'heavy_atom_count.1', 'error']
+  candidate_id   R1   R2  R3                  ligand_smiles       phase   status  pareto  representative_tradeoff  homo_energy_eV  lumo_energy_eV  homo_lumo_gap_eV  phosphorus_partial_charge  molecular_volume_ang3  heavy_atom_count  donor_homo_error  gap_error  steric_excess  heavy_atom_count.1  error
+0       P_0001   Me   Me  Me                         CP(C)C  warm_start  success    True                     True       -4.983509        0.910223          5.893732                   0.351120                 88.200               4.0          0.816491   0.893732            0.0                 4.0    NaN
+1       P_0002   Me   Me  Ph                  CP(C)c1ccccc1  warm_start  success   False                    False       -4.879291       -1.109100          3.770191                   0.356739                143.096               9.0          0.920709   1.229809            0.0                 9.0    NaN
+2       P_0003   Me   Ph  Ph           CP(c1ccccc1)c1ccccc1  warm_start  success   False                    False       -4.923712       -1.356256          3.567456                   0.352687                197.712              14.0          0.876288   1.432544            0.0                14.0    NaN
+3       P_0004   Ph   Ph  Ph  P(c1ccccc1)(c1ccccc1)c1ccccc1  warm_start  success   False                    False       -4.879697       -1.523900          3.355798                   0.336931                251.992              19.0          0.920303   1.644202            0.0                19.0    NaN
+4       P_0005  tBu  tBu  Ph    CC(C)(C)P(C(C)(C)C)c1ccccc1  warm_start  success   False                    False       -4.844178       -1.240601          3.603577                   0.316878                243.632              15.0          0.955822   1.396423            0.0                15.0    NaN
+(28, 20)
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

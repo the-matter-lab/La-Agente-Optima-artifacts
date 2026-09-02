@@ -1,0 +1,43 @@
+exit_code=0
+
+=== stdout (raw) ===
+Wrote 6 plots to artifacts/phosphine_electronics_20260805_182629/plots
+artifacts/phosphine_electronics_20260805_182629/plots/electronic_map_updated.png
+artifacts/phosphine_electronics_20260805_182629/plots/objective_scatter_matrix.png
+artifacts/phosphine_electronics_20260805_182629/plots/parallel_objective_profiles.png
+artifacts/phosphine_electronics_20260805_182629/plots/substituent_pareto_enrichment.png
+artifacts/phosphine_electronics_20260805_182629/plots/descriptor_objective_correlation.png
+artifacts/phosphine_electronics_20260805_182629/plots/phase_objective_distributions.png
+artifacts/phosphine_electronics_20260805_182629/plots/plot_manifest.txt
+-rw-r--r-- 1 root root 210K Aug  5 20:45 artifacts/phosphine_electronics_20260805_182629/plots/descriptor_objective_correlation.png
+-rw-r--r-- 1 root root 137K Aug  5 20:45 artifacts/phosphine_electronics_20260805_182629/plots/electronic_map_updated.png
+-rw-r--r-- 1 root root 203K Aug  5 20:45 artifacts/phosphine_electronics_20260805_182629/plots/objective_scatter_matrix.png
+-rw-r--r-- 1 root root 453K Aug  5 20:45 artifacts/phosphine_electronics_20260805_182629/plots/parallel_objective_profiles.png
+-rw-r--r-- 1 root root 127K Aug  5 20:45 artifacts/phosphine_electronics_20260805_182629/plots/phase_objective_distributions.png
+-rw-r--r-- 1 root root 149K Aug  5 20:45 artifacts/phosphine_electronics_20260805_182629/plots/substituent_pareto_enrichment.png
+-rwxr-xr-x 1 root root  14K Aug  5 20:45 plot_phosphine_campaign_summary.py
+
+
+=== stderr (raw) ===
+/app/.graphchat-workspaces/gallery_guest_1785953700180/plot_phosphine_campaign_summary.py:281: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=[p.replace("_", " ") for p in phases], patch_artist=True, showfliers=False)
+/app/.graphchat-workspaces/gallery_guest_1785953700180/plot_phosphine_campaign_summary.py:281: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=[p.replace("_", " ") for p in phases], patch_artist=True, showfliers=False)
+/app/.graphchat-workspaces/gallery_guest_1785953700180/plot_phosphine_campaign_summary.py:281: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=[p.replace("_", " ") for p in phases], patch_artist=True, showfliers=False)
+/app/.graphchat-workspaces/gallery_guest_1785953700180/plot_phosphine_campaign_summary.py:281: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=[p.replace("_", " ") for p in phases], patch_artist=True, showfliers=False)
+
+
+=== stderr (model-visible) ===
+/app/.graphchat-workspaces/gallery_guest_1785953700180/plot_phosphine_campaign_summary.py:281: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=[p.replace("_", " ") for p in phases], patch_artist=True, showfliers=False)
+
+/app/.graphchat-workspaces/gallery_guest_1785953700180/plot_phosphine_campaign_summary.py:281: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=[p.replace("_", " ") for p in phases], patch_artist=True, showfliers=False)
+
+/app/.graphchat-workspaces/gallery_guest_1785953700180/plot_phosphine_campaign_summary.py:281: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=[p.replace("_", " ") for p in phases], patch_artist=True, showfliers=False)
+
+/app/.graphchat-workspaces/gallery_guest_1785953700180/plot_phosphine_campaign_summary.py:281: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = ax.boxplot(data, labels=[p.replace("_", " ") for p in phases], patch_artist=True, showfliers=False)

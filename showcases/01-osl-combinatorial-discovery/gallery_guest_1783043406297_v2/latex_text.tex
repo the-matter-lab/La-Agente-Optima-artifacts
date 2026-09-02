@@ -1,0 +1,54 @@
+\subsubsection{Autonomous Digital OSL Discovery with \optima{}}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{figs/osl_campaign_v2.png}
+    \caption{
+    \textit{a)} Schematic depiction of the effective search space relative to the total search space of the organic laser emitter discovery campaign.
+    \textit{b)} Cumulative hypervolume (best-so-far) and incremental hypervolume improvement per \ac{bo} iteration (batch size 1).
+    }
+    \label{fig:osl_campaign}
+\end{figure}
+
+\optima{} was tasked with running an autonomous, closed-loop digital discovery campaign for \ac{osl} candidates assembled from fragment catalogues.
+The molecular design space followed an \texttt{A--B--C--B--A} composition rule, where the decision variables corresponded to cap, bridge, and core fragments.
+Rather than treating this as a static screening problem, \opt{} formulated it as a multi-objective \ac{bo} campaign coupled to molecular assembly, conformer generation, and quantum-chemical evaluation.
+
+Before starting the optimization, \optima{} inferred the assembly rule directly from the fragment catalogues, including the identification of the reactive halogen sites used to join fragments, prioritizing bromine and iodine and falling back to chlorine only where no heavier halogen was present, so that spectator chlorides were preserved in the assembled products.
+The reconstructed products were validated against a user-provided reference subset of 1129 assembled molecules: all 1129 reproduced the reference connectivity, with 983 additionally matching as exact \ac{smiles} strings and the remaining 146 differing only in stereochemistry; no hard discrepancies were found.
+This reference file was used solely to confirm assembly correctness at the connectivity level, it contributed neither seed candidates nor objective values, and the automatically assembled molecule dataset remained the sole basis of the campaign.
+The resulting search space was represented through three categorical parameters, \texttt{cap\_id}, \texttt{bridge\_id}, and \texttt{core\_id}, each augmented with a compact set of RDKit-derived fragment descriptors --- heavy-atom count, exact molecular weight, hetero-atom count, aromatic-ring count, rotatable-bond count, topological polar surface area, cLogP, and the fraction of sp\textsuperscript{3} carbons --- together with an identity code that keeps otherwise similar fragments distinguishable.
+This enabled the surrogate model to exploit fragment similarity rather than treating all fragment identifiers as unrelated labels \cite{fitznerBayBEBayesianBack2025}.
+The same standardized descriptors later defined the distance metric of the frontier-aware search-space expansion, so a single chemical representation informed both the surrogate model and the growth of the design space.
+
+Of the 462,672 theoretically accessible \texttt{A--B--C--B--A} combinations (42 caps, 68 bridges, and 162 cores), the campaign began in a deliberately restricted and inexpensive search space of 360 candidates, selected by a small-fragment-first strategy.
+
+The four initial observations were chosen by a deterministic, descriptor-based design rather than by random sampling.
+For each fragment slot, \optima{} drew two representatives from the pool of the four smallest active fragments: the smallest fragment itself and the pool member most distant from it in the standardized descriptor space, pairing a minimal anchor with a maximally dissimilar counterpart.
+The four seeds then combined these representatives in a balanced half-fraction of the full $2^3$ factorial design, so that every representative cap, bridge, and core appeared in exactly two seeds and any two seeds shared exactly one fragment.
+This gave the surrogate model an initial signal along all three decision variables at minimal evaluation cost before the first \ac{bo} suggestion was requested.
+
+Starting from these seeds, \optima{} iteratively evaluated \ac{bo}-suggested candidates using a low-cost digital proxy workflow.
+The objectives combined oscillator strength, colour matching to a target visible excitation energy, and a structural ambiguity penalty.
+Failed or non-finite evaluations were recorded explicitly, while only valid objective triples were submitted to the optimization server.
+In this initial stage, the twelve \ac{bo}-selected candidates contributed more cumulative hypervolume (3.76) than the four seeds (2.78), indicating that the optimizer added value beyond the initial design.
+
+After 16 successful observations, \optima{} analysed the observed Pareto front and expanded the search space through a deterministic, frontier-aware rule: the fragments occurring in Pareto-optimal candidates served as per-slot anchors, and additional caps, bridges, and cores were ranked by their z-scored descriptor distance to these anchors, with ties broken in favour of smaller fragments.
+All fragments of the initial space were retained, so the expanded space of 2592 candidates formed a strict superset of the original 360; even after expansion, the active space comprised only about 0.6\% of the theoretically accessible candidates.
+All previous observations were imported into the new Stage~1b campaign, allowing \ac{bo} to continue from accumulated knowledge rather than restarting.
+The expanded campaign ultimately produced 38 successful observations in total and revealed recurring fragment motifs associated with favourable brightness--colour--robustness trade-offs.
+\optima{} rationalized these motifs chemically: the recurring caps are dimethylamino--aryl donors, the dominant bridges provide compact vinylene or thiophene-based $\pi$-links, and the core selection tunes acceptor strength from electronically neutral phenylene to electron-poor aza- and S,N-heteroaryl units.
+From this, it distilled a qualitative design principle for the observed Pareto front --- strong terminal donors combined with extended but not overextended conjugation and sufficient rigidity to control both colour error and conformer ambiguity --- while explicitly separating chemically promising Pareto points from formally nondominated but impractical extremes, such as a rigid yet essentially dark candidate with near-zero oscillator strength.
+It also cautioned that these interpretations rest on inexpensive digital proxies rather than converged photophysics.
+
+Beyond optimization, this case study also demonstrated autonomous workflow management.
+\optima{} diagnosed and patched a configuration mismatch in the Stage~1b evaluator path that had produced 23 recorded failures and five rejected suggestions, and validated the fix in an isolated single-iteration smoke run before resuming production.
+It also reconciled campaign state after orchestration timeouts and preserved the distinction between valid measurements, rejected suggestions, and pending evaluations.
+It further generated provenance-aware diagnostics, including hypervolume curves, search-space visualizations, and Pareto-front summaries, which made the campaign auditable and interpretable.
+
+Finally, \optima{} explored higher-level confirmation calculations for the most promising candidates.
+Although the proposed confirmation ladder was feasible on a small test molecule, the larger \ac{osl} candidates exceeded the practical memory and wall-clock limits of the available environment.
+Rather than forcing incomplete calculations, \optima{} stopped the attempt and recommended a more conservative follow-up strategy.
+
+Overall, the campaign shows that \optima{} can autonomously formulate, execute, diagnose, resume, and interpret an iterative digital molecular discovery workflow.
+It therefore represents more than a conventional \ac{bo} run: it demonstrates a provenance-aware computational chemistry agent operating across optimization, simulation, failure handling, and scientific interpretation.

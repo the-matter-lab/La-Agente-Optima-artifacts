@@ -1,0 +1,64 @@
+{
+  "identifier": "3\nProperties=species:S:1:pos:R:3 pbc=\"F F F\" explicit_bonds=b0_1_1,b0_2_1\nO        0.00173252       0.40411676       0.00000000\nH       -0.78389729      -0.19870186       0.00000000\nH        0.78216477      -0.20541490       0.00000000\n",
+  "identifier_type": "xyz",
+  "final_molecule": {
+    "rdfs_comment": [],
+    "rdfs_label": [],
+    "instance_iri": "https://elagente.ca/grafico/ConceptualAtoms_ed3ffdb6-8012-4379-be13-f6d9f430f86e",
+    "xyz": {
+      "rdfs_comment": [],
+      "rdfs_label": [],
+      "instance_iri": "https://elagente.ca/grafico/XYZ_ad15e71e-19ee-4fa8-87bb-587bed73e494",
+      "atomic_numbers": [
+        8,
+        1,
+        1
+      ],
+      "positions": [
+        [
+          0.001954176463186741,
+          0.46204885840415955,
+          3.222386801837729e-10
+        ],
+        [
+          -0.7729799151420593,
+          -0.22782614827156067,
+          1.6819622083996677e-10
+        ],
+        [
+          0.770969569683075,
+          -0.23441819846630096,
+          2.0391828503552034e-10
+        ]
+      ],
+      "unit": "angstrom"
+    },
+    "cell": null,
+    "pbc": null,
+    "charge": 0.0,
+    "spin_multiplicity": 1,
+    "identifier": "3\n\nO 0.001954 0.462049 0.000000\nH -0.772980 -0.227826 0.000000\nH 0.770970 -0.234418 0.000000",
+    "identifier_type": "xyz",
+    "chemical_formula": "H2O"
+  },
+  "total_energy": -75.23899337813128,
+  "frequencies": null,
+  "tddft_results": null,
+  "imaginary_frequencies_removed": false,
+  "workflow_summary": [
+    "Single point energy: -75.233170 Hartree",
+    "[AI Routing]: SinglePointCalculation -> GeometryOptimisation | The user specifically requested a minimal DFT geometry optimization as a preflight check, with no need for frequency or TDDFT calculations. Therefore, the next step should be a geometry optimization to fulfill this request.",
+    "Geometry optimization completed. Final energy: -75.238993 Hartree.",
+    "[AI Routing]: GeometryOptimisation -> End | The user explicitly requested only a minimal DFT geometry optimization as a preflight check, with no need for frequency or TDDFT calculations. Since the geometry optimization is complete and no further analysis is required, the workflow should end here to fulfill the user's intent."
+  ],
+  "xc_functional": "pbe",
+  "basis_set": "sto-3g",
+  "analysis_results": null,
+  "pyscf_output": {
+    "rdfs_comment": [],
+    "rdfs_label": [],
+    "instance_iri": "https://elagente.ca/ontopyscf/PyscfOutput_58998644-ade9-4e53-b231-41edc70ff3e7",
+    "energy": -75.23899337813128,
+    "chkfile": "/app/domains/pyscf/chkfiles/97e77349-8319-403d-8cfd-75727f52ac8a.chk"
+  }
+}

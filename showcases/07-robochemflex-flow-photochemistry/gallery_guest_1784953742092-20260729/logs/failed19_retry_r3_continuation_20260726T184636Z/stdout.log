@@ -1,0 +1,55 @@
+18:46:38.201 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+18:46:38.215 POST api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/lifecycle
+BO campaign resumed from paused state.
+18:46:38.226 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+18:46:38.232 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+18:46:38.240 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/query
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+Submitting measurement #19: bo_5c5570bd-d_r3 (5c5570bd-dd17-4366-8685-0863402167f6)
+18:46:38.772 Submitting RoboFlex measurement
+RoboFlex run R0065: state changed to queued
+18:46:39.217 RoboFlex run state changed
+RoboFlex platform: phase=running state=executing blocked_on=robot overdue=False
+18:46:39.644 RoboFlex platform state changed
+RoboFlex run R0065: state changed to running
+18:49:40.045 RoboFlex run state changed
+Heartbeat: RoboFlex run R0065 still running; polling every 180s; detailed trail on disk.
+RoboFlex run R0065: state changed to completed
+19:28:48.022 RoboFlex run state changed
+RoboFlex platform: phase=running state=awaiting_run blocked_on=agent overdue=False
+19:28:48.346 RoboFlex platform state changed
+Completed measurement #19: bo_5c5570bd-d_r3 run=R0065
+  analysis: yield=45.09; green=85.53; pass=True; peak_found=True; peak_position=-57.53816217452012; integral=0.00723864060958166; width=0.11023154442447236; concentration=45.07504097061292
+19:28:48.533 POST api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+Submitted BO result for bo_5c5570bd-d_r3: yield=45.09, green=85.53
+19:28:48.609 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+19:28:48.617 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+19:28:48.625 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/query
+19:28:48.633 POST api/api/v1/campaigns/status/batch
+19:28:48.645 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/generate ? batch_size='1'
+Submitting measurement #20: bo_f20766bf-c (f20766bf-c7e2-4631-857c-0920b0fd1bc0)
+19:34:08.690 Submitting RoboFlex measurement
+RoboFlex run R0066: state changed to queued
+19:34:09.080 RoboFlex run state changed
+RoboFlex platform: phase=running state=executing blocked_on=robot overdue=False
+19:34:09.234 RoboFlex platform state changed
+RoboFlex run R0066: state changed to running
+19:46:11.273 RoboFlex run state changed
+Heartbeat: RoboFlex run R0066 still running; polling every 180s; detailed trail on disk.
+RoboFlex run R0066: state changed to completed
+20:28:19.543 RoboFlex run state changed
+RoboFlex platform: phase=running state=awaiting_run blocked_on=agent overdue=False
+20:28:19.880 RoboFlex platform state changed
+Completed measurement #20: bo_f20766bf-c run=R0066 ALERT zero/no-peak
+  analysis: yield=0.00; green=86.16; pass=True; peak_found=False; peak_position=None; integral=0.0; width=0.0; concentration=0.0
+20:28:20.198 POST api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+Submitted BO result for bo_f20766bf-c: yield=0.00, green=86.16
+20:28:20.268 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+ALERT streak: 1 consecutive zero-yield/no-peak completed experiment(s).
+20:28:20.276 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/export ? format='csv'
+20:28:20.286 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+20:28:20.292 POST api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/lifecycle
+BO campaign paused.
+New completed experiments this invocation: 2
+Artifacts: artifacts/recreated_robochemflex_yield_bo_20260725/failed_measurement_retry_continuation_20260726T184638Z
+[orchestrator] EXIT_STATUS=0

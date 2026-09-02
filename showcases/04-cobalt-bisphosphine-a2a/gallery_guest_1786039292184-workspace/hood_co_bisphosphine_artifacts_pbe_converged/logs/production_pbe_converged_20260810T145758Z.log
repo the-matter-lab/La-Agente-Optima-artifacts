@@ -1,0 +1,42 @@
+[EVENT] candidate library constructed before calculations: total=144; per_linker={'ethylene': 36, 'propylene': 36, '1,2-phenylene': 36, 'cis-1,2-cyclohexylene': 36}; symmetric=32; unsymmetric=112; duplicate_ids=0; duplicate_R1_R2_permutations_remaining=0; report=hood_co_bisphosphine_artifacts_pbe_converged/candidate_library.json
+[EVENT] Estructural connectivity preflight OK: http://a2a:8033
+[EVENT] Estructural workspace write preflight OK
+[EVENT] PySCF literal XYZ handoff preflight OK
+[EVENT] created campaign 62fb243b-265e-4ba4-b5a8-d97e414fce2f
+[EVENT] warm-start preset enabled: exactly 4 candidates=['eth__Me__Me', 'prop__iPr__Ph', 'ophen__pAnisyl__pCF3Ph', 'cchex__Cy__pTol']; default_bo_iterations=10
+[EVENT] evaluating warm_start candidate eth__Me__Me (Me2P-ethylene-PMe2)
+[RESULT] phase=warm_start candidate=eth__Me__Me feasible=True objectives={"chelate_geometry": 8.51758501228108, "coordination_stability": 9.989296189252297, "electronic_activation": -0.08263508031848854, "steric_crowding": 9.0}
+[EVENT] evaluating warm_start candidate prop__iPr__Ph (iPr2P-propylene-PPh2)
+[RESULT] phase=warm_start candidate=prop__iPr__Ph feasible=False objectives={"chelate_geometry": -100.0, "coordination_stability": -100.0, "electronic_activation": -100.0, "steric_crowding": 100.0}
+[EVENT] evaluating warm_start candidate ophen__pAnisyl__pCF3Ph (p-Anisyl2P-1,2-phenylene-Pp-CF3-Ph2)
+[RESULT] phase=warm_start candidate=ophen__pAnisyl__pCF3Ph feasible=False objectives={"chelate_geometry": -100.0, "coordination_stability": -100.0, "electronic_activation": -100.0, "steric_crowding": 100.0}
+[EVENT] evaluating warm_start candidate cchex__Cy__pTol (Cy2P-cis-1,2-cyclohexylene-Pp-Tol2)
+[RESULT] phase=warm_start candidate=cchex__Cy__pTol feasible=False objectives={"chelate_geometry": -100.0, "coordination_stability": -100.0, "electronic_activation": -100.0, "steric_crowding": 100.0}
+[EVENT] warm-start phase complete: completed_or_existing=4/4; BO-selected target this invocation=10
+[EVENT] evaluating bo candidate eth__Et__Et (Et2P-ethylene-PEt2)
+[RESULT] phase=bo candidate=eth__Et__Et feasible=True objectives={"chelate_geometry": 8.394435445172117, "coordination_stability": 9.756678857986092, "electronic_activation": 0.16914626730929117, "steric_crowding": 8.0}
+[HEARTBEAT] campaign=62fb243b-265e-4ba4-b5a8-d97e414fce2f warm_starts=4/4 bo_completed_this_invocation=1/10
+[EVENT] evaluating bo candidate prop__Me__Me (Me2P-propylene-PMe2)
+[RESULT] phase=bo candidate=prop__Me__Me feasible=False objectives={"chelate_geometry": -100.0, "coordination_stability": -100.0, "electronic_activation": -100.0, "steric_crowding": 100.0}
+[EVENT] evaluating bo candidate eth__iPr__iPr (iPr2P-ethylene-PiPr2)
+[RESULT] phase=bo candidate=eth__iPr__iPr feasible=True objectives={"chelate_geometry": 8.606335928605834, "coordination_stability": 9.605045916719781, "electronic_activation": 0.19177037191740576, "steric_crowding": 10.0}
+[HEARTBEAT] campaign=62fb243b-265e-4ba4-b5a8-d97e414fce2f warm_starts=4/4 bo_completed_this_invocation=3/10
+[EVENT] evaluating bo candidate eth__Cy__Cy (Cy2P-ethylene-PCy2)
+[RESULT] phase=bo candidate=eth__Cy__Cy feasible=False objectives={"chelate_geometry": -100.0, "coordination_stability": -100.0, "electronic_activation": -100.0, "steric_crowding": 100.0}
+[EVENT] evaluating bo candidate eth__Me__Et (Me2P-ethylene-PEt2)
+[RESULT] phase=bo candidate=eth__Me__Et feasible=True objectives={"chelate_geometry": 8.420341463510127, "coordination_stability": 9.556389871669603, "electronic_activation": -0.050766882515447254, "steric_crowding": 8.0}
+[HEARTBEAT] campaign=62fb243b-265e-4ba4-b5a8-d97e414fce2f warm_starts=4/4 bo_completed_this_invocation=5/10
+[EVENT] evaluating bo candidate eth__Et__iPr (Et2P-ethylene-PiPr2)
+[RESULT] phase=bo candidate=eth__Et__iPr feasible=True objectives={"chelate_geometry": 8.515539737255596, "coordination_stability": 9.425679875482798, "electronic_activation": 0.12044581124725351, "steric_crowding": 10.0}
+[HEARTBEAT] campaign=62fb243b-265e-4ba4-b5a8-d97e414fce2f warm_starts=4/4 bo_completed_this_invocation=6/10
+[EVENT] evaluating bo candidate eth__Me__iPr (Me2P-ethylene-PiPr2)
+[RESULT] phase=bo candidate=eth__Me__iPr feasible=True objectives={"chelate_geometry": 8.532293900105984, "coordination_stability": 9.198942500512977, "electronic_activation": 0.0490996638457224, "steric_crowding": 10.0}
+[HEARTBEAT] campaign=62fb243b-265e-4ba4-b5a8-d97e414fce2f warm_starts=4/4 bo_completed_this_invocation=7/10
+[EVENT] evaluating bo candidate eth__Et__Cy (Et2P-ethylene-PCy2)
+[RESULT] phase=bo candidate=eth__Et__Cy feasible=False objectives={"chelate_geometry": -100.0, "coordination_stability": -100.0, "electronic_activation": -100.0, "steric_crowding": 100.0}
+[EVENT] evaluating bo candidate prop__Me__iPr (Me2P-propylene-PiPr2)
+[RESULT] phase=bo candidate=prop__Me__iPr feasible=False objectives={"chelate_geometry": -100.0, "coordination_stability": -100.0, "electronic_activation": -100.0, "steric_crowding": 100.0}
+[EVENT] evaluating bo candidate eth__pCF3Ph__pCF3Ph (p-CF3-Ph2P-ethylene-Pp-CF3-Ph2)
+[RESULT] phase=bo candidate=eth__pCF3Ph__pCF3Ph feasible=False objectives={"chelate_geometry": -100.0, "coordination_stability": -100.0, "electronic_activation": -100.0, "steric_crowding": 100.0}
+[EVENT] exported campaign CSV to hood_co_bisphosphine_artifacts_pbe_converged/campaign_export.csv
+[EVENT] paused campaign 62fb243b-265e-4ba4-b5a8-d97e414fce2f

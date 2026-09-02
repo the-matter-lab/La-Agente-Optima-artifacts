@@ -1,0 +1,84 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- fetching log\Perry\analysis\NMRAnalysis\2026-07-24.txt /v1/results/R0064/raw/log%5CPerry%5Canalysis%5CNMRAnalysis%5C2026-07-24.txt
+len 400471
+R0064 -1
+bo_5c5570bd-d_r2 381419
+                         └    peak integral: 0.004651
+                                └    peak width: 0.2782
+                                └    peak position: -57.67
+                                └    pass: False
+                                └
+                                └
+                                └yield: 27.04
+                                └pass: False
+                                └.
+          23:05:15[NMRAnalysis] Validating parameter per analyte: sample_name: bo_5c5570bd-d_r2 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: target_peak: -58.0 ppm
+          23:05:15[NMRAnalysis] Validating parameter per analyte: metric: yield 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: yield_calculation_chemical: SM 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: data_folder: \\10.10.29.250\hims-nrg-robochem\nmr_data 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: solvent: None 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: comment:  
+          23:05:15[NMRAnalysis] Validating parameter per analyte: protocol: 1D FLUORINE HDEC 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: Number: 32 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: AcquisitionTime: 1.64 S
+          23:05:15[NMRAnalysis] Validating parameter per analyte: centerFrequency: -60.0 
+          23:05:15[NMRAnalysis] Validating parameter per analyte: PulseAngle: 90 °
+          23:05:15[NMRAnalysis] Validating parameter per analyte: RepetitionTime: 10 S
+          23:05:15[NMRAnalysis] Validating parameter per analyte: target_peak_deviation: 3.0 ppm
+ 
+--- fetching log\Perry\devices\NMR\2026-07-24.txt /v1/results/R0064/raw/log%5CPerry%5Cdevices%5CNMR%5C2026-07-24.txt
+len 144474
+R0064 -1
+bo_5c5570bd-d_r2 -1
+20260725_230515 137700
+8:37[NMR] ├Progress: completed.
+          21:58:37[NMR] ├Status: Ready.
+     [OK] 21:58:37[NMR] └Written 'start' -> 1D FLUORINE HDEC [process remotely: False]
+                        └Number: 32
+                        └AcquisitionTime: 1.64
+                        └RepetitionTime: 10
+                        └PulseAngle: 90
+                        └centerFrequency: -60.0
+                        └
+          23:05:15[NMR] Writing 'sample'.
+          23:05:15[NMR] ├Validated value sample_20260725_230515
+     [OK] 23:05:15[NMR] └Written 'sample' -> sample_20260725_230515
+          23:05:15[NMR] Writing 'solvent'.
+          23:05:15[NMR] ├Validated value None
+     [OK] 23:05:15[NMR] └Written 'solvent' -> None
+          23:05:15[NMR] Writing 'comment'.
+          23:05:15[NMR] ├Validated value 
+     [OK] 23:05:15[NMR] └Written 'comment' -> 
+          23:05:15[NMR] Writing 'data_folder'.
+          23:05:15[NMR] ├Validated value \\10.10.29.250\hims-nrg-robochem\nmr_data\sample_20260725_230515
+     [OK] 23:05:15[NMR] └Written 'data_folder' -> \\10.10.29.250\hims-nrg-robochem\nmr_data\sample_20260725_230515
+          23:05:15[NMR] Writing 'start'.
+          23:05:15[NMR] ├Validated value 1D FLUORINE HDEC [process remotely: False]
+                        ├Number: 32
+                        ├AcquisitionTime: 1.64
+                        ├RepetitionTime: 10
+                        ├PulseAngle: 90
+                        ├centerFrequency: -60.0
+                        ├
+          23:05:15[NMR] ├Status: Running.
+          23:05:18[NMR] ├Progress: 1% (316 S left)
+          23:05:22[NMR] ├Progress: 2% (313 S left)
+          23:05:25[NMR] ├Progress: 3% (310 S
+--- fetching raw_data\samples\2026-07-25_231336.csv /v1/results/R0064/raw/raw_data%5Csamples%5C2026-07-25_231336.csv
+len 2972
+R0064 -1
+bo_5c5570bd-d_r2 -1
+20260725_230515 -1
+230515 -1
+pass -1
+False -1
+peak -1
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

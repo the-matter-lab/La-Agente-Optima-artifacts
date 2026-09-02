@@ -1,0 +1,224 @@
+{
+  "active_fragment_counts": {
+    "bridges": 2,
+    "candidate_count": 8,
+    "caps": 2,
+    "cores": 2
+  },
+  "active_fragments": {
+    "bridges": [
+      {
+        "exact_mw": 317.04340052400005,
+        "heavy_atoms": 18.0,
+        "hid": "B065",
+        "smiles": "CC1(C)C(=O)O[B-]2(/C=C/Br)OC(=O)C(C)(C)[N+]21C"
+      },
+      {
+        "exact_mw": 317.04340052400005,
+        "heavy_atoms": 18.0,
+        "hid": "B066",
+        "smiles": "CC1(C)C(=O)O[B-]2(/C=C\\Br)OC(=O)C(C)(C)[N+]21C"
+      }
+    ],
+    "caps": [
+      {
+        "exact_mw": 247.174359344,
+        "heavy_atoms": 18.0,
+        "hid": "A014",
+        "smiles": "CN(C)c1ccc(B2OC(C)(C)C(C)(C)O2)cc1"
+      },
+      {
+        "exact_mw": 257.15870928000004,
+        "heavy_atoms": 19.0,
+        "hid": "A042",
+        "smiles": "Cn1ccc2cc(B3OC(C)(C)C(C)(C)O3)ccc21"
+      }
+    ],
+    "cores": [
+      {
+        "exact_mw": 223.847238884,
+        "heavy_atoms": 7.0,
+        "hid": "C069",
+        "smiles": "Brc1ccoc1Br"
+      },
+      {
+        "exact_mw": 223.847238884,
+        "heavy_atoms": 7.0,
+        "hid": "C094",
+        "smiles": "Brc1ccc(Br)o1"
+      }
+    ]
+  },
+  "assembly_validation": {
+    "connectivity_match_fraction": 1.0,
+    "connectivity_matches": 1129,
+    "exact_smiles_matches": 983,
+    "hard_discrepancies": [],
+    "n_rows": 1129,
+    "notes": [
+      "Validation uses s6 only to verify fragment assembly, never for seeds or objective ranking.",
+      "Reactive halogen inference prioritizes Br/I and only falls back to Cl, which preserves spectator chlorides seen in s6."
+    ],
+    "status": "passed",
+    "stereochemistry_only_mismatches": 146
+  },
+  "bo_validate_response": {
+    "errors": [],
+    "schema_version": 1,
+    "spec_summary": {
+      "batch_size": 1,
+      "n_constraints": 0,
+      "n_objectives": 3,
+      "n_parameters": 3,
+      "name": "digital-osl-stage1"
+    },
+    "valid": true,
+    "warnings": []
+  },
+  "descriptor_columns": {
+    "bridge_id": [
+      "identity_code"
+    ],
+    "cap_id": [
+      "heavy_atoms",
+      "exact_mw",
+      "aromatic_rings",
+      "rotatable_bonds",
+      "tpsa",
+      "clogp",
+      "fraction_csp3"
+    ],
+    "core_id": [
+      "clogp",
+      "identity_code"
+    ]
+  },
+  "initial_candidates": [
+    {
+      "bridge_id": "B065",
+      "bridge_smiles": "CC1(C)C(=O)O[B-]2(/C=C/Br)OC(=O)C(C)(C)[N+]21C",
+      "candidate_id": "A014B065C069",
+      "cap_id": "A014",
+      "cap_smiles": "CN(C)c1ccc(B2OC(C)(C)C(C)(C)O2)cc1",
+      "combined_aromatic_rings": 3.0,
+      "combined_clogp": 5.752400000000007,
+      "combined_exact_mw": 358.204513452,
+      "combined_fraction_csp3": 0.16666666666666666,
+      "combined_heavy_atoms": 27.0,
+      "combined_hetero_atoms": 3.0,
+      "combined_rotatable_bonds": 6.0,
+      "combined_tpsa": 19.620000000000005,
+      "core_id": "C069",
+      "core_smiles": "Brc1ccoc1Br",
+      "product_smiles": "CN(C)c1ccc(C=Cc2ccoc2C=Cc2ccc(N(C)C)cc2)cc1"
+    }
+  ],
+  "intake": {
+    "backend": "baybe",
+    "batch_size": 1,
+    "description": "Stage 1 bounded, cheap, first-pass digital OSL campaign over fragment-assembled A-B-C-B-A molecules. Uses CREST/GFN-FF plus cheap TDDFT/PBE/def2-SVP without geometry optimization or frequency validation.",
+    "initial_design_size": 0,
+    "name": "digital-osl-stage1",
+    "objectives": [
+      {
+        "direction": "maximize",
+        "name": "bright_osc_strength",
+        "unit": "dimensionless"
+      },
+      {
+        "direction": "minimize",
+        "name": "color_error_ev",
+        "unit": "eV"
+      },
+      {
+        "direction": "minimize",
+        "name": "ambiguity_penalty",
+        "unit": "arb"
+      }
+    ],
+    "parameters": [
+      {
+        "categories": [
+          "A014",
+          "A042"
+        ],
+        "name": "cap_id",
+        "parameter_options": {
+          "baybe": {
+            "custom_descriptors": {
+              "A014": {
+                "aromatic_rings": 1.0,
+                "clogp": 2.0518,
+                "exact_mw": 247.174359344,
+                "fraction_csp3": 0.5714285714285714,
+                "heavy_atoms": 18.0,
+                "rotatable_bonds": 2.0,
+                "tpsa": 21.700000000000003
+              },
+              "A042": {
+                "aromatic_rings": 2.0,
+                "clogp": 2.4775,
+                "exact_mw": 257.15870928000004,
+                "fraction_csp3": 0.4666666666666667,
+                "heavy_atoms": 19.0,
+                "rotatable_bonds": 1.0,
+                "tpsa": 23.39
+              }
+            },
+            "decorrelate": false,
+            "role": "custom"
+          }
+        },
+        "type": "categorical"
+      },
+      {
+        "categories": [
+          "B065",
+          "B066"
+        ],
+        "name": "bridge_id",
+        "parameter_options": {
+          "baybe": {
+            "custom_descriptors": {
+              "B065": {
+                "identity_code": 65.0
+              },
+              "B066": {
+                "identity_code": 66.0
+              }
+            },
+            "decorrelate": false,
+            "role": "custom"
+          }
+        },
+        "type": "categorical"
+      },
+      {
+        "categories": [
+          "C069",
+          "C094"
+        ],
+        "name": "core_id",
+        "parameter_options": {
+          "baybe": {
+            "custom_descriptors": {
+              "C069": {
+                "clogp": 2.8045999999999998,
+                "identity_code": 69.0
+              },
+              "C094": {
+                "clogp": 2.8046000000000006,
+                "identity_code": 94.0
+              }
+            },
+            "decorrelate": false,
+            "role": "custom"
+          }
+        },
+        "type": "categorical"
+      }
+    ],
+    "random_seed": 9227
+  },
+  "validated_intake_backend": "baybe"
+}

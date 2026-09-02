@@ -1,0 +1,46 @@
+01:40:03.223 GET api/api/v1/campaigns/1970655b-a702-4963-874b-6973489cc89d
+01:40:03.234 GET api/api/v1/results/1970655b-a702-4963-874b-6973489cc89d
+01:40:03.241 POST api/api/v1/suggestions/1970655b-a702-4963-874b-6973489cc89d/query
+01:40:03.248 POST api/api/v1/campaigns/status/batch
+01:40:03.263 POST api/api/v1/suggestions/1970655b-a702-4963-874b-6973489cc89d/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+Submitting yield-only measurement #21 attempt 1/4: bo_cc26e7f1-b
+01:42:15.504 Submitting yield-only RoboFlex measurement
+RoboFlex run R0067: state changed to queued
+01:42:16.139 RoboFlex run state changed
+RoboFlex platform: phase=running state=executing blocked_on=robot overdue=False
+01:42:16.285 RoboFlex platform state changed
+RoboFlex run R0067: state changed to running
+01:45:16.635 RoboFlex run state changed
+Heartbeat: RoboFlex run R0067 still running; polling every 180s; detailed trail on disk.
+RoboFlex run R0067: state changed to completed
+02:21:23.635 RoboFlex run state changed
+RoboFlex platform: phase=running state=awaiting_run blocked_on=agent overdue=False
+02:21:23.767 RoboFlex platform state changed
+02:21:24.171 POST api/api/v1/results/1970655b-a702-4963-874b-6973489cc89d
+Submitted yield-only BO result for bo_cc26e7f1-b: yield=58.81
+02:21:24.238 GET api/api/v1/results/1970655b-a702-4963-874b-6973489cc89d
+02:21:24.247 POST api/api/v1/suggestions/1970655b-a702-4963-874b-6973489cc89d/query
+02:21:24.255 POST api/api/v1/campaigns/status/batch
+02:21:24.267 POST api/api/v1/suggestions/1970655b-a702-4963-874b-6973489cc89d/generate ? batch_size='1'
+Submitting yield-only measurement #22 attempt 1/4: bo_31d5114e-3
+02:22:55.737 Submitting yield-only RoboFlex measurement
+RoboFlex run R0068: state changed to queued
+02:22:56.077 RoboFlex run state changed
+RoboFlex platform: phase=running state=executing blocked_on=robot overdue=False
+02:22:56.210 RoboFlex platform state changed
+RoboFlex run R0068: state changed to running
+02:37:59.209 RoboFlex run state changed
+Heartbeat: RoboFlex run R0068 still running; polling every 180s; detailed trail on disk.
+RoboFlex run R0068: state changed to failed
+03:23:08.671 RoboFlex run state changed
+RoboFlex platform: phase=running state=awaiting_run blocked_on=agent overdue=False
+03:23:09.014 RoboFlex platform state changed
+Stopped safely: RoboFlex run R0068 is not safely retryable/submittable: zero-size array to reduction operation minimum which has no identity. No BO result submitted.
+03:23:09.191 GET api/api/v1/campaigns/1970655b-a702-4963-874b-6973489cc89d/export ? format='csv'
+03:23:09.236 GET api/api/v1/campaigns/1970655b-a702-4963-874b-6973489cc89d
+03:23:09.243 POST api/api/v1/campaigns/1970655b-a702-4963-874b-6973489cc89d/lifecycle
+BO campaign paused.
+Artifacts: /app/.graphchat-workspaces/gallery_guest_1784953742092/artifacts/yield_only_robochemflex_bo/continuation_20260727T014003Z
+RoboFlex run R0068 is not safely retryable/submittable: zero-size array to reduction operation minimum which has no identity. No BO result submitted.
+[orchestrator] EXIT_STATUS=1

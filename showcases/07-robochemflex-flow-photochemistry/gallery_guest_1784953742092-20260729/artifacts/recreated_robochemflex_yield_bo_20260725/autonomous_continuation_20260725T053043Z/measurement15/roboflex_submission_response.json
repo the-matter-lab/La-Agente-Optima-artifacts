@@ -1,0 +1,160 @@
+{
+  "response": {
+    "progress": {
+      "active_run_ids": [],
+      "blocked_on": "robot",
+      "busy": true,
+      "elapsed_s": 215.1,
+      "expected_s": null,
+      "message": "1 run(s) are queued; the robot has not started the next one yet.",
+      "next_action": "Poll GET /v1/runs until a run reports status running.",
+      "overdue": false,
+      "poll_after_s": 10.0,
+      "queue_depth": 0,
+      "since": "2026-07-25T09:25:13.532318+00:00",
+      "state": "executing"
+    },
+    "queue_position": 0,
+    "run": {
+      "campaign_id": "robochemflex_yield_bo_fresh_20260724T155503Z-20260724-175502",
+      "collection_vial_id": null,
+      "error": null,
+      "finished_at": null,
+      "note": "BO-MCP RoboChemFlex yield optimization bo_9fdbf22f-9",
+      "parameters": [
+        {
+          "name": "light_intensity",
+          "type": "NumericalParameter",
+          "units": "%",
+          "value": 50.0
+        },
+        {
+          "name": "residence_time",
+          "type": "NumericalParameter",
+          "units": "S",
+          "value": 1073.4429181160906
+        },
+        {
+          "name": "slug_volume",
+          "type": "NumericalParameter",
+          "units": "uL",
+          "value": 650.0
+        },
+        {
+          "name": "collect_crude",
+          "type": "ExperimentalParameter",
+          "value": false
+        },
+        {
+          "kind": "chemical",
+          "name": "SM",
+          "role": "Limiting Reagent",
+          "sampling_priority": 1000,
+          "type": "ChemicalParameter",
+          "units": "mM",
+          "value": 100.0
+        },
+        {
+          "kind": "chemical",
+          "name": "Ru-bpy-Cl",
+          "role": "Catalyst",
+          "sampling_priority": 1000,
+          "type": "ChemicalParameter",
+          "units": "eq",
+          "value": 0.001
+        },
+        {
+          "kind": "chemical",
+          "name": "TFAA",
+          "role": "Anhydride",
+          "sampling_priority": 1000,
+          "type": "ChemicalParameter",
+          "units": "eq",
+          "value": 1.57791518151435
+        },
+        {
+          "kind": "chemical",
+          "name": "PyNO",
+          "role": "Oxidant",
+          "sampling_priority": 1000,
+          "type": "ChemicalParameter",
+          "units": "eq",
+          "value": 0.9
+        },
+        {
+          "name": "sample_name",
+          "type": "AnalyticalParameter",
+          "units": "",
+          "value": "bo_9fdbf22f-9"
+        },
+        {
+          "name": "target_peak",
+          "type": "AnalyticalParameter",
+          "units": "ppm",
+          "value": -58.0
+        },
+        {
+          "name": "metric",
+          "type": "AnalyticalParameter",
+          "units": "",
+          "value": "yield"
+        },
+        {
+          "name": "yield_calculation_chemical",
+          "type": "AnalyticalParameter",
+          "units": "",
+          "value": "SM"
+        },
+        {
+          "name": "target_peak_deviation",
+          "type": "AnalyticalParameter",
+          "units": "ppm",
+          "value": 3.0
+        },
+        {
+          "name": "centerFrequency",
+          "type": "AnalyticalParameter",
+          "units": "",
+          "value": -60.0
+        },
+        {
+          "name": "target_peak_calibration_coeff_1",
+          "type": "AnalyticalParameter",
+          "units": "mM/AU",
+          "value": 6973.0
+        },
+        {
+          "name": "target_peak_calibration_coeff_0",
+          "type": "AnalyticalParameter",
+          "units": "mM",
+          "value": -5.4
+        },
+        {
+          "name": "protocol",
+          "type": "AnalyticalParameter",
+          "units": "",
+          "value": "1D FLUORINE HDEC"
+        },
+        {
+          "name": "AcquisitionTime",
+          "type": "AnalyticalParameter",
+          "units": "S",
+          "value": "1.64"
+        },
+        {
+          "name": "Number",
+          "type": "AnalyticalParameter",
+          "units": "",
+          "value": "32"
+        }
+      ],
+      "requested_at": "2026-07-25T09:28:48.616992+00:00",
+      "requested_by": "MatterLabBeta",
+      "run_id": "R0058",
+      "started_at": null,
+      "status": "queued",
+      "success": null
+    }
+  },
+  "submitted_at": "2026-07-25T09:28:49.018387+00:00"
+}

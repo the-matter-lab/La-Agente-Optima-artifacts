@@ -1,0 +1,93 @@
+exit_code=0
+
+=== stdout (raw) ===
+{'name': 'target_peak', 'value': -58.0, 'units': 'ppm'}
+{'name': 'centerFrequency', 'value': -60.0}
+{'name': 'protocol', 'value': '1D FLUORINE HDEC'}
+{'name': 'AcquisitionTime', 'value': '1.64', 'units': 'S'}
+{'name': 'Number', 'value': '32'}
+
+--- args ---
+usage: run_robochemflex_yield_bo.py [-h] [--campaign-id CAMPAIGN_ID]
+                                    [--campaign-name CAMPAIGN_NAME]
+                                    [--run-nonce RUN_NONCE]
+                                    [--mode {local-simulation,robridge-real}]
+                                    [--allow-real-roboflex]
+                                    [--allow-hardware-retry]
+                                    [--retry-suffix RETRY_SUFFIX]
+                                    [--max-successes MAX_SUCCESSES]
+                                    [--skip-informed-seeds] [--validate-only]
+                                    [--terminate-bo-on-exit]
+                                    [--pause-bo-on-exit | --no-pause-bo-on-exit]
+                                    [--artifact-dir ARTIFACT_DIR]
+                                    [--bo-timeout-s BO_TIMEOUT_S]
+                                    [--run-timeout-s RUN_TIMEOUT_S]
+                                    [--experiment-type EXPERIMENT_TYPE]
+                                    [--analytical-method ANALYTICAL_METHOD]
+                                    [--robridge-campaign-name ROBRIDGE_CAMPAIGN_NAME]
+
+Run/resume the RoboChemFlex BO-MCP campaign.
+
+options:
+  -h, --help            show this help message and exit
+  --campaign-id CAMPAIGN_ID
+                        Existing BO-MCP campaign id to resume.
+  --campaign-name CAMPAIGN_NAME
+  --run-nonce RUN_NONCE
+                        Unique nonce for fresh BO campaign creation
+                        idempotency.
+  --mode {local-simulation,robridge-real}
+  --allow-real-roboflex
+                        Required with --mode robridge-real.
+  --allow-hardware-retry
+                        Permit an intentional repeat after a failed RoboFlex
+                        run.
+  --retry-suffix RETRY_SUFFIX
+                        Suffix added to sample names for intentional repeats,
+                        e.g. r2.
+  --max-successes MAX_SUCCESSES
+                        Per-invocation successful evaluations budget.
+  --skip-informed-seeds
+                        For smoke tests only: go directly to BO suggestions.
+  --validate-only
+  --terminate-bo-on-exit
+                        Use for smoke campaigns only.
+  --pause-bo-on-exit, --no-pause-bo-on-exit
+  --artifact-dir ARTIFACT_DIR
+  --bo-timeout-s BO_TIMEOUT_S
+  --run-timeout-s RUN_TIMEOUT_S
+  --experiment-type EXPERIMENT_TYPE
+  --analytical-method ANALYTICAL_METHOD
+  --robridge-campaign-name ROBRIDGE_CAMPAIGN_NAME
+
+--- grep quiet/fail args ---
+run_robochemflex_yield_bo.py:21:    parser.add_argument("--allow-hardware-retry", action="store_true", help="Permit an intentional repeat after a failed RoboFlex run.")
+robochemflex_yield_bo/campaign.py:24:        raise SystemExit("Use --retry-suffix (for example r2) with --allow-hardware-retry so sample names remain unique")
+robochemflex_yield_bo/campaign.py:103:        raise RuntimeError(f"RoboFlex has unfinished run(s) visible ({ids}); refusing to start/submit duplicates.")
+robochemflex_yield_bo/evaluation.py:58:    duplicate = _duplicate_run(client, label)
+robochemflex_yield_bo/evaluation.py:59:    if duplicate and duplicate.get("status") in {"queued", "running"}:
+robochemflex_yield_bo/evaluation.py:60:        return EvalOutcome(False, run_id=duplicate.get("run_id"), error=f"Existing RoboFlex run {duplicate.get('run_id')} is {duplicate.get('status')} for {label}; refusing duplicate submission.", platform_failure=True)
+robochemflex_yield_bo/evaluation.py:61:    if duplicate and not allow_hardware_retry:
+robochemflex_yield_bo/evaluation.py:62:        return EvalOutcome(False, run_id=duplicate.get("run_id"), error=f"Existing RoboFlex run {duplicate.get('run_id')} already used sample {label}; pass --allow-hardware-retry with a new --retry-suffix only if a repeat is intentional.", platform_failure=True)
+robochemflex_yield_bo/evaluation.py:75:            _write_json(artifact_dir / "failed_evaluations.jsonl", {"label": label, "run_id": run_id, "candidate": candidate, "record": record, "result": result, "failure": failure})
+robochemflex_yield_bo/evaluation.py:82:        _write_json(artifact_dir / "failed_evaluations.jsonl", {"label": label, "run_id": run_id, "candidate": candidate, "failure": str(exc)})
+robochemflex_yield_bo/evaluation.py:108:def _duplicate_run(client: RobridgeClient, label: str) -> dict | None:
+robochemflex_yield_bo/robridge_client.py:63:def wait_for_run(client: RobridgeClient, run_id: str, timeout_s: float, poll_s: float = 30.0, heartbeat_s: float = 900.0) -> dict:
+robochemflex_yield_bo/robridge_client.py:68:    last_heartbeat = 0.0
+robochemflex_yield_bo/robridge_client.py:79:            if now - last_heartbeat >= heartbeat_s:
+robochemflex_yield_bo/robridge_client.py:80:                print(f"RoboFlex run {run_id}: still {state}; polling quietly")
+robochemflex_yield_bo/robridge_client.py:81:                last_heartbeat = now
+
+
+=== stderr (raw) ===
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+grep: robochemflex_yield_bo/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/robridge_client.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/campaign.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+grep: robochemflex_yield_bo/__pycache__/evaluation.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/robridge_client.cpython-312.pyc: binary file matches
+grep: robochemflex_yield_bo/__pycache__/campaign.cpython-312.pyc: binary file matches

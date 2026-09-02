@@ -1,0 +1,20 @@
+{
+  "bo_campaign_id": "ccbfc92e-c646-4943-a44d-9277f2f2d8d4",
+  "expected_initial_results": 9,
+  "max_new_experiments": 11,
+  "mode": "hardware",
+  "monitoring": {
+    "heartbeat_s": 1800.0,
+    "poll_s": 180.0,
+    "quiet_stdout": true,
+    "zero_no_peak_streak_limit": 5
+  },
+  "starts_with_measurement10_preview": {
+    "preview_dir": "artifacts/recreated_robochemflex_yield_bo_20260725/measurement10_preview",
+    "request_file_is_source_of_truth": true,
+    "sample_name": "bo_98f9b554-6",
+    "suggestion_id": "98f9b554-6ff2-4a08-8e32-2fdecd211e10"
+  },
+  "target_total_results": 20,
+  "then": "after #10 result submission, query/reuse exactly one pending suggestion or generate one BO suggestion at a time until 20 total BO results or 11 new completions"
+}

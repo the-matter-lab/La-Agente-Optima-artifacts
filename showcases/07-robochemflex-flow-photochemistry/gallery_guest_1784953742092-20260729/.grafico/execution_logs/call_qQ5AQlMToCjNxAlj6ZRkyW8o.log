@@ -1,0 +1,66 @@
+exit_code=0
+
+=== stdout (raw) ===
+usage: continue_robochemflex_yield_only_bo.py [-h] [--campaign-id CAMPAIGN_ID]
+                                              [--source-campaign-id SOURCE_CAMPAIGN_ID]
+                                              [--history-path HISTORY_PATH]
+                                              [--artifact-dir ARTIFACT_DIR]
+                                              [--expected-seed-count EXPECTED_SEED_COUNT]
+                                              [--expected-roboflex-campaign-id EXPECTED_ROBOFLEX_CAMPAIGN_ID]
+                                              [--max-new-measurements MAX_NEW_MEASUREMENTS]
+                                              [--max-nmr-retries MAX_NMR_RETRIES]
+                                              [--retry-pause-s RETRY_PAUSE_S]
+                                              [--bo-timeout-s BO_TIMEOUT_S]
+                                              [--bo-generate-timeout-s BO_GENERATE_TIMEOUT_S]
+                                              [--run-timeout-s RUN_TIMEOUT_S]
+                                              [--poll-s POLL_S]
+                                              [--heartbeat-s HEARTBEAT_S]
+                                              [--quiet-stdout | --no-quiet-stdout]
+                                              [--resume-bo-if-paused | --no-resume-bo-if-paused]
+                                              [--pause-bo-on-exit | --no-pause-bo-on-exit]
+                                              [--dry-run] [--execute]
+                                              [--live-read-checks]
+                                              [--confirm-autonomous-hardware]
+
+Continue the new yield-only BO-MCP campaign on the active RoboFlex hardware
+campaign.
+
+options:
+  -h, --help            show this help message and exit
+  --campaign-id CAMPAIGN_ID
+                        New yield-only BO-MCP campaign id from
+                        recreation/seeding.
+  --source-campaign-id SOURCE_CAMPAIGN_ID
+  --history-path HISTORY_PATH
+  --artifact-dir ARTIFACT_DIR
+  --expected-seed-count EXPECTED_SEED_COUNT
+  --expected-roboflex-campaign-id EXPECTED_ROBOFLEX_CAMPAIGN_ID
+  --max-new-measurements MAX_NEW_MEASUREMENTS
+  --max-nmr-retries MAX_NMR_RETRIES
+                        Retry NMR/QC failures up to this many times per BO
+                        suggestion when finite evidence exists.
+  --retry-pause-s RETRY_PAUSE_S
+  --bo-timeout-s BO_TIMEOUT_S
+  --bo-generate-timeout-s BO_GENERATE_TIMEOUT_S
+  --run-timeout-s RUN_TIMEOUT_S
+  --poll-s POLL_S
+  --heartbeat-s HEARTBEAT_S
+  --quiet-stdout, --no-quiet-stdout
+  --resume-bo-if-paused, --no-resume-bo-if-paused
+  --pause-bo-on-exit, --no-pause-bo-on-exit
+  --dry-run             Print plan only. Default.
+  --execute             Allow BO suggestion generation and RoboFlex run
+                        submission; still requires confirmation.
+  --live-read-checks    In dry-run mode, perform read-only BO/RoboFlex
+                        preflight checks.
+  --confirm-autonomous-hardware
+                        Required with --execute before any RoboFlex POST
+                        /v1/runs.
+
+
+=== stderr (raw) ===
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+
+
+=== stderr (model-visible) ===
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico

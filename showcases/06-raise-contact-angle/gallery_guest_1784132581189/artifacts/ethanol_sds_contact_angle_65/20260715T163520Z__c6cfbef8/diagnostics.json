@@ -1,0 +1,64 @@
+{
+  "_metadata": {
+    "backend": "baybe",
+    "protocol": "mcp",
+    "server_version": "0.1.0"
+  },
+  "best_parameters": {
+    "Ethanol": 15.0,
+    "SDS": 0.35
+  },
+  "best_value": 70.4,
+  "campaign_status": "running",
+  "constraint_satisfaction": null,
+  "convergence": {
+    "converged": false,
+    "convergence_score": 0.0,
+    "reason": "Insufficient data for convergence detection",
+    "recommendation": "Continue optimization to gather more data."
+  },
+  "errors": [],
+  "exploration_exploitation": null,
+  "feature_importance": null,
+  "health_status": "healthy",
+  "hypervolume": null,
+  "improvement_history": [
+    8.406000000000006,
+    5.400000000000006,
+    5.400000000000006
+  ],
+  "improvement_rate": 0.35760171306209826,
+  "iteration": 1,
+  "model_correlation": null,
+  "model_info": {
+    "acquisition_function": "qLogNoisyExpectedImprovement",
+    "backend": "baybe",
+    "batch_strategy": "BotorchRecommender (GP-based)",
+    "input_warping": false,
+    "kernel": "Matern 5/2 (BayBE default GP surrogate)",
+    "type": "BayBE GP"
+  },
+  "n_pareto_points": null,
+  "n_pending_suggestions": 0,
+  "n_results": 3,
+  "next_action_recommendation": {
+    "action": "bo_generate_suggestions",
+    "reason": "Campaign healthy with 3 results. Ready for next batch of suggestions.",
+    "urgency": "normal"
+  },
+  "objective_ranges": {
+    "static_contact_angle": {
+      "direction": "match",
+      "max": 73.406,
+      "min": 70.4
+    }
+  },
+  "outcome_constraint_calibration": null,
+  "pareto_front": null,
+  "progress_status": "improving",
+  "schema_version": 1,
+  "success": true,
+  "suggestion_diversity": null,
+  "uncertainty_trend": null,
+  "warnings": []
+}

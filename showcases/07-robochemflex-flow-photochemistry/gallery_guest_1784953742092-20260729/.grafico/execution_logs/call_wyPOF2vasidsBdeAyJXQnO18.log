@@ -1,0 +1,17 @@
+exit_code=0
+
+=== stdout (raw) ===
+robochemflex_yield_bo/space.py:27:# Live NMR hardware rejects constants.csv AcquisitionTime=1.64 even though one
+robochemflex_yield_bo/space.py:29:NMR_PARAMETER_OVERRIDES = {"AcquisitionTime": "1.6"}
+robochemflex_yield_bo/space.py:98:        {"name": "AcquisitionTime", "value": nmr_value("AcquisitionTime"), "units": "S"},
+HOW_TO_EXECUTE_CAMPAIGN.md:27:- `AcquisitionTime = 1.6` is sent to RoboFlex NMR. `constants.csv` says `1.64`, but the live NMR parser rejected `1.64` during run `R0042` and reported the actual accepted enum set as `0.4,0.8,1.6,3.2,6.4`; the script therefore rounds/deviates to the nearest valid value, `1.6`, for hardware safety.
+HOW_TO_EXECUTE_CAMPAIGN.md:116:The first real attempt failed during NMR analysis, not during BO result submission. RoboFlex returned `pass=false` with an NMR parser error for `AcquisitionTime='1.64'`. The package now sends `AcquisitionTime='1.6'`, preserving the intent of the CSV constant while matching the actual live instrument enum. Run `R0042` and the stopped queued duplicate `R0043` must not be submitted to BO-MCP as measurements because neither produced a valid yield.
+430 bash -lc grep -R "AcquisitionTime" -n robochemflex_yield_bo HOW_TO_EXECUTE_CAMPAIGN.md | head -40 && pgrep -af 'scripts/run_real_campaign_supervised.py|run_robochemflex_yield_bo.py' || true
+
+
+=== stderr (raw) ===
+grep: robochemflex_yield_bo/__pycache__/space.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+grep: robochemflex_yield_bo/__pycache__/space.cpython-312.pyc: binary file matches

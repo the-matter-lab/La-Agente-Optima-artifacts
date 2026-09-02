@@ -1,0 +1,61 @@
+exit_code=0
+
+=== stdout (raw) ===
+chemical_identities.csv: 9 data rows; columns=dict_keys(['role', 'short_name', 'full_name', 'CAS', 'MW_g_per_mol', 'availability'])
+  1: {'role': 'starting_material', 'short_name': 'SM', 'full_name': 'Starting material / substrate (see CAS)', 'CAS': '75400-61-2', 'MW_g_per_mol': '209.25', 'availability': 'ordered'}
+  2: {'role': 'catalyst', 'short_name': 'Ru bpy Cl', 'full_name': "Tris(2,2'-bipyridine)ruthenium(II) chloride, [Ru(bpy)3]Cl2", 'CAS': '50525-27-4', 'MW_g_per_mol': '748.62', 'availability': 'Available'}
+  3: {'role': 'catalyst', 'short_name': 'Ru bpy PF6', 'full_name': "Tris(2,2'-bipyridine)ruthenium(II) hexafluorophosphate, [Ru(bpy)3](PF6)2", 'CAS': '60804-74-2', 'MW_g_per_mol': '859.55', 'availability': 'Available'}
+  4: {'role': 'catalyst', 'short_name': 'Ir ppy', 'full_name': 'Tris(2-phenylpyridine)iridium(III), Ir(ppy)3', 'CAS': '94928-86-6', 'MW_g_per_mol': '654.78', 'availability': 'Available'}
+  5: {'role': 'catalyst', 'short_name': 'Ir CF3 ppy', 'full_name': 'Ir[dF(CF3)ppy]2(dtbbpy)PF6', 'CAS': '870987-63-6', 'MW_g_per_mol': '1121.91', 'availability': 'Available'}
+  6: {'role': 'catalyst', 'short_name': '4CzIPN', 'full_name': '2,4,5,6-Tetrakis(9H-carbazol-9-yl)isophthalonitrile', 'CAS': '1416881-52-1', 'MW_g_per_mol': '763.9', 'availability': 'Available'}
+  7: {'role': 'activator', 'short_name': 'TFAA', 'full_name': 'Trifluoroacetic anhydride', 'CAS': '407-25-0', 'MW_g_per_mol': '210.03', 'availability': 'Available'}
+  8: {'role': 'oxydant', 'short_name': 'py NO', 'full_name': 'Pyridine N-oxide', 'CAS': '694-59-7', 'MW_g_per_mol': '95.1', 'availability': 'Available'}
+  9: {'role': 'oxydant', 'short_name': '4-Ph py NO', 'full_name': '4-Phenylpyridine N-oxide', 'CAS': '1131-61-9', 'MW_g_per_mol': '171.2', 'availability': 'Available'}
+
+chemical_space_process_variables.csv: 10 data rows; columns=dict_keys(['variable', 'min', 'max', 'steps', 'scope', 'notes'])
+  1: {'variable': 'light intensity', 'min': '0', 'max': '100', 'steps': '5', 'scope': 'within_campaign', 'notes': 'for Eagle reactor is continuous'}
+  2: {'variable': 'catalyst loading', 'min': '0.001 equiv', 'max': '0.004 equiv', 'steps': '', 'scope': 'within_campaign', 'notes': ''}
+  3: {'variable': 'catalyst type', 'min': 'see below', 'max': '', 'steps': '', 'scope': 'within_campaign', 'notes': 'see stock_solutions concentrations file'}
+  4: {'variable': 'TFAA', 'min': '0.9 equiv', 'max': '3.5 equiv', 'steps': '', 'scope': 'within_campaign', 'notes': ''}
+  5: {'variable': 'oxydant loading', 'min': '0.9 equiv', 'max': '3.0 equiv', 'steps': '', 'scope': 'within_campaign', 'notes': ''}
+  6: {'variable': 'oxydant type', 'min': 'see below', 'max': '', 'steps': '', 'scope': 'within_campaign', 'notes': ''}
+  7: {'variable': 'reaction time', 'min': '2 min', 'max': '2 h', 'steps': '', 'scope': 'within_campaign', 'notes': 'depends on reactor length; pump flowrate 10 uL/min to 2 mL/min'}
+  8: {'variable': 'wavelength', 'min': '', 'max': '', 'steps': '', 'scope': 'between_campaign', 'notes': '370nm,390nm,456nm,525nm in Uflow (7W) or 365nm,456nm in Eagle (144W)'}
+  9: {'variable': 'reactor type', 'min': '', 'max': '', 'steps': '', 'scope': 'between_campaign', 'notes': 'Eagle reactor, Uflow reactor'}
+  10: {'variable': 'reactor volume', 'min': '1 mL', 'max': '10 mL', 'steps': '', 'scope': 'between_campaign', 'notes': ''}
+
+chemical_space_reagent_bounds.csv: 4 data rows; columns=dict_keys(['role', 'MW_g_per_mol', 'equiv_min', 'equiv_max', 'conc_min_mM', 'conc_max_mM', 'vol_fraction_min', 'vol_fraction_max', 'vol_min_uL', 'vol_max_uL', 'slug_vol_uL'])
+  1: {'role': 'SM', 'MW_g_per_mol': '209.25', 'equiv_min': '', 'equiv_max': '', 'conc_min_mM': '100', 'conc_max_mM': '100', 'vol_fraction_min': '0.1', 'vol_fraction_max': '0.1', 'vol_min_uL': '65', 'vol_max_uL': '65', 'slug_vol_uL': '650'}
+  2: {'role': 'Catalyst', 'MW_g_per_mol': '748.62', 'equiv_min': '0.001', 'equiv_max': '0.004', 'conc_min_mM': '0.1', 'conc_max_mM': '0.4', 'vol_fraction_min': '0.033333', 'vol_fraction_max': '0.133333', 'vol_min_uL': '21.666667', 'vol_max_uL': '86.666667', 'slug_vol_uL': '314.166667'}
+  3: {'role': 'TFAA', 'MW_g_per_mol': '210.03', 'equiv_min': '0.9', 'equiv_max': '3.5', 'conc_min_mM': '90', 'conc_max_mM': '350', 'vol_fraction_min': '0.025714', 'vol_fraction_max': '0.1', 'vol_min_uL': '16.714286', 'vol_max_uL': '65', 'slug_vol_uL': ''}
+  4: {'role': 'oxydant', 'MW_g_per_mol': '171.2', 'equiv_min': '0.9', 'equiv_max': '3.0', 'conc_min_mM': '90', 'conc_max_mM': '300', 'vol_fraction_min': '0.045', 'vol_fraction_max': '0.15', 'vol_min_uL': '29.25', 'vol_max_uL': '97.5', 'slug_vol_uL': ''}
+
+constants.csv: 10 data rows; columns=dict_keys(['constant', 'value', 'unit'])
+  1: {'constant': 'slug_size', 'value': '650', 'unit': 'uL'}
+  2: {'constant': 'AcquisitionTime', 'value': '1.64', 'unit': ''}
+  3: {'constant': 'Number', 'value': '32', 'unit': ''}
+  4: {'constant': 'yield_calculation_chemical', 'value': 'SM', 'unit': ''}
+  5: {'constant': 'target_peak', 'value': '-58', 'unit': 'ppm'}
+  6: {'constant': 'target_peak_deviation', 'value': '3', 'unit': 'ppm'}
+  7: {'constant': 'collect_crude', 'value': 'FALSE', 'unit': ''}
+  8: {'constant': 'centerFrequency', 'value': '-60', 'unit': ''}
+  9: {'constant': 'target_peak_calibration_coeff_1', 'value': '6973', 'unit': ''}
+  10: {'constant': 'target_peak_calibration_coeff_0', 'value': '-5.4', 'unit': ''}
+
+stock_solutions_concentrations.csv: 9 data rows; columns=dict_keys(['reagent', 'MW_g_per_mol', 'stock_mass_target_g', 'stock_vol_mL', 'stock_conc_target_mM', 'vol_at_25C_mL', 'CAS', 'real_mass_g', 'real_conc_mM', 'catalyst_type', 'availability'])
+  1: {'reagent': 'SM', 'MW_g_per_mol': '209.25', 'stock_mass_target_g': '1.04625', 'stock_vol_mL': '5', 'stock_conc_target_mM': '1000', 'vol_at_25C_mL': '', 'CAS': '75400-61-2', 'real_mass_g': '1.0417', 'real_conc_mM': '995.6511350059739', 'catalyst_type': '', 'availability': 'ordered'}
+  2: {'reagent': 'Ru bpy Cl', 'MW_g_per_mol': '748.62', 'stock_mass_target_g': '0.0112293', 'stock_vol_mL': '5', 'stock_conc_target_mM': '3', 'vol_at_25C_mL': '', 'CAS': '50525-27-4', 'real_mass_g': '0.0106', 'real_conc_mM': '2.831877320937191', 'catalyst_type': 'Catalyst Type', 'availability': 'Available'}
+  3: {'reagent': 'Ru bpy PF6', 'MW_g_per_mol': '859.55', 'stock_mass_target_g': '0.01289325', 'stock_vol_mL': '5', 'stock_conc_target_mM': '3', 'vol_at_25C_mL': '', 'CAS': '60804-74-2', 'real_mass_g': '0.015', 'real_conc_mM': '3.490198359606771', 'catalyst_type': 'Catalyst Type', 'availability': 'Available'}
+  4: {'reagent': 'Ir ppy', 'MW_g_per_mol': '654.78', 'stock_mass_target_g': '0.0098217', 'stock_vol_mL': '5', 'stock_conc_target_mM': '3', 'vol_at_25C_mL': '', 'CAS': '94928-86-6', 'real_mass_g': '0.0094', 'real_conc_mM': '2.871193377928465', 'catalyst_type': 'Catalyst Type', 'availability': 'Available'}
+  5: {'reagent': 'Ir CF3 ppy', 'MW_g_per_mol': '1121.91', 'stock_mass_target_g': '0.01682865', 'stock_vol_mL': '5', 'stock_conc_target_mM': '3', 'vol_at_25C_mL': '', 'CAS': '870987-63-6', 'real_mass_g': '0.0139', 'real_conc_mM': '2.4779171234769275', 'catalyst_type': 'Catalyst Type', 'availability': 'Available'}
+  6: {'reagent': '4CzIPN', 'MW_g_per_mol': '763.9', 'stock_mass_target_g': '0.022917', 'stock_vol_mL': '5', 'stock_conc_target_mM': '6', 'vol_at_25C_mL': '', 'CAS': '1416881-52-1', 'real_mass_g': '0.0235', 'real_conc_mM': '6.152637779814111', 'catalyst_type': 'Catalyst Type', 'availability': 'Available'}
+  7: {'reagent': 'TFAA', 'MW_g_per_mol': '210.03', 'stock_mass_target_g': '3.675525', 'stock_vol_mL': '5', 'stock_conc_target_mM': '3500', 'vol_at_25C_mL': '2.466795302013423', 'CAS': '407-25-0', 'real_mass_g': '3.7129', 'real_conc_mM': '3535.590153787554', 'catalyst_type': '', 'availability': 'Available'}
+  8: {'reagent': 'py NO', 'MW_g_per_mol': '95.1', 'stock_mass_target_g': '0.951', 'stock_vol_mL': '5', 'stock_conc_target_mM': '2000', 'vol_at_25C_mL': '', 'CAS': '694-59-7', 'real_mass_g': '0.938', 'real_conc_mM': '1972.6603575184017', 'catalyst_type': '', 'availability': 'Available'}
+  9: {'reagent': '4-Ph py NO', 'MW_g_per_mol': '171.2', 'stock_mass_target_g': '1.712', 'stock_vol_mL': '5', 'stock_conc_target_mM': '2000', 'vol_at_25C_mL': '', 'CAS': '1131-61-9', 'real_mass_g': '1.35', 'real_conc_mM': '1577.1028037383178', 'catalyst_type': '', 'availability': 'Available'}
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,0 +1,84 @@
+exit_code=0
+
+=== stdout (raw) ===
+--- export head ---
+True 2556
+"param_candidate_id","obj_electronic_activation","obj_coordination_stability","obj_chelate_geometry","obj_steric_crowding","result_id","suggestion_id","created_at"
+"eth__Me__Me","0.0","9.750000238418579","9.441886349167765","7.0","9980be27-938b-4bb8-bb88-e3438331cae5","","2026-08-06T19:11:26.057160+00:00"
+"prop__iPr__Ph","0.0","9.500000476837158","9.454376363968363","8.0","7527b591-ade6-4da3-9271-8a4838ae97b5","","2026-08-06T19:27:40.972556+00:00"
+"ophen__pAnisyl__pCF3Ph","-100.0","-100.0","-100.0","100.0","43854279-46da-4513-9294-96d66f1b4fad","","2026-08-06T19:58:20.689201+00:00"
+"cchex__Cy__pTol","0.0","9.485667423455604","9.399842334587674","9.528711552647698","aaa85c8f-b8be-4c99-b96c-204dc5b614d8","","2026-08-06T20:27:13.791982+00:00"
+"cchex__iPr__Ph","0.0","9.485667423455604","9.399842334587674","8.528711552647698","42b89477-b622-481d-97ac-adba061a46ae","2f7facbf-d91a-4eee-8be2-f88dddfe772b","2026-08-06T20:47:33.396471+00:00"
+"prop__Et__Et","0.0","9.485667423455604","9.399842334587674","7.0","269cb350-98a6-428f-8220-7e06374c6746","812005a3-af51-4835-8828-5fc92a8d4f7a","2026-08-06T20:58:03.152914+00:00"
+"eth__iPr__iPr","0.0","9.485667423455604","9.399842334587674","7.0","099335e9-ad71-4253-8b48-3be3d560b485","c5c8e47e-4a7d-44b1-b12f-16656ff4f8e4","2026-08-06T21:12:02.428772+00:00"
+"prop__iPr__Cy","0.0","9.485667423455604","9.399842334587674","8.0","726a02b3-7c36-4899-bb20-1b2687beff28","2c0726c9-0d3b-4056-a3ad-a10392f3c3ad","2026-08-06T21:36:42.414858+00:00"
+"prop__Me__Et","0.0","9.485667423455604","9.399842334587674","7.0","b60d93f1-92ac-41cf-b849-d4bb3bef10e8","e845226e-d280-4e4c-922e-36a04e325cc5","2026-08-06T21:45:16.253109+00:00"
+--- eval sample ---
+hood_co_bisphosphine_artifacts_restart3/cchex__Cy__pTol/evaluation.json
+{
+  "candidate": {
+    "candidate_id": "cchex__Cy__pTol",
+    "linker": "cis-1,2-cyclohexylene",
+    "r1": "Cy",
+    "r2": "p-Tol",
+    "ligand_label": "Cy2P-cis-1,2-cyclohexylene-Pp-Tol2",
+    "ligand_description": "bidentate bisphosphine Cy2P-cis-1,2-cyclohexylene-Pp-Tol2; linker=cis-1,2-cyclohexylene; one phosphorus bears two cyclohexyl groups and the other phosphorus bears two 4-methylphenyl groups",
+    "symmetric": false
+  },
+  "mode": "pyscf",
+  "assumptions": {
+    "complex_charge": 1,
+    "spin_multiplicity": 2,
+    "basis_set": "def2-svp",
+    "xc_functional": "b3lyp",
+    "geometry_max_steps": 60
+  },
+  "xyz_path": "hood_co_bisphosphine_artifacts_restart3/cchex__Cy__pTol/cchex__Cy__pTol.xyz",
+  "validity": {
+    "scf_converged": true,
+    "optimization_success": true,
+    "total_energy": -3651.380988347899
+  },
+  "geometry_descriptors": {
+    "atom_count": 95,
+    "valid_geometry": true,
+    "co_p_distances": [
+      2.1600000828016563,
+      2.180573385863432
+    ],
+    "co_o_distances": [
+      1.880664771336303,
+      1.880664771336303
+    ],
+    "both_phosphines_coordinated": true,
+    "acac_coordinated": true,
+    "co_p_asymmetry": 0.02057330306177585,
+    "p_co_p_bite_angle": 90.03012460006248,
+    "square_planar_distortion": 0.02153776308558901,
+    "heavy_atoms_near_co_3p5A": 9,
+    "min_heavy_heavy_distance": 1.0942576894704603,
+    "steric_crowding_raw": 9.528711552647698,
+    "ligand_remains_bound": true,
+    "severe_collapse": false
+  },
+  "electronic_descriptors": {
+    "somo_energy": null,
+    "homo_energy": null,
+    "co_charge": null,
+    "co_spin_density": null
+  },
+  "objectives": {
+    "electronic_activation": 0.0,
+    "coordination_stability": 9.485667423455604,
+    "chelate_geometry": 9.399842334587674,
+    "steric_crowding": 9.528711552647698
+  },
+  "feasible": true,
+  "pyscf_result": {
+    "identifier": "95\nProperties=species:S:1:pos:R:3 Co(acac)(Cy2P-cis-1,2-cyclohexylene-P(p-Tol)2)+;=T plausible=T initial=T 3D=T XYZ=T geometry=T 
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

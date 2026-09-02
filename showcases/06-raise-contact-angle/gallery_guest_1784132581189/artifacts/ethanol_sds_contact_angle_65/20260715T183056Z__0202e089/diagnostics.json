@@ -1,0 +1,92 @@
+{
+  "_metadata": {
+    "backend": "baybe",
+    "protocol": "mcp",
+    "server_version": "0.1.0"
+  },
+  "best_parameters": {
+    "Ethanol": 34.555351,
+    "SDS": 0.752157
+  },
+  "best_value": 68.108,
+  "campaign_status": "running",
+  "constraint_satisfaction": null,
+  "convergence": {
+    "avg_improvement": 0.034765,
+    "converged": false,
+    "convergence_score": 0.1,
+    "iterations_without_improvement": 1,
+    "reason": "Still improving",
+    "recommendation": "Continue optimization to find better solutions."
+  },
+  "errors": [],
+  "exploration_exploitation": {
+    "average_distance_to_best": 0.1045,
+    "balance_assessment": "balanced",
+    "diversity_score": 0.2072,
+    "exploration_ratio": 0.5,
+    "recommendation": "Good balance between exploration and exploitation."
+  },
+  "feature_importance": null,
+  "health_status": "healthy",
+  "hypervolume": null,
+  "improvement_history": [
+    6.403000000000006,
+    6.403000000000006,
+    5.591999999999999,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    5.268000000000001,
+    3.6099999999999994,
+    3.6099999999999994,
+    3.6099999999999994,
+    3.6099999999999994,
+    3.6099999999999994,
+    3.6099999999999994,
+    3.6099999999999994,
+    3.108000000000004,
+    3.108000000000004
+  ],
+  "improvement_rate": 0.1390581717451511,
+  "iteration": 5,
+  "model_correlation": 0.9977761609274916,
+  "model_info": {
+    "acquisition_function": "qLogNoisyExpectedImprovement",
+    "backend": "baybe",
+    "batch_strategy": "BotorchRecommender (GP-based)",
+    "input_warping": false,
+    "kernel": "MaternKernel",
+    "type": "BayBE GP"
+  },
+  "n_pareto_points": null,
+  "n_pending_suggestions": 0,
+  "n_results": 23,
+  "next_action_recommendation": {
+    "action": "review_outliers",
+    "reason": "Detected 1 potential outlier(s). Verify measurements for errors.",
+    "urgency": "normal"
+  },
+  "objective_ranges": {
+    "static_contact_angle": {
+      "direction": "match",
+      "max": 75.0,
+      "min": 68.108
+    }
+  },
+  "outcome_constraint_calibration": null,
+  "pareto_front": null,
+  "progress_status": "improving",
+  "schema_version": 1,
+  "success": true,
+  "suggestion_diversity": null,
+  "uncertainty_trend": null,
+  "warnings": []
+}

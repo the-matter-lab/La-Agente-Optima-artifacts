@@ -1,0 +1,37 @@
+{
+  "blocked_suggestion_ids": [
+    "a9f8598d-edd7-48fa-bbf6-b94ca3618912"
+  ],
+  "bo_campaign_id": "ccbfc92e-c646-4943-a44d-9277f2f2d8d4",
+  "bo_generation": {
+    "general_timeout_s": 300.0,
+    "idempotency_key_reused_across_retries": true,
+    "post_timeout_polls": 3,
+    "post_timeout_wait_s": 120.0,
+    "retries_after_first_attempt": 2,
+    "suggestion_timeout_s": 1200.0
+  },
+  "expected_current_results": 18,
+  "expected_roboflex_campaign_id": "robochemflex_yield_bo_fresh_20260724T155503Z-20260724-175502",
+  "max_new_measurements": 2,
+  "mode": "hardware",
+  "monitoring": {
+    "heartbeat_s": 1800.0,
+    "initial_zero_no_peak_streak": 0,
+    "poll_s": 180.0,
+    "quiet_stdout": true,
+    "zero_no_peak_streak_limit": 5
+  },
+  "resume_bo_if_paused": true,
+  "safety": [
+    "start only from exactly expected_current_results and zero pending suggestions",
+    "generate one BO suggestion at a time",
+    "generate_suggestions uses a longer timeout and one idempotency key reused across retries",
+    "after generate_suggestions timeout/409, wait and poll BO results, next_action progress, and pending suggestions before retry or hardware",
+    "continue to hardware only with exactly one pending/generated suggestion; otherwise pause/stop safely",
+    "verify RoboFlex idle/awaiting_run and expected campaign before every hardware submission",
+    "write request/history equivalence report before every hardware submission",
+    "never submit blocked failed17 suggestion id"
+  ],
+  "target_total_results": 20
+}

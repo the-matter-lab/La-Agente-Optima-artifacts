@@ -1,0 +1,33 @@
+19:14:36.869 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+19:14:36.895 POST api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/lifecycle
+BO campaign resumed from paused state.
+19:14:36.914 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+19:14:36.920 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+19:14:36.933 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/query
+19:14:36.947 GET api/api/v1/results/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+19:14:36.957 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/query
+19:14:36.966 POST api/api/v1/campaigns/status/batch
+19:14:36.982 POST api/api/v1/suggestions/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+Submitting measurement #19: bo_5c5570bd-d (5c5570bd-dd17-4366-8685-0863402167f6)
+19:20:35.280 Submitting RoboFlex measurement
+RoboFlex run R0063: state changed to queued
+19:20:35.870 RoboFlex run state changed
+RoboFlex platform: phase=running state=executing blocked_on=robot overdue=False
+19:20:36.033 RoboFlex platform state changed
+RoboFlex run R0063: state changed to running
+19:23:36.367 RoboFlex run state changed
+Heartbeat: RoboFlex run R0063 still running; polling every 180s; detailed trail on disk.
+RoboFlex run R0063: state changed to failed
+20:02:44.304 RoboFlex run state changed
+RoboFlex platform: phase=running state=awaiting_run blocked_on=agent overdue=False
+20:02:44.438 RoboFlex platform state changed
+Stopped safely: RoboFlex run R0063 failed; no BO result submitted. Failure: analysis result reported pass=false
+20:02:44.581 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/export ? format='csv'
+20:02:44.625 GET api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4
+20:02:44.631 POST api/api/v1/campaigns/ccbfc92e-c646-4943-a44d-9277f2f2d8d4/lifecycle
+BO campaign paused.
+New completed experiments this invocation: 0
+Artifacts: artifacts/recreated_robochemflex_yield_bo_20260725/resume_from18_to20_20260725T191436Z
+RoboFlex run R0063 failed; no BO result submitted. Failure: analysis result reported pass=false
+[orchestrator] EXIT_STATUS=1

@@ -1,0 +1,37 @@
+exit_code=0
+
+=== stdout (raw) ===
+bo_campaign_export.content_type.txt
+bo_campaign_export.csv
+bo_campaign_id.txt
+intake.json
+quiet_supervision_summary.jsonl
+robridge_results.jsonl
+seed_plan.json
+submitted_results.jsonl
+supervision_summary.jsonl
+--- recreated ---
+bo_campaign_export.content_type.txt
+bo_campaign_export.csv
+bo_campaign_id.txt
+final_bomcp_results.json
+historical_results_to_import.json
+import_audit.jsonl
+intake.json
+preflight_summary.json
+recreation_summary.json
+--- maybe campaign config fields in logs ---
+artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:2:  "acquisition_method": "expected_improvement",
+artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:3:  "backend": "baybe",
+artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:4:  "batch_size": 1,
+artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:93:  "random_seed": 650,
+artifacts/real_robochemflex_yield_bo_fresh_20260724T155503Z/intake.json:94:  "scalarization": "desirability",
+logs/real_robochemflex_yield_bo_fresh_20260724T155503Z/invocation_08.log:7:01:35:49.694 POST api/api/v1/suggestions/b681a41d-90db-4eb9-a9a9-3cc91098f3c0/generate ? batch_size='1'
+logs/real_robochemflex_yield_bo_fresh_20260724T155503Z/invocation_07.log:7:00:57:08.520 POST api/api/v1/suggestions/b681a41d-90db-4eb9-a9a9-3cc91098f3c0/generate ? batch_size='1'
+logs/real_robochemflex_yield_bo_fresh_20260724T155503Z/invocation_09.log:7:02:50:27.895 POST api/api/v1/suggestions/b681a41d-90db-4eb9-a9a9-3cc91098f3c0/generate ? batch_size='1'
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

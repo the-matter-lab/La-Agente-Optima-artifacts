@@ -1,0 +1,123 @@
+17:05:09.633 GET api/api/v1/campaigns/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:05:09.681 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+Starting state: warm starts=2, bo results=2, total=4; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:05:09.705 POST api/api/v1/campaigns/5be855ea-96e2-4a4b-b564-d06bf18de9a5/lifecycle
+Resumed paused campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:05:09.721 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:05:09.734 POST api/api/v1/campaigns/status/batch
+17:05:09.761 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:05:09.775 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+Logfire project URL: https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico
+BO iteration 3/12: suggestion 70fd3fd8-29f5-46ce-bc40-05485bcbdb7b -> Ethanol=10.370321, SDS=1.000000
+Submitting RAISE experiment: {'Ethanol': 10.370321, 'SDS': 1.0}
+  Measured static contact angle = 70.836°
+17:09:17.609 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:09:17.756 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:09:17.758 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 3705cede-1289-4e08-acaf-c2f6f209f810 | warm starts=2, bo results=3, total=5; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:09:17.773 POST api/api/v1/campaigns/status/batch
+17:09:17.789 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:09:17.800 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 4/12: suggestion 4610455c-6b44-43de-9870-9108edba6cca -> Ethanol=60.000000, SDS=1.000000
+Submitting RAISE experiment: {'Ethanol': 60.0, 'SDS': 1.0}
+  Evaluation fallback -> submitted penalty angle 180.000° (run_raise_experiment failed: 1 validation error for dict[str,list[float]]
+Error.0
+  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='Formulation Generation F... reagent concentrations', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.12/v/float_parsing)
+17:09:18.161 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:09:18.187 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:09:18.188 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 658c8e11-c98f-4ee8-9efe-5ed6c3e93fc4 | warm starts=2, bo results=4, total=6; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:09:18.197 POST api/api/v1/campaigns/status/batch
+17:09:18.209 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:09:18.219 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 5/12: suggestion 23cc1f97-bae8-4b2f-bfcf-392a5232d24f -> Ethanol=2.897363, SDS=0.924759
+Submitting RAISE experiment: {'Ethanol': 2.897363, 'SDS': 0.924759}
+  Measured static contact angle = 72.745°
+17:13:01.552 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:13:01.630 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:13:01.631 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 14fa21ef-79dd-4792-8e11-845e8ec19c82 | warm starts=2, bo results=5, total=7; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:13:01.646 POST api/api/v1/campaigns/status/batch
+17:13:01.661 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:13:01.672 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 6/12: suggestion ac4feee7-7d64-4004-9a11-f56ca3ccb461 -> Ethanol=3.851089, SDS=0.611513
+Submitting RAISE experiment: {'Ethanol': 3.851089, 'SDS': 0.611513}
+  Measured static contact angle = 72.581°
+17:17:01.697 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:17:01.802 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:17:01.803 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 0d9bc8aa-7719-41e4-8a23-2935a9434736 | warm starts=2, bo results=6, total=8; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:17:01.818 POST api/api/v1/campaigns/status/batch
+17:17:01.835 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:17:01.850 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 7/12: suggestion 5d56e2c2-a940-4d54-95bf-b05dd66894bb -> Ethanol=8.938976, SDS=0.375680
+Submitting RAISE experiment: {'Ethanol': 8.938976, 'SDS': 0.37568}
+  Measured static contact angle = 74.380°
+17:21:15.438 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:21:15.555 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:21:15.556 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 69f4351b-fd2d-47a7-aa47-4e1ba088340f | warm starts=2, bo results=7, total=9; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:21:15.571 POST api/api/v1/campaigns/status/batch
+17:21:15.586 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:21:15.598 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 8/12: suggestion 6a70ef89-4994-45b9-8356-26434506a2da -> Ethanol=12.342763, SDS=0.800836
+Submitting RAISE experiment: {'Ethanol': 12.342763, 'SDS': 0.800836}
+  Measured static contact angle = 71.921°
+17:24:50.378 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:24:50.487 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:24:50.488 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result cc7e1797-60c5-4675-9fa1-e1eab8e289e3 | warm starts=2, bo results=8, total=10; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:24:50.501 POST api/api/v1/campaigns/status/batch
+17:24:50.516 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:24:50.528 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 9/12: suggestion dd43b8b6-1c2f-4a28-a672-6a0d512fb65a -> Ethanol=15.452222, SDS=1.000000
+Submitting RAISE experiment: {'Ethanol': 15.452222, 'SDS': 1.0}
+  Measured static contact angle = 71.403°
+17:28:46.823 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:28:46.907 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:28:46.908 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 30333c53-14d7-4ece-9c86-fca00a9970f3 | warm starts=2, bo results=9, total=11; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:28:46.921 POST api/api/v1/campaigns/status/batch
+17:28:46.937 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:28:46.948 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 10/12: suggestion ba4a7be1-9cab-4ee0-8df9-361938b090de -> Ethanol=18.374755, SDS=0.615662
+Submitting RAISE experiment: {'Ethanol': 18.374755, 'SDS': 0.615662}
+  Measured static contact angle = 71.681°
+17:32:25.041 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:32:25.157 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:32:25.159 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 8a5b3977-f138-4f0a-8247-5aee249a09d0 | warm starts=2, bo results=10, total=12; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:32:25.174 POST api/api/v1/campaigns/status/batch
+17:32:25.187 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:32:25.200 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 11/12: suggestion a42ca832-0b37-49f2-bab9-ca95797325f3 -> Ethanol=0.000000, SDS=0.204732
+Submitting RAISE experiment: {'Ethanol': 0.0, 'SDS': 0.204732}
+  Measured static contact angle = 75.000°
+17:36:03.722 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:36:03.819 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:36:03.820 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 4ae713d1-ee76-409e-b163-a381ccf640db | warm starts=2, bo results=11, total=13; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+17:36:03.836 POST api/api/v1/campaigns/status/batch
+17:36:03.851 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+17:36:03.863 POST api/api/v1/suggestions/5be855ea-96e2-4a4b-b564-d06bf18de9a5/generate ? batch_size='1'
+BO iteration 12/12: suggestion cf2696f0-dec5-43cc-9321-9adbbe36e2d1 -> Ethanol=19.941169, SDS=0.057213
+Submitting RAISE experiment: {'Ethanol': 19.941169, 'SDS': 0.057213}
+  Measured static contact angle = 74.790°
+17:39:45.842 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:39:45.978 Submitted bo result for campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:39:45.979 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+  Submitted result 2a54f0d4-b5a1-4e09-8373-bf949005ca9b | warm starts=2, bo results=12, total=14; best angle 70.268° (|error|=5.268° vs target 65.0°); within ±1.0°=False
+Fetching diagnostics...
+17:39:46.004 GET api/api/v1/diagnostics/5be855ea-96e2-4a4b-b564-d06bf18de9a5 ? use_cache='true' & verbosity='standard'
+17:39:48.095 GET api/api/v1/campaigns/5be855ea-96e2-4a4b-b564-d06bf18de9a5/export ? format='csv'
+17:39:48.110 GET api/api/v1/campaigns/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:39:48.117 POST api/api/v1/campaigns/5be855ea-96e2-4a4b-b564-d06bf18de9a5/lifecycle
+Paused campaign 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:39:48.138 GET api/api/v1/campaigns/5be855ea-96e2-4a4b-b564-d06bf18de9a5
+17:39:48.148 POST api/api/v1/results/5be855ea-96e2-4a4b-b564-d06bf18de9a5/query
+Stop reason: Reached the requested BO-iteration budget for this invocation.
+Artifacts: artifacts/ethanol_sds_contact_angle_65/20260715T170509Z__5be855ea
+Campaign complete: 5be855ea-96e2-4a4b-b564-d06bf18de9a5
+Final status: paused
+Process exit status: 0

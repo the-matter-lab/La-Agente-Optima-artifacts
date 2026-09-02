@@ -1,0 +1,42 @@
+exit_code=0
+
+=== stdout (raw) ===
+phosphine_electronics/campaign.py:23:def tag(kind: str, message: str) -> None:
+phosphine_electronics/campaign.py:24:    print(f"[{kind}] {message}", flush=True)
+phosphine_electronics/campaign.py:139:        tag("EVENT", f"Resuming paused campaign {campaign_id}")
+phosphine_electronics/campaign.py:142:        tag("EVENT", f"Reopening completed campaign {campaign_id}")
+phosphine_electronics/campaign.py:145:        tag("EVENT", f"Using campaign {campaign_id} status={status or 'unknown'}")
+phosphine_electronics/campaign.py:156:        tag("ALERT", f"BO-MCP next_action={action}; stopping invocation")
+phosphine_electronics/campaign.py:161:        tag("ALERT", f"Suggestion generation stopped: {str(exc).splitlines()[0]}")
+phosphine_electronics/campaign.py:164:        tag("ALERT", f"Suggestion generation returned no candidates: {resp.get('errors')}")
+phosphine_electronics/campaign.py:178:    tag("EVENT", f"Artifacts: {artifact_dir}")
+phosphine_electronics/campaign.py:179:    tag("EVENT", f"Loaded {len(rows)} pre-enumerated ligand candidates")
+phosphine_electronics/campaign.py:183:        tag("EVENT", f"Running PySCF smoke evaluation for {row['candidate_id']}")
+phosphine_electronics/campaign.py:187:            tag("RESULT", f"PySCF smoke success {row['candidate_id']} HOMO={ev.descriptors['homo_energy_eV']:.3f} gap={ev.descriptors['homo_lumo_gap_eV']:.3f}")
+phosphine_electronics/campaign.py:189:            tag("ALERT", f"PySCF smoke failed {row['candidate_id']}: {ev.error}")
+phosphine_electronics/campaign.py:204:        tag("EVENT", f"Created campaign {campaign_id}")
+phosphine_electronics/campaign.py:212:        tag("EVENT", f"Evaluating {len(warm_rows)} script-selected warm-start ligands")
+phosphine_electronics/campaign.py:219:                tag("RESULT", f"warm_start {row['candidate_id']} HOMOerr={ev.objectives['donor_homo_error']:.3f} gaperr={ev.objectives['gap_error']:.3f} steric={ev.objectives['steric_excess']:.1f} heavy={ev.objectives['heavy_atom_count']:.0f}")
+phosphine_electronics/campaign.py:221:                tag("ALERT", f"warm_start {row['candidate_id']} failed: {ev.error}")
+phosphine_electronics/campaign.py:224:        tag("EVENT", f"Campaign already has {len(completed)} completed candidate ids; skipping warm start")
+phosphine_electronics/campaign.py:230:            tag("EVENT", f"Stop file {args.stop_file} found before suggestion generation; deleting marker and exiting")
+phosphine_electronics/campaign.py:234:            tag("HEARTBEAT", f"campaign_id={campaign_id} artifact_dir={artifact_dir}")
+phosphine_electronics/campaign.py:238:            tag("EVENT", "Configured BO-guided evaluation budget already reached")
+phosphine_electronics/campaign.py:251:                tag("ALERT", f"Rejecting suggestion {sid}: missing/unknown candidate_id={cid}")
+phosphine_electronics/campaign.py:255:                tag("ALERT", f"Rejecting duplicate/non-actionable suggestion {sid} candidate_id={cid}")
+phosphine_electronics/campaign.py:261:        tag("EVENT", f"Evaluating BO batch of {len(eval_rows)} ligand(s)")
+phosphine_electronics/campaign.py:270:                tag("RESULT", f"bo {row['candidate_id']} HOMOerr={ev.objectives['donor_homo_error']:.3f} gaperr={ev.objectives['gap_error']:.3f} steric={ev.objectives['steric_excess']:.1f} heavy={ev.objectives['heavy_atom_count']:.0f}")
+phosphine_electronics/campaign.py:272:                tag("ALERT", f"bo {row['candidate_id']} failed: {ev.error}")
+phosphine_electronics/campaign.py:283:        tag("ALERT", f"Final export skipped: {str(exc).splitlines()[0]}")
+phosphine_electronics/campaign.py:288:        tag("EVENT", f"Terminated campaign {campaign_id}")
+phosphine_electronics/campaign.py:291:        tag("EVENT", f"Paused campaign {campaign_id}; resume with --campaign-id {campaign_id}")
+phosphine_electronics/campaign.py:293:        tag("EVENT", f"Leaving campaign {campaign_id} status={status or 'unknown'}")
+phosphine_electronics/campaign.py:294:    tag("EVENT", f"Report: {artifact_dir / 'report.md'}")
+
+
+=== stderr (raw) ===
+grep: phosphine_electronics/__pycache__/campaign.cpython-312.pyc: binary file matches
+
+
+=== stderr (model-visible) ===
+grep: phosphine_electronics/__pycache__/campaign.cpython-312.pyc: binary file matches
