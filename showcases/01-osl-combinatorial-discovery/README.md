@@ -25,19 +25,11 @@ expansion widened it to 2592 for Stage 1. 38 successful observations in total.
 | `gallery_guest_1783043406297_v2/` | 1783043406297 (2026-07-03) | **Stage 1 / 1b** — later snapshot of the same room, and the one to prefer: it adds `logfire_trace_exports/` (main plus four subagent message histories) and `latex_text.tex`. |
 | `logfire_links.txt` | — | Logfire UI deep links to the four Stage 0 root traces (project `matterlab/bo-mcp-grafico`). |
 
-Both Stage 1 snapshots are kept because neither is a superset of the other: `v1`
-additionally holds three plot outputs (`*_modified.png`, two `.svg`) and three
-plotting scripts (including two `.bu` backups) that `v2` does not.
+Both Stage 1 snapshots are kept because neither is a superset of the other:
+`v2` adds the Logfire trace exports and `latex_text.tex`, while `v1` holds three
+plot outputs and three plotting scripts that `v2` does not.
 
 Reported resource use for the whole showcase: 47 top-level turns over
 3 d 22 h calendar time (16.0 h agent wall-clock), 397 LLM calls (137 main agent,
 240 across four gpt-5.4 subagents, 20 gpt-4.1 one-shots), 35.4 M input /
 229 k output tokens, $24.40.
-
-## Provenance note
-
-`gallery_guest_1782848407339/logfire_trace_exports/` was extracted from
-`osl_small_fragments_chat_traces.zip` in the source archive. Unlike every other
-archive in the OneDrive tree, that zip is **not** a duplicate of its unpacked
-sibling: the unpacked directory lacks these 15 trace-export files. The rest of
-the zip is byte-identical to the unpacked directory and was not copied twice.

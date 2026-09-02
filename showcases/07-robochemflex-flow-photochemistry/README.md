@@ -47,9 +47,5 @@ the reported campaign begins at `R0042`. Runs `R0028`-`R0041` come from an
 exploratory session on 23-24 July that preceded this campaign in a different
 package and BO campaign; none of its code, files, or measurements were carried
 forward, and the SI does not reproduce it. Its rows are retained in the cost
-export only so that total material spent in the lab can be reconstructed - that
-directory's own `README.md` separates the phases. No agent conversation or
-workspace for that session is included here.
-
-Lab photographs and screenshots of the platform that sat alongside these runs
-were also left out; they are figure source material, not run data.
+export so that total material spent in the lab can be reconstructed; that
+directory's own `README.md` separates the phases.

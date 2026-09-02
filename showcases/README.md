@@ -3,6 +3,12 @@
 Raw run evidence for the seven **showcase campaigns** reported in *La Agente
 Óptima: Towards Agentic Self-Driving Laboratories*.
 
+Scope: for each showcase, the exported agent conversation and the agent's
+working directory — the campaign packages it authored, its run logs, BO-MCP
+exports, evaluation records, generated structures, and plots. Session screen
+recordings, tool caches, and figure source material are not part of the run
+record and are not included.
+
 This tree is independent of `snapshots/`, which holds the **framework-comparison
 benchmark** (66 evaluation cells across 11 arms). Nothing here is used by the
 benchmark report, its figures, or `scripts/rebuild_figures.py`, and no file in
@@ -43,25 +49,6 @@ because the manuscript SI cites campaign artifacts by these paths:
 Room identifiers are millisecond epoch timestamps of room creation, so they sort
 chronologically.
 
-## What was excluded
-
-The showcase archive on OneDrive is 33 GB; this copy is ~92 MB. Excluded:
-
-- **Screen recordings and videos** (`*.mov`, `*.mp4`) — 32.6 GB, 18 files. They
-  are session recordings, not run data.
-- **`.tgz` / `.zip` archives** — each was unpacked in place in the source
-  archive, so they duplicate a sibling directory byte-for-byte. The one
-  exception is noted in `01-osl-combinatorial-discovery/README.md`.
-- **Tool caches** — `.mypy_cache/` (307 MB, 10 724 files), `__pycache__/`,
-  `.ruff_cache/`, `.pytest_cache/`, plus `.DS_Store` and `.vscode/`.
-- **Campaigns not reported in the paper or SI** — digital campaigns on
-  butanol dihedrals, dipole moment, and a donor–acceptor gap, plus
-  RoboChem-Flex sessions that preceded the reported campaign and were not
-  carried into it. See `07-robochemflex-flow-photochemistry/README.md` for how
-  the RoboChem-Flex run numbering follows from this.
-- **Lab photographs and screenshots** of the RoboChem-Flex platform — figure
-  source material rather than run data.
-
 ## Sanitization and integrity
 
 The copy was scanned and redacted for credential-shaped values with
@@ -69,18 +56,15 @@ The copy was scanned and redacted for credential-shaped values with
 `SANITIZATION_REPORT.json` in this directory. The agent workspaces read BO-MCP
 and model API keys from the environment, so scripts and runbooks refer to
 variables such as `BO_MCP_API_KEY` by name; any value-shaped match is replaced
-with `[REDACTED]`. The original OneDrive archive was not modified.
+with `[REDACTED]`.
 
 `MANIFEST.sha256` at the repository root covers this tree as well; regenerate it
 with `python scripts/build_manifest.py`.
 
 ## Why no Git LFS here
 
-`snapshots/**` uses LFS because benchmark conversation dumps and PostgreSQL
-dumps run to tens of megabytes each. This tree does not: it is ~92 MB across
-~3000 files, and the largest single file is 4.1 MB
-(`06-raise-contact-angle/gallery_guest_1784132581189/conversation_019f6697_full.json`),
-well below GitHub's 50 MB warning threshold. Plain Git stores it more cheaply
-than LFS would, and most of it (CSV, JSONL, logs, Python) is diffable text that
-packs and delta-compresses well. The LFS filters in `.gitattributes` are scoped
-to `snapshots/**` and therefore do not match anything here.
+`snapshots/**` uses LFS because its conversation and PostgreSQL dumps run to
+tens of megabytes each. This tree does not: no file reaches 5 MB, and most of it
+(CSV, JSONL, logs, Python) is diffable text that packs well in plain Git. The
+LFS filters in `.gitattributes` are scoped to `snapshots/**` and therefore do
+not match anything here.
