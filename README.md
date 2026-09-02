@@ -1,13 +1,28 @@
 # BO-MCP benchmark artifacts
 
-This private repository collects the raw run evidence, audit metadata, plotting
-code, and figures for the BO-MCP framework comparison.
+This private repository collects the raw data underlying *La Agente Óptima:
+Towards Agentic Self-Driving Laboratories* — the run evidence, audit metadata,
+plotting code, and figures for the BO-MCP framework comparison, plus the raw run
+evidence for the showcase campaigns reported in the main text and SI.
+
+## Repository layout
+
+- `snapshots/` — the **framework-comparison benchmark**: raw evaluation cells,
+  controller metadata, and the comparison report. Described below.
+- `showcases/` — the **showcase campaigns** reported in the paper and SI: OSL
+  combinatorial discovery, four finite-space computational campaigns, the RAISE
+  closed loop, and the RoboChem-Flex flow-photochemistry campaign. See
+  `showcases/README.md`.
+
+The two trees are independent: no showcase file feeds the benchmark report or
+its figures, and the LFS filters in `.gitattributes` are scoped to
+`snapshots/**`.
+
+## Benchmark snapshot contents
 
 The current snapshot includes the corrected BayBE duplicate-resuggestion
 replacements and the latest comparison report. Results remain subject to
 manuscript review; prior snapshot states are preserved in Git history.
-
-## Snapshot contents
 
 `snapshots/2026-08-08-current/` contains:
 

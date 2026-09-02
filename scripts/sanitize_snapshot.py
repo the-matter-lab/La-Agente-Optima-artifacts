@@ -5,13 +5,13 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from collections import Counter
 from pathlib import Path
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
-SNAPSHOT = REPOSITORY_ROOT / "snapshots/2026-08-08-current"
-REPORT_PATH = SNAPSHOT / "SANITIZATION_REPORT.json"
+DEFAULT_TARGET = REPOSITORY_ROOT / "snapshots/2026-08-08-current"
 PATTERNS = {
     "openai_or_anthropic_key": re.compile(
         r"(?:sk-ant-|sk-or-v1-|sk-proj-|sk-)[A-Za-z0-9_-]{16,}"
@@ -84,13 +84,16 @@ def repair_structured_text(path: Path, text: str) -> tuple[str, int]:
 
 
 def main() -> None:
+    # Optional argument: directory to sanitize (default: the benchmark snapshot).
+    target = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else DEFAULT_TARGET
+    report_path = target / "SANITIZATION_REPORT.json"
     prior_report = (
-        json.loads(REPORT_PATH.read_text()) if REPORT_PATH.is_file() else {}
+        json.loads(report_path.read_text()) if report_path.is_file() else {}
     )
     totals: Counter[str] = Counter()
     changed_files: dict[str, dict[str, int]] = {}
-    for path in sorted(SNAPSHOT.rglob("*")):
-        if not path.is_file() or path == REPORT_PATH:
+    for path in sorted(target.rglob("*")):
+        if not path.is_file() or path == report_path:
             continue
         try:
             original = path.read_text(encoding="utf-8")
@@ -106,13 +109,13 @@ def main() -> None:
         changed_files[relative] = dict(counts)
         totals.update(counts)
     payload = {
-        "snapshot": str(SNAPSHOT.relative_to(REPOSITORY_ROOT)),
+        "snapshot": str(target.relative_to(REPOSITORY_ROOT)),
         "changed_file_count": len(changed_files),
         "replacement_counts": dict(totals),
         "changed_files": changed_files,
         "history": prior_report.get("history", []),
     }
-    REPORT_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
+    report_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 
 
 if __name__ == "__main__":
