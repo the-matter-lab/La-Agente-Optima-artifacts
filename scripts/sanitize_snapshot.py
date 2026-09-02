@@ -108,11 +108,12 @@ def main() -> None:
         relative = str(path.relative_to(REPOSITORY_ROOT))
         changed_files[relative] = dict(counts)
         totals.update(counts)
+    # Aggregate only: a per-file breakdown would name which traces carried which
+    # kind of credential, which is not something a published report should map out.
     payload = {
         "snapshot": str(target.relative_to(REPOSITORY_ROOT)),
         "changed_file_count": len(changed_files),
         "replacement_counts": dict(totals),
-        "changed_files": changed_files,
         "history": prior_report.get("history", []),
     }
     report_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
