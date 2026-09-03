@@ -1,24 +1,51 @@
-# BO-MCP benchmark artifacts
+# La Agente Óptima — research artifacts
 
-This private repository collects the raw data underlying *La Agente Óptima:
-Towards Agentic Self-Driving Laboratories* — the run evidence, audit metadata,
-plotting code, and figures for the BO-MCP framework comparison, plus the raw run
-evidence for the showcase campaigns reported in the main text and SI.
+This repository collects the raw data underlying *La Agente Óptima: Towards
+Agentic Self-Driving Laboratories* — the run evidence, audit metadata, plotting
+code, and figures for the framework comparison, plus the raw run evidence for
+the showcase campaigns reported in the main text and SI.
+
+**La Agente Óptima** (Óptima) is the agentic framework evaluated in the paper: a
+coordinating agent plus a Bayesian optimization (BO) specialist subagent that
+authors and supervises BO campaigns, keeping LLM reasoning separate from the
+programmatically executed optimization loop.
+
+**BO-MCP** is the BO backend service Óptima optimizes through. It holds
+campaign configuration, accumulated observations, and the per-campaign action
+ledger in its database, and exposes them over MCP and a REST API. Repo:
+**[AccelerationConsortium/bo-mcp](https://github.com/AccelerationConsortium/bo-mcp)**.
 
 ## Repository layout
 
-- `snapshots/` — the **framework-comparison benchmark**: raw evaluation cells,
-  controller metadata, and the comparison report. Described below.
+- `snapshots/` — the **framework comparison** (SI, *Framework comparison*): raw
+  evaluation cells, controller metadata, and the comparison report. Described
+  below.
 - `showcases/` — the **showcase campaigns** reported in the paper and SI: OSL
   combinatorial discovery, four finite-space computational campaigns, the RAISE
   closed loop, and the RoboChem-Flex flow-photochemistry campaign. See
   `showcases/README.md`.
 
-The two trees are independent: no showcase file feeds the benchmark report or
-its figures, and the LFS filters in `.gitattributes` are scoped to
-`snapshots/**`.
+## Experimental platforms
 
-## Benchmark snapshot contents
+Two showcases ran Óptima against external self-driving laboratories:
+
+- **RAISE** (Robotic Autonomous Imaging Surface Evaluator) — closed-loop
+  contact-angle formulation discovery.
+  Repo: [Frank-Gu-Lab/RAISE](https://github.com/Frank-Gu-Lab/RAISE).
+  Paper: Nazeri *et al.*, *Digital Discovery* **5**, 2254–2270 (2026),
+  [10.1039/D5DD00531K](https://doi.org/10.1039/D5DD00531K).
+- **RoboChem-Flex** — modular, low-cost flow-chemistry platform used for the
+  multi-objective flow-photochemistry campaign.
+  Repo: [Noel-Research-Group/Robochem_Flex](https://github.com/Noel-Research-Group/Robochem_Flex).
+  Paper: Pilon *et al.*, *Nature Synthesis* (2026),
+  [10.1038/s44160-026-01053-0](https://doi.org/10.1038/s44160-026-01053-0).
+
+## Framework-comparison snapshot contents
+
+The comparison evaluates the proposed Óptima architecture
+(`Specialist-script`) against the `Main-script`, `Tool-loop`, and `Local-BO`
+ablations, and additionally varies the LLM assigned to the BO specialist, over
+the Ackley 6D and Shields arylation benchmarks.
 
 The current snapshot includes the corrected BayBE duplicate-resuggestion
 replacements and the latest comparison report. Results remain subject to
