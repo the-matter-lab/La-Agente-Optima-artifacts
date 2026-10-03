@@ -7,20 +7,20 @@
       "runtime_s": "wall-clock time around agent.run(...) in evals.bo_mcp.runner",
       "usage": "Pydantic AI result.usage"
     },
-    "cache_read_tokens": 129536,
+    "cache_read_tokens": 99840,
     "cache_write_tokens": 0,
     "campaign_id_present": false,
     "campaign_verified": false,
     "final_answer_present": true,
-    "input_tokens": 176821,
-    "output_tokens": 15533,
-    "pydantic_eval_task_duration_s": 141.49037357233465,
-    "pydantic_eval_total_duration_s": 141.4906804561615,
-    "reasoning_tokens": 4224,
-    "request_count": 10,
-    "runtime_s": 141.4579598363489,
+    "input_tokens": 136458,
+    "output_tokens": 13650,
+    "pydantic_eval_task_duration_s": 111.47459286637604,
+    "pydantic_eval_total_duration_s": 111.47487235069275,
+    "reasoning_tokens": 2368,
+    "request_count": 13,
+    "runtime_s": 111.44440153799951,
     "success": true,
-    "tool_call_count": 64,
+    "tool_call_count": 62,
     "total_tokens": null
   },
   "architecture": {
@@ -50,8 +50,8 @@
     "subagent_delegation_count": 0,
     "tool_call_counts_by_name": {
       "evaluate_masked_surface_6d": 60,
-      "list_monitors": 2,
-      "start_monitor": 2
+      "list_monitors": 1,
+      "start_monitor": 1
     },
     "used_bo_mcp_tools": false,
     "used_python_or_bash": false
@@ -95,15 +95,15 @@
   "local_artifacts": {
     "_source": "local JSON result artifact referenced by final answer for no-BO-MCP architecture modes",
     "attempted_objective_evaluations": 60,
-    "best_objective_evaluation_index": 50,
-    "best_objective_value": 0.587816938512132,
+    "best_objective_evaluation_index": 59,
+    "best_objective_value": 0.5452816494901561,
     "best_parameters": {
-      "p_1": 0.35,
+      "p_1": 0.3,
       "p_2": 0.2,
       "p_3": 0.4,
       "p_4": 0.1,
       "p_5": 0.3,
-      "p_6": 0.0
+      "p_6": 0.01
     },
     "best_so_far_by_evaluation": [
       0.022641510336033083,
@@ -114,58 +114,58 @@
       0.08899768626329388,
       0.08899768626329388,
       0.08899768626329388,
-      0.08899768626329388,
-      0.08899768626329388,
-      0.08899768626329388,
-      0.08899768626329388,
-      0.08899768626329388,
-      0.09997851995692125,
-      0.09997851995692125,
-      0.09997851995692125,
-      0.09997851995692125,
-      0.11537117309874405,
-      0.11537117309874405,
-      0.11537117309874405,
-      0.11537117309874405,
-      0.11537117309874405,
-      0.12141476429042498,
-      0.12141476429042498,
-      0.261511565768586,
-      0.261511565768586,
-      0.261511565768586,
+      0.09997851995692157,
+      0.09997851995692157,
+      0.09997851995692157,
+      0.09997851995692157,
+      0.13034919139931891,
+      0.13034919139931891,
+      0.13034919139931891,
+      0.13034919139931891,
+      0.13034919139931891,
+      0.13034919139931891,
+      0.13034919139931891,
+      0.13034919139931891,
+      0.14894816929465685,
+      0.14894816929465685,
+      0.19860022715068182,
+      0.19860022715068182,
+      0.24620295700724398,
+      0.24620295700724398,
+      0.24620295700724398,
+      0.24620295700724398,
+      0.24620295700724398,
+      0.24620295700724398,
+      0.30907551168572794,
+      0.30907551168572794,
+      0.30907551168572794,
+      0.30907551168572794,
+      0.30907551168572794,
+      0.30907551168572794,
       0.3332524931400889,
       0.3332524931400889,
       0.3332524931400889,
       0.3332524931400889,
       0.3332524931400889,
-      0.3332524931400889,
-      0.3332524931400889,
-      0.3332524931400889,
-      0.3779561604742699,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.5746933708363119,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132,
-      0.587816938512132
+      0.4007155662532844,
+      0.44459288969775473,
+      0.44459288969775473,
+      0.44459288969775473,
+      0.44459288969775473,
+      0.44459288969775473,
+      0.4503491123534281,
+      0.513879943372221,
+      0.513879943372221,
+      0.513879943372221,
+      0.513879943372221,
+      0.513879943372221,
+      0.513879943372221,
+      0.513879943372221,
+      0.5236182853221042,
+      0.5346365771027147,
+      0.5346365771027147,
+      0.5452816494901561,
+      0.5452816494901561
     ],
     "duplicate_evaluations": 0,
     "duplicate_rate": 0.0,
@@ -181,7 +181,7 @@
     ],
     "failed_evaluation_rate": 0.0,
     "failed_evaluations": 0,
-    "final_objective_value": 0.4942342498845135,
+    "final_objective_value": 0.5300756637896878,
     "hypervolume": null,
     "hypervolume_reference_point": null,
     "incomplete_objective_evaluations": 0,
@@ -279,257 +279,89 @@
       {
         "evaluation_index": 6,
         "objective_values": {
-          "response": 0.03684444149252326
+          "response": 0.038852207373460595
         },
         "parameter_values": {
           "p_1": 0.1,
-          "p_2": 0.4,
+          "p_2": 0.3,
           "p_3": 0.7,
           "p_4": 0.9,
-          "p_5": 0.3,
+          "p_5": 0.4,
           "p_6": 0.6
         }
       },
       {
         "evaluation_index": 7,
         "objective_values": {
-          "response": 0.019057018441855925
+          "response": 0.06308710924597581
         },
         "parameter_values": {
-          "p_1": 0.9,
-          "p_2": 0.6,
-          "p_3": 0.3,
-          "p_4": 0.1,
-          "p_5": 0.7,
-          "p_6": 0.4
+          "p_1": 0.6,
+          "p_2": 0.2,
+          "p_3": 0.2,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
         }
       },
       {
         "evaluation_index": 8,
         "objective_values": {
-          "response": 0.021104783841803525
+          "response": 0.03885220737345996
         },
         "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.7,
-          "p_3": 0.9,
-          "p_4": 0.4,
-          "p_5": 0.1,
-          "p_6": 0.8
+          "p_1": 0.2,
+          "p_2": 0.6,
+          "p_3": 0.2,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
         }
       },
       {
         "evaluation_index": 9,
         "objective_values": {
-          "response": 0.020069037279928596
+          "response": 0.09997851995692157
         },
         "parameter_values": {
-          "p_1": 0.7,
-          "p_2": 0.3,
-          "p_3": 0.1,
-          "p_4": 0.6,
-          "p_5": 0.9,
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.6,
+          "p_4": 0.2,
+          "p_5": 0.2,
           "p_6": 0.2
         }
       },
       {
         "evaluation_index": 10,
         "objective_values": {
-          "response": 0.034741108045451004
+          "response": 0.0334544297430759
         },
         "parameter_values": {
-          "p_1": 0.15,
-          "p_2": 0.85,
-          "p_3": 0.55,
-          "p_4": 0.35,
-          "p_5": 0.95,
-          "p_6": 0.05
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.2,
+          "p_4": 0.6,
+          "p_5": 0.2,
+          "p_6": 0.2
         }
       },
       {
         "evaluation_index": 11,
         "objective_values": {
-          "response": 0.02633842463685397
+          "response": 0.04987161647435441
         },
         "parameter_values": {
-          "p_1": 0.85,
-          "p_2": 0.15,
-          "p_3": 0.45,
-          "p_4": 0.65,
-          "p_5": 0.05,
-          "p_6": 0.95
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.2,
+          "p_4": 0.2,
+          "p_5": 0.6,
+          "p_6": 0.2
         }
       },
       {
         "evaluation_index": 12,
-        "objective_values": {
-          "response": 0.022332133226714214
-        },
-        "parameter_values": {
-          "p_1": 0.45,
-          "p_2": 0.55,
-          "p_3": 0.15,
-          "p_4": 0.85,
-          "p_5": 0.65,
-          "p_6": 0.35
-        }
-      },
-      {
-        "evaluation_index": 13,
-        "objective_values": {
-          "response": 0.07063537242998028
-        },
-        "parameter_values": {
-          "p_1": 0.1,
-          "p_2": 0.2,
-          "p_3": 0.2,
-          "p_4": 0.2,
-          "p_5": 0.2,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 14,
-        "objective_values": {
-          "response": 0.09997851995692125
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.2,
-          "p_4": 0.2,
-          "p_5": 0.2,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 15,
-        "objective_values": {
-          "response": 0.08425291201845492
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.1,
-          "p_3": 0.2,
-          "p_4": 0.2,
-          "p_5": 0.2,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 16,
-        "objective_values": {
-          "response": 0.08204034377363882
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.3,
-          "p_3": 0.2,
-          "p_4": 0.2,
-          "p_5": 0.2,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 17,
-        "objective_values": {
-          "response": 0.06377622721304027
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.1,
-          "p_4": 0.2,
-          "p_5": 0.2,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 18,
-        "objective_values": {
-          "response": 0.11537117309874405
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.3,
-          "p_4": 0.2,
-          "p_5": 0.2,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 19,
-        "objective_values": {
-          "response": 0.09848315021139525
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.2,
-          "p_4": 0.1,
-          "p_5": 0.2,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 20,
-        "objective_values": {
-          "response": 0.07147800914138554
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.2,
-          "p_4": 0.3,
-          "p_5": 0.2,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 21,
-        "objective_values": {
-          "response": 0.07596803656550555
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.2,
-          "p_4": 0.2,
-          "p_5": 0.1,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 22,
-        "objective_values": {
-          "response": 0.09154408871982264
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.2,
-          "p_4": 0.2,
-          "p_5": 0.3,
-          "p_6": 0.2
-        }
-      },
-      {
-        "evaluation_index": 23,
-        "objective_values": {
-          "response": 0.12141476429042498
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.2,
-          "p_4": 0.2,
-          "p_5": 0.2,
-          "p_6": 0.1
-        }
-      },
-      {
-        "evaluation_index": 24,
         "objective_values": {
           "response": 0.06174828453851271
         },
@@ -539,33 +371,201 @@
           "p_3": 0.2,
           "p_4": 0.2,
           "p_5": 0.2,
-          "p_6": 0.3
+          "p_6": 0.6
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "response": 0.13034919139931891
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "response": 0.07321708313551709
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.7,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "response": 0.037082834812980005
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.9,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "response": 0.1098188839306916
+        },
+        "parameter_values": {
+          "p_1": 0.4,
+          "p_2": 0.2,
+          "p_3": 0.6,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "response": 0.04580606426106299
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.6,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.4
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "response": 0.08776939027303679
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.1,
+          "p_3": 0.6,
+          "p_4": 0.1,
+          "p_5": 0.1,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "response": 0.09702529337371849
+        },
+        "parameter_values": {
+          "p_1": 0.1,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 20,
+        "objective_values": {
+          "response": 0.12141476429042514
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.1,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "response": 0.14894816929465685
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "response": 0.10636311985846478
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.1,
+          "p_6": 0.2
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "response": 0.19860022715068182
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.1
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "response": 0.15197510668625835
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.2
         }
       },
       {
         "evaluation_index": 25,
         "objective_values": {
-          "response": 0.261511565768586
+          "response": 0.24620295700724398
         },
         "parameter_values": {
           "p_1": 0.3,
           "p_2": 0.2,
-          "p_3": 0.3,
-          "p_4": 0.1,
-          "p_5": 0.3,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
           "p_6": 0.1
         }
       },
       {
         "evaluation_index": 26,
         "objective_values": {
-          "response": 0.24620295700724415
+          "response": 0.1805658540474993
         },
         "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.3,
-          "p_4": 0.1,
+          "p_1": 0.2,
+          "p_2": 0.1,
+          "p_3": 0.4,
+          "p_4": 0.2,
           "p_5": 0.2,
           "p_6": 0.1
         }
@@ -573,19 +573,145 @@
       {
         "evaluation_index": 27,
         "objective_values": {
-          "response": 0.20885394378673458
+          "response": 0.16883057199603216
         },
         "parameter_values": {
-          "p_1": 0.3,
+          "p_1": 0.2,
           "p_2": 0.2,
           "p_3": 0.3,
-          "p_4": 0.1,
-          "p_5": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
           "p_6": 0.1
         }
       },
       {
         "evaluation_index": 28,
+        "objective_values": {
+          "response": 0.2391599467229774
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.1
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "response": 0.15197510668625866
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.1,
+          "p_6": 0.1
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "response": 0.2341173215372943
+        },
+        "parameter_values": {
+          "p_1": 0.2,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.05
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "response": 0.30907551168572794
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.1
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "response": 0.20885394378673428
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.3,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.1
+        }
+      },
+      {
+        "evaluation_index": 33,
+        "objective_values": {
+          "response": 0.2261331165722129
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.5,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.1
+        }
+      },
+      {
+        "evaluation_index": 34,
+        "objective_values": {
+          "response": 0.23247960149243044
+        },
+        "parameter_values": {
+          "p_1": 0.4,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.1
+        }
+      },
+      {
+        "evaluation_index": 35,
+        "objective_values": {
+          "response": 0.19498276974447368
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.2,
+          "p_6": 0.15
+        }
+      },
+      {
+        "evaluation_index": 36,
+        "objective_values": {
+          "response": 0.2615115657685858
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.2,
+          "p_5": 0.3,
+          "p_6": 0.1
+        }
+      },
+      {
+        "evaluation_index": 37,
         "objective_values": {
           "response": 0.3332524931400889
         },
@@ -599,233 +725,65 @@
         }
       },
       {
-        "evaluation_index": 29,
+        "evaluation_index": 38,
         "objective_values": {
-          "response": 0.16883057199603183
+          "response": 0.31190196622678623
         },
         "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.2,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.1
-        }
-      },
-      {
-        "evaluation_index": 30,
-        "objective_values": {
-          "response": 0.24620295700724432
-        },
-        "parameter_values": {
-          "p_1": 0.4,
-          "p_2": 0.2,
-          "p_3": 0.3,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.1
-        }
-      },
-      {
-        "evaluation_index": 31,
-        "objective_values": {
-          "response": 0.20885394378673458
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.3,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.1
-        }
-      },
-      {
-        "evaluation_index": 32,
-        "objective_values": {
-          "response": 0.23247960149243058
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.1,
-          "p_3": 0.3,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.1
-        }
-      },
-      {
-        "evaluation_index": 33,
-        "objective_values": {
-          "response": 0.22009487442813824
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.3,
-          "p_3": 0.3,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.1
-        }
-      },
-      {
-        "evaluation_index": 34,
-        "objective_values": {
-          "response": 0.23915994672297727
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.3,
-          "p_4": 0.0,
-          "p_5": 0.3,
-          "p_6": 0.1
-        }
-      },
-      {
-        "evaluation_index": 35,
-        "objective_values": {
-          "response": 0.21434199160257889
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.3,
-          "p_4": 0.2,
-          "p_5": 0.3,
-          "p_6": 0.1
-        }
-      },
-      {
-        "evaluation_index": 36,
-        "objective_values": {
-          "response": 0.3779561604742699
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.3,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 37,
-        "objective_values": {
-          "response": 0.5746933708363119
-        },
-        "parameter_values": {
-          "p_1": 0.3,
+          "p_1": 0.35,
           "p_2": 0.2,
           "p_3": 0.4,
           "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 38,
-        "objective_values": {
-          "response": 0.4642473885585333
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.5,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
+          "p_5": 0.2,
+          "p_6": 0.1
         }
       },
       {
         "evaluation_index": 39,
         "objective_values": {
-          "response": 0.4942342498845133
+          "response": 0.30089462436542375
         },
         "parameter_values": {
-          "p_1": 0.4,
-          "p_2": 0.2,
+          "p_1": 0.3,
+          "p_2": 0.15,
           "p_3": 0.4,
           "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
+          "p_5": 0.2,
+          "p_6": 0.1
         }
       },
       {
         "evaluation_index": 40,
         "objective_values": {
-          "response": 0.3616923108117604
+          "response": 0.285751451418034
         },
         "parameter_values": {
-          "p_1": 0.2,
+          "p_1": 0.3,
           "p_2": 0.2,
-          "p_3": 0.4,
+          "p_3": 0.35,
           "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
+          "p_5": 0.2,
+          "p_6": 0.1
         }
       },
       {
         "evaluation_index": 41,
         "objective_values": {
-          "response": 0.4384861302356816
+          "response": 0.30629980837088183
         },
         "parameter_values": {
           "p_1": 0.3,
-          "p_2": 0.1,
+          "p_2": 0.2,
           "p_3": 0.4,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
+          "p_4": 0.05,
+          "p_5": 0.2,
+          "p_6": 0.1
         }
       },
       {
         "evaluation_index": 42,
         "objective_values": {
-          "response": 0.3959200013625936
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.3,
-          "p_3": 0.4,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 43,
-        "objective_values": {
-          "response": 0.46424738855853315
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.4,
-          "p_4": 0.0,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 44,
-        "objective_values": {
-          "response": 0.37795616047426983
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.4,
-          "p_4": 0.2,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 45,
-        "objective_values": {
-          "response": 0.49423424988451353
+          "response": 0.4007155662532844
         },
         "parameter_values": {
           "p_1": 0.3,
@@ -833,181 +791,181 @@
           "p_3": 0.4,
           "p_4": 0.1,
           "p_5": 0.2,
-          "p_6": 0.0
+          "p_6": 0.05
         }
       },
       {
-        "evaluation_index": 46,
+        "evaluation_index": 43,
         "objective_values": {
-          "response": 0.3616923108117604
+          "response": 0.44459288969775473
         },
         "parameter_values": {
           "p_1": 0.3,
           "p_2": 0.2,
           "p_3": 0.4,
           "p_4": 0.1,
-          "p_5": 0.4,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 47,
-        "objective_values": {
-          "response": 0.4159367198850928
-        },
-        "parameter_values": {
-          "p_1": 0.4,
-          "p_2": 0.2,
-          "p_3": 0.5,
-          "p_4": 0.1,
           "p_5": 0.3,
-          "p_6": 0.0
+          "p_6": 0.05
         }
       },
       {
-        "evaluation_index": 48,
+        "evaluation_index": 44,
         "objective_values": {
-          "response": 0.3207021823720997
-        },
-        "parameter_values": {
-          "p_1": 0.2,
-          "p_2": 0.2,
-          "p_3": 0.5,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 49,
-        "objective_values": {
-          "response": 0.4712979697274606
-        },
-        "parameter_values": {
-          "p_1": 0.25,
-          "p_2": 0.2,
-          "p_3": 0.4,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 50,
-        "objective_values": {
-          "response": 0.587816938512132
+          "response": 0.4056453861864458
         },
         "parameter_values": {
           "p_1": 0.35,
           "p_2": 0.2,
           "p_3": 0.4,
           "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
+          "p_5": 0.2,
+          "p_6": 0.05
         }
       },
       {
-        "evaluation_index": 51,
+        "evaluation_index": 45,
         "objective_values": {
-          "response": 0.5402465217222537
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.15,
-          "p_3": 0.4,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 52,
-        "objective_values": {
-          "response": 0.5025618065686961
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.25,
-          "p_3": 0.4,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 53,
-        "objective_values": {
-          "response": 0.48626693639465235
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.35,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 54,
-        "objective_values": {
-          "response": 0.5624673582877471
-        },
-        "parameter_values": {
-          "p_1": 0.3,
-          "p_2": 0.2,
-          "p_3": 0.45,
-          "p_4": 0.1,
-          "p_5": 0.3,
-          "p_6": 0.0
-        }
-      },
-      {
-        "evaluation_index": 55,
-        "objective_values": {
-          "response": 0.562467358287747
+          "response": 0.39592000136259337
         },
         "parameter_values": {
           "p_1": 0.3,
           "p_2": 0.2,
           "p_3": 0.4,
           "p_4": 0.05,
-          "p_5": 0.3,
-          "p_6": 0.0
+          "p_5": 0.2,
+          "p_6": 0.05
         }
       },
       {
-        "evaluation_index": 56,
+        "evaluation_index": 46,
         "objective_values": {
-          "response": 0.4862669363946524
+          "response": 0.39592000136259353
         },
         "parameter_values": {
           "p_1": 0.3,
           "p_2": 0.2,
-          "p_3": 0.4,
-          "p_4": 0.15,
-          "p_5": 0.3,
-          "p_6": 0.0
+          "p_3": 0.45,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.05
         }
       },
       {
-        "evaluation_index": 57,
+        "evaluation_index": 47,
         "objective_values": {
-          "response": 0.587816938512132
+          "response": 0.36963011198956824
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.25,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.05
+        }
+      },
+      {
+        "evaluation_index": 48,
+        "objective_values": {
+          "response": 0.4503491123534281
         },
         "parameter_values": {
           "p_1": 0.3,
           "p_2": 0.2,
           "p_3": 0.4,
           "p_4": 0.1,
-          "p_5": 0.25,
-          "p_6": 0.0
+          "p_5": 0.2,
+          "p_6": 0.02
         }
       },
       {
-        "evaluation_index": 58,
+        "evaluation_index": 49,
         "objective_values": {
-          "response": 0.4712979697274606
+          "response": 0.513879943372221
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.3,
+          "p_6": 0.02
+        }
+      },
+      {
+        "evaluation_index": 50,
+        "objective_values": {
+          "response": 0.3884218480517921
+        },
+        "parameter_values": {
+          "p_1": 0.25,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.02
+        }
+      },
+      {
+        "evaluation_index": 51,
+        "objective_values": {
+          "response": 0.4663359765431872
+        },
+        "parameter_values": {
+          "p_1": 0.32,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.02
+        }
+      },
+      {
+        "evaluation_index": 52,
+        "objective_values": {
+          "response": 0.4642473885585333
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.08,
+          "p_5": 0.2,
+          "p_6": 0.02
+        }
+      },
+      {
+        "evaluation_index": 53,
+        "objective_values": {
+          "response": 0.43982495730352883
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.38,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.02
+        }
+      },
+      {
+        "evaluation_index": 54,
+        "objective_values": {
+          "response": 0.47361011484087534
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.2,
+          "p_6": 0.01
+        }
+      },
+      {
+        "evaluation_index": 55,
+        "objective_values": {
+          "response": 0.4312442965281918
         },
         "parameter_values": {
           "p_1": 0.3,
@@ -1015,35 +973,77 @@
           "p_3": 0.4,
           "p_4": 0.1,
           "p_5": 0.35,
-          "p_6": 0.0
+          "p_6": 0.02
+        }
+      },
+      {
+        "evaluation_index": 56,
+        "objective_values": {
+          "response": 0.5236182853221042
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.25,
+          "p_6": 0.02
+        }
+      },
+      {
+        "evaluation_index": 57,
+        "objective_values": {
+          "response": 0.5346365771027147
+        },
+        "parameter_values": {
+          "p_1": 0.32,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.1,
+          "p_5": 0.3,
+          "p_6": 0.02
+        }
+      },
+      {
+        "evaluation_index": 58,
+        "objective_values": {
+          "response": 0.5300756637896878
+        },
+        "parameter_values": {
+          "p_1": 0.3,
+          "p_2": 0.2,
+          "p_3": 0.4,
+          "p_4": 0.08,
+          "p_5": 0.3,
+          "p_6": 0.02
         }
       },
       {
         "evaluation_index": 59,
         "objective_values": {
-          "response": 0.4642473885585333
+          "response": 0.5452816494901561
         },
         "parameter_values": {
-          "p_1": 0.25,
+          "p_1": 0.3,
           "p_2": 0.2,
-          "p_3": 0.45,
+          "p_3": 0.4,
           "p_4": 0.1,
           "p_5": 0.3,
-          "p_6": 0.0
+          "p_6": 0.01
         }
       },
       {
         "evaluation_index": 60,
         "objective_values": {
-          "response": 0.4942342498845135
+          "response": 0.5300756637896878
         },
         "parameter_values": {
-          "p_1": 0.35,
+          "p_1": 0.3,
           "p_2": 0.2,
-          "p_3": 0.35,
+          "p_3": 0.42,
           "p_4": 0.1,
           "p_5": 0.3,
-          "p_6": 0.0
+          "p_6": 0.02
         }
       }
     ],
@@ -1077,17 +1077,17 @@
         "cost_usd": "main plus subagent cost only when all required cost components are available",
         "usage": "sum of available main/subagent counters"
       },
-      "cache_read_tokens": 129536,
+      "cache_read_tokens": 99840,
       "cache_write_tokens": 0,
       "cost_available": true,
       "cost_source": "main_plus_subagent_cost_breakdown",
-      "cost_usd": 0.3835915,
-      "input_tokens": 176821,
-      "output_tokens": 15533,
-      "reasoning_tokens": 4224,
-      "request_count": 10,
-      "tool_call_count": 64,
-      "total_tokens": 192354
+      "cost_usd": 0.32125499999999996,
+      "input_tokens": 136458,
+      "output_tokens": 13650,
+      "reasoning_tokens": 2368,
+      "request_count": 13,
+      "tool_call_count": 62,
+      "total_tokens": 150108
     },
     "limitations": [
       "nested subagents are not captured",
@@ -1101,23 +1101,23 @@
         "messages": "Pydantic AI result.all_messages()",
         "usage": "Pydantic AI result.usage"
       },
-      "cache_read_tokens": 129536,
+      "cache_read_tokens": 99840,
       "cache_write_tokens": 0,
       "cost_available": true,
       "cost_source": "genai_prices_from_main_response_messages",
-      "cost_usd": 0.3835915,
-      "input_tokens": 176821,
+      "cost_usd": 0.32125499999999996,
+      "input_tokens": 136458,
       "model_names": [
         "gpt-5.4-2026-03-05"
       ],
-      "output_tokens": 15533,
-      "priced_response_count": 10,
+      "output_tokens": 13650,
+      "priced_response_count": 13,
       "provider_names": [
         "openai"
       ],
-      "reasoning_tokens": 4224,
-      "request_count": 10,
-      "tool_call_count": 64,
+      "reasoning_tokens": 2368,
+      "request_count": 13,
+      "tool_call_count": 62,
       "total_tokens": null,
       "unpriced_response_count": 0
     },

@@ -1,6 +1,6 @@
 # BO-MCP Repeat Summary
 
-- Run id: `38d9544e-0bda-4e7e-aeac-3b13064a3270`
+- Run id: `fc6d6064-ff11-4549-9acc-788a1b4431db`
 - Total case runs: `3`
 - Overall task pass rate: `1.0`
 - Overall clean benchmark rate: `1.0`
@@ -24,28 +24,28 @@ Limitations: this report summarizes observed eval traces, not a final scientific
 
 | Provider | Model | Architecture | Cases | Runs | Clean runs | Task success | Clean evidence | Budget match | Mean normalized objective | Clean cost/eval | Clean sec/eval | Clean tokens/eval | Verification statuses | Issues |
 | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| openai-responses | openai-responses:gpt-5.4 | main_agent_llm_suggestion_no_bo | ['masked_discrete_response'] | 3 | 3 | 1 | 1 | 1 |  | 0.005912 | 2.439 | 3203 | {'not_applicable': 3} |  |
+| openai-responses | openai-responses:gpt-5.4 | main_agent_llm_suggestion_no_bo | ['masked_discrete_response'] | 3 | 3 | 1 | 1 | 1 |  | 0.006334 | 2.596 | 3194 | {'not_applicable': 3} |  |
 
 | Provider | Model | Case | Architecture | Runs | Clean runs | Task success | Clean evidence | Verification/fallback | Verification statuses | Arch contract | Budget match | Attempts mean | Successes mean | Runtime mean | Total tokens mean | Cost mean | Clean best mean | Norm best | Best variance | Clean sec/eval | Clean cost/eval | Failures |
 | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | 3 | 3 | 1 | 1 | 0 | {'not_applicable': 3} | 1 | 1 | 60 | 60 | 146.3 | 1.922e+05 | 0.3547 | 76.89 |  | 10.62 | 2.439 | 0.005912 | {} |
+| openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | 3 | 3 | 1 | 1 | 0 | {'not_applicable': 3} | 1 | 1 | 60 | 59.67 | 155.8 | 1.916e+05 | 0.38 | 79.2 |  | 0 | 2.596 | 0.006334 | {} |
 
 ## Optimization And Efficiency
 
 | Provider | Model | Case | Architecture | Budget | Attempts range | Successes range | Budget delta mean | Clean best range | Clean raw BO AUC mean | Clean BO AUC/attempt mean | Duplicate rate | Failed eval rate | Clean convergence rate | Clean tokens/eval | Requests mean | Tool calls mean |
 | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | 60 | 60..60 | 60..60 | 0 | 72.28..79.2 |  |  |  |  |  | 3203 | 11.67 | 68.33 |
+| openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | 60 | 60..60 | 59..60 | 0 | 79.2..79.2 |  |  |  |  |  | 3194 | 12.33 | 65.67 |
 
 ## Token And Tool Diagnostics
 
 | Provider | Model | Case | Architecture | Input tokens mean | Output tokens mean | Reasoning tokens mean | Cache read mean | Main tokens mean | Subagent tokens mean | Script count mean | Script diversity | Tool calls by name | Mode violations |
 | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | 1.776e+05 | 1.458e+04 | 4899 | 1.369e+05 |  | 0 | 0 |  | {'evaluate_masked_discrete_response_value': 193, 'list_monitors': 6, 'start_monitor': 6} | {} |
+| openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | 1.754e+05 | 1.617e+04 | 5886 | 1.338e+05 |  | 0 | 0 |  | {'evaluate_masked_discrete_response_value': 188, 'list_monitors': 5, 'start_monitor': 5} | {} |
 
 ## Repeat Runs
 
 | Repeat | Provider | Model | Case | Architecture | Task success | Clean evidence | Verification status | Best | Attempts | Successes | Budget | Budget delta | Budget status | Runtime | Tokens | Cost | Campaign/local artifact | Failure | Contract | Violations |
 | --- | --- | --- | --- | --- | ---: | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- | --- | ---: | --- |
-| repeat_001 | openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | True | True | not_applicable | 79.19 | 60 | 60 | 60 | 0 | matched | 133.5 | 1.747e+05 | 0.3247 | /app/eval-output/masked_discrete_response_pure_llm_gpt54_3x/repeat_001/cases/masked_discrete_response/workspace/bo-mcp-eval/local_results.json |  | True | [] |
-| repeat_002 | openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | True | True | not_applicable | 79.2 | 60 | 60 | 60 | 0 | matched | 146.2 | 2.043e+05 | 0.3603 | /app/eval-output/masked_discrete_response_pure_llm_gpt54_3x/repeat_002/cases/masked_discrete_response/workspace/bo-mcp-eval/local_results.json |  | True | [] |
-| repeat_003 | openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | True | True | not_applicable | 72.28 | 60 | 60 | 60 | 0 | matched | 159.3 | 1.975e+05 | 0.3792 | /app/eval-output/masked_discrete_response_pure_llm_gpt54_3x/repeat_003/cases/masked_discrete_response/workspace/bo-mcp-eval/local_results.json |  | True | [] |
+| repeat_001 | openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | True | True | not_applicable | 79.2 | 60 | 59 | 60 | 0 | matched | 142 | 1.035e+05 | 0.3313 | /app/eval-output/masked_discrete_response_pure_llm_gpt54_3x/repeat_001/cases/masked_discrete_response/workspace/bo-mcp-eval/local_results.json |  | True | [] |
+| repeat_002 | openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | True | True | not_applicable | 79.2 | 60 | 60 | 60 | 0 | matched | 147.7 | 2.085e+05 | 0.3554 | /app/eval-output/masked_discrete_response_pure_llm_gpt54_3x/repeat_002/cases/masked_discrete_response/workspace/bo-mcp-eval/local_results.json |  | True | [] |
+| repeat_003 | openai-responses | openai-responses:gpt-5.4 | masked_discrete_response | main_agent_llm_suggestion_no_bo | True | True | not_applicable | 79.2 | 60 | 60 | 60 | 0 | matched | 177.6 | 2.628e+05 | 0.4534 | /app/eval-output/masked_discrete_response_pure_llm_gpt54_3x/repeat_003/cases/masked_discrete_response/workspace/bo-mcp-eval/local_results.json |  | True | [] |

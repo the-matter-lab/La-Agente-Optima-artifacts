@@ -52,14 +52,7 @@
   },
   "environment": {
     "env_file": "/app/.env",
-    "env_file_values": {
-      "BO_MCP_API_KEY": "<redacted:set>",
-      "GRAPHCHAT_DEEP_MEMORY_ROOT": ".chat_history/memory",
-      "LOGFIRE_TOKEN": "<redacted:set>",
-      "NVIDIA_API_KEY": "<redacted:set>",
-      "OPENAI_API_KEY": "<redacted:set>",
-      "SPARQL_ENDPOINT": "http://localhost:27149/blazegraph/namespace/kb/sparql"
-    },
+    "env_file_values": {},
     "process_env": {
       "BO_MCP_API_KEY": "<redacted:set>",
       "DIRECT_ARYLATION_API_URL": "http://direct-arylation-oracle:8000",
@@ -67,7 +60,7 @@
       "LOGFIRE_TOKEN": "<redacted:set>",
       "NVIDIA_API_KEY": "<redacted:set>",
       "OPENAI_API_KEY": "<redacted:set>",
-      "SPARQL_ENDPOINT": "http://localhost:27149/blazegraph/namespace/kb/sparql"
+      "SPARQL_ENDPOINT": "http://blazegraph:8080/blazegraph/namespace/kb/sparql"
     }
   },
   "eval": {
@@ -122,7 +115,7 @@
   },
   "prompt_cache": {
     "enabled": true,
-    "nonce": "77e45f9f-48fd-4521-9e06-64cae3abcdc8",
+    "nonce": "b9d7177e-00a8-4a04-83fb-32fe4322bc25",
     "policy": "uuid"
   },
   "repeat": {
@@ -130,7 +123,7 @@
     "repeat_id": "repeat_003",
     "repeat_index": 3
   },
-  "run_id": "38d9544e-0bda-4e7e-aeac-3b13064a3270",
+  "run_id": "fc6d6064-ff11-4549-9acc-788a1b4431db",
   "schema_version": 1,
   "subagent_model": {
     "inherits_main_model": true,
@@ -149,5 +142,5 @@
       "source": "grafico.core.http.llm_config"
     }
   },
-  "timestamp": "2026-10-03T00:15:42+00:00"
+  "timestamp": "2026-10-03T01:48:27+00:00"
 }

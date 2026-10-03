@@ -7,20 +7,20 @@
       "runtime_s": "wall-clock time around agent.run(...) in evals.bo_mcp.runner",
       "usage": "Pydantic AI result.usage"
     },
-    "cache_read_tokens": 121856,
+    "cache_read_tokens": 53760,
     "cache_write_tokens": 0,
     "campaign_id_present": false,
     "campaign_verified": false,
     "final_answer_present": true,
-    "input_tokens": 161701,
-    "output_tokens": 12975,
-    "pydantic_eval_task_duration_s": 133.9743021801114,
-    "pydantic_eval_total_duration_s": 133.97474551200867,
-    "reasoning_tokens": 3655,
-    "request_count": 11,
-    "runtime_s": 133.53759227320552,
+    "input_tokens": 88077,
+    "output_tokens": 15472,
+    "pydantic_eval_task_duration_s": 142.43215150386095,
+    "pydantic_eval_total_duration_s": 142.4325590133667,
+    "reasoning_tokens": 6231,
+    "request_count": 6,
+    "runtime_s": 141.97698663175106,
     "success": true,
-    "tool_call_count": 64,
+    "tool_call_count": 61,
     "total_tokens": null
   },
   "architecture": {
@@ -50,8 +50,8 @@
     "subagent_delegation_count": 0,
     "tool_call_counts_by_name": {
       "evaluate_masked_discrete_response_value": 60,
-      "list_monitors": 2,
-      "start_monitor": 2
+      "list_monitors": 1,
+      "start_monitor": 1
     },
     "used_bo_mcp_tools": false,
     "used_python_or_bash": false
@@ -95,76 +95,76 @@
   "local_artifacts": {
     "_source": "local JSON result artifact referenced by final answer for no-BO-MCP architecture modes",
     "attempted_objective_evaluations": 60,
-    "best_objective_evaluation_index": 59,
-    "best_objective_value": 79.18762000000001,
+    "best_objective_evaluation_index": 46,
+    "best_objective_value": 79.2,
     "best_parameters": {
-      "category_a": "cat_a_B",
+      "category_a": "cat_a_D",
       "category_b": "cat_b_L",
-      "category_c": "cat_c_A",
+      "category_c": "cat_c_D",
       "level_d": "lvl_d_A",
-      "level_e": "lvl_e_A"
+      "level_e": "lvl_e_C"
     },
     "best_so_far_by_evaluation": [
       19.18176,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      33.15878,
-      41.24292,
-      41.24292,
-      41.24292,
-      41.24292,
-      41.24292,
-      42.69757,
-      43.57655,
-      43.57655,
-      43.57655,
-      43.57655,
-      43.57655,
-      43.57655,
-      43.57655,
-      43.57655,
-      43.57655,
-      43.57655,
-      47.14199,
-      47.14199,
-      47.14199,
-      47.14199,
-      47.14199,
-      47.14199,
-      47.14199,
-      47.14199,
-      47.14199,
-      47.14199,
-      47.14199,
-      60.09147,
-      60.09147,
-      60.09147,
-      60.09147,
-      60.09147,
-      60.09147,
-      69.40123,
-      69.40123,
-      69.40123,
-      69.40123,
-      69.40123,
-      69.40123,
-      72.27958,
-      72.27958,
-      72.27958,
-      72.27958,
-      72.27958,
-      72.27958,
-      79.18762000000001,
-      79.18762000000001
+      35.97523,
+      50.17509,
+      50.17509,
+      50.17509,
+      50.17509,
+      50.17509,
+      50.17509,
+      65.9534,
+      65.9534,
+      65.9534,
+      65.9534,
+      65.9534,
+      65.9534,
+      67.35234,
+      67.35234,
+      67.35234,
+      67.35234,
+      67.35234,
+      67.35234,
+      67.35234,
+      67.35234,
+      67.35234,
+      72.86144,
+      72.86144,
+      72.86144,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      73.69709,
+      78.26531,
+      78.26531,
+      78.26531,
+      78.26531,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2,
+      79.2
     ],
     "duplicate_evaluations": 0,
     "duplicate_rate": 0.0,
@@ -178,9 +178,9 @@
         "unit": "normalized_unitless"
       }
     ],
-    "failed_evaluation_rate": 0.0,
-    "failed_evaluations": 0,
-    "final_objective_value": 53.17105000000001,
+    "failed_evaluation_rate": 0.016666666666666666,
+    "failed_evaluations": 1,
+    "final_objective_value": 31.462719999999997,
     "hypervolume": null,
     "hypervolume_reference_point": null,
     "incomplete_objective_evaluations": 0,
@@ -194,7 +194,7 @@
     ],
     "objective_name": "response",
     "objective_oracle": {
-      "checked_evaluations": 60,
+      "checked_evaluations": 59,
       "mismatch_count": 0,
       "mismatches": [],
       "verification_status": "verified"
@@ -203,7 +203,7 @@
     "objective_schema_matches_expected": true,
     "objective_schema_status": "matched",
     "objective_unit": "normalized_unitless",
-    "objective_vector_count": 60,
+    "objective_vector_count": 59,
     "objective_vectors": [
       {
         "evaluation_index": 1,
@@ -221,70 +221,408 @@
       {
         "evaluation_index": 2,
         "objective_values": {
-          "response": 33.15878
+          "response": 35.97523
         },
         "parameter_values": {
           "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 3,
         "objective_values": {
-          "response": 17.3
+          "response": 50.17509
         },
         "parameter_values": {
           "category_a": "cat_a_C",
-          "category_b": "cat_b_C",
-          "category_c": "cat_c_C",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_C"
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 4,
         "objective_values": {
-          "response": 19.49745
+          "response": 47.92812
         },
         "parameter_values": {
           "category_a": "cat_a_D",
-          "category_b": "cat_b_D",
-          "category_c": "cat_c_D",
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_A",
           "level_d": "lvl_d_A",
-          "level_e": "lvl_e_B"
+          "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 5,
+        "objective_values": {
+          "response": 33.25163
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_B",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 6,
+        "objective_values": {
+          "response": 17.75806
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_C",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 7,
+        "objective_values": {
+          "response": 22.03535
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_D",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 8,
         "objective_values": {
           "response": 17.3
         },
         "parameter_values": {
           "category_a": "cat_a_A",
           "category_b": "cat_b_E",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_C"
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
         }
       },
       {
-        "evaluation_index": 6,
+        "evaluation_index": 9,
         "objective_values": {
-          "response": 19.02701
+          "response": 65.9534
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
+          "category_a": "cat_a_A",
           "category_b": "cat_b_F",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 10,
+        "objective_values": {
+          "response": 17.3
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_G",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 11,
+        "objective_values": {
+          "response": 24.93846
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_H",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 12,
+        "objective_values": {
+          "response": 29.649050000000003
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_I",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "response": 17.3
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_J",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "response": 30.12568
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_K",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "response": 67.35234
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "response": 25.42128
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_A",
           "category_c": "cat_c_C",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "response": 49.53752
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "response": 24.88275
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_B",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "response": 25.897910000000003
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_A",
           "level_d": "lvl_d_C",
           "level_e": "lvl_e_A"
         }
       },
       {
-        "evaluation_index": 7,
+        "evaluation_index": 20,
+        "objective_values": {
+          "response": 20.828300000000002
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_B"
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "response": 24.48659
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "response": 24.72181
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_B",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_A"
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "response": 72.86144
+        },
+        "parameter_values": {
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "response": 67.05521999999999
+        },
+        "parameter_values": {
+          "category_a": "cat_a_A",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 25,
+        "objective_values": {
+          "response": 68.83175
+        },
+        "parameter_values": {
+          "category_a": "cat_a_B",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 26,
+        "objective_values": {
+          "response": 73.69709
+        },
+        "parameter_values": {
+          "category_a": "cat_a_D",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 27,
+        "objective_values": {
+          "response": 62.85221
+        },
+        "parameter_values": {
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_A",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 28,
+        "objective_values": {
+          "response": 17.34333
+        },
+        "parameter_values": {
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_B",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "response": 23.76236
+        },
+        "parameter_values": {
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_C",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "response": 35.02816
+        },
+        "parameter_values": {
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_D",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "response": 17.3
+        },
+        "parameter_values": {
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_E",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "response": 65.21679
+        },
+        "parameter_values": {
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_F",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_C",
+          "level_e": "lvl_e_C"
+        }
+      },
+      {
+        "evaluation_index": 33,
         "objective_values": {
           "response": 17.3
         },
@@ -292,357 +630,19 @@
           "category_a": "cat_a_C",
           "category_b": "cat_b_G",
           "category_c": "cat_c_D",
-          "level_d": "lvl_d_A",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 8,
-        "objective_values": {
-          "response": 21.32969
-        },
-        "parameter_values": {
-          "category_a": "cat_a_D",
-          "category_b": "cat_b_H",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_B",
+          "level_d": "lvl_d_C",
           "level_e": "lvl_e_C"
-        }
-      },
-      {
-        "evaluation_index": 9,
-        "objective_values": {
-          "response": 17.78901
-        },
-        "parameter_values": {
-          "category_a": "cat_a_A",
-          "category_b": "cat_b_I",
-          "category_c": "cat_c_C",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 10,
-        "objective_values": {
-          "response": 19.30556
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_J",
-          "category_c": "cat_c_D",
-          "level_d": "lvl_d_A",
-          "level_e": "lvl_e_C"
-        }
-      },
-      {
-        "evaluation_index": 11,
-        "objective_values": {
-          "response": 27.24733
-        },
-        "parameter_values": {
-          "category_a": "cat_a_C",
-          "category_b": "cat_b_K",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_A"
-        }
-      },
-      {
-        "evaluation_index": 12,
-        "objective_values": {
-          "response": 22.381990000000002
-        },
-        "parameter_values": {
-          "category_a": "cat_a_D",
-          "category_b": "cat_b_L",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 13,
-        "objective_values": {
-          "response": 24.96941
-        },
-        "parameter_values": {
-          "category_a": "cat_a_A",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 14,
-        "objective_values": {
-          "response": 41.24292
-        },
-        "parameter_values": {
-          "category_a": "cat_a_C",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 15,
-        "objective_values": {
-          "response": 30.794200000000004
-        },
-        "parameter_values": {
-          "category_a": "cat_a_D",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 16,
-        "objective_values": {
-          "response": 40.02968
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 17,
-        "objective_values": {
-          "response": 31.48748
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_C",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 18,
-        "objective_values": {
-          "response": 18.51324
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_D",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 19,
-        "objective_values": {
-          "response": 42.69757
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_A",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 20,
-        "objective_values": {
-          "response": 43.57655
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 21,
-        "objective_values": {
-          "response": 41.094359999999995
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_A"
-        }
-      },
-      {
-        "evaluation_index": 22,
-        "objective_values": {
-          "response": 39.67066
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_C"
-        }
-      },
-      {
-        "evaluation_index": 23,
-        "objective_values": {
-          "response": 27.15448
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_A",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 24,
-        "objective_values": {
-          "response": 18.56276
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_H",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 25,
-        "objective_values": {
-          "response": 20.692120000000003
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_K",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 26,
-        "objective_values": {
-          "response": 34.879599999999996
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_L",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_B",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 27,
-        "objective_values": {
-          "response": 28.39248
-        },
-        "parameter_values": {
-          "category_a": "cat_a_A",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 28,
-        "objective_values": {
-          "response": 40.89628
-        },
-        "parameter_values": {
-          "category_a": "cat_a_C",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 29,
-        "objective_values": {
-          "response": 29.302410000000002
-        },
-        "parameter_values": {
-          "category_a": "cat_a_D",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 30,
-        "objective_values": {
-          "response": 47.14199
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 31,
-        "objective_values": {
-          "response": 35.38099
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_C",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 32,
-        "objective_values": {
-          "response": 19.91837
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_D",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
-        }
-      },
-      {
-        "evaluation_index": 33,
-        "objective_values": {
-          "response": 35.20767
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 34,
         "objective_values": {
-          "response": 42.07857
+          "response": 56.37747
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_H",
+          "category_c": "cat_c_D",
           "level_d": "lvl_d_C",
           "level_e": "lvl_e_C"
         }
@@ -650,116 +650,116 @@
       {
         "evaluation_index": 35,
         "objective_values": {
-          "response": 29.81618
+          "response": 40.91485
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_A",
-          "category_c": "cat_c_B",
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_I",
+          "category_c": "cat_c_D",
           "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 36,
         "objective_values": {
-          "response": 17.3
+          "response": 22.77815
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_C",
-          "category_c": "cat_c_B",
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_J",
+          "category_c": "cat_c_D",
           "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 37,
         "objective_values": {
-          "response": 29.70476
+          "response": 48.58426
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_D",
-          "category_c": "cat_c_B",
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_K",
+          "category_c": "cat_c_D",
           "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 38,
         "objective_values": {
-          "response": 31.567950000000003
+          "response": 64.76492
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
+          "category_a": "cat_a_C",
           "category_b": "cat_b_L",
-          "category_c": "cat_c_B",
+          "category_c": "cat_c_A",
           "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 39,
         "objective_values": {
-          "response": 41.7505
+          "response": 37.33703
         },
         "parameter_values": {
           "category_a": "cat_a_C",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_A",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_B",
           "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 40,
         "objective_values": {
-          "response": 40.42584
+          "response": 39.72637
         },
         "parameter_values": {
           "category_a": "cat_a_C",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_B",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_C",
           "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 41,
         "objective_values": {
-          "response": 60.09147
+          "response": 78.26531
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 42,
         "objective_values": {
-          "response": 48.73901
+          "response": 73.25141
         },
         "parameter_values": {
           "category_a": "cat_a_C",
-          "category_b": "cat_b_B",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_B",
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 43,
         "objective_values": {
-          "response": 25.81125
+          "response": 71.51821
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_A",
-          "category_c": "cat_c_A",
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
           "level_d": "lvl_d_C",
           "level_e": "lvl_e_A"
         }
@@ -767,51 +767,51 @@
       {
         "evaluation_index": 44,
         "objective_values": {
-          "response": 19.6522
+          "response": 51.7783
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_C",
-          "category_c": "cat_c_A",
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
           "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "level_e": "lvl_e_B"
         }
       },
       {
         "evaluation_index": 45,
         "objective_values": {
-          "response": 22.06011
+          "response": 79.2
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_D",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "category_a": "cat_a_D",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 46,
         "objective_values": {
-          "response": 17.3
+          "response": 73.66614
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_E",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "category_a": "cat_a_D",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_B",
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 47,
         "objective_values": {
-          "response": 69.40123
+          "response": 69.20315
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_F",
-          "category_c": "cat_c_A",
+          "category_a": "cat_a_D",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
           "level_d": "lvl_d_C",
           "level_e": "lvl_e_A"
         }
@@ -819,90 +819,90 @@
       {
         "evaluation_index": 48,
         "objective_values": {
-          "response": 17.3
+          "response": 74.36561
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_G",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
+          "category_a": "cat_a_D",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_A",
           "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 49,
         "objective_values": {
-          "response": 25.40271
+          "response": 74.26657
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_H",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
+          "category_a": "cat_a_D",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_B",
           "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 50,
         "objective_values": {
-          "response": 42.43759
+          "response": 79.08239
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_I",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_A",
           "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 51,
         "objective_values": {
-          "response": 17.3
+          "response": 72.97905
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_J",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
+          "category_a": "cat_a_C",
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_B",
           "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 52,
         "objective_values": {
-          "response": 31.8465
+          "response": 79.2
         },
         "parameter_values": {
           "category_a": "cat_a_B",
-          "category_b": "cat_b_K",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "category_b": "cat_b_L",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 53,
         "objective_values": {
-          "response": 72.27958
+          "response": 73.87041
         },
         "parameter_values": {
           "category_a": "cat_a_B",
           "category_b": "cat_b_L",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_B",
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 54,
         "objective_values": {
-          "response": 59.12582999999999
+          "response": 67.82897
         },
         "parameter_values": {
-          "category_a": "cat_a_A",
+          "category_a": "cat_a_B",
           "category_b": "cat_b_L",
-          "category_c": "cat_c_A",
+          "category_c": "cat_c_D",
           "level_d": "lvl_d_C",
           "level_e": "lvl_e_A"
         }
@@ -910,79 +910,66 @@
       {
         "evaluation_index": 55,
         "objective_values": {
-          "response": 60.94569
+          "response": 78.71718
         },
         "parameter_values": {
-          "category_a": "cat_a_C",
+          "category_a": "cat_a_B",
           "category_b": "cat_b_L",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_A",
           "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 56,
         "objective_values": {
-          "response": 61.60182999999999
+          "response": 76.40212
         },
         "parameter_values": {
-          "category_a": "cat_a_D",
+          "category_a": "cat_a_B",
           "category_b": "cat_b_L",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
+          "category_c": "cat_c_D",
+          "level_d": "lvl_d_B",
           "level_e": "lvl_e_A"
         }
       },
       {
         "evaluation_index": 57,
         "objective_values": {
-          "response": 56.12987
+          "response": 50.42888000000001
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
+          "category_a": "cat_a_D",
           "category_b": "cat_b_L",
-          "category_c": "cat_c_B",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "category_c": "cat_c_A",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 58,
         "objective_values": {
-          "response": 53.102959999999996
+          "response": 29.234320000000004
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
+          "category_a": "cat_a_D",
           "category_b": "cat_b_L",
-          "category_c": "cat_c_C",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_A"
+          "category_c": "cat_c_B",
+          "level_d": "lvl_d_A",
+          "level_e": "lvl_e_C"
         }
       },
       {
         "evaluation_index": 59,
         "objective_values": {
-          "response": 79.18762000000001
+          "response": 31.462719999999997
         },
         "parameter_values": {
-          "category_a": "cat_a_B",
+          "category_a": "cat_a_D",
           "category_b": "cat_b_L",
-          "category_c": "cat_c_A",
+          "category_c": "cat_c_C",
           "level_d": "lvl_d_A",
-          "level_e": "lvl_e_A"
-        }
-      },
-      {
-        "evaluation_index": 60,
-        "objective_values": {
-          "response": 53.17105000000001
-        },
-        "parameter_values": {
-          "category_a": "cat_a_B",
-          "category_b": "cat_b_L",
-          "category_c": "cat_c_A",
-          "level_d": "lvl_d_C",
-          "level_e": "lvl_e_B"
+          "level_e": "lvl_e_C"
         }
       }
     ],
@@ -992,7 +979,7 @@
     "result_json_valid": true,
     "result_path": "/app/eval-output/masked_discrete_response_pure_llm_gpt54_3x/repeat_001/cases/masked_discrete_response/workspace/bo-mcp-eval/local_results.json",
     "result_schema_failure_reasons": [],
-    "successful_objective_evaluations": 60,
+    "successful_objective_evaluations": 59,
     "verification_status": "verified"
   },
   "metric_notes": [
@@ -1000,7 +987,7 @@
     "Subagent metrics use TaskHandle observability fields when the installed subagent runtime exposes them, with older-runtime fallbacks."
   ],
   "objective_oracle": {
-    "checked_evaluations": 60,
+    "checked_evaluations": 59,
     "mismatch_count": 0,
     "mismatches": [],
     "verification_status": "verified"
@@ -1016,17 +1003,17 @@
         "cost_usd": "main plus subagent cost only when all required cost components are available",
         "usage": "sum of available main/subagent counters"
       },
-      "cache_read_tokens": 121856,
+      "cache_read_tokens": 53760,
       "cache_write_tokens": 0,
       "cost_available": true,
       "cost_source": "main_plus_subagent_cost_breakdown",
-      "cost_usd": 0.3247015,
-      "input_tokens": 161701,
-      "output_tokens": 12975,
-      "reasoning_tokens": 3655,
-      "request_count": 11,
-      "tool_call_count": 64,
-      "total_tokens": 174676
+      "cost_usd": 0.3313125,
+      "input_tokens": 88077,
+      "output_tokens": 15472,
+      "reasoning_tokens": 6231,
+      "request_count": 6,
+      "tool_call_count": 61,
+      "total_tokens": 103549
     },
     "limitations": [
       "nested subagents are not captured",
@@ -1040,23 +1027,23 @@
         "messages": "Pydantic AI result.all_messages()",
         "usage": "Pydantic AI result.usage"
       },
-      "cache_read_tokens": 121856,
+      "cache_read_tokens": 53760,
       "cache_write_tokens": 0,
       "cost_available": true,
       "cost_source": "genai_prices_from_main_response_messages",
-      "cost_usd": 0.3247015,
-      "input_tokens": 161701,
+      "cost_usd": 0.3313125,
+      "input_tokens": 88077,
       "model_names": [
         "gpt-5.4-2026-03-05"
       ],
-      "output_tokens": 12975,
-      "priced_response_count": 11,
+      "output_tokens": 15472,
+      "priced_response_count": 6,
       "provider_names": [
         "openai"
       ],
-      "reasoning_tokens": 3655,
-      "request_count": 11,
-      "tool_call_count": 64,
+      "reasoning_tokens": 6231,
+      "request_count": 6,
+      "tool_call_count": 61,
       "total_tokens": null,
       "unpriced_response_count": 0
     },
