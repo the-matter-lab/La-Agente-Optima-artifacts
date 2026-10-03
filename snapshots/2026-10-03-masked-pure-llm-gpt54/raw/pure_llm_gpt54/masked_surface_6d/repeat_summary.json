@@ -1,0 +1,423 @@
+{
+  "architecture_aggregates": [
+    {
+      "architecture_mode": "main_agent_llm_suggestion_no_bo",
+      "budget_match_rate": 1.0,
+      "cases": [
+        "masked_surface_6d"
+      ],
+      "clean_rate": 1.0,
+      "clean_runs": 3,
+      "cost_per_evaluation": 0.006254380555555556,
+      "issues": "",
+      "mean_normalized_objective": null,
+      "model_id": "openai-responses:gpt-5.4",
+      "provider": "openai-responses",
+      "runs": 3,
+      "seconds_per_evaluation": 2.3877129198672873,
+      "task_success_rate": 1.0,
+      "tokens_per_evaluation": 2872.0,
+      "verification_statuses": {
+        "not_applicable": 3
+      }
+    }
+  ],
+  "groups": [
+    {
+      "architecture_contract_rate": 1.0,
+      "architecture_mode": "main_agent_llm_suggestion_no_bo",
+      "attempted_objective_evaluations": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "benchmark_clean_rate": 1.0,
+      "best_objective_value": {
+        "count": 3,
+        "max": 0.587816938512132,
+        "mean": 0.43214505479481286,
+        "median": 0.4885593466052026,
+        "min": 0.22005887926710382,
+        "variance": 0.024132284516845518
+      },
+      "budget_applicable_runs": 3,
+      "cache_read_tokens": {
+        "count": 3,
+        "max": 141824.0,
+        "mean": 112981.33333333333,
+        "median": 129536.0,
+        "min": 67584.0,
+        "variance": 1055624760.8888888
+      },
+      "cache_write_tokens": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "campaign_verification_rate": 0.0,
+      "case_id": "masked_surface_6d",
+      "clean_runs": 3,
+      "convergence_rate": null,
+      "cost_per_evaluation": {
+        "count": 3,
+        "max": 0.0071082666666666666,
+        "mean": 0.006254380555555556,
+        "median": 0.006393191666666667,
+        "min": 0.0052616833333333345,
+        "variance": 5.779459301080239e-07
+      },
+      "cost_usd": {
+        "count": 3,
+        "max": 0.426496,
+        "mean": 0.3752628333333334,
+        "median": 0.3835915,
+        "min": 0.31570100000000006,
+        "variance": 0.0020806053483888856
+      },
+      "duplicate_rate": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "eval_best_so_far_auc": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "eval_best_so_far_auc_per_evaluation": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "evaluation_budget_delta": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "evaluation_budget_match_rate": 1.0,
+      "expected_evaluation_budget": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "expected_hypervolume_reference_point": null,
+      "failed_evaluation_rate": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "failure_categories": {},
+      "hypervolume_reference_point": null,
+      "input_tokens": {
+        "count": 3,
+        "max": 190204.0,
+        "mean": 156426.33333333334,
+        "median": 176821.0,
+        "min": 102254.0,
+        "variance": 1497171630.8888888
+      },
+      "main_cost_usd": {
+        "count": 3,
+        "max": 0.426496,
+        "mean": 0.3752628333333334,
+        "median": 0.3835915,
+        "min": 0.31570100000000006,
+        "variance": 0.0020806053483888856
+      },
+      "main_total_tokens": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "mode_violation_reasons": {},
+      "model_id": "openai-responses:gpt-5.4",
+      "normalized_best_score": null,
+      "objective_direction": "maximize",
+      "objective_metadata": null,
+      "objective_name": "response",
+      "objective_reducer": "single_objective_best_so_far",
+      "objective_score_comparable": true,
+      "objective_score_family": "scalar:response",
+      "objective_unit": "normalized_unitless",
+      "objectives": [
+        {
+          "direction": "maximize",
+          "name": "response",
+          "unit": "normalized_unitless"
+        }
+      ],
+      "output_tokens": {
+        "count": 3,
+        "max": 18006.0,
+        "mean": 15893.666666666666,
+        "median": 15533.0,
+        "min": 14142.0,
+        "variance": 2553456.222222222
+      },
+      "pass_rate": 1.0,
+      "provider": "openai-responses",
+      "reasoning_tokens": {
+        "count": 3,
+        "max": 5077.0,
+        "mean": 4093.6666666666665,
+        "median": 4224.0,
+        "min": 2980.0,
+        "variance": 741394.8888888889
+      },
+      "request_count": {
+        "count": 3,
+        "max": 10.0,
+        "mean": 9.333333333333334,
+        "median": 10.0,
+        "min": 8.0,
+        "variance": 0.8888888888888888
+      },
+      "runs": 3,
+      "runtime_s": {
+        "count": 3,
+        "max": 160.31659353338182,
+        "mean": 143.26277519203722,
+        "median": 141.4579598363489,
+        "min": 128.01377220638096,
+        "variance": 175.54072351475443
+      },
+      "script_artifact_count": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "script_artifact_hash_diversity": null,
+      "seconds_per_evaluation": {
+        "count": 3,
+        "max": 2.6719432255563635,
+        "mean": 2.3877129198672873,
+        "median": 2.3576326639391483,
+        "min": 2.1335628701063496,
+        "variance": 0.04876131208743173
+      },
+      "subagent_cost_usd": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "subagent_total_tokens": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "successful_objective_evaluations": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "tokens_per_evaluation": {
+        "count": 3,
+        "max": 3470.1666666666665,
+        "mean": 2872.0,
+        "median": 3205.9,
+        "min": 1939.9333333333334,
+        "variance": 446013.614074074
+      },
+      "tool_call_count": {
+        "count": 3,
+        "max": 64.0,
+        "mean": 63.333333333333336,
+        "median": 64.0,
+        "min": 62.0,
+        "variance": 0.8888888888888888
+      },
+      "tool_call_counts_by_name": {
+        "evaluate_masked_surface_6d": 180,
+        "list_monitors": 5,
+        "start_monitor": 5
+      },
+      "total_tokens": {
+        "count": 3,
+        "max": 208210.0,
+        "mean": 172320.0,
+        "median": 192354.0,
+        "min": 116396.0,
+        "variance": 1605649010.6666667
+      },
+      "verification_statuses": {
+        "not_applicable": 3
+      }
+    }
+  ],
+  "output_dir": "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x",
+  "overall_clean_benchmark_rate": 1.0,
+  "overall_pass_rate": 1.0,
+  "repeat_dirs": [
+    "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_001",
+    "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_002",
+    "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_003"
+  ],
+  "repeat_runs": [
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "main_agent_llm_suggestion_no_bo",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": 0.4885593466052026,
+      "campaign_id": null,
+      "case_id": "masked_surface_6d",
+      "converged": null,
+      "cost_usd": 0.426496,
+      "duplicate_rate": null,
+      "eval_best_so_far_auc": null,
+      "eval_best_so_far_auc_per_evaluation": null,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": null,
+      "failure_category": null,
+      "local_result_path": "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_001/cases/masked_surface_6d/workspace/bo-mcp-eval/local_results.json",
+      "mode_violation_reasons": [],
+      "model_id": "openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provider": "openai-responses",
+      "repeat_dir": "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_001",
+      "repeat_id": "repeat_001",
+      "request_count": 10.0,
+      "runtime_s": 160.31659353338182,
+      "script_artifact_count": 0.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 64.0,
+      "tool_call_counts_by_name": {
+        "evaluate_masked_surface_6d": 60,
+        "list_monitors": 2,
+        "start_monitor": 2
+      },
+      "total_tokens": 208210.0,
+      "verification_status": "not_applicable"
+    },
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "main_agent_llm_suggestion_no_bo",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": 0.22005887926710382,
+      "campaign_id": null,
+      "case_id": "masked_surface_6d",
+      "converged": null,
+      "cost_usd": 0.31570100000000006,
+      "duplicate_rate": null,
+      "eval_best_so_far_auc": null,
+      "eval_best_so_far_auc_per_evaluation": null,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": null,
+      "failure_category": null,
+      "local_result_path": "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_002/cases/masked_surface_6d/workspace/bo-mcp-eval/local_results.json",
+      "mode_violation_reasons": [],
+      "model_id": "openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provider": "openai-responses",
+      "repeat_dir": "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_002",
+      "repeat_id": "repeat_002",
+      "request_count": 8.0,
+      "runtime_s": 128.01377220638096,
+      "script_artifact_count": 0.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 62.0,
+      "tool_call_counts_by_name": {
+        "evaluate_masked_surface_6d": 60,
+        "list_monitors": 1,
+        "start_monitor": 1
+      },
+      "total_tokens": 116396.0,
+      "verification_status": "not_applicable"
+    },
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "main_agent_llm_suggestion_no_bo",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": 0.587816938512132,
+      "campaign_id": null,
+      "case_id": "masked_surface_6d",
+      "converged": null,
+      "cost_usd": 0.3835915,
+      "duplicate_rate": null,
+      "eval_best_so_far_auc": null,
+      "eval_best_so_far_auc_per_evaluation": null,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": null,
+      "failure_category": null,
+      "local_result_path": "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_003/cases/masked_surface_6d/workspace/bo-mcp-eval/local_results.json",
+      "mode_violation_reasons": [],
+      "model_id": "openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provider": "openai-responses",
+      "repeat_dir": "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_003",
+      "repeat_id": "repeat_003",
+      "request_count": 10.0,
+      "runtime_s": 141.4579598363489,
+      "script_artifact_count": 0.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 64.0,
+      "tool_call_counts_by_name": {
+        "evaluate_masked_surface_6d": 60,
+        "list_monitors": 2,
+        "start_monitor": 2
+      },
+      "total_tokens": 192354.0,
+      "verification_status": "not_applicable"
+    }
+  ],
+  "run_id": "e8031d4d-7105-457f-b563-cc0f0d9cf707",
+  "schema_version": 1,
+  "timestamp": "2026-10-03T00:10:39+00:00",
+  "total_case_runs": 3
+}

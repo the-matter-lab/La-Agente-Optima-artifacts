@@ -1,0 +1,58 @@
+Repeat cache-buster nonce: 8ed47fd6-bea0-49a7-b926-c4cde7d18fc0
+
+# Black-box six-dimensional surface optimization
+
+Run an optimization workflow over a deterministic black-box objective in six
+normalized dimensions. You can only learn about the objective by querying it.
+
+## Search space
+
+- `p_1`: continuous, lower bound `0.0`, upper bound `1.0`
+- `p_2`: continuous, lower bound `0.0`, upper bound `1.0`
+- `p_3`: continuous, lower bound `0.0`, upper bound `1.0`
+- `p_4`: continuous, lower bound `0.0`, upper bound `1.0`
+- `p_5`: continuous, lower bound `0.0`, upper bound `1.0`
+- `p_6`: continuous, lower bound `0.0`, upper bound `1.0`
+
+## Objective
+
+Maximize a single objective named `response`. Do not assume a closed-form
+expression for the objective.
+
+## Optimization settings
+
+- objective_name: `response`
+- objective_direction: `maximize`
+- mask_id: `issue61-v1`
+
+Choose initialization and batch schedule yourself. Do not evaluate the same point
+more than once.
+
+## Output requirements
+
+Report best parameters, best `response`, successful and attempted evaluation
+counts, and a table of all candidates. Each record must use `parameter_values`
+with ``p_1`, `p_2`, `p_3`, `p_4`, `p_5`, `p_6`` and
+`objective_values: {"response": ...}`.
+
+
+Direct-tool note: call `evaluate_masked_surface_6d` once per candidate. Do not implement an optimizer in code.
+
+Benchmark result contract:
+- Use exactly 60 attempted objective evaluations for this case.
+- Count objective evaluations as PySCF objective calculations submitted to BO-MCP
+  or written to the local result artifact.
+- Do not exceed the evaluation budget. If an evaluation fails, record the failed
+  candidate/status and continue only within the same budget.
+- Report all evaluated candidates and objective values/statuses.
+- Use objective_name=`response` and objective_direction=`maximize`.
+- Report objective values in `normalized_unitless`.
+
+
+Local result record schema:
+- `parameter_values`: non-empty and unique across every attempt, including failures
+- `objective_values`: declared numeric objectives required for successful attempts
+- `status`: required for every attempt
+- `failure_reason`: required for failed attempts
+
+Flat fields and top-level summary counts do not replace ordered result records.

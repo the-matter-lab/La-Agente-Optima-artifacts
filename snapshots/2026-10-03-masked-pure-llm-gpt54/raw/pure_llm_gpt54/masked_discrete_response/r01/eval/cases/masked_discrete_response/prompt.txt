@@ -1,0 +1,60 @@
+Repeat cache-buster nonce: 3550af82-1d47-4a13-9a3a-c36f8f00975e
+
+# Synthetic discrete benchmark optimization
+
+Run an optimization workflow over a deterministic synthetic benchmark in a fixed
+five-dimensional discrete search space. You can only learn about the objective by
+querying it.
+
+## Search space
+
+Use the following five parameters with these lowercase names and values.
+
+- `category_a`: `cat_a_A`, `cat_a_B`, `cat_a_C`, `cat_a_D`
+- `category_b`: `cat_b_A`, `cat_b_B`, `cat_b_C`, `cat_b_D`, `cat_b_E`, `cat_b_F`, `cat_b_G`, `cat_b_H`, `cat_b_I`, `cat_b_J`, `cat_b_K`, `cat_b_L`
+- `category_c`: `cat_c_A`, `cat_c_B`, `cat_c_C`, `cat_c_D`
+- `level_d`: `lvl_d_A`, `lvl_d_B`, `lvl_d_C`
+- `level_e`: `lvl_e_A`, `lvl_e_B`, `lvl_e_C`
+
+## Objective
+
+Maximize a single objective named `response`. Do not assume any
+closed-form expression for the objective.
+
+## Optimization settings
+
+- objective_name: `response`
+- objective_direction: `maximize`
+- mask_id: `issue61-v1`
+
+Choose initialization and batch schedule yourself. Do not evaluate the same point
+more than once.
+
+## Output requirements
+
+Report best parameters, best `response`, successful and attempted
+evaluation counts, and a table of all candidates. Each record must use
+`parameter_values` with `category_a`, `category_b`, `category_c`, `level_d`, `level_e`
+and `objective_values: {"response": ...}`.
+
+
+Direct-tool note: call `evaluate_masked_discrete_response_value` once per candidate. Do not implement an optimizer in code.
+
+Benchmark result contract:
+- Use exactly 60 attempted objective evaluations for this case.
+- Count objective evaluations as PySCF objective calculations submitted to BO-MCP
+  or written to the local result artifact.
+- Do not exceed the evaluation budget. If an evaluation fails, record the failed
+  candidate/status and continue only within the same budget.
+- Report all evaluated candidates and objective values/statuses.
+- Use objective_name=`response` and objective_direction=`maximize`.
+- Report objective values in `normalized_unitless`.
+
+
+Local result record schema:
+- `parameter_values`: non-empty and unique across every attempt, including failures
+- `objective_values`: declared numeric objectives required for successful attempts
+- `status`: required for every attempt
+- `failure_reason`: required for failed attempts
+
+Flat fields and top-level summary counts do not replace ordered result records.
