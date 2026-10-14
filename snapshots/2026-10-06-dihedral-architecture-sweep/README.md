@@ -47,6 +47,24 @@ includes the discarded campaign, and the discarded campaign's best was 0.24 kcal
 architectures differ in convergence speed, cost and time; Specialist-script converges fastest per evaluation, and
 Main-script is the best balance. Full analysis: `report/DIHEDRAL_ARCHITECTURE_COMPARISON_2026-10-06.pdf`.
 
+### Corrections to the report
+
+Checks made after the report (2026-10-14) correct three statements in the PDF; the data in this snapshot are
+unchanged.
+
+- Local-BO r01 and r03 do not use a different angle sign convention: they report all three angles shifted by exactly
+  180°. After that shift, their reported angles match the geometries PySCF computed, as do those of every other run.
+- Local-BO r02's best conformer, with a gauche C–C–O–H angle, is not generally lower than the minimum reached by most
+  runs, (C–C–C–C, C–C–C–O, C–C–O–H) = (180°, ±62°, 180°). Recomputed with the runner's PBE-D4/def2-SVP setup on each
+  run's own molecule, it is 0.40 kcal/mol lower on Local-BO r02's molecule but 0.22 kcal/mol higher on
+  Specialist-script r01's; over all twelve molecules it is lower on seven and higher on five. A single energy offset
+  per run therefore does not hold across conformers, and the report's aligned gaps should not be used to rank runs.
+- Main-script r03 evaluated a point within 6° of that conformer's mirror image, so the statement that no other run came
+  within 10° of it does not hold.
+
+These calculations are separate from the benchmark runs; the script and its results are kept with the manuscript's
+analysis materials (`arxiv_v2/analysis/dihedral-conformer-check.py`).
+
 ## Contents
 
 - `raw/<arm>/dihedral/r0N/eval/`: per repeat, `run_manifest.json`, `summary.json`, `summary.md` and
