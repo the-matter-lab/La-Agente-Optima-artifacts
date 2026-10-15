@@ -1,0 +1,185 @@
+{
+  "bo_mcp_git": {
+    "available": true,
+    "branch": "main",
+    "dirty": false,
+    "repo_path": "/local-scratch/home/lynnfang00/research/bo-mcp-clean",
+    "sha": "56d590b91ac120d0f22a3e41e770843d271808cd",
+    "source": "cli"
+  },
+  "cli": {
+    "argv": [
+      "--case",
+      "dihedral",
+      "--architecture-mode",
+      "main_agent_script_no_bo_mcp",
+      "--repeats",
+      "3",
+      "--repeat-cache-buster",
+      "none",
+      "--request-limit",
+      "120",
+      "--agent-timeout-seconds",
+      "5400",
+      "--model",
+      "litellm-openai-responses:gpt-5.4",
+      "--subagent-model",
+      "litellm-openai-responses:gpt-5.4",
+      "--bo-api-url",
+      "http://127.0.0.1:18910",
+      "--bo-mcp-repo-path",
+      "/local-scratch/home/lynnfang00/research/bo-mcp-clean",
+      "--env-file",
+      "/local-scratch/home/lynnfang00/research/akg4pyscf-result-stabilize/.env",
+      "--run-id",
+      "dihedral-localbo-aligned-baybe-litellm-gpt54-20261006T143026Z",
+      "--output-dir",
+      "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_localbo_aligned_baybe_litellm_gpt54_20261006T143026Z"
+    ],
+    "command": "--case dihedral --architecture-mode main_agent_script_no_bo_mcp --repeats 3 --repeat-cache-buster none --request-limit 120 --agent-timeout-seconds 5400 --model litellm-openai-responses:gpt-5.4 --subagent-model litellm-openai-responses:gpt-5.4 --bo-api-url http://127.0.0.1:18910 --bo-mcp-repo-path /local-scratch/home/lynnfang00/research/bo-mcp-clean --env-file /local-scratch/home/lynnfang00/research/akg4pyscf-result-stabilize/.env --run-id dihedral-localbo-aligned-baybe-litellm-gpt54-20261006T143026Z --output-dir /local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_localbo_aligned_baybe_litellm_gpt54_20261006T143026Z"
+  },
+  "container_deployments": [
+    {
+      "backend": "docker",
+      "container_id": "pyscf",
+      "image_digest": "ecb0cf0adc4af6bc9e67347770d0d1b2a4f0cfe64a87b67645a055446205bd88",
+      "profile": "cpu-smoke",
+      "profile_resources": {
+        "cpu": 2,
+        "gpu_slot_policy": {
+          "slots_per_device": 1
+        },
+        "idle_timeout_seconds": 60,
+        "memory_mb": 16384,
+        "timeout_seconds": 300
+      },
+      "runner_version": "pyscf-graph-v3",
+      "source_digest": "0bd3dcbb1ab2f092b76fd90dac44f78958e69da46e7cabaaaa218c021a9257ca"
+    }
+  ],
+  "environment": {
+    "env_file": "/local-scratch/home/lynnfang00/research/akg4pyscf-result-stabilize/.env",
+    "env_file_values": {
+      "ANTHROPIC_API_KEY": "[REDACTED]",
+      "BO_BACKEND": "baybe",
+      "BO_MCP_API_KEY": "[REDACTED]",
+      "GOOGLE_API_KEY": "<redacted:set>",
+      "GRAPHCHAT_DEEP_MEMORY_ROOT": ".chat_history/memory/bo_mcp",
+      "LITELLM_API_KEY": "<redacted:set>",
+      "LITELLM_OPENAI_BASE_URL": "https://litellm.elagente.ca/v1",
+      "LOGFIRE_TOKEN": "<redacted:set>",
+      "NVIDIA_API_KEY": "[REDACTED]",
+      "OPENROUTER_API_KEY": "[REDACTED]",
+      "SPARQL_ENDPOINT": "http://localhost:27149/blazegraph/namespace/kb/sparql"
+    },
+    "process_env": {
+      "ANTHROPIC_API_KEY": "[REDACTED]",
+      "BO_BACKEND": "baybe",
+      "BO_MCP_API_KEY": "[REDACTED]",
+      "BO_MCP_DEFER_TOOLS": "0",
+      "BO_MCP_URL": "http://127.0.0.1:18911/mcp",
+      "GOOGLE_API_KEY": "<redacted:set>",
+      "GRAFICO_CONTAINER_BACKEND": "docker",
+      "GRAFICO_CONTAINER_LOCK": "/local-scratch/home/lynnfang00/research/akg4pyscf-main-dihedral/.grafico/container_registry.local.lock.json",
+      "GRAFICO_CONTAINER_REGISTRY": "/local-scratch/home/lynnfang00/research/akg4pyscf-main-dihedral/container_registry.toml",
+      "GRAPHCHAT_DEEP_MEMORY_ROOT": ".chat_history/memory/bo_mcp",
+      "LITELLM_API_KEY": "<redacted:set>",
+      "LITELLM_OPENAI_BASE_URL": "https://litellm.elagente.ca/v1",
+      "LOGFIRE_TOKEN": "<redacted:set>",
+      "NVIDIA_API_KEY": "[REDACTED]",
+      "OPENROUTER_API_KEY": "[REDACTED]",
+      "PYSCF_ROUTER_MODEL": "litellm-openai-responses:gpt-5.4",
+      "SPARQL_ENDPOINT": "http://localhost:27149/blazegraph/namespace/kb/sparql"
+    }
+  },
+  "eval": {
+    "agent_timeout_s": 5400.0,
+    "architecture_mode": "main_agent_script_no_bo_mcp",
+    "bo_api_url": "http://127.0.0.1:18910",
+    "case_configs": [
+      {
+        "evaluation_budget": 60,
+        "hypervolume_reference_point": null,
+        "id": "dihedral",
+        "name": "Butanol three-dihedral single-point optimization",
+        "objective_direction": "minimize",
+        "objective_name": "single_point_energy",
+        "objective_unit": "hartree",
+        "objectives": [
+          {
+            "direction": "minimize",
+            "name": "single_point_energy",
+            "unit": "hartree"
+          }
+        ],
+        "provenance_validator": "dihedral"
+      }
+    ],
+    "case_ids": [
+      "dihedral"
+    ],
+    "dry_run": false,
+    "max_concurrency": 1,
+    "output_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_localbo_aligned_baybe_litellm_gpt54_20261006T143026Z/repeat_002",
+    "request_limit": 120,
+    "selector": "dihedral",
+    "tool_registry_config": "containers/orchestrator/tool_registry.toml"
+  },
+  "git": {
+    "available": true,
+    "branch": "agent/dihedral-benchmark-on-main",
+    "dirty": false,
+    "repo_path": "/local-scratch/home/lynnfang00/research/akg4pyscf-main-dihedral",
+    "sha": "0949c2d1525264b2524017936a4f48ae3881c149"
+  },
+  "model": {
+    "model_id": "litellm-openai-responses:gpt-5.4",
+    "model_name": "gpt-5.4",
+    "provider": "litellm-openai-responses"
+  },
+  "model_settings": {
+    "settings": {
+      "openai_reasoning_effort": "medium"
+    },
+    "source": "grafico.core.http.llm_config"
+  },
+  "packages": {
+    "baybe": "0.15.0",
+    "botorch": "0.18.1",
+    "gpytorch": "1.15.2",
+    "numpy": "2.5.1",
+    "openai": "2.45.0",
+    "pydantic-ai": "2.30.0",
+    "pydantic-deep": "0.3.43",
+    "scipy": "1.18.0",
+    "torch": "2.9.1+cpu"
+  },
+  "prompt_cache": {
+    "enabled": false,
+    "nonce": null,
+    "policy": "none"
+  },
+  "repeat": {
+    "repeat_count": 3,
+    "repeat_id": "repeat_002",
+    "repeat_index": 2
+  },
+  "run_id": "dihedral-localbo-aligned-baybe-litellm-gpt54-20261006T143026Z",
+  "schema_version": 1,
+  "subagent_model": {
+    "inherits_main_model": false,
+    "requested_model_id": "litellm-openai-responses:gpt-5.4",
+    "resolved_model": {
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "model_name": "gpt-5.4",
+      "provider": "litellm-openai-responses"
+    },
+    "resolved_model_settings": {
+      "settings": {
+        "openai_reasoning_effort": "medium"
+      },
+      "source": "grafico.core.http.llm_config"
+    }
+  },
+  "timestamp": "2026-10-06T15:11:46+00:00"
+}

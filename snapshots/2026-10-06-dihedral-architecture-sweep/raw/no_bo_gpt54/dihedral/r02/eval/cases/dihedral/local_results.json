@@ -1,0 +1,1448 @@
+{
+  "case_id": "dihedral",
+  "campaign_slug": "butanol_dihedral_bo",
+  "run_token": "20261006T153713Z",
+  "assumed_isomer": "1-butanol",
+  "molecule_smiles": "CCCCO",
+  "objective_name": "total_energy_hartree",
+  "objective_direction": "minimize",
+  "completed_evaluations": 60,
+  "successful_evaluations": 60,
+  "failed_evaluations": 0,
+  "best_objective_value": -233.18681608629328,
+  "best_parameters": {
+    "dihedral_c1_c2_c3_c4_deg": 180.0,
+    "dihedral_c2_c3_c4_o_deg": -63.31065036489126,
+    "dihedral_c3_c4_o_h_deg": -76.84534630454544
+  },
+  "parameter_space": {
+    "bounds_deg": {
+      "dihedral_c1_c2_c3_c4_deg": [
+        -180.0,
+        180.0
+      ],
+      "dihedral_c2_c3_c4_o_deg": [
+        -180.0,
+        180.0
+      ],
+      "dihedral_c3_c4_o_h_deg": [
+        -180.0,
+        180.0
+      ]
+    },
+    "torsion_parameter_names": [
+      "dihedral_c1_c2_c3_c4_deg",
+      "dihedral_c2_c3_c4_o_deg",
+      "dihedral_c3_c4_o_h_deg"
+    ],
+    "torsion_atom_labels": [
+      "C1-C2-C3-C4",
+      "C2-C3-C4-O5",
+      "C3-C4-O5-H15"
+    ]
+  },
+  "method": {
+    "xc_functional": "pbe-d4",
+    "basis_set": "def2-svp",
+    "operation": "single_point_only"
+  },
+  "bayesian_optimization": {
+    "library": "baybe",
+    "seed": 20261006,
+    "initial_random": 12,
+    "batch_size": 4,
+    "max_parallel_molecules": 4
+  },
+  "generated_at": "2026-10-06T15:57:36.003019+00:00",
+  "results": [
+    {
+      "evaluation_index": 1,
+      "batch_index": 1,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-001",
+      "run_id": "eval-001",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 131.13356419174835,
+        "dihedral_c2_c3_c4_o_deg": -96.8805910377744,
+        "dihedral_c3_c4_o_h_deg": 131.89248003538205
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17568214045855
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.17568214045855,
+      "xyz_path": "artifacts/xyz/candidate_001.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-001/molecules/0-eval-001-cbb561f796a2/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 2,
+      "batch_index": 1,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-001",
+      "run_id": "eval-002",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -138.33634102784575,
+        "dihedral_c2_c3_c4_o_deg": 168.48969154852853,
+        "dihedral_c3_c4_o_h_deg": -44.33389173733636
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1805825965135
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.1805825965135,
+      "xyz_path": "artifacts/xyz/candidate_002.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-001/molecules/1-eval-002-5990fa6311b9/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 3,
+      "batch_index": 1,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-001",
+      "run_id": "eval-003",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -130.96889140235942,
+        "dihedral_c2_c3_c4_o_deg": 161.30188012850067,
+        "dihedral_c3_c4_o_h_deg": 173.99399923196597
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1783806701889
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.1805825965135,
+      "xyz_path": "artifacts/xyz/candidate_003.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-001/molecules/2-eval-003-4dda6d1c0ec6/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 4,
+      "batch_index": 1,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-001",
+      "run_id": "eval-004",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 20.231573050361476,
+        "dihedral_c2_c3_c4_o_deg": -79.2252755398008,
+        "dihedral_c3_c4_o_h_deg": -117.59684960049293
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17598135250745
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.1805825965135,
+      "xyz_path": "artifacts/xyz/candidate_004.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-001/molecules/3-eval-004-1560d80059ad/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 5,
+      "batch_index": 2,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-002",
+      "run_id": "eval-005",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -37.341041637783974,
+        "dihedral_c2_c3_c4_o_deg": -175.74040494382734,
+        "dihedral_c3_c4_o_h_deg": -71.6459194471563
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18243322305344
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18243322305344,
+      "xyz_path": "artifacts/xyz/candidate_005.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-002/molecules/0-eval-005-de12ec7b9bc3/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 6,
+      "batch_index": 2,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-002",
+      "run_id": "eval-006",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 128.6258821196251,
+        "dihedral_c2_c3_c4_o_deg": -166.79583856338948,
+        "dihedral_c3_c4_o_h_deg": 118.57202978287432
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17806242992887
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18243322305344,
+      "xyz_path": "artifacts/xyz/candidate_006.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-002/molecules/1-eval-006-7a163f132ce2/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 7,
+      "batch_index": 2,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-002",
+      "run_id": "eval-007",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 130.37262238529098,
+        "dihedral_c2_c3_c4_o_deg": -116.88686363593312,
+        "dihedral_c3_c4_o_h_deg": 81.81624736559826
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17328124712154
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18243322305344,
+      "xyz_path": "artifacts/xyz/candidate_007.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-002/molecules/2-eval-007-5cffea581068/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 8,
+      "batch_index": 2,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-002",
+      "run_id": "eval-008",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -138.24100224318175,
+        "dihedral_c2_c3_c4_o_deg": -99.63659484054313,
+        "dihedral_c3_c4_o_h_deg": 69.52768500462798
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17574183484922
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18243322305344,
+      "xyz_path": "artifacts/xyz/candidate_008.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-002/molecules/3-eval-008-8eb1839934e3/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 9,
+      "batch_index": 3,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-003",
+      "run_id": "eval-009",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 78.27690781354659,
+        "dihedral_c2_c3_c4_o_deg": -67.77756372668371,
+        "dihedral_c3_c4_o_h_deg": 41.920375484395834
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1787840863748
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18243322305344,
+      "xyz_path": "artifacts/xyz/candidate_009.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-003/molecules/0-eval-009-92c8f64ec874/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 10,
+      "batch_index": 3,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-003",
+      "run_id": "eval-010",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 155.47054749996101,
+        "dihedral_c2_c3_c4_o_deg": -64.03277279524522,
+        "dihedral_c3_c4_o_h_deg": -83.9042535512631
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18531118086685
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18531118086685,
+      "xyz_path": "artifacts/xyz/candidate_010.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-003/molecules/1-eval-010-c418cd72de4b/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 11,
+      "batch_index": 3,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-003",
+      "run_id": "eval-011",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 148.7139042704747,
+        "dihedral_c2_c3_c4_o_deg": -121.22928216475407,
+        "dihedral_c3_c4_o_h_deg": 106.5325209036319
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1750437554439
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18531118086685,
+      "xyz_path": "artifacts/xyz/candidate_011.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-003/molecules/2-eval-011-4a68a091d4f9/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 12,
+      "batch_index": 3,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-003",
+      "run_id": "eval-012",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -49.69560496372941,
+        "dihedral_c2_c3_c4_o_deg": -169.51132085452363,
+        "dihedral_c3_c4_o_h_deg": 176.35227741822126
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18365281636443
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18531118086685,
+      "xyz_path": "artifacts/xyz/candidate_012.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-003/molecules/3-eval-012-816a11551926/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 13,
+      "batch_index": 4,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-004",
+      "run_id": "eval-013",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": -46.26825390017431,
+        "dihedral_c3_c4_o_h_deg": -103.17921714490663
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18490077147217
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18531118086685,
+      "xyz_path": "artifacts/xyz/candidate_013.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-004/molecules/0-eval-013-79311585de5c/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 14,
+      "batch_index": 4,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-004",
+      "run_id": "eval-014",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 166.1685807537361,
+        "dihedral_c2_c3_c4_o_deg": -105.19576894968046,
+        "dihedral_c3_c4_o_h_deg": -93.05980320668435
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17956290134583
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18531118086685,
+      "xyz_path": "artifacts/xyz/candidate_014.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-004/molecules/1-eval-014-c1fd02426b78/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 15,
+      "batch_index": 4,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-004",
+      "run_id": "eval-015",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 150.18237179622108,
+        "dihedral_c2_c3_c4_o_deg": -23.903511483510517,
+        "dihedral_c3_c4_o_h_deg": -67.54658973077163
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17862312204548
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18531118086685,
+      "xyz_path": "artifacts/xyz/candidate_015.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-004/molecules/2-eval-015-03a2f0af2c72/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 16,
+      "batch_index": 4,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-004",
+      "run_id": "eval-016",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 142.86053496248513,
+        "dihedral_c2_c3_c4_o_deg": -52.728984884789355,
+        "dihedral_c3_c4_o_h_deg": -121.2970342475139
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1817686809589
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18531118086685,
+      "xyz_path": "artifacts/xyz/candidate_016.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-004/molecules/3-eval-016-8ff16507b3b7/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 17,
+      "batch_index": 5,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-005",
+      "run_id": "eval-017",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": -63.31065036489126,
+        "dihedral_c3_c4_o_h_deg": -76.84534630454544
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18681608629328
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_017.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-005/molecules/0-eval-017-c3036dbe4450/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 18,
+      "batch_index": 5,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-005",
+      "run_id": "eval-018",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -86.18466432175899,
+        "dihedral_c2_c3_c4_o_deg": -180.0,
+        "dihedral_c3_c4_o_h_deg": 74.73732228208377
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18334737369608
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_018.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-005/molecules/1-eval-018-b27136145c6c/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 19,
+      "batch_index": 5,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-005",
+      "run_id": "eval-019",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": -59.00584581201772,
+        "dihedral_c3_c4_o_h_deg": -17.22424733553938
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18503198843317
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_019.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-005/molecules/2-eval-019-4842408e3dae/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 20,
+      "batch_index": 5,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-005",
+      "run_id": "eval-020",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -108.52107263391413,
+        "dihedral_c2_c3_c4_o_deg": -180.0,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18044782932685
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_020.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-005/molecules/3-eval-020-6c8ecab8d228/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 21,
+      "batch_index": 6,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-006",
+      "run_id": "eval-021",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -125.5219086659987,
+        "dihedral_c2_c3_c4_o_deg": -180.0,
+        "dihedral_c3_c4_o_h_deg": -169.737473518333
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1797451702716
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_021.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-006/molecules/0-eval-021-eb842050ecb0/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 22,
+      "batch_index": 6,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-006",
+      "run_id": "eval-022",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -7.477286780232035,
+        "dihedral_c2_c3_c4_o_deg": -180.0,
+        "dihedral_c3_c4_o_h_deg": 99.33463752828024
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17478540169859
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_022.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-006/molecules/1-eval-022-f62cfb60441d/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 23,
+      "batch_index": 6,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-006",
+      "run_id": "eval-023",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -20.490090683068857,
+        "dihedral_c2_c3_c4_o_deg": 180.0,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17786663158452
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_023.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-006/molecules/2-eval-023-3a13c8abc7b3/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 24,
+      "batch_index": 6,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-006",
+      "run_id": "eval-024",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": -67.56769293657443,
+        "dihedral_c3_c4_o_h_deg": -123.36458655392133
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1845342254452
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_024.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-006/molecules/3-eval-024-dd225224793c/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 25,
+      "batch_index": 7,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-007",
+      "run_id": "eval-025",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -69.83355783543513,
+        "dihedral_c2_c3_c4_o_deg": -147.09236946179485,
+        "dihedral_c3_c4_o_h_deg": 132.82709081077792
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1801072446392
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_025.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-007/molecules/0-eval-025-221f67eb6f07/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 26,
+      "batch_index": 7,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-007",
+      "run_id": "eval-026",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -79.20347176056805,
+        "dihedral_c2_c3_c4_o_deg": -157.15448775079125,
+        "dihedral_c3_c4_o_h_deg": -30.55838126705505
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18219285836594
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_026.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-007/molecules/1-eval-026-69fa1f62f07a/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 27,
+      "batch_index": 7,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-007",
+      "run_id": "eval-027",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -47.26823288145102,
+        "dihedral_c2_c3_c4_o_deg": -180.0,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1831744604278
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_027.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-007/molecules/2-eval-027-24f27ce561d7/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 28,
+      "batch_index": 7,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-007",
+      "run_id": "eval-028",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -55.19506396111119,
+        "dihedral_c2_c3_c4_o_deg": -134.02265120753216,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1802016323496
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_028.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-007/molecules/3-eval-028-b3078beef651/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 29,
+      "batch_index": 8,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-008",
+      "run_id": "eval-029",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -54.25487088433779,
+        "dihedral_c2_c3_c4_o_deg": -143.51174344688383,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18144543457734
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_029.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-008/molecules/0-eval-029-a746550c2ccd/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 30,
+      "batch_index": 8,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-008",
+      "run_id": "eval-030",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 126.72346282215607,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17994294838797
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_030.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-008/molecules/1-eval-030-16279ab7a22e/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 31,
+      "batch_index": 8,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-008",
+      "run_id": "eval-031",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -95.57032874851143,
+        "dihedral_c2_c3_c4_o_deg": 98.89991930727761,
+        "dihedral_c3_c4_o_h_deg": -41.49469852972683
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17767103982533
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_031.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-008/molecules/2-eval-031-fcf9312799f3/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 32,
+      "batch_index": 8,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-008",
+      "run_id": "eval-032",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 5.663208325174213,
+        "dihedral_c2_c3_c4_o_deg": -180.0,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17584571039404
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_032.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-008/molecules/3-eval-032-5bd1f88a43d8/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 33,
+      "batch_index": 9,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-009",
+      "run_id": "eval-033",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 45.57681284516213,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1848641558124
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_033.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-009/molecules/0-eval-033-45b1d0cedae6/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 34,
+      "batch_index": 9,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-009",
+      "run_id": "eval-034",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": 180.0,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18501505895577
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_034.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-009/molecules/1-eval-034-7fcdb66c71b4/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 35,
+      "batch_index": 9,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-009",
+      "run_id": "eval-035",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -71.41029266621794,
+        "dihedral_c2_c3_c4_o_deg": -180.0,
+        "dihedral_c3_c4_o_h_deg": -99.01876398005666
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18402348102862
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_035.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-009/molecules/2-eval-035-df6915916d16/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 36,
+      "batch_index": 9,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-009",
+      "run_id": "eval-036",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 61.99405799206816,
+        "dihedral_c2_c3_c4_o_deg": 109.8939222804524,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17967184134386
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_036.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-009/molecules/3-eval-036-c0fdeee558c0/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 37,
+      "batch_index": 10,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-010",
+      "run_id": "eval-037",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 146.53349236920144,
+        "dihedral_c2_c3_c4_o_deg": 180.0,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.182191594292
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_037.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-010/molecules/0-eval-037-209e953d3a6d/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 38,
+      "batch_index": 10,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-010",
+      "run_id": "eval-038",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": 149.82855204822056,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18212570332884
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_038.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-010/molecules/1-eval-038-b8e63787c9c7/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 39,
+      "batch_index": 10,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-010",
+      "run_id": "eval-039",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": 180.0,
+        "dihedral_c3_c4_o_h_deg": 72.43594698077229
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18531822660265
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_039.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-010/molecules/2-eval-039-da711415c584/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 40,
+      "batch_index": 10,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-010",
+      "run_id": "eval-040",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 14.336705282956531,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.1792844663034
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_040.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-010/molecules/3-eval-040-038b767ac086/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 41,
+      "batch_index": 11,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-011",
+      "run_id": "eval-041",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 68.50324514959068,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18601493871375
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_041.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-011/molecules/0-eval-041-1c3e6b52c0f8/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 42,
+      "batch_index": 11,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-011",
+      "run_id": "eval-042",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 58.94384310143296,
+        "dihedral_c3_c4_o_h_deg": -84.02312425281063
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18667788961716
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_042.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-011/molecules/1-eval-042-442b60649031/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 43,
+      "batch_index": 11,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-011",
+      "run_id": "eval-043",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -153.5053740343177,
+        "dihedral_c2_c3_c4_o_deg": 57.07571142145214,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18397891774669
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_043.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-011/molecules/2-eval-043-795cdda42c9c/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 44,
+      "batch_index": 11,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-011",
+      "run_id": "eval-044",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": 180.0,
+        "dihedral_c3_c4_o_h_deg": -66.15722473286631
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18611365445406
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_044.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-011/molecules/3-eval-044-f875183fe0c1/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 45,
+      "batch_index": 12,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-012",
+      "run_id": "eval-045",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 65.36366668262104,
+        "dihedral_c3_c4_o_h_deg": 32.07526960828133
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18561768076222
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_045.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-012/molecules/0-eval-045-271279e6df6b/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 46,
+      "batch_index": 12,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-012",
+      "run_id": "eval-046",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 165.70085263725875,
+        "dihedral_c2_c3_c4_o_deg": 180.0,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18447244041926
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_046.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-012/molecules/1-eval-046-bf2cde8c2fa8/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 47,
+      "batch_index": 12,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-012",
+      "run_id": "eval-047",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 55.190214156529976,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18591896434836
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_047.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-012/molecules/2-eval-047-61e20d25e3d5/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 48,
+      "batch_index": 12,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-012",
+      "run_id": "eval-048",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": 163.91930270122916,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18391257165396
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_048.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-012/molecules/3-eval-048-03a1cedb5343/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 49,
+      "batch_index": 13,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-013",
+      "run_id": "eval-049",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 56.48768928512327,
+        "dihedral_c3_c4_o_h_deg": -33.23512900943997
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18517490539236
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_049.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-013/molecules/0-eval-049-256f6451659a/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 50,
+      "batch_index": 13,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-013",
+      "run_id": "eval-050",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -160.6812514397983,
+        "dihedral_c2_c3_c4_o_deg": 51.630520777497225,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18445884494145
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_050.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-013/molecules/1-eval-050-85686f295a42/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 51,
+      "batch_index": 13,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-013",
+      "run_id": "eval-051",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -118.41110339691531,
+        "dihedral_c2_c3_c4_o_deg": 28.18199509888926,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.17691531797064
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_051.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-013/molecules/2-eval-051-44e873ad5513/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 52,
+      "batch_index": 13,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-013",
+      "run_id": "eval-052",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 40.918824493803776,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18411209705906
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_052.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-013/molecules/3-eval-052-339ec74f8ff8/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 53,
+      "batch_index": 14,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-014",
+      "run_id": "eval-053",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 62.79225694065325,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18617625479118
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_053.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-014/molecules/0-eval-053-2192806ba8e0/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 54,
+      "batch_index": 14,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-014",
+      "run_id": "eval-054",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -171.41220172827022,
+        "dihedral_c2_c3_c4_o_deg": 67.44320793266311,
+        "dihedral_c3_c4_o_h_deg": -50.96482295038632
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18615504005805
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_054.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-014/molecules/1-eval-054-07dd63453e73/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 55,
+      "batch_index": 14,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-014",
+      "run_id": "eval-055",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": 79.84708512089409,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18491994201418
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_055.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-014/molecules/2-eval-055-9ff167c728f7/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 56,
+      "batch_index": 14,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-014",
+      "run_id": "eval-056",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": -180.0,
+        "dihedral_c2_c3_c4_o_deg": 72.63873771786001,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18572353407578
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_056.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-014/molecules/3-eval-056-b0c595294c89/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 57,
+      "batch_index": 15,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-015",
+      "run_id": "eval-057",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": 70.06503800335018,
+        "dihedral_c3_c4_o_h_deg": 180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18592118228176
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_057.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-015/molecules/0-eval-057-c3fd910f53c2/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 58,
+      "batch_index": 15,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-015",
+      "run_id": "eval-058",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 147.44379501062383,
+        "dihedral_c2_c3_c4_o_deg": 88.36673680966331,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18000613985654
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_058.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-015/molecules/1-eval-058-2f273b0458c6/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 59,
+      "batch_index": 15,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-015",
+      "run_id": "eval-059",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 180.0,
+        "dihedral_c2_c3_c4_o_deg": 51.37133398481915,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18559177704628
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_059.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-015/molecules/2-eval-059-ab31207f1f51/result.json",
+      "pyscf_batch_status": "ok"
+    },
+    {
+      "evaluation_index": 60,
+      "batch_index": 15,
+      "batch_size": 4,
+      "batch_id": "butanol_dihedral_bo-20261006T153713Z-batch-015",
+      "run_id": "eval-060",
+      "parameter_values": {
+        "dihedral_c1_c2_c3_c4_deg": 170.20038611532553,
+        "dihedral_c2_c3_c4_o_deg": -60.52022504491367,
+        "dihedral_c3_c4_o_h_deg": -180.0
+      },
+      "objective_values": {
+        "total_energy_hartree": -233.18611724260077
+      },
+      "status": "ok",
+      "failure_reason": null,
+      "best_objective_value_so_far": -233.18681608629328,
+      "xyz_path": "artifacts/xyz/candidate_060.xyz",
+      "pyscf_molecule_result_path": ".grafico-runners/pyscf/runs/butanol_dihedral_bo-20261006T153713Z-batch-015/molecules/3-eval-060-6cda8b6208c5/result.json",
+      "pyscf_batch_status": "ok"
+    }
+  ],
+  "provenance_verification": {
+    "verification_status": "verified",
+    "failure_reasons": [],
+    "reported_choices": null,
+    "reported_choice_source": null,
+    "objective_call_evidence_source": "pyscf_runner_batches",
+    "workspace_path": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_localbo_aligned_baybe_litellm_gpt54_20261006T143026Z/repeat_002/cases/dihedral/workspace/bo-mcp-eval",
+    "audited_batches": 30,
+    "audited_pyscf_calls": 117,
+    "compliant_pyscf_calls": 117,
+    "noncompliant_call_reasons": {},
+    "audited_identifier_hashes": [
+      "0255b0e6d9be24eea108c307dc5c32eacbbe3674b50eee0e032877e22c82875c",
+      "05341961f2ee465f541ed639fe7910fd64e0a539b8fe4c8e59b56e7f6f438498",
+      "0baf557672c1cf087d97d6fb2473c50dcbc4698568c72238f2a8fb6fa5b6299a",
+      "0c2da1161d4f0c8a2b47230ecac34a0c797d2182d354258dfe546f743e3cc282",
+      "0e78ba32f2d0407d957e6ba5b40626f3978a7b806cb51e2e57db7acbdb3490b3",
+      "12499189f110461cac985433df8495273a8ca0de85f7e24f687cc4f27a9659ca",
+      "13fcb5b14cb9afa06505522e7c085d2ba47ed683f1fe12aaab7a310ab827bead",
+      "176d17739c133e2f75b56dc9fd760d68627a8e4baa98264b69ba91d4efb59aba",
+      "19f984381e445178d677bd2ebd4b7443cfcdc632561f0242f9962b0a25b4e13e",
+      "1ad8e9f2682f0f196ebf1651024b015b70e69473173aa4acb38cd4bf66285673",
+      "1d3cedd25b5cce23b2543532d40c13ff8879a00c15472106a7667cfe2a36bc52",
+      "204398440c335f44b3874a8b3f4a7650d9832ad5181cfe3814bc0c26793621f9",
+      "20a9b9992958fab73dda2216f3c53c23c5a70cac1681638fa9263a75e23b9db7",
+      "2219163b5de948653ff67d6957aed7d9a5b6c2f71f1f415e912f2dcbf5e38c59",
+      "2297030d316e517552558cbc0ef8308491949838e2424e85483215206a0ca261",
+      "28ad6829b5d87f14b469e28440985e2ab1f1c3170a1ea3bf14248160e0996af8",
+      "2bfd3151a9f0b05d39a4e19b26dea10aeaf658ccc388267bab4cd088fc8431d6",
+      "2d7f2db98b994cebe2b9dbfab1e2b457ef36cafdc8ae66d93deca2fe1cc6b71e",
+      "3295d0b85b738362bb9ced274b3051fddefb10233cb7e748a5e46fb058b0c36a",
+      "382e17cd6bc0f80d6fcf9012618488174db324a5e3291125e907dd861241eb5c",
+      "392f7301a6678536fa3d8eb8e84f2ba06cba90c5ddc3fe9030fbab4b11f28c6e",
+      "39af8d3a192d8e55578345cf83d6f975cc073b948eec422cbbce1696346a83eb",
+      "39d80b312c7b965d42773ab3b34b9c49cb876898c25ab02b16b791eff07c067c",
+      "3a4664fd70e6a2e27f527387853499130b5a8b9c3b0402c01f381d3d1b60cb1d",
+      "3b51da9f83c242582a399c445c600c4c5965f3f8528a2bb365eb861b9a15112d",
+      "3dbc46e001b9e0015bd219057597aa9509c4d875cad7fdb7677691b31dd0499f",
+      "3df70d8ab10894cc4b3fe1c4af954ff5f157b35605ab001b3f883473c66115cc",
+      "3e7b84c7892874cabb8c5cd4e4c12345c76198363511575fbbb4b6ff3af32983",
+      "3f2d4f6e85d9c5735d70bea52b93d933139c6d38a0158ab2062a94371de99518",
+      "40a6b1d9fefff63ceefb3bd747b2a7367bbce2c08b78657c153c9e3cb4510f92",
+      "42f884fa5db3fd29b2fa23017d8c51dd2592b3d4b05cc7cd7d4e42f40b541892",
+      "43e8c61aa14072dacbf48f217ade6bcbbbaabaa50c5f3e12281a6bc5bc68038d",
+      "452adcdbe8f59275cfdf1d4e7ab22d47a1efce68e5e3d33d4269e58f16781c1e",
+      "460410733a0a7a810094024ae307024e6c41df2b04cde770d00d58f5e29b5e0f",
+      "47cc8d92cbcc655f7f0523ec93e09631c7ce9eac7635875f7bd35f05215233ee",
+      "4980f1685f6dea25951dbc60c92fe8c7d128ab8d521c03d3248bf420fd792696",
+      "4aab875a6327493fa39aedbf6e1a5cbfb3b24e7d3aaed2bc820bb5a5fc95e75d",
+      "52063cb7d4aa571efaff30fecbcda5abbc238a3cafeaf1b02be07f18a9a86da8",
+      "56c09cbb5864cac4eebcac8aa82460edb4b0121a0b052c146640efbacfd08d94",
+      "572026e3f70204a29c28e49848a42d87ba1a58a6f8309b74c7659ab193198130",
+      "58a5a5d6257a2aba56e10afabd20cbec7f489faa39f2584f92df1bd413f2ed39",
+      "5a79da6b38db7a1c6a853253deb88ca9614aa4c10979cf0b5ab77fb3c85f94e1",
+      "5b12050757ba97b62b212de305ac74d477c71f50ff32bb41a01ede20fceed117",
+      "5bbcf69b7af747861bbc1768e2f0b4163554bcfba6d98b3829991bd743fa0080",
+      "61b9f4d21b955efbef018dd3c49f422120586e4d6103680615dddcb1758ce02b",
+      "641fa94d680a04de0b768901f8abb152d6da9b11c095169f6309ed0e2d33db82",
+      "65c2fc72f05eeb2a0893713973eac3fc4e4743e401c2fd84af8b38c94ae9dd7d",
+      "6ae8ff7ab9f987296b456d35810298ca4407f68fad4689f6059b19c308a1b344",
+      "6dfbe251187c4df5d29f066c80e5d421199ece93e907f51d5ca37fa8b4c5c6f5",
+      "6fbe0773bf9302d72a65e138352c66c121f7cee06b0017ae69b3289074d48570",
+      "7aadf87e6216ec56beee9226e8ce6a8c8120c7a218415a2efe884a6cff8366bc",
+      "7cb01efc95040ea9996cff84257601c698041e1e26c67783c15df400255d1377",
+      "7ddc46477b88dc776fdb3233af0bdf2663f78b534a76baf70d66b3e5f2d38bd9",
+      "7eb6e90ed635738c59c4bb0867c5391ba10bc99fed76c054ee5a8b51d3bf6a7c",
+      "7f2c71949ebe617fdba04e699d2fb15e2dae36bf5329706db299faa34e9226d9",
+      "809701842f32ab62e0275ee1766d400c40a77ef36c298fe3d1f159cf8411336e",
+      "8319caa3692eb933b259e747499b269c8956199905a3d3e18c3d9210364791e3",
+      "83caad409675974fb1b26874f3ff384b2f9b61ada11f6f4852846eaac86d6a9d",
+      "8775cd0993271bcdb1da0ed026d4f7462aba6820a687f4ffa2292e3dcf8b700a",
+      "884c28db75736bbd2b33a01ac2a23ef60ff636395c96babc780709b77a21d6fd",
+      "8b64e7e7733fc722436dba2efb06163f7842af86bd8382be0d75cc70b39ce8dc",
+      "8b93aa34800aaf1133d088c22fae2534b62e999ad76edbce955badbee40f2a2d",
+      "8c6addc83305575353d96b1d97e30a4f12d80a1c399120b3c33918bf24b520a0",
+      "9255cf8a592892f3d9e67100bd16b6f7983a354a6bfba9db2e2c4ca8f1ddf3e5",
+      "9357f730a38858a2672543c754dfc7d94c912ae33bbc9a6e1712fe84767f727b",
+      "96f0a2dc8fc3d140a47d32d615386a65a2d5965430a63d4fbda8ca63460d6b5b",
+      "970672692cf245b07007b455d5e817941cebebfee13fc73bd0d3534dfac67e81",
+      "99057cb83a41b7bbfef3c131386a921a52bb30d08cedbd9ef0effbf0b11f0f62",
+      "9d265b5c62a65900f472db523f270db389bcefd33ccdda6de754369f1ccedbcd",
+      "a0576ef17e31489e9127eef392e018d66c80a4f21041b2ecaaf500104cf1fc9e",
+      "a1c786dc447e221bd1205b6e5ca7af5b0c29667edbe42a13bc6f0fed09418995",
+      "aa3ad8cfc9a805c621f5b396b28e787572faea9d4d7786c3a91059a7fbce765f",
+      "ab3e3c2b8957fa8fdff1c3fd37cd0388216845bd178abf1ab79b9348191c2c31",
+      "b03d7d4170053fdca984849189a96cc0240c904a6f6f784147ad91dc38fc51db",
+      "b4e9009c9739b9e9035c5c4ddcaf42c41f1c001254a257e180fd998ce64a933a",
+      "b7521ce6d1da6fe8bbb52750b72e146562fba01ab7a7da8e7176baa3ed978980",
+      "b852d1d33d4f61af0bac6932735ea4bf7f1ef49162d3bf0243bc7b0a847db375",
+      "b900c90d479e2011e470b32890410bf3e7a306193b7aad50cf31ab36ef9a8166",
+      "ba168fd050bbd6427c65aeca381ed5f194b557bb1f05e0de10bd6819dd7722fb",
+      "baa16424da30fce7e751981ce0264e9fa4a5ea6ee6c12de4ec506adc4f0b60b3",
+      "bf8514e313243801ac595ed71fbca59ddc00a392bf763c08a752ccd2c7be384e",
+      "bf980c355872bf41b4cd5f9bce368463b95fb9c9bc1c73d7b8f19c63ae3066ac",
+      "c1804ee5961650c8e4d933c317e61a2be717f2bbb535f88b87b9cd6cd8dc41e8",
+      "c42f1df4fefec557cf9db150c7408792b4d995d7986c522c341f78c3d46e85f3",
+      "c799f37c396c7fdbc7655e846c70b8de46e889d6296c5cabffbeb5f225cd6591",
+      "c8bcc0e590f6a795ea82afbfaed11a46e1f7c6ef1ca2ab9632f54ea66e65639d",
+      "ca2070e1a01457666d225ab1059c019ecbdc832ca460673c8e36aec391ada497",
+      "cc65a2f0395ee9b933e4ef02988945015891c2c9baeaa4e5b5c5cb8e08646268",
+      "ce25634affe0b5bc2e0b6c86da015add7b17c37bddab77d712538a967fafb966",
+      "ce945ba25ea3a58251b99e531c35abc9b4ea41a418aac363264d353f247dfd5d",
+      "d32fb22a4402cd16b6938204f70724e224696d13cd73467fd02ef3a1afc4bcdd",
+      "d5dfcbc42452a2e617eff89b2955a97565548ca034b817a8bc0564ba39fcdba4",
+      "d5e4bae7fef3950f80cd43a2839e557dfc5c65eb98516f793688b421766f036c",
+      "d8b9d476db76bd166ef8a2b8ffbbc243817089c5e9f7d9aac0670d73134c7c9f",
+      "d9eb77d011a727188713d71d7a8389eae7b5fcc5d87c810bd7db9943c8d07c8d",
+      "dc24adb278427b6ee3957e4e1c9e6a966619eea49988442f47a0761ad2a26785",
+      "dc5f9d8b990f63711248c395bfb035bcbe1ca34b5bdf89b68d671389127e797c",
+      "de095295581d96e5523eaac093cbc692a67979523b2e09b9babbf1b8ab9026db",
+      "e23601962570d6626790a583fbaef829393ff0bcea0f771a6cd051db7fd9dbac",
+      "e307ae255064c7f3908ac795009652b5550fb978ed1019d6652595fd393b1dbb",
+      "e787435d4f016d77d9d17f36cc4a081ab0ec97116d6732506fd117195778c83e",
+      "e93c77bb499bc158a6dec2c129de15df478463bdd1a8326a5a2726dcc5348c54",
+      "e95612c69d848d1c6c1a1c944126cba59638e17c03a9a39665602cc0104471ce",
+      "f3d4c30c86323d71287d363765379127db097674dc265b47cd1cdcfdbf2aff4f",
+      "f85a4f01d4e749cfad94f94249e2824d292dff66fbe0c59af3ed42fb66317739",
+      "fab62bb5f1aa69b8053b74804b112369467c452d73e4bec1f9b3d3d5b5136961",
+      "fb6e973ac04e3d03bfd7f10fc6dce81bfd9a876936f3fb865a6d4f8e8d2f6bbc",
+      "fdcdc560caf107e1b4874fd54a9965639b2a3cc921202712257588b0df4b4571"
+    ],
+    "audited_accelerator_policies": [
+      "auto"
+    ],
+    "audited_max_parallel_molecules": [
+      1,
+      4
+    ]
+  }
+}

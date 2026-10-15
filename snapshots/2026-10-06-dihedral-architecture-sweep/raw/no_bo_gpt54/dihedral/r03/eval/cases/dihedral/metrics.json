@@ -1,0 +1,1076 @@
+{
+  "agent": {
+    "_source": {
+      "cost_usd": "Pydantic Evals ReportCase.metrics['cost'] when available; main-agent estimated cost is reported under usage_split.main.cost_usd",
+      "pydantic_eval_task_duration_s": "Pydantic Evals ReportCase.task_duration when available",
+      "pydantic_eval_total_duration_s": "Pydantic Evals ReportCase.total_duration when available",
+      "runtime_s": "wall-clock time around agent.run(...) in evals.bo_mcp.runner",
+      "usage": "Pydantic AI result.usage"
+    },
+    "cache_read_tokens": 1138834,
+    "cache_write_tokens": 0,
+    "campaign_id_present": false,
+    "campaign_verified": false,
+    "cost_usd": 0.8894434999999999,
+    "final_answer_present": true,
+    "input_tokens": 1271990,
+    "output_tokens": 18123,
+    "pydantic_eval_task_duration_s": 2361.42549771,
+    "pydantic_eval_total_duration_s": 2361.426173267,
+    "reasoning_tokens": 4973,
+    "request_count": 29,
+    "runtime_s": 2360.5132737960666,
+    "success": true,
+    "tool_call_count": 37,
+    "total_tokens": null
+  },
+  "architecture": {
+    "_source": "best-effort architecture compliance derived from selected eval mode, main-agent tool calls, subagent task handles, and generated workspace files",
+    "architecture_contract_satisfied": true,
+    "architecture_mode": "main_agent_script_no_bo_mcp",
+    "architecture_restrictions": {
+      "allow_bash": true,
+      "allow_bo_mcp_openapi_tools": false,
+      "allow_bo_mcp_tools": false,
+      "allow_python_repl": true,
+      "allow_subagents": false,
+      "execution_style": "main agent writes/runs local Bayesian optimization script",
+      "require_campaign_id": false,
+      "require_script_artifact": true,
+      "workflow_owner": "main-agent"
+    },
+    "bo_driver_code_count": 0,
+    "bo_mcp_artifact_reference_count": 0,
+    "bo_mcp_verification_status": "not_applicable",
+    "campaign_id_present": false,
+    "campaign_id_required": false,
+    "delegated_subagent_names": [],
+    "mode_violation_reasons": [],
+    "script_artifact_count": 7,
+    "script_artifact_hashes": [
+      {
+        "path": "butanol_dihedral_baybe/__init__.py",
+        "sha256": "c4c81cb3956e7cfddc4ec8247076daf8551d580ebabb6b5fbca391e541539493"
+      },
+      {
+        "path": "butanol_dihedral_baybe/bo_loop.py",
+        "sha256": "bc319c7f09db4c79509192a845c1059fbcdb847e23ccf38d427bcee380d324a7"
+      },
+      {
+        "path": "butanol_dihedral_baybe/campaign.py",
+        "sha256": "ca3d313943bc4ab2b9d6d973d3d48a00789acd3d31517e1433b2a2b48ba9d011"
+      },
+      {
+        "path": "butanol_dihedral_baybe/config.py",
+        "sha256": "e7b42388216190d832e6def3255d70a75a6374dbf1a02c710e368076772901da"
+      },
+      {
+        "path": "butanol_dihedral_baybe/evaluator.py",
+        "sha256": "da217aa68470f75f2287ccf983baa2aaf68f8bbb23989f86144fa011ca3d3598"
+      },
+      {
+        "path": "butanol_dihedral_baybe/geometry.py",
+        "sha256": "9f1b5a4b5fe86c1f6418bf3dcbfab60384a1d0e3d10474a36fde0352c2f30b73"
+      },
+      {
+        "path": "run_butanol_dihedral_baybe.py",
+        "sha256": "a9bd93aa4ae2352b2679afb40b5fbdd2871951fea377d23607657528804c7c51"
+      }
+    ],
+    "script_artifact_required": true,
+    "subagent_delegation_count": 0,
+    "tool_call_counts_by_name": {
+      "bash_exec": 29,
+      "load_skill": 1,
+      "python_repl": 5,
+      "read_skill_resource": 2
+    },
+    "used_bo_mcp_tools": false,
+    "used_python_or_bash": true
+  },
+  "benchmark": {
+    "benchmark_clean": true,
+    "clean_failure_reasons": [],
+    "expected_evaluation_budget": 60,
+    "expected_hypervolume_reference_point": null,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "objective_direction": "minimize",
+    "objective_name": "single_point_energy",
+    "objective_unit": "hartree",
+    "run_success": true
+  },
+  "bo_mcp": {
+    "_source": "BO-MCP REST read-back of campaign, spec, results, and diagnostics endpoints",
+    "campaign_retrieved": false,
+    "evaluation_budget_adherence": "unknown",
+    "evaluation_budget_delta": null,
+    "expected_evaluation_budget": 60,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "objective_schema_matches_expected": true,
+    "objective_schema_status": "inferred_scalar",
+    "results_retrieved": false,
+    "verification_reason": "architecture mode does not require BO-MCP",
+    "verification_status": "not_applicable"
+  },
+  "local_artifacts": {
+    "_source": "local JSON result artifact referenced by final answer for no-BO-MCP architecture modes",
+    "attempted_objective_evaluations": 60,
+    "best_objective_evaluation_index": 49,
+    "best_objective_value": -233.1819268577375,
+    "best_parameters": {
+      "dihedral_cccc_deg": -6.645079677544943,
+      "dihedral_hocc_deg": -34.5327689150735,
+      "dihedral_occc_deg": 117.18966771343433
+    },
+    "best_so_far_by_evaluation": [
+      -233.16782682285867,
+      -233.16978165183755,
+      -233.17925511593722,
+      -233.17925511593722,
+      -233.17925511593722,
+      -233.17925511593722,
+      -233.17925511593722,
+      -233.17925511593722,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.17956506311455,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.18033365673915,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.1803490186395,
+      -233.18125063168037,
+      -233.18125063168037,
+      -233.18125063168037,
+      -233.18125063168037,
+      -233.18125063168037,
+      -233.18125063168037,
+      -233.18125063168037,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375,
+      -233.1819268577375
+    ],
+    "duplicate_evaluations": 0,
+    "duplicate_rate": 0.0,
+    "evaluation_budget_adherence": "matched",
+    "evaluation_budget_delta": 0,
+    "expected_evaluation_budget": 60,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "failed_evaluation_rate": 0.0,
+    "failed_evaluations": 0,
+    "final_objective_value": -233.16480697120787,
+    "hypervolume": null,
+    "hypervolume_reference_point": null,
+    "incomplete_objective_evaluations": 0,
+    "n_pareto_points": 0,
+    "objective_direction": "minimize",
+    "objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy_hartree"
+      }
+    ],
+    "objective_name": "single_point_energy_hartree",
+    "objective_oracle": {
+      "checked_evaluations": 0,
+      "mismatch_count": 0,
+      "verification_status": "not_applicable"
+    },
+    "objective_reducer": "single_objective_best_so_far",
+    "objective_schema_matches_expected": true,
+    "objective_schema_status": "normalized_scalar",
+    "objective_unit": "hartree",
+    "objective_vector_count": 60,
+    "objective_vectors": [
+      {
+        "evaluation_index": 1,
+        "objective_values": {
+          "single_point_energy_hartree": -233.16782682285867
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 83.52617577879221,
+          "dihedral_hocc_deg": -61.561571738472665,
+          "dihedral_occc_deg": 170.91602122212277
+        }
+      },
+      {
+        "evaluation_index": 2,
+        "objective_values": {
+          "single_point_energy_hartree": -233.16978165183755
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 33.097481813473195,
+          "dihedral_hocc_deg": 10.902757392353806,
+          "dihedral_occc_deg": 176.33549954274264
+        }
+      },
+      {
+        "evaluation_index": 3,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17925511593722
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 90.01916128665749,
+          "dihedral_hocc_deg": -10.628184921878841,
+          "dihedral_occc_deg": -129.4239203472154
+        }
+      },
+      {
+        "evaluation_index": 4,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17543494971906
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -6.38130003179819,
+          "dihedral_hocc_deg": 37.00426537638887,
+          "dihedral_occc_deg": -41.16220745971046
+        }
+      },
+      {
+        "evaluation_index": 5,
+        "objective_values": {
+          "single_point_energy_hartree": -233.16975365794687
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -19.51042026802554,
+          "dihedral_hocc_deg": 128.84746321043605,
+          "dihedral_occc_deg": 161.61814905194
+        }
+      },
+      {
+        "evaluation_index": 6,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17898419244526
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 83.19330255892902,
+          "dihedral_hocc_deg": 2.845242760897719,
+          "dihedral_occc_deg": -122.30763236606984
+        }
+      },
+      {
+        "evaluation_index": 7,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1764500188674
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -105.53144886168785,
+          "dihedral_hocc_deg": -0.25205868425487665,
+          "dihedral_occc_deg": 48.469581970961485
+        }
+      },
+      {
+        "evaluation_index": 8,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1758405277039
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 119.79062022102624,
+          "dihedral_hocc_deg": -177.4007591460321,
+          "dihedral_occc_deg": 28.853977417978967
+        }
+      },
+      {
+        "evaluation_index": 9,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17956506311455
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 93.81216014837405,
+          "dihedral_hocc_deg": -138.25436437220876,
+          "dihedral_occc_deg": -123.07126925797203
+        }
+      },
+      {
+        "evaluation_index": 10,
+        "objective_values": {
+          "single_point_energy_hartree": -233.13395402789638
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 180.0,
+          "dihedral_hocc_deg": -89.11573625739639,
+          "dihedral_occc_deg": -132.78933226185214
+        }
+      },
+      {
+        "evaluation_index": 11,
+        "objective_values": {
+          "single_point_energy_hartree": -233.16771983813598
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 70.14069637075946,
+          "dihedral_hocc_deg": -131.742141809138,
+          "dihedral_occc_deg": -50.915687269579365
+        }
+      },
+      {
+        "evaluation_index": 12,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17021655331686
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -62.26803082529859,
+          "dihedral_hocc_deg": 0.1008491714510744,
+          "dihedral_occc_deg": -39.549086995606224
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "single_point_energy_hartree": -233.15622027305614
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 65.94382951287325,
+          "dihedral_hocc_deg": 137.0493053714317,
+          "dihedral_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17541914413803
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 78.34313975674067,
+          "dihedral_hocc_deg": -87.21559106931414,
+          "dihedral_occc_deg": -142.93827443873568
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1737001845836
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 102.70700945620204,
+          "dihedral_hocc_deg": -91.34333245903775,
+          "dihedral_occc_deg": -74.4003188068369
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "single_point_energy_hartree": -233.16213932702405
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 99.83229209565019,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": -176.4533035419158
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1684406424157
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -50.204968900578194,
+          "dihedral_hocc_deg": 36.22300360372446,
+          "dihedral_occc_deg": 49.613688364997564
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1775503275559
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 89.09260633632573,
+          "dihedral_hocc_deg": -70.89191151229302,
+          "dihedral_occc_deg": -114.18267511719976
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "single_point_energy_hartree": -233.15692382404046
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -147.4819848268113,
+          "dihedral_hocc_deg": 9.005456756065406,
+          "dihedral_occc_deg": 38.032371373998515
+        }
+      },
+      {
+        "evaluation_index": 20,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1721340446237
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -90.92878857175255,
+          "dihedral_hocc_deg": -117.49792696148816,
+          "dihedral_occc_deg": 70.90751617666785
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1714542324852
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -93.37620615312709,
+          "dihedral_hocc_deg": 152.3474077956009,
+          "dihedral_occc_deg": 64.2187142797156
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "single_point_energy_hartree": -233.18033365673915
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 117.59351571027295,
+          "dihedral_hocc_deg": 30.547724480147338,
+          "dihedral_occc_deg": 4.107586302359864
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1768240504675
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 107.85143825148894,
+          "dihedral_hocc_deg": 91.66886515302794,
+          "dihedral_occc_deg": 29.109864894029766
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1764914564082
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 137.62618089666697,
+          "dihedral_hocc_deg": 48.285221366632506,
+          "dihedral_occc_deg": 14.579137086592702
+        }
+      },
+      {
+        "evaluation_index": 25,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17746319384037
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 111.07240638413836,
+          "dihedral_hocc_deg": 162.37420929900617,
+          "dihedral_occc_deg": -18.044648226906645
+        }
+      },
+      {
+        "evaluation_index": 26,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17885477679363
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 118.24389553480289,
+          "dihedral_hocc_deg": -82.93733917559706,
+          "dihedral_occc_deg": -13.841500379195866
+        }
+      },
+      {
+        "evaluation_index": 27,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17841149194
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 16.503540588359172,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": 2.913594565988982
+        }
+      },
+      {
+        "evaluation_index": 28,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1790294892833
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 10.24486624573599,
+          "dihedral_hocc_deg": -61.212114328253186,
+          "dihedral_occc_deg": 10.323258795118361
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17314101640798
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 34.58653239729215,
+          "dihedral_hocc_deg": 33.25776221728956,
+          "dihedral_occc_deg": 37.438942066700506
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "single_point_energy_hartree": -233.180297334547
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -5.821053285744025,
+          "dihedral_hocc_deg": 92.24710551010254,
+          "dihedral_occc_deg": 4.008884622914027
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1800283428405
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 2.5250439357192658,
+          "dihedral_hocc_deg": 40.24217644021558,
+          "dihedral_occc_deg": -5.500057803480314
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1803490186395
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -13.275844489967564,
+          "dihedral_hocc_deg": -123.8531788142547,
+          "dihedral_occc_deg": 0.3068787995925966
+        }
+      },
+      {
+        "evaluation_index": 33,
+        "objective_values": {
+          "single_point_energy_hartree": -233.18030235881588
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -6.721261936115529,
+          "dihedral_hocc_deg": -29.828290323906096,
+          "dihedral_occc_deg": 3.5652979739109045
+        }
+      },
+      {
+        "evaluation_index": 34,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17907213458741
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -20.24037106321629,
+          "dihedral_hocc_deg": 22.33944991464512,
+          "dihedral_occc_deg": -8.165968591943184
+        }
+      },
+      {
+        "evaluation_index": 35,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17569955292097
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -89.62240767178189,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": 19.0884145471308
+        }
+      },
+      {
+        "evaluation_index": 36,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17666338587196
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 10.31351642837795,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": 96.6664545830461
+        }
+      },
+      {
+        "evaluation_index": 37,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17408018903467
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -5.355775578998645,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": 37.716819827705265
+        }
+      },
+      {
+        "evaluation_index": 38,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1768902931092
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 23.53350004950276,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": 107.43236710717585
+        }
+      },
+      {
+        "evaluation_index": 39,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17847133445545
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -5.260937328609286,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": -11.47173124688161
+        }
+      },
+      {
+        "evaluation_index": 40,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17450932861706
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 42.12175683825263,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": 109.88367588317348
+        }
+      },
+      {
+        "evaluation_index": 41,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1785634205766
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 104.21085079331532,
+          "dihedral_hocc_deg": -49.327411324090384,
+          "dihedral_occc_deg": 2.0293320472668683
+        }
+      },
+      {
+        "evaluation_index": 42,
+        "objective_values": {
+          "single_point_energy_hartree": -233.18125063168037
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -5.901111322561181,
+          "dihedral_hocc_deg": -4.7708332996452265,
+          "dihedral_occc_deg": -0.30601144910499395
+        }
+      },
+      {
+        "evaluation_index": 43,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17221526933585
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 76.04419892344721,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": 95.30666727778764
+        }
+      },
+      {
+        "evaluation_index": 44,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17274953636897
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 5.961859788279342,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": 75.2595703333207
+        }
+      },
+      {
+        "evaluation_index": 45,
+        "objective_values": {
+          "single_point_energy_hartree": -233.18122047701004
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -6.350962346990976,
+          "dihedral_hocc_deg": -4.945715559493485,
+          "dihedral_occc_deg": -1.864069844856725
+        }
+      },
+      {
+        "evaluation_index": 46,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17820658800306
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 8.55415799907909,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": 131.2228467832589
+        }
+      },
+      {
+        "evaluation_index": 47,
+        "objective_values": {
+          "single_point_energy_hartree": -233.18063294261964
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 4.982330130996345,
+          "dihedral_hocc_deg": 60.788256221632565,
+          "dihedral_occc_deg": 122.46759678053253
+        }
+      },
+      {
+        "evaluation_index": 48,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17946316233065
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 14.512808852666247,
+          "dihedral_hocc_deg": 60.87777447616049,
+          "dihedral_occc_deg": 129.58664628959613
+        }
+      },
+      {
+        "evaluation_index": 49,
+        "objective_values": {
+          "single_point_energy_hartree": -233.1819268577375
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -6.645079677544943,
+          "dihedral_hocc_deg": -34.5327689150735,
+          "dihedral_occc_deg": 117.18966771343433
+        }
+      },
+      {
+        "evaluation_index": 50,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17856212735575
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -18.36904453040446,
+          "dihedral_hocc_deg": -161.60526031861565,
+          "dihedral_occc_deg": 116.1008751940982
+        }
+      },
+      {
+        "evaluation_index": 51,
+        "objective_values": {
+          "single_point_energy_hartree": -233.18073107961794
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -7.794758350609007,
+          "dihedral_hocc_deg": 42.86785540749898,
+          "dihedral_occc_deg": 114.86768853916948
+        }
+      },
+      {
+        "evaluation_index": 52,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17021840610616
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 148.56716382271642,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": 101.17935295529257
+        }
+      },
+      {
+        "evaluation_index": 53,
+        "objective_values": {
+          "single_point_energy_hartree": -232.7661335688436
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 180.0,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": 177.1491715946467
+        }
+      },
+      {
+        "evaluation_index": 54,
+        "objective_values": {
+          "single_point_energy_hartree": -233.16916143765766
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 133.4147045968943,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": 53.52190167471181
+        }
+      },
+      {
+        "evaluation_index": 55,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17772739888593
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 76.23679882022519,
+          "dihedral_hocc_deg": -4.820432523563804,
+          "dihedral_occc_deg": 118.5675268424313
+        }
+      },
+      {
+        "evaluation_index": 56,
+        "objective_values": {
+          "single_point_energy_hartree": -233.15598726787573
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 89.89483153462558,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": 176.99267271684036
+        }
+      },
+      {
+        "evaluation_index": 57,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17245488361365
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 94.33503356827833,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": 31.641535937124342
+        }
+      },
+      {
+        "evaluation_index": 58,
+        "objective_values": {
+          "single_point_energy_hartree": -233.17568532319837
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 99.27265832957106,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": -96.3611929646899
+        }
+      },
+      {
+        "evaluation_index": 59,
+        "objective_values": {
+          "single_point_energy_hartree": -233.16514034152328
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 62.80625965787405,
+          "dihedral_hocc_deg": 180.0,
+          "dihedral_occc_deg": -48.24326523816662
+        }
+      },
+      {
+        "evaluation_index": 60,
+        "objective_values": {
+          "single_point_energy_hartree": -233.16480697120787
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -43.59788496940781,
+          "dihedral_hocc_deg": -180.0,
+          "dihedral_occc_deg": -65.45185843774718
+        }
+      }
+    ],
+    "parameter_signatures_recorded": 60,
+    "pareto_front": [],
+    "result_file_exists": true,
+    "result_json_valid": true,
+    "result_path": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_localbo_aligned_baybe_litellm_gpt54_20261006T143026Z/repeat_003/cases/dihedral/workspace/bo-mcp-eval/local_results.json",
+    "result_schema_failure_reasons": [],
+    "successful_objective_evaluations": 60,
+    "verification_status": "verified"
+  },
+  "metric_notes": [
+    "Token and cost fields are reported only when exposed by the runtime or derivable from recorded message metadata.",
+    "Subagent metrics use TaskHandle observability fields when the installed subagent runtime exposes them, with older-runtime fallbacks."
+  ],
+  "objective_oracle": {
+    "checked_evaluations": 0,
+    "mismatch_count": 0,
+    "verification_status": "not_applicable"
+  },
+  "provenance": {
+    "audited_accelerator_policies": [
+      "auto"
+    ],
+    "audited_batches": 61,
+    "audited_identifier_hashes": [
+      "018f4815e1f6a81a31ead840cda41e8c184724d7cc18104214916aac5f3f61c5",
+      "028e391c2ef9507c920c3914bac5e8dc5311394516a56dc93f396fd002265f4a",
+      "02a2c8d45b5c48bdd58160add868467e647852fca2fb943d26a92fb366849e11",
+      "0512abad1bd023e7337f3bbbdbe03cbb912f2543666a557723d2bfa717db02a8",
+      "0884c42806a35d550ea5b5a6baa62167a85e5433504b004f91da0b7304f63bd5",
+      "1e9e8d9fac20715de65aec8c6238635ade51d3498d59047508801db2d8c10e4c",
+      "2893634ba976c5dccadf4c8e6e3288bed5cf78531825ca61bff09f29addfbda0",
+      "2a91e29c8d4dab454940fc462061fdcb6c0e29b35735b75c7d8c6868810415aa",
+      "2e06b63c78233bbb242bb5e814caf2332964209bbf3824e8c6e4ea0bcc2e66fe",
+      "3011629db7b7bbc184330e23ed54a5716c9d81d3f894b9dd19867c6ee0b8bfe1",
+      "30e734ecab1f0c8417012fd27e8240f4bd084f281e18d4894b8a454a159c2c86",
+      "3377db3b2da31672eff2b8ab7881efb34b315c9df1d9c3e4681c6b2b0f5fa2ec",
+      "42ad2630b405b8e6546f3d7910c32af38b349bcc8d727aaef58dd1088d480e8f",
+      "45dff364e5cdcf94f5a97b56e4e250cbf515416fdd281c00716ca74bdb64b079",
+      "464eb0300174f49ffc4598c02f2c9ff825933666744176eb17c7e247154ec0e7",
+      "47236018021221e60bfd14643746ba1c3dcf1135c88d118dde238b3c565271a4",
+      "528f693da47ea91a071bb881ebf14a4504e0ec21fe2de3d168700eecfada9378",
+      "573380923554a21d675f3271271868bf862a0f016fec02a95685b2ffa571bdcb",
+      "5764f44fec89ac525e8c20266d7338ae7cc5e7fd215e3b08362a956589804c5d",
+      "5aa544dc31b440a18459b571cf4ec61d916d0119799cbb156051ae91df531a8c",
+      "5b759aa6ca029a95881435779a9cf6c46adc0e225be8847a1059b926d3d4c248",
+      "626063cbbe4863b801548f24d8c18cb21140b14d9aa1423c4e59f8fad90aed74",
+      "6f5559ee34a10567a478b24264017134673943dd009ef90f16cd86157cee2fbe",
+      "70e8cb0b531dc541636f9567aebe39e0ddf708fd93161d87322f42b6d992a74c",
+      "8b6c42c275faf60c469249c40cd1f576d39bc605a68b035325d4e6b8a4a3906a",
+      "92103dcb7ccd68bf4d853051193f6bd1553ca01a4fcc8991c3dc1bbaa37832c4",
+      "9669dd3c7efc1ae499e45dcd86d66fb4c55f519042622a867ada155d85afdbf0",
+      "966c927f276d5fa973f1a996b01105c6e86eedd8cc5b20fb5351dadb370aa88e",
+      "969445ce0532113b53829299ffe239535bfff7575aec31befdd00063d36c0f1f",
+      "9921a075f694570fe39aa8c867067af6cb7a67b56567af21eb0dd031f175445a",
+      "9d1d05b2d7cac8cdce084cf50b4a881fffb33ca3c23ac930309559c5fcab88f0",
+      "9eaf7a2296d65f3262e399feb3ffa874b76cf606278adda1557bce92968a704e",
+      "a0a8f4eb49baea3ccbada6e3cdbe8c24ee515f6d700ce40b77b64cc10d614a12",
+      "a157e6ed886224a1dfdf721ba5d5632981b87cd379ad0a7d21e8f0b968a5f69d",
+      "a6cc66f2c3d1af729d8d8f0ddeabbe0be3bed0a786626d818fc2d02742b9d6a0",
+      "b27e2c00938d299e07b1451c0cf879d95b8d9b0170fef7ac6aa76f1948cddc6a",
+      "b6f3acc99c7c59a75abee51f46cd992c605961a97c0000d0645584209d922af5",
+      "b83f961b6658237774f99a28bd3be579158d54453ec9cc9862ecc7ae618a6e5f",
+      "bac51bc269da3cff6b45c1316677c0c6971f28c4df37a47f49f570ca57f5e8e6",
+      "bd4b3385885fa7bf66511e20b314008d89a46d844550a5f42e6c25c8660ab716",
+      "c270660f3b41c375a5bc55cf394b42e592c8f9184934a4b407c5548a286b08d0",
+      "c2a442e7ce75949c6b3cc655093099a93b1260efb2136f4b6bcf074fb63028d0",
+      "c37da9630f6e0628841113858e1c9edb64285fdb00bb72fe2d4d8efb6f6c5d84",
+      "c5ff9f3b3b6f8f0048123ebc4656c3e2367fdb14231b45edd6c007978289df32",
+      "ca29041a87c4412d53f3f1987ad3deafd6c076d79a2575236cb3f12690e49742",
+      "cdaf7ddf1cdd5f92277d07a68808b487dd3afbc358dad4bfc8e9cb4c8f943267",
+      "d045ca439181ac80d70609c4fc08949a600af934319835c95b59ac22fca117d9",
+      "d593fd09066e2fd6f7ceffc014af9fc0d636bbffe377a30799fc1c429ce89361",
+      "e4ee7b8547233c8d1adf7c22796bd7eb7897fc0b8c101f18f64dbacd65c071ae",
+      "e5c0b4b612e06215dd997e0763970c20492a1fe2c3f0de2bd04f72c8aa86ce66",
+      "e8c2d604579503f19e8575c8b8dfe4b6e4259a2971509cbeec9e21b55a67e62a",
+      "e93acb13a2889375ce4dedd875e5918b51625b3fb9014a255fd2f9877e23a479",
+      "ec05988ecec060cc535d9c199ac7aef4435a428a4ace45a3b227fda37ed04497",
+      "ee466d24688f7866380ff684a92fd949de84ea25305eccbb2591ca27d39f89bb",
+      "eead8c265e613b9b76e73c10af08cdd754c4fed70e185a93eeb9a62d7b4d516e",
+      "f46e2258fff8c067482f081a34a3519134f83608a82977d5a6fad138d73e12b7",
+      "f8d1e1cdb40a87d182a785264bcc1a599cd5a1ffbb51f864433ab90c68ff241a",
+      "fa5daf57028f83595a473beaffab65c32b815d1efb7b86e943dd45a69559b70f",
+      "fbb498e880154c2b311e37ddfba8f656c4eed979298b96901204166888718104",
+      "fdf9c2617e768e4187a32e56ee2348de43cee785cd791f20ea6c7a2c545ba606",
+      "fe338ab499c2bdc30b57bafdb32cd386e4f5ed9863da3c3485d9c2a480951720"
+    ],
+    "audited_max_parallel_molecules": [
+      1
+    ],
+    "audited_pyscf_calls": 61,
+    "compliant_pyscf_calls": 61,
+    "failure_reasons": [],
+    "noncompliant_call_reasons": {},
+    "objective_call_evidence_source": "pyscf_runner_batches",
+    "reported_choice_source": null,
+    "reported_choices": null,
+    "verification_status": "verified",
+    "workspace_path": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_localbo_aligned_baybe_litellm_gpt54_20261006T143026Z/repeat_003/cases/dihedral/workspace/bo-mcp-eval"
+  },
+  "usage_split": {
+    "_source": {
+      "combined": "sum of available main/subagent counters; cost may be incomplete when subagent cost is unavailable",
+      "main": "Pydantic AI result.usage plus result.all_messages() for message-level cost metadata",
+      "subagents": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+    },
+    "combined": {
+      "_source": {
+        "cost_usd": "main plus subagent cost only when all required cost components are available",
+        "usage": "sum of available main/subagent counters"
+      },
+      "cache_read_tokens": 1138834,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "main_plus_subagent_cost_breakdown",
+      "cost_usd": 0.8894434999999999,
+      "input_tokens": 1271990,
+      "output_tokens": 18123,
+      "reasoning_tokens": 4973,
+      "request_count": 29,
+      "tool_call_count": 37,
+      "total_tokens": 1290113
+    },
+    "limitations": [
+      "nested subagents are not captured",
+      "subagent usage is read from top-level pydantic-deep task handles",
+      "combined assumes parent AgentRunResult.usage excludes subagent TaskHandle.usage; this assumption should be retested after dependency changes",
+      "per-task subagent tool-call counts require TaskHandle.tool_call_counts or TaskHandle.message_history"
+    ],
+    "main": {
+      "_source": {
+        "cost_usd": "genai-prices estimate from main-agent response message usage/model metadata",
+        "messages": "Pydantic AI result.all_messages()",
+        "usage": "Pydantic AI result.usage"
+      },
+      "cache_read_tokens": 1138834,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "genai_prices_from_main_response_messages",
+      "cost_usd": 0.8894434999999999,
+      "input_tokens": 1271990,
+      "model_names": [
+        "gpt-5.4"
+      ],
+      "output_tokens": 18123,
+      "priced_response_count": 29,
+      "provider_names": [
+        "openai"
+      ],
+      "reasoning_tokens": 4973,
+      "request_count": 29,
+      "tool_call_count": 37,
+      "total_tokens": null,
+      "unpriced_response_count": 0
+    },
+    "method": "main_result_usage_plus_subagent_task_handle_usage",
+    "scope": "top_level_pydantic_deep_subagents",
+    "subagents": {
+      "_source": {
+        "cost_usd": "TaskHandle.cost when exposed, otherwise genai-prices estimate from task-handle usage and model/provider metadata",
+        "messages": "TaskHandle.message_history when exposed by the installed subagent runtime",
+        "tool_call_counts": "TaskHandle.tool_call_counts when exposed, otherwise counts derived from TaskHandle.message_history tool-call parts",
+        "usage": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+      },
+      "available": false,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_available": false,
+      "cost_source": "subagent_task_handles",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "priced_task_count": 0,
+      "reasoning_tokens": 0,
+      "request_count": 0,
+      "tasks": [],
+      "total_tokens": 0,
+      "unpriced_task_count": 0
+    }
+  }
+}
