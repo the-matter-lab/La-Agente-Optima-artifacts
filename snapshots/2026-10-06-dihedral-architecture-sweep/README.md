@@ -49,7 +49,7 @@ Main-script is the best balance. Full analysis: `report/DIHEDRAL_ARCHITECTURE_CO
 
 ### Corrections to the report
 
-Checks made after the report (2026-10-14) correct three statements in the PDF; the data in this snapshot are
+Checks made after the report (2026-10-14) correct four statements in the PDF; the data in this snapshot are
 unchanged.
 
 - Local-BO r01 and r03 do not use a different angle sign convention: they report all three angles shifted by exactly
@@ -61,6 +61,9 @@ unchanged.
   per run therefore does not hold across conformers, and the report's aligned gaps should not be used to rank runs.
 - Main-script r03 evaluated a point within 6° of that conformer's mirror image, so the statement that no other run came
   within 10° of it does not hold.
+- The within-run normalized AUC removes each run's energy offset and energy range, but it is not independent of how the
+  molecule was prepared: molecule preparation also changes the shape of the energy landscape, so it can still affect
+  convergence.
 
 These calculations are separate from the benchmark runs; the script and its results are kept with the manuscript's
 analysis materials (`arxiv_v2/analysis/dihedral-conformer-check.py`).
@@ -76,6 +79,9 @@ analysis materials (`arxiv_v2/analysis/dihedral-conformer-check.py`).
   workstation).
 
 Conversations, agent outputs, logs and PySCF runner records are not included. They remain on the research workstation.
+The Specialist-script `metrics.json` files originally embedded the specialist's message history
+(`usage_split.subagents.tasks[].message_history`); it was removed, and the task records keep only their summary
+fields (description, result, token counts and tool-call counts).
 
 ## Sanitization
 
