@@ -20,6 +20,9 @@ ledger in its database, and exposes them over MCP and a REST API. Repo:
 - `snapshots/` — the **framework comparison** (SI, *Framework comparison*): raw
   evaluation cells, controller metadata, and the comparison report. Described
   below.
+- `snapshots/2026-10-03-masked-pure-llm-gpt54/` — pure-LLM arm (GPT-5.4, 3
+  repeats) on the masked Ackley surface and masked discrete-response
+  benchmarks. See `snapshots/2026-10-03-masked-pure-llm-gpt54/raw/README.md`.
 - `showcases/` — the **showcase campaigns** reported in the paper and SI: OSL
   combinatorial discovery, four finite-space computational campaigns, the RAISE
   closed loop, and the RoboChem-Flex flow-photochemistry campaign. See
@@ -63,7 +66,7 @@ manuscript review; prior snapshot states are preserved in Git history.
 
 The published copies have been scanned and sanitized for API-key-shaped values.
 Original research-server evidence was not modified. Sanitization counts are in
-`snapshots/2026-08-07-preliminary/SANITIZATION_REPORT.json`.
+`snapshots/2026-08-08-current/SANITIZATION_REPORT.json`.
 
 `MANIFEST.sha256` is the portable integrity manifest for this repository. The
 manifest under `report/control/` is retained from the research server for source
