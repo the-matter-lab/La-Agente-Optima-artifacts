@@ -1,0 +1,1215 @@
+{
+  "agent": {
+    "_source": {
+      "cost_usd": "Pydantic Evals ReportCase.metrics['cost'] when available; main-agent estimated cost is reported under usage_split.main.cost_usd",
+      "pydantic_eval_task_duration_s": "Pydantic Evals ReportCase.task_duration when available",
+      "pydantic_eval_total_duration_s": "Pydantic Evals ReportCase.total_duration when available",
+      "runtime_s": "wall-clock time around agent.run(...) in evals.bo_mcp.runner",
+      "usage": "Pydantic AI result.usage"
+    },
+    "cache_read_tokens": 6600446,
+    "cache_write_tokens": 0,
+    "campaign_id_present": true,
+    "campaign_verified": true,
+    "cost_usd": 3.122914,
+    "final_answer_present": true,
+    "input_tokens": 6857875,
+    "output_tokens": 55282,
+    "pydantic_eval_task_duration_s": 1395.640091543,
+    "pydantic_eval_total_duration_s": 1395.641326869,
+    "reasoning_tokens": 6501,
+    "request_count": 75,
+    "runtime_s": 1381.0375770702958,
+    "success": true,
+    "tool_call_count": 131,
+    "total_tokens": null
+  },
+  "architecture": {
+    "_source": "best-effort architecture compliance derived from selected eval mode, main-agent tool calls, subagent task handles, and generated workspace files",
+    "architecture_contract_satisfied": true,
+    "architecture_mode": "main_agent_tool_passing_bo_mcp",
+    "architecture_restrictions": {
+      "allow_bash": false,
+      "allow_bo_mcp_openapi_tools": false,
+      "allow_bo_mcp_tools": true,
+      "allow_python_repl": false,
+      "allow_subagents": false,
+      "execution_style": "main agent calls tools directly without script execution",
+      "require_campaign_id": true,
+      "require_script_artifact": false,
+      "workflow_owner": "main-agent"
+    },
+    "bo_driver_code_count": 0,
+    "bo_mcp_artifact_reference_count": 0,
+    "bo_mcp_verification_status": "verified",
+    "campaign_id_present": true,
+    "campaign_id_required": true,
+    "delegated_subagent_names": [],
+    "mode_violation_reasons": [],
+    "script_artifact_count": 2,
+    "script_artifact_hashes": [
+      {
+        "path": "extract_batch_energies.py",
+        "sha256": "7494ddd7099ce63a1ec96abc75260514d42cf21ebb715bf5f00abe673426d4ca"
+      },
+      {
+        "path": "prepare_pyscf_request.py",
+        "sha256": "eb1aab4548f977cd31e9c85d714e603aa0f1aa0713d688b30f1dd0546718b48d"
+      }
+    ],
+    "script_artifact_required": false,
+    "subagent_delegation_count": 0,
+    "tool_call_counts_by_name": {
+      "bo_create_campaign": 1,
+      "bo_export_campaign": 1,
+      "bo_generate_suggestions": 9,
+      "bo_get_diagnostics": 1,
+      "bo_health_check": 1,
+      "bo_list_capabilities": 1,
+      "bo_list_results": 1,
+      "bo_submit_results": 9,
+      "bo_terminate_campaign": 1,
+      "bo_validate_intake": 1,
+      "container_execute": 26,
+      "container_read_file": 2,
+      "container_write_file": 13,
+      "inspect_smiles_geometry": 1,
+      "load_skill": 1,
+      "read_skill_resource": 2,
+      "set_molecular_dihedrals": 60
+    },
+    "used_bo_mcp_tools": true,
+    "used_python_or_bash": false
+  },
+  "benchmark": {
+    "benchmark_clean": true,
+    "clean_failure_reasons": [],
+    "expected_evaluation_budget": 60,
+    "expected_hypervolume_reference_point": null,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "objective_direction": "minimize",
+    "objective_name": "single_point_energy",
+    "objective_unit": "hartree",
+    "run_success": true
+  },
+  "bo_mcp": {
+    "_source": "BO-MCP REST read-back of campaign, spec, results, and diagnostics endpoints",
+    "attempted_objective_evaluations": 60,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "best_objective_evaluation_index": 27,
+    "best_objective_value": -233.18629411680644,
+    "best_parameters": {
+      "tau1_deg": -180.0,
+      "tau2_deg": -59.56649435885431,
+      "tau3_deg": -180.0
+    },
+    "best_so_far_by_evaluation": [
+      -233.17365689430383,
+      -233.17365689430383,
+      -233.1799698495957,
+      -233.18189808846003,
+      -233.18189808846003,
+      -233.18189808846003,
+      -233.18189808846003,
+      -233.18189808846003,
+      -233.18393443848754,
+      -233.18393443848754,
+      -233.18393443848754,
+      -233.18393443848754,
+      -233.18393443848754,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644
+    ],
+    "bo_mcp_reported_best_parameters": {
+      "tau1_deg": -180.0,
+      "tau2_deg": -59.56649435885431,
+      "tau3_deg": -180.0
+    },
+    "bo_mcp_reported_best_value": -233.18629411680644,
+    "bo_mcp_reported_hypervolume": null,
+    "bo_mcp_reported_improvement_history": [
+      -233.17365689430383,
+      -233.17365689430383,
+      -233.1799698495957,
+      -233.18189808846003,
+      -233.18189808846003,
+      -233.18189808846003,
+      -233.18189808846003,
+      -233.18189808846003,
+      -233.18393443848754,
+      -233.18393443848754,
+      -233.18393443848754,
+      -233.18393443848754,
+      -233.18393443848754,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18594884109035,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644,
+      -233.18629411680644
+    ],
+    "bo_mcp_reported_n_pareto_points": null,
+    "bo_mcp_reported_pareto_front": null,
+    "campaign_batch_size": 4,
+    "campaign_config": {
+      "_source": "BO-MCP REST campaign/spec read-back",
+      "acknowledge_degradations": [],
+      "acquisition": {
+        "method": "auto",
+        "optimization": null,
+        "saasbo_config": null,
+        "turbo_config": null,
+        "use_cost_aware": false,
+        "use_input_warping": false
+      },
+      "backend_options": null,
+      "backend_requested": "baybe",
+      "backend_resolved": "baybe",
+      "batch_size": 4,
+      "campaign_id": "9dc539eb-897b-4b7f-9cd0-c4ae87683e55",
+      "constraints": [],
+      "convergence_tolerance": null,
+      "fidelity_parameter": null,
+      "initial_design_size": null,
+      "initial_design_size_requested": null,
+      "initial_design_size_source": null,
+      "max_iterations": null,
+      "max_observations": 60,
+      "missing_fields": [
+        "max_iterations",
+        "initial_design_size",
+        "convergence_tolerance",
+        "backend_options",
+        "fidelity_parameter",
+        "transfer_learning"
+      ],
+      "objectives": [
+        {
+          "direction": "minimize",
+          "log_transform": false,
+          "match_scale": null,
+          "match_shape": null,
+          "name": "energy_hartree",
+          "normalization_bounds": null,
+          "target": null,
+          "target_mode": null,
+          "transform": null,
+          "unit": "Eh",
+          "weight": null
+        }
+      ],
+      "outcome_constraints": [],
+      "parameters": [
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral C0-C1-C2-C3 in degrees",
+          "name": "tau1_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral C1-C2-C3-O4 in degrees",
+          "name": "tau2_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral C2-C3-O4-H14 in degrees",
+          "name": "tau3_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        }
+      ],
+      "random_seed": 0,
+      "spec_id": "9a74a5ab-bf02-4384-a00e-8340c17b33b1",
+      "transfer_learning": null
+    },
+    "campaign_config_artifact": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_toolloop_aligned_baybe_litellm_gpt54_20261006T131917Z/repeat_003/cases/dihedral/campaign_config.json",
+    "campaign_config_endpoint_retrieved": true,
+    "campaign_id": "9dc539eb-897b-4b7f-9cd0-c4ae87683e55",
+    "campaign_initial_design_size": null,
+    "campaign_iteration": 9,
+    "campaign_max_iterations": null,
+    "campaign_max_observations": 60,
+    "campaign_random_seed": 0,
+    "campaign_retrieved": true,
+    "campaign_spec_id": "9a74a5ab-bf02-4384-a00e-8340c17b33b1",
+    "campaign_spec_retrieved": true,
+    "campaign_status": "completed",
+    "converged": true,
+    "diagnostics_retrieved": true,
+    "duplicate_evaluations": 0,
+    "duplicate_rate": 0.0,
+    "eval_best_so_far_auc": -13991.107781178534,
+    "evaluation_budget_adherence": "matched",
+    "evaluation_budget_delta": 0,
+    "expected_evaluation_budget": 60,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "failed_evaluation_rate": 0.0,
+    "failed_evaluations": 0,
+    "final_objective_value": -233.1816219454308,
+    "hypervolume": null,
+    "hypervolume_reference_point": null,
+    "incomplete_objective_evaluations": 0,
+    "n_pareto_points": null,
+    "objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "energy_hartree"
+      }
+    ],
+    "objective_reducer": "single_objective_best_so_far",
+    "objective_schema_matches_expected": true,
+    "objective_schema_status": "normalized_scalar",
+    "objective_vector_count": 60,
+    "objective_vectors": [
+      {
+        "evaluation_index": 1,
+        "objective_values": {
+          "energy_hartree": -233.17365689430383
+        },
+        "parameter_values": {
+          "tau1_deg": -111.89998143018026,
+          "tau2_deg": -98.45720028661182,
+          "tau3_deg": -127.2784885443433
+        }
+      },
+      {
+        "evaluation_index": 2,
+        "objective_values": {
+          "energy_hartree": -233.1722001026853
+        },
+        "parameter_values": {
+          "tau1_deg": 120.97785133312345,
+          "tau2_deg": -123.87756422648953,
+          "tau3_deg": -85.28544093797119
+        }
+      },
+      {
+        "evaluation_index": 3,
+        "objective_values": {
+          "energy_hartree": -233.1799698495957
+        },
+        "parameter_values": {
+          "tau1_deg": 105.30529531121493,
+          "tau2_deg": 40.86271276945669,
+          "tau3_deg": 68.7195221018049
+        }
+      },
+      {
+        "evaluation_index": 4,
+        "objective_values": {
+          "energy_hartree": -233.18189808846003
+        },
+        "parameter_values": {
+          "tau1_deg": -151.28973648654653,
+          "tau2_deg": -47.949017663609425,
+          "tau3_deg": -102.90488083773208
+        }
+      },
+      {
+        "evaluation_index": 5,
+        "objective_values": {
+          "energy_hartree": -233.17849586797408
+        },
+        "parameter_values": {
+          "tau1_deg": -169.61105323088375,
+          "tau2_deg": -16.403907152198723,
+          "tau3_deg": -83.96737029488014
+        }
+      },
+      {
+        "evaluation_index": 6,
+        "objective_values": {
+          "energy_hartree": -233.18104790819805
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": -24.607285304614596,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 7,
+        "objective_values": {
+          "energy_hartree": -233.17963548909557
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": -38.527212222535915,
+          "tau3_deg": -3.8649442997813472
+        }
+      },
+      {
+        "evaluation_index": 8,
+        "objective_values": {
+          "energy_hartree": -233.16319283982384
+        },
+        "parameter_values": {
+          "tau1_deg": -47.88334463915967,
+          "tau2_deg": -11.91018816288224,
+          "tau3_deg": -91.32614311616379
+        }
+      },
+      {
+        "evaluation_index": 9,
+        "objective_values": {
+          "energy_hartree": -233.18393443848754
+        },
+        "parameter_values": {
+          "tau1_deg": -176.07248053689705,
+          "tau2_deg": -73.33640878154947,
+          "tau3_deg": -137.22621497909967
+        }
+      },
+      {
+        "evaluation_index": 10,
+        "objective_values": {
+          "energy_hartree": -233.17716416276204
+        },
+        "parameter_values": {
+          "tau1_deg": 144.97001362252078,
+          "tau2_deg": 89.92020147270351,
+          "tau3_deg": 145.45976031844665
+        }
+      },
+      {
+        "evaluation_index": 11,
+        "objective_values": {
+          "energy_hartree": -233.17726432423783
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": -108.59180769398556,
+          "tau3_deg": -12.349718755640675
+        }
+      },
+      {
+        "evaluation_index": 12,
+        "objective_values": {
+          "energy_hartree": -233.17893981103788
+        },
+        "parameter_values": {
+          "tau1_deg": 130.13139244159163,
+          "tau2_deg": 79.97900396154799,
+          "tau3_deg": -92.13621989879319
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "energy_hartree": -233.1706594341605
+        },
+        "parameter_values": {
+          "tau1_deg": 161.7009910917468,
+          "tau2_deg": 12.009397787001257,
+          "tau3_deg": -3.189776438377362
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "energy_hartree": -233.18594884109035
+        },
+        "parameter_values": {
+          "tau1_deg": -173.49715198247543,
+          "tau2_deg": -63.92511613825704,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "energy_hartree": -233.1775595619048
+        },
+        "parameter_values": {
+          "tau1_deg": 75.07317246602155,
+          "tau2_deg": 111.7163786735864,
+          "tau3_deg": 38.03607080353323
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "energy_hartree": -233.1755546703291
+        },
+        "parameter_values": {
+          "tau1_deg": 152.23763510916353,
+          "tau2_deg": -11.732653861054558,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "energy_hartree": -233.18004264307893
+        },
+        "parameter_values": {
+          "tau1_deg": 180.0,
+          "tau2_deg": 19.94652126912311,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "energy_hartree": -233.18058051522388
+        },
+        "parameter_values": {
+          "tau1_deg": 98.05796100880335,
+          "tau2_deg": 179.60757567316134,
+          "tau3_deg": -106.47652409954031
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "energy_hartree": -233.18206235667992
+        },
+        "parameter_values": {
+          "tau1_deg": 66.30727536642745,
+          "tau2_deg": 88.3614515029635,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 20,
+        "objective_values": {
+          "energy_hartree": -233.1849871607697
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": -60.040325978886614,
+          "tau3_deg": -128.7302106221756
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "energy_hartree": -233.1842096934113
+        },
+        "parameter_values": {
+          "tau1_deg": 61.89628960516404,
+          "tau2_deg": 38.04482139720513,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "energy_hartree": -233.18363854437024
+        },
+        "parameter_values": {
+          "tau1_deg": 169.6805807589969,
+          "tau2_deg": 158.42584286476773,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "energy_hartree": -233.18074126619885
+        },
+        "parameter_values": {
+          "tau1_deg": 41.991631181179535,
+          "tau2_deg": 180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "energy_hartree": -233.18308809552718
+        },
+        "parameter_values": {
+          "tau1_deg": 167.84826772291606,
+          "tau2_deg": 180.0,
+          "tau3_deg": -1.3640593466654245
+        }
+      },
+      {
+        "evaluation_index": 25,
+        "objective_values": {
+          "energy_hartree": -233.177179718986
+        },
+        "parameter_values": {
+          "tau1_deg": 26.772252199260226,
+          "tau2_deg": 180.0,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 26,
+        "objective_values": {
+          "energy_hartree": -233.1728281057917
+        },
+        "parameter_values": {
+          "tau1_deg": 8.251360805134292,
+          "tau2_deg": 83.04792106896798,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 27,
+        "objective_values": {
+          "energy_hartree": -233.18629411680644
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": -59.56649435885431,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 28,
+        "objective_values": {
+          "energy_hartree": -233.18354894007172
+        },
+        "parameter_values": {
+          "tau1_deg": 89.39401664209069,
+          "tau2_deg": 51.58100332984277,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "energy_hartree": -233.18065191417367
+        },
+        "parameter_values": {
+          "tau1_deg": 180.0,
+          "tau2_deg": 108.07975426380389,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "energy_hartree": -233.17707600302083
+        },
+        "parameter_values": {
+          "tau1_deg": 73.81748219432066,
+          "tau2_deg": -2.8577024304318197,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "energy_hartree": -233.1821959849241
+        },
+        "parameter_values": {
+          "tau1_deg": 145.75971240078704,
+          "tau2_deg": 180.0,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "energy_hartree": -233.18025976370598
+        },
+        "parameter_values": {
+          "tau1_deg": 116.55401662777936,
+          "tau2_deg": 180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 33,
+        "objective_values": {
+          "energy_hartree": -233.18050627012553
+        },
+        "parameter_values": {
+          "tau1_deg": 180.0,
+          "tau2_deg": 140.5233880605169,
+          "tau3_deg": -62.20110115355779
+        }
+      },
+      {
+        "evaluation_index": 34,
+        "objective_values": {
+          "energy_hartree": -233.18534486087643
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": 180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 35,
+        "objective_values": {
+          "energy_hartree": -233.18534486087597
+        },
+        "parameter_values": {
+          "tau1_deg": 180.0,
+          "tau2_deg": 180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 36,
+        "objective_values": {
+          "energy_hartree": -233.1853448608762
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": 180.0,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 37,
+        "objective_values": {
+          "energy_hartree": -233.18356432798618
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": 180.0,
+          "tau3_deg": -0.08673389498485959
+        }
+      },
+      {
+        "evaluation_index": 38,
+        "objective_values": {
+          "energy_hartree": -233.18022964567243
+        },
+        "parameter_values": {
+          "tau1_deg": -143.87789173972138,
+          "tau2_deg": 180.0,
+          "tau3_deg": -1.0414320515129145
+        }
+      },
+      {
+        "evaluation_index": 39,
+        "objective_values": {
+          "energy_hartree": -233.1792531135577
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": 145.10274782274902,
+          "tau3_deg": 5.0643447126318915
+        }
+      },
+      {
+        "evaluation_index": 40,
+        "objective_values": {
+          "energy_hartree": -233.18106030799615
+        },
+        "parameter_values": {
+          "tau1_deg": -136.62695387496845,
+          "tau2_deg": 180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 41,
+        "objective_values": {
+          "energy_hartree": -233.1811287386892
+        },
+        "parameter_values": {
+          "tau1_deg": -137.27494010138037,
+          "tau2_deg": 180.0,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 42,
+        "objective_values": {
+          "energy_hartree": -233.18138919401247
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": 140.11545916790888,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 43,
+        "objective_values": {
+          "energy_hartree": -233.18124848821756
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": 138.95132037703726,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 44,
+        "objective_values": {
+          "energy_hartree": -233.17682356541047
+        },
+        "parameter_values": {
+          "tau1_deg": -145.60660262983757,
+          "tau2_deg": 153.93914919914792,
+          "tau3_deg": 8.033173209804643
+        }
+      },
+      {
+        "evaluation_index": 45,
+        "objective_values": {
+          "energy_hartree": -233.18371827617585
+        },
+        "parameter_values": {
+          "tau1_deg": 180.0,
+          "tau2_deg": 157.55134164707158,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 46,
+        "objective_values": {
+          "energy_hartree": -233.1729599828301
+        },
+        "parameter_values": {
+          "tau1_deg": -9.000019814623386,
+          "tau2_deg": -180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 47,
+        "objective_values": {
+          "energy_hartree": -233.17233101776145
+        },
+        "parameter_values": {
+          "tau1_deg": -3.658164690319396,
+          "tau2_deg": -180.0,
+          "tau3_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 48,
+        "objective_values": {
+          "energy_hartree": -233.1847470952259
+        },
+        "parameter_values": {
+          "tau1_deg": 66.90333713537339,
+          "tau2_deg": 54.5912344594195,
+          "tau3_deg": 97.86098908921167
+        }
+      },
+      {
+        "evaluation_index": 49,
+        "objective_values": {
+          "energy_hartree": -233.18326149037767
+        },
+        "parameter_values": {
+          "tau1_deg": -84.69650957307627,
+          "tau2_deg": -180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 50,
+        "objective_values": {
+          "energy_hartree": -233.18534486087705
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": -180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 51,
+        "objective_values": {
+          "energy_hartree": -233.1802051588122
+        },
+        "parameter_values": {
+          "tau1_deg": -39.164712748428165,
+          "tau2_deg": -180.0,
+          "tau3_deg": -69.74403622532273
+        }
+      },
+      {
+        "evaluation_index": 52,
+        "objective_values": {
+          "energy_hartree": -233.18534486087643
+        },
+        "parameter_values": {
+          "tau1_deg": 180.0,
+          "tau2_deg": -180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 53,
+        "objective_values": {
+          "energy_hartree": -233.1816811265352
+        },
+        "parameter_values": {
+          "tau1_deg": -141.9693123342375,
+          "tau2_deg": -180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 54,
+        "objective_values": {
+          "energy_hartree": -233.17914302413513
+        },
+        "parameter_values": {
+          "tau1_deg": -108.13845413095156,
+          "tau2_deg": -180.0,
+          "tau3_deg": -2.9631714501653796
+        }
+      },
+      {
+        "evaluation_index": 55,
+        "objective_values": {
+          "energy_hartree": -233.18252950655764
+        },
+        "parameter_values": {
+          "tau1_deg": 180.0,
+          "tau2_deg": -147.94482515930548,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 56,
+        "objective_values": {
+          "energy_hartree": -233.18415598905509
+        },
+        "parameter_values": {
+          "tau1_deg": -180.0,
+          "tau2_deg": -180.0,
+          "tau3_deg": 21.920008900309167
+        }
+      },
+      {
+        "evaluation_index": 57,
+        "objective_values": {
+          "energy_hartree": -233.1847054771057
+        },
+        "parameter_values": {
+          "tau1_deg": 180.0,
+          "tau2_deg": -180.0,
+          "tau3_deg": 32.71291687826999
+        }
+      },
+      {
+        "evaluation_index": 58,
+        "objective_values": {
+          "energy_hartree": -233.183018634278
+        },
+        "parameter_values": {
+          "tau1_deg": -153.3029439803187,
+          "tau2_deg": -180.0,
+          "tau3_deg": 44.344260512130184
+        }
+      },
+      {
+        "evaluation_index": 59,
+        "objective_values": {
+          "energy_hartree": -233.1827013821559
+        },
+        "parameter_values": {
+          "tau1_deg": 149.5749659378649,
+          "tau2_deg": -180.0,
+          "tau3_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 60,
+        "objective_values": {
+          "energy_hartree": -233.1816219454308
+        },
+        "parameter_values": {
+          "tau1_deg": -89.30325025229826,
+          "tau2_deg": -180.0,
+          "tau3_deg": -119.77075746309211
+        }
+      }
+    ],
+    "pareto_front": null,
+    "results_retrieved": true,
+    "successful_objective_evaluations": 60,
+    "suggestions_generated": 60,
+    "unresolved_suggestions": 0,
+    "verification_status": "verified"
+  },
+  "metric_notes": [
+    "Token and cost fields are reported only when exposed by the runtime or derivable from recorded message metadata.",
+    "Subagent metrics use TaskHandle observability fields when the installed subagent runtime exposes them, with older-runtime fallbacks."
+  ],
+  "objective_oracle": {
+    "checked_evaluations": 0,
+    "mismatch_count": 0,
+    "verification_status": "not_applicable"
+  },
+  "provenance": {
+    "audited_accelerator_policies": [
+      "auto"
+    ],
+    "audited_batches": 9,
+    "audited_identifier_hashes": [
+      "03b6fed0388f4e68cdffbdbb77995d59c6cb6970cea547e2000511683069132d",
+      "123fc9c45976e5c4dbc0ccd425b12874b60d945ddbca96691af3225f578b650b",
+      "128742710c835be198f82ec3aa390ad10e8e5773e2d5df383454720a8db915f7",
+      "1538e29c560ea3725f2d01c7ba5afedf92864bc6c3be4681eb56fd9395dcee9e",
+      "18d1892e9e29893d9ce5b99a658ef319624faa2406c9491b52369bfc579a6662",
+      "1c7eaaefadc751bdcf2b1601ed992235e9503878c4aee04ea5d63367faabb9af",
+      "2448742acee6580422c49b6eb019144e7ec3fb4d30c1a31fc72545fa7f710135",
+      "2a96f1f706ad6455d9617e23b81a564f412064b32564e2108a692aeb6aa0fe88",
+      "2b6e0db5bb5493b2038c4180aac215c37cc82599c4664425655ccaa17860aa50",
+      "31fbfbd0d38b0c4f59310ea0fff91d53bd5c0d02a5f216eff375931dcbba67bd",
+      "33042dafa7de183a1eb272c8f22b81af3d0ba4ae4cca5171fdfaa29de62a33bd",
+      "36c4fcdf66e2a5c320c54297d22abb55160cd997e700784071f5a68b4c1faebd",
+      "3fd7ca0683bdf5419c044a78acb116f5d375eb5e0fd4332ad4e6e78578dcffe0",
+      "46ddd7102ad370a4012c2bf9ad661ce83b699c97e3dfc56bffddf9987a9e0dfe",
+      "4a34296e979acc9680015ffa9611973d21aec07b8aadef99cc55fc5334ea31ee",
+      "4ab87ea789f3a35a5419bcdd7f2c5e5495ba6dd45fdfa71ded12e864440e10c2",
+      "4dacd7732a939fbd51ff93ce3311d63cc01f0c9bc4452effcb317e19c00b3e0f",
+      "5466e048aa55772fea00dfb96f1f6059dcdde0666c5c9bf00d0159f062f89778",
+      "560366b01d367685491f5e09747c59a32fab856d8c0c40d322746c8913110813",
+      "56b9ef4addda83d6ac61cb45cedcd4b41b09ec5d4153da7ebe4a3f9765eb5b27",
+      "604acb5644aca256807f2d68927359caa20df66aa5f40399e74bb8bbd9781f50",
+      "623fd55a108f212583ace9420af527d8450c571e3458594b4ae5e75c9475766a",
+      "63fe9f7ed33925aacf1ead30ed603b3ffcfc7741ae715e70c14ad123d6655c81",
+      "65f526bb12128116ddfa84efb1df0fffd4fb23a8ebf495797d5982215e6f9a91",
+      "728a95cb8549847fde277030301c7816435f954d32eb2b53469f6df82f78aaad",
+      "73d91f77f0e44af0db5c00dcf84161c5fd6efaf71c8586b954f50f99e0c43c66",
+      "7e5ccf5b59ecd36d74d62e1374562073a4d1a6f30ee89d77dc4a8bbf56f912f8",
+      "7ff79676345ca5296a84f1ad4cbf3635a0c5c2e96a1527f1a31410922257b9fc",
+      "8585bb117e0895233eb8a644ab775de2b00baf5ffc44439673c6cc38911bb8f2",
+      "88a06b641499fa56f3ac3862bae454d3c3d53fdb20fafcb6adaa72022d7211f7",
+      "8a93f6cebc0cb452c78191bc2db33eca823f3ca50e427a8080b6ec93c150b859",
+      "8addfa31439c28012b6020426f8bf695cd3685e38507e7e70097a2b6823ca9c6",
+      "8db61bdf21ca8081fddc872cb83154f9b1332269a72e151782775863300ad737",
+      "8e4b25ab7069485b04117066caf059348a698551cb3b102277044ca4f4e24ed4",
+      "a0fb6617563d63a7d73b0e226af704200c58edc01c82b7aab18ce16918815fd6",
+      "a21bdeda2e65ceb8480224b691f8c922c1837955021b38a0e9689322e99a1740",
+      "a313c09b54a9b5a0fb4be6d642067b87b257929ececd2eb7320ebad6359a7f1c",
+      "a68679c319c1c8fea9367f7f500befad756a28b0e2be882fc3771a5811a4b18d",
+      "a838bce03e7ad4d27e5edeee87ca0adaad65f137dfeab127721fc79b3a7145d6",
+      "bda21f79dc72b44b621aa98b64c1f4eb683d8eac1696918f0a7870e8409aade6",
+      "c07176294b6fc1f3516d74bcfd741c890d7d9b44c73ba89bf55a3dcb8a19579f",
+      "c1875c6c37730f255c65124e1ca421527c1800c3f447f839debec6988ac46cb1",
+      "c63ba50f0ba74f8ecbbc52ab5ef3b44359ee7cfae678ebd0ab99aed25e943a73",
+      "c7f1f6f7df54ca0754f598a65b2f2ada4fb6dffa28297e25cea615408d190c50",
+      "caad5972c8a1d2ac8f64527cb305e91544de2a73d90469f94762b3363fd28d2d",
+      "cb2d39feff60f7efbb565debdbf03a3e31ca96bdc6e97cb261ceb4a0d803f792",
+      "d2bba19c4ec787493e5acd35bdb222a20770f3497ee430cc8cad5a77ecbb8b48",
+      "d3157d8b76530d27cb6128b2c8b5604ff54f42c6cd3dc033b884154471fb8d7b",
+      "d544e11a7b8a0416e680f8623a250d95faf692d4c0a1d90e27c8ef0a6578fd72",
+      "d560034afa86c9887ddda0c07b478761d806e375e159e5c2d608543df3cc5841",
+      "ea8844d32bab4a7cf110f9521434e92478d1596db0d4ed726e6c233cad0813aa",
+      "edf1e59d6283357aa895b068d7c3be4bd005d7efdfe2a318b045d5040a2f61cd",
+      "ef0ee18ecd303f8262898894ee8b63af4cfab4c9dfe683e3ce6e089e63815f35",
+      "f115116f483de86846a18dbe8bff551a0b407a7feaf329dc1a939c8b47eb076d",
+      "f29dede8cff16410c624946b867c3320b759aaf7e5d268e5e5dafba00006c5d1",
+      "f995376017db62f88fc7a349ea41c1c0c7ab45fdd4a21bf8da7036c4acff19fb"
+    ],
+    "audited_max_parallel_molecules": [
+      4,
+      8
+    ],
+    "audited_pyscf_calls": 60,
+    "compliant_pyscf_calls": 60,
+    "failure_reasons": [],
+    "noncompliant_call_reasons": {},
+    "objective_call_evidence_source": "pyscf_runner_batches",
+    "reported_choice_source": null,
+    "reported_choices": null,
+    "verification_status": "verified",
+    "workspace_path": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_toolloop_aligned_baybe_litellm_gpt54_20261006T131917Z/repeat_003/cases/dihedral/workspace/bo-mcp-eval"
+  },
+  "usage_split": {
+    "_source": {
+      "combined": "sum of available main/subagent counters; cost may be incomplete when subagent cost is unavailable",
+      "main": "Pydantic AI result.usage plus result.all_messages() for message-level cost metadata",
+      "subagents": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+    },
+    "combined": {
+      "_source": {
+        "cost_usd": "main plus subagent cost only when all required cost components are available",
+        "usage": "sum of available main/subagent counters"
+      },
+      "cache_read_tokens": 6600446,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "main_plus_subagent_cost_breakdown",
+      "cost_usd": 3.122914,
+      "input_tokens": 6857875,
+      "output_tokens": 55282,
+      "reasoning_tokens": 6501,
+      "request_count": 75,
+      "tool_call_count": 131,
+      "total_tokens": 6913157
+    },
+    "limitations": [
+      "nested subagents are not captured",
+      "subagent usage is read from top-level pydantic-deep task handles",
+      "combined assumes parent AgentRunResult.usage excludes subagent TaskHandle.usage; this assumption should be retested after dependency changes",
+      "per-task subagent tool-call counts require TaskHandle.tool_call_counts or TaskHandle.message_history"
+    ],
+    "main": {
+      "_source": {
+        "cost_usd": "genai-prices estimate from main-agent response message usage/model metadata",
+        "messages": "Pydantic AI result.all_messages()",
+        "usage": "Pydantic AI result.usage"
+      },
+      "cache_read_tokens": 6600446,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "genai_prices_from_main_response_messages",
+      "cost_usd": 3.122914,
+      "input_tokens": 6857875,
+      "model_names": [
+        "gpt-5.4"
+      ],
+      "output_tokens": 55282,
+      "priced_response_count": 75,
+      "provider_names": [
+        "openai"
+      ],
+      "reasoning_tokens": 6501,
+      "request_count": 75,
+      "tool_call_count": 131,
+      "total_tokens": null,
+      "unpriced_response_count": 0
+    },
+    "method": "main_result_usage_plus_subagent_task_handle_usage",
+    "scope": "top_level_pydantic_deep_subagents",
+    "subagents": {
+      "_source": {
+        "cost_usd": "TaskHandle.cost when exposed, otherwise genai-prices estimate from task-handle usage and model/provider metadata",
+        "messages": "TaskHandle.message_history when exposed by the installed subagent runtime",
+        "tool_call_counts": "TaskHandle.tool_call_counts when exposed, otherwise counts derived from TaskHandle.message_history tool-call parts",
+        "usage": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+      },
+      "available": false,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_available": false,
+      "cost_source": "subagent_task_handles",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "priced_task_count": 0,
+      "reasoning_tokens": 0,
+      "request_count": 0,
+      "tasks": [],
+      "total_tokens": 0,
+      "unpriced_task_count": 0
+    }
+  }
+}

@@ -1,0 +1,1209 @@
+{
+  "agent": {
+    "_source": {
+      "cost_usd": "Pydantic Evals ReportCase.metrics['cost'] when available; main-agent estimated cost is reported under usage_split.main.cost_usd",
+      "pydantic_eval_task_duration_s": "Pydantic Evals ReportCase.task_duration when available",
+      "pydantic_eval_total_duration_s": "Pydantic Evals ReportCase.total_duration when available",
+      "runtime_s": "wall-clock time around agent.run(...) in evals.bo_mcp.runner",
+      "usage": "Pydantic AI result.usage"
+    },
+    "cache_read_tokens": 4937682,
+    "cache_write_tokens": 0,
+    "campaign_id_present": true,
+    "campaign_verified": true,
+    "cost_usd": 2.9739655,
+    "final_answer_present": true,
+    "input_tokens": 5340130,
+    "output_tokens": 48895,
+    "pydantic_eval_task_duration_s": 1427.058618303,
+    "pydantic_eval_total_duration_s": 1427.060373339,
+    "reasoning_tokens": 7588,
+    "request_count": 61,
+    "runtime_s": 1409.2748987618834,
+    "success": true,
+    "tool_call_count": 119,
+    "total_tokens": null
+  },
+  "architecture": {
+    "_source": "best-effort architecture compliance derived from selected eval mode, main-agent tool calls, subagent task handles, and generated workspace files",
+    "architecture_contract_satisfied": true,
+    "architecture_mode": "main_agent_tool_passing_bo_mcp",
+    "architecture_restrictions": {
+      "allow_bash": false,
+      "allow_bo_mcp_openapi_tools": false,
+      "allow_bo_mcp_tools": true,
+      "allow_python_repl": false,
+      "allow_subagents": false,
+      "execution_style": "main agent calls tools directly without script execution",
+      "require_campaign_id": true,
+      "require_script_artifact": false,
+      "workflow_owner": "main-agent"
+    },
+    "bo_driver_code_count": 0,
+    "bo_mcp_artifact_reference_count": 0,
+    "bo_mcp_verification_status": "verified",
+    "campaign_id_present": true,
+    "campaign_id_required": true,
+    "delegated_subagent_names": [],
+    "mode_violation_reasons": [],
+    "script_artifact_count": 0,
+    "script_artifact_hashes": [],
+    "script_artifact_required": false,
+    "subagent_delegation_count": 0,
+    "tool_call_counts_by_name": {
+      "bo_create_campaign": 1,
+      "bo_export_campaign": 1,
+      "bo_generate_suggestions": 6,
+      "bo_get_diagnostics": 2,
+      "bo_health_check": 1,
+      "bo_list_capabilities": 1,
+      "bo_list_results": 1,
+      "bo_list_suggestions": 1,
+      "bo_submit_results": 7,
+      "bo_terminate_campaign": 1,
+      "bo_validate_intake": 1,
+      "container_execute": 29,
+      "container_read_file": 2,
+      "container_write_file": 1,
+      "inspect_smiles_geometry": 1,
+      "load_skill": 1,
+      "read_skill_resource": 2,
+      "set_molecular_dihedrals": 60
+    },
+    "used_bo_mcp_tools": true,
+    "used_python_or_bash": false
+  },
+  "benchmark": {
+    "benchmark_clean": true,
+    "clean_failure_reasons": [],
+    "expected_evaluation_budget": 60,
+    "expected_hypervolume_reference_point": null,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "objective_direction": "minimize",
+    "objective_name": "single_point_energy",
+    "objective_unit": "hartree",
+    "run_success": true
+  },
+  "bo_mcp": {
+    "_source": "BO-MCP REST read-back of campaign, spec, results, and diagnostics endpoints",
+    "attempted_objective_evaluations": 60,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "best_objective_evaluation_index": 57,
+    "best_objective_value": -233.18559170765397,
+    "best_parameters": {
+      "dihedral_cccc_deg": 180.0,
+      "dihedral_ccco_deg": -180.0,
+      "dihedral_ccoh_deg": -71.5498947886258
+    },
+    "best_so_far_by_evaluation": [
+      -233.17365689430355,
+      -233.17365689430355,
+      -233.17996984959564,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824912244451,
+      -233.183636829489,
+      -233.183636829489,
+      -233.183636829489,
+      -233.183636829489,
+      -233.1851205271432,
+      -233.1851205271432,
+      -233.1851205271432,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18559170765397,
+      -233.18559170765397,
+      -233.18559170765397,
+      -233.18559170765397
+    ],
+    "bo_mcp_reported_best_parameters": {
+      "dihedral_cccc_deg": 180.0,
+      "dihedral_ccco_deg": -180.0,
+      "dihedral_ccoh_deg": -71.5498947886258
+    },
+    "bo_mcp_reported_best_value": -233.18559170765397,
+    "bo_mcp_reported_hypervolume": null,
+    "bo_mcp_reported_improvement_history": [
+      -233.17365689430355,
+      -233.17365689430355,
+      -233.17996984959564,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.18189808845997,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824560159737,
+      -233.1824912244451,
+      -233.183636829489,
+      -233.183636829489,
+      -233.183636829489,
+      -233.183636829489,
+      -233.1851205271432,
+      -233.1851205271432,
+      -233.1851205271432,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.1851788751422,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18534486087574,
+      -233.18559170765397,
+      -233.18559170765397,
+      -233.18559170765397,
+      -233.18559170765397
+    ],
+    "bo_mcp_reported_n_pareto_points": null,
+    "bo_mcp_reported_pareto_front": null,
+    "campaign_batch_size": 5,
+    "campaign_config": {
+      "_source": "BO-MCP REST campaign/spec read-back",
+      "acknowledge_degradations": [],
+      "acquisition": {
+        "method": "auto",
+        "optimization": null,
+        "saasbo_config": null,
+        "turbo_config": null,
+        "use_cost_aware": false,
+        "use_input_warping": false
+      },
+      "backend_options": null,
+      "backend_requested": "baybe",
+      "backend_resolved": "baybe",
+      "batch_size": 5,
+      "campaign_id": "ac6fa337-27d4-49ba-a935-f403ca6e16d1",
+      "constraints": [],
+      "convergence_tolerance": null,
+      "fidelity_parameter": null,
+      "initial_design_size": 10,
+      "initial_design_size_requested": 10,
+      "initial_design_size_source": "requested",
+      "max_iterations": null,
+      "max_observations": 60,
+      "missing_fields": [
+        "max_iterations",
+        "convergence_tolerance",
+        "backend_options",
+        "fidelity_parameter",
+        "transfer_learning"
+      ],
+      "objectives": [
+        {
+          "direction": "minimize",
+          "log_transform": false,
+          "match_scale": null,
+          "match_shape": null,
+          "name": "energy_hartree",
+          "normalization_bounds": null,
+          "target": null,
+          "target_mode": null,
+          "transform": null,
+          "unit": "Hartree",
+          "weight": null
+        }
+      ],
+      "outcome_constraints": [],
+      "parameters": [
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral angle C0-C1-C2-C3 in degrees.",
+          "name": "dihedral_cccc_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral angle C1-C2-C3-O4 in degrees.",
+          "name": "dihedral_ccco_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral angle C2-C3-O4-H14 in degrees.",
+          "name": "dihedral_ccoh_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        }
+      ],
+      "random_seed": 0,
+      "spec_id": "5a3a11a1-90b9-4210-9bae-cc30104d7cec",
+      "transfer_learning": null
+    },
+    "campaign_config_artifact": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_toolloop_aligned_baybe_litellm_gpt54_20261006T131917Z/repeat_001/cases/dihedral/campaign_config.json",
+    "campaign_config_endpoint_retrieved": true,
+    "campaign_id": "ac6fa337-27d4-49ba-a935-f403ca6e16d1",
+    "campaign_initial_design_size": 10,
+    "campaign_iteration": 6,
+    "campaign_max_iterations": null,
+    "campaign_max_observations": 60,
+    "campaign_random_seed": 0,
+    "campaign_retrieved": true,
+    "campaign_spec_id": "5a3a11a1-90b9-4210-9bae-cc30104d7cec",
+    "campaign_spec_retrieved": true,
+    "campaign_status": "completed",
+    "converged": true,
+    "diagnostics_retrieved": true,
+    "duplicate_evaluations": 0,
+    "duplicate_rate": 0.0,
+    "eval_best_so_far_auc": -13991.00559917207,
+    "evaluation_budget_adherence": "matched",
+    "evaluation_budget_delta": 0,
+    "expected_evaluation_budget": 60,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "failed_evaluation_rate": 0.0,
+    "failed_evaluations": 0,
+    "final_objective_value": -233.17997120999732,
+    "hypervolume": null,
+    "hypervolume_reference_point": null,
+    "incomplete_objective_evaluations": 0,
+    "n_pareto_points": null,
+    "objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "energy_hartree"
+      }
+    ],
+    "objective_reducer": "single_objective_best_so_far",
+    "objective_schema_matches_expected": true,
+    "objective_schema_status": "normalized_scalar",
+    "objective_vector_count": 60,
+    "objective_vectors": [
+      {
+        "evaluation_index": 1,
+        "objective_values": {
+          "energy_hartree": -233.17365689430355
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -111.89998143018026,
+          "dihedral_ccco_deg": -98.45720028661182,
+          "dihedral_ccoh_deg": -127.2784885443433
+        }
+      },
+      {
+        "evaluation_index": 2,
+        "objective_values": {
+          "energy_hartree": -233.17220010268554
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 120.97785133312345,
+          "dihedral_ccco_deg": -123.87756422648953,
+          "dihedral_ccoh_deg": -85.28544093797119
+        }
+      },
+      {
+        "evaluation_index": 3,
+        "objective_values": {
+          "energy_hartree": -233.17996984959564
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 105.30529531121493,
+          "dihedral_ccco_deg": 40.86271276945669,
+          "dihedral_ccoh_deg": 68.7195221018049
+        }
+      },
+      {
+        "evaluation_index": 4,
+        "objective_values": {
+          "energy_hartree": -233.18189808845997
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -151.28973648654653,
+          "dihedral_ccco_deg": -47.949017663609425,
+          "dihedral_ccoh_deg": -102.90488083773208
+        }
+      },
+      {
+        "evaluation_index": 5,
+        "objective_values": {
+          "energy_hartree": -233.1780855651063
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -119.18526529446375,
+          "dihedral_ccco_deg": 160.78002472852023,
+          "dihedral_ccoh_deg": -36.113131567955094
+        }
+      },
+      {
+        "evaluation_index": 6,
+        "objective_values": {
+          "energy_hartree": -233.17869849713964
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 67.63783080910073,
+          "dihedral_ccco_deg": -131.85166003835425,
+          "dihedral_ccoh_deg": 66.8863567860333
+        }
+      },
+      {
+        "evaluation_index": 7,
+        "objective_values": {
+          "energy_hartree": -233.15819756749198
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -132.5891555126867,
+          "dihedral_ccco_deg": -10.132273164354132,
+          "dihedral_ccoh_deg": -6.423918606051018
+        }
+      },
+      {
+        "evaluation_index": 8,
+        "objective_values": {
+          "energy_hartree": -233.1617860300304
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -3.9119585595878164,
+          "dihedral_ccco_deg": 115.4497966041767,
+          "dihedral_ccoh_deg": -166.28781568325536
+        }
+      },
+      {
+        "evaluation_index": 9,
+        "objective_values": {
+          "energy_hartree": -233.1813329358226
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 94.392009714913,
+          "dihedral_ccco_deg": 48.50927036220858,
+          "dihedral_ccoh_deg": -116.7506050112691
+        }
+      },
+      {
+        "evaluation_index": 10,
+        "objective_values": {
+          "energy_hartree": -233.18179427069026
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 57.43817106311994,
+          "dihedral_ccco_deg": -179.16178156146916,
+          "dihedral_ccoh_deg": -111.16780768753775
+        }
+      },
+      {
+        "evaluation_index": 11,
+        "objective_values": {
+          "energy_hartree": -233.17291499677455
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -129.73129471301053,
+          "dihedral_ccco_deg": -140.6896200984733,
+          "dihedral_ccoh_deg": 102.80832904858573
+        }
+      },
+      {
+        "evaluation_index": 12,
+        "objective_values": {
+          "energy_hartree": -233.17820091449974
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -162.60485382317347,
+          "dihedral_ccco_deg": 133.44175193281922,
+          "dihedral_ccoh_deg": -68.42440176346796
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "energy_hartree": -233.17613419478053
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 107.67962457382652,
+          "dihedral_ccco_deg": 31.362181998967685,
+          "dihedral_ccoh_deg": 95.09585644772835
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "energy_hartree": -233.17845983148604
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 158.66293926695965,
+          "dihedral_ccco_deg": -140.96572157659585,
+          "dihedral_ccoh_deg": -137.47579653706453
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "energy_hartree": -233.1746044780115
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 103.03534027607469,
+          "dihedral_ccco_deg": 105.56377610004631,
+          "dihedral_ccoh_deg": -137.64678528191257
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "energy_hartree": -233.17754714594395
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -155.6678991377974,
+          "dihedral_ccco_deg": -94.54467098823808,
+          "dihedral_ccoh_deg": -129.71884763372884
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "energy_hartree": -233.17674230932263
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -180.0,
+          "dihedral_ccco_deg": -6.7876015927594455,
+          "dihedral_ccoh_deg": -104.91786268495538
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "energy_hartree": -233.18060526554316
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 104.49136450459419,
+          "dihedral_ccco_deg": 77.75704999618728,
+          "dihedral_ccoh_deg": -91.77384769322447
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "energy_hartree": -233.1824560159737
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 64.82346957408899,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": -136.1183255456574
+        }
+      },
+      {
+        "evaluation_index": 20,
+        "objective_values": {
+          "energy_hartree": -233.18037117310016
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -180.0,
+          "dihedral_ccco_deg": -98.38856888225732,
+          "dihedral_ccoh_deg": -94.15745272521926
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "energy_hartree": -233.18113964372927
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 75.02163229256513,
+          "dihedral_ccco_deg": -58.37562075435472,
+          "dihedral_ccoh_deg": -124.24714230845119
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "energy_hartree": -233.17537445929398
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 146.17817638040933,
+          "dihedral_ccco_deg": -41.53927000095772,
+          "dihedral_ccoh_deg": 45.93559702763102
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "energy_hartree": -233.17691742165908
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -111.49975203553728,
+          "dihedral_ccco_deg": 34.24639945885468,
+          "dihedral_ccoh_deg": -91.54703708785556
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "energy_hartree": -233.17810649404947
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 169.0637228626556,
+          "dihedral_ccco_deg": 21.193203297259345,
+          "dihedral_ccoh_deg": -119.36331158019824
+        }
+      },
+      {
+        "evaluation_index": 25,
+        "objective_values": {
+          "energy_hartree": -233.1170065838512
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 35.94694864332632,
+          "dihedral_ccco_deg": 15.354618569727208,
+          "dihedral_ccoh_deg": -97.33949926828187
+        }
+      },
+      {
+        "evaluation_index": 26,
+        "objective_values": {
+          "energy_hartree": -233.17795234080342
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 160.8389114845513,
+          "dihedral_ccco_deg": 97.14178110263113,
+          "dihedral_ccoh_deg": 37.15825064044434
+        }
+      },
+      {
+        "evaluation_index": 27,
+        "objective_values": {
+          "energy_hartree": -233.1824912244451
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 67.91246084947595,
+          "dihedral_ccco_deg": 156.20298233834927,
+          "dihedral_ccoh_deg": 53.67986334233776
+        }
+      },
+      {
+        "evaluation_index": 28,
+        "objective_values": {
+          "energy_hartree": -233.183636829489
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 86.27629692318911,
+          "dihedral_ccco_deg": 67.62156176570345,
+          "dihedral_ccoh_deg": 22.273336392744703
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "energy_hartree": -233.18272521028635
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 92.55270808391687,
+          "dihedral_ccco_deg": -54.25990936181113,
+          "dihedral_ccoh_deg": -42.14593032209778
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "energy_hartree": -233.18242481556325
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 81.14540460987294,
+          "dihedral_ccco_deg": 180.0,
+          "dihedral_ccoh_deg": 133.09125652786565
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "energy_hartree": -233.18111781402015
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -100.41764149821444,
+          "dihedral_ccco_deg": 180.0,
+          "dihedral_ccoh_deg": -156.11199489314967
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "energy_hartree": -233.1851205271432
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -168.38765278617242,
+          "dihedral_ccco_deg": -72.94307707239402,
+          "dihedral_ccoh_deg": 58.91647769038993
+        }
+      },
+      {
+        "evaluation_index": 33,
+        "objective_values": {
+          "energy_hartree": -233.18153089674288
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 85.53237735027035,
+          "dihedral_ccco_deg": 180.0,
+          "dihedral_ccoh_deg": 7.837293336027493
+        }
+      },
+      {
+        "evaluation_index": 34,
+        "objective_values": {
+          "energy_hartree": -233.17805928302084
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -92.66259556938812,
+          "dihedral_ccco_deg": 142.10066415181845,
+          "dihedral_ccoh_deg": 49.626530283231936
+        }
+      },
+      {
+        "evaluation_index": 35,
+        "objective_values": {
+          "energy_hartree": -233.1851788751422
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 74.09469629040781,
+          "dihedral_ccco_deg": 67.05138052186257,
+          "dihedral_ccoh_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 36,
+        "objective_values": {
+          "energy_hartree": -233.1838132191349
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 84.25469064169954,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": -51.46047365696693
+        }
+      },
+      {
+        "evaluation_index": 37,
+        "objective_values": {
+          "energy_hartree": -233.17945413823122
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 179.5285842773908,
+          "dihedral_ccco_deg": -111.200325395124,
+          "dihedral_ccoh_deg": 61.68308017662819
+        }
+      },
+      {
+        "evaluation_index": 38,
+        "objective_values": {
+          "energy_hartree": -233.18338561805143
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -153.70591833654265,
+          "dihedral_ccco_deg": 47.477128695359106,
+          "dihedral_ccoh_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 39,
+        "objective_values": {
+          "energy_hartree": -233.18101084189294
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -176.45399349032994,
+          "dihedral_ccco_deg": -136.8223638143832,
+          "dihedral_ccoh_deg": 174.18291855956875
+        }
+      },
+      {
+        "evaluation_index": 40,
+        "objective_values": {
+          "energy_hartree": -233.1682925541816
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -160.39428873786017,
+          "dihedral_ccco_deg": -7.84245217654963,
+          "dihedral_ccoh_deg": 12.101936966852199
+        }
+      },
+      {
+        "evaluation_index": 41,
+        "objective_values": {
+          "energy_hartree": -233.181845120281
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -159.82714059770376,
+          "dihedral_ccco_deg": -151.55145574999094,
+          "dihedral_ccoh_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 42,
+        "objective_values": {
+          "energy_hartree": -233.17875921031273
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -173.16561956916192,
+          "dihedral_ccco_deg": 13.826739364829162,
+          "dihedral_ccoh_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 43,
+        "objective_values": {
+          "energy_hartree": -233.18275410678464
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 83.7640730154643,
+          "dihedral_ccco_deg": -47.08893204224657,
+          "dihedral_ccoh_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 44,
+        "objective_values": {
+          "energy_hartree": -233.18239260312606
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 92.56772159922758,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 45,
+        "objective_values": {
+          "energy_hartree": -233.177192470678
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -85.78013513162242,
+          "dihedral_ccco_deg": -10.195038383229019,
+          "dihedral_ccoh_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 46,
+        "objective_values": {
+          "energy_hartree": -233.18287936729308
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 88.18797637399369,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 47,
+        "objective_values": {
+          "energy_hartree": -233.18211381218086
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -95.19931756347388,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 48,
+        "objective_values": {
+          "energy_hartree": -233.18534486087574
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 180.0,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 49,
+        "objective_values": {
+          "energy_hartree": -233.18392855911506
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -68.85086355095494,
+          "dihedral_ccco_deg": 180.0,
+          "dihedral_ccoh_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 50,
+        "objective_values": {
+          "energy_hartree": -233.17868318034746
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -177.28781853864808,
+          "dihedral_ccco_deg": -116.22893471550844,
+          "dihedral_ccoh_deg": 51.34592036335474
+        }
+      },
+      {
+        "evaluation_index": 51,
+        "objective_values": {
+          "energy_hartree": -233.1841040628669
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -64.93282576033499,
+          "dihedral_ccco_deg": 180.0,
+          "dihedral_ccoh_deg": -58.97814423816846
+        }
+      },
+      {
+        "evaluation_index": 52,
+        "objective_values": {
+          "energy_hartree": -233.18181231862988
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -143.01899365473255,
+          "dihedral_ccco_deg": 180.0,
+          "dihedral_ccoh_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 53,
+        "objective_values": {
+          "energy_hartree": -233.18338637792797
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 91.45345511890754,
+          "dihedral_ccco_deg": -72.37792175360441,
+          "dihedral_ccoh_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 54,
+        "objective_values": {
+          "energy_hartree": -233.18339769788773
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -59.66716225248658,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 55,
+        "objective_values": {
+          "energy_hartree": -233.18461963088586
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -169.8106740670794,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": 39.447186977842435
+        }
+      },
+      {
+        "evaluation_index": 56,
+        "objective_values": {
+          "energy_hartree": -233.18194792981467
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -64.26371179551911,
+          "dihedral_ccco_deg": -26.035174631810058,
+          "dihedral_ccoh_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 57,
+        "objective_values": {
+          "energy_hartree": -233.18559170765397
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 180.0,
+          "dihedral_ccco_deg": -180.0,
+          "dihedral_ccoh_deg": -71.5498947886258
+        }
+      },
+      {
+        "evaluation_index": 58,
+        "objective_values": {
+          "energy_hartree": -233.18534486087597
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 180.0,
+          "dihedral_ccco_deg": 180.0,
+          "dihedral_ccoh_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 59,
+        "objective_values": {
+          "energy_hartree": -233.18078438449285
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": -71.7453433683279,
+          "dihedral_ccco_deg": 97.61100011601312,
+          "dihedral_ccoh_deg": -96.4974911070854
+        }
+      },
+      {
+        "evaluation_index": 60,
+        "objective_values": {
+          "energy_hartree": -233.17997120999732
+        },
+        "parameter_values": {
+          "dihedral_cccc_deg": 180.0,
+          "dihedral_ccco_deg": 19.557066707810275,
+          "dihedral_ccoh_deg": 180.0
+        }
+      }
+    ],
+    "pareto_front": null,
+    "results_retrieved": true,
+    "successful_objective_evaluations": 60,
+    "suggestions_generated": 60,
+    "unresolved_suggestions": 0,
+    "verification_status": "verified"
+  },
+  "metric_notes": [
+    "Token and cost fields are reported only when exposed by the runtime or derivable from recorded message metadata.",
+    "Subagent metrics use TaskHandle observability fields when the installed subagent runtime exposes them, with older-runtime fallbacks."
+  ],
+  "objective_oracle": {
+    "checked_evaluations": 0,
+    "mismatch_count": 0,
+    "verification_status": "not_applicable"
+  },
+  "provenance": {
+    "audited_accelerator_policies": [
+      "auto"
+    ],
+    "audited_batches": 6,
+    "audited_identifier_hashes": [
+      "024882efd286a3822ac0bcbcd8b0111a4d3774ef0709ea7b0325dca8b738a018",
+      "028b36f4bf227093b954262a78d2a726261168ca1e1d6a3be4dc401e948d5b2c",
+      "03b6fed0388f4e68cdffbdbb77995d59c6cb6970cea547e2000511683069132d",
+      "0ae76ee45e174a5251058bbb0173237da9f2624ffbfff45168c9c8288e71bde2",
+      "0bab67d573ace030fb72a99058ea38bd96ba98989b57d28e8eb45acd50646db9",
+      "106a0c421e293a89461b3b569fbb83a8666dbac54b7d32452e2179fb51fca400",
+      "11d1d1ad88fdbfb65df8035558b8b51df14107fb991fc43e0b30a4faf53b4808",
+      "132090ddede64c5ac0daf5a6546ec00921ea62f1c3a4f449a6c0038925880bff",
+      "16824e9e5262091e96c6ba4d26f2ac4a7513360c74d4622241a5d10c84c99fc4",
+      "1f554e6ac212cb61ffc440ae079bcbc9475edb1c1dcacfc74d41c7bbf7924c04",
+      "20d91354531afd8dee0169e50d9a36ab556558d8d57e78773b986b0b548117e9",
+      "2594f53c916a2bae42fbd2ef241777ae2eecbb9298b1973774cced1f048507e5",
+      "25bc8440fc1555dbef8ceaf1b139666b88995e62bbaa428f1180f2a5a8aa16ea",
+      "28e56aaf96d34480aa288dbfc6258d03f3ae672818d531b7ac21a5308b4ac6b1",
+      "29b6d2728c6644c05fc58606793e19d990d82770e26ff2298de592b16939deb3",
+      "2a96f1f706ad6455d9617e23b81a564f412064b32564e2108a692aeb6aa0fe88",
+      "333e675f2162456554989221218b955a1fd4798b08f2283d6b3a5007fc889594",
+      "3c4338408da361dfc7dc9e8cc7d238304fbf08ec31e83999d157e76d160353db",
+      "3e4d04739fb334bf5cbfdf26ef36a8b28c5330df3573318567e3358fad76ec7c",
+      "42f54d8a56d9a5f300851efd98627c4aaf0b5b4dbbd17421499eb02314efeccd",
+      "46e2b02bf504e32e15e8401f332e9434981e5b160085f1e331b1066998bed52e",
+      "472b1636920c2510b0f31fa2b6603cb3fac2e381333c0fa7aa0a80344e8b7247",
+      "4cd06f313624b078aa161a92668f06177f14f158dcf26bb2cf7a2d6f90c5f774",
+      "524b5ebe2fb019032a453063b5f3f0d9c023627dc8af23e1c258b0fa006f833f",
+      "529f6ff8ced15918a61ac292785ab222fd743d1e68a3782f62c226fe7bf2e259",
+      "601543673bbd1c27e4e127e743ebcaf22546df8126c560649d6c310c8ad52a4c",
+      "6357f2adabf4f5ac68fdcdafcc09d9b5ad4c43d9e6e6bbc62fb41bba71316804",
+      "68249410deff622534e07c8b7238f2a2b7c60418c6285dc7fbe29f8e3e809337",
+      "6a8c949dec84ce4c22f5e08c3aa3ae1a8910e7898e96cd601a1dcb0f79420b7a",
+      "70a55f0b22cc7b3e6ab704cdc32be37d4f666e9bc1afe3cf37c7af01003bc012",
+      "7d1f3f33b3863e35eaa0be1c43a9dc6abefdfe494f5689bacf7fbce4168545a3",
+      "7f12d5e33fb469cc86eeefe63ebd295a15cf7f03a286c8febe2dbe27778eece7",
+      "817c17d471d7bb771c320f406dd0655750b961492d2625db265cc53118c48836",
+      "8585bb117e0895233eb8a644ab775de2b00baf5ffc44439673c6cc38911bb8f2",
+      "883b12b99e1b6a70471175d1666c3d9ed7cc8c05a9bc6f089e9cbe299b651d7e",
+      "8c59f39c91e806880f2c13852b9d6b78eaac911a6d00b49e6c4ad4d5b1a1061d",
+      "90f44ba4bb7e1fb1b76b012f7ff4159bd7e36f4ec36acb1d237f5ffe23bb3713",
+      "96426d98196962fb2e278eba70102bf520357b344fbc34d0d050c061fbd9f987",
+      "96ca87ebf306bd1f32bc3b471f055baa2a0fcdb34ed5f9ca75e9fb511ec6598b",
+      "a1e8467c1cfa7e00ca020a52f8baacdc7101028b0462e8984474a74abfdea4a3",
+      "affb31964b5d4053293fbe77144c89219a1aa657f6ae9b725dbddb186cda4787",
+      "b185fc277b0547ee7c70e456b3df61c9bdcdc608047de6610b5baf933f86d1ac",
+      "b8e7a0b0ae7d09ac601c3098b5d823d483124e79a0e4fdc7bda7c80d9d9fe29d",
+      "c84ab665e8a8ac44e17fc9a8ac979011ba978d32782d7e300fb315a29d9a19ea",
+      "caa965cd930ece1d017c15e0ee300fac1ff2a6703a6933d8793f34f946dbc5e9",
+      "ce7ddf37931cdc16d69b9b34cd5eca89020e14e161b1e351a6c02e408e88bb2b",
+      "d65c8ad94954db93eafc2d1596bb1848fc77aad98063311c7d5d8269a6ccad5d",
+      "dc863f23f03759c10e2bf12dd5fdd1deb7b8dced98b463abb270a2c8919b87d7",
+      "e008ea1357333686c5bfeac69bb96dc89a8a530dbe4168fc63e8a3572ea17ede",
+      "e332849ca692924b85a9fa16066361da048c0daaaf4d604148f6736e2d9f1a04",
+      "e36cd41aec6255a647febdd50668c3624e05e6b95c3f4e51d5783c2d8d4028e4",
+      "e453716b648d249649649d866acba2e7b7d2fe966bc4a2eb7954de8dea084639",
+      "ec6bccb5fc524ecc2b18e0aa2e1f3459d00f90efcad09ce423c5a62a0c006168",
+      "ec79ca9c83f8ab0c9f82a7b365398778031ce0ce933dd00969c65363c35ce452",
+      "ee32418742a8f1c9929cf2dd29f8650ae24854f45dadfff2d0f1882278d046dd",
+      "ee7cd398d1270d5e240f5ac0eff131f0516d9811250c2eb5fc015d4aef913106",
+      "f115116f483de86846a18dbe8bff551a0b407a7feaf329dc1a939c8b47eb076d",
+      "f17d96f60de5dbe371d66879c65fbf607a5d75f3f2c3fccd8ac7ed6ab04c0687",
+      "f29dede8cff16410c624946b867c3320b759aaf7e5d268e5e5dafba00006c5d1"
+    ],
+    "audited_max_parallel_molecules": [
+      5,
+      11
+    ],
+    "audited_pyscf_calls": 60,
+    "compliant_pyscf_calls": 60,
+    "failure_reasons": [],
+    "noncompliant_call_reasons": {},
+    "objective_call_evidence_source": "pyscf_runner_batches",
+    "reported_choice_source": null,
+    "reported_choices": null,
+    "verification_status": "verified",
+    "workspace_path": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_toolloop_aligned_baybe_litellm_gpt54_20261006T131917Z/repeat_001/cases/dihedral/workspace/bo-mcp-eval"
+  },
+  "usage_split": {
+    "_source": {
+      "combined": "sum of available main/subagent counters; cost may be incomplete when subagent cost is unavailable",
+      "main": "Pydantic AI result.usage plus result.all_messages() for message-level cost metadata",
+      "subagents": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+    },
+    "combined": {
+      "_source": {
+        "cost_usd": "main plus subagent cost only when all required cost components are available",
+        "usage": "sum of available main/subagent counters"
+      },
+      "cache_read_tokens": 4937682,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "main_plus_subagent_cost_breakdown",
+      "cost_usd": 2.9739655,
+      "input_tokens": 5340130,
+      "output_tokens": 48895,
+      "reasoning_tokens": 7588,
+      "request_count": 61,
+      "tool_call_count": 119,
+      "total_tokens": 5389025
+    },
+    "limitations": [
+      "nested subagents are not captured",
+      "subagent usage is read from top-level pydantic-deep task handles",
+      "combined assumes parent AgentRunResult.usage excludes subagent TaskHandle.usage; this assumption should be retested after dependency changes",
+      "per-task subagent tool-call counts require TaskHandle.tool_call_counts or TaskHandle.message_history"
+    ],
+    "main": {
+      "_source": {
+        "cost_usd": "genai-prices estimate from main-agent response message usage/model metadata",
+        "messages": "Pydantic AI result.all_messages()",
+        "usage": "Pydantic AI result.usage"
+      },
+      "cache_read_tokens": 4937682,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "genai_prices_from_main_response_messages",
+      "cost_usd": 2.9739655,
+      "input_tokens": 5340130,
+      "model_names": [
+        "gpt-5.4"
+      ],
+      "output_tokens": 48895,
+      "priced_response_count": 61,
+      "provider_names": [
+        "openai"
+      ],
+      "reasoning_tokens": 7588,
+      "request_count": 61,
+      "tool_call_count": 119,
+      "total_tokens": null,
+      "unpriced_response_count": 0
+    },
+    "method": "main_result_usage_plus_subagent_task_handle_usage",
+    "scope": "top_level_pydantic_deep_subagents",
+    "subagents": {
+      "_source": {
+        "cost_usd": "TaskHandle.cost when exposed, otherwise genai-prices estimate from task-handle usage and model/provider metadata",
+        "messages": "TaskHandle.message_history when exposed by the installed subagent runtime",
+        "tool_call_counts": "TaskHandle.tool_call_counts when exposed, otherwise counts derived from TaskHandle.message_history tool-call parts",
+        "usage": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+      },
+      "available": false,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_available": false,
+      "cost_source": "subagent_task_handles",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "priced_task_count": 0,
+      "reasoning_tokens": 0,
+      "request_count": 0,
+      "tasks": [],
+      "total_tokens": 0,
+      "unpriced_task_count": 0
+    }
+  }
+}

@@ -1,0 +1,438 @@
+{
+  "architecture_aggregates": [
+    {
+      "architecture_mode": "standard_subagent_script_bo_mcp",
+      "budget_match_rate": 1.0,
+      "cases": [
+        "dihedral"
+      ],
+      "clean_rate": 1.0,
+      "clean_runs": 3,
+      "cost_per_evaluation": 0.07837379444444444,
+      "issues": "",
+      "mean_normalized_objective": null,
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "provider": "litellm-openai-responses",
+      "runs": 3,
+      "seconds_per_evaluation": 54.46920769445391,
+      "task_success_rate": 1.0,
+      "tokens_per_evaluation": 66478.92777777778,
+      "verification_statuses": {
+        "verified": 3
+      }
+    }
+  ],
+  "groups": [
+    {
+      "architecture_contract_rate": 1.0,
+      "architecture_mode": "standard_subagent_script_bo_mcp",
+      "attempted_objective_evaluations": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "benchmark_clean_rate": 1.0,
+      "best_objective_value": {
+        "count": 3,
+        "max": -233.18628710334752,
+        "mean": -233.18644692527536,
+        "median": -233.1865105445337,
+        "min": -233.1865431279449,
+        "variance": 1.2948470758111103e-08
+      },
+      "budget_applicable_runs": 3,
+      "cache_read_tokens": {
+        "count": 3,
+        "max": 4487036.0,
+        "mean": 3461680.0,
+        "median": 3343044.0,
+        "min": 2554960.0,
+        "variance": 629190195210.6666
+      },
+      "cache_write_tokens": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "campaign_verification_rate": 1.0,
+      "case_id": "dihedral",
+      "clean_runs": 3,
+      "convergence_rate": 1.0,
+      "cost_per_evaluation": {
+        "count": 3,
+        "max": 0.08410509166666667,
+        "mean": 0.07837379444444444,
+        "median": 0.08251481666666666,
+        "min": 0.06850147499999999,
+        "variance": 4.915284136918215e-05
+      },
+      "cost_usd": {
+        "count": 3,
+        "max": 5.046305500000001,
+        "mean": 4.702427666666666,
+        "median": 4.950888999999999,
+        "min": 4.1100885,
+        "variance": 0.17695022892905568
+      },
+      "duplicate_rate": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "eval_best_so_far_auc": {
+        "count": 3,
+        "max": -13991.119224047417,
+        "mean": -13991.138534846876,
+        "median": -13991.134552345779,
+        "min": -13991.16182814743,
+        "variance": 0.0003104483804626379
+      },
+      "eval_best_so_far_auc_per_evaluation": {
+        "count": 3,
+        "max": -233.1853204007903,
+        "mean": -233.18564224744793,
+        "median": -233.18557587242964,
+        "min": -233.18603046912384,
+        "variance": 8.623566124362865e-08
+      },
+      "evaluation_budget_delta": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "evaluation_budget_match_rate": 1.0,
+      "expected_evaluation_budget": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "expected_hypervolume_reference_point": null,
+      "failed_evaluation_rate": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "failure_categories": {},
+      "hypervolume_reference_point": null,
+      "input_tokens": {
+        "count": 3,
+        "max": 4905953.0,
+        "mean": 3951620.6666666665,
+        "median": 3738323.0,
+        "min": 3210586.0,
+        "variance": 501792824750.8889
+      },
+      "main_cost_usd": {
+        "count": 3,
+        "max": 0.4063359999999999,
+        "mean": 0.35779316666666666,
+        "median": 0.3688885,
+        "min": 0.298155,
+        "variance": 0.0020120746710555527
+      },
+      "main_total_tokens": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "mode_violation_reasons": {},
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "normalized_best_score": null,
+      "objective_direction": "minimize",
+      "objective_metadata": null,
+      "objective_name": "single_point_energy",
+      "objective_reducer": "single_objective_best_so_far",
+      "objective_score_comparable": true,
+      "objective_score_family": "scalar:single_point_energy",
+      "objective_unit": "hartree",
+      "objectives": [
+        {
+          "direction": "minimize",
+          "name": "single_point_energy",
+          "unit": "hartree"
+        }
+      ],
+      "output_tokens": {
+        "count": 3,
+        "max": 42631.0,
+        "mean": 37115.0,
+        "median": 34588.0,
+        "min": 34126.0,
+        "variance": 15248702.0
+      },
+      "pass_rate": 1.0,
+      "provider": "litellm-openai-responses",
+      "reasoning_tokens": {
+        "count": 3,
+        "max": 18409.0,
+        "mean": 16153.666666666666,
+        "median": 15409.0,
+        "min": 14643.0,
+        "variance": 2641056.888888889
+      },
+      "request_count": {
+        "count": 3,
+        "max": 27.0,
+        "mean": 24.333333333333332,
+        "median": 24.0,
+        "min": 22.0,
+        "variance": 4.222222222222222
+      },
+      "runs": 3,
+      "runtime_s": {
+        "count": 3,
+        "max": 3355.3243343699723,
+        "mean": 3268.1524616672345,
+        "median": 3285.9790011011064,
+        "min": 3163.1540495306253,
+        "variance": 6313.795816632985
+      },
+      "script_artifact_count": {
+        "count": 3,
+        "max": 10.0,
+        "mean": 9.333333333333334,
+        "median": 10.0,
+        "min": 8.0,
+        "variance": 0.8888888888888888
+      },
+      "script_artifact_hash_diversity": 28,
+      "seconds_per_evaluation": {
+        "count": 3,
+        "max": 55.92207223949954,
+        "mean": 54.46920769445391,
+        "median": 54.76631668501844,
+        "min": 52.719234158843754,
+        "variance": 1.7538321712869442
+      },
+      "subagent_cost_usd": {
+        "count": 3,
+        "max": 4.7481505,
+        "mean": 4.344634500000001,
+        "median": 4.544553,
+        "min": 3.7412,
+        "variance": 0.18897525489616668
+      },
+      "subagent_total_tokens": {
+        "count": 3,
+        "max": 4439364.0,
+        "mean": 3408359.6666666665,
+        "median": 3120491.0,
+        "min": 2665224.0,
+        "variance": 566029641224.2222
+      },
+      "successful_objective_evaluations": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "tokens_per_evaluation": {
+        "count": 3,
+        "max": 82476.4,
+        "mean": 66478.92777777778,
+        "median": 62881.85,
+        "min": 54078.53333333333,
+        "variance": 140875956.13932094
+      },
+      "tool_call_count": {
+        "count": 3,
+        "max": 29.0,
+        "mean": 26.666666666666668,
+        "median": 26.0,
+        "min": 25.0,
+        "variance": 2.888888888888889
+      },
+      "tool_call_counts_by_name": {
+        "bash_exec": 48,
+        "list_monitors": 20,
+        "start_monitor": 3,
+        "stop_monitor": 3,
+        "task": 3,
+        "wait_tasks": 3
+      },
+      "total_tokens": {
+        "count": 3,
+        "max": 4948584.0,
+        "mean": 3988735.6666666665,
+        "median": 3772911.0,
+        "min": 3244712.0,
+        "variance": 507153442101.55554
+      },
+      "verification_statuses": {
+        "verified": 3
+      }
+    }
+  ],
+  "output_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_standard_aligned_baybe_litellm_gpt54_20261006T175326Z",
+  "overall_clean_benchmark_rate": 1.0,
+  "overall_pass_rate": 1.0,
+  "repeat_dirs": [
+    "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_standard_aligned_baybe_litellm_gpt54_20261006T175326Z/repeat_001",
+    "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_standard_aligned_baybe_litellm_gpt54_20261006T175326Z/repeat_002",
+    "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_standard_aligned_baybe_litellm_gpt54_20261006T175326Z/repeat_003"
+  ],
+  "repeat_runs": [
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "standard_subagent_script_bo_mcp",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": -233.1865105445337,
+      "campaign_id": "7953a666-4383-4766-9fe2-4ca5b1bf8d1b",
+      "case_id": "dihedral",
+      "converged": true,
+      "cost_usd": 4.950888999999999,
+      "duplicate_rate": 0.0,
+      "eval_best_so_far_auc": -13991.16182814743,
+      "eval_best_so_far_auc_per_evaluation": -233.18603046912384,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": 0.0,
+      "failure_category": null,
+      "local_result_path": null,
+      "mode_violation_reasons": [],
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provenance_verification_status": "verified",
+      "provider": "litellm-openai-responses",
+      "repeat_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_standard_aligned_baybe_litellm_gpt54_20261006T175326Z/repeat_001",
+      "repeat_id": "repeat_001",
+      "request_count": 24.0,
+      "runtime_s": 3355.3243343699723,
+      "script_artifact_count": 10.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 29.0,
+      "tool_call_counts_by_name": {
+        "bash_exec": 17,
+        "list_monitors": 8,
+        "start_monitor": 1,
+        "stop_monitor": 1,
+        "task": 1,
+        "wait_tasks": 1
+      },
+      "total_tokens": 3244712.0,
+      "verification_status": "verified"
+    },
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "standard_subagent_script_bo_mcp",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": -233.18628710334752,
+      "campaign_id": "119fc824-ea4a-4d83-b645-f3e7cec98ed2",
+      "case_id": "dihedral",
+      "converged": true,
+      "cost_usd": 5.046305500000001,
+      "duplicate_rate": 0.0,
+      "eval_best_so_far_auc": -13991.119224047417,
+      "eval_best_so_far_auc_per_evaluation": -233.1853204007903,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": 0.0,
+      "failure_category": null,
+      "local_result_path": null,
+      "mode_violation_reasons": [],
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provenance_verification_status": "verified",
+      "provider": "litellm-openai-responses",
+      "repeat_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_standard_aligned_baybe_litellm_gpt54_20261006T175326Z/repeat_002",
+      "repeat_id": "repeat_002",
+      "request_count": 22.0,
+      "runtime_s": 3285.9790011011064,
+      "script_artifact_count": 8.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 25.0,
+      "tool_call_counts_by_name": {
+        "bash_exec": 14,
+        "list_monitors": 7,
+        "start_monitor": 1,
+        "stop_monitor": 1,
+        "task": 1,
+        "wait_tasks": 1
+      },
+      "total_tokens": 4948584.0,
+      "verification_status": "verified"
+    },
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "standard_subagent_script_bo_mcp",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": -233.1865431279449,
+      "campaign_id": "5a88ba23-f731-4a2f-bef2-011d61841b55",
+      "case_id": "dihedral",
+      "converged": true,
+      "cost_usd": 4.1100885,
+      "duplicate_rate": 0.0,
+      "eval_best_so_far_auc": -13991.134552345779,
+      "eval_best_so_far_auc_per_evaluation": -233.18557587242964,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": 0.0,
+      "failure_category": null,
+      "local_result_path": null,
+      "mode_violation_reasons": [],
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provenance_verification_status": "verified",
+      "provider": "litellm-openai-responses",
+      "repeat_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_standard_aligned_baybe_litellm_gpt54_20261006T175326Z/repeat_003",
+      "repeat_id": "repeat_003",
+      "request_count": 27.0,
+      "runtime_s": 3163.1540495306253,
+      "script_artifact_count": 10.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 26.0,
+      "tool_call_counts_by_name": {
+        "bash_exec": 17,
+        "list_monitors": 5,
+        "start_monitor": 1,
+        "stop_monitor": 1,
+        "task": 1,
+        "wait_tasks": 1
+      },
+      "total_tokens": 3772911.0,
+      "verification_status": "verified"
+    }
+  ],
+  "run_id": "dihedral-standard-aligned-baybe-litellm-gpt54-20261006T175326Z",
+  "schema_version": 1,
+  "timestamp": "2026-10-06T20:37:37+00:00",
+  "total_case_runs": 3
+}

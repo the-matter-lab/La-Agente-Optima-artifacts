@@ -1,0 +1,449 @@
+{
+  "architecture_aggregates": [
+    {
+      "architecture_mode": "main_agent_script_bo_mcp",
+      "budget_match_rate": 1.0,
+      "cases": [
+        "dihedral"
+      ],
+      "clean_rate": 1.0,
+      "clean_runs": 3,
+      "cost_per_evaluation": 0.028012472222222223,
+      "issues": "",
+      "mean_normalized_objective": null,
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "provider": "litellm-openai-responses",
+      "runs": 3,
+      "seconds_per_evaluation": 25.143435893187092,
+      "task_success_rate": 1.0,
+      "tokens_per_evaluation": 51508.68888888889,
+      "verification_statuses": {
+        "verified": 3
+      }
+    }
+  ],
+  "groups": [
+    {
+      "architecture_contract_rate": 1.0,
+      "architecture_mode": "main_agent_script_bo_mcp",
+      "attempted_objective_evaluations": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "benchmark_clean_rate": 1.0,
+      "best_objective_value": {
+        "count": 3,
+        "max": -233.18653627833746,
+        "mean": -233.1870676488467,
+        "median": -233.1873279863603,
+        "min": -233.18733868184242,
+        "variance": 1.4119637461443198e-07
+      },
+      "budget_applicable_runs": 3,
+      "cache_read_tokens": {
+        "count": 3,
+        "max": 3706940.0,
+        "mean": 2833680.0,
+        "median": 2616360.0,
+        "min": 2177740.0,
+        "variance": 413356097866.6667
+      },
+      "cache_write_tokens": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "campaign_verification_rate": 1.0,
+      "case_id": "dihedral",
+      "clean_runs": 3,
+      "convergence_rate": 1.0,
+      "cost_per_evaluation": {
+        "count": 3,
+        "max": 0.03522187499999999,
+        "mean": 0.028012472222222223,
+        "median": 0.026719458333333335,
+        "min": 0.022096083333333336,
+        "variance": 2.9550343604552424e-05
+      },
+      "cost_usd": {
+        "count": 3,
+        "max": 2.1133124999999997,
+        "mean": 1.680748333333333,
+        "median": 1.6031675,
+        "min": 1.325765,
+        "variance": 0.10638123697638878
+      },
+      "duplicate_rate": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "eval_best_so_far_auc": {
+        "count": 3,
+        "max": -13991.151484001453,
+        "mean": -13991.172715538414,
+        "median": -13991.176559069445,
+        "min": -13991.190103544348,
+        "variance": 0.0002559645476186418
+      },
+      "eval_best_so_far_auc_per_evaluation": {
+        "count": 3,
+        "max": -233.18585806669088,
+        "mean": -233.18621192564024,
+        "median": -233.18627598449075,
+        "min": -233.18650172573913,
+        "variance": 7.110126322910755e-08
+      },
+      "evaluation_budget_delta": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "evaluation_budget_match_rate": 1.0,
+      "expected_evaluation_budget": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "expected_hypervolume_reference_point": null,
+      "failed_evaluation_rate": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "failure_categories": {},
+      "hypervolume_reference_point": null,
+      "input_tokens": {
+        "count": 3,
+        "max": 4021857.0,
+        "mean": 3064103.3333333335,
+        "median": 2724824.0,
+        "min": 2445629.0,
+        "variance": 471637684344.2222
+      },
+      "main_cost_usd": {
+        "count": 3,
+        "max": 2.1133124999999997,
+        "mean": 1.680748333333333,
+        "median": 1.6031675,
+        "min": 1.325765,
+        "variance": 0.10638123697638878
+      },
+      "main_total_tokens": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "mode_violation_reasons": {},
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "normalized_best_score": null,
+      "objective_direction": "minimize",
+      "objective_metadata": null,
+      "objective_name": "single_point_energy",
+      "objective_reducer": "single_objective_best_so_far",
+      "objective_score_comparable": true,
+      "objective_score_family": "scalar:single_point_energy",
+      "objective_unit": "hartree",
+      "objectives": [
+        {
+          "direction": "minimize",
+          "name": "single_point_energy",
+          "unit": "hartree"
+        }
+      ],
+      "output_tokens": {
+        "count": 3,
+        "max": 26701.0,
+        "mean": 26418.0,
+        "median": 26619.0,
+        "min": 25934.0,
+        "variance": 118248.66666666667
+      },
+      "pass_rate": 1.0,
+      "provider": "litellm-openai-responses",
+      "reasoning_tokens": {
+        "count": 3,
+        "max": 12227.0,
+        "mean": 11959.333333333334,
+        "median": 11909.0,
+        "min": 11742.0,
+        "variance": 40470.88888888889
+      },
+      "request_count": {
+        "count": 3,
+        "max": 54.0,
+        "mean": 40.0,
+        "median": 36.0,
+        "min": 30.0,
+        "variance": 104.0
+      },
+      "runs": 3,
+      "runtime_s": {
+        "count": 3,
+        "max": 1616.2712324671447,
+        "mean": 1508.6061535912256,
+        "median": 1497.2938483767211,
+        "min": 1412.2533799298108,
+        "variance": 7001.198150290609
+      },
+      "script_artifact_count": {
+        "count": 3,
+        "max": 6.0,
+        "mean": 5.333333333333333,
+        "median": 5.0,
+        "min": 5.0,
+        "variance": 0.2222222222222222
+      },
+      "script_artifact_hash_diversity": 16,
+      "seconds_per_evaluation": {
+        "count": 3,
+        "max": 26.93785387445241,
+        "mean": 25.143435893187092,
+        "median": 24.95489747294535,
+        "min": 23.53755633216351,
+        "variance": 1.9447772639696146
+      },
+      "subagent_cost_usd": {
+        "count": 0,
+        "max": null,
+        "mean": null,
+        "median": null,
+        "min": null,
+        "variance": null
+      },
+      "subagent_total_tokens": {
+        "count": 3,
+        "max": 0.0,
+        "mean": 0.0,
+        "median": 0.0,
+        "min": 0.0,
+        "variance": 0.0
+      },
+      "successful_objective_evaluations": {
+        "count": 3,
+        "max": 60.0,
+        "mean": 60.0,
+        "median": 60.0,
+        "min": 60.0,
+        "variance": 0.0
+      },
+      "tokens_per_evaluation": {
+        "count": 3,
+        "max": 67474.6,
+        "mean": 51508.68888888889,
+        "median": 45858.75,
+        "min": 41192.71666666667,
+        "variance": 131083803.31524697
+      },
+      "tool_call_count": {
+        "count": 3,
+        "max": 56.0,
+        "mean": 45.333333333333336,
+        "median": 42.0,
+        "min": 38.0,
+        "variance": 59.55555555555556
+      },
+      "tool_call_counts_by_name": {
+        "bash_exec": 108,
+        "bo_get_diagnostics": 2,
+        "bo_health_check": 2,
+        "bo_list_capabilities": 2,
+        "bo_resume_campaign": 2,
+        "bo_submit_results": 3,
+        "inspect_bo_mcp_openapi_operation": 7,
+        "inspect_bo_mcp_openapi_overview": 3,
+        "load_skill": 3,
+        "python_repl": 4,
+        "read_skill_resource": 6
+      },
+      "total_tokens": {
+        "count": 3,
+        "max": 4048476.0,
+        "mean": 3090521.3333333335,
+        "median": 2751525.0,
+        "min": 2471563.0,
+        "variance": 471901691934.8889
+      },
+      "verification_statuses": {
+        "verified": 3
+      }
+    }
+  ],
+  "output_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_mainscript_aligned_baybe_litellm_gpt54_20261006T163713Z",
+  "overall_clean_benchmark_rate": 1.0,
+  "overall_pass_rate": 1.0,
+  "repeat_dirs": [
+    "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_mainscript_aligned_baybe_litellm_gpt54_20261006T163713Z/repeat_001",
+    "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_mainscript_aligned_baybe_litellm_gpt54_20261006T163713Z/repeat_002",
+    "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_mainscript_aligned_baybe_litellm_gpt54_20261006T163713Z/repeat_003"
+  ],
+  "repeat_runs": [
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "main_agent_script_bo_mcp",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": -233.18653627833746,
+      "campaign_id": "5eef40c6-e45a-4768-9296-bfb3461330f6",
+      "case_id": "dihedral",
+      "converged": true,
+      "cost_usd": 1.6031675,
+      "duplicate_rate": 0.0,
+      "eval_best_so_far_auc": -13991.151484001453,
+      "eval_best_so_far_auc_per_evaluation": -233.18585806669088,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": 0.0,
+      "failure_category": null,
+      "local_result_path": null,
+      "mode_violation_reasons": [],
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provenance_verification_status": "verified",
+      "provider": "litellm-openai-responses",
+      "repeat_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_mainscript_aligned_baybe_litellm_gpt54_20261006T163713Z/repeat_001",
+      "repeat_id": "repeat_001",
+      "request_count": 30.0,
+      "runtime_s": 1616.2712324671447,
+      "script_artifact_count": 6.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 38.0,
+      "tool_call_counts_by_name": {
+        "bash_exec": 29,
+        "bo_health_check": 1,
+        "bo_list_capabilities": 1,
+        "inspect_bo_mcp_openapi_operation": 3,
+        "inspect_bo_mcp_openapi_overview": 1,
+        "load_skill": 1,
+        "python_repl": 1,
+        "read_skill_resource": 2
+      },
+      "total_tokens": 2471563.0,
+      "verification_status": "verified"
+    },
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "main_agent_script_bo_mcp",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": -233.18733868184242,
+      "campaign_id": "8cafd938-c084-42c0-bfa2-0c91f166ba35",
+      "case_id": "dihedral",
+      "converged": true,
+      "cost_usd": 1.325765,
+      "duplicate_rate": 0.0,
+      "eval_best_so_far_auc": -13991.190103544348,
+      "eval_best_so_far_auc_per_evaluation": -233.18650172573913,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": 0.0,
+      "failure_category": null,
+      "local_result_path": null,
+      "mode_violation_reasons": [],
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provenance_verification_status": "verified",
+      "provider": "litellm-openai-responses",
+      "repeat_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_mainscript_aligned_baybe_litellm_gpt54_20261006T163713Z/repeat_002",
+      "repeat_id": "repeat_002",
+      "request_count": 36.0,
+      "runtime_s": 1412.2533799298108,
+      "script_artifact_count": 5.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 42.0,
+      "tool_call_counts_by_name": {
+        "bash_exec": 38,
+        "inspect_bo_mcp_openapi_operation": 3,
+        "inspect_bo_mcp_openapi_overview": 1,
+        "load_skill": 1,
+        "read_skill_resource": 2
+      },
+      "total_tokens": 2751525.0,
+      "verification_status": "verified"
+    },
+    {
+      "architecture_contract_satisfied": true,
+      "architecture_mode": "main_agent_script_bo_mcp",
+      "attempted_objective_evaluations": 60.0,
+      "benchmark_clean": true,
+      "benchmark_clean_failure_reasons": [],
+      "best_objective_value": -233.1873279863603,
+      "campaign_id": "7955ebd5-dc25-40a7-a3b4-a91f93dd368e",
+      "case_id": "dihedral",
+      "converged": true,
+      "cost_usd": 2.1133124999999997,
+      "duplicate_rate": 0.0,
+      "eval_best_so_far_auc": -13991.176559069445,
+      "eval_best_so_far_auc_per_evaluation": -233.18627598449075,
+      "evaluation_budget_adherence": "matched",
+      "evaluation_budget_delta": 0.0,
+      "expected_evaluation_budget": 60.0,
+      "failed_evaluation_rate": 0.0,
+      "failure_category": null,
+      "local_result_path": null,
+      "mode_violation_reasons": [],
+      "model_id": "litellm-openai-responses:gpt-5.4",
+      "multi_objective_hypervolume": null,
+      "objective_reducer": null,
+      "provenance_verification_status": "verified",
+      "provider": "litellm-openai-responses",
+      "repeat_dir": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_mainscript_aligned_baybe_litellm_gpt54_20261006T163713Z/repeat_003",
+      "repeat_id": "repeat_003",
+      "request_count": 54.0,
+      "runtime_s": 1497.2938483767211,
+      "script_artifact_count": 5.0,
+      "success": true,
+      "successful_objective_evaluations": 60.0,
+      "tool_call_count": 56.0,
+      "tool_call_counts_by_name": {
+        "bash_exec": 41,
+        "bo_get_diagnostics": 2,
+        "bo_health_check": 1,
+        "bo_list_capabilities": 1,
+        "bo_resume_campaign": 2,
+        "bo_submit_results": 3,
+        "inspect_bo_mcp_openapi_operation": 1,
+        "inspect_bo_mcp_openapi_overview": 1,
+        "load_skill": 1,
+        "python_repl": 3,
+        "read_skill_resource": 2
+      },
+      "total_tokens": 4048476.0,
+      "verification_status": "verified"
+    }
+  ],
+  "run_id": "dihedral-mainscript-aligned-baybe-litellm-gpt54-20261006T163713Z",
+  "schema_version": 1,
+  "timestamp": "2026-10-06T17:53:20+00:00",
+  "total_case_runs": 3
+}
