@@ -1,0 +1,146 @@
+{
+  "bo_mcp_git": {
+    "available": false,
+    "error": "No valid BO-MCP git repository found",
+    "repo_path_candidates": [
+      "/bo-mcp",
+      "/bo-mcp-clean",
+      "/workspace"
+    ],
+    "skipped_candidates": [
+      {
+        "reason": "path does not exist",
+        "repo_path": "/bo-mcp",
+        "source": "auto:sibling-bo-mcp"
+      },
+      {
+        "reason": "path does not exist",
+        "repo_path": "/bo-mcp-clean",
+        "source": "auto:sibling-bo-mcp-clean"
+      },
+      {
+        "reason": "path does not exist",
+        "repo_path": "/workspace",
+        "source": "auto:workspace"
+      }
+    ]
+  },
+  "cli": {
+    "argv": [
+      "--case",
+      "masked_surface_6d",
+      "--architecture-mode",
+      "main_agent_llm_suggestion_no_bo",
+      "--model",
+      "openai-responses:gpt-5.4",
+      "--tool-registry-config",
+      "/app/containers/orchestrator/tool_registry.toml",
+      "--env-file",
+      "/app/.env",
+      "--output-dir",
+      "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x",
+      "--request-limit",
+      "250",
+      "--agent-timeout-seconds",
+      "7200",
+      "--repeats",
+      "3",
+      "--repeat-cache-buster",
+      "uuid"
+    ],
+    "command": "--case masked_surface_6d --architecture-mode main_agent_llm_suggestion_no_bo --model openai-responses:gpt-5.4 --tool-registry-config /app/containers/orchestrator/tool_registry.toml --env-file /app/.env --output-dir /app/eval-output/masked_surface_6d_pure_llm_gpt54_3x --request-limit 250 --agent-timeout-seconds 7200 --repeats 3 --repeat-cache-buster uuid"
+  },
+  "environment": {
+    "env_file": "/app/.env",
+    "env_file_values": {},
+    "process_env": {
+      "BO_MCP_API_KEY": "<redacted:set>",
+      "DIRECT_ARYLATION_API_URL": "http://direct-arylation-oracle:8000",
+      "GRAPHCHAT_DEEP_MEMORY_ROOT": ".chat_history/memory",
+      "LOGFIRE_TOKEN": "<redacted:set>",
+      "NVIDIA_API_KEY": "<redacted:set>",
+      "OPENAI_API_KEY": "<redacted:set>",
+      "SPARQL_ENDPOINT": "http://blazegraph:8080/blazegraph/namespace/kb/sparql"
+    }
+  },
+  "eval": {
+    "agent_timeout_s": 7200.0,
+    "architecture_mode": "main_agent_llm_suggestion_no_bo",
+    "bo_api_url": "http://127.0.0.1:8000",
+    "case_configs": [
+      {
+        "evaluation_budget": 60,
+        "hypervolume_reference_point": null,
+        "id": "masked_surface_6d",
+        "name": "Masked black-box six-dimensional surface optimization",
+        "objective_direction": "maximize",
+        "objective_name": "response",
+        "objective_unit": "normalized_unitless",
+        "objective_verifier": "masked_surface_6d",
+        "objectives": [
+          {
+            "direction": "maximize",
+            "name": "response",
+            "unit": "normalized_unitless"
+          }
+        ]
+      }
+    ],
+    "case_ids": [
+      "masked_surface_6d"
+    ],
+    "dry_run": false,
+    "max_concurrency": 1,
+    "output_dir": "/app/eval-output/masked_surface_6d_pure_llm_gpt54_3x/repeat_003",
+    "request_limit": 250,
+    "selector": "masked_surface_6d",
+    "tool_registry_config": "/app/containers/orchestrator/tool_registry.toml"
+  },
+  "git": {
+    "available": false,
+    "repo_path": "/app"
+  },
+  "model": {
+    "model_id": "openai-responses:gpt-5.4",
+    "model_name": "gpt-5.4",
+    "provider": "openai-responses"
+  },
+  "model_settings": {
+    "settings": {
+      "openai_reasoning_effort": "medium",
+      "openai_reasoning_summary": "detailed",
+      "temperature": 1.0
+    },
+    "source": "grafico.core.http.llm_config"
+  },
+  "prompt_cache": {
+    "enabled": true,
+    "nonce": "47fdcbae-9d00-438b-81f0-6098fc1ba6f1",
+    "policy": "uuid"
+  },
+  "repeat": {
+    "repeat_count": 3,
+    "repeat_id": "repeat_003",
+    "repeat_index": 3
+  },
+  "run_id": "c5518453-f4d9-411e-9d85-76b9b4bad786",
+  "schema_version": 1,
+  "subagent_model": {
+    "inherits_main_model": true,
+    "requested_model_id": null,
+    "resolved_model": {
+      "model_id": "openai-responses:gpt-5.4",
+      "model_name": "gpt-5.4",
+      "provider": "openai-responses"
+    },
+    "resolved_model_settings": {
+      "settings": {
+        "openai_reasoning_effort": "medium",
+        "openai_reasoning_summary": "detailed",
+        "temperature": 1.0
+      },
+      "source": "grafico.core.http.llm_config"
+    }
+  },
+  "timestamp": "2026-10-03T01:41:17+00:00"
+}
