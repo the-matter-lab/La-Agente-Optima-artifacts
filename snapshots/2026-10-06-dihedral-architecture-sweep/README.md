@@ -30,22 +30,38 @@ workstation. All 12 repeats completed cleanly; total model cost $24.96.
 
 ## Results
 
-| Architecture | Best energy (Ha) | Normalized AUC @10 / 30 / 60 evals | Cost per repeat | Time per repeat |
-|---|---:|---:|---:|---:|
-| Specialist-script | −233.186543 | 0.79 / 0.89 / 0.92 | $2.65 | 54 min |
-| Main-script | −233.187339 | 0.69 / 0.83 / 0.91 | $1.68 | 25 min |
-| Tool-loop | −233.186294 | 0.54 / 0.78 / 0.88 | $3.01 | 23 min |
-| Local-BO | −233.186816 | 0.69 / 0.84 / 0.91 | $0.98 | 42 min |
+| Architecture | Best vs. reference conformer (kcal/mol; r01 / r02 / r03) | Within-run MBSF@60 | Exactly 60 butanol single points | Cost per repeat | Time per repeat |
+|---|---:|---:|---:|---:|---:|
+| Specialist-script | 0.02 / 0.01 / 0.00 | 0.917 | 2/3 | $2.65 | 54.5 min |
+| Main-script | 0.00 / 0.00 / 0.00 | 0.900 | 3/3 | $1.68 | 25.1 min |
+| Tool-loop | 0.45 / 0.37 / 0.01 | 0.878 | 3/3 | $3.01 | 23.0 min |
+| Local-BO | 0.11 / −0.40 / 0.36 | 0.899 | 0/3 | $0.98 | 42.1 min |
 
-Final quality is a tie: best energies agree within 0.66 kcal/mol, and raw energies do not rank the architectures
-because each run prepares its own reference geometry. After aligning per-run offsets, all three Specialist-script
-runs, all three Main-script runs and Tool-loop r03 reach the same minimum within 0.03 kcal/mol. Local-BO r01 and r03
+Raw energies do not rank the architectures because each run prepares its own reference geometry, so the table gives
+each run's best energy relative to the reference conformer (C–C–C–C, C–C–C–O, C–C–O–H) = (180°, ±62°, 180°), evaluated
+on the same molecule after the benchmark; negative values are below it. All Specialist-script and Main-script runs and
+Tool-loop r03 end within 0.02 kcal/mol of the reference conformer. Local-BO r01 and r03
 built the molecule by hand with their own angle convention, so their energies are not directly comparable. In
 Local-BO r02 the agent's first campaign reused its smoke test's batch name and lost 3 evaluations, so it ran a fresh
 60-evaluation campaign and reported only that one; its `metrics.json` therefore counts 117 PySCF calls, its time
 includes the discarded campaign, and the discarded campaign's best was 0.24 kcal/mol lower than the reported one. The
 architectures differ in convergence speed, cost and time; Specialist-script converges fastest per evaluation, and
 Main-script is the best balance. Full analysis: `report/DIHEDRAL_ARCHITECTURE_COMPARISON_2026-10-06.pdf`.
+
+Notes on the table:
+
+- Within-run MBSF@60 is the mean, over the 60 attempts, of the best-so-far energy normalized to the run's own range. It
+  is not comparable with the MBSF@60 of the framework comparison. The report's normalized AUC integrates the same curves
+  with the trapezoidal rule, so its values are slightly higher (0.92 / 0.91 / 0.88 / 0.91, in table order).
+- Budget: 8 of the 12 runs contain exactly 60 butanol single points. Specialist-script r03 and all three Local-BO runs
+  also ran one or two smoke tests outside the reported campaign, and Local-BO r02 also has the discarded campaign of 56
+  calculations. Main-script r02 and Specialist-script r03 each ran one non-butanol calculation to check the environment
+  (water and H₂).
+- Cost: `agent.cost_usd` in each cell's `metrics.json` is the Logfire cost used in the report and the SI. For
+  Specialist-script, the other cell-level costs in `metrics.json` (`usage_split.combined.cost_usd`),
+  `summary.{json,md}` and `repeat_summary.{json,md}` ($4.95 / $5.05 / $4.11) are overstated and should not be used: the
+  harness prices the specialist's tokens at GPT-5.4's long-context rate, although its requests average only 55k–69k
+  input tokens. The token counts are correct.
 
 ### Corrections to the report
 
@@ -66,7 +82,7 @@ unchanged.
   convergence.
 
 These calculations are separate from the benchmark runs; the script and its results are kept with the manuscript's
-analysis materials (`arxiv_v2/analysis/dihedral-conformer-check.py`).
+analysis materials (`device_v2/analysis/dihedral-conformer-check.py`).
 
 ## Contents
 
