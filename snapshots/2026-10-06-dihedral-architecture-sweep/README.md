@@ -40,9 +40,7 @@ workstation. All 12 repeats completed cleanly; total model cost $24.96.
 Raw energies do not rank the architectures because each run prepares its own reference geometry, so the table gives
 each run's best energy relative to the reference conformer (C–C–C–C, C–C–C–O, C–C–O–H) = (180°, ±62°, 180°), evaluated
 on the same molecule after the benchmark; negative values are below it. All Specialist-script and Main-script runs and
-Tool-loop r03 end within 0.02 kcal/mol of the reference conformer. Local-BO r01 and r03
-built the molecule by hand with their own angle convention, so their energies are not directly comparable. In
-Local-BO r02 the agent's first campaign reused its smoke test's batch name and lost 3 evaluations, so it ran a fresh
+Tool-loop r03 end within 0.02 kcal/mol of the reference conformer. In Local-BO r02 the agent's first campaign reused its smoke test's batch name and lost 3 evaluations, so it ran a fresh
 60-evaluation campaign and reported only that one; its `metrics.json` therefore counts 117 PySCF calls, its time
 includes the discarded campaign, and the discarded campaign's best was 0.24 kcal/mol lower than the reported one. The
 architectures differ in convergence speed, cost and time; Specialist-script converges fastest per evaluation, and
@@ -82,7 +80,7 @@ unchanged.
   convergence.
 
 These calculations are separate from the benchmark runs; the script and its results are kept with the manuscript's
-analysis materials (`device_v2/analysis/dihedral-conformer-check.py`).
+analysis materials (`device_v2/analysis/dihedral-conformer-check.py` in the LaAgenteOptima manuscript repository).
 
 ## Contents
 
