@@ -1,0 +1,26 @@
+{
+  "case_id": "direct_arylation",
+  "objective_name": "yield",
+  "objective_direction": "maximize",
+  "objective_unit": "percent",
+  "planned_budget": 60,
+  "environment": {
+    "DIRECT_ARYLATION_API_URL_set": true
+  },
+  "search_space": {
+    "parameters": [
+      "base",
+      "ligand",
+      "solvent",
+      "concentration",
+      "temperature_c"
+    ],
+    "search_space_size": 1728
+  },
+  "execution": {
+    "strategy": "12-point stratified random initial design followed by random-forest UCB with mutation and random candidate pools",
+    "results_path": "local_results.json",
+    "manifest_path": "campaign_manifest.json"
+  },
+  "checked_at": "2026-08-12T03:07:38.552180+00:00"
+}

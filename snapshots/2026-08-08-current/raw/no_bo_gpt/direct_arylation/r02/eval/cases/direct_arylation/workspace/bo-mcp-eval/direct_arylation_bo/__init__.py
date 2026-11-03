@@ -1,3 +1,1 @@
-from .campaign import CampaignConfig, run_campaign
-
-__all__ = ["CampaignConfig", "run_campaign"]
+"""Direct arylation BO package."""

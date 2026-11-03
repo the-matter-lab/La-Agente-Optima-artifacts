@@ -1,0 +1,31 @@
+exit_code=0
+
+=== stdout (raw) ===
+{
+  "case_id": "synthetic_ackley_6d",
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "objective_unit": "normalized_unitless",
+  "dimensions": 6,
+  "parameter_names": [
+    "x_1",
+    "x_2",
+    "x_3",
+    "x_4",
+    "x_5",
+    "x_6"
+  ],
+  "total_budget": 60,
+  "seed": 20260812,
+  "initial_design_size": 12,
+  "candidate_pool_size": 4096,
+  "acquisition_strategy": "gaussian_process_expected_improvement",
+  "batch_size": 1,
+  "output_path": "local_results.json"
+}
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

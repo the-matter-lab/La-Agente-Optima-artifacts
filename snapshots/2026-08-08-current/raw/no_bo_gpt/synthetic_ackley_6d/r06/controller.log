@@ -1,0 +1,43 @@
+LD_LIBRARY_PATH dynamically set to: /opt/venv/lib/python3.12/site-packages/nvidia/cusparse/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_cupti/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cublas/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufile/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cufft/lib:/opt/venv/lib/python3.12/site-packages/nvidia/curand/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cudnn/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusolver/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nccl/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_runtime/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cusparselt/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvtx/lib:/opt/venv/lib/python3.12/site-packages/nvidia/cuda_nvrtc/lib:/opt/venv/lib/python3.12/site-packages/nvidia/nvjitlink/lib:/usr/local/cuda/lib64:/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+Using tool_registry.toml to control web-search/kg/mcp-python registration
+Logfire project URL: 
+https://logfire-us.pydantic.dev/matterlab/bo-mcp-grafico-lynn
+03:50:08.920 evaluate bo_mcp_graph_eval
+03:50:08.921   case: synthetic_ackley_6d
+03:50:08.921     execute _run_case
+/opt/venv/lib/python3.12/site-packages/pubchempy.py:563: SyntaxWarning: "is not" with 'int' literal. Did you mean "!="?
+  if self.charge is not 0:
+03:50:23.593       agent run
+03:50:23.598         chat gpt-5.4
+03:50:24.227           POST api.openai.com/v1/responses
+03:50:37.358         running tool: bash_exec
+03:50:37.366 GET /bo-mcp-eval/bo-mcp-eval
+             evaluate bo_mcp_graph_eval
+               case: synthetic_ackley_6d
+                 execute _run_case
+                   agent run
+                     running tool: bash_exec
+03:50:37.376           Failed to start graphchat for streamed tool output: Failed to connect to WebSocket: Request URL is missing an 'http://' or 'https://' protocol.
+03:50:37.400         chat gpt-5.4
+03:50:37.410           POST api.openai.com/v1/responses
+03:51:15.961         running tool: bash_exec
+03:51:15.983         chat gpt-5.4
+03:51:15.993           POST api.openai.com/v1/responses
+03:51:19.142         running tool: bash_exec
+03:51:20.901         chat gpt-5.4
+03:51:20.912           POST api.openai.com/v1/responses
+03:51:25.299         running tool: bash_exec
+03:51:25.350         chat gpt-5.4
+03:51:25.366           POST api.openai.com/v1/responses
+03:51:27.871         running tool: bash_exec
+03:51:30.633         chat gpt-5.4
+03:51:30.647           POST api.openai.com/v1/responses
+03:51:33.674         running tool: bash_exec
+03:51:51.947         chat gpt-5.4
+03:51:51.961           POST api.openai.com/v1/responses
+03:51:55.642         running tool: bash_exec
+03:51:55.695         chat gpt-5.4
+03:51:55.712           POST api.openai.com/v1/responses
+03:52:01.860         running tool: bash_exec
+03:52:01.909         chat gpt-5.4
+03:52:01.927           POST api.openai.com/v1/responses
