@@ -1,0 +1,1207 @@
+{
+  "agent": {
+    "_source": {
+      "cost_usd": "Pydantic Evals ReportCase.metrics['cost'] when available; main-agent estimated cost is reported under usage_split.main.cost_usd",
+      "pydantic_eval_task_duration_s": "Pydantic Evals ReportCase.task_duration when available",
+      "pydantic_eval_total_duration_s": "Pydantic Evals ReportCase.total_duration when available",
+      "runtime_s": "wall-clock time around agent.run(...) in evals.bo_mcp.runner",
+      "usage": "Pydantic AI result.usage"
+    },
+    "cache_read_tokens": 5310128,
+    "cache_write_tokens": 0,
+    "campaign_id_present": true,
+    "campaign_verified": true,
+    "cost_usd": 2.939267,
+    "final_answer_present": true,
+    "input_tokens": 5641520,
+    "output_tokens": 52217,
+    "pydantic_eval_task_duration_s": 1365.688303302,
+    "pydantic_eval_total_duration_s": 1365.689945372,
+    "reasoning_tokens": 6468,
+    "request_count": 56,
+    "runtime_s": 1342.236412120983,
+    "success": true,
+    "tool_call_count": 119,
+    "total_tokens": null
+  },
+  "architecture": {
+    "_source": "best-effort architecture compliance derived from selected eval mode, main-agent tool calls, subagent task handles, and generated workspace files",
+    "architecture_contract_satisfied": true,
+    "architecture_mode": "main_agent_tool_passing_bo_mcp",
+    "architecture_restrictions": {
+      "allow_bash": false,
+      "allow_bo_mcp_openapi_tools": false,
+      "allow_bo_mcp_tools": true,
+      "allow_python_repl": false,
+      "allow_subagents": false,
+      "execution_style": "main agent calls tools directly without script execution",
+      "require_campaign_id": true,
+      "require_script_artifact": false,
+      "workflow_owner": "main-agent"
+    },
+    "bo_driver_code_count": 0,
+    "bo_mcp_artifact_reference_count": 0,
+    "bo_mcp_verification_status": "verified",
+    "campaign_id_present": true,
+    "campaign_id_required": true,
+    "delegated_subagent_names": [],
+    "mode_violation_reasons": [],
+    "script_artifact_count": 0,
+    "script_artifact_hashes": [],
+    "script_artifact_required": false,
+    "subagent_delegation_count": 0,
+    "tool_call_counts_by_name": {
+      "bo_create_campaign": 1,
+      "bo_export_campaign": 1,
+      "bo_generate_suggestions": 7,
+      "bo_get_diagnostics": 1,
+      "bo_health_check": 1,
+      "bo_list_capabilities": 1,
+      "bo_list_results": 1,
+      "bo_submit_results": 7,
+      "bo_terminate_campaign": 1,
+      "bo_validate_intake": 1,
+      "container_execute": 27,
+      "container_read_file": 4,
+      "container_write_file": 2,
+      "inspect_smiles_geometry": 1,
+      "load_skill": 1,
+      "read_skill_resource": 2,
+      "set_molecular_dihedrals": 60
+    },
+    "used_bo_mcp_tools": true,
+    "used_python_or_bash": false
+  },
+  "benchmark": {
+    "benchmark_clean": true,
+    "clean_failure_reasons": [],
+    "expected_evaluation_budget": 60,
+    "expected_hypervolume_reference_point": null,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "objective_direction": "minimize",
+    "objective_name": "single_point_energy",
+    "objective_unit": "hartree",
+    "run_success": true
+  },
+  "bo_mcp": {
+    "_source": "BO-MCP REST read-back of campaign, spec, results, and diagnostics endpoints",
+    "attempted_objective_evaluations": 60,
+    "backend_requested": "baybe",
+    "backend_resolved": "baybe",
+    "best_objective_evaluation_index": 15,
+    "best_objective_value": -233.18571691981072,
+    "best_parameters": {
+      "dih_cccc_deg": 180.0,
+      "dih_hocc_deg": 90.86560636085184,
+      "dih_occc_deg": -52.47855166010349
+    },
+    "best_so_far_by_evaluation": [
+      -233.17918571978097,
+      -233.17918571978097,
+      -233.17918571978097,
+      -233.17918571978097,
+      -233.18427545369508,
+      -233.18427545369508,
+      -233.18427545369508,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072
+    ],
+    "bo_mcp_reported_best_parameters": {
+      "dih_cccc_deg": 180.0,
+      "dih_hocc_deg": 90.86560636085184,
+      "dih_occc_deg": -52.47855166010349
+    },
+    "bo_mcp_reported_best_value": -233.18571691981072,
+    "bo_mcp_reported_hypervolume": null,
+    "bo_mcp_reported_improvement_history": [
+      -233.17918571978097,
+      -233.17918571978097,
+      -233.17918571978097,
+      -233.17918571978097,
+      -233.18427545369508,
+      -233.18427545369508,
+      -233.18427545369508,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18487448854646,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072,
+      -233.18571691981072
+    ],
+    "bo_mcp_reported_n_pareto_points": null,
+    "bo_mcp_reported_pareto_front": null,
+    "campaign_batch_size": 4,
+    "campaign_config": {
+      "_source": "BO-MCP REST campaign/spec read-back",
+      "acknowledge_degradations": [],
+      "acquisition": {
+        "method": "auto",
+        "optimization": null,
+        "saasbo_config": null,
+        "turbo_config": null,
+        "use_cost_aware": false,
+        "use_input_warping": false
+      },
+      "backend_options": null,
+      "backend_requested": "baybe",
+      "backend_resolved": "baybe",
+      "batch_size": 4,
+      "campaign_id": "91ee3992-0404-462e-9c01-37ce79f5e6d0",
+      "constraints": [],
+      "convergence_tolerance": null,
+      "fidelity_parameter": null,
+      "initial_design_size": 12,
+      "initial_design_size_requested": 12,
+      "initial_design_size_source": "requested",
+      "max_iterations": null,
+      "max_observations": 60,
+      "missing_fields": [
+        "max_iterations",
+        "convergence_tolerance",
+        "backend_options",
+        "fidelity_parameter",
+        "transfer_learning"
+      ],
+      "objectives": [
+        {
+          "direction": "minimize",
+          "log_transform": false,
+          "match_scale": null,
+          "match_shape": null,
+          "name": "energy_hartree",
+          "normalization_bounds": null,
+          "target": null,
+          "target_mode": null,
+          "transform": null,
+          "unit": "Eh",
+          "weight": null
+        }
+      ],
+      "outcome_constraints": [],
+      "parameters": [
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral H-O-C-C in degrees, atoms [14,4,3,2] for 1-butanol / CCCCO.",
+          "name": "dih_hocc_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral O-C-C-C in degrees, atoms [4,3,2,1] for 1-butanol / CCCCO.",
+          "name": "dih_occc_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        },
+        {
+          "bounds": {
+            "lower": -180.0,
+            "upper": 180.0
+          },
+          "categories": null,
+          "description": "Dihedral C-C-C-C in degrees, atoms [3,2,1,0] for 1-butanol / CCCCO.",
+          "name": "dih_cccc_deg",
+          "parameter_options": null,
+          "type": "continuous",
+          "values": null
+        }
+      ],
+      "random_seed": 20261006,
+      "spec_id": "5f47164a-2234-413d-935e-753265c502e3",
+      "transfer_learning": null
+    },
+    "campaign_config_artifact": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_toolloop_aligned_baybe_litellm_gpt54_20261006T131917Z/repeat_002/cases/dihedral/campaign_config.json",
+    "campaign_config_endpoint_retrieved": true,
+    "campaign_id": "91ee3992-0404-462e-9c01-37ce79f5e6d0",
+    "campaign_initial_design_size": 12,
+    "campaign_iteration": 7,
+    "campaign_max_iterations": null,
+    "campaign_max_observations": 60,
+    "campaign_random_seed": 20261006,
+    "campaign_retrieved": true,
+    "campaign_spec_id": "5f47164a-2234-413d-935e-753265c502e3",
+    "campaign_spec_retrieved": true,
+    "campaign_status": "completed",
+    "converged": true,
+    "diagnostics_retrieved": true,
+    "duplicate_evaluations": 0,
+    "duplicate_rate": 0.0,
+    "eval_best_so_far_auc": -13991.106668971328,
+    "evaluation_budget_adherence": "matched",
+    "evaluation_budget_delta": 0,
+    "expected_evaluation_budget": 60,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "failed_evaluation_rate": 0.0,
+    "failed_evaluations": 0,
+    "final_objective_value": -233.17934128516214,
+    "hypervolume": null,
+    "hypervolume_reference_point": null,
+    "incomplete_objective_evaluations": 0,
+    "n_pareto_points": null,
+    "objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "energy_hartree"
+      }
+    ],
+    "objective_reducer": "single_objective_best_so_far",
+    "objective_schema_matches_expected": true,
+    "objective_schema_status": "normalized_scalar",
+    "objective_vector_count": 60,
+    "objective_vectors": [
+      {
+        "evaluation_index": 1,
+        "objective_values": {
+          "energy_hartree": -233.17918571978097
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 119.81652100680162,
+          "dih_hocc_deg": 156.24366144807897,
+          "dih_occc_deg": -80.34497322548933
+        }
+      },
+      {
+        "evaluation_index": 2,
+        "objective_values": {
+          "energy_hartree": -233.17068817385783
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -69.38541841011927,
+          "dih_hocc_deg": -117.81859422114451,
+          "dih_occc_deg": 18.755273569568715
+        }
+      },
+      {
+        "evaluation_index": 3,
+        "objective_values": {
+          "energy_hartree": -233.17334672127078
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 62.63567402511032,
+          "dih_hocc_deg": -148.27006128783984,
+          "dih_occc_deg": 5.7140165455244585
+        }
+      },
+      {
+        "evaluation_index": 4,
+        "objective_values": {
+          "energy_hartree": -233.175763950047
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -94.67208001591581,
+          "dih_hocc_deg": 173.51544560054907,
+          "dih_occc_deg": -128.0171131702874
+        }
+      },
+      {
+        "evaluation_index": 5,
+        "objective_values": {
+          "energy_hartree": -233.18427545369508
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 63.53597394776921,
+          "dih_hocc_deg": 25.508621054765484,
+          "dih_occc_deg": 66.8589568028222
+        }
+      },
+      {
+        "evaluation_index": 6,
+        "objective_values": {
+          "energy_hartree": -233.17454990463435
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 100.60979000956894,
+          "dih_hocc_deg": -42.64549324382179,
+          "dih_occc_deg": 109.94503928681183
+        }
+      },
+      {
+        "evaluation_index": 7,
+        "objective_values": {
+          "energy_hartree": -233.09289558222585
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -12.674833585175463,
+          "dih_hocc_deg": 179.79464524218753,
+          "dih_occc_deg": -21.96635018691984
+        }
+      },
+      {
+        "evaluation_index": 8,
+        "objective_values": {
+          "energy_hartree": -233.18487448854646
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 166.7379125066842,
+          "dih_hocc_deg": 166.08091597245277,
+          "dih_occc_deg": 53.33676210492794
+        }
+      },
+      {
+        "evaluation_index": 9,
+        "objective_values": {
+          "energy_hartree": -233.18078868692484
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -135.29788361518706,
+          "dih_hocc_deg": 175.94666591536662,
+          "dih_occc_deg": 175.49386261549563
+        }
+      },
+      {
+        "evaluation_index": 10,
+        "objective_values": {
+          "energy_hartree": -233.08491965062058
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -20.976677146932246,
+          "dih_hocc_deg": -8.9937986705539,
+          "dih_occc_deg": 43.49578997978145
+        }
+      },
+      {
+        "evaluation_index": 11,
+        "objective_values": {
+          "energy_hartree": -233.13146469233072
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 1.593188992937229,
+          "dih_hocc_deg": 36.185241036158914,
+          "dih_occc_deg": -57.200335230117574
+        }
+      },
+      {
+        "evaluation_index": 12,
+        "objective_values": {
+          "energy_hartree": -233.16398543646716
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -24.503072805471334,
+          "dih_hocc_deg": -86.40466447602354,
+          "dih_occc_deg": 136.50687313012475
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "energy_hartree": -233.17923972982783
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 102.52456625327112,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 37.61663159874478
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "energy_hartree": -233.18162196513958
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -115.46629636676369,
+          "dih_hocc_deg": -173.6003625940015,
+          "dih_occc_deg": 60.62316203632722
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "energy_hartree": -233.18571691981072
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 180.0,
+          "dih_hocc_deg": 90.86560636085184,
+          "dih_occc_deg": -52.47855166010349
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "energy_hartree": -233.1846171365953
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 180.0,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 165.7009242082637
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "energy_hartree": -233.18388703449267
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -75.20636901329125,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "energy_hartree": -233.17419051693022
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -105.5722953794203,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -115.10047042184567
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "energy_hartree": -233.1815743269256
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 46.27928654965349,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 20,
+        "objective_values": {
+          "energy_hartree": -233.17676756960506
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -154.47113731071096,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 17.117087265739517
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "energy_hartree": -233.18379367707658
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 180.0,
+          "dih_hocc_deg": -113.37005384121308,
+          "dih_occc_deg": 43.467908008532156
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "energy_hartree": -233.18514502435102
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 180.0,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -172.03762712576008
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "energy_hartree": -233.18388924256251
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 67.54948149660567,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "energy_hartree": -233.1844377877576
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -163.5619382014318,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 25,
+        "objective_values": {
+          "energy_hartree": -233.18486430943508
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -168.25359928451326,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 26,
+        "objective_values": {
+          "energy_hartree": -233.1771081608531
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 152.21242637060098,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -114.97917992525984
+        }
+      },
+      {
+        "evaluation_index": 27,
+        "objective_values": {
+          "energy_hartree": -233.1853405655712
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 180.0,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 28,
+        "objective_values": {
+          "energy_hartree": -233.18542027532163
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -180.0,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -47.7338143101701
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "energy_hartree": -233.18256550703845
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 67.86619163658379,
+          "dih_hocc_deg": -11.413048732859451,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "energy_hartree": -233.18534056557036
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -180.0,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "energy_hartree": -233.1853405655707
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -180.0,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "energy_hartree": -233.18562836843913
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -180.0,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 73.61142487676145
+        }
+      },
+      {
+        "evaluation_index": 33,
+        "objective_values": {
+          "energy_hartree": -233.18362269490677
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -180.0,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -87.41450825255724
+        }
+      },
+      {
+        "evaluation_index": 34,
+        "objective_values": {
+          "energy_hartree": -233.18152072765747
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 140.469539548429,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 35,
+        "objective_values": {
+          "energy_hartree": -233.18091288754832
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 105.98560830054724,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 36,
+        "objective_values": {
+          "energy_hartree": -233.18326722026507
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -84.72894728736749,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 37,
+        "objective_values": {
+          "energy_hartree": -233.17760438805877
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 28.33595756410266,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 38,
+        "objective_values": {
+          "energy_hartree": -233.18022515615164
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -117.97038942309929,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 39,
+        "objective_values": {
+          "energy_hartree": -233.1794878755015
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 36.07011019825113,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 40,
+        "objective_values": {
+          "energy_hartree": -233.18384487415986
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 70.81478636741694,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -85.8953145639598
+        }
+      },
+      {
+        "evaluation_index": 41,
+        "objective_values": {
+          "energy_hartree": -233.17791021400066
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -158.19242944991973,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -122.46472939625893
+        }
+      },
+      {
+        "evaluation_index": 42,
+        "objective_values": {
+          "energy_hartree": -233.18130885908857
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 138.68097319855892,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 43,
+        "objective_values": {
+          "energy_hartree": -233.1776037977134
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 157.26250870775854,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 120.35413130583005
+        }
+      },
+      {
+        "evaluation_index": 44,
+        "objective_values": {
+          "energy_hartree": -233.18287965125427
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -98.81715169448461,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 67.55198254127387
+        }
+      },
+      {
+        "evaluation_index": 45,
+        "objective_values": {
+          "energy_hartree": -233.1778661070488
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 29.353234823667083,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 46,
+        "objective_values": {
+          "energy_hartree": -233.18216051287473
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -180.0,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 96.5282801602053
+        }
+      },
+      {
+        "evaluation_index": 47,
+        "objective_values": {
+          "energy_hartree": -233.18063428759544
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -131.68121538826188,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 48,
+        "objective_values": {
+          "energy_hartree": -233.18327071062902
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -58.38639523499989,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 49,
+        "objective_values": {
+          "energy_hartree": -233.17370400449153
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 144.72723503400059,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 6.0396275426934585
+        }
+      },
+      {
+        "evaluation_index": 50,
+        "objective_values": {
+          "energy_hartree": -233.18201757343934
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 95.80879659793692,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 51,
+        "objective_values": {
+          "energy_hartree": -233.18061543366062
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -41.57081635441152,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 52,
+        "objective_values": {
+          "energy_hartree": -233.17954101398684
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -89.11351813197193,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": 99.07090760764112
+        }
+      },
+      {
+        "evaluation_index": 53,
+        "objective_values": {
+          "energy_hartree": -233.17837947278488
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 180.0,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 7.966266356766445
+        }
+      },
+      {
+        "evaluation_index": 54,
+        "objective_values": {
+          "energy_hartree": -233.17421834115981
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -98.06225213306425,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -2.58455882074482
+        }
+      },
+      {
+        "evaluation_index": 55,
+        "objective_values": {
+          "energy_hartree": -233.18182392365583
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -48.04267802216399,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 56,
+        "objective_values": {
+          "energy_hartree": -233.1853405655715
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 180.0,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 57,
+        "objective_values": {
+          "energy_hartree": -233.17712607412523
+        },
+        "parameter_values": {
+          "dih_cccc_deg": -26.6592081493874,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 58,
+        "objective_values": {
+          "energy_hartree": -233.18054588158026
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 180.0,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": -109.34464900774319
+        }
+      },
+      {
+        "evaluation_index": 59,
+        "objective_values": {
+          "energy_hartree": -233.17966655933543
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 69.59647801566322,
+          "dih_hocc_deg": 180.0,
+          "dih_occc_deg": 110.061716604448
+        }
+      },
+      {
+        "evaluation_index": 60,
+        "objective_values": {
+          "energy_hartree": -233.17934128516214
+        },
+        "parameter_values": {
+          "dih_cccc_deg": 85.96885842076391,
+          "dih_hocc_deg": -180.0,
+          "dih_occc_deg": -104.05335576177991
+        }
+      }
+    ],
+    "pareto_front": null,
+    "results_retrieved": true,
+    "successful_objective_evaluations": 60,
+    "suggestions_generated": 60,
+    "unresolved_suggestions": 0,
+    "verification_status": "verified"
+  },
+  "metric_notes": [
+    "Token and cost fields are reported only when exposed by the runtime or derivable from recorded message metadata.",
+    "Subagent metrics use TaskHandle observability fields when the installed subagent runtime exposes them, with older-runtime fallbacks."
+  ],
+  "objective_oracle": {
+    "checked_evaluations": 0,
+    "mismatch_count": 0,
+    "verification_status": "not_applicable"
+  },
+  "provenance": {
+    "audited_accelerator_policies": [
+      "auto"
+    ],
+    "audited_batches": 7,
+    "audited_identifier_hashes": [
+      "0113e4350c4047dfe9ab509ff40113d1e11287955e7b33659f545d884581a0d8",
+      "01668fcaff44428df6882cc05221391388a9c9fd1f326cb3db0a00617f2c8f34",
+      "017b729bbec41a46c617f10e792b9fc5f37b5b02fc7f3520ea6f638463ed2493",
+      "02a3ce36c125022aa54374cd95deaace5a3c583c4c9262a5d262a56caef0a9bc",
+      "03e8c5a74e5c1fc858523afe2ab2c180c0b5447597553e8fde97da3357f12fb9",
+      "1bb98867e7ac31f88817efe7aa016c15c97d8ab9777dd188c76f511c2d1e09ea",
+      "1c6dfe693855171dffa672d9b0428bf7948e54c686d8231fcfd877732e679252",
+      "1e233a0512fec58aa188b96aa0ef2af2bc44c2d5f323bcf8a64d214e0f951c57",
+      "21cf48bcfed198b298562fb0dff54af3757aeeedcfdf4b30aeb34c81f7079964",
+      "2689b788ea52c030d615ba4040a7c4a35ae0a698bc26e3a571766393ef74eb42",
+      "2a7176e6a3d6c9594227e7867f68452ca02ef7515b911dc5c0a66a3766f16cca",
+      "2adb808e451ad3a78dafc6dbf41739eb8a51653d204d5cbe6f48202a4463cecf",
+      "333784df4c6370d829aeda10093f801fc8a94eabcb99847cd48dadb6895c5976",
+      "385a5f72f6abcbe70c018d2563829c5ee70c05791a90a30d35d42d2607e4d592",
+      "3906c36add8ca979394955d1bd502301607927a3e869c9e33b7ccee26cea4dd6",
+      "392568a6ccfeaf436b3737b1c9f71d06b0f0fc96f8c668250f3912aaace147a5",
+      "3f8c942cdc2bf1747e03ed0eaeefb1db50ea1491ef66425bbc213d9ffbcbd07f",
+      "4e8751373485851db4e79bf20bb42c12ac8af37fee3dc9633d1c47d18391d556",
+      "5045138bbeaed8bb3ea57377277db32d80fbed755efac21642f1ba4374987159",
+      "52fe21abed33696e7964141a6623d2e08fe9122f5812b64524f5e8bfaea4e4b6",
+      "6142420c99cc101ecaebdf8a98c60e86bec5765aa1346a1a0734c207bad0c14e",
+      "62b7a02074cd9bf53d2878bd3a15239b49fadc7a42122ff3f97c191e776c301a",
+      "63cf7e2967d330d2ee5cbec6eb6db0ef483841303a5a2f117fa6c25da306a8ff",
+      "766f5f11edce8bffd28f3c812b13795c1b8b31808c78224fe33204934f33f7ee",
+      "7dfc856406d4adcf5a3803fdb26cff16dbff2484157daed9426bfcee6d85767d",
+      "7e8faecb26eaa736c6d46ee900da55cf76b85edcb71e08695d74d9ebcc0904da",
+      "88273b32e8e88a892c882905cca4f36445c225d676320229bb5124cd3f428b0d",
+      "90981a818c9f7b8d3e92a945a39353abc4a2d26901e2f4cb9eef993c38053df3",
+      "90dd6b3dc5eb1a71bf1db34312588ba2c2f84729888acb61c8ca7ca5e93e6e8a",
+      "9342ae48a4f5882da14d839b0abf00a7418837d05d330f9e6062eb79c91480eb",
+      "963a7d5b971360a559301fc9f9fd4d97d0be1fc2c53e09717d70232750e99cb2",
+      "988f43b68fd1b3be2ed54f18f47d663edf008267ca04d9a1c0a6c226cf379969",
+      "9932ec423d14b847b444a69d6113172366f5b8481b60aa671287b4cca554098e",
+      "9e23e57dec5dda28f888430744f10b2f60e937f0d8892e693f73f89a89942d22",
+      "ab6a914bb82286ccfe9ef79952dccd5f5dc58d76668ba5c0a95e5d6116d7b13e",
+      "abf0350c95706af132f0de10cbe58314f2dae86342ce5f518348dfc73c0efc25",
+      "ad4911ed3799a7f1efdb1f8875957bfd143288dd44ed5d2ba278f3f7ad6107fe",
+      "b279c271bdf1f209e331e09b0b02da527cd22352155c67c552d32ea958b028f7",
+      "b80527d5f25624493bf6fd9cef70aff99e2d4e241cd113c2e4ba4a91a7491a95",
+      "b8449e341a25bb038fcf42dc15bb16c012d34950c0ca68019c6d827bfd5f5ccf",
+      "ba20c0a4ceb4332f9e37d1bb7f991fa10dfe43c5053403a6a4fd526390c95d9a",
+      "ca1797a004c0b85daef272d61791a3e685a40303cbdaaa9f18a0b39bdeea809b",
+      "cbea0526a26a2d3728303f4ffcb9690f30a2e29609a1a415a49af8e25f9ea1a3",
+      "d38b18ab6846df7463ec70d7d542652b315b196243266d02fda00853aae29418",
+      "d3cc41fa2c68cba7e86f16bdc476a4e70840bf133ae1a8489c72e15f4bae2c29",
+      "d42ac5bfb68d42e00348c7f831a0e34800c4389863bf9dd407dde2aaf714d1e0",
+      "d5a659f6d58f9c75fb9f9aa1d76526f2a9c78889d6a66d44c30dd41496f5f40d",
+      "d5dbcb75a01464188277a2f5da865b7f405e1447d9efa359e71b32c1858106ea",
+      "d63f8d28dad1f2bd61fcf51ce1df69be3a9a4a12cc865b382848b62d9e96c7f9",
+      "dcf9d1013f647be9a0080826e977c389d02452fcdb49325964e0671588bbb049",
+      "de97a8cdd6f875bb03a441693cd3499179d8be0284cd23857866740aef36869a",
+      "e3204138717d478ef506bd11c573e0784abd1dab90fde215509b3a653f16734d",
+      "e971460c516cf26205cac1a81aa3c4e1385b4389ff6b9c3c881d3142ccb8accc",
+      "ec3f41abddc643febf2cbc59150429bf49cb2be8367cd2722334a5c86c777152",
+      "efb16d0549d02110a5060b33bd645e51b696e326a144f699039fcca689f11198",
+      "f8a0a9c931e0a6b1787bfb93811483ed4b37c2ea6f19b79946b25eed8121eb78",
+      "fa63fca571c03ade8f32f32a733a1967f4928c3be34dbee916c451572934e155"
+    ],
+    "audited_max_parallel_molecules": [
+      4,
+      8,
+      10
+    ],
+    "audited_pyscf_calls": 60,
+    "compliant_pyscf_calls": 60,
+    "failure_reasons": [],
+    "noncompliant_call_reasons": {},
+    "objective_call_evidence_source": "pyscf_runner_batches",
+    "reported_choice_source": null,
+    "reported_choices": null,
+    "verification_status": "verified",
+    "workspace_path": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_toolloop_aligned_baybe_litellm_gpt54_20261006T131917Z/repeat_002/cases/dihedral/workspace/bo-mcp-eval"
+  },
+  "usage_split": {
+    "_source": {
+      "combined": "sum of available main/subagent counters; cost may be incomplete when subagent cost is unavailable",
+      "main": "Pydantic AI result.usage plus result.all_messages() for message-level cost metadata",
+      "subagents": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+    },
+    "combined": {
+      "_source": {
+        "cost_usd": "main plus subagent cost only when all required cost components are available",
+        "usage": "sum of available main/subagent counters"
+      },
+      "cache_read_tokens": 5310128,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "main_plus_subagent_cost_breakdown",
+      "cost_usd": 2.939267,
+      "input_tokens": 5641520,
+      "output_tokens": 52217,
+      "reasoning_tokens": 6468,
+      "request_count": 56,
+      "tool_call_count": 119,
+      "total_tokens": 5693737
+    },
+    "limitations": [
+      "nested subagents are not captured",
+      "subagent usage is read from top-level pydantic-deep task handles",
+      "combined assumes parent AgentRunResult.usage excludes subagent TaskHandle.usage; this assumption should be retested after dependency changes",
+      "per-task subagent tool-call counts require TaskHandle.tool_call_counts or TaskHandle.message_history"
+    ],
+    "main": {
+      "_source": {
+        "cost_usd": "genai-prices estimate from main-agent response message usage/model metadata",
+        "messages": "Pydantic AI result.all_messages()",
+        "usage": "Pydantic AI result.usage"
+      },
+      "cache_read_tokens": 5310128,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "genai_prices_from_main_response_messages",
+      "cost_usd": 2.939267,
+      "input_tokens": 5641520,
+      "model_names": [
+        "gpt-5.4"
+      ],
+      "output_tokens": 52217,
+      "priced_response_count": 56,
+      "provider_names": [
+        "openai"
+      ],
+      "reasoning_tokens": 6468,
+      "request_count": 56,
+      "tool_call_count": 119,
+      "total_tokens": null,
+      "unpriced_response_count": 0
+    },
+    "method": "main_result_usage_plus_subagent_task_handle_usage",
+    "scope": "top_level_pydantic_deep_subagents",
+    "subagents": {
+      "_source": {
+        "cost_usd": "TaskHandle.cost when exposed, otherwise genai-prices estimate from task-handle usage and model/provider metadata",
+        "messages": "TaskHandle.message_history when exposed by the installed subagent runtime",
+        "tool_call_counts": "TaskHandle.tool_call_counts when exposed, otherwise counts derived from TaskHandle.message_history tool-call parts",
+        "usage": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+      },
+      "available": false,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_available": false,
+      "cost_source": "subagent_task_handles",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "priced_task_count": 0,
+      "reasoning_tokens": 0,
+      "request_count": 0,
+      "tasks": [],
+      "total_tokens": 0,
+      "unpriced_task_count": 0
+    }
+  }
+}

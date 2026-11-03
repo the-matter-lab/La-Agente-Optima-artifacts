@@ -23,6 +23,9 @@ ledger in its database, and exposes them over MCP and a REST API. Repo:
 - `snapshots/2026-10-03-masked-pure-llm-gpt54/` — pure-LLM arm (GPT-5.4, 3
   repeats) on the masked Ackley surface and masked discrete-response
   benchmarks. See `snapshots/2026-10-03-masked-pure-llm-gpt54/raw/README.md`.
+- `snapshots/2026-10-06-dihedral-architecture-sweep/` — butanol dihedral
+  benchmark (GPT-5.4, 4 architectures × 3 repeats). See
+  `snapshots/2026-10-06-dihedral-architecture-sweep/README.md`.
 - `showcases/` — the **showcase campaigns** reported in the paper and SI: OSL
   combinatorial discovery, four finite-space computational campaigns, the RAISE
   closed loop, and the RoboChem-Flex flow-photochemistry campaign. See

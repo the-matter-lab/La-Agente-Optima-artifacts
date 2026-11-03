@@ -1,0 +1,1117 @@
+{
+  "agent": {
+    "_source": {
+      "cost_usd": "Pydantic Evals ReportCase.metrics['cost'] when available; main-agent estimated cost is reported under usage_split.main.cost_usd",
+      "pydantic_eval_task_duration_s": "Pydantic Evals ReportCase.task_duration when available",
+      "pydantic_eval_total_duration_s": "Pydantic Evals ReportCase.total_duration when available",
+      "runtime_s": "wall-clock time around agent.run(...) in evals.bo_mcp.runner",
+      "usage": "Pydantic AI result.usage"
+    },
+    "cache_read_tokens": 1552540,
+    "cache_write_tokens": 0,
+    "campaign_id_present": false,
+    "campaign_verified": false,
+    "cost_usd": 1.1288300000000002,
+    "final_answer_present": true,
+    "input_tokens": 1689506,
+    "output_tokens": 26552,
+    "pydantic_eval_task_duration_s": 2759.363838691,
+    "pydantic_eval_total_duration_s": 2759.364611215,
+    "reasoning_tokens": 12891,
+    "request_count": 38,
+    "runtime_s": 2755.9892448652536,
+    "success": true,
+    "tool_call_count": 56,
+    "total_tokens": null
+  },
+  "architecture": {
+    "_source": "best-effort architecture compliance derived from selected eval mode, main-agent tool calls, subagent task handles, and generated workspace files",
+    "architecture_contract_satisfied": true,
+    "architecture_mode": "main_agent_script_no_bo_mcp",
+    "architecture_restrictions": {
+      "allow_bash": true,
+      "allow_bo_mcp_openapi_tools": false,
+      "allow_bo_mcp_tools": false,
+      "allow_python_repl": true,
+      "allow_subagents": false,
+      "execution_style": "main agent writes/runs local Bayesian optimization script",
+      "require_campaign_id": false,
+      "require_script_artifact": true,
+      "workflow_owner": "main-agent"
+    },
+    "bo_driver_code_count": 0,
+    "bo_mcp_artifact_reference_count": 0,
+    "bo_mcp_verification_status": "not_applicable",
+    "campaign_id_present": false,
+    "campaign_id_required": false,
+    "delegated_subagent_names": [],
+    "mode_violation_reasons": [],
+    "script_artifact_count": 5,
+    "script_artifact_hashes": [
+      {
+        "path": "butanol_dihedral_bo/__init__.py",
+        "sha256": "173b56b469e42b98e3e03bfffe4c226ae1bd88784ad141b38df5ac5ecf4c6e0b"
+      },
+      {
+        "path": "butanol_dihedral_bo/campaign.py",
+        "sha256": "38c93653ad0817b948b6cdbda8d0d2693ab0775c74d3d411aec3975e18adc041"
+      },
+      {
+        "path": "butanol_dihedral_bo/geometry.py",
+        "sha256": "983b27c133c6482b576e55a8fed4412735771f4cd29e37c8438e6296dd48ecec"
+      },
+      {
+        "path": "butanol_dihedral_bo/pyscf_eval.py",
+        "sha256": "2d0d8a4cd044057a77500571751aab1dbf693d012306cf6224e0b77520599c54"
+      },
+      {
+        "path": "run_butanol_dihedral_bo.py",
+        "sha256": "ad288664f2ead6384831f2cb270031cf5c34f25bcc405abb06f15ba71ad1ce64"
+      }
+    ],
+    "script_artifact_required": true,
+    "subagent_delegation_count": 0,
+    "tool_call_counts_by_name": {
+      "bash_exec": 42,
+      "container_execute": 5,
+      "load_skill": 1,
+      "python_repl": 6,
+      "read_skill_resource": 2
+    },
+    "used_bo_mcp_tools": false,
+    "used_python_or_bash": true
+  },
+  "benchmark": {
+    "benchmark_clean": true,
+    "clean_failure_reasons": [],
+    "expected_evaluation_budget": 60,
+    "expected_hypervolume_reference_point": null,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "objective_direction": "minimize",
+    "objective_name": "single_point_energy",
+    "objective_unit": "hartree",
+    "run_success": true
+  },
+  "bo_mcp": {
+    "_source": "BO-MCP REST read-back of campaign, spec, results, and diagnostics endpoints",
+    "campaign_retrieved": false,
+    "evaluation_budget_adherence": "unknown",
+    "evaluation_budget_delta": null,
+    "expected_evaluation_budget": 60,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "objective_schema_matches_expected": true,
+    "objective_schema_status": "inferred_scalar",
+    "results_retrieved": false,
+    "verification_reason": "architecture mode does not require BO-MCP",
+    "verification_status": "not_applicable"
+  },
+  "local_artifacts": {
+    "_source": "local JSON result artifact referenced by final answer for no-BO-MCP architecture modes",
+    "attempted_objective_evaluations": 60,
+    "best_objective_evaluation_index": 17,
+    "best_objective_value": -233.18681608629328,
+    "best_parameters": {
+      "dihedral_c1_c2_c3_c4_deg": 180.0,
+      "dihedral_c2_c3_c4_o_deg": -63.31065036489126,
+      "dihedral_c3_c4_o_h_deg": -76.84534630454544
+    },
+    "best_so_far_by_evaluation": [
+      -233.17568214045855,
+      -233.1805825965135,
+      -233.1805825965135,
+      -233.1805825965135,
+      -233.18243322305344,
+      -233.18243322305344,
+      -233.18243322305344,
+      -233.18243322305344,
+      -233.18243322305344,
+      -233.18531118086685,
+      -233.18531118086685,
+      -233.18531118086685,
+      -233.18531118086685,
+      -233.18531118086685,
+      -233.18531118086685,
+      -233.18531118086685,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328,
+      -233.18681608629328
+    ],
+    "duplicate_evaluations": 0,
+    "duplicate_rate": 0.0,
+    "evaluation_budget_adherence": "matched",
+    "evaluation_budget_delta": 0,
+    "expected_evaluation_budget": 60,
+    "expected_objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "single_point_energy",
+        "unit": "hartree"
+      }
+    ],
+    "failed_evaluation_rate": 0.0,
+    "failed_evaluations": 0,
+    "final_objective_value": -233.18611724260077,
+    "hypervolume": null,
+    "hypervolume_reference_point": null,
+    "incomplete_objective_evaluations": 0,
+    "n_pareto_points": 0,
+    "objective_direction": "minimize",
+    "objective_metadata": [
+      {
+        "direction": "minimize",
+        "name": "total_energy_hartree"
+      }
+    ],
+    "objective_name": "total_energy_hartree",
+    "objective_oracle": {
+      "checked_evaluations": 0,
+      "mismatch_count": 0,
+      "verification_status": "not_applicable"
+    },
+    "objective_reducer": "single_objective_best_so_far",
+    "objective_schema_matches_expected": true,
+    "objective_schema_status": "normalized_scalar",
+    "objective_unit": "hartree",
+    "objective_vector_count": 60,
+    "objective_vectors": [
+      {
+        "evaluation_index": 1,
+        "objective_values": {
+          "total_energy_hartree": -233.17568214045855
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 131.13356419174835,
+          "dihedral_c2_c3_c4_o_deg": -96.8805910377744,
+          "dihedral_c3_c4_o_h_deg": 131.89248003538205
+        }
+      },
+      {
+        "evaluation_index": 2,
+        "objective_values": {
+          "total_energy_hartree": -233.1805825965135
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -138.33634102784575,
+          "dihedral_c2_c3_c4_o_deg": 168.48969154852853,
+          "dihedral_c3_c4_o_h_deg": -44.33389173733636
+        }
+      },
+      {
+        "evaluation_index": 3,
+        "objective_values": {
+          "total_energy_hartree": -233.1783806701889
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -130.96889140235942,
+          "dihedral_c2_c3_c4_o_deg": 161.30188012850067,
+          "dihedral_c3_c4_o_h_deg": 173.99399923196597
+        }
+      },
+      {
+        "evaluation_index": 4,
+        "objective_values": {
+          "total_energy_hartree": -233.17598135250745
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 20.231573050361476,
+          "dihedral_c2_c3_c4_o_deg": -79.2252755398008,
+          "dihedral_c3_c4_o_h_deg": -117.59684960049293
+        }
+      },
+      {
+        "evaluation_index": 5,
+        "objective_values": {
+          "total_energy_hartree": -233.18243322305344
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -37.341041637783974,
+          "dihedral_c2_c3_c4_o_deg": -175.74040494382734,
+          "dihedral_c3_c4_o_h_deg": -71.6459194471563
+        }
+      },
+      {
+        "evaluation_index": 6,
+        "objective_values": {
+          "total_energy_hartree": -233.17806242992887
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 128.6258821196251,
+          "dihedral_c2_c3_c4_o_deg": -166.79583856338948,
+          "dihedral_c3_c4_o_h_deg": 118.57202978287432
+        }
+      },
+      {
+        "evaluation_index": 7,
+        "objective_values": {
+          "total_energy_hartree": -233.17328124712154
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 130.37262238529098,
+          "dihedral_c2_c3_c4_o_deg": -116.88686363593312,
+          "dihedral_c3_c4_o_h_deg": 81.81624736559826
+        }
+      },
+      {
+        "evaluation_index": 8,
+        "objective_values": {
+          "total_energy_hartree": -233.17574183484922
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -138.24100224318175,
+          "dihedral_c2_c3_c4_o_deg": -99.63659484054313,
+          "dihedral_c3_c4_o_h_deg": 69.52768500462798
+        }
+      },
+      {
+        "evaluation_index": 9,
+        "objective_values": {
+          "total_energy_hartree": -233.1787840863748
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 78.27690781354659,
+          "dihedral_c2_c3_c4_o_deg": -67.77756372668371,
+          "dihedral_c3_c4_o_h_deg": 41.920375484395834
+        }
+      },
+      {
+        "evaluation_index": 10,
+        "objective_values": {
+          "total_energy_hartree": -233.18531118086685
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 155.47054749996101,
+          "dihedral_c2_c3_c4_o_deg": -64.03277279524522,
+          "dihedral_c3_c4_o_h_deg": -83.9042535512631
+        }
+      },
+      {
+        "evaluation_index": 11,
+        "objective_values": {
+          "total_energy_hartree": -233.1750437554439
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 148.7139042704747,
+          "dihedral_c2_c3_c4_o_deg": -121.22928216475407,
+          "dihedral_c3_c4_o_h_deg": 106.5325209036319
+        }
+      },
+      {
+        "evaluation_index": 12,
+        "objective_values": {
+          "total_energy_hartree": -233.18365281636443
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -49.69560496372941,
+          "dihedral_c2_c3_c4_o_deg": -169.51132085452363,
+          "dihedral_c3_c4_o_h_deg": 176.35227741822126
+        }
+      },
+      {
+        "evaluation_index": 13,
+        "objective_values": {
+          "total_energy_hartree": -233.18490077147217
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": -46.26825390017431,
+          "dihedral_c3_c4_o_h_deg": -103.17921714490663
+        }
+      },
+      {
+        "evaluation_index": 14,
+        "objective_values": {
+          "total_energy_hartree": -233.17956290134583
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 166.1685807537361,
+          "dihedral_c2_c3_c4_o_deg": -105.19576894968046,
+          "dihedral_c3_c4_o_h_deg": -93.05980320668435
+        }
+      },
+      {
+        "evaluation_index": 15,
+        "objective_values": {
+          "total_energy_hartree": -233.17862312204548
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 150.18237179622108,
+          "dihedral_c2_c3_c4_o_deg": -23.903511483510517,
+          "dihedral_c3_c4_o_h_deg": -67.54658973077163
+        }
+      },
+      {
+        "evaluation_index": 16,
+        "objective_values": {
+          "total_energy_hartree": -233.1817686809589
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 142.86053496248513,
+          "dihedral_c2_c3_c4_o_deg": -52.728984884789355,
+          "dihedral_c3_c4_o_h_deg": -121.2970342475139
+        }
+      },
+      {
+        "evaluation_index": 17,
+        "objective_values": {
+          "total_energy_hartree": -233.18681608629328
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": -63.31065036489126,
+          "dihedral_c3_c4_o_h_deg": -76.84534630454544
+        }
+      },
+      {
+        "evaluation_index": 18,
+        "objective_values": {
+          "total_energy_hartree": -233.18334737369608
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -86.18466432175899,
+          "dihedral_c2_c3_c4_o_deg": -180.0,
+          "dihedral_c3_c4_o_h_deg": 74.73732228208377
+        }
+      },
+      {
+        "evaluation_index": 19,
+        "objective_values": {
+          "total_energy_hartree": -233.18503198843317
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": -59.00584581201772,
+          "dihedral_c3_c4_o_h_deg": -17.22424733553938
+        }
+      },
+      {
+        "evaluation_index": 20,
+        "objective_values": {
+          "total_energy_hartree": -233.18044782932685
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -108.52107263391413,
+          "dihedral_c2_c3_c4_o_deg": -180.0,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 21,
+        "objective_values": {
+          "total_energy_hartree": -233.1797451702716
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -125.5219086659987,
+          "dihedral_c2_c3_c4_o_deg": -180.0,
+          "dihedral_c3_c4_o_h_deg": -169.737473518333
+        }
+      },
+      {
+        "evaluation_index": 22,
+        "objective_values": {
+          "total_energy_hartree": -233.17478540169859
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -7.477286780232035,
+          "dihedral_c2_c3_c4_o_deg": -180.0,
+          "dihedral_c3_c4_o_h_deg": 99.33463752828024
+        }
+      },
+      {
+        "evaluation_index": 23,
+        "objective_values": {
+          "total_energy_hartree": -233.17786663158452
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -20.490090683068857,
+          "dihedral_c2_c3_c4_o_deg": 180.0,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 24,
+        "objective_values": {
+          "total_energy_hartree": -233.1845342254452
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": -67.56769293657443,
+          "dihedral_c3_c4_o_h_deg": -123.36458655392133
+        }
+      },
+      {
+        "evaluation_index": 25,
+        "objective_values": {
+          "total_energy_hartree": -233.1801072446392
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -69.83355783543513,
+          "dihedral_c2_c3_c4_o_deg": -147.09236946179485,
+          "dihedral_c3_c4_o_h_deg": 132.82709081077792
+        }
+      },
+      {
+        "evaluation_index": 26,
+        "objective_values": {
+          "total_energy_hartree": -233.18219285836594
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -79.20347176056805,
+          "dihedral_c2_c3_c4_o_deg": -157.15448775079125,
+          "dihedral_c3_c4_o_h_deg": -30.55838126705505
+        }
+      },
+      {
+        "evaluation_index": 27,
+        "objective_values": {
+          "total_energy_hartree": -233.1831744604278
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -47.26823288145102,
+          "dihedral_c2_c3_c4_o_deg": -180.0,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 28,
+        "objective_values": {
+          "total_energy_hartree": -233.1802016323496
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -55.19506396111119,
+          "dihedral_c2_c3_c4_o_deg": -134.02265120753216,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 29,
+        "objective_values": {
+          "total_energy_hartree": -233.18144543457734
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -54.25487088433779,
+          "dihedral_c2_c3_c4_o_deg": -143.51174344688383,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 30,
+        "objective_values": {
+          "total_energy_hartree": -233.17994294838797
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 126.72346282215607,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 31,
+        "objective_values": {
+          "total_energy_hartree": -233.17767103982533
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -95.57032874851143,
+          "dihedral_c2_c3_c4_o_deg": 98.89991930727761,
+          "dihedral_c3_c4_o_h_deg": -41.49469852972683
+        }
+      },
+      {
+        "evaluation_index": 32,
+        "objective_values": {
+          "total_energy_hartree": -233.17584571039404
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 5.663208325174213,
+          "dihedral_c2_c3_c4_o_deg": -180.0,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 33,
+        "objective_values": {
+          "total_energy_hartree": -233.1848641558124
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 45.57681284516213,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 34,
+        "objective_values": {
+          "total_energy_hartree": -233.18501505895577
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": 180.0,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 35,
+        "objective_values": {
+          "total_energy_hartree": -233.18402348102862
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -71.41029266621794,
+          "dihedral_c2_c3_c4_o_deg": -180.0,
+          "dihedral_c3_c4_o_h_deg": -99.01876398005666
+        }
+      },
+      {
+        "evaluation_index": 36,
+        "objective_values": {
+          "total_energy_hartree": -233.17967184134386
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 61.99405799206816,
+          "dihedral_c2_c3_c4_o_deg": 109.8939222804524,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 37,
+        "objective_values": {
+          "total_energy_hartree": -233.182191594292
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 146.53349236920144,
+          "dihedral_c2_c3_c4_o_deg": 180.0,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 38,
+        "objective_values": {
+          "total_energy_hartree": -233.18212570332884
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": 149.82855204822056,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 39,
+        "objective_values": {
+          "total_energy_hartree": -233.18531822660265
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": 180.0,
+          "dihedral_c3_c4_o_h_deg": 72.43594698077229
+        }
+      },
+      {
+        "evaluation_index": 40,
+        "objective_values": {
+          "total_energy_hartree": -233.1792844663034
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 14.336705282956531,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 41,
+        "objective_values": {
+          "total_energy_hartree": -233.18601493871375
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 68.50324514959068,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 42,
+        "objective_values": {
+          "total_energy_hartree": -233.18667788961716
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 58.94384310143296,
+          "dihedral_c3_c4_o_h_deg": -84.02312425281063
+        }
+      },
+      {
+        "evaluation_index": 43,
+        "objective_values": {
+          "total_energy_hartree": -233.18397891774669
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -153.5053740343177,
+          "dihedral_c2_c3_c4_o_deg": 57.07571142145214,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 44,
+        "objective_values": {
+          "total_energy_hartree": -233.18611365445406
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": 180.0,
+          "dihedral_c3_c4_o_h_deg": -66.15722473286631
+        }
+      },
+      {
+        "evaluation_index": 45,
+        "objective_values": {
+          "total_energy_hartree": -233.18561768076222
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 65.36366668262104,
+          "dihedral_c3_c4_o_h_deg": 32.07526960828133
+        }
+      },
+      {
+        "evaluation_index": 46,
+        "objective_values": {
+          "total_energy_hartree": -233.18447244041926
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 165.70085263725875,
+          "dihedral_c2_c3_c4_o_deg": 180.0,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 47,
+        "objective_values": {
+          "total_energy_hartree": -233.18591896434836
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 55.190214156529976,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 48,
+        "objective_values": {
+          "total_energy_hartree": -233.18391257165396
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": 163.91930270122916,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 49,
+        "objective_values": {
+          "total_energy_hartree": -233.18517490539236
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 56.48768928512327,
+          "dihedral_c3_c4_o_h_deg": -33.23512900943997
+        }
+      },
+      {
+        "evaluation_index": 50,
+        "objective_values": {
+          "total_energy_hartree": -233.18445884494145
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -160.6812514397983,
+          "dihedral_c2_c3_c4_o_deg": 51.630520777497225,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 51,
+        "objective_values": {
+          "total_energy_hartree": -233.17691531797064
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -118.41110339691531,
+          "dihedral_c2_c3_c4_o_deg": 28.18199509888926,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 52,
+        "objective_values": {
+          "total_energy_hartree": -233.18411209705906
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 40.918824493803776,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 53,
+        "objective_values": {
+          "total_energy_hartree": -233.18617625479118
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 62.79225694065325,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 54,
+        "objective_values": {
+          "total_energy_hartree": -233.18615504005805
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -171.41220172827022,
+          "dihedral_c2_c3_c4_o_deg": 67.44320793266311,
+          "dihedral_c3_c4_o_h_deg": -50.96482295038632
+        }
+      },
+      {
+        "evaluation_index": 55,
+        "objective_values": {
+          "total_energy_hartree": -233.18491994201418
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": 79.84708512089409,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 56,
+        "objective_values": {
+          "total_energy_hartree": -233.18572353407578
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": -180.0,
+          "dihedral_c2_c3_c4_o_deg": 72.63873771786001,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 57,
+        "objective_values": {
+          "total_energy_hartree": -233.18592118228176
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": 70.06503800335018,
+          "dihedral_c3_c4_o_h_deg": 180.0
+        }
+      },
+      {
+        "evaluation_index": 58,
+        "objective_values": {
+          "total_energy_hartree": -233.18000613985654
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 147.44379501062383,
+          "dihedral_c2_c3_c4_o_deg": 88.36673680966331,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 59,
+        "objective_values": {
+          "total_energy_hartree": -233.18559177704628
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 180.0,
+          "dihedral_c2_c3_c4_o_deg": 51.37133398481915,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      },
+      {
+        "evaluation_index": 60,
+        "objective_values": {
+          "total_energy_hartree": -233.18611724260077
+        },
+        "parameter_values": {
+          "dihedral_c1_c2_c3_c4_deg": 170.20038611532553,
+          "dihedral_c2_c3_c4_o_deg": -60.52022504491367,
+          "dihedral_c3_c4_o_h_deg": -180.0
+        }
+      }
+    ],
+    "parameter_signatures_recorded": 60,
+    "pareto_front": [],
+    "result_file_exists": true,
+    "result_json_valid": true,
+    "result_path": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_localbo_aligned_baybe_litellm_gpt54_20261006T143026Z/repeat_002/cases/dihedral/workspace/bo-mcp-eval/local_results.json",
+    "result_schema_failure_reasons": [],
+    "successful_objective_evaluations": 60,
+    "verification_status": "verified"
+  },
+  "metric_notes": [
+    "Token and cost fields are reported only when exposed by the runtime or derivable from recorded message metadata.",
+    "Subagent metrics use TaskHandle observability fields when the installed subagent runtime exposes them, with older-runtime fallbacks."
+  ],
+  "objective_oracle": {
+    "checked_evaluations": 0,
+    "mismatch_count": 0,
+    "verification_status": "not_applicable"
+  },
+  "provenance": {
+    "audited_accelerator_policies": [
+      "auto"
+    ],
+    "audited_batches": 30,
+    "audited_identifier_hashes": [
+      "0255b0e6d9be24eea108c307dc5c32eacbbe3674b50eee0e032877e22c82875c",
+      "05341961f2ee465f541ed639fe7910fd64e0a539b8fe4c8e59b56e7f6f438498",
+      "0baf557672c1cf087d97d6fb2473c50dcbc4698568c72238f2a8fb6fa5b6299a",
+      "0c2da1161d4f0c8a2b47230ecac34a0c797d2182d354258dfe546f743e3cc282",
+      "0e78ba32f2d0407d957e6ba5b40626f3978a7b806cb51e2e57db7acbdb3490b3",
+      "12499189f110461cac985433df8495273a8ca0de85f7e24f687cc4f27a9659ca",
+      "13fcb5b14cb9afa06505522e7c085d2ba47ed683f1fe12aaab7a310ab827bead",
+      "176d17739c133e2f75b56dc9fd760d68627a8e4baa98264b69ba91d4efb59aba",
+      "19f984381e445178d677bd2ebd4b7443cfcdc632561f0242f9962b0a25b4e13e",
+      "1ad8e9f2682f0f196ebf1651024b015b70e69473173aa4acb38cd4bf66285673",
+      "1d3cedd25b5cce23b2543532d40c13ff8879a00c15472106a7667cfe2a36bc52",
+      "204398440c335f44b3874a8b3f4a7650d9832ad5181cfe3814bc0c26793621f9",
+      "20a9b9992958fab73dda2216f3c53c23c5a70cac1681638fa9263a75e23b9db7",
+      "2219163b5de948653ff67d6957aed7d9a5b6c2f71f1f415e912f2dcbf5e38c59",
+      "2297030d316e517552558cbc0ef8308491949838e2424e85483215206a0ca261",
+      "28ad6829b5d87f14b469e28440985e2ab1f1c3170a1ea3bf14248160e0996af8",
+      "2bfd3151a9f0b05d39a4e19b26dea10aeaf658ccc388267bab4cd088fc8431d6",
+      "2d7f2db98b994cebe2b9dbfab1e2b457ef36cafdc8ae66d93deca2fe1cc6b71e",
+      "3295d0b85b738362bb9ced274b3051fddefb10233cb7e748a5e46fb058b0c36a",
+      "382e17cd6bc0f80d6fcf9012618488174db324a5e3291125e907dd861241eb5c",
+      "392f7301a6678536fa3d8eb8e84f2ba06cba90c5ddc3fe9030fbab4b11f28c6e",
+      "39af8d3a192d8e55578345cf83d6f975cc073b948eec422cbbce1696346a83eb",
+      "39d80b312c7b965d42773ab3b34b9c49cb876898c25ab02b16b791eff07c067c",
+      "3a4664fd70e6a2e27f527387853499130b5a8b9c3b0402c01f381d3d1b60cb1d",
+      "3b51da9f83c242582a399c445c600c4c5965f3f8528a2bb365eb861b9a15112d",
+      "3dbc46e001b9e0015bd219057597aa9509c4d875cad7fdb7677691b31dd0499f",
+      "3df70d8ab10894cc4b3fe1c4af954ff5f157b35605ab001b3f883473c66115cc",
+      "3e7b84c7892874cabb8c5cd4e4c12345c76198363511575fbbb4b6ff3af32983",
+      "3f2d4f6e85d9c5735d70bea52b93d933139c6d38a0158ab2062a94371de99518",
+      "40a6b1d9fefff63ceefb3bd747b2a7367bbce2c08b78657c153c9e3cb4510f92",
+      "42f884fa5db3fd29b2fa23017d8c51dd2592b3d4b05cc7cd7d4e42f40b541892",
+      "43e8c61aa14072dacbf48f217ade6bcbbbaabaa50c5f3e12281a6bc5bc68038d",
+      "452adcdbe8f59275cfdf1d4e7ab22d47a1efce68e5e3d33d4269e58f16781c1e",
+      "460410733a0a7a810094024ae307024e6c41df2b04cde770d00d58f5e29b5e0f",
+      "47cc8d92cbcc655f7f0523ec93e09631c7ce9eac7635875f7bd35f05215233ee",
+      "4980f1685f6dea25951dbc60c92fe8c7d128ab8d521c03d3248bf420fd792696",
+      "4aab875a6327493fa39aedbf6e1a5cbfb3b24e7d3aaed2bc820bb5a5fc95e75d",
+      "52063cb7d4aa571efaff30fecbcda5abbc238a3cafeaf1b02be07f18a9a86da8",
+      "56c09cbb5864cac4eebcac8aa82460edb4b0121a0b052c146640efbacfd08d94",
+      "572026e3f70204a29c28e49848a42d87ba1a58a6f8309b74c7659ab193198130",
+      "58a5a5d6257a2aba56e10afabd20cbec7f489faa39f2584f92df1bd413f2ed39",
+      "5a79da6b38db7a1c6a853253deb88ca9614aa4c10979cf0b5ab77fb3c85f94e1",
+      "5b12050757ba97b62b212de305ac74d477c71f50ff32bb41a01ede20fceed117",
+      "5bbcf69b7af747861bbc1768e2f0b4163554bcfba6d98b3829991bd743fa0080",
+      "61b9f4d21b955efbef018dd3c49f422120586e4d6103680615dddcb1758ce02b",
+      "641fa94d680a04de0b768901f8abb152d6da9b11c095169f6309ed0e2d33db82",
+      "65c2fc72f05eeb2a0893713973eac3fc4e4743e401c2fd84af8b38c94ae9dd7d",
+      "6ae8ff7ab9f987296b456d35810298ca4407f68fad4689f6059b19c308a1b344",
+      "6dfbe251187c4df5d29f066c80e5d421199ece93e907f51d5ca37fa8b4c5c6f5",
+      "6fbe0773bf9302d72a65e138352c66c121f7cee06b0017ae69b3289074d48570",
+      "7aadf87e6216ec56beee9226e8ce6a8c8120c7a218415a2efe884a6cff8366bc",
+      "7cb01efc95040ea9996cff84257601c698041e1e26c67783c15df400255d1377",
+      "7ddc46477b88dc776fdb3233af0bdf2663f78b534a76baf70d66b3e5f2d38bd9",
+      "7eb6e90ed635738c59c4bb0867c5391ba10bc99fed76c054ee5a8b51d3bf6a7c",
+      "7f2c71949ebe617fdba04e699d2fb15e2dae36bf5329706db299faa34e9226d9",
+      "809701842f32ab62e0275ee1766d400c40a77ef36c298fe3d1f159cf8411336e",
+      "8319caa3692eb933b259e747499b269c8956199905a3d3e18c3d9210364791e3",
+      "83caad409675974fb1b26874f3ff384b2f9b61ada11f6f4852846eaac86d6a9d",
+      "8775cd0993271bcdb1da0ed026d4f7462aba6820a687f4ffa2292e3dcf8b700a",
+      "884c28db75736bbd2b33a01ac2a23ef60ff636395c96babc780709b77a21d6fd",
+      "8b64e7e7733fc722436dba2efb06163f7842af86bd8382be0d75cc70b39ce8dc",
+      "8b93aa34800aaf1133d088c22fae2534b62e999ad76edbce955badbee40f2a2d",
+      "8c6addc83305575353d96b1d97e30a4f12d80a1c399120b3c33918bf24b520a0",
+      "9255cf8a592892f3d9e67100bd16b6f7983a354a6bfba9db2e2c4ca8f1ddf3e5",
+      "9357f730a38858a2672543c754dfc7d94c912ae33bbc9a6e1712fe84767f727b",
+      "96f0a2dc8fc3d140a47d32d615386a65a2d5965430a63d4fbda8ca63460d6b5b",
+      "970672692cf245b07007b455d5e817941cebebfee13fc73bd0d3534dfac67e81",
+      "99057cb83a41b7bbfef3c131386a921a52bb30d08cedbd9ef0effbf0b11f0f62",
+      "9d265b5c62a65900f472db523f270db389bcefd33ccdda6de754369f1ccedbcd",
+      "a0576ef17e31489e9127eef392e018d66c80a4f21041b2ecaaf500104cf1fc9e",
+      "a1c786dc447e221bd1205b6e5ca7af5b0c29667edbe42a13bc6f0fed09418995",
+      "aa3ad8cfc9a805c621f5b396b28e787572faea9d4d7786c3a91059a7fbce765f",
+      "ab3e3c2b8957fa8fdff1c3fd37cd0388216845bd178abf1ab79b9348191c2c31",
+      "b03d7d4170053fdca984849189a96cc0240c904a6f6f784147ad91dc38fc51db",
+      "b4e9009c9739b9e9035c5c4ddcaf42c41f1c001254a257e180fd998ce64a933a",
+      "b7521ce6d1da6fe8bbb52750b72e146562fba01ab7a7da8e7176baa3ed978980",
+      "b852d1d33d4f61af0bac6932735ea4bf7f1ef49162d3bf0243bc7b0a847db375",
+      "b900c90d479e2011e470b32890410bf3e7a306193b7aad50cf31ab36ef9a8166",
+      "ba168fd050bbd6427c65aeca381ed5f194b557bb1f05e0de10bd6819dd7722fb",
+      "baa16424da30fce7e751981ce0264e9fa4a5ea6ee6c12de4ec506adc4f0b60b3",
+      "bf8514e313243801ac595ed71fbca59ddc00a392bf763c08a752ccd2c7be384e",
+      "bf980c355872bf41b4cd5f9bce368463b95fb9c9bc1c73d7b8f19c63ae3066ac",
+      "c1804ee5961650c8e4d933c317e61a2be717f2bbb535f88b87b9cd6cd8dc41e8",
+      "c42f1df4fefec557cf9db150c7408792b4d995d7986c522c341f78c3d46e85f3",
+      "c799f37c396c7fdbc7655e846c70b8de46e889d6296c5cabffbeb5f225cd6591",
+      "c8bcc0e590f6a795ea82afbfaed11a46e1f7c6ef1ca2ab9632f54ea66e65639d",
+      "ca2070e1a01457666d225ab1059c019ecbdc832ca460673c8e36aec391ada497",
+      "cc65a2f0395ee9b933e4ef02988945015891c2c9baeaa4e5b5c5cb8e08646268",
+      "ce25634affe0b5bc2e0b6c86da015add7b17c37bddab77d712538a967fafb966",
+      "ce945ba25ea3a58251b99e531c35abc9b4ea41a418aac363264d353f247dfd5d",
+      "d32fb22a4402cd16b6938204f70724e224696d13cd73467fd02ef3a1afc4bcdd",
+      "d5dfcbc42452a2e617eff89b2955a97565548ca034b817a8bc0564ba39fcdba4",
+      "d5e4bae7fef3950f80cd43a2839e557dfc5c65eb98516f793688b421766f036c",
+      "d8b9d476db76bd166ef8a2b8ffbbc243817089c5e9f7d9aac0670d73134c7c9f",
+      "d9eb77d011a727188713d71d7a8389eae7b5fcc5d87c810bd7db9943c8d07c8d",
+      "dc24adb278427b6ee3957e4e1c9e6a966619eea49988442f47a0761ad2a26785",
+      "dc5f9d8b990f63711248c395bfb035bcbe1ca34b5bdf89b68d671389127e797c",
+      "de095295581d96e5523eaac093cbc692a67979523b2e09b9babbf1b8ab9026db",
+      "e23601962570d6626790a583fbaef829393ff0bcea0f771a6cd051db7fd9dbac",
+      "e307ae255064c7f3908ac795009652b5550fb978ed1019d6652595fd393b1dbb",
+      "e787435d4f016d77d9d17f36cc4a081ab0ec97116d6732506fd117195778c83e",
+      "e93c77bb499bc158a6dec2c129de15df478463bdd1a8326a5a2726dcc5348c54",
+      "e95612c69d848d1c6c1a1c944126cba59638e17c03a9a39665602cc0104471ce",
+      "f3d4c30c86323d71287d363765379127db097674dc265b47cd1cdcfdbf2aff4f",
+      "f85a4f01d4e749cfad94f94249e2824d292dff66fbe0c59af3ed42fb66317739",
+      "fab62bb5f1aa69b8053b74804b112369467c452d73e4bec1f9b3d3d5b5136961",
+      "fb6e973ac04e3d03bfd7f10fc6dce81bfd9a876936f3fb865a6d4f8e8d2f6bbc",
+      "fdcdc560caf107e1b4874fd54a9965639b2a3cc921202712257588b0df4b4571"
+    ],
+    "audited_max_parallel_molecules": [
+      1,
+      4
+    ],
+    "audited_pyscf_calls": 117,
+    "compliant_pyscf_calls": 117,
+    "failure_reasons": [],
+    "noncompliant_call_reasons": {},
+    "objective_call_evidence_source": "pyscf_runner_batches",
+    "reported_choice_source": null,
+    "reported_choices": null,
+    "verification_status": "verified",
+    "workspace_path": "/local-scratch/home/lynnfang00/research/dihedral-runs-sweep-2026-10-06b/dihedral_localbo_aligned_baybe_litellm_gpt54_20261006T143026Z/repeat_002/cases/dihedral/workspace/bo-mcp-eval"
+  },
+  "usage_split": {
+    "_source": {
+      "combined": "sum of available main/subagent counters; cost may be incomplete when subagent cost is unavailable",
+      "main": "Pydantic AI result.usage plus result.all_messages() for message-level cost metadata",
+      "subagents": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+    },
+    "combined": {
+      "_source": {
+        "cost_usd": "main plus subagent cost only when all required cost components are available",
+        "usage": "sum of available main/subagent counters"
+      },
+      "cache_read_tokens": 1552540,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "main_plus_subagent_cost_breakdown",
+      "cost_usd": 1.1288300000000002,
+      "input_tokens": 1689506,
+      "output_tokens": 26552,
+      "reasoning_tokens": 12891,
+      "request_count": 38,
+      "tool_call_count": 56,
+      "total_tokens": 1716058
+    },
+    "limitations": [
+      "nested subagents are not captured",
+      "subagent usage is read from top-level pydantic-deep task handles",
+      "combined assumes parent AgentRunResult.usage excludes subagent TaskHandle.usage; this assumption should be retested after dependency changes",
+      "per-task subagent tool-call counts require TaskHandle.tool_call_counts or TaskHandle.message_history"
+    ],
+    "main": {
+      "_source": {
+        "cost_usd": "genai-prices estimate from main-agent response message usage/model metadata",
+        "messages": "Pydantic AI result.all_messages()",
+        "usage": "Pydantic AI result.usage"
+      },
+      "cache_read_tokens": 1552540,
+      "cache_write_tokens": 0,
+      "cost_available": true,
+      "cost_source": "genai_prices_from_main_response_messages",
+      "cost_usd": 1.1288300000000002,
+      "input_tokens": 1689506,
+      "model_names": [
+        "gpt-5.4"
+      ],
+      "output_tokens": 26552,
+      "priced_response_count": 38,
+      "provider_names": [
+        "openai"
+      ],
+      "reasoning_tokens": 12891,
+      "request_count": 38,
+      "tool_call_count": 56,
+      "total_tokens": null,
+      "unpriced_response_count": 0
+    },
+    "method": "main_result_usage_plus_subagent_task_handle_usage",
+    "scope": "top_level_pydantic_deep_subagents",
+    "subagents": {
+      "_source": {
+        "cost_usd": "TaskHandle.cost when exposed, otherwise genai-prices estimate from task-handle usage and model/provider metadata",
+        "messages": "TaskHandle.message_history when exposed by the installed subagent runtime",
+        "tool_call_counts": "TaskHandle.tool_call_counts when exposed, otherwise counts derived from TaskHandle.message_history tool-call parts",
+        "usage": "best-effort top-level subagent task handles from agent._task_manager.list_handles()"
+      },
+      "available": false,
+      "cache_read_tokens": 0,
+      "cache_write_tokens": 0,
+      "cost_available": false,
+      "cost_source": "subagent_task_handles",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "priced_task_count": 0,
+      "reasoning_tokens": 0,
+      "request_count": 0,
+      "tasks": [],
+      "total_tokens": 0,
+      "unpriced_task_count": 0
+    }
+  }
+}

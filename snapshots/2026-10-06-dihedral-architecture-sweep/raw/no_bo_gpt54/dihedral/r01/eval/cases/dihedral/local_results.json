@@ -1,0 +1,2404 @@
+{
+  "attempted_objective_evaluations": 60,
+  "backend": "baybe",
+  "best_objective_value": -233.1823270814804,
+  "best_parameters": {
+    "tau_c1c2c3c4_deg": -4.6112244998342,
+    "tau_ho_c1c2_deg": -18.365909577103505,
+    "tau_oc1c2c3_deg": 120.21424562777138
+  },
+  "campaign_config": {
+    "accelerator_policy": "auto",
+    "charge": 0,
+    "initial_design_size": 8,
+    "max_attempts": 60,
+    "method_basis": "def2-SVP",
+    "method_functional": "PBE-D4",
+    "pyscf_timeout_seconds": 240,
+    "random_seed": 20261006,
+    "restricted": true,
+    "spin_multiplicity": 1,
+    "total_cpu_threads": 4
+  },
+  "campaign_slug": "butanol_dihedral_localbo",
+  "case_id": "dihedral",
+  "completed_evaluations": 60,
+  "failed_evaluations": 0,
+  "molecule": {
+    "atom_count": 15,
+    "atom_labels": [
+      "C3",
+      "C2",
+      "C1",
+      "O",
+      "C4",
+      "H_O",
+      "H_C1_a",
+      "H_C1_b",
+      "H_C2_a",
+      "H_C2_b",
+      "H_C3_a",
+      "H_C3_b",
+      "H_C4_a",
+      "H_C4_b",
+      "H_C4_c"
+    ],
+    "formula": "C4H10O",
+    "naming_note": "Interpreted 'butanol' as linear butan-1-ol so the three optimized dihedrals are H-O-C1-C2, O-C1-C2-C3, and C1-C2-C3-C4.",
+    "resolved_identifier": "butan-1-ol",
+    "torsion_labels": [
+      "tau_ho_c1c2_deg",
+      "tau_oc1c2c3_deg",
+      "tau_c1c2c3c4_deg"
+    ],
+    "user_identifier": "butanol",
+    "validation_status": "valid"
+  },
+  "objective_direction": "minimize",
+  "objective_name": "single_point_energy_hartree",
+  "objective_unit": "hartree",
+  "results": [
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-001",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 1,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-001.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.14844458709265
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 177.9459996705147,
+        "tau_ho_c1c2_deg": 112.05440316887785,
+        "tau_oc1c2c3_deg": -63.926944179177696
+      },
+      "phase": "random",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 177.9459996705147,
+        "tau_ho_c1c2_deg": 112.05440316887785,
+        "tau_oc1c2c3_deg": -63.9269441791777
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-001.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 177.9459996705147,
+        "tau_ho_c1c2_deg": 112.05440316887785,
+        "tau_oc1c2c3_deg": -63.926944179177696
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-001.json",
+      "run_id": "dihedral-prod-20261006T143534Z-001",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-001/molecules/0-dihedral-prod-20261006t143534z-001-0b7a273420d8/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-001/molecules/0-dihedral-prod-20261006t143534z-001-0b7a273420d8",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-001.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-002",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 2,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-002.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.178405049466
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -104.1549001679274,
+        "tau_ho_c1c2_deg": -99.6347157329059,
+        "tau_oc1c2c3_deg": 17.46110809453728
+      },
+      "phase": "random",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -104.1549001679274,
+        "tau_ho_c1c2_deg": -99.6347157329059,
+        "tau_oc1c2c3_deg": 17.46110809453728
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-002.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -104.1549001679274,
+        "tau_ho_c1c2_deg": -99.6347157329059,
+        "tau_oc1c2c3_deg": 17.46110809453728
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-002.json",
+      "run_id": "dihedral-prod-20261006T143534Z-002",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-002/molecules/0-dihedral-prod-20261006t143534z-002-90964eaaf04d/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-002/molecules/0-dihedral-prod-20261006t143534z-002-90964eaaf04d",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-002.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-003",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 3,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-003.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1760491397924
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 139.72684522018977,
+        "tau_ho_c1c2_deg": 32.39993096315362,
+        "tau_oc1c2c3_deg": -82.5337499434258
+      },
+      "phase": "random",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 139.72684522018977,
+        "tau_ho_c1c2_deg": 32.39993096315363,
+        "tau_oc1c2c3_deg": -82.53374994342579
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-003.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 139.72684522018977,
+        "tau_ho_c1c2_deg": 32.39993096315362,
+        "tau_oc1c2c3_deg": -82.5337499434258
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-003.json",
+      "run_id": "dihedral-prod-20261006T143534Z-003",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-003/molecules/0-dihedral-prod-20261006t143534z-003-4a3cfd9f01f7/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-003/molecules/0-dihedral-prod-20261006t143534z-003-4a3cfd9f01f7",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-003.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-004",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 4,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-004.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17538394449116
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -70.10730655078206,
+        "tau_ho_c1c2_deg": 147.44465972662306,
+        "tau_oc1c2c3_deg": -120.63747699207167
+      },
+      "phase": "random",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -70.10730655078206,
+        "tau_ho_c1c2_deg": 147.44465972662306,
+        "tau_oc1c2c3_deg": -120.63747699207167
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-004.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -70.10730655078206,
+        "tau_ho_c1c2_deg": 147.44465972662306,
+        "tau_oc1c2c3_deg": -120.63747699207167
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-004.json",
+      "run_id": "dihedral-prod-20261006T143534Z-004",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-004/molecules/0-dihedral-prod-20261006t143534z-004-af911d1821e2/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-004/molecules/0-dihedral-prod-20261006t143534z-004-af911d1821e2",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-004.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-005",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 5,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-005.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17935982162044
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 23.524654567880646,
+        "tau_ho_c1c2_deg": 142.65741295393195,
+        "tau_oc1c2c3_deg": 115.86733693691247
+      },
+      "phase": "random",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 23.524654567880646,
+        "tau_ho_c1c2_deg": 142.65741295393195,
+        "tau_oc1c2c3_deg": 115.86733693691248
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-005.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 23.524654567880646,
+        "tau_ho_c1c2_deg": 142.65741295393195,
+        "tau_oc1c2c3_deg": 115.86733693691247
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-005.json",
+      "run_id": "dihedral-prod-20261006T143534Z-005",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-005/molecules/0-dihedral-prod-20261006t143534z-005-158d05fa31ce/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-005/molecules/0-dihedral-prod-20261006t143534z-005-158d05fa31ce",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-005.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-006",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 6,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-006.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.06126792238555
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 142.7014216133627,
+        "tau_ho_c1c2_deg": 178.4154035784361,
+        "tau_oc1c2c3_deg": -170.25420785072265
+      },
+      "phase": "random",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 142.7014216133627,
+        "tau_ho_c1c2_deg": 178.4154035784361,
+        "tau_oc1c2c3_deg": -170.25420785072265
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-006.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 142.7014216133627,
+        "tau_ho_c1c2_deg": 178.4154035784361,
+        "tau_oc1c2c3_deg": -170.25420785072265
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-006.json",
+      "run_id": "dihedral-prod-20261006T143534Z-006",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-006/molecules/0-dihedral-prod-20261006t143534z-006-04d8c2506030/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-006/molecules/0-dihedral-prod-20261006t143534z-006-04d8c2506030",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-006.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-007",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 7,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-007.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1737853176743
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 17.34264801659799,
+        "tau_ho_c1c2_deg": 34.71610609102194,
+        "tau_oc1c2c3_deg": -63.022178840361846
+      },
+      "phase": "random",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 17.342648016597995,
+        "tau_ho_c1c2_deg": 34.71610609102194,
+        "tau_oc1c2c3_deg": -63.02217884036184
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-007.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 17.34264801659799,
+        "tau_ho_c1c2_deg": 34.71610609102194,
+        "tau_oc1c2c3_deg": -63.022178840361846
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-007.json",
+      "run_id": "dihedral-prod-20261006T143534Z-007",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-007/molecules/0-dihedral-prod-20261006t143534z-007-2580e7267a96/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-007/molecules/0-dihedral-prod-20261006t143534z-007-2580e7267a96",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-007.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-008",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 8,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-008.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1743708856175
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 36.894301689431984,
+        "tau_ho_c1c2_deg": -69.71346662882021,
+        "tau_oc1c2c3_deg": -96.6803343681311
+      },
+      "phase": "random",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 36.894301689431984,
+        "tau_ho_c1c2_deg": -69.71346662882021,
+        "tau_oc1c2c3_deg": -96.6803343681311
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-008.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 36.894301689431984,
+        "tau_ho_c1c2_deg": -69.71346662882021,
+        "tau_oc1c2c3_deg": -96.6803343681311
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-008.json",
+      "run_id": "dihedral-prod-20261006T143534Z-008",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-008/molecules/0-dihedral-prod-20261006t143534z-008-40fb0b158a02/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-008/molecules/0-dihedral-prod-20261006t143534z-008-40fb0b158a02",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-008.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-009",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 9,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-009.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17836202494738
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 133.73137955270334,
+        "tau_ho_c1c2_deg": -21.62040165207102,
+        "tau_oc1c2c3_deg": 1.9892730749488112
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 133.73137955270334,
+        "tau_ho_c1c2_deg": -21.620401652071028,
+        "tau_oc1c2c3_deg": 1.989273074948811
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-009.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 133.73137955270334,
+        "tau_ho_c1c2_deg": -21.62040165207102,
+        "tau_oc1c2c3_deg": 1.9892730749488112
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-009.json",
+      "run_id": "dihedral-prod-20261006T143534Z-009",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-009/molecules/0-dihedral-prod-20261006t143534z-009-3525f0cacdda/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-009/molecules/0-dihedral-prod-20261006t143534z-009-3525f0cacdda",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-009.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-010",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 10,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-010.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17675368757753
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -126.32396084633169,
+        "tau_ho_c1c2_deg": 97.18807032242765,
+        "tau_oc1c2c3_deg": -10.959455618311715
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -126.3239608463317,
+        "tau_ho_c1c2_deg": 97.18807032242765,
+        "tau_oc1c2c3_deg": -10.959455618311717
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-010.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -126.32396084633169,
+        "tau_ho_c1c2_deg": 97.18807032242765,
+        "tau_oc1c2c3_deg": -10.959455618311715
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-010.json",
+      "run_id": "dihedral-prod-20261006T143534Z-010",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-010/molecules/0-dihedral-prod-20261006t143534z-010-682cabc69ae7/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-010/molecules/0-dihedral-prod-20261006t143534z-010-682cabc69ae7",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-010.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-011",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 11,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-011.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17699953248996
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -23.513883323903297,
+        "tau_ho_c1c2_deg": 15.97259817503109,
+        "tau_oc1c2c3_deg": 91.21683355692424
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -23.513883323903293,
+        "tau_ho_c1c2_deg": 15.972598175031104,
+        "tau_oc1c2c3_deg": 91.21683355692424
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-011.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -23.513883323903297,
+        "tau_ho_c1c2_deg": 15.97259817503109,
+        "tau_oc1c2c3_deg": 91.21683355692424
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-011.json",
+      "run_id": "dihedral-prod-20261006T143534Z-011",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-011/molecules/0-dihedral-prod-20261006t143534z-011-a24d6da29ed3/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-011/molecules/0-dihedral-prod-20261006t143534z-011-a24d6da29ed3",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-011.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-012",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 12,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-012.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.15035084877653
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -161.0411271138292,
+        "tau_ho_c1c2_deg": 63.728780989643035,
+        "tau_oc1c2c3_deg": -132.97346768175555
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -161.0411271138292,
+        "tau_ho_c1c2_deg": 63.72878098964305,
+        "tau_oc1c2c3_deg": -132.97346768175555
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-012.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -161.0411271138292,
+        "tau_ho_c1c2_deg": 63.728780989643035,
+        "tau_oc1c2c3_deg": -132.97346768175555
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-012.json",
+      "run_id": "dihedral-prod-20261006T143534Z-012",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-012/molecules/0-dihedral-prod-20261006t143534z-012-3498011085ee/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-012/molecules/0-dihedral-prod-20261006t143534z-012-3498011085ee",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-012.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-013",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 13,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-013.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17258189389804
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -43.86026143425935,
+        "tau_ho_c1c2_deg": 141.99199080270296,
+        "tau_oc1c2c3_deg": 24.835701525170343
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -43.86026143425935,
+        "tau_ho_c1c2_deg": 141.99199080270296,
+        "tau_oc1c2c3_deg": 24.835701525170343
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-013.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -43.86026143425935,
+        "tau_ho_c1c2_deg": 141.99199080270296,
+        "tau_oc1c2c3_deg": 24.835701525170343
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-013.json",
+      "run_id": "dihedral-prod-20261006T143534Z-013",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-013/molecules/0-dihedral-prod-20261006t143534z-013-9fa7456fd7a3/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-013/molecules/0-dihedral-prod-20261006t143534z-013-9fa7456fd7a3",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-013.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-014",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 14,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-014.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1734084249258
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 100.80925498636891,
+        "tau_ho_c1c2_deg": 72.63525306509067,
+        "tau_oc1c2c3_deg": 79.17395276095151
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 100.80925498636891,
+        "tau_ho_c1c2_deg": 72.63525306509068,
+        "tau_oc1c2c3_deg": 79.17395276095151
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-014.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 100.80925498636891,
+        "tau_ho_c1c2_deg": 72.63525306509067,
+        "tau_oc1c2c3_deg": 79.17395276095151
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-014.json",
+      "run_id": "dihedral-prod-20261006T143534Z-014",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-014/molecules/0-dihedral-prod-20261006t143534z-014-1d818407c9f6/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-014/molecules/0-dihedral-prod-20261006t143534z-014-1d818407c9f6",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-014.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-015",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 15,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-015.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17854699346745
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -0.4897095942656603,
+        "tau_ho_c1c2_deg": -78.17430567192054,
+        "tau_oc1c2c3_deg": 17.412632460074807
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -0.4897095942656603,
+        "tau_ho_c1c2_deg": -78.17430567192054,
+        "tau_oc1c2c3_deg": 17.412632460074807
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-015.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -0.4897095942656603,
+        "tau_ho_c1c2_deg": -78.17430567192054,
+        "tau_oc1c2c3_deg": 17.412632460074807
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-015.json",
+      "run_id": "dihedral-prod-20261006T143534Z-015",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-015/molecules/0-dihedral-prod-20261006t143534z-015-fee30facfae5/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-015/molecules/0-dihedral-prod-20261006t143534z-015-fee30facfae5",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-015.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-016",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 16,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-016.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.15410634475114
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 180.0,
+        "tau_ho_c1c2_deg": -52.08627948201957,
+        "tau_oc1c2c3_deg": -76.97956573958967
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 180.0,
+        "tau_ho_c1c2_deg": -52.08627948201956,
+        "tau_oc1c2c3_deg": -76.97956573958967
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-016.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 180.0,
+        "tau_ho_c1c2_deg": -52.08627948201957,
+        "tau_oc1c2c3_deg": -76.97956573958967
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-016.json",
+      "run_id": "dihedral-prod-20261006T143534Z-016",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-016/molecules/0-dihedral-prod-20261006t143534z-016-6aae12689a1f/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-016/molecules/0-dihedral-prod-20261006t143534z-016-6aae12689a1f",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-016.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-017",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 17,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-017.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17763688856405
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 87.73614779053702,
+        "tau_ho_c1c2_deg": 11.80597397407956,
+        "tau_oc1c2c3_deg": -10.380809073791902
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 87.73614779053703,
+        "tau_ho_c1c2_deg": 11.805973974079558,
+        "tau_oc1c2c3_deg": -10.3808090737919
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-017.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 87.73614779053702,
+        "tau_ho_c1c2_deg": 11.80597397407956,
+        "tau_oc1c2c3_deg": -10.380809073791902
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-017.json",
+      "run_id": "dihedral-prod-20261006T143534Z-017",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-017/molecules/0-dihedral-prod-20261006t143534z-017-3144965cd284/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-017/molecules/0-dihedral-prod-20261006t143534z-017-3144965cd284",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-017.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-018",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 18,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-018.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1630846654128
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -42.09023749749108,
+        "tau_ho_c1c2_deg": 106.13643950037222,
+        "tau_oc1c2c3_deg": 180.0
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -42.09023749749108,
+        "tau_ho_c1c2_deg": 106.13643950037223,
+        "tau_oc1c2c3_deg": 180.0
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-018.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -42.09023749749108,
+        "tau_ho_c1c2_deg": 106.13643950037222,
+        "tau_oc1c2c3_deg": 180.0
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-018.json",
+      "run_id": "dihedral-prod-20261006T143534Z-018",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-018/molecules/0-dihedral-prod-20261006t143534z-018-a9a13c1cda08/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-018/molecules/0-dihedral-prod-20261006t143534z-018-a9a13c1cda08",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-018.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-019",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 19,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-019.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17520718315478
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -69.57302182368848,
+        "tau_ho_c1c2_deg": -28.634695016159874,
+        "tau_oc1c2c3_deg": 10.371976769645341
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -69.57302182368848,
+        "tau_ho_c1c2_deg": -28.634695016159867,
+        "tau_oc1c2c3_deg": 10.371976769645343
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-019.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -69.57302182368848,
+        "tau_ho_c1c2_deg": -28.634695016159874,
+        "tau_oc1c2c3_deg": 10.371976769645341
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-019.json",
+      "run_id": "dihedral-prod-20261006T143534Z-019",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-019/molecules/0-dihedral-prod-20261006t143534z-019-dcaa8198f463/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-019/molecules/0-dihedral-prod-20261006t143534z-019-dcaa8198f463",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-019.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-020",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 20,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-020.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.163471694786
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -136.27236032155346,
+        "tau_ho_c1c2_deg": 179.27969505676532,
+        "tau_oc1c2c3_deg": -62.99636097507748
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -136.27236032155346,
+        "tau_ho_c1c2_deg": 179.27969505676532,
+        "tau_oc1c2c3_deg": -62.99636097507748
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-020.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -136.27236032155346,
+        "tau_ho_c1c2_deg": 179.27969505676532,
+        "tau_oc1c2c3_deg": -62.99636097507748
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-020.json",
+      "run_id": "dihedral-prod-20261006T143534Z-020",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-020/molecules/0-dihedral-prod-20261006t143534z-020-eddfd326571e/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-020/molecules/0-dihedral-prod-20261006t143534z-020-eddfd326571e",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-020.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-021",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 21,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-021.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1759559806525
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -63.82022598479224,
+        "tau_ho_c1c2_deg": -93.50588132773817,
+        "tau_oc1c2c3_deg": 110.91168545967842
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -63.820225984792245,
+        "tau_ho_c1c2_deg": -93.50588132773817,
+        "tau_oc1c2c3_deg": 110.91168545967842
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-021.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -63.82022598479224,
+        "tau_ho_c1c2_deg": -93.50588132773817,
+        "tau_oc1c2c3_deg": 110.91168545967842
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-021.json",
+      "run_id": "dihedral-prod-20261006T143534Z-021",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-021/molecules/0-dihedral-prod-20261006t143534z-021-f6ac818071cc/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-021/molecules/0-dihedral-prod-20261006t143534z-021-f6ac818071cc",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-021.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-022",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 22,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-022.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17518152219765
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -42.84752189191977,
+        "tau_ho_c1c2_deg": -154.13252230835948,
+        "tau_oc1c2c3_deg": -6.373743684308129
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -42.84752189191977,
+        "tau_ho_c1c2_deg": -154.13252230835948,
+        "tau_oc1c2c3_deg": -6.373743684308128
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-022.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -42.84752189191977,
+        "tau_ho_c1c2_deg": -154.13252230835948,
+        "tau_oc1c2c3_deg": -6.373743684308129
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-022.json",
+      "run_id": "dihedral-prod-20261006T143534Z-022",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-022/molecules/0-dihedral-prod-20261006t143534z-022-a4a91dd9a8e7/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-022/molecules/0-dihedral-prod-20261006t143534z-022-a4a91dd9a8e7",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-022.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-023",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 23,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-023.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.16749154994798
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 162.00812045563725,
+        "tau_ho_c1c2_deg": 32.73913529912757,
+        "tau_oc1c2c3_deg": -2.8493602887766634
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 162.00812045563725,
+        "tau_ho_c1c2_deg": 32.739135299127554,
+        "tau_oc1c2c3_deg": -2.8493602887766625
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-023.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 162.00812045563725,
+        "tau_ho_c1c2_deg": 32.73913529912757,
+        "tau_oc1c2c3_deg": -2.8493602887766634
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-023.json",
+      "run_id": "dihedral-prod-20261006T143534Z-023",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-023/molecules/0-dihedral-prod-20261006t143534z-023-a3b9a0756011/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-023/molecules/0-dihedral-prod-20261006t143534z-023-a3b9a0756011",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-023.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-024",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 24,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-024.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.16959040760995
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 79.09711493845543,
+        "tau_ho_c1c2_deg": -57.74915403810337,
+        "tau_oc1c2c3_deg": 74.83370616882843
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 79.09711493845543,
+        "tau_ho_c1c2_deg": -57.74915403810336,
+        "tau_oc1c2c3_deg": 74.83370616882843
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-024.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 79.09711493845543,
+        "tau_ho_c1c2_deg": -57.74915403810337,
+        "tau_oc1c2c3_deg": 74.83370616882843
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-024.json",
+      "run_id": "dihedral-prod-20261006T143534Z-024",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-024/molecules/0-dihedral-prod-20261006t143534z-024-425a3a96dc28/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-024/molecules/0-dihedral-prod-20261006t143534z-024-425a3a96dc28",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-024.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-025",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 25,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-025.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17464620931278
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 15.23444340814419,
+        "tau_ho_c1c2_deg": 91.43545417546437,
+        "tau_oc1c2c3_deg": 81.09091096597868
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 15.23444340814419,
+        "tau_ho_c1c2_deg": 91.43545417546436,
+        "tau_oc1c2c3_deg": 81.09091096597868
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-025.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 15.23444340814419,
+        "tau_ho_c1c2_deg": 91.43545417546437,
+        "tau_oc1c2c3_deg": 81.09091096597868
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-025.json",
+      "run_id": "dihedral-prod-20261006T143534Z-025",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-025/molecules/0-dihedral-prod-20261006t143534z-025-15ae2637208f/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-025/molecules/0-dihedral-prod-20261006t143534z-025-15ae2637208f",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-025.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-026",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 26,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-026.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17319222237057
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 93.33232234845387,
+        "tau_ho_c1c2_deg": -9.590901729953531,
+        "tau_oc1c2c3_deg": -57.77768687678581
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 93.33232234845387,
+        "tau_ho_c1c2_deg": -9.590901729953542,
+        "tau_oc1c2c3_deg": -57.7776868767858
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-026.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 93.33232234845387,
+        "tau_ho_c1c2_deg": -9.590901729953531,
+        "tau_oc1c2c3_deg": -57.77768687678581
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-026.json",
+      "run_id": "dihedral-prod-20261006T143534Z-026",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-026/molecules/0-dihedral-prod-20261006t143534z-026-e91a2f09a417/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-026/molecules/0-dihedral-prod-20261006t143534z-026-e91a2f09a417",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-026.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-027",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 27,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-027.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1669494804225
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -63.52595261971776,
+        "tau_ho_c1c2_deg": 104.84262577686506,
+        "tau_oc1c2c3_deg": -54.05017467282756
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -63.52595261971776,
+        "tau_ho_c1c2_deg": 104.84262577686506,
+        "tau_oc1c2c3_deg": -54.05017467282756
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-027.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -63.52595261971776,
+        "tau_ho_c1c2_deg": 104.84262577686506,
+        "tau_oc1c2c3_deg": -54.05017467282756
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-027.json",
+      "run_id": "dihedral-prod-20261006T143534Z-027",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-027/molecules/0-dihedral-prod-20261006t143534z-027-5b2b895629de/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-027/molecules/0-dihedral-prod-20261006t143534z-027-5b2b895629de",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-027.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-028",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 28,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-028.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.16451286268116
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -139.32472678619618,
+        "tau_ho_c1c2_deg": 64.74545853174176,
+        "tau_oc1c2c3_deg": 60.32247073962746
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -139.32472678619618,
+        "tau_ho_c1c2_deg": 64.74545853174178,
+        "tau_oc1c2c3_deg": 60.32247073962747
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-028.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -139.32472678619618,
+        "tau_ho_c1c2_deg": 64.74545853174176,
+        "tau_oc1c2c3_deg": 60.32247073962746
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-028.json",
+      "run_id": "dihedral-prod-20261006T143534Z-028",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-028/molecules/0-dihedral-prod-20261006t143534z-028-6e1a366cb3c9/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-028/molecules/0-dihedral-prod-20261006t143534z-028-6e1a366cb3c9",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-028.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-029",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 29,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-029.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.16779839591374
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -45.25855747899725,
+        "tau_ho_c1c2_deg": -98.63368170610437,
+        "tau_oc1c2c3_deg": -54.27861591014947
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -45.25855747899726,
+        "tau_ho_c1c2_deg": -98.63368170610437,
+        "tau_oc1c2c3_deg": -54.278615910149455
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-029.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -45.25855747899725,
+        "tau_ho_c1c2_deg": -98.63368170610437,
+        "tau_oc1c2c3_deg": -54.27861591014947
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-029.json",
+      "run_id": "dihedral-prod-20261006T143534Z-029",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-029/molecules/0-dihedral-prod-20261006t143534z-029-1f8e6d797c0a/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-029/molecules/0-dihedral-prod-20261006t143534z-029-1f8e6d797c0a",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-029.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-030",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 30,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-030.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.16734071150995
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -59.77054195514246,
+        "tau_ho_c1c2_deg": -104.85815729736925,
+        "tau_oc1c2c3_deg": 50.95368542279412
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -59.77054195514246,
+        "tau_ho_c1c2_deg": -104.85815729736925,
+        "tau_oc1c2c3_deg": 50.95368542279412
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-030.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -59.77054195514246,
+        "tau_ho_c1c2_deg": -104.85815729736925,
+        "tau_oc1c2c3_deg": 50.95368542279412
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-030.json",
+      "run_id": "dihedral-prod-20261006T143534Z-030",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-030/molecules/0-dihedral-prod-20261006t143534z-030-3ba8c8314ad7/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-030/molecules/0-dihedral-prod-20261006t143534z-030-3ba8c8314ad7",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-030.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-031",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 31,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-031.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17083810461085
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 75.40090829365086,
+        "tau_ho_c1c2_deg": 79.90172098628754,
+        "tau_oc1c2c3_deg": -85.6715726218108
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 75.40090829365086,
+        "tau_ho_c1c2_deg": 79.90172098628756,
+        "tau_oc1c2c3_deg": -85.6715726218108
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-031.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 75.40090829365086,
+        "tau_ho_c1c2_deg": 79.90172098628754,
+        "tau_oc1c2c3_deg": -85.6715726218108
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-031.json",
+      "run_id": "dihedral-prod-20261006T143534Z-031",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-031/molecules/0-dihedral-prod-20261006t143534z-031-36c79a9a153c/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-031/molecules/0-dihedral-prod-20261006t143534z-031-36c79a9a153c",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-031.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-032",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 32,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-032.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.18085245626665
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 11.964073721916177,
+        "tau_ho_c1c2_deg": 29.47730783763884,
+        "tau_oc1c2c3_deg": 125.23999046286518
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 11.964073721916177,
+        "tau_ho_c1c2_deg": 29.477307837638836,
+        "tau_oc1c2c3_deg": 125.2399904628652
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-032.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 11.964073721916177,
+        "tau_ho_c1c2_deg": 29.47730783763884,
+        "tau_oc1c2c3_deg": 125.23999046286518
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-032.json",
+      "run_id": "dihedral-prod-20261006T143534Z-032",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-032/molecules/0-dihedral-prod-20261006t143534z-032-518467d263b4/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-032/molecules/0-dihedral-prod-20261006t143534z-032-518467d263b4",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-032.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-033",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 33,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-033.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17392124178147
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 75.35028892471584,
+        "tau_ho_c1c2_deg": -39.2421954124013,
+        "tau_oc1c2c3_deg": 11.950417023991003
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 75.35028892471584,
+        "tau_ho_c1c2_deg": -39.242195412401294,
+        "tau_oc1c2c3_deg": 11.950417023991001
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-033.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 75.35028892471584,
+        "tau_ho_c1c2_deg": -39.2421954124013,
+        "tau_oc1c2c3_deg": 11.950417023991003
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-033.json",
+      "run_id": "dihedral-prod-20261006T143534Z-033",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-033/molecules/0-dihedral-prod-20261006t143534z-033-614d6b942c1a/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-033/molecules/0-dihedral-prod-20261006t143534z-033-614d6b942c1a",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-033.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-034",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 34,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-034.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17536105848393
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -65.67677581396991,
+        "tau_ho_c1c2_deg": 53.13963878005441,
+        "tau_oc1c2c3_deg": 123.04949126983854
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -65.67677581396991,
+        "tau_ho_c1c2_deg": 53.13963878005441,
+        "tau_oc1c2c3_deg": 123.04949126983854
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-034.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -65.67677581396991,
+        "tau_ho_c1c2_deg": 53.13963878005441,
+        "tau_oc1c2c3_deg": 123.04949126983854
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-034.json",
+      "run_id": "dihedral-prod-20261006T143534Z-034",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-034/molecules/0-dihedral-prod-20261006t143534z-034-d757938d1ef4/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-034/molecules/0-dihedral-prod-20261006t143534z-034-d757938d1ef4",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-034.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-035",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 35,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-035.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17786554897978
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 87.35308798463647,
+        "tau_ho_c1c2_deg": 78.61934324499478,
+        "tau_oc1c2c3_deg": 122.38428184052451
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 87.35308798463647,
+        "tau_ho_c1c2_deg": 78.61934324499478,
+        "tau_oc1c2c3_deg": 122.3842818405245
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-035.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 87.35308798463647,
+        "tau_ho_c1c2_deg": 78.61934324499478,
+        "tau_oc1c2c3_deg": 122.38428184052451
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-035.json",
+      "run_id": "dihedral-prod-20261006T143534Z-035",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-035/molecules/0-dihedral-prod-20261006t143534z-035-f4dcf395ddd3/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-035/molecules/0-dihedral-prod-20261006t143534z-035-f4dcf395ddd3",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-035.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-036",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 36,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-036.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17741524217425
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 34.45205499034658,
+        "tau_ho_c1c2_deg": -52.92119965827189,
+        "tau_oc1c2c3_deg": 123.93762473095164
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 34.45205499034658,
+        "tau_ho_c1c2_deg": -52.921199658271895,
+        "tau_oc1c2c3_deg": 123.93762473095164
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-036.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 34.45205499034658,
+        "tau_ho_c1c2_deg": -52.92119965827189,
+        "tau_oc1c2c3_deg": 123.93762473095164
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-036.json",
+      "run_id": "dihedral-prod-20261006T143534Z-036",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-036/molecules/0-dihedral-prod-20261006t143534z-036-e76d953d8b04/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-036/molecules/0-dihedral-prod-20261006t143534z-036-e76d953d8b04",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-036.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-037",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 37,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-037.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1771117729464
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 27.783772726362415,
+        "tau_ho_c1c2_deg": 51.346405598491685,
+        "tau_oc1c2c3_deg": 110.03445182728534
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 27.783772726362415,
+        "tau_ho_c1c2_deg": 51.3464055984917,
+        "tau_oc1c2c3_deg": 110.03445182728534
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-037.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 27.783772726362415,
+        "tau_ho_c1c2_deg": 51.346405598491685,
+        "tau_oc1c2c3_deg": 110.03445182728534
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-037.json",
+      "run_id": "dihedral-prod-20261006T143534Z-037",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-037/molecules/0-dihedral-prod-20261006t143534z-037-7e94fcaa105a/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-037/molecules/0-dihedral-prod-20261006t143534z-037-7e94fcaa105a",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-037.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-038",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 38,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-038.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1757031464858
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -35.54047763097166,
+        "tau_ho_c1c2_deg": -31.995757289025203,
+        "tau_oc1c2c3_deg": 138.56160788375112
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -35.54047763097166,
+        "tau_ho_c1c2_deg": -31.995757289025207,
+        "tau_oc1c2c3_deg": 138.56160788375115
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-038.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -35.54047763097166,
+        "tau_ho_c1c2_deg": -31.995757289025203,
+        "tau_oc1c2c3_deg": 138.56160788375112
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-038.json",
+      "run_id": "dihedral-prod-20261006T143534Z-038",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-038/molecules/0-dihedral-prod-20261006t143534z-038-ad9a3eaebec7/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-038/molecules/0-dihedral-prod-20261006t143534z-038-ad9a3eaebec7",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-038.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-039",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 39,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-039.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.173036206055
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 55.883136203684785,
+        "tau_ho_c1c2_deg": 5.08779162286413,
+        "tau_oc1c2c3_deg": -90.87891079133274
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 55.883136203684785,
+        "tau_ho_c1c2_deg": 5.087791622864124,
+        "tau_oc1c2c3_deg": -90.87891079133274
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-039.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 55.883136203684785,
+        "tau_ho_c1c2_deg": 5.08779162286413,
+        "tau_oc1c2c3_deg": -90.87891079133274
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-039.json",
+      "run_id": "dihedral-prod-20261006T143534Z-039",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-039/molecules/0-dihedral-prod-20261006t143534z-039-a0f5aa2b507a/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-039/molecules/0-dihedral-prod-20261006t143534z-039-a0f5aa2b507a",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-039.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-040",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 40,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-040.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.16696137989223
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -158.0881053330905,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 0.6334031357748636
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -158.0881053330905,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 0.6334031357748637
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-040.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -158.0881053330905,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 0.6334031357748636
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-040.json",
+      "run_id": "dihedral-prod-20261006T143534Z-040",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-040/molecules/0-dihedral-prod-20261006t143534z-040-bb7222b0dc5a/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-040/molecules/0-dihedral-prod-20261006t143534z-040-bb7222b0dc5a",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-040.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-041",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 41,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-041.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.16760090018363
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 48.58961126702648,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 147.61520190623384
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 48.58961126702647,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 147.61520190623384
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-041.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 48.58961126702648,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 147.61520190623384
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-041.json",
+      "run_id": "dihedral-prod-20261006T143534Z-041",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-041/molecules/0-dihedral-prod-20261006t143534z-041-fe399341b61e/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-041/molecules/0-dihedral-prod-20261006t143534z-041-fe399341b61e",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-041.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-042",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 42,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-042.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17802062163727
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 107.23586747763161,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -9.38197224311022
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 107.23586747763161,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -9.381972243110223
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-042.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 107.23586747763161,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -9.38197224311022
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-042.json",
+      "run_id": "dihedral-prod-20261006T143534Z-042",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-042/molecules/0-dihedral-prod-20261006t143534z-042-5781bc92ac82/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-042/molecules/0-dihedral-prod-20261006t143534z-042-5781bc92ac82",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-042.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-043",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 43,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-043.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1697668364422
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 161.70459936972577,
+        "tau_ho_c1c2_deg": 17.917554349882284,
+        "tau_oc1c2c3_deg": 113.25114557956356
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 161.70459936972577,
+        "tau_ho_c1c2_deg": 17.917554349882284,
+        "tau_oc1c2c3_deg": 113.25114557956356
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-043.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 161.70459936972577,
+        "tau_ho_c1c2_deg": 17.917554349882284,
+        "tau_oc1c2c3_deg": 113.25114557956356
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-043.json",
+      "run_id": "dihedral-prod-20261006T143534Z-043",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-043/molecules/0-dihedral-prod-20261006t143534z-043-5704f55d20bc/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-043/molecules/0-dihedral-prod-20261006t143534z-043-5704f55d20bc",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-043.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-044",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 44,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-044.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1737934194719
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 104.76685923322269,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -82.31388915222401
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 104.76685923322269,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -82.31388915222401
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-044.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 104.76685923322269,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -82.31388915222401
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-044.json",
+      "run_id": "dihedral-prod-20261006T143534Z-044",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-044/molecules/0-dihedral-prod-20261006t143534z-044-d98c81bf806d/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-044/molecules/0-dihedral-prod-20261006t143534z-044-d98c81bf806d",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-044.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-045",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 45,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-045.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.18047326990185
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -16.140582725130685,
+        "tau_ho_c1c2_deg": 83.47151969674184,
+        "tau_oc1c2c3_deg": 116.93673580454627
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -16.140582725130685,
+        "tau_ho_c1c2_deg": 83.47151969674182,
+        "tau_oc1c2c3_deg": 116.93673580454629
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-045.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -16.140582725130685,
+        "tau_ho_c1c2_deg": 83.47151969674184,
+        "tau_oc1c2c3_deg": 116.93673580454627
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-045.json",
+      "run_id": "dihedral-prod-20261006T143534Z-045",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-045/molecules/0-dihedral-prod-20261006t143534z-045-db0700c9c525/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-045/molecules/0-dihedral-prod-20261006t143534z-045-db0700c9c525",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-045.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-046",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 46,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-046.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1765151609363
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -33.62388974314103,
+        "tau_ho_c1c2_deg": 7.914748710550718,
+        "tau_oc1c2c3_deg": -101.45663135910834
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -33.62388974314103,
+        "tau_ho_c1c2_deg": 7.914748710550707,
+        "tau_oc1c2c3_deg": -101.45663135910834
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-046.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -33.62388974314103,
+        "tau_ho_c1c2_deg": 7.914748710550718,
+        "tau_oc1c2c3_deg": -101.45663135910834
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-046.json",
+      "run_id": "dihedral-prod-20261006T143534Z-046",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-046/molecules/0-dihedral-prod-20261006t143534z-046-60cbbcbdb909/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-046/molecules/0-dihedral-prod-20261006t143534z-046-60cbbcbdb909",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-046.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-047",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 47,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-047.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17562126670822
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 28.24358679271581,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -14.036663725452616
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 28.243586792715814,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -14.036663725452618
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-047.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 28.24358679271581,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -14.036663725452616
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-047.json",
+      "run_id": "dihedral-prod-20261006T143534Z-047",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-047/molecules/0-dihedral-prod-20261006t143534z-047-8b7f4011cf12/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-047/molecules/0-dihedral-prod-20261006t143534z-047-8b7f4011cf12",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-047.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-048",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 48,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-048.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1700306488908
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -133.74403763194746,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 13.28456763548573
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -133.74403763194746,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 13.28456763548573
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-048.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -133.74403763194746,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 13.28456763548573
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-048.json",
+      "run_id": "dihedral-prod-20261006T143534Z-048",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-048/molecules/0-dihedral-prod-20261006t143534z-048-e4bb2115f212/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-048/molecules/0-dihedral-prod-20261006t143534z-048-e4bb2115f212",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-048.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-049",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 49,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-049.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1740383935111
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -48.77971646757126,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -122.99500957457451
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -48.77971646757126,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -122.99500957457452
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-049.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -48.77971646757126,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -122.99500957457451
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-049.json",
+      "run_id": "dihedral-prod-20261006T143534Z-049",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-049/molecules/0-dihedral-prod-20261006t143534z-049-363b2ab18718/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-049/molecules/0-dihedral-prod-20261006t143534z-049-363b2ab18718",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-049.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-050",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 50,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-050.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1802762042777
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 10.167202098610066,
+        "tau_ho_c1c2_deg": 143.68153000937707,
+        "tau_oc1c2c3_deg": -3.4667625053133886
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 10.167202098610069,
+        "tau_ho_c1c2_deg": 143.68153000937707,
+        "tau_oc1c2c3_deg": -3.4667625053133895
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-050.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 10.167202098610066,
+        "tau_ho_c1c2_deg": 143.68153000937707,
+        "tau_oc1c2c3_deg": -3.4667625053133886
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-050.json",
+      "run_id": "dihedral-prod-20261006T143534Z-050",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-050/molecules/0-dihedral-prod-20261006t143534z-050-1d94fa112d24/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-050/molecules/0-dihedral-prod-20261006t143534z-050-1d94fa112d24",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-050.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-051",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 51,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-051.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17689234486576
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 20.153177972456174,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 17.655381026013227
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 20.153177972456174,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 17.65538102601322
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-051.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 20.153177972456174,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 17.655381026013227
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-051.json",
+      "run_id": "dihedral-prod-20261006T143534Z-051",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-051/molecules/0-dihedral-prod-20261006t143534z-051-2b6ce4c13f74/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-051/molecules/0-dihedral-prod-20261006t143534z-051-2b6ce4c13f74",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-051.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-052",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 52,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-052.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1714269876448
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 144.27215175667334,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 28.45125330633495
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 144.27215175667334,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 28.451253306334966
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-052.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 144.27215175667334,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 28.45125330633495
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-052.json",
+      "run_id": "dihedral-prod-20261006T143534Z-052",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-052/molecules/0-dihedral-prod-20261006t143534z-052-b13dbaba6325/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-052/molecules/0-dihedral-prod-20261006t143534z-052-b13dbaba6325",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-052.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-053",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 53,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-053.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1810145255287
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 1.4482392179152417,
+        "tau_ho_c1c2_deg": 22.959079018445873,
+        "tau_oc1c2c3_deg": -0.19584856699187167
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 1.448239217915242,
+        "tau_ho_c1c2_deg": 22.959079018445877,
+        "tau_oc1c2c3_deg": -0.19584856699187164
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-053.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 1.4482392179152417,
+        "tau_ho_c1c2_deg": 22.959079018445873,
+        "tau_oc1c2c3_deg": -0.19584856699187167
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-053.json",
+      "run_id": "dihedral-prod-20261006T143534Z-053",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-053/molecules/0-dihedral-prod-20261006t143534z-053-87112a465de5/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-053/molecules/0-dihedral-prod-20261006t143534z-053-87112a465de5",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-053.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-054",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 54,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-054.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.181413286473
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -10.716245370700346,
+        "tau_ho_c1c2_deg": -101.05750130469315,
+        "tau_oc1c2c3_deg": 118.35368392304945
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -10.716245370700348,
+        "tau_ho_c1c2_deg": -101.05750130469315,
+        "tau_oc1c2c3_deg": 118.35368392304943
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-054.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -10.716245370700346,
+        "tau_ho_c1c2_deg": -101.05750130469315,
+        "tau_oc1c2c3_deg": 118.35368392304945
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-054.json",
+      "run_id": "dihedral-prod-20261006T143534Z-054",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-054/molecules/0-dihedral-prod-20261006t143534z-054-dac365139af8/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-054/molecules/0-dihedral-prod-20261006t143534z-054-dac365139af8",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-054.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-055",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 55,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-055.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17701559004058
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": 120.72787704092492,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 22.216025335475937
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": 120.72787704092494,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 22.21602533547594
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-055.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": 120.72787704092492,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 22.216025335475937
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-055.json",
+      "run_id": "dihedral-prod-20261006T143534Z-055",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-055/molecules/0-dihedral-prod-20261006t143534z-055-db9773ffae04/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-055/molecules/0-dihedral-prod-20261006t143534z-055-db9773ffae04",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-055.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-056",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 56,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-056.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1778087066519
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -104.05031938383647,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -6.532673361277922
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -104.05031938383647,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -6.53267336127792
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-056.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -104.05031938383647,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": -6.532673361277922
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-056.json",
+      "run_id": "dihedral-prod-20261006T143534Z-056",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-056/molecules/0-dihedral-prod-20261006t143534z-056-1063e72c12a5/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-056/molecules/0-dihedral-prod-20261006t143534z-056-1063e72c12a5",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-056.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-057",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 57,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-057.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1823270814804
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -4.6112244998342,
+        "tau_ho_c1c2_deg": -18.365909577103505,
+        "tau_oc1c2c3_deg": 120.21424562777138
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -4.611224499834198,
+        "tau_ho_c1c2_deg": -18.365909577103505,
+        "tau_oc1c2c3_deg": 120.21424562777139
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-057.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -4.6112244998342,
+        "tau_ho_c1c2_deg": -18.365909577103505,
+        "tau_oc1c2c3_deg": 120.21424562777138
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-057.json",
+      "run_id": "dihedral-prod-20261006T143534Z-057",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-057/molecules/0-dihedral-prod-20261006t143534z-057-5397fcf5b5ed/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-057/molecules/0-dihedral-prod-20261006t143534z-057-5397fcf5b5ed",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-057.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-058",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 58,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-058.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.17714565141583
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -23.49592716451524,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": -123.62627552191326
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -23.49592716451524,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": -123.62627552191327
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-058.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -23.49592716451524,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": -123.62627552191326
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-058.json",
+      "run_id": "dihedral-prod-20261006T143534Z-058",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-058/molecules/0-dihedral-prod-20261006t143534z-058-f950b4c5d848/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-058/molecules/0-dihedral-prod-20261006t143534z-058-f950b4c5d848",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-058.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-059",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 59,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-059.json",
+      "objective_values": {
+        "single_point_energy_hartree": -232.98169437397854
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -150.41943272726954,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 144.66233290590827
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -150.41943272726957,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 144.66233290590827
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-059.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -150.41943272726954,
+        "tau_ho_c1c2_deg": -180.0,
+        "tau_oc1c2c3_deg": 144.66233290590827
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-059.json",
+      "run_id": "dihedral-prod-20261006T143534Z-059",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-059/molecules/0-dihedral-prod-20261006t143534z-059-6d2869372dd1/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-059/molecules/0-dihedral-prod-20261006t143534z-059-6d2869372dd1",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-059.xyz"
+    },
+    {
+      "batch_id": "dihedral-prod-20261006T143534Z-060",
+      "batch_index": 1,
+      "batch_size": 1,
+      "completed_nodes": [
+        "SinglePointCalculation"
+      ],
+      "evaluation_index": 60,
+      "failure_reason": null,
+      "formula": "C4H10O",
+      "geometry_path": "artifacts/prod-20261006T143534Z/candidate_geometry/dihedral-prod-20261006T143534Z-060.json",
+      "objective_values": {
+        "single_point_energy_hartree": -233.1705645141242
+      },
+      "parameter_values": {
+        "tau_c1c2c3c4_deg": -62.52840327411025,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 95.67605503283325
+      },
+      "phase": "bo",
+      "realized_dihedrals_deg": {
+        "tau_c1c2c3c4_deg": -62.52840327411024,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 95.67605503283323
+      },
+      "request_path": "artifacts/prod-20261006T143534Z/pyscf_requests/dihedral-prod-20261006T143534Z-060.json",
+      "requested_angles_deg": {
+        "tau_c1c2c3c4_deg": -62.52840327411025,
+        "tau_ho_c1c2_deg": 180.0,
+        "tau_oc1c2c3_deg": 95.67605503283325
+      },
+      "result_path": "artifacts/prod-20261006T143534Z/pyscf_results/dihedral-prod-20261006T143534Z-060.json",
+      "run_id": "dihedral-prod-20261006T143534Z-060",
+      "runner_result_path": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-060/molecules/0-dihedral-prod-20261006t143534z-060-c6b85cdf72ac/result.json",
+      "runner_run_root": ".grafico-runners/pyscf/runs/dihedral-prod-20261006T143534Z-060/molecules/0-dihedral-prod-20261006t143534z-060-c6b85cdf72ac",
+      "status": "completed",
+      "validation_status": "valid",
+      "xyz_path": "artifacts/prod-20261006T143534Z/candidate_xyz/dihedral-prod-20261006T143534Z-060.xyz"
+    }
+  ],
+  "run_label": "prod-20261006T143534Z",
+  "smoke_test": false
+}
