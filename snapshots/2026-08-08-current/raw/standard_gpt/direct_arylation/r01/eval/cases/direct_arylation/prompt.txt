@@ -1,4 +1,4 @@
-Repeat cache-buster nonce: c40d694a-460e-4bea-92a6-eab07cd2f46d
+Repeat cache-buster nonce: e989e59e-6b70-4e48-88bf-388af427448f
 
 # Direct arylation reaction-yield optimization
 
@@ -67,10 +67,13 @@ At the end, report the best reaction conditions, best measured yield, and the nu
 
 In case of the no-BO-MCP architecture, every submitted or locally recorded successful result must use a `parameter_values` object containing the exact five lowercase parameter names and an `objective_values` object containing `{"yield": <measured value>}`; and save the required local JSON artifact with one record per attempt and the standardized `parameter_values` and `objective_values` objects described above.
 
+For this evaluation, use the `baybe` backend.
+
 Benchmark result contract:
-- Use exactly 60 attempted objective evaluations for this case.
-- Count objective evaluations as PySCF objective calculations submitted to BO-MCP
-  or written to the local result artifact.
+- Use exactly 60 attempted objective evaluations in total for this run.
+- Count objective evaluations submitted to BO-MCP or written to the local result
+  artifact, including evaluations from smoke testing, debugging, or repeated execution.
+- One or multiple campaigns are allowed when the architecture uses BO-MCP.
 - Do not exceed the evaluation budget. If an evaluation fails, record the failed
   candidate/status and continue only within the same budget.
 - Report all evaluated candidates and objective values/statuses.
@@ -90,7 +93,7 @@ local-results branch or implement BO locally in this architecture.
 
 
 Benchmark campaign ownership:
-- Include the exact marker `akg-eval-d41fdff5899e4d9285ea23b6eba50ccd` in the name of every BO-MCP campaign
+- Include the exact marker `akg-eval-32a412988ff64242ba3d82ec8e357298` in the name of every BO-MCP campaign
   created during this invocation.
 - Preserve this marker in delegated instructions and generated scripts.
 - A campaign without this marker does not belong to this invocation and must

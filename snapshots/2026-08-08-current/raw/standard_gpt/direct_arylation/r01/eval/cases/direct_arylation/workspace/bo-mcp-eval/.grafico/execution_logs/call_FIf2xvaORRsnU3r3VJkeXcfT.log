@@ -1,0 +1,132 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Direct Arylation BO-MCP Campaign
+
+Chat Trace ID: `e989e59e-6b70-4e48-88bf-388af427448f`
+
+## Required environment
+
+Set these before running:
+
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+- `DIRECT_ARYLATION_API_URL`
+
+The script always creates or resumes only campaigns whose name contains the required ownership marker:
+
+- `akg-eval-32a412988ff64242ba3d82ec8e357298`
+
+## Run a fresh 60-attempt invocation
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_yield_baybe.py
+```
+
+Default behavior:
+
+- creates a new BO-MCP campaign with backend `baybe`
+- uses objective `yield` with direction `maximize` and unit `percent`
+- uses a per-invocation attempted-evaluation budget of exactly `60`
+- evaluates one BO suggestion at a time against `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate`
+- pauses the campaign cleanly at the end of the invocation
+
+## Resume an existing owned campaign
+
+Use the `campaign_id` recorded in `artifacts/direct_arylation_yield_baybe/campaign.json` or `summary.json`:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_yield_baybe.py --campaign-id <campaign_id>
+```
+
+Behavior:
+
+- if the campaign is `paused`, the script sends `resume`
+- if the campaign is `completed`, the script sends `reopen`
+- if the campaign is already `running`, the script continues it
+- any campaign without the ownership marker is rejected
+
+## Dry-run smoke test
+
+This does not call BO-MCP or the oracle and does not consume evaluation budget:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_yield_baybe.py --dry-run --artifacts-dir artifacts/direct_arylation_yield_baybe_smoke
+```
+
+## Stop-file behavior
+
+Default stop file: `STOP` in the current working directory.
+
+At the top of each loop iteration, before generating or reusing the next suggestion, the script checks for the stop file.
+If present, it:
+
+1. prints an `[EVENT]` line
+2. deletes the stop file
+3. pauses the campaign normally
+4. exits cleanly
+
+To request a clean stop:
+
+```bash
+touch STOP
+```
+
+You can override the path:
+
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_yield_baybe.py --stop-file path/to/STOP
+```
+
+## Tagged stdout lines
+
+The entrypoint prints concise monitor-friendly lines only:
+
+- `[EVENT]` lifecycle transitions, stop conditions, start/finish notes
+- `[ALERT]` oracle or submission failures
+- `[RESULT]` one line per attempted evaluation, including status and yield when available
+- `[HEARTBEAT]` liveness updates during long runs
+
+Everything else is written to the run log on disk.
+
+## Artifacts
+
+Default artifact directory:
+
+- `artifacts/direct_arylation_yield_baybe`
+
+Important files written there:
+
+- `run.log` — full log output
+- `campaign.json` — latest BO-MCP campaign metadata, including `campaign_id`
+- `attempts.jsonl` — one JSON record per attempted evaluation
+- `summary.json` — aggregate report including best conditions, best measured yield, counts, and full attempt history
+- `diagnostics.json` — final BO-MCP diagnostics snapshot for the invocation
+- `run_metadata.json` — trace id, ownership marker, and run settings
+
+## Expected outputs
+
+After a normal run, `summary.json` contains enough data to report:
+
+- final `campaign_id`
+- best conditions
+- best measured yield
+- attempted evaluation count
+- successful submission count
+- every attempted candidate with status and objective values when available
+
+## Validation
+
+Recommended quick checks after a run:
+
+```bash
+python -m json.tool artifacts/direct_arylation_yield_baybe/summary.json >/dev/null
+python -m json.tool artifacts/direct_arylation_yield_baybe/campaign.json >/dev/null
+wc -l artifacts/direct_arylation_yield_baybe/attempts.jsonl
+```
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===
