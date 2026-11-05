@@ -1,0 +1,49 @@
+exit_code=0
+
+=== stdout (raw) ===
+from __future__ import annotations
+
+import json
+import math
+import os
+import random
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Dict, List, Sequence, Tuple
+
+import numpy as np
+from sklearn.exceptions import ConvergenceWarning
+
+try:
+    import logfire
+except Exception:  # pragma: no cover
+    class _NoopLogfire:
+        def instrument_requests(self):
+            return None
+        def info(self, *args, **kwargs):
+            return None
+        def debug(self, *args, **kwargs):
+            return None
+    logfire = _NoopLogfire()
+
+try:
+    from grafico.core.logfire_config import configure_logfire
+except Exception:  # pragma: no cover
+    def configure_logfire():
+        return None
+from sklearn.gaussian_process import GaussianProcessRegressor
+from sklearn.gaussian_process.kernels import ConstantKernel, Matern, WhiteKernel
+import warnings
+
+configure_logfire()
+logfire.instrument_requests()
+
+CASE_ID = "synthetic_ackley_6d"
+OBJECTIVE_NAME = "surface_response"
+OBJECTIVE_DIRECTION = "maximize"
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

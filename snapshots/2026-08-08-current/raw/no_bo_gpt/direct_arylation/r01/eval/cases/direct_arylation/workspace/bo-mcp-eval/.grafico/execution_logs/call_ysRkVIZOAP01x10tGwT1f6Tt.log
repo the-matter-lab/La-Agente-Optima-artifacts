@@ -1,0 +1,25 @@
+exit_code=1
+
+=== stdout (raw) ===
+
+
+=== stderr (raw) ===
+Traceback (most recent call last):
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_campaign.py", line 6, in <module>
+    from direct_arylation_campaign import run_campaign
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_campaign/__init__.py", line 1, in <module>
+    from .campaign import run_campaign
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_campaign/campaign.py", line 11, in <module>
+    from grafico.core.logfire_config import configure_logfire
+ModuleNotFoundError: No module named 'grafico'
+
+
+=== stderr (model-visible) ===
+Traceback (most recent call last):
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_campaign.py", line 6, in <module>
+    from direct_arylation_campaign import run_campaign
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_campaign/__init__.py", line 1, in <module>
+    from .campaign import run_campaign
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_campaign/campaign.py", line 11, in <module>
+    from grafico.core.logfire_config import configure_logfire
+ModuleNotFoundError: No module named 'grafico'

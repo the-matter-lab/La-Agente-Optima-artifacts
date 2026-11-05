@@ -6,11 +6,11 @@ Readable conversation artifact. Main-agent tool calls and subagent task summarie
 
 - case: `direct_arylation`
 - architecture_mode: `main_agent_script_no_bo_mcp`
-- trace_id: `019fb44b506fe5d4a21769483de9d336`
-- span_id: `e832715aa6e20937`
-- task_duration_s: `137.110077233`
-- total_duration_s: `137.110835064`
-- cost_usd: `0.26935749999999997`
+- trace_id: `019ff3ef404625d24cc514677d50ef6b`
+- span_id: `fcc5e229a4663500`
+- task_duration_s: `135.295648155`
+- total_duration_s: `135.296508637`
+- cost_usd: `0.247118`
 
 ## Artifact Paths
 
@@ -24,8 +24,8 @@ Readable conversation artifact. Main-agent tool calls and subagent task summarie
 
 ## Conversation Overview
 
-- Main-agent trace steps: `38`
-- Main-agent tool calls: `9`
+- Main-agent trace steps: `32`
+- Main-agent tool calls: `8`
 - Subagent delegations observed in main trace: `0`
 - Subagent task handles captured: `0`
 - Ordering: The detailed Main Agent section is chronological from result.all_messages(); the Subagent sections are task-handle summaries plus TaskHandle.message_history when the installed subagent runtime exposes it.
@@ -45,33 +45,30 @@ Readable conversation artifact. Main-agent tool calls and subagent task summarie
 11. `bash_exec` returned `success`.
 12. Main agent called `bash_exec`.
 13. `bash_exec` returned `success`.
-14. Main agent called `bash_exec`.
-15. `bash_exec` returned `success`.
-16. Main agent called `bash_exec`.
-17. `bash_exec` returned `success`.
-18. Main agent called `bash_exec`.
-19. `bash_exec` returned `success`.
-20. Main agent produced text.
+14. Main agent called `python_repl`.
+15. `python_repl` returned `success`.
+16. Main agent called `python_repl`.
+17. `python_repl` returned `success`.
+18. Main agent produced text.
 
 ## Main-Agent Tool Calls
 
-1. `bash_exec` (`call_YE9eLkJ5S0YXz9I7f9XQVsLC`)
-2. `bash_exec` (`call_o3ur487DQAQR3oGTIlY58id5`)
-3. `bash_exec` (`call_VQoIZ1PzQJNsBJmB6cbk5jGR`)
-4. `bash_exec` (`call_fcBi5tkhsqjMtt3Ul4NNK7CP`)
-5. `bash_exec` (`call_8aDs9LSGoU4JXmOlA2g836SU`)
-6. `bash_exec` (`call_ktaKKtgMQcokR5v3y16Edi5L`)
-7. `bash_exec` (`call_BroWKqt95AkZDK0qgAsCyzqD`)
-8. `bash_exec` (`call_UYE4ejcgBNmUN45S3IZVqfED`)
-9. `bash_exec` (`call_Ua8xUSbZ4ZzcxsRVsgf7DKtL`)
+1. `bash_exec` (`call_r60rNvSpTuBABBsSg58UXoCM`)
+2. `bash_exec` (`call_XHqLif6l2kXQbD5k1taqRW4B`)
+3. `bash_exec` (`call_lLX1T5kebGjyl3OuxpCefsE7`)
+4. `bash_exec` (`call_ysRkVIZOAP01x10tGwT1f6Tt`)
+5. `bash_exec` (`call_YjgNxwmJavFIO5liJkVFvl3S`)
+6. `bash_exec` (`call_h0RiK8qsE1uZt0R26qRZV2cw`)
+7. `python_repl` (`call_fbLlQIityBN93yWIDQfjtPNF`)
+8. `python_repl` (`call_UstLCnCfwloHfHEUW7H5MsVG`)
 
 ## Main Agent Trace
 
 ### 1. user / user-prompt
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 31, 20, 60090, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 25, 466033, tzinfo=datetime.timezone.utc)`
 
-Repeat cache-buster nonce: 9be503fc-ec3e-4db1-9e94-53bcf920f41e
+Repeat cache-buster nonce: 0818b64a-80ec-4392-98e3-330c51436495
 
 # Direct arylation reaction-yield optimization
 
@@ -175,7 +172,7 @@ Flat fields and top-level summary counts do not replace ordered result records.
 
 ### 2. assistant / thinking
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 31, 36, 280218, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 34, 92573, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - usage:
 
@@ -183,25 +180,25 @@ Flat fields and top-level summary counts do not replace ordered result records.
 {
   "cache_read_tokens": 10624,
   "details": {
-    "reasoning_tokens": 1009
+    "reasoning_tokens": 516
   },
-  "input_tokens": 12214,
-  "output_tokens": 1137
+  "input_tokens": 12489,
+  "output_tokens": 605
 }
 ```
 
-**Evaluating acquisition strategies**
+**Optimizing without the internet**
 
-I see that the space isn't very large, so it's reasonable to evaluate acquisitions over the 1728
-candidates, as long as I avoid querying an oracle. The user specifies not to enumerate the full
-search space and sort by yield, but perhaps local enumeration of parameters for acquisitions could
-still work. They seem to suggest it's alright to enumerate candidate combinations for scoring
-algorithms. Optimizing over a fixed, fully crossed search space could also be beneficial, without
-being exhaustive.
+I need to comply with the user’s request not to use the internet. So, I’ll create a package in my
+workspace and run production with around 60 attempts. It looks like I'll use bash_exec for writing
+files and running the script. I might need to inspect my environment for the
+DIRECT_ARYLATION_API_URL through the script. I'll avoid repository searches. Instead, I could use
+Python locally with libraries like sklearn to implement Bayesian optimization and handle the mixed
+search space effectively.
 
 ### 3. assistant / thinking
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 31, 36, 280218, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 34, 92573, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - usage:
 
@@ -209,25 +206,25 @@ being exhaustive.
 {
   "cache_read_tokens": 10624,
   "details": {
-    "reasoning_tokens": 1009
+    "reasoning_tokens": 516
   },
-  "input_tokens": 12214,
-  "output_tokens": 1137
+  "input_tokens": 12489,
+  "output_tokens": 605
 }
 ```
 
-**Evaluating code structure**
+**Considering optimization strategies**
 
-I'm considering whether I need to use a repository search or if I can just write code locally using
-Python with libraries like requests and numpy. I want to ensure the modules in my package are
-campaign-agnostic, which means they shouldn’t import any campaign-specific modules. I’m thinking of
-creating a package called direct_arylation_campaign with essential modules like campaign.py, bo.py,
-oracle.py, and results.py. I might need to include cache-buster nonces, like "Nonce: ...," in the
-final text for clarity.
+I need to make sure I don't fully enumerate the search space for Bayesian optimization since
+explicit instructions say not to sort by yield. However, it might be okay to enumerate parameter
+combinations for acquisition. I'm thinking it’s safer to avoid full enumeration but I could randomly
+generate a pool of 256 unexplored candidates per iteration. I’ll need to ensure that I track unique
+candidates across 60 objective evaluations and record the reasons for any failed attempts according
+to the schema.
 
 ### 4. assistant / thinking
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 31, 36, 280218, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 34, 92573, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - usage:
 
@@ -235,24 +232,25 @@ final text for clarity.
 {
   "cache_read_tokens": 10624,
   "details": {
-    "reasoning_tokens": 1009
+    "reasoning_tokens": 516
   },
-  "input_tokens": 12214,
-  "output_tokens": 1137
+  "input_tokens": 12489,
+  "output_tokens": 605
 }
 ```
 
-**Checking environment setup**
+**Finalizing package details**
 
-I want to ensure that I only include the LOCAL_BEST line once in my output. I’m considering using
-python_repl for quick environment checks, but I’m also wondering if a bash_exec would suffice. Using
-bash to check the current working directory and the existence of the DIRECT_ARYLATION_API_URL sounds
-like a good plan. I’ll also want to confirm the Python version and check for requests and numpy. I
-think I can be pretty targeted with these checks!
+I’m considering whether to include "null" for success in my results. It seems safer to just use
+"failure_reason" as null when there's a success, since it's only required for failed attempts. I’ll
+ensure the final result includes one line for LOCAL_RESULT_PATH and LOCAL_BEST_OBJECTIVE, plus maybe
+a brief summary. I should probably repeat the cache-buster nonce as the user suggested. Though the
+developer says to include only exact lines, I might be able to add some other text. I’ll check the
+current workspace and create the necessary package.
 
 ### 5. assistant / tool-call / bash_exec
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 31, 36, 280218, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 34, 92573, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - tool: `bash_exec`
 - usage:
@@ -261,10 +259,10 @@ think I can be pretty targeted with these checks!
 {
   "cache_read_tokens": 10624,
   "details": {
-    "reasoning_tokens": 1009
+    "reasoning_tokens": 516
   },
-  "input_tokens": 12214,
-  "output_tokens": 1137
+  "input_tokens": 12489,
+  "output_tokens": 605
 }
 ```
 
@@ -273,22 +271,16 @@ think I can be pretty targeted with these checks!
 set -euo pipefail
 pwd
 python - <<'PY'
-import os, sys
-print('PYTHON', sys.version.split()[0])
-print('API_URL_SET', bool(os.getenv('DIRECT_ARYLATION_API_URL')))
-for mod in ['numpy', 'requests']:
-    try:
-        __import__(mod)
-        print(mod, 'OK')
-    except Exception as e:
-        print(mod, 'ERR', e)
+import os
+print('DIRECT_ARYLATION_API_URL set:', bool(os.getenv('DIRECT_ARYLATION_API_URL')))
+print('PYTHON_EXECUTABLE:', os.getenv('PYTHON_EXECUTABLE'))
 PY
 
 - timeout_seconds: `30`
 
 ### 6. tool / tool-return / bash_exec
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 31, 36, 528488, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 34, 149382, tzinfo=datetime.timezone.utc)`
 - tool: `bash_exec`
 - outcome: `success`
 
@@ -298,10 +290,8 @@ PY
 
 ```text
 /app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval
-PYTHON 3.12.13
-API_URL_SET True
-numpy OK
-requests OK
+DIRECT_ARYLATION_API_URL set: True
+PYTHON_EXECUTABLE: /opt/venv/bin/python
 ```
 
 #### stderr
@@ -310,7 +300,7 @@ _empty_
 
 ### 7. assistant / thinking
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 395090, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 37, 563396, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - usage:
 
@@ -318,183 +308,23 @@ _empty_
 {
   "cache_read_tokens": 11648,
   "details": {
-    "reasoning_tokens": 1385
+    "reasoning_tokens": 19
   },
-  "input_tokens": 13424,
-  "output_tokens": 6081
+  "input_tokens": 13172,
+  "output_tokens": 122
 }
 ```
 
-**Designing optimization algorithm**
+**Considering package creation**
 
-I need to write files and maybe create a package directory. Let’s devise the Bayesian Optimization
-(BO) algorithm details. First, I’ll define the search space values. For encoding candidates, I
-envision using one-hot encoding for parameters like base, ligand, and solvent. I’m wondering if I
-should standardize concentrations and temperatures, and consider interaction features. But I also
-need to keep things simple with potential one-hot for discrete numeric levels too. It seems like
-there’s a lot to consider!
+I need to write a package, and I'm wondering if scikit-learn might be the right choice to use. I
+should check its availability to ensure it's suitable for my needs. Maybe I should explore its
+features and decide if it fits the requirements of my project. I want to choose the best tools
+available so that everything runs smoothly. It's all about making the right decisions along the way!
 
-### 8. assistant / thinking
+### 8. assistant / tool-call / bash_exec
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 395090, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 11648,
-  "details": {
-    "reasoning_tokens": 1385
-  },
-  "input_tokens": 13424,
-  "output_tokens": 6081
-}
-```
-
-**Fitting Bayesian optimization**
-
-I might go ahead and fit Bayesian linear regression with some specifics in mind. My X matrix will be
-structured as N x d. I need to set a prior precision of alpha to 1.0, and decide whether to estimate
-noise variance from residuals or fix it at 25. Considering my data size, maybe I should set sigma to
-10.
-
-For candidates, I’ll calculate the predictive mean and variance, incorporating an acquisition
-function that allows for some exploration. I also want to ensure unique attempts even for failures
-and maintain a detailed results record.
-
-### 9. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 395090, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 11648,
-  "details": {
-    "reasoning_tokens": 1385
-  },
-  "input_tokens": 13424,
-  "output_tokens": 6081
-}
-```
-
-**Structuring evaluation records**
-
-I’m considering setting the batch size to 1 for all sequential evaluations, and I'll have the batch
-index range from 1 to 60, possibly starting at 1. I think evaluation_index should also be 1-based.
-
-For my local_results.json, I want to include top-level fields like case_id, objective_name,
-objective_direction, and objective_unit, potentially in percent. I’ll also track completed
-evaluations, attempted evaluations, the best objective value, best parameters, and compile a results
-list. It feels like I’m getting organized!
-
-### 10. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 395090, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 11648,
-  "details": {
-    "reasoning_tokens": 1385
-  },
-  "input_tokens": 13424,
-  "output_tokens": 6081
-}
-```
-
-**Evaluating report structure**
-
-I need to think about how to present the user with all evaluated candidates and their statuses. The
-user wants a comprehensive report, so I'll print a concise summary but also include a compact table,
-maybe with all 60 candidates. It might be necessary to mention that they're recorded in
-local_results.json while maintaining a bullet list to show each attempt. However, I'll wait for the
-results before finalizing the format. I should run a smoke test with one BO iteration.
-
-### 11. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 395090, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 11648,
-  "details": {
-    "reasoning_tokens": 1385
-  },
-  "input_tokens": 13424,
-  "output_tokens": 6081
-}
-```
-
-**Setting up smoke test parameters**
-
-I need to run a smoke test with a budget of 4 and n_init set to 3 for exactly one model-guided BO
-iteration. I wonder if n_init should actually be 4 since I'm counting three initial designs plus one
-guided attempt, totaling four. I'll need to create a log file and a campaign manifest after each
-run, pointing to the latest local_results.json. I might also consider logging results in
-smoke_results.json and ensure the run entry point remains lightweight. Integrating Logfire could
-enhance tracking too.
-
-### 12. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 395090, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 11648,
-  "details": {
-    "reasoning_tokens": 1385
-  },
-  "input_tokens": 13424,
-  "output_tokens": 6081
-}
-```
-
-**Considering import and seeding options**
-
-I’m thinking about how to handle the ImportError with a try/except block; it seems like a good
-approach. The instructions suggest adding this, so I'll follow through. Using logfire_stub should be
-fine. Now, for reproducibility, I should consider using a random seed. I could derive it from the
-user-provided nonce, but since it serves as a cache-buster, I wonder if that’s best. Setting a fixed
-seed like 20260730 or a hash of the nonce might be a safer route.
-
-### 13. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 395090, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 11648,
-  "details": {
-    "reasoning_tokens": 1385
-  },
-  "input_tokens": 13424,
-  "output_tokens": 6081
-}
-```
-
-**Planning smoke tests**
-
-I'm thinking about how to smoke test structural behavior with a fake oracle or using a `--dry-run`
-mode. This way, I can simulate results without using up the benchmark budget. In production, I’ll
-switch to a real oracle, but I must be careful not to mix results.
-
-If an `api_url` is absent or in `dry_run` mode, I'll return a deterministic pseudo-yield. For actual
-production, I plan to run 60 attempts with the real oracle, ensuring accurate logging with
-timestamps. Let's proceed to write the package using bash heredoc.
-
-### 14. assistant / tool-call / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 395090, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 37, 563396, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - tool: `bash_exec`
 - usage:
@@ -503,10 +333,166 @@ timestamps. Let's proceed to write the package using bash heredoc.
 {
   "cache_read_tokens": 11648,
   "details": {
-    "reasoning_tokens": 1385
+    "reasoning_tokens": 19
   },
-  "input_tokens": 13424,
-  "output_tokens": 6081
+  "input_tokens": 13172,
+  "output_tokens": 122
+}
+```
+
+- command:
+
+set -euo pipefail
+${PYTHON_EXECUTABLE:-python} - <<'PY'
+mods = ['sklearn','numpy','requests']
+for m in mods:
+    try:
+        __import__(m)
+        print(m, 'OK')
+    except Exception as e:
+        print(m, 'FAIL', e)
+PY
+
+- timeout_seconds: `30`
+
+### 9. tool / tool-return / bash_exec
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 6, 38, 641459, tzinfo=datetime.timezone.utc)`
+- tool: `bash_exec`
+- outcome: `success`
+
+- exit_code: `0`
+
+#### stdout
+
+```text
+sklearn OK
+numpy OK
+requests OK
+```
+
+#### stderr
+
+_empty_
+
+### 10. assistant / thinking
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 25, 383362, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 12672,
+  "details": {
+    "reasoning_tokens": 1206
+  },
+  "input_tokens": 13325,
+  "output_tokens": 5798
+}
+```
+
+**Planning a campaign process**
+
+Alright, I need to set up a small package for a direct arylation campaign, including files like
+campaign.py, bo.py, space.py, evaluator.py, and reporting.py. I’ll run a script for the campaign and
+maybe create a preflight compilation script. For design, I’m thinking about 12 candidates with
+random initial designs using stratification. I'll use random forests with either EI or UCB. We’ll
+proceed with 60 attempts, sampling from unexplored candidates without full enumeration, and
+generating random pools until we have enough unique candidates.
+
+### 11. assistant / thinking
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 25, 383362, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 12672,
+  "details": {
+    "reasoning_tokens": 1206
+  },
+  "input_tokens": 13325,
+  "output_tokens": 5798
+}
+```
+
+**Optimizing candidate selection**
+
+I need to avoid collisions as we near the end, keeping within a budget of 60 out of 1728, which is
+manageable. Instead of full enumeration, I can create a pool of 256 random unseen candidates. I
+might use local one-hot encoding combined with RandomForestRegressor. Training on at least five
+samples would work. For each candidate, I’ll compute predictions and use acquisition to balance mean
+and standard deviation. I think I'll also include variations of the best candidates and propose
+neighbors based on combinations, using hybrid suggestions for new pools in each iteration.
+
+### 12. assistant / thinking
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 25, 383362, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 12672,
+  "details": {
+    "reasoning_tokens": 1206
+  },
+  "input_tokens": 13325,
+  "output_tokens": 5798
+}
+```
+
+**Refining script instrumentation**
+
+I think I need to make sure the scripts are concise and effective for BO purposes. I'll add logfire
+instrumentation near the script header, maybe in the run script itself. It’s crucial to capture
+timestamped logs effectively. To do this, I can use the bash_exec command: `PYTHONUNBUFFERED=1
+${PYTHON_EXECUTABLE} run_direct_arylation_campaign.py 2>&1 | tee log`, which should work well for
+logging. I also need to preserve the exit status using `${PIPESTATUS[0]}` to keep track of
+everything properly.
+
+### 13. assistant / thinking
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 25, 383362, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 12672,
+  "details": {
+    "reasoning_tokens": 1206
+  },
+  "input_tokens": 13325,
+  "output_tokens": 5798
+}
+```
+
+**Evaluating candidate methods**
+
+I'm exploring some methods for working with random candidates and stratified designs. I think about
+using techniques like `mutate_candidate` and `sample_pool` for generating a diverse set of
+candidates. In my code, I'll encode candidates and fit a Random Forest model. I could utilize the
+OneHotEncoder from sklearn for encoding, and for the model, I’m thinking about using a
+RandomForestRegressor with specific parameters to optimize performance.
+
+### 14. assistant / tool-call / bash_exec
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 25, 383362, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- tool: `bash_exec`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 12672,
+  "details": {
+    "reasoning_tokens": 1206
+  },
+  "input_tokens": 13325,
+  "output_tokens": 5798
 }
 ```
 
@@ -515,29 +501,25 @@ timestamps. Let's proceed to write the package using bash heredoc.
 set -euo pipefail
 mkdir -p direct_arylation_campaign
 cat > direct_arylation_campaign/__init__.py <<'PY'
-from .campaign import CampaignConfig, run_campaign
+from .campaign import run_campaign
 
-__all__ = ["CampaignConfig", "run_campaign"]
+__all__ = ["run_campaign"]
 PY
 
-cat > direct_arylation_campaign/bo.py <<'PY'
+cat > direct_arylation_campaign/space.py <<'PY'
 from __future__ import annotations
 
-from dataclasses import dataclass
-from itertools import product
-import math
-from typing import Any
+from typing import Dict, List, Sequence, Tuple
+import random
 
-import numpy as np
-
-
-BASES = [
+BASES: List[str] = [
     "Potassium acetate",
     "Potassium pivalate",
     "Cesium acetate",
     "Cesium pivalate",
 ]
-LIGANDS = [
+
+LIGANDS: List[str] = [
     "BrettPhos",
     "Di-tert-butylphenylphosphine",
     "(t-Bu)PhCPhos",
@@ -551,478 +533,486 @@ LIGANDS = [
     "SCHEMBL15068049",
     "Me2PPh",
 ]
-SOLVENTS = ["DMAc", "Butyornitrile", "Butyl Ester", "p-Xylene"]
-CONCENTRATIONS = [0.057, 0.1, 0.153]
-TEMPERATURES_C = [90, 105, 120]
+
+SOLVENTS: List[str] = ["DMAc", "Butyornitrile", "Butyl Ester", "p-Xylene"]
+CONCENTRATIONS: List[float] = [0.057, 0.1, 0.153]
+TEMPERATURES_C: List[int] = [90, 105, 120]
+
+PARAMETER_ORDER: Tuple[str, ...] = (
+    "base",
+    "ligand",
+    "solvent",
+    "concentration",
+    "temperature_c",
+)
+
+SPACE = {
+    "base": BASES,
+    "ligand": LIGANDS,
+    "solvent": SOLVENTS,
+    "concentration": CONCENTRATIONS,
+    "temperature_c": TEMPERATURES_C,
+}
+
+Candidate = Dict[str, object]
 
 
-@dataclass(frozen=True)
-class Candidate:
-    base: str
-    ligand: str
-    solvent: str
-    concentration: float
-    temperature_c: int
+def canonical_key(candidate: Candidate) -> Tuple[object, ...]:
+    return tuple(candidate[name] for name in PARAMETER_ORDER)
 
-    def to_parameter_values(self) -> dict[str, Any]:
-        return {
-            "base": self.base,
-            "ligand": self.ligand,
-            "solvent": self.solvent,
-            "concentration": float(self.concentration),
-            "temperature_c": int(self.temperature_c),
+
+def random_candidate(rng: random.Random) -> Candidate:
+    return {
+        "base": rng.choice(BASES),
+        "ligand": rng.choice(LIGANDS),
+        "solvent": rng.choice(SOLVENTS),
+        "concentration": rng.choice(CONCENTRATIONS),
+        "temperature_c": rng.choice(TEMPERATURES_C),
+    }
+
+
+def stratified_initial_design(rng: random.Random, n: int) -> List[Candidate]:
+    if n <= 0:
+        return []
+    designs: List[Candidate] = []
+    ligand_cycle = LIGANDS.copy()
+    rng.shuffle(ligand_cycle)
+    base_cycle = BASES.copy()
+    solvent_cycle = SOLVENTS.copy()
+    conc_cycle = CONCENTRATIONS.copy()
+    temp_cycle = TEMPERATURES_C.copy()
+    rng.shuffle(base_cycle)
+    rng.shuffle(solvent_cycle)
+    rng.shuffle(conc_cycle)
+    rng.shuffle(temp_cycle)
+    seen = set()
+    i = 0
+    while len(designs) < n:
+        if i > 0 and i % len(ligand_cycle) == 0:
+            rng.shuffle(base_cycle)
+            rng.shuffle(solvent_cycle)
+            rng.shuffle(conc_cycle)
+            rng.shuffle(temp_cycle)
+        candidate = {
+            "base": base_cycle[i % len(base_cycle)],
+            "ligand": ligand_cycle[i % len(ligand_cycle)],
+            "solvent": solvent_cycle[(i + i // len(base_cycle)) % len(solvent_cycle)],
+            "concentration": conc_cycle[(2 * i) % len(conc_cycle)],
+            "temperature_c": temp_cycle[(3 * i + 1) % len(temp_cycle)],
         }
-
-    def key(self) -> tuple[Any, ...]:
-        return (
-            self.base,
-            self.ligand,
-            self.solvent,
-            float(self.concentration),
-            int(self.temperature_c),
-        )
+        key = canonical_key(candidate)
+        if key not in seen:
+            seen.add(key)
+            designs.append(candidate)
+        i += 1
+    return designs
 
 
-def full_search_space() -> list[Candidate]:
-    return [
-        Candidate(base, ligand, solvent, concentration, temperature_c)
-        for base, ligand, solvent, concentration, temperature_c in product(
-            BASES, LIGANDS, SOLVENTS, CONCENTRATIONS, TEMPERATURES_C
-        )
-    ]
+def mutate_candidate(rng: random.Random, candidate: Candidate, max_changes: int = 2) -> Candidate:
+    proposal = dict(candidate)
+    n_changes = rng.randint(1, max_changes)
+    params = list(PARAMETER_ORDER)
+    rng.shuffle(params)
+    for name in params[:n_changes]:
+        values: Sequence[object] = SPACE[name]
+        current = proposal[name]
+        alternatives = [value for value in values if value != current]
+        proposal[name] = rng.choice(alternatives)
+    return proposal
 
 
-class CandidateEncoder:
-    def __init__(self) -> None:
-        self.base_index = {v: i for i, v in enumerate(BASES)}
-        self.ligand_index = {v: i for i, v in enumerate(LIGANDS)}
-        self.solvent_index = {v: i for i, v in enumerate(SOLVENTS)}
-        self.conc_levels = {v: i for i, v in enumerate(CONCENTRATIONS)}
-        self.temp_levels = {v: i for i, v in enumerate(TEMPERATURES_C)}
-        self.conc_mean = float(np.mean(CONCENTRATIONS))
-        self.conc_std = float(np.std(CONCENTRATIONS))
-        self.temp_mean = float(np.mean(TEMPERATURES_C))
-        self.temp_std = float(np.std(TEMPERATURES_C))
-        self.n_features = (
-            1
-            + len(BASES)
-            + len(LIGANDS)
-            + len(SOLVENTS)
-            + len(CONCENTRATIONS)
-            + len(TEMPERATURES_C)
-            + 5
-        )
+def build_candidate_pool(
+    rng: random.Random,
+    tried_keys: set[Tuple[object, ...]],
+    top_candidates: List[Candidate],
+    pool_size: int,
+) -> List[Candidate]:
+    pool: List[Candidate] = []
+    pool_keys: set[Tuple[object, ...]] = set()
 
-    def encode(self, candidate: Candidate) -> np.ndarray:
-        x = np.zeros(self.n_features, dtype=float)
-        cursor = 0
-        x[cursor] = 1.0
-        cursor += 1
-        x[cursor + self.base_index[candidate.base]] = 1.0
-        cursor += len(BASES)
-        x[cursor + self.ligand_index[candidate.ligand]] = 1.0
-        cursor += len(LIGANDS)
-        x[cursor + self.solvent_index[candidate.solvent]] = 1.0
-        cursor += len(SOLVENTS)
-        x[cursor + self.conc_levels[float(candidate.concentration)]] = 1.0
-        cursor += len(CONCENTRATIONS)
-        x[cursor + self.temp_levels[int(candidate.temperature_c)]] = 1.0
-        cursor += len(TEMPERATURES_C)
-        conc_scaled = (float(candidate.concentration) - self.conc_mean) / max(self.conc_std, 1e-8)
-        temp_scaled = (int(candidate.temperature_c) - self.temp_mean) / max(self.temp_std, 1e-8)
-        x[cursor : cursor + 5] = [
-            conc_scaled,
-            temp_scaled,
-            conc_scaled * temp_scaled,
-            conc_scaled**2,
-            temp_scaled**2,
-        ]
-        return x
+    def maybe_add(candidate: Candidate) -> None:
+        key = canonical_key(candidate)
+        if key in tried_keys or key in pool_keys:
+            return
+        pool.append(candidate)
+        pool_keys.add(key)
+
+    for candidate in top_candidates[: min(8, len(top_candidates))]:
+        for _ in range(10):
+            maybe_add(mutate_candidate(rng, candidate, max_changes=2))
+            if len(pool) >= pool_size:
+                return pool
+
+    while len(pool) < pool_size:
+        maybe_add(random_candidate(rng))
+    return pool
+PY
+
+cat > direct_arylation_campaign/bo.py <<'PY'
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import Dict, List, Sequence, Tuple
+
+import numpy as np
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import OneHotEncoder
+
+from .space import PARAMETER_ORDER
+
+Candidate = Dict[str, object]
 
 
 @dataclass
-class SurrogateState:
-    posterior_mean: np.ndarray
-    posterior_cov: np.ndarray
-    beta: float
-    y_mean: float
-    y_std: float
+class SurrogateBundle:
+    encoder: OneHotEncoder
+    model: RandomForestRegressor
 
 
-class BayesianLinearSurrogate:
-    def __init__(self, encoder: CandidateEncoder, alpha: float = 1.0, noise_sigma: float = 10.0) -> None:
-        self.encoder = encoder
-        self.alpha = alpha
-        self.noise_sigma = noise_sigma
-
-    def fit(self, candidates: list[Candidate], yields: list[float]) -> SurrogateState:
-        X = np.vstack([self.encoder.encode(c) for c in candidates])
-        y = np.asarray(yields, dtype=float)
-        y_mean = float(np.mean(y))
-        y_std = float(np.std(y))
-        y_scaled = (y - y_mean) / max(y_std, 1.0)
-        beta = 1.0 / (self.noise_sigma**2)
-        precision = self.alpha * np.eye(X.shape[1]) + beta * (X.T @ X)
-        cov = np.linalg.inv(precision)
-        mean = beta * cov @ X.T @ y_scaled
-        return SurrogateState(mean, cov, beta, y_mean, max(y_std, 1.0))
-
-    def predict(self, state: SurrogateState, candidates: list[Candidate]) -> tuple[np.ndarray, np.ndarray]:
-        X = np.vstack([self.encoder.encode(c) for c in candidates])
-        mean_scaled = X @ state.posterior_mean
-        var_scaled = (1.0 / state.beta) + np.sum((X @ state.posterior_cov) * X, axis=1)
-        mean = state.y_mean + state.y_std * mean_scaled
-        std = state.y_std * np.sqrt(np.maximum(var_scaled, 1e-12))
-        return mean, std
+def _rows(candidates: Sequence[Candidate]) -> List[List[object]]:
+    return [[candidate[name] for name in PARAMETER_ORDER] for candidate in candidates]
 
 
-def choose_next_candidate(
-    rng: np.random.Generator,
-    encoder: CandidateEncoder,
-    observed_candidates: list[Candidate],
-    observed_yields: list[float],
-    remaining_candidates: list[Candidate],
-    iteration_index: int,
-) -> Candidate:
-    if not remaining_candidates:
-        raise ValueError("No remaining candidates.")
-    if len(observed_yields) < 6:
-        return remaining_candidates[int(rng.integers(len(remaining_candidates)))]
+def fit_surrogate(candidates: Sequence[Candidate], objectives: Sequence[float], seed: int) ->
+SurrogateBundle:
+    encoder = OneHotEncoder(handle_unknown="ignore", sparse_output=False)
+    x = encoder.fit_transform(_rows(candidates))
+    y = np.asarray(objectives, dtype=float)
+    model = RandomForestRegressor(
+        n_estimators=400,
+        min_samples_leaf=2,
+        random_state=seed,
+        n_jobs=1,
+    )
+    model.fit(x, y)
+    return SurrogateBundle(encoder=encoder, model=model)
 
-    surrogate = BayesianLinearSurrogate(encoder=encoder)
-    state = surrogate.fit(observed_candidates, observed_yields)
-    means, stds = surrogate.predict(state, remaining_candidates)
 
-    exploration_rate = 0.15 if len(observed_yields) < 20 else 0.08
-    if rng.random() < exploration_rate:
-        scores = stds
-    else:
-        kappa = max(0.8, 2.2 - 0.03 * iteration_index)
-        scores = means + kappa * stds
-
-    best_score = float(np.max(scores))
-    near_best = [i for i, s in enumerate(scores) if math.isclose(float(s), best_score, rel_tol=1e-12, abs_tol=1e-12)]
-    selected_idx = int(rng.choice(near_best)) if near_best else int(np.argmax(scores))
-    return remaining_candidates[selected_idx]
+def score_candidates(bundle: SurrogateBundle, candidates: Sequence[Candidate]) -> Tuple[np.ndarray,
+np.ndarray, np.ndarray]:
+    x = bundle.encoder.transform(_rows(candidates))
+    tree_predictions = np.asarray([tree.predict(x) for tree in bundle.model.estimators_], dtype=float)
+    mean = tree_predictions.mean(axis=0)
+    std = tree_predictions.std(axis=0)
+    optimistic = mean + 1.25 * std
+    return mean, std, optimistic
 PY
 
-cat > direct_arylation_campaign/oracle.py <<'PY'
+cat > direct_arylation_campaign/evaluator.py <<'PY'
 from __future__ import annotations
 
-import hashlib
+from typing import Dict
 import os
-from dataclasses import dataclass
-from typing import Any
 
 import requests
 
-from .bo import Candidate
+Candidate = Dict[str, object]
 
 
-@dataclass
-class EvaluationResult:
-    status: str
-    objective_values: dict[str, float] | None
-    failure_reason: str | None
-
-
-class DirectArylationOracle:
-    def __init__(self, api_url: str | None, dry_run: bool = False, timeout_s: float = 20.0) -> None:
-        self.api_url = api_url
-        self.dry_run = dry_run
+class DirectArylationEvaluator:
+    def __init__(self, timeout_s: float = 30.0):
+        base_url = os.getenv("DIRECT_ARYLATION_API_URL")
+        if not base_url:
+            raise RuntimeError("DIRECT_ARYLATION_API_URL is not set")
+        self.url = base_url.rstrip("/") + "/v1/evaluate"
         self.timeout_s = timeout_s
         self.session = requests.Session()
 
-    @staticmethod
-    def _pseudo_yield(candidate: Candidate) -> float:
-        payload = "|".join(str(v) for v in candidate.key()).encode("utf-8")
-        digest = hashlib.sha256(payload).hexdigest()
-        value = int(digest[:8], 16) / 0xFFFFFFFF
-        return round(5.0 + 90.0 * value, 2)
-
-    def evaluate(self, candidate: Candidate) -> EvaluationResult:
-        if self.dry_run:
-            return EvaluationResult(
-                status="success",
-                objective_values={"yield": self._pseudo_yield(candidate)},
-                failure_reason=None,
-            )
-
-        if not self.api_url:
-            return EvaluationResult(
-                status="failed",
-                objective_values=None,
-                failure_reason="DIRECT_ARYLATION_API_URL is not set",
-            )
-
-        url = f"{self.api_url.rstrip('/')}/v1/evaluate"
+    def evaluate(self, candidate: Candidate) -> Dict[str, object]:
+        payload = {
+            "base": candidate["base"],
+            "ligand": candidate["ligand"],
+            "solvent": candidate["solvent"],
+            "concentration": float(candidate["concentration"]),
+            "temperature_c": int(candidate["temperature_c"]),
+        }
         try:
-            response = self.session.post(url, json=candidate.to_parameter_values(), timeout=self.timeout_s)
-        except requests.RequestException as exc:
-            return EvaluationResult(status="failed", objective_values=None, failure_reason=f"request_error: {exc}")
-
+            response = self.session.post(self.url, json=payload, timeout=self.timeout_s)
+        except Exception as exc:  # noqa: BLE001
+            return {
+                "status": "failed",
+                "failure_reason": f"request_exception: {type(exc).__name__}: {exc}",
+            }
         if not response.ok:
-            message = response.text.strip()
-            if len(message) > 200:
-                message = message[:200] + "..."
-            return EvaluationResult(
-                status="failed",
-                objective_values=None,
-                failure_reason=f"http_{response.status_code}: {message}",
-            )
-
+            text = response.text.strip().replace("\n", " ")[:400]
+            return {
+                "status": "failed",
+                "failure_reason": f"http_{response.status_code}: {text}",
+            }
         try:
-            payload: dict[str, Any] = response.json()
-            value = float(payload["yield"])
-        except Exception as exc:
-            return EvaluationResult(status="failed", objective_values=None, failure_reason=f"invalid_response: {exc}")
-
-        return EvaluationResult(status="success", objective_values={"yield": value}, failure_reason=None)
-
-
-def api_url_from_env() -> str | None:
-    return os.getenv("DIRECT_ARYLATION_API_URL")
+            data = response.json()
+            value = float(data["yield"])
+        except Exception as exc:  # noqa: BLE001
+            return {
+                "status": "failed",
+                "failure_reason": f"invalid_json: {type(exc).__name__}: {exc}",
+            }
+        return {
+            "status": "success",
+            "objective_values": {"yield": value},
+        }
 PY
 
 cat > direct_arylation_campaign/campaign.py <<'PY'
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
-from datetime import datetime, UTC
-import hashlib
 import json
+import os
+import random
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Dict, List, Optional
 
-try:
-    import logfire
-    from grafico.core.logfire_config import configure_logfire
+import logfire
+from grafico.core.logfire_config import configure_logfire
 
-    configure_logfire()
-    logfire.instrument_requests()
-except Exception:  # pragma: no cover
-    class _LogfireFallback:
-        @staticmethod
-        def info(msg: str, **kwargs: Any) -> None:
-            return None
+from .bo import fit_surrogate, score_candidates
+from .evaluator import DirectArylationEvaluator
+from .space import build_candidate_pool, canonical_key, stratified_initial_design
 
-        @staticmethod
-        def debug(msg: str, **kwargs: Any) -> None:
-            return None
+configure_logfire()
+logfire.instrument_requests()
 
-    logfire = _LogfireFallback()
-
-from .bo import Candidate, CandidateEncoder, choose_next_candidate, full_search_space
-from .oracle import DirectArylationOracle, api_url_from_env
+Candidate = Dict[str, object]
 
 
-CASE_ID = "direct_arylation_reaction_yield_optimization"
-OBJECTIVE_NAME = "yield"
-OBJECTIVE_DIRECTION = "maximize"
-OBJECTIVE_UNIT = "percent"
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
 
 
-@dataclass
-class CampaignConfig:
-    budget: int = 60
-    n_initial: int = 12
-    seed: int = 20260730
-    dry_run: bool = False
-    output_path: str = "local_results.json"
-    manifest_path: str = "campaign_manifest.json"
-    cache_buster_nonce: str = ""
+def _result_record(
+    attempt_index: int,
+    batch_index: int,
+    batch_size: int,
+    candidate: Candidate,
+    outcome: Dict[str, object],
+) -> Dict[str, object]:
+    record = {
+        "evaluation_index": attempt_index,
+        "batch_index": batch_index,
+        "batch_size": batch_size,
+        "parameter_values": {
+            "base": candidate["base"],
+            "ligand": candidate["ligand"],
+            "solvent": candidate["solvent"],
+            "concentration": float(candidate["concentration"]),
+            "temperature_c": int(candidate["temperature_c"]),
+        },
+        "status": outcome["status"],
+        "recorded_at": _utc_now(),
+    }
+    if outcome["status"] == "success":
+        record["objective_values"] = outcome["objective_values"]
+    else:
+        record["failure_reason"] = outcome.get("failure_reason", "unknown_failure")
+    return record
 
 
-@dataclass
-class AttemptRecord:
-    evaluation_index: int
-    batch_index: int
-    batch_size: int
-    parameter_values: dict[str, Any]
-    status: str
-    objective_values: dict[str, float] | None = None
-    failure_reason: str | None = None
+def _save_results(path: Path, payload: Dict[str, object]) -> None:
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
-def _candidate_digest(candidate: Candidate) -> str:
-    payload = json.dumps(candidate.to_parameter_values(), sort_keys=True).encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()[:12]
+def _best_success(results: List[Dict[str, object]]) -> tuple[Optional[float], Optional[Candidate]]:
+    successes = [r for r in results if r["status"] == "success"]
+    if not successes:
+        return None, None
+    best = max(successes, key=lambda r: r["objective_values"]["yield"])
+    return float(best["objective_values"]["yield"]), best["parameter_values"]
 
 
-def _write_json(path: str | Path, payload: dict[str, Any]) -> None:
-    Path(path).write_text(json.dumps(payload, indent=2), encoding="utf-8")
+def _sorted_success_candidates(results: List[Dict[str, object]]) -> List[Candidate]:
+    successes = [r for r in results if r["status"] == "success"]
+    successes.sort(key=lambda r: r["objective_values"]["yield"], reverse=True)
+    return [r["parameter_values"] for r in successes]
 
 
-def run_campaign(config: CampaignConfig) -> dict[str, Any]:
-    if config.budget <= 0:
-        raise ValueError("budget must be positive")
-    if config.n_initial <= 0:
-        raise ValueError("n_initial must be positive")
-    if config.n_initial >= config.budget:
-        raise ValueError("n_initial must be smaller than budget to allow BO iterations")
+def _success_training_data(results: List[Dict[str, object]]) -> tuple[List[Candidate], List[float]]:
+    xs = []
+    ys = []
+    for record in results:
+        if record["status"] == "success":
+            xs.append(record["parameter_values"])
+            ys.append(float(record["objective_values"]["yield"]))
+    return xs, ys
 
-    rng_seed = int(config.seed)
-    logfire.info("starting_direct_arylation_campaign", budget=config.budget, seed=rng_seed, dry_run=config.dry_run)
 
-    import numpy as np
-
-    rng = np.random.default_rng(rng_seed)
-    encoder = CandidateEncoder()
-    oracle = DirectArylationOracle(api_url=api_url_from_env(), dry_run=config.dry_run)
-    search_space = full_search_space()
-    remaining = list(search_space)
-    attempts: list[AttemptRecord] = []
-    successful_candidates: list[Candidate] = []
-    successful_yields: list[float] = []
-
-    initial_indices = rng.choice(len(remaining), size=config.n_initial, replace=False)
-    initial_candidates = [remaining[i] for i in sorted(initial_indices, reverse=True)]
-    for candidate in initial_candidates:
-        remaining.remove(candidate)
-
-    scheduled_candidates = list(reversed(initial_candidates))
-    for bo_iter in range(config.budget - config.n_initial):
-        candidate = choose_next_candidate(
-            rng=rng,
-            encoder=encoder,
-            observed_candidates=successful_candidates,
-            observed_yields=successful_yields,
-            remaining_candidates=remaining,
-            iteration_index=bo_iter + 1,
-        )
-        remaining.remove(candidate)
-        scheduled_candidates.append(candidate)
-
-    for idx, candidate in enumerate(scheduled_candidates, start=1):
-        result = oracle.evaluate(candidate)
-        record = AttemptRecord(
-            evaluation_index=idx,
-            batch_index=idx,
-            batch_size=1,
-            parameter_values=candidate.to_parameter_values(),
-            status=result.status,
-            objective_values=result.objective_values,
-            failure_reason=result.failure_reason,
-        )
-        attempts.append(record)
-
-        digest = _candidate_digest(candidate)
-        if result.status == "success" and result.objective_values is not None:
-            measured_yield = float(result.objective_values[OBJECTIVE_NAME])
-            successful_candidates.append(candidate)
-            successful_yields.append(measured_yield)
-            print(
-                f"[{idx:02d}/{config.budget}] success yield={measured_yield:6.2f}% "
-                f"base={candidate.base}; ligand={candidate.ligand}; solvent={candidate.solvent}; "
-                f"concentration={candidate.concentration}; temperature_c={candidate.temperature_c}"
-            )
-            logfire.info("objective_success", evaluation_index=idx, candidate_id=digest, measured_yield=measured_yield)
-        else:
-            print(
-                f"[{idx:02d}/{config.budget}] failed reason={result.failure_reason} "
-                f"base={candidate.base}; ligand={candidate.ligand}; solvent={candidate.solvent}; "
-                f"concentration={candidate.concentration}; temperature_c={candidate.temperature_c}"
-            )
-            logfire.info("objective_failure", evaluation_index=idx, candidate_id=digest, reason=result.failure_reason)
-
-    best_idx = None
-    best_value = None
-    for i, value in enumerate(successful_yields):
-        if best_value is None or value > best_value:
-            best_value = value
-            best_idx = i
-
-    best_parameters = successful_candidates[best_idx].to_parameter_values() if best_idx is not None else None
-    ordered_results: list[dict[str, Any]] = [asdict(record) for record in attempts]
-    summary = {
-        "case_id": CASE_ID,
-        "cache_buster_nonce": config.cache_buster_nonce,
-        "objective_name": OBJECTIVE_NAME,
-        "objective_direction": OBJECTIVE_DIRECTION,
-        "objective_unit": OBJECTIVE_UNIT,
-        "attempted_evaluations": len(attempts),
-        "completed_evaluations": len(successful_yields),
-        "failed_evaluations": len(attempts) - len(successful_yields),
+def _build_summary(case_id: str, results: List[Dict[str, object]]) -> Dict[str, object]:
+    completed = len(results)
+    successful = sum(1 for r in results if r["status"] == "success")
+    attempted = completed
+    best_value, best_parameters = _best_success(results)
+    return {
+        "case_id": case_id,
+        "objective_name": "yield",
+        "objective_direction": "maximize",
+        "objective_unit": "percent",
+        "completed_evaluations": completed,
+        "attempted_evaluations": attempted,
+        "successful_evaluations": successful,
         "best_objective_value": best_value,
         "best_parameters": best_parameters,
-        "results": ordered_results,
-        "generated_at_utc": datetime.now(UTC).isoformat(),
-        "config": asdict(config),
+        "results": results,
     }
-    _write_json(config.output_path, summary)
+
+
+def run_campaign(
+    budget: int = 60,
+    seed: int = 818064,
+    case_id: str = "direct_arylation",
+    results_path: str = "local_results.json",
+    manifest_path: str = "campaign_manifest.json",
+    preflight: bool = False,
+) -> Dict[str, object]:
+    logfire.info("starting direct arylation campaign", budget=budget, seed=seed, preflight=preflight)
+    if budget <= 0:
+        raise ValueError("budget must be positive")
+    if preflight:
+        payload = {
+            "case_id": case_id,
+            "objective_name": "yield",
+            "objective_direction": "maximize",
+            "objective_unit": "percent",
+            "planned_budget": budget,
+            "environment": {
+                "DIRECT_ARYLATION_API_URL_set": bool(os.getenv("DIRECT_ARYLATION_API_URL")),
+            },
+            "search_space": {
+                "parameters": ["base", "ligand", "solvent", "concentration", "temperature_c"],
+                "search_space_size": 1728,
+            },
+            "execution": {
+                "strategy": "12-point stratified random initial design followed by random-forest UCB with mutation and random candidate pools",
+                "results_path": results_path,
+                "manifest_path": manifest_path,
+            },
+            "checked_at": _utc_now(),
+        }
+        _save_results(Path("preflight_summary.json"), payload)
+        return payload
+
+    rng = random.Random(seed)
+    evaluator = DirectArylationEvaluator(timeout_s=30.0)
+    results: List[Dict[str, object]] = []
+    tried_keys = set()
+    initial_design = stratified_initial_design(rng, n=min(12, budget))
+    batch_index = 0
+
+    while len(results) < budget:
+        if len(results) < len(initial_design):
+            candidate = initial_design[len(results)]
+        else:
+            train_x, train_y = _success_training_data(results)
+            top_candidates = _sorted_success_candidates(results)
+            pool = build_candidate_pool(rng, tried_keys, top_candidates, pool_size=256)
+            if len(train_y) >= 5:
+                bundle = fit_surrogate(train_x, train_y, seed + len(results))
+                mean, std, optimistic = score_candidates(bundle, pool)
+                noise = [rng.random() * 1e-6 for _ in pool]
+                scored = list(zip(pool, mean.tolist(), std.tolist(), optimistic.tolist(), noise))
+                scored.sort(key=lambda item: (item[3], item[1], item[2], item[4]), reverse=True)
+                candidate = scored[0][0]
+                logfire.debug(
+                    "selected model-guided candidate",
+                    attempt=len(results) + 1,
+                    optimistic_score=scored[0][3],
+                    predicted_mean=scored[0][1],
+                    predicted_std=scored[0][2],
+                )
+            else:
+                candidate = pool[0]
+                logfire.debug("selected random candidate due to sparse data", attempt=len(results) + 1)
+
+        key = canonical_key(candidate)
+        if key in tried_keys:
+            raise RuntimeError("internal error: duplicate candidate selected")
+        tried_keys.add(key)
+        outcome = evaluator.evaluate(candidate)
+        batch_index += 1
+        record = _result_record(len(results) + 1, batch_index, 1, candidate, outcome)
+        results.append(record)
+
+        summary = _build_summary(case_id, results)
+        _save_results(Path(results_path), summary)
+        best_value = summary["best_objective_value"]
+        logfire.info(
+            "evaluation complete",
+            attempt=len(results),
+            status=outcome["status"],
+            best_objective_value=best_value,
+            candidate=record["parameter_values"],
+        )
+
+    final_payload = _build_summary(case_id, results)
+    _save_results(Path(results_path), final_payload)
     manifest = {
         "package_modules": [
             "direct_arylation_campaign.__init__",
+            "direct_arylation_campaign.space",
             "direct_arylation_campaign.bo",
-            "direct_arylation_campaign.oracle",
+            "direct_arylation_campaign.evaluator",
             "direct_arylation_campaign.campaign",
         ],
         "run_entrypoint": "run_direct_arylation_campaign.py",
-        "latest_local_results": str(Path(config.output_path).resolve()),
+        "latest_local_results": results_path,
+        "updated_at": _utc_now(),
     }
-    _write_json(config.manifest_path, manifest)
-
-    print(
-        "Campaign complete: "
-        f"attempted={summary['attempted_evaluations']} successful={summary['completed_evaluations']} "
-        f"best_yield={summary['best_objective_value']}"
-    )
-    return summary
+    Path(manifest_path).write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return final_payload
 PY
 
 cat > run_direct_arylation_campaign.py <<'PY'
 from __future__ import annotations
 
 import argparse
-import hashlib
+import json
 
-from direct_arylation_campaign import CampaignConfig, run_campaign
-
-
-def _default_seed_from_nonce(nonce: str) -> int:
-    if not nonce:
-        return 20260730
-    return int(hashlib.sha256(nonce.encode("utf-8")).hexdigest()[:8], 16)
+from direct_arylation_campaign import run_campaign
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Optimize direct arylation yield over a fixed search space.")
+    parser = argparse.ArgumentParser(description="Direct arylation yield optimization campaign")
     parser.add_argument("--budget", type=int, default=60)
-    parser.add_argument("--n-initial", type=int, default=12)
-    parser.add_argument("--seed", type=int, default=None)
-    parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--output", default="local_results.json")
-    parser.add_argument("--manifest", default="campaign_manifest.json")
-    parser.add_argument(
-        "--cache-buster-nonce",
-        default="9be503fc-ec3e-4db1-9e94-53bcf920f41e",
-    )
+    parser.add_argument("--seed", type=int, default=818064)
+    parser.add_argument("--preflight", action="store_true")
     args = parser.parse_args()
 
-    seed = args.seed if args.seed is not None else _default_seed_from_nonce(args.cache_buster_nonce)
-    config = CampaignConfig(
-        budget=args.budget,
-        n_initial=args.n_initial,
-        seed=seed,
-        dry_run=args.dry_run,
-        output_path=args.output,
-        manifest_path=args.manifest,
-        cache_buster_nonce=args.cache_buster_nonce,
-    )
-    run_campaign(config)
+    payload = run_campaign(budget=args.budget, seed=args.seed, preflight=args.preflight)
+    if args.preflight:
+        print("Preflight OK")
+        print(json.dumps(payload, indent=2))
+    else:
+        print("Campaign complete")
+        print(f"Best yield: {payload['best_objective_value']}")
+        print(f"Best parameters: {json.dumps(payload['best_parameters'], ensure_ascii=False)}")
+        print(f"Attempts: {payload['attempted_evaluations']} | Successes: {payload['successful_evaluations']}")
 
 
 if __name__ == "__main__":
     main()
 PY
 
-python -m py_compile run_direct_arylation_campaign.py direct_arylation_campaign/*.py
+cat > campaign_manifest.json <<'PY'
+{
+  "package_modules": [
+    "direct_arylation_campaign.__init__",
+    "direct_arylation_campaign.space",
+    "direct_arylation_campaign.bo",
+    "direct_arylation_campaign.evaluator",
+    "direct_arylation_campaign.campaign"
+  ],
+  "run_entrypoint": "run_direct_arylation_campaign.py",
+  "latest_local_results": "local_results.json"
+}
+PY
 
-- timeout_seconds: `30`
+${PYTHON_EXECUTABLE:-python} -m py_compile run_direct_arylation_campaign.py
+direct_arylation_campaign/*.py
+
+- timeout_seconds: `120`
 
 ### 15. tool / tool-return / bash_exec
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 24, 469461, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 25, 465707, tzinfo=datetime.timezone.utc)`
 - tool: `bash_exec`
 - outcome: `success`
 
@@ -1038,7 +1028,7 @@ _empty_
 
 ### 16. assistant / thinking
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 28, 706227, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 27, 717769, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - usage:
 
@@ -1046,23 +1036,16 @@ _empty_
 {
   "cache_read_tokens": 12672,
   "details": {
-    "reasoning_tokens": 31
+    "reasoning_tokens": 8
   },
-  "input_tokens": 19526,
-  "output_tokens": 222
+  "input_tokens": 19144,
+  "output_tokens": 66
 }
 ```
 
-**Investigating possible issues**
-
-I think I should inspect for any issues that might be present. It sounds like I might need to run a
-targeted smoke test as a dry run. I should use a budget of 4 and an initial value of 3. I'll also
-make sure to capture the logs for later review. This way, I can ensure everything is functioning as
-it should!
-
 ### 17. assistant / tool-call / bash_exec
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 28, 706227, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 27, 717769, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - tool: `bash_exec`
 - usage:
@@ -1071,58 +1054,48 @@ it should!
 {
   "cache_read_tokens": 12672,
   "details": {
-    "reasoning_tokens": 31
+    "reasoning_tokens": 8
   },
-  "input_tokens": 19526,
-  "output_tokens": 222
+  "input_tokens": 19144,
+  "output_tokens": 66
 }
 ```
 
 - command:
 
 set -euo pipefail
-TS=$(date +%Y%m%d_%H%M%S)
-LOG="smoke_direct_arylation_${TS}.log"
-set -o pipefail
-${PYTHON_EXECUTABLE:-python} -u run_direct_arylation_campaign.py \
-  --dry-run \
-  --budget 4 \
-  --n-initial 3 \
-  --output smoke_results.json \
-  --manifest smoke_manifest.json \
-  --cache-buster-nonce 9be503fc-ec3e-4db1-9e94-53bcf920f41e | tee "$LOG"
-status=${PIPESTATUS[0]}
-echo "SMOKE_LOG=$LOG"
-exit $status
+PYTHONUNBUFFERED=1 ${PYTHON_EXECUTABLE:-python} run_direct_arylation_campaign.py --preflight
 
 - timeout_seconds: `120`
 
 ### 18. tool / tool-return / bash_exec
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 29, 334295, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 28, 90294, tzinfo=datetime.timezone.utc)`
 - tool: `bash_exec`
 - outcome: `success`
 
-- exit_code: `0`
+- exit_code: `1`
 
 #### stdout
 
-```text
-[01/4] success yield= 74.07% base=Potassium pivalate; ligand=Methyldiphenylphosphine; solvent=DMAc; concentration=0.1; temperature_c=120
-[02/4] success yield= 78.09% base=Potassium pivalate; ligand=JackiePhos; solvent=Butyl Ester; concentration=0.1; temperature_c=105
-[03/4] success yield= 46.01% base=Cesium pivalate; ligand=P(2-furyl)3; solvent=DMAc; concentration=0.153; temperature_c=105
-[04/4] success yield= 55.20% base=Potassium acetate; ligand=Me2PPh; solvent=Butyornitrile; concentration=0.153; temperature_c=90
-Campaign complete: attempted=4 successful=4 best_yield=78.09
-SMOKE_LOG=smoke_direct_arylation_20260730_183228.log
-```
+_empty_
 
 #### stderr
 
-_empty_
+```text
+Traceback (most recent call last):
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/run_direct_arylation_campaign.py", line 6, in <module>
+    from direct_arylation_campaign import run_campaign
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_campaign/__init__.py", line 1, in <module>
+    from .campaign import run_campaign
+  File "/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_campaign/campaign.py", line 11, in <module>
+    from grafico.core.logfire_config import configure_logfire
+ModuleNotFoundError: No module named 'grafico'
+```
 
 ### 19. assistant / thinking
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 32, 764006, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 35, 689168, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - usage:
 
@@ -1130,23 +1103,24 @@ _empty_
 {
   "cache_read_tokens": 18816,
   "details": {
-    "reasoning_tokens": 34
+    "reasoning_tokens": 60
   },
-  "input_tokens": 19990,
-  "output_tokens": 228
+  "input_tokens": 19436,
+  "output_tokens": 478
 }
 ```
 
-**Inspecting smoke results**
+**Considering repair options**
 
-I'm thinking about how smoke is good, and I might need to inspect the smoke results. Should I focus
-on the top lines or something more targeted? It could be useful to confirm the schema with jq first
-before diving too deep. Also, using Python to validate uniqueness and counts seems like a solid plan
-to ensure everything checks out. I want to make sure I get this right.
+I need to make some repairs since the developer suggested adding instrumentation near the script
+header, but it seems the import isn’t available. I might need to implement a graceful fallback. I
+can modify the campaign.py to attempt the import and use a no-op if it’s not available. I also
+wonder if logfire is missing. It’d be good to check if logfire exists, but I’m having issues with
+the grafico. I can wrap that up too.
 
 ### 20. assistant / tool-call / bash_exec
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 32, 764006, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 35, 689168, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - tool: `bash_exec`
 - usage:
@@ -1155,86 +1129,10 @@ to ensure everything checks out. I want to make sure I get this right.
 {
   "cache_read_tokens": 18816,
   "details": {
-    "reasoning_tokens": 34
+    "reasoning_tokens": 60
   },
-  "input_tokens": 19990,
-  "output_tokens": 228
-}
-```
-
-- command:
-
-set -euo pipefail
-python - <<'PY'
-import json
-from pathlib import Path
-p = Path('smoke_results.json')
-obj = json.loads(p.read_text())
-assert obj['attempted_evaluations'] == 4
-assert obj['completed_evaluations'] == 4
-assert len(obj['results']) == 4
-seen = set()
-for rec in obj['results']:
-    key = tuple(rec['parameter_values'][k] for k in ['base','ligand','solvent','concentration','temperature_c'])
-    assert key not in seen
-    seen.add(key)
-    assert rec['status'] == 'success'
-    assert 'yield' in rec['objective_values']
-print('schema_ok', p)
-PY
-
-- timeout_seconds: `30`
-
-### 21. tool / tool-return / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 32, 811480, tzinfo=datetime.timezone.utc)`
-- tool: `bash_exec`
-- outcome: `success`
-
-- exit_code: `0`
-
-#### stdout
-
-```text
-schema_ok smoke_results.json
-```
-
-#### stderr
-
-_empty_
-
-### 22. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 41, 646824, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 19840,
-  "details": {
-    "reasoning_tokens": 159
-  },
-  "input_tokens": 20245,
-  "output_tokens": 652
-}
-```
-
-### 23. assistant / tool-call / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 41, 646824, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- tool: `bash_exec`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 19840,
-  "details": {
-    "reasoning_tokens": 159
-  },
-  "input_tokens": 20245,
-  "output_tokens": 652
+  "input_tokens": 19436,
+  "output_tokens": 478
 }
 ```
 
@@ -1245,128 +1143,30 @@ python - <<'PY'
 from pathlib import Path
 path = Path('direct_arylation_campaign/campaign.py')
 text = path.read_text()
-old = '''    initial_indices = rng.choice(len(remaining), size=config.n_initial, replace=False)
-    initial_candidates = [remaining[i] for i in sorted(initial_indices, reverse=True)]
-    for candidate in initial_candidates:
-        remaining.remove(candidate)
-
-    scheduled_candidates = list(reversed(initial_candidates))
-    for bo_iter in range(config.budget - config.n_initial):
-        candidate = choose_next_candidate(
-            rng=rng,
-            encoder=encoder,
-            observed_candidates=successful_candidates,
-            observed_yields=successful_yields,
-            remaining_candidates=remaining,
-            iteration_index=bo_iter + 1,
-        )
-        remaining.remove(candidate)
-        scheduled_candidates.append(candidate)
-
-    for idx, candidate in enumerate(scheduled_candidates, start=1):
-        result = oracle.evaluate(candidate)
-'''
-new = '''    initial_indices = rng.choice(len(remaining), size=config.n_initial, replace=False)
-    initial_candidates = [remaining[i] for i in sorted(initial_indices, reverse=True)]
-    for candidate in initial_candidates:
-        remaining.remove(candidate)
-
-    bo_iteration = 0
-    for idx in range(1, config.budget + 1):
-        if idx <= config.n_initial:
-            candidate = initial_candidates[config.n_initial - idx]
-        else:
-            bo_iteration += 1
-            candidate = choose_next_candidate(
-                rng=rng,
-                encoder=encoder,
-                observed_candidates=successful_candidates,
-                observed_yields=successful_yields,
-                remaining_candidates=remaining,
-                iteration_index=bo_iteration,
-            )
-            remaining.remove(candidate)
-
-        result = oracle.evaluate(candidate)
-'''
-if old not in text:
-    raise SystemExit('target block not found')
-path.write_text(text.replace(old, new))
+text = text.replace(
+"import logfire\nfrom grafico.core.logfire_config import configure_logfire\n\nfrom .bo import
+fit_surrogate, score_candidates\nfrom .evaluator import DirectArylationEvaluator\nfrom .space import
+build_candidate_pool, canonical_key,
+stratified_initial_design\n\nconfigure_logfire()\nlogfire.instrument_requests()\n",
+"try:\n    import logfire\nexcept Exception:  # noqa: BLE001\n    class _LogfireFallback:\n
+def instrument_requests(self) -> None:\n            return None\n\n        def info(self, *args,
+**kwargs) -> None:\n            return None\n\n        def debug(self, *args, **kwargs) -> None:\n
+return None\n\n    logfire = _LogfireFallback()\n\ntry:\n    from grafico.core.logfire_config import
+configure_logfire\nexcept Exception:  # noqa: BLE001\n    def configure_logfire() -> None:\n
+return None\n\nfrom .bo import fit_surrogate, score_candidates\nfrom .evaluator import
+DirectArylationEvaluator\nfrom .space import build_candidate_pool, canonical_key,
+stratified_initial_design\n\nconfigure_logfire()\nlogfire.instrument_requests()\n")
+path.write_text(text)
 PY
-python -m py_compile run_direct_arylation_campaign.py direct_arylation_campaign/*.py
-
-- timeout_seconds: `30`
-
-### 24. tool / tool-return / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 41, 737688, tzinfo=datetime.timezone.utc)`
-- tool: `bash_exec`
-- outcome: `success`
-
-- exit_code: `0`
-
-#### stdout
-
-_empty_
-
-#### stderr
-
-_empty_
-
-### 25. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 44, 861547, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 19840,
-  "details": {
-    "reasoning_tokens": 14
-  },
-  "input_tokens": 20918,
-  "output_tokens": 118
-}
-```
-
-**Considering a smoke test**
-
-I’m thinking about rerunning a smoke test, and I might budget around 4 for it. I'm unsure if that's
-sufficient or if I need to adjust my expectations. I want to make sure I’m doing it right. Am I
-forgetting anything? Should I consider other factors before proceeding? It seems crucial to ensure
-everything is functioning well, so I want to make the best decision possible!
-
-### 26. assistant / tool-call / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 44, 861547, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- tool: `bash_exec`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 19840,
-  "details": {
-    "reasoning_tokens": 14
-  },
-  "input_tokens": 20918,
-  "output_tokens": 118
-}
-```
-
-- command:
-
-set -euo pipefail
-${PYTHON_EXECUTABLE:-python} -u run_direct_arylation_campaign.py --dry-run --budget 4 --n-initial 3
---output smoke_results.json --manifest smoke_manifest.json --cache-buster-nonce
-9be503fc-ec3e-4db1-9e94-53bcf920f41e
+${PYTHON_EXECUTABLE:-python} -m py_compile run_direct_arylation_campaign.py
+direct_arylation_campaign/*.py
+PYTHONUNBUFFERED=1 ${PYTHON_EXECUTABLE:-python} run_direct_arylation_campaign.py --preflight
 
 - timeout_seconds: `120`
 
-### 27. tool / tool-return / bash_exec
+### 21. tool / tool-return / bash_exec
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 45, 387527, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 38, 816971, tzinfo=datetime.timezone.utc)`
 - tool: `bash_exec`
 - outcome: `success`
 
@@ -1375,11 +1175,209 @@ ${PYTHON_EXECUTABLE:-python} -u run_direct_arylation_campaign.py --dry-run --bud
 #### stdout
 
 ```text
-[01/4] success yield= 74.07% base=Potassium pivalate; ligand=Methyldiphenylphosphine; solvent=DMAc; concentration=0.1; temperature_c=120
-[02/4] success yield= 78.09% base=Potassium pivalate; ligand=JackiePhos; solvent=Butyl Ester; concentration=0.1; temperature_c=105
-[03/4] success yield= 46.01% base=Cesium pivalate; ligand=P(2-furyl)3; solvent=DMAc; concentration=0.153; temperature_c=105
-[04/4] success yield= 55.20% base=Potassium acetate; ligand=Me2PPh; solvent=Butyornitrile; concentration=0.153; temperature_c=90
-Campaign complete: attempted=4 successful=4 best_yield=78.09
+Preflight OK
+{
+  "case_id": "direct_arylation",
+  "objective_name": "yield",
+  "objective_direction": "maximize",
+  "objective_unit": "percent",
+  "planned_budget": 60,
+  "environment": {
+    "DIRECT_ARYLATION_API_URL_set": true
+  },
+  "search_space": {
+    "parameters": [
+      "base",
+      "ligand",
+      "solvent",
+      "concentration",
+      "temperature_c"
+    ],
+    "search_space_size": 1728
+  },
+  "execution": {
+    "strategy": "12-point stratified random initial design followed by random-forest UCB with mutation and random candidate pools",
+    "results_path": "local_results.json",
+    "manifest_path": "campaign_manifest.json"
+  },
+  "checked_at": "2026-08-12T03:07:38.552180+00:00"
+}
+```
+
+#### stderr
+
+```text
+/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_campaign/campaign.py:36: LogfireNotConfiguredWarning: Instrumentation will have no effect until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.instrument_requests()
+
+/app/outputs/cells/direct_arylation_no_bo_gpt_r01/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_campaign/campaign.py:128: LogfireNotConfiguredWarning: No logs or spans will be created until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.info("starting direct arylation campaign", budget=budget, seed=seed, preflight=preflight)
+```
+
+### 22. assistant / thinking
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 46, 56600, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 18816,
+  "details": {
+    "reasoning_tokens": 69
+  },
+  "input_tokens": 20350,
+  "output_tokens": 208
+}
+```
+
+**Executing a production run**
+
+I think I need to suppress warnings by setting `LOGFIRE_IGNORE_NO_CONFIG=1` during execution. That
+seems like a fine approach. I also want to ensure the production run has a timestamped log file and
+preserves the exit status. Maybe I should first conduct a short real smoke test? Instructions seem
+to prefer a non-objective preflight, so I’ll get that done. Now, I'm ready for the full 60-run
+production with possibly a longer timeout. Let's go ahead and run it!
+
+### 23. assistant / tool-call / bash_exec
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 7, 46, 56600, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- tool: `bash_exec`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 18816,
+  "details": {
+    "reasoning_tokens": 69
+  },
+  "input_tokens": 20350,
+  "output_tokens": 208
+}
+```
+
+- command:
+
+set -euo pipefail
+log_file="direct_arylation_run_$(date -u +%Y%m%dT%H%M%SZ).log"
+echo "Writing log to $log_file"
+LOGFIRE_IGNORE_NO_CONFIG=1 PYTHONUNBUFFERED=1 ${PYTHON_EXECUTABLE:-python}
+run_direct_arylation_campaign.py --budget 60 2>&1 | tee "$log_file"
+status=${PIPESTATUS[0]}
+echo "PROCESS_EXIT_STATUS=$status"
+exit $status
+
+- timeout_seconds: `3600`
+
+### 24. tool / tool-return / bash_exec
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 0, 370232, tzinfo=datetime.timezone.utc)`
+- tool: `bash_exec`
+- outcome: `success`
+
+- exit_code: `0`
+
+#### stdout
+
+```text
+Writing log to direct_arylation_run_20260812T030746Z.log
+Campaign complete
+Best yield: 100.0
+Best parameters: {"base": "Cesium acetate", "ligand": "SCHEMBL15068049", "solvent": "DMAc", "concentration": 0.153, "temperature_c": 105}
+Attempts: 60 | Successes: 60
+PROCESS_EXIT_STATUS=0
+```
+
+#### stderr
+
+_empty_
+
+### 25. assistant / thinking
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 3, 570999, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 19840,
+  "details": {
+    "reasoning_tokens": 23
+  },
+  "input_tokens": 20673,
+  "output_tokens": 264
+}
+```
+
+**Validating records**
+
+I need to inspect the local_results.json file to summarize or find the best entries while ensuring
+there are 60 unique records. It’s essential to validate the data to maintain accuracy! I want to
+make sure the summary reflects what's truly important while also adhering to the uniqueness
+requirement. Let's dive in and confirm that all of these details add up correctly! I’m curious about
+what I might find in there.
+
+### 26. assistant / tool-call / python_repl
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 3, 570999, tzinfo=datetime.timezone.utc)`
+- model: `gpt-5.4-2026-03-05`
+- tool: `python_repl`
+- usage:
+
+```json
+{
+  "cache_read_tokens": 19840,
+  "details": {
+    "reasoning_tokens": 23
+  },
+  "input_tokens": 20673,
+  "output_tokens": 264
+}
+```
+
+- code:
+
+import json
+from pathlib import Path
+p=Path('local_results.json')
+data=json.loads(p.read_text())
+print('keys', sorted(data.keys()))
+print('attempted', data['attempted_evaluations'], 'successful', data['successful_evaluations'],
+'completed', data['completed_evaluations'])
+print('best', data['best_objective_value'], data['best_parameters'])
+print('n results', len(data['results']))
+seen=set(); dup=0
+for r in data['results']:
+    k=tuple((k,r['parameter_values'][k]) for k in ['base','ligand','solvent','concentration','temperature_c'])
+    if k in seen: dup +=1
+    seen.add(k)
+print('duplicates', dup)
+print('statuses', sorted({r['status'] for r in data['results']}))
+print('first', data['results'][0])
+print('last', data['results'][-1])
+
+- timeout_seconds: `60`
+
+### 27. tool / tool-return / python_repl
+
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 3, 613215, tzinfo=datetime.timezone.utc)`
+- tool: `python_repl`
+- outcome: `success`
+
+- exit_code: `0`
+
+#### stdout
+
+```text
+keys ['attempted_evaluations', 'best_objective_value', 'best_parameters', 'case_id', 'completed_evaluations', 'objective_direction', 'objective_name', 'objective_unit', 'results', 'successful_evaluations']
+attempted 60 successful 60 completed 60
+best 100.0 {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.153, 'temperature_c': 105}
+n results 60
+duplicates 0
+statuses ['success']
+first {'evaluation_index': 1, 'batch_index': 1, 'batch_size': 1, 'parameter_values': {'base': 'Cesium acetate', 'ligand': 'JackiePhos', 'solvent': 'Butyl Ester', 'concentration': 0.153, 'temperature_c': 90}, 'status': 'success', 'recorded_at': '2026-08-12T03:07:47.268011+00:00', 'objective_values': {'yield': 3.38}}
+last {'evaluation_index': 60, 'batch_index': 60, 'batch_size': 1, 'parameter_values': {'base': 'Cesium pivalate', 'ligand': 'SCHEMBL15068049', 'solvent': 'DMAc', 'concentration': 0.1, 'temperature_c': 105}, 'status': 'success', 'recorded_at': '2026-08-12T03:08:00.112368+00:00', 'objective_values': {'yield': 91.11}}
 ```
 
 #### stderr
@@ -1388,68 +1386,58 @@ _empty_
 
 ### 28. assistant / thinking
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 50, 472637, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 8, 12116, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - usage:
 
 ```json
 {
-  "cache_read_tokens": 20864,
+  "cache_read_tokens": 19840,
   "details": {
-    "reasoning_tokens": 48
+    "reasoning_tokens": 166
   },
-  "input_tokens": 21259,
-  "output_tokens": 231
+  "input_tokens": 21311,
+  "output_tokens": 395
 }
 ```
 
-**Evaluating unique selections**
+### 29. assistant / tool-call / python_repl
 
-I'm looking at how to handle my observation set since it's still the same due to the length being
-less than six. I think I need to validate the uniqueness of any choices made. Okay, for the
-production run, I'll go with a count of 60. It’s a good idea to use logs for tracking, and I
-estimate it might take less than 30 seconds, but to be safe, let’s allow 300 seconds just in case.
-
-### 29. assistant / tool-call / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 50, 472637, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 8, 12116, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
-- tool: `bash_exec`
+- tool: `python_repl`
 - usage:
 
 ```json
 {
-  "cache_read_tokens": 20864,
+  "cache_read_tokens": 19840,
   "details": {
-    "reasoning_tokens": 48
+    "reasoning_tokens": 166
   },
-  "input_tokens": 21259,
-  "output_tokens": 231
+  "input_tokens": 21311,
+  "output_tokens": 395
 }
 ```
 
-- command:
+- code:
 
-set -euo pipefail
-TS=$(date +%Y%m%d_%H%M%S)
-LOG="direct_arylation_campaign_${TS}.log"
-set -o pipefail
-${PYTHON_EXECUTABLE:-python} -u run_direct_arylation_campaign.py \
-  --budget 60 \
-  --n-initial 12 \
-  --output local_results.json \
-  --manifest campaign_manifest.json \
-  --cache-buster-nonce 9be503fc-ec3e-4db1-9e94-53bcf920f41e | tee "$LOG"
-status=${PIPESTATUS[0]}
-echo "PROD_LOG=$LOG"
-exit $status
+import json
+from pathlib import Path
+rows=json.loads(Path('local_results.json').read_text())['results']
+for r in rows:
+    p=r['parameter_values']
+    y=r.get('objective_values',{}).get('yield')
+    if r['status']=='success':
+        print(f"{r['evaluation_index']:02d}. status=success | yield={y:.2f}% | base={p['base']} | ligand={p['ligand']} | solvent={p['solvent']} | concentration={p['concentration']} | temperature_c={p['temperature_c']}")
+    else:
+        print(f"{r['evaluation_index']:02d}. status=failed | reason={r['failure_reason']} | base={p['base']} | ligand={p['ligand']} | solvent={p['solvent']} | concentration={p['concentration']} | temperature_c={p['temperature_c']}")
 
-- timeout_seconds: `300`
+- timeout_seconds: `60`
 
-### 30. tool / tool-return / bash_exec
+### 30. tool / tool-return / python_repl
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 52, 476031, tzinfo=datetime.timezone.utc)`
-- tool: `bash_exec`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 8, 49425, tzinfo=datetime.timezone.utc)`
+- tool: `python_repl`
 - outcome: `success`
 
 - exit_code: `0`
@@ -1457,68 +1445,66 @@ exit $status
 #### stdout
 
 ```text
-[01/60] success yield=  6.22% base=Potassium acetate; ligand=(t-Bu)PhCPhos; solvent=Butyl Ester; concentration=0.057; temperature_c=120
-[02/60] success yield= 18.38% base=Potassium acetate; ligand=Tricyclohexylphosphine; solvent=DMAc; concentration=0.057; temperature_c=120
-[03/60] success yield=  0.00% base=Potassium acetate; ligand=Me2PPh; solvent=Butyornitrile; concentration=0.1; temperature_c=120
-[04/60] success yield=  0.74% base=Potassium pivalate; ligand=BrettPhos; solvent=DMAc; concentration=0.153; temperature_c=105
-[05/60] success yield= 37.93% base=Potassium pivalate; ligand=P(2-furyl)3; solvent=Butyornitrile; concentration=0.057; temperature_c=90
-[06/60] success yield= 28.06% base=Potassium pivalate; ligand=Methyldiphenylphosphine; solvent=DMAc; concentration=0.057; temperature_c=120
-[07/60] success yield=  3.67% base=Potassium pivalate; ligand=JackiePhos; solvent=Butyl Ester; concentration=0.057; temperature_c=90
-[08/60] success yield= 36.14% base=Cesium acetate; ligand=BrettPhos; solvent=p-Xylene; concentration=0.057; temperature_c=105
-[09/60] success yield= 10.39% base=Cesium acetate; ligand=(t-Bu)PhCPhos; solvent=Butyl Ester; concentration=0.057; temperature_c=105
-[10/60] success yield= 17.43% base=Cesium pivalate; ligand=(t-Bu)PhCPhos; solvent=DMAc; concentration=0.1; temperature_c=120
-[11/60] success yield=  0.00% base=Cesium pivalate; ligand=(t-Bu)PhCPhos; solvent=Butyl Ester; concentration=0.153; temperature_c=105
-[12/60] success yield= 68.31% base=Cesium pivalate; ligand=XPhos; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[13/60] success yield= 66.03% base=Cesium acetate; ligand=XPhos; solvent=p-Xylene; concentration=0.153; temperature_c=90
-[14/60] success yield= 44.28% base=Cesium pivalate; ligand=XPhos; solvent=p-Xylene; concentration=0.153; temperature_c=90
-[15/60] success yield= 70.80% base=Cesium acetate; ligand=XPhos; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[16/60] success yield= 11.49% base=Cesium acetate; ligand=1268824-69-6; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[17/60] success yield= 40.04% base=Cesium acetate; ligand=P(2-furyl)3; solvent=p-Xylene; concentration=0.153; temperature_c=90
-[18/60] success yield=  0.00% base=Cesium acetate; ligand=XPhos; solvent=Butyornitrile; concentration=0.153; temperature_c=90
-[19/60] success yield= 14.29% base=Cesium pivalate; ligand=P(2-furyl)3; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[20/60] success yield= 34.98% base=Cesium pivalate; ligand=XPhos; solvent=p-Xylene; concentration=0.057; temperature_c=90
-[21/60] success yield= 19.55% base=Potassium acetate; ligand=PPh3; solvent=DMAc; concentration=0.057; temperature_c=90
-[22/60] success yield=  0.00% base=Cesium pivalate; ligand=Di-tert-butylphenylphosphine; solvent=p-Xylene; concentration=0.153; temperature_c=90
-[23/60] success yield= 62.15% base=Potassium pivalate; ligand=XPhos; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[24/60] success yield= 77.01% base=Cesium acetate; ligand=XPhos; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[25/60] success yield= 99.98% base=Cesium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[26/60] success yield=  0.00% base=Cesium acetate; ligand=Methyldiphenylphosphine; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[27/60] success yield= 44.47% base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[28/60] success yield= 84.49% base=Cesium acetate; ligand=XPhos; solvent=DMAc; concentration=0.153; temperature_c=120
-[29/60] success yield= 99.22% base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=120
-[30/60] success yield= 98.38% base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=120
-[31/60] success yield= 99.81% base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=120
-[32/60] success yield= 58.13% base=Cesium pivalate; ligand=1268824-69-6; solvent=Butyornitrile; concentration=0.057; temperature_c=120
-[33/60] success yield= 92.19% base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=120
-[34/60] success yield= 80.86% base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[35/60] success yield=  0.00% base=Potassium acetate; ligand=Me2PPh; solvent=Butyl Ester; concentration=0.153; temperature_c=90
-[36/60] success yield= 80.65% base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[37/60] success yield= 71.81% base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[38/60] success yield= 18.61% base=Cesium acetate; ligand=Tricyclohexylphosphine; solvent=DMAc; concentration=0.153; temperature_c=120
-[39/60] success yield= 60.29% base=Potassium acetate; ligand=SCHEMBL15068049; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[40/60] success yield= 45.73% base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=Butyl Ester; concentration=0.153; temperature_c=120
-[41/60] success yield= 80.39% base=Potassium pivalate; ligand=XPhos; solvent=DMAc; concentration=0.153; temperature_c=120
-[42/60] success yield= 84.67% base=Potassium acetate; ligand=XPhos; solvent=DMAc; concentration=0.153; temperature_c=120
-[43/60] success yield= 48.34% base=Cesium pivalate; ligand=XPhos; solvent=DMAc; concentration=0.153; temperature_c=120
-[44/60] success yield= 91.19% base=Cesium acetate; ligand=SCHEMBL15068049; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[45/60] success yield= 19.13% base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[46/60] success yield= 71.43% base=Potassium pivalate; ligand=XPhos; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[47/60] success yield=  0.00% base=Potassium acetate; ligand=Di-tert-butylphenylphosphine; solvent=Butyl Ester; concentration=0.057; temperature_c=90
-[48/60] success yield= 78.19% base=Cesium acetate; ligand=PPh3; solvent=DMAc; concentration=0.153; temperature_c=120
-[49/60] success yield= 79.10% base=Potassium pivalate; ligand=PPh3; solvent=DMAc; concentration=0.153; temperature_c=120
-[50/60] success yield=  8.90% base=Potassium pivalate; ligand=JackiePhos; solvent=p-Xylene; concentration=0.057; temperature_c=120
-[51/60] success yield= 40.26% base=Cesium acetate; ligand=1268824-69-6; solvent=DMAc; concentration=0.153; temperature_c=120
-[52/60] success yield= 19.64% base=Cesium acetate; ligand=PPh3; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[53/60] success yield= 78.93% base=Potassium pivalate; ligand=P(2-furyl)3; solvent=DMAc; concentration=0.153; temperature_c=120
-[54/60] success yield=  0.89% base=Potassium pivalate; ligand=BrettPhos; solvent=DMAc; concentration=0.153; temperature_c=120
-[55/60] success yield= 78.60% base=Potassium acetate; ligand=XPhos; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[56/60] success yield= 78.44% base=Cesium pivalate; ligand=XPhos; solvent=Butyornitrile; concentration=0.153; temperature_c=120
-[57/60] success yield= 61.67% base=Potassium acetate; ligand=XPhos; solvent=p-Xylene; concentration=0.153; temperature_c=120
-[58/60] success yield= 74.30% base=Cesium acetate; ligand=P(2-furyl)3; solvent=DMAc; concentration=0.153; temperature_c=120
-[59/60] success yield= 52.08% base=Potassium acetate; ligand=P(2-furyl)3; solvent=DMAc; concentration=0.153; temperature_c=120
-[60/60] success yield= 62.33% base=Cesium acetate; ligand=SCHEMBL15068049; solvent=Butyl Ester; concentration=0.153; temperature_c=120
-Campaign complete: attempted=60 successful=60 best_yield=99.98
-PROD_LOG=direct_arylation_campaign_20260730_183250.log
+01. status=success | yield=3.38% | base=Cesium acetate | ligand=JackiePhos | solvent=Butyl Ester | concentration=0.153 | temperature_c=90
+02. status=success | yield=0.00% | base=Potassium pivalate | ligand=Me2PPh | solvent=DMAc | concentration=0.1 | temperature_c=90
+03. status=success | yield=7.59% | base=Cesium pivalate | ligand=P(2-furyl)3 | solvent=p-Xylene | concentration=0.057 | temperature_c=90
+04. status=success | yield=12.07% | base=Potassium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=90
+05. status=success | yield=0.00% | base=Cesium acetate | ligand=Methyldiphenylphosphine | solvent=DMAc | concentration=0.1 | temperature_c=90
+06. status=success | yield=0.00% | base=Potassium pivalate | ligand=Di-tert-butylphenylphosphine | solvent=p-Xylene | concentration=0.057 | temperature_c=90
+07. status=success | yield=36.73% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.153 | temperature_c=90
+08. status=success | yield=28.11% | base=Potassium acetate | ligand=XPhos | solvent=Butyl Ester | concentration=0.1 | temperature_c=90
+09. status=success | yield=16.76% | base=Cesium acetate | ligand=(t-Bu)PhCPhos | solvent=p-Xylene | concentration=0.057 | temperature_c=90
+10. status=success | yield=0.85% | base=Potassium pivalate | ligand=PPh3 | solvent=Butyornitrile | concentration=0.153 | temperature_c=90
+11. status=success | yield=0.00% | base=Cesium pivalate | ligand=Tricyclohexylphosphine | solvent=Butyl Ester | concentration=0.1 | temperature_c=90
+12. status=success | yield=3.06% | base=Potassium acetate | ligand=1268824-69-6 | solvent=DMAc | concentration=0.057 | temperature_c=90
+13. status=success | yield=0.00% | base=Cesium pivalate | ligand=Me2PPh | solvent=Butyornitrile | concentration=0.153 | temperature_c=120
+14. status=success | yield=8.95% | base=Cesium pivalate | ligand=(t-Bu)PhCPhos | solvent=Butyornitrile | concentration=0.153 | temperature_c=90
+15. status=success | yield=18.19% | base=Cesium pivalate | ligand=1268824-69-6 | solvent=Butyornitrile | concentration=0.153 | temperature_c=90
+16. status=success | yield=6.10% | base=Cesium pivalate | ligand=PPh3 | solvent=Butyornitrile | concentration=0.153 | temperature_c=120
+17. status=success | yield=0.00% | base=Cesium pivalate | ligand=Me2PPh | solvent=Butyornitrile | concentration=0.153 | temperature_c=90
+18. status=success | yield=9.66% | base=Potassium acetate | ligand=BrettPhos | solvent=Butyornitrile | concentration=0.1 | temperature_c=90
+19. status=success | yield=0.00% | base=Cesium pivalate | ligand=Tricyclohexylphosphine | solvent=Butyornitrile | concentration=0.153 | temperature_c=90
+20. status=success | yield=16.04% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.1 | temperature_c=90
+21. status=success | yield=13.19% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.1 | temperature_c=90
+22. status=success | yield=17.93% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=Butyl Ester | concentration=0.1 | temperature_c=90
+23. status=success | yield=71.57% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.1 | temperature_c=120
+24. status=success | yield=75.46% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.057 | temperature_c=120
+25. status=success | yield=77.52% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.057 | temperature_c=120
+26. status=success | yield=96.64% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=120
+27. status=success | yield=31.14% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=p-Xylene | concentration=0.057 | temperature_c=120
+28. status=success | yield=33.69% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=Butyl Ester | concentration=0.057 | temperature_c=120
+29. status=success | yield=76.66% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.057 | temperature_c=120
+30. status=success | yield=80.86% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.153 | temperature_c=120
+31. status=success | yield=67.57% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.1 | temperature_c=120
+32. status=success | yield=36.66% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.057 | temperature_c=105
+33. status=success | yield=50.74% | base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=Butyornitrile | concentration=0.057 | temperature_c=120
+34. status=success | yield=60.29% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=p-Xylene | concentration=0.153 | temperature_c=120
+35. status=success | yield=46.42% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=Butyl Ester | concentration=0.057 | temperature_c=120
+36. status=success | yield=83.22% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.1 | temperature_c=120
+37. status=success | yield=98.38% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=120
+38. status=success | yield=92.19% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=120
+39. status=success | yield=99.22% | base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=120
+40. status=success | yield=92.03% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=120
+41. status=success | yield=89.95% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=120
+42. status=success | yield=99.81% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=120
+43. status=success | yield=0.89% | base=Potassium pivalate | ligand=BrettPhos | solvent=DMAc | concentration=0.153 | temperature_c=120
+44. status=success | yield=87.59% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.1 | temperature_c=120
+45. status=success | yield=100.00% | base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=105
+46. status=success | yield=98.49% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=105
+47. status=success | yield=87.00% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=105
+48. status=success | yield=91.39% | base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=105
+49. status=success | yield=100.00% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=105
+50. status=success | yield=90.39% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=105
+51. status=success | yield=83.25% | base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.1 | temperature_c=105
+52. status=success | yield=65.32% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=90
+53. status=success | yield=67.21% | base=Potassium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=105
+54. status=success | yield=61.09% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.153 | temperature_c=90
+55. status=success | yield=81.63% | base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.1 | temperature_c=120
+56. status=success | yield=95.48% | base=Cesium acetate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=120
+57. status=success | yield=83.85% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.1 | temperature_c=120
+58. status=success | yield=91.06% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.057 | temperature_c=105
+59. status=success | yield=89.76% | base=Potassium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.1 | temperature_c=105
+60. status=success | yield=91.11% | base=Cesium pivalate | ligand=SCHEMBL15068049 | solvent=DMAc | concentration=0.1 | temperature_c=105
 ```
 
 #### stderr
@@ -1527,7 +1513,7 @@ _empty_
 
 ### 31. assistant / thinking
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 57, 134755, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 26, 54354, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
 - usage:
 
@@ -1535,347 +1521,171 @@ _empty_
 {
   "cache_read_tokens": 20864,
   "details": {
-    "reasoning_tokens": 12
+    "reasoning_tokens": 182
   },
-  "input_tokens": 24257,
-  "output_tokens": 388
+  "input_tokens": 24526,
+  "output_tokens": 3003
 }
 ```
 
-### 32. assistant / tool-call / bash_exec
+### 32. assistant / text
 
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 57, 134755, tzinfo=datetime.timezone.utc)`
+- timestamp: `datetime.datetime(2026, 8, 12, 3, 8, 26, 54354, tzinfo=datetime.timezone.utc)`
 - model: `gpt-5.4-2026-03-05`
-- tool: `bash_exec`
 - usage:
 
 ```json
 {
   "cache_read_tokens": 20864,
   "details": {
-    "reasoning_tokens": 12
+    "reasoning_tokens": 182
   },
-  "input_tokens": 24257,
-  "output_tokens": 388
+  "input_tokens": 24526,
+  "output_tokens": 3003
 }
 ```
 
-- command:
+Nonce: `0818b64a-80ec-4392-98e3-330c51436495`
 
-set -euo pipefail
-python - <<'PY'
-import json
-from pathlib import Path
-p = Path('local_results.json')
-obj = json.loads(p.read_text())
-assert obj['attempted_evaluations'] == 60, obj['attempted_evaluations']
-assert len(obj['results']) == 60, len(obj['results'])
-assert obj['objective_name'] == 'yield'
-assert obj['objective_direction'] == 'maximize'
-seen = set()
-completed = 0
-for i, rec in enumerate(obj['results'], start=1):
-    assert rec['evaluation_index'] == i
-    assert rec['batch_index'] == i
-    assert rec['batch_size'] == 1
-    pv = rec['parameter_values']
-    assert set(pv) == {'base','ligand','solvent','concentration','temperature_c'}
-    key = tuple(pv[k] for k in ['base','ligand','solvent','concentration','temperature_c'])
-    assert key not in seen, f'duplicate {key}'
-    seen.add(key)
-    assert rec['status'] in {'success','failed'}
-    if rec['status'] == 'success':
-        completed += 1
-        ov = rec['objective_values']
-        assert isinstance(ov, dict) and 'yield' in ov and isinstance(ov['yield'], (int, float))
-    else:
-        assert rec['failure_reason']
-print('validated', p, 'completed', completed, 'best', obj['best_objective_value'])
-PY
-
-- timeout_seconds: `30`
-
-### 33. tool / tool-return / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 32, 57, 179931, tzinfo=datetime.timezone.utc)`
-- tool: `bash_exec`
-- outcome: `success`
-
-- exit_code: `0`
-
-#### stdout
-
-```text
-validated local_results.json completed 60 best 99.98
-```
-
-#### stderr
-
-_empty_
-
-### 34. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 33, 3, 579088, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 23936,
-  "details": {
-    "reasoning_tokens": 95
-  },
-  "input_tokens": 24679,
-  "output_tokens": 322
-}
-```
-
-**Exploring parameter options**
-
-I’m considering what the best parameters might be, possibly checking those recorded in JSON. I could
-look into getting the relative path absolute as well. I think producing all evaluated candidates and
-their values could be useful, rather than hand-typing out 60 rows. It might be better to generate a
-compact TSV from JSON. Also, I need to gather a summary, but I want to preserve the evaluation
-order. I might use Python for printing a markdown table or a compact list.
-
-### 35. assistant / tool-call / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 33, 3, 579088, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- tool: `bash_exec`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 23936,
-  "details": {
-    "reasoning_tokens": 95
-  },
-  "input_tokens": 24679,
-  "output_tokens": 322
-}
-```
-
-- command:
-
-set -euo pipefail
-python - <<'PY'
-import json
-obj = json.load(open('local_results.json'))
-print('BEST_PARAMETERS', obj['best_parameters'])
-print('BEST_OBJECTIVE', obj['best_objective_value'])
-print('ATTEMPTED', obj['attempted_evaluations'])
-print('COMPLETED', obj['completed_evaluations'])
-print('\nCOMPACT_ROWS')
-for rec in obj['results']:
-    pv = rec['parameter_values']
-    y = rec['objective_values']['yield'] if rec['objective_values'] else None
-    print(f"{rec['evaluation_index']:02d}\t{rec['status']}\t{y}\t{pv['base']}\t{pv['ligand']}\t{pv['solvent']}\t{pv['concentration']}\t{pv['temperature_c']}")
-PY
-
-- timeout_seconds: `30`
-
-### 36. tool / tool-return / bash_exec
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 33, 3, 626655, tzinfo=datetime.timezone.utc)`
-- tool: `bash_exec`
-- outcome: `success`
-
-- exit_code: `0`
-
-#### stdout
-
-```text
-BEST_PARAMETERS {'base': 'Cesium acetate', 'ligand': 'SCHEMBL15068049', 'solvent': 'Butyornitrile', 'concentration': 0.153, 'temperature_c': 120}
-BEST_OBJECTIVE 99.98
-ATTEMPTED 60
-COMPLETED 60
-
-COMPACT_ROWS
-01	success	6.22	Potassium acetate	(t-Bu)PhCPhos	Butyl Ester	0.057	120
-02	success	18.38	Potassium acetate	Tricyclohexylphosphine	DMAc	0.057	120
-03	success	0.0	Potassium acetate	Me2PPh	Butyornitrile	0.1	120
-04	success	0.74	Potassium pivalate	BrettPhos	DMAc	0.153	105
-05	success	37.93	Potassium pivalate	P(2-furyl)3	Butyornitrile	0.057	90
-06	success	28.06	Potassium pivalate	Methyldiphenylphosphine	DMAc	0.057	120
-07	success	3.67	Potassium pivalate	JackiePhos	Butyl Ester	0.057	90
-08	success	36.14	Cesium acetate	BrettPhos	p-Xylene	0.057	105
-09	success	10.39	Cesium acetate	(t-Bu)PhCPhos	Butyl Ester	0.057	105
-10	success	17.43	Cesium pivalate	(t-Bu)PhCPhos	DMAc	0.1	120
-11	success	0.0	Cesium pivalate	(t-Bu)PhCPhos	Butyl Ester	0.153	105
-12	success	68.31	Cesium pivalate	XPhos	p-Xylene	0.153	120
-13	success	66.03	Cesium acetate	XPhos	p-Xylene	0.153	90
-14	success	44.28	Cesium pivalate	XPhos	p-Xylene	0.153	90
-15	success	70.8	Cesium acetate	XPhos	p-Xylene	0.153	120
-16	success	11.49	Cesium acetate	1268824-69-6	p-Xylene	0.153	120
-17	success	40.04	Cesium acetate	P(2-furyl)3	p-Xylene	0.153	90
-18	success	0.0	Cesium acetate	XPhos	Butyornitrile	0.153	90
-19	success	14.29	Cesium pivalate	P(2-furyl)3	p-Xylene	0.153	120
-20	success	34.98	Cesium pivalate	XPhos	p-Xylene	0.057	90
-21	success	19.55	Potassium acetate	PPh3	DMAc	0.057	90
-22	success	0.0	Cesium pivalate	Di-tert-butylphenylphosphine	p-Xylene	0.153	90
-23	success	62.15	Potassium pivalate	XPhos	p-Xylene	0.153	120
-24	success	77.01	Cesium acetate	XPhos	Butyornitrile	0.153	120
-25	success	99.98	Cesium acetate	SCHEMBL15068049	Butyornitrile	0.153	120
-26	success	0.0	Cesium acetate	Methyldiphenylphosphine	Butyornitrile	0.153	120
-27	success	44.47	Potassium pivalate	SCHEMBL15068049	p-Xylene	0.153	120
-28	success	84.49	Cesium acetate	XPhos	DMAc	0.153	120
-29	success	99.22	Cesium acetate	SCHEMBL15068049	DMAc	0.153	120
-30	success	98.38	Potassium acetate	SCHEMBL15068049	DMAc	0.153	120
-31	success	99.81	Potassium pivalate	SCHEMBL15068049	DMAc	0.153	120
-32	success	58.13	Cesium pivalate	1268824-69-6	Butyornitrile	0.057	120
-33	success	92.19	Cesium pivalate	SCHEMBL15068049	DMAc	0.153	120
-34	success	80.86	Potassium acetate	SCHEMBL15068049	Butyornitrile	0.153	120
-35	success	0.0	Potassium acetate	Me2PPh	Butyl Ester	0.153	90
-36	success	80.65	Potassium pivalate	SCHEMBL15068049	Butyornitrile	0.153	120
-37	success	71.81	Cesium pivalate	SCHEMBL15068049	Butyornitrile	0.153	120
-38	success	18.61	Cesium acetate	Tricyclohexylphosphine	DMAc	0.153	120
-39	success	60.29	Potassium acetate	SCHEMBL15068049	p-Xylene	0.153	120
-40	success	45.73	Potassium pivalate	SCHEMBL15068049	Butyl Ester	0.153	120
-41	success	80.39	Potassium pivalate	XPhos	DMAc	0.153	120
-42	success	84.67	Potassium acetate	XPhos	DMAc	0.153	120
-43	success	48.34	Cesium pivalate	XPhos	DMAc	0.153	120
-44	success	91.19	Cesium acetate	SCHEMBL15068049	p-Xylene	0.153	120
-45	success	19.13	Cesium pivalate	SCHEMBL15068049	p-Xylene	0.153	120
-46	success	71.43	Potassium pivalate	XPhos	Butyornitrile	0.153	120
-47	success	0.0	Potassium acetate	Di-tert-butylphenylphosphine	Butyl Ester	0.057	90
-48	success	78.19	Cesium acetate	PPh3	DMAc	0.153	120
-49	success	79.1	Potassium pivalate	PPh3	DMAc	0.153	120
-50	success	8.9	Potassium pivalate	JackiePhos	p-Xylene	0.057	120
-51	success	40.26	Cesium acetate	1268824-69-6	DMAc	0.153	120
-52	success	19.64	Cesium acetate	PPh3	Butyornitrile	0.153	120
-53	success	78.93	Potassium pivalate	P(2-furyl)3	DMAc	0.153	120
-54	success	0.89	Potassium pivalate	BrettPhos	DMAc	0.153	120
-55	success	78.6	Potassium acetate	XPhos	Butyornitrile	0.153	120
-56	success	78.44	Cesium pivalate	XPhos	Butyornitrile	0.153	120
-57	success	61.67	Potassium acetate	XPhos	p-Xylene	0.153	120
-58	success	74.3	Cesium acetate	P(2-furyl)3	DMAc	0.153	120
-59	success	52.08	Potassium acetate	P(2-furyl)3	DMAc	0.153	120
-60	success	62.33	Cesium acetate	SCHEMBL15068049	Butyl Ester	0.153	120
-```
-
-#### stderr
-
-_empty_
-
-### 37. assistant / thinking
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 33, 19, 523092, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 23936,
-  "details": {
-    "reasoning_tokens": 238
-  },
-  "input_tokens": 26775,
-  "output_tokens": 2153
-}
-```
-
-### 38. assistant / text
-
-- timestamp: `datetime.datetime(2026, 7, 30, 18, 33, 19, 523092, tzinfo=datetime.timezone.utc)`
-- model: `gpt-5.4-2026-03-05`
-- usage:
-
-```json
-{
-  "cache_read_tokens": 23936,
-  "details": {
-    "reasoning_tokens": 238
-  },
-  "input_tokens": 26775,
-  "output_tokens": 2153
-}
-```
-
-Repeated cache-buster nonce: `9be503fc-ec3e-4db1-9e94-53bcf920f41e`
-
-Best conditions:
+Best reaction conditions:
 - `base`: `Cesium acetate`
 - `ligand`: `SCHEMBL15068049`
-- `solvent`: `Butyornitrile`
+- `solvent`: `DMAc`
 - `concentration`: `0.153`
-- `temperature_c`: `120`
+- `temperature_c`: `105`
 
 Best measured yield:
-- `99.98 percent`
+- `100.0 percent`
 
 Evaluation counts:
 - Attempted evaluations: `60`
 - Successful evaluations: `60`
 - Failed evaluations: `0`
 
-Ordered attempt log:
-```text
-idx,status,yield,base,ligand,solvent,concentration,temperature_c
-01,success,6.22,Potassium acetate,(t-Bu)PhCPhos,Butyl Ester,0.057,120
-02,success,18.38,Potassium acetate,Tricyclohexylphosphine,DMAc,0.057,120
-03,success,0.00,Potassium acetate,Me2PPh,Butyornitrile,0.1,120
-04,success,0.74,Potassium pivalate,BrettPhos,DMAc,0.153,105
-05,success,37.93,Potassium pivalate,P(2-furyl)3,Butyornitrile,0.057,90
-06,success,28.06,Potassium pivalate,Methyldiphenylphosphine,DMAc,0.057,120
-07,success,3.67,Potassium pivalate,JackiePhos,Butyl Ester,0.057,90
-08,success,36.14,Cesium acetate,BrettPhos,p-Xylene,0.057,105
-09,success,10.39,Cesium acetate,(t-Bu)PhCPhos,Butyl Ester,0.057,105
-10,success,17.43,Cesium pivalate,(t-Bu)PhCPhos,DMAc,0.1,120
-11,success,0.00,Cesium pivalate,(t-Bu)PhCPhos,Butyl Ester,0.153,105
-12,success,68.31,Cesium pivalate,XPhos,p-Xylene,0.153,120
-13,success,66.03,Cesium acetate,XPhos,p-Xylene,0.153,90
-14,success,44.28,Cesium pivalate,XPhos,p-Xylene,0.153,90
-15,success,70.80,Cesium acetate,XPhos,p-Xylene,0.153,120
-16,success,11.49,Cesium acetate,1268824-69-6,p-Xylene,0.153,120
-17,success,40.04,Cesium acetate,P(2-furyl)3,p-Xylene,0.153,90
-18,success,0.00,Cesium acetate,XPhos,Butyornitrile,0.153,90
-19,success,14.29,Cesium pivalate,P(2-furyl)3,p-Xylene,0.153,120
-20,success,34.98,Cesium pivalate,XPhos,p-Xylene,0.057,90
-21,success,19.55,Potassium acetate,PPh3,DMAc,0.057,90
-22,success,0.00,Cesium pivalate,Di-tert-butylphenylphosphine,p-Xylene,0.153,90
-23,success,62.15,Potassium pivalate,XPhos,p-Xylene,0.153,120
-24,success,77.01,Cesium acetate,XPhos,Butyornitrile,0.153,120
-25,success,99.98,Cesium acetate,SCHEMBL15068049,Butyornitrile,0.153,120
-26,success,0.00,Cesium acetate,Methyldiphenylphosphine,Butyornitrile,0.153,120
-27,success,44.47,Potassium pivalate,SCHEMBL15068049,p-Xylene,0.153,120
-28,success,84.49,Cesium acetate,XPhos,DMAc,0.153,120
-29,success,99.22,Cesium acetate,SCHEMBL15068049,DMAc,0.153,120
-30,success,98.38,Potassium acetate,SCHEMBL15068049,DMAc,0.153,120
-31,success,99.81,Potassium pivalate,SCHEMBL15068049,DMAc,0.153,120
-32,success,58.13,Cesium pivalate,1268824-69-6,Butyornitrile,0.057,120
-33,success,92.19,Cesium pivalate,SCHEMBL15068049,DMAc,0.153,120
-34,success,80.86,Potassium acetate,SCHEMBL15068049,Butyornitrile,0.153,120
-35,success,0.00,Potassium acetate,Me2PPh,Butyl Ester,0.153,90
-36,success,80.65,Potassium pivalate,SCHEMBL15068049,Butyornitrile,0.153,120
-37,success,71.81,Cesium pivalate,SCHEMBL15068049,Butyornitrile,0.153,120
-38,success,18.61,Cesium acetate,Tricyclohexylphosphine,DMAc,0.153,120
-39,success,60.29,Potassium acetate,SCHEMBL15068049,p-Xylene,0.153,120
-40,success,45.73,Potassium pivalate,SCHEMBL15068049,Butyl Ester,0.153,120
-41,success,80.39,Potassium pivalate,XPhos,DMAc,0.153,120
-42,success,84.67,Potassium acetate,XPhos,DMAc,0.153,120
-43,success,48.34,Cesium pivalate,XPhos,DMAc,0.153,120
-44,success,91.19,Cesium acetate,SCHEMBL15068049,p-Xylene,0.153,120
-45,success,19.13,Cesium pivalate,SCHEMBL15068049,p-Xylene,0.153,120
-46,success,71.43,Potassium pivalate,XPhos,Butyornitrile,0.153,120
-47,success,0.00,Potassium acetate,Di-tert-butylphenylphosphine,Butyl Ester,0.057,90
-48,success,78.19,Cesium acetate,PPh3,DMAc,0.153,120
-49,success,79.10,Potassium pivalate,PPh3,DMAc,0.153,120
-50,success,8.90,Potassium pivalate,JackiePhos,p-Xylene,0.057,120
-51,success,40.26,Cesium acetate,1268824-69-6,DMAc,0.153,120
-52,success,19.64,Cesium acetate,PPh3,Butyornitrile,0.153,120
-53,success,78.93,Potassium pivalate,P(2-furyl)3,DMAc,0.153,120
-54,success,0.89,Potassium pivalate,BrettPhos,DMAc,0.153,120
-55,success,78.60,Potassium acetate,XPhos,Butyornitrile,0.153,120
-56,success,78.44,Cesium pivalate,XPhos,Butyornitrile,0.153,120
-57,success,61.67,Potassium acetate,XPhos,p-Xylene,0.153,120
-58,success,74.30,Cesium acetate,P(2-furyl)3,DMAc,0.153,120
-59,success,52.08,Potassium acetate,P(2-furyl)3,DMAc,0.153,120
-60,success,62.33,Cesium acetate,SCHEMBL15068049,Butyl Ester,0.153,120
-```
+All evaluated candidates:
+1. success, yield=3.38% — base=Cesium acetate; ligand=JackiePhos; solvent=Butyl Ester;
+concentration=0.153; temperature_c=90
+2. success, yield=0.00% — base=Potassium pivalate; ligand=Me2PPh; solvent=DMAc; concentration=0.1;
+temperature_c=90
+3. success, yield=7.59% — base=Cesium pivalate; ligand=P(2-furyl)3; solvent=p-Xylene;
+concentration=0.057; temperature_c=90
+4. success, yield=12.07% — base=Potassium acetate; ligand=BrettPhos; solvent=Butyornitrile;
+concentration=0.153; temperature_c=90
+5. success, yield=0.00% — base=Cesium acetate; ligand=Methyldiphenylphosphine; solvent=DMAc;
+concentration=0.1; temperature_c=90
+6. success, yield=0.00% — base=Potassium pivalate; ligand=Di-tert-butylphenylphosphine;
+solvent=p-Xylene; concentration=0.057; temperature_c=90
+7. success, yield=36.73% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.153; temperature_c=90
+8. success, yield=28.11% — base=Potassium acetate; ligand=XPhos; solvent=Butyl Ester;
+concentration=0.1; temperature_c=90
+9. success, yield=16.76% — base=Cesium acetate; ligand=(t-Bu)PhCPhos; solvent=p-Xylene;
+concentration=0.057; temperature_c=90
+10. success, yield=0.85% — base=Potassium pivalate; ligand=PPh3; solvent=Butyornitrile;
+concentration=0.153; temperature_c=90
+11. success, yield=0.00% — base=Cesium pivalate; ligand=Tricyclohexylphosphine; solvent=Butyl Ester;
+concentration=0.1; temperature_c=90
+12. success, yield=3.06% — base=Potassium acetate; ligand=1268824-69-6; solvent=DMAc;
+concentration=0.057; temperature_c=90
+13. success, yield=0.00% — base=Cesium pivalate; ligand=Me2PPh; solvent=Butyornitrile;
+concentration=0.153; temperature_c=120
+14. success, yield=8.95% — base=Cesium pivalate; ligand=(t-Bu)PhCPhos; solvent=Butyornitrile;
+concentration=0.153; temperature_c=90
+15. success, yield=18.19% — base=Cesium pivalate; ligand=1268824-69-6; solvent=Butyornitrile;
+concentration=0.153; temperature_c=90
+16. success, yield=6.10% — base=Cesium pivalate; ligand=PPh3; solvent=Butyornitrile;
+concentration=0.153; temperature_c=120
+17. success, yield=0.00% — base=Cesium pivalate; ligand=Me2PPh; solvent=Butyornitrile;
+concentration=0.153; temperature_c=90
+18. success, yield=9.66% — base=Potassium acetate; ligand=BrettPhos; solvent=Butyornitrile;
+concentration=0.1; temperature_c=90
+19. success, yield=0.00% — base=Cesium pivalate; ligand=Tricyclohexylphosphine;
+solvent=Butyornitrile; concentration=0.153; temperature_c=90
+20. success, yield=16.04% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.1; temperature_c=90
+21. success, yield=13.19% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.1; temperature_c=90
+22. success, yield=17.93% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyl Ester;
+concentration=0.1; temperature_c=90
+23. success, yield=71.57% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.1; temperature_c=120
+24. success, yield=75.46% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.057; temperature_c=120
+25. success, yield=77.52% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.057; temperature_c=120
+26. success, yield=96.64% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=120
+27. success, yield=31.14% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=p-Xylene;
+concentration=0.057; temperature_c=120
+28. success, yield=33.69% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=Butyl Ester;
+concentration=0.057; temperature_c=120
+29. success, yield=76.66% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.057; temperature_c=120
+30. success, yield=80.86% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.153; temperature_c=120
+31. success, yield=67.57% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.1; temperature_c=120
+32. success, yield=36.66% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.057; temperature_c=105
+33. success, yield=50.74% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile;
+concentration=0.057; temperature_c=120
+34. success, yield=60.29% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=p-Xylene;
+concentration=0.153; temperature_c=120
+35. success, yield=46.42% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyl Ester;
+concentration=0.057; temperature_c=120
+36. success, yield=83.22% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.1; temperature_c=120
+37. success, yield=98.38% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=120
+38. success, yield=92.19% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=120
+39. success, yield=99.22% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=120
+40. success, yield=92.03% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=120
+41. success, yield=89.95% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=120
+42. success, yield=99.81% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=120
+43. success, yield=0.89% — base=Potassium pivalate; ligand=BrettPhos; solvent=DMAc;
+concentration=0.153; temperature_c=120
+44. success, yield=87.59% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.1; temperature_c=120
+45. success, yield=100.00% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=105
+46. success, yield=98.49% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=105
+47. success, yield=87.00% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=105
+48. success, yield=91.39% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=105
+49. success, yield=100.00% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=105
+50. success, yield=90.39% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=105
+51. success, yield=83.25% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.1; temperature_c=105
+52. success, yield=65.32% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=90
+53. success, yield=67.21% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=105
+54. success, yield=61.09% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.153; temperature_c=90
+55. success, yield=81.63% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.1; temperature_c=120
+56. success, yield=95.48% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=120
+57. success, yield=83.85% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.1; temperature_c=120
+58. success, yield=91.06% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.057; temperature_c=105
+59. success, yield=89.76% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.1; temperature_c=105
+60. success, yield=91.11% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc;
+concentration=0.1; temperature_c=105
 
 LOCAL_RESULT_PATH=local_results.json
-LOCAL_BEST_OBJECTIVE=99.98
+LOCAL_BEST_OBJECTIVE=100.0
 
 ## Subagent Task Summaries
 
@@ -1892,87 +1702,84 @@ No subagent task handles captured.
 
 ## Final Answer
 
-Repeated cache-buster nonce: `9be503fc-ec3e-4db1-9e94-53bcf920f41e`
+Nonce: `0818b64a-80ec-4392-98e3-330c51436495`
 
-Best conditions:
+Best reaction conditions:
 - `base`: `Cesium acetate`
 - `ligand`: `SCHEMBL15068049`
-- `solvent`: `Butyornitrile`
+- `solvent`: `DMAc`
 - `concentration`: `0.153`
-- `temperature_c`: `120`
+- `temperature_c`: `105`
 
 Best measured yield:
-- `99.98 percent`
+- `100.0 percent`
 
 Evaluation counts:
 - Attempted evaluations: `60`
 - Successful evaluations: `60`
 - Failed evaluations: `0`
 
-Ordered attempt log:
-```text
-idx,status,yield,base,ligand,solvent,concentration,temperature_c
-01,success,6.22,Potassium acetate,(t-Bu)PhCPhos,Butyl Ester,0.057,120
-02,success,18.38,Potassium acetate,Tricyclohexylphosphine,DMAc,0.057,120
-03,success,0.00,Potassium acetate,Me2PPh,Butyornitrile,0.1,120
-04,success,0.74,Potassium pivalate,BrettPhos,DMAc,0.153,105
-05,success,37.93,Potassium pivalate,P(2-furyl)3,Butyornitrile,0.057,90
-06,success,28.06,Potassium pivalate,Methyldiphenylphosphine,DMAc,0.057,120
-07,success,3.67,Potassium pivalate,JackiePhos,Butyl Ester,0.057,90
-08,success,36.14,Cesium acetate,BrettPhos,p-Xylene,0.057,105
-09,success,10.39,Cesium acetate,(t-Bu)PhCPhos,Butyl Ester,0.057,105
-10,success,17.43,Cesium pivalate,(t-Bu)PhCPhos,DMAc,0.1,120
-11,success,0.00,Cesium pivalate,(t-Bu)PhCPhos,Butyl Ester,0.153,105
-12,success,68.31,Cesium pivalate,XPhos,p-Xylene,0.153,120
-13,success,66.03,Cesium acetate,XPhos,p-Xylene,0.153,90
-14,success,44.28,Cesium pivalate,XPhos,p-Xylene,0.153,90
-15,success,70.80,Cesium acetate,XPhos,p-Xylene,0.153,120
-16,success,11.49,Cesium acetate,1268824-69-6,p-Xylene,0.153,120
-17,success,40.04,Cesium acetate,P(2-furyl)3,p-Xylene,0.153,90
-18,success,0.00,Cesium acetate,XPhos,Butyornitrile,0.153,90
-19,success,14.29,Cesium pivalate,P(2-furyl)3,p-Xylene,0.153,120
-20,success,34.98,Cesium pivalate,XPhos,p-Xylene,0.057,90
-21,success,19.55,Potassium acetate,PPh3,DMAc,0.057,90
-22,success,0.00,Cesium pivalate,Di-tert-butylphenylphosphine,p-Xylene,0.153,90
-23,success,62.15,Potassium pivalate,XPhos,p-Xylene,0.153,120
-24,success,77.01,Cesium acetate,XPhos,Butyornitrile,0.153,120
-25,success,99.98,Cesium acetate,SCHEMBL15068049,Butyornitrile,0.153,120
-26,success,0.00,Cesium acetate,Methyldiphenylphosphine,Butyornitrile,0.153,120
-27,success,44.47,Potassium pivalate,SCHEMBL15068049,p-Xylene,0.153,120
-28,success,84.49,Cesium acetate,XPhos,DMAc,0.153,120
-29,success,99.22,Cesium acetate,SCHEMBL15068049,DMAc,0.153,120
-30,success,98.38,Potassium acetate,SCHEMBL15068049,DMAc,0.153,120
-31,success,99.81,Potassium pivalate,SCHEMBL15068049,DMAc,0.153,120
-32,success,58.13,Cesium pivalate,1268824-69-6,Butyornitrile,0.057,120
-33,success,92.19,Cesium pivalate,SCHEMBL15068049,DMAc,0.153,120
-34,success,80.86,Potassium acetate,SCHEMBL15068049,Butyornitrile,0.153,120
-35,success,0.00,Potassium acetate,Me2PPh,Butyl Ester,0.153,90
-36,success,80.65,Potassium pivalate,SCHEMBL15068049,Butyornitrile,0.153,120
-37,success,71.81,Cesium pivalate,SCHEMBL15068049,Butyornitrile,0.153,120
-38,success,18.61,Cesium acetate,Tricyclohexylphosphine,DMAc,0.153,120
-39,success,60.29,Potassium acetate,SCHEMBL15068049,p-Xylene,0.153,120
-40,success,45.73,Potassium pivalate,SCHEMBL15068049,Butyl Ester,0.153,120
-41,success,80.39,Potassium pivalate,XPhos,DMAc,0.153,120
-42,success,84.67,Potassium acetate,XPhos,DMAc,0.153,120
-43,success,48.34,Cesium pivalate,XPhos,DMAc,0.153,120
-44,success,91.19,Cesium acetate,SCHEMBL15068049,p-Xylene,0.153,120
-45,success,19.13,Cesium pivalate,SCHEMBL15068049,p-Xylene,0.153,120
-46,success,71.43,Potassium pivalate,XPhos,Butyornitrile,0.153,120
-47,success,0.00,Potassium acetate,Di-tert-butylphenylphosphine,Butyl Ester,0.057,90
-48,success,78.19,Cesium acetate,PPh3,DMAc,0.153,120
-49,success,79.10,Potassium pivalate,PPh3,DMAc,0.153,120
-50,success,8.90,Potassium pivalate,JackiePhos,p-Xylene,0.057,120
-51,success,40.26,Cesium acetate,1268824-69-6,DMAc,0.153,120
-52,success,19.64,Cesium acetate,PPh3,Butyornitrile,0.153,120
-53,success,78.93,Potassium pivalate,P(2-furyl)3,DMAc,0.153,120
-54,success,0.89,Potassium pivalate,BrettPhos,DMAc,0.153,120
-55,success,78.60,Potassium acetate,XPhos,Butyornitrile,0.153,120
-56,success,78.44,Cesium pivalate,XPhos,Butyornitrile,0.153,120
-57,success,61.67,Potassium acetate,XPhos,p-Xylene,0.153,120
-58,success,74.30,Cesium acetate,P(2-furyl)3,DMAc,0.153,120
-59,success,52.08,Potassium acetate,P(2-furyl)3,DMAc,0.153,120
-60,success,62.33,Cesium acetate,SCHEMBL15068049,Butyl Ester,0.153,120
-```
+All evaluated candidates:
+1. success, yield=3.38% — base=Cesium acetate; ligand=JackiePhos; solvent=Butyl Ester; concentration=0.153; temperature_c=90
+2. success, yield=0.00% — base=Potassium pivalate; ligand=Me2PPh; solvent=DMAc; concentration=0.1; temperature_c=90
+3. success, yield=7.59% — base=Cesium pivalate; ligand=P(2-furyl)3; solvent=p-Xylene; concentration=0.057; temperature_c=90
+4. success, yield=12.07% — base=Potassium acetate; ligand=BrettPhos; solvent=Butyornitrile; concentration=0.153; temperature_c=90
+5. success, yield=0.00% — base=Cesium acetate; ligand=Methyldiphenylphosphine; solvent=DMAc; concentration=0.1; temperature_c=90
+6. success, yield=0.00% — base=Potassium pivalate; ligand=Di-tert-butylphenylphosphine; solvent=p-Xylene; concentration=0.057; temperature_c=90
+7. success, yield=36.73% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.153; temperature_c=90
+8. success, yield=28.11% — base=Potassium acetate; ligand=XPhos; solvent=Butyl Ester; concentration=0.1; temperature_c=90
+9. success, yield=16.76% — base=Cesium acetate; ligand=(t-Bu)PhCPhos; solvent=p-Xylene; concentration=0.057; temperature_c=90
+10. success, yield=0.85% — base=Potassium pivalate; ligand=PPh3; solvent=Butyornitrile; concentration=0.153; temperature_c=90
+11. success, yield=0.00% — base=Cesium pivalate; ligand=Tricyclohexylphosphine; solvent=Butyl Ester; concentration=0.1; temperature_c=90
+12. success, yield=3.06% — base=Potassium acetate; ligand=1268824-69-6; solvent=DMAc; concentration=0.057; temperature_c=90
+13. success, yield=0.00% — base=Cesium pivalate; ligand=Me2PPh; solvent=Butyornitrile; concentration=0.153; temperature_c=120
+14. success, yield=8.95% — base=Cesium pivalate; ligand=(t-Bu)PhCPhos; solvent=Butyornitrile; concentration=0.153; temperature_c=90
+15. success, yield=18.19% — base=Cesium pivalate; ligand=1268824-69-6; solvent=Butyornitrile; concentration=0.153; temperature_c=90
+16. success, yield=6.10% — base=Cesium pivalate; ligand=PPh3; solvent=Butyornitrile; concentration=0.153; temperature_c=120
+17. success, yield=0.00% — base=Cesium pivalate; ligand=Me2PPh; solvent=Butyornitrile; concentration=0.153; temperature_c=90
+18. success, yield=9.66% — base=Potassium acetate; ligand=BrettPhos; solvent=Butyornitrile; concentration=0.1; temperature_c=90
+19. success, yield=0.00% — base=Cesium pivalate; ligand=Tricyclohexylphosphine; solvent=Butyornitrile; concentration=0.153; temperature_c=90
+20. success, yield=16.04% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.1; temperature_c=90
+21. success, yield=13.19% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.1; temperature_c=90
+22. success, yield=17.93% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyl Ester; concentration=0.1; temperature_c=90
+23. success, yield=71.57% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.1; temperature_c=120
+24. success, yield=75.46% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.057; temperature_c=120
+25. success, yield=77.52% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.057; temperature_c=120
+26. success, yield=96.64% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=120
+27. success, yield=31.14% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=p-Xylene; concentration=0.057; temperature_c=120
+28. success, yield=33.69% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=Butyl Ester; concentration=0.057; temperature_c=120
+29. success, yield=76.66% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.057; temperature_c=120
+30. success, yield=80.86% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.153; temperature_c=120
+31. success, yield=67.57% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.1; temperature_c=120
+32. success, yield=36.66% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.057; temperature_c=105
+33. success, yield=50.74% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=Butyornitrile; concentration=0.057; temperature_c=120
+34. success, yield=60.29% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=p-Xylene; concentration=0.153; temperature_c=120
+35. success, yield=46.42% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=Butyl Ester; concentration=0.057; temperature_c=120
+36. success, yield=83.22% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.1; temperature_c=120
+37. success, yield=98.38% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=120
+38. success, yield=92.19% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=120
+39. success, yield=99.22% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=120
+40. success, yield=92.03% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=120
+41. success, yield=89.95% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=120
+42. success, yield=99.81% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=120
+43. success, yield=0.89% — base=Potassium pivalate; ligand=BrettPhos; solvent=DMAc; concentration=0.153; temperature_c=120
+44. success, yield=87.59% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.1; temperature_c=120
+45. success, yield=100.00% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=105
+46. success, yield=98.49% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=105
+47. success, yield=87.00% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=105
+48. success, yield=91.39% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=105
+49. success, yield=100.00% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=105
+50. success, yield=90.39% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=105
+51. success, yield=83.25% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.1; temperature_c=105
+52. success, yield=65.32% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=90
+53. success, yield=67.21% — base=Potassium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=105
+54. success, yield=61.09% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.153; temperature_c=90
+55. success, yield=81.63% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.1; temperature_c=120
+56. success, yield=95.48% — base=Cesium acetate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=120
+57. success, yield=83.85% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.1; temperature_c=120
+58. success, yield=91.06% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.057; temperature_c=105
+59. success, yield=89.76% — base=Potassium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.1; temperature_c=105
+60. success, yield=91.11% — base=Cesium pivalate; ligand=SCHEMBL15068049; solvent=DMAc; concentration=0.1; temperature_c=105
 
 LOCAL_RESULT_PATH=local_results.json
-LOCAL_BEST_OBJECTIVE=99.98
+LOCAL_BEST_OBJECTIVE=100.0

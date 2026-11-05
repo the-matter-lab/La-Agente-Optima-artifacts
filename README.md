@@ -67,6 +67,14 @@ manuscript review; prior snapshot states are preserved in Git history.
 - `report/`: the full comparison report, figures, pricing rules, cost and budget
   audits, selection audit, plotting scripts, and integrity manifest.
 
+The Local-BO (`no_bo_gpt`) cells in `raw/` are from a run on 2026-08-12 in which
+all real objective calls, including smoke tests, count toward the 60-evaluation
+budget. The Ackley 6D cells are r04–r06 and the Shields arylation cells r01–r03
+of that run; they are the cells behind the manuscript's Local-BO values and were
+sanitized with `scripts/sanitize_snapshot.py`. `report/` and
+`source_controls/no_bo_gpt/` were built from an earlier set of Local-BO cells,
+which is in Git history.
+
 The published copies have been scanned and sanitized for API-key-shaped values.
 Original research-server evidence was not modified. Sanitization counts are in
 `snapshots/2026-08-08-current/SANITIZATION_REPORT.json`.

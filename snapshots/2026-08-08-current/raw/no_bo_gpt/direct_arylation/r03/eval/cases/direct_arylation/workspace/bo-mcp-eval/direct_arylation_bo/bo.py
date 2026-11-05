@@ -6,98 +6,89 @@ from dataclasses import dataclass
 from typing import List, Sequence
 
 import numpy as np
-from sklearn.ensemble import ExtraTreesRegressor
 
-from .space import Candidate, SearchSpace
+from .search_space import Candidate, encode_candidates, sample_unique_candidates
+
+try:
+    from sklearn.ensemble import RandomForestRegressor
+except Exception:  # pragma: no cover
+    RandomForestRegressor = None
 
 
 @dataclass
-class SuggestionConfig:
-    init_random: int = 12
-    candidate_pool_size: int = 1024
-    random_explore_prob: float = 0.12
-    n_trees: int = 512
-    min_successes_for_model: int = 8
-    ei_xi: float = 0.01
+class Suggestion:
+    candidate: Candidate
+    strategy: str
+    acquisition: float | None = None
 
 
-class BOSuggester:
-    def __init__(self, space: SearchSpace, config: SuggestionConfig, rng: random.Random) -> None:
-        self.space = space
-        self.config = config
-        self.rng = rng
+class SurrogateBO:
+    def __init__(self, seed: int, init_random: int = 12, pool_size: int = 512, explore_prob: float = 0.12):
+        self.seed = seed
+        self.init_random = init_random
+        self.pool_size = pool_size
+        self.explore_prob = explore_prob
+        self.rng = random.Random(seed)
 
-    def suggest(self, history: Sequence[dict]) -> Candidate:
-        seen_keys = [
-            (
-                item["parameter_values"]["base"],
-                item["parameter_values"]["ligand"],
-                item["parameter_values"]["solvent"],
-                float(item["parameter_values"]["concentration"]),
-                int(item["parameter_values"]["temperature_c"]),
-            )
-            for item in history
-        ]
-        if len(history) < self.config.init_random:
-            return self.space.sample_unique(self.rng, seen_keys)
+    def suggest(self, observed_candidates: Sequence[Candidate], observed_yields: Sequence[float], seen_keys: set[tuple]) -> Suggestion:
+        if len(observed_candidates) < self.init_random or len(observed_yields) < max(4, self.init_random // 2):
+            cand = sample_unique_candidates(self.rng, 1, seen_keys)[0]
+            return Suggestion(candidate=cand, strategy='random_initial')
 
-        successes = [item for item in history if item["status"] == "success"]
-        if len(successes) < self.config.min_successes_for_model:
-            return self.space.sample_unique(self.rng, seen_keys)
-        if self.rng.random() < self.config.random_explore_prob:
-            return self.space.sample_unique(self.rng, seen_keys)
+        if self.rng.random() < self.explore_prob:
+            cand = sample_unique_candidates(self.rng, 1, seen_keys)[0]
+            return Suggestion(candidate=cand, strategy='random_exploration')
 
-        try:
-            return self._model_guided_suggestion(history, successes, seen_keys)
-        except Exception:  # noqa: BLE001
-            return self.space.sample_unique(self.rng, seen_keys)
-
-    def _model_guided_suggestion(
-        self,
-        history: Sequence[dict],
-        successes: Sequence[dict],
-        seen_keys: Sequence[tuple],
-    ) -> Candidate:
-        train_candidates = [
-            Candidate(**item["parameter_values"])
-            for item in successes
-        ]
-        X = np.asarray(self.space.encode_many(train_candidates), dtype=float)
-        y = np.asarray([item["objective_values"]["yield"] for item in successes], dtype=float)
-        model = ExtraTreesRegressor(
-            n_estimators=self.config.n_trees,
-            random_state=self.rng.randint(0, 2**31 - 1),
-            min_samples_leaf=1,
-            bootstrap=False,
-            n_jobs=1,
-        )
-        model.fit(X, y)
-
-        pool = self.space.sample_pool(self.rng, seen_keys, self.config.candidate_pool_size)
-        pool_X = np.asarray(self.space.encode_many(pool), dtype=float)
-        tree_preds = np.stack([tree.predict(pool_X) for tree in model.estimators_], axis=0)
-        mu = tree_preds.mean(axis=0)
-        sigma = tree_preds.std(axis=0, ddof=0)
-        incumbent = float(y.max())
-        eis = np.asarray([
-            _expected_improvement(m, s, incumbent, self.config.ei_xi)
-            for m, s in zip(mu, sigma)
-        ])
+        pool = sample_unique_candidates(self.rng, self.pool_size, seen_keys)
+        if not pool:
+            raise RuntimeError('No unseen candidates remain in the search space.')
+        x_train = np.asarray(encode_candidates(observed_candidates), dtype=float)
+        y_train = np.asarray(observed_yields, dtype=float)
+        x_pool = np.asarray(encode_candidates(pool), dtype=float)
+        means, stds = self._predict_mean_std(x_train, y_train, x_pool)
+        best_y = float(np.max(y_train))
+        eis = np.array([self._expected_improvement(m, s, best_y) for m, s in zip(means, stds)])
         best_idx = int(np.argmax(eis))
-        return pool[best_idx]
+        return Suggestion(candidate=pool[best_idx], strategy='model_guided_ei', acquisition=float(eis[best_idx]))
 
+    def _predict_mean_std(self, x_train: np.ndarray, y_train: np.ndarray, x_pool: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+        if RandomForestRegressor is not None:
+            model = RandomForestRegressor(
+                n_estimators=300,
+                min_samples_leaf=2,
+                random_state=self.seed + len(y_train),
+                n_jobs=1,
+            )
+            model.fit(x_train, y_train)
+            tree_preds = np.stack([tree.predict(x_pool) for tree in model.estimators_], axis=0)
+            means = np.mean(tree_preds, axis=0)
+            stds = np.std(tree_preds, axis=0, ddof=1)
+            stds = np.maximum(stds, 1e-6)
+            return means, stds
 
-def _normal_pdf(z: float) -> float:
-    return math.exp(-0.5 * z * z) / math.sqrt(2.0 * math.pi)
+        means = []
+        stds = []
+        for row in x_pool:
+            dists = np.sqrt(np.sum((x_train - row) ** 2, axis=1))
+            idx = np.argsort(dists)[: min(8, len(dists))]
+            nbrs = y_train[idx]
+            weights = 1.0 / np.maximum(dists[idx], 0.2)
+            mean = float(np.average(nbrs, weights=weights))
+            var = float(np.average((nbrs - mean) ** 2, weights=weights))
+            means.append(mean)
+            stds.append(max(math.sqrt(var), 1e-3))
+        return np.asarray(means), np.asarray(stds)
 
+    @staticmethod
+    def _normal_pdf(z: float) -> float:
+        return math.exp(-0.5 * z * z) / math.sqrt(2.0 * math.pi)
 
-def _normal_cdf(z: float) -> float:
-    return 0.5 * (1.0 + math.erf(z / math.sqrt(2.0)))
+    @staticmethod
+    def _normal_cdf(z: float) -> float:
+        return 0.5 * (1.0 + math.erf(z / math.sqrt(2.0)))
 
-
-def _expected_improvement(mu: float, sigma: float, best: float, xi: float) -> float:
-    improvement = mu - best - xi
-    if sigma <= 1e-12:
-        return max(0.0, improvement)
-    z = improvement / sigma
-    return improvement * _normal_cdf(z) + sigma * _normal_pdf(z)
+    def _expected_improvement(self, mean: float, std: float, best: float) -> float:
+        if std <= 1e-12:
+            return max(0.0, mean - best)
+        z = (mean - best) / std
+        return (mean - best) * self._normal_cdf(z) + std * self._normal_pdf(z)

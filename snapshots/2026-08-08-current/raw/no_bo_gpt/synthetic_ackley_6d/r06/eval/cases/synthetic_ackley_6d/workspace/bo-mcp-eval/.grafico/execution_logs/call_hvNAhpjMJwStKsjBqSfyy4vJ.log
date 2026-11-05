@@ -1,0 +1,66 @@
+exit_code=0
+
+=== stdout (raw) ===
+import_check=ok
+{
+  "case_id": "synthetic_ackley_6d",
+  "seed": 20260812,
+  "dimensions": 6,
+  "bounds": {
+    "x_1": [
+      0.0,
+      1.0
+    ],
+    "x_2": [
+      0.0,
+      1.0
+    ],
+    "x_3": [
+      0.0,
+      1.0
+    ],
+    "x_4": [
+      0.0,
+      1.0
+    ],
+    "x_5": [
+      0.0,
+      1.0
+    ],
+    "x_6": [
+      0.0,
+      1.0
+    ]
+  },
+  "objective_name": "surface_response",
+  "objective_direction": "maximize",
+  "objective_unit": "normalized_unitless",
+  "total_budget": 60,
+  "init_size": 12,
+  "guided_batch_size": 4,
+  "guided_batches": 12,
+  "acquisition": "Gaussian-process expected improvement with greedy constant-liar batching",
+  "output_artifact": "local_results.json",
+  "entrypoint": "run_ackley6d_surface_opt.py",
+  "environment_requirements": [
+    "numpy",
+    "scikit-learn",
+    "logfire",
+    "grafico"
+  ]
+}
+
+
+=== stderr (raw) ===
+/app/outputs/cells/ackley_no_bo_gpt_r06/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_surface_opt/campaign.py:36: LogfireNotConfiguredWarning: Instrumentation will have no effect until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.instrument_requests()
+/app/outputs/cells/ackley_no_bo_gpt_r06/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_surface_opt/campaign.py:255: LogfireNotConfiguredWarning: No logs or spans will be created until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.info("Ackley campaign preflight passed", **info)
+
+
+=== stderr (model-visible) ===
+/app/outputs/cells/ackley_no_bo_gpt_r06/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_surface_opt/campaign.py:36: LogfireNotConfiguredWarning: Instrumentation will have no effect until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.instrument_requests()
+
+/app/outputs/cells/ackley_no_bo_gpt_r06/eval/cases/synthetic_ackley_6d/workspace/bo-mcp-eval/ackley6d_surface_opt/campaign.py:255: LogfireNotConfiguredWarning: No logs or spans will be created until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.info("Ackley campaign preflight passed", **info)

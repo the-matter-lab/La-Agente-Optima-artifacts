@@ -1,0 +1,116 @@
+exit_code=0
+
+=== stdout (raw) ===
+# Direct Arylation BO-MCP Campaign Execution
+
+This campaign preserves the ownership marker `akg-eval-e57752da9fc444fe8fad4fc363fd1b2b` in every BO-MCP campaign name it creates. Do not create, resume, or report any campaign that does not contain that exact marker.
+
+## Required environment variables
+
+- `BO_MCP_API_URL`
+- `BO_MCP_API_KEY`
+- `DIRECT_ARYLATION_API_URL`
+
+The script reads the oracle only from `DIRECT_ARYLATION_API_URL` and uses `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate` with exactly these five parameters:
+
+- `base`
+- `ligand`
+- `solvent`
+- `concentration`
+- `temperature_c`
+
+## Files
+
+- Entrypoint: `run_direct_arylation_bo.py`
+- Package: `direct_arylation_bo/`
+- Manifest: `campaign_manifest.json`
+- Artifact root: `artifacts/direct_arylation_bo_akg-eval-e57752da9fc444fe8fad4fc363fd1b2b/`
+
+## Tagged stdout lines
+
+The runner emits monitor-friendly unbuffered lines only with these tags:
+
+- `[EVENT]` lifecycle changes, intake validation, stop-file handling, polling sleeps
+- `[ALERT]` failed evaluations, diagnostics issues, unexpected stop conditions
+- `[RESULT]` per-experiment outcomes and final summary
+- `[HEARTBEAT]` liveness updates
+
+## Validate without creating a campaign
+
+```bash
+uv run python -u run_direct_arylation_bo.py --validate-only
+```
+
+Expected behavior:
+- validates the BO-MCP intake
+- prints tagged `[EVENT]` output
+- creates no BO-MCP campaign
+- consumes zero oracle evaluations
+
+## Execute the benchmark campaign
+
+Run exactly this command for the benchmark invocation:
+
+```bash
+uv run python -u run_direct_arylation_bo.py --max-attempts 60 --poll-s 180 --heartbeat-s 1800 --stop-file STOP
+```
+
+Behavior:
+- creates or resumes exactly one owned BayBE-backed BO-MCP campaign
+- attempts exactly 60 oracle evaluations unless you intentionally stop early
+- records every attempted evaluation, including failed non-2xx oracle calls
+- submits successful measurements to BO-MCP with `force=True` so optimizer-requested replicates remain valid
+- pauses the campaign at normal shutdown when the campaign is still running
+
+## Resume command
+
+If the process stops after a campaign has already been created, re-run with the same campaign id:
+
+```bash
+uv run python -u run_direct_arylation_bo.py --campaign-id <campaign_id> --max-attempts 60 --poll-s 180 --heartbeat-s 1800 --stop-file STOP
+```
+
+The script refuses to resume a campaign whose name does not include `akg-eval-e57752da9fc444fe8fad4fc363fd1b2b`.
+
+## Stop file
+
+- Default stop file: `STOP` in the current working directory
+- The runner checks for it at the top of each loop iteration, before suggestion generation
+- When present, the runner prints `[EVENT]`, deletes the file, writes reports, and exits cleanly
+
+Create the stop file with:
+
+```bash
+touch STOP
+```
+
+## Output artifacts
+
+After the campaign is created, artifacts are written under:
+
+```text
+artifacts/direct_arylation_bo_akg-eval-e57752da9fc444fe8fad4fc363fd1b2b/<campaign_id>/
+```
+
+Important files:
+
+- `attempts.jsonl` — append-only record of every attempted evaluation with status and yield when successful
+- `summary.json` — final structured summary with attempted/successful counts, best conditions, best yield, and all attempts
+- `report.md` — human-readable report listing all evaluated candidates with statuses and objective values
+- `diagnostics.json` — BO-MCP diagnostics when available
+
+## What to report at the end
+
+Use the generated artifacts to report:
+- best reaction conditions
+- best measured yield
+- attempted evaluation count
+- successful evaluation count
+- every evaluated candidate with status and objective value
+- the campaign id from the owned campaign
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

@@ -1,185 +1,222 @@
 from __future__ import annotations
 
-from dataclasses import asdict, dataclass
-from datetime import datetime, UTC
-import hashlib
 import json
+import os
+import random
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Dict, List, Optional
 
 try:
     import logfire
-    from grafico.core.logfire_config import configure_logfire
-
-    configure_logfire()
-    logfire.instrument_requests()
-except Exception:  # pragma: no cover
+except Exception:  # noqa: BLE001
     class _LogfireFallback:
-        @staticmethod
-        def info(msg: str, **kwargs: Any) -> None:
+        def instrument_requests(self) -> None:
             return None
 
-        @staticmethod
-        def debug(msg: str, **kwargs: Any) -> None:
+        def info(self, *args, **kwargs) -> None:
+            return None
+
+        def debug(self, *args, **kwargs) -> None:
             return None
 
     logfire = _LogfireFallback()
 
-from .bo import Candidate, CandidateEncoder, choose_next_candidate, full_search_space
-from .oracle import DirectArylationOracle, api_url_from_env
+try:
+    from grafico.core.logfire_config import configure_logfire
+except Exception:  # noqa: BLE001
+    def configure_logfire() -> None:
+        return None
+
+from .bo import fit_surrogate, score_candidates
+from .evaluator import DirectArylationEvaluator
+from .space import build_candidate_pool, canonical_key, stratified_initial_design
+
+configure_logfire()
+logfire.instrument_requests()
+
+Candidate = Dict[str, object]
 
 
-CASE_ID = "direct_arylation_reaction_yield_optimization"
-OBJECTIVE_NAME = "yield"
-OBJECTIVE_DIRECTION = "maximize"
-OBJECTIVE_UNIT = "percent"
+def _utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
 
 
-@dataclass
-class CampaignConfig:
-    budget: int = 60
-    n_initial: int = 12
-    seed: int = 20260730
-    dry_run: bool = False
-    output_path: str = "local_results.json"
-    manifest_path: str = "campaign_manifest.json"
-    cache_buster_nonce: str = ""
+def _result_record(
+    attempt_index: int,
+    batch_index: int,
+    batch_size: int,
+    candidate: Candidate,
+    outcome: Dict[str, object],
+) -> Dict[str, object]:
+    record = {
+        "evaluation_index": attempt_index,
+        "batch_index": batch_index,
+        "batch_size": batch_size,
+        "parameter_values": {
+            "base": candidate["base"],
+            "ligand": candidate["ligand"],
+            "solvent": candidate["solvent"],
+            "concentration": float(candidate["concentration"]),
+            "temperature_c": int(candidate["temperature_c"]),
+        },
+        "status": outcome["status"],
+        "recorded_at": _utc_now(),
+    }
+    if outcome["status"] == "success":
+        record["objective_values"] = outcome["objective_values"]
+    else:
+        record["failure_reason"] = outcome.get("failure_reason", "unknown_failure")
+    return record
 
 
-@dataclass
-class AttemptRecord:
-    evaluation_index: int
-    batch_index: int
-    batch_size: int
-    parameter_values: dict[str, Any]
-    status: str
-    objective_values: dict[str, float] | None = None
-    failure_reason: str | None = None
+def _save_results(path: Path, payload: Dict[str, object]) -> None:
+    path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
-def _candidate_digest(candidate: Candidate) -> str:
-    payload = json.dumps(candidate.to_parameter_values(), sort_keys=True).encode("utf-8")
-    return hashlib.sha256(payload).hexdigest()[:12]
+def _best_success(results: List[Dict[str, object]]) -> tuple[Optional[float], Optional[Candidate]]:
+    successes = [r for r in results if r["status"] == "success"]
+    if not successes:
+        return None, None
+    best = max(successes, key=lambda r: r["objective_values"]["yield"])
+    return float(best["objective_values"]["yield"]), best["parameter_values"]
 
 
-def _write_json(path: str | Path, payload: dict[str, Any]) -> None:
-    Path(path).write_text(json.dumps(payload, indent=2), encoding="utf-8")
+def _sorted_success_candidates(results: List[Dict[str, object]]) -> List[Candidate]:
+    successes = [r for r in results if r["status"] == "success"]
+    successes.sort(key=lambda r: r["objective_values"]["yield"], reverse=True)
+    return [r["parameter_values"] for r in successes]
 
 
-def run_campaign(config: CampaignConfig) -> dict[str, Any]:
-    if config.budget <= 0:
-        raise ValueError("budget must be positive")
-    if config.n_initial <= 0:
-        raise ValueError("n_initial must be positive")
-    if config.n_initial >= config.budget:
-        raise ValueError("n_initial must be smaller than budget to allow BO iterations")
+def _success_training_data(results: List[Dict[str, object]]) -> tuple[List[Candidate], List[float]]:
+    xs = []
+    ys = []
+    for record in results:
+        if record["status"] == "success":
+            xs.append(record["parameter_values"])
+            ys.append(float(record["objective_values"]["yield"]))
+    return xs, ys
 
-    rng_seed = int(config.seed)
-    logfire.info("starting_direct_arylation_campaign", budget=config.budget, seed=rng_seed, dry_run=config.dry_run)
 
-    import numpy as np
-
-    rng = np.random.default_rng(rng_seed)
-    encoder = CandidateEncoder()
-    oracle = DirectArylationOracle(api_url=api_url_from_env(), dry_run=config.dry_run)
-    search_space = full_search_space()
-    remaining = list(search_space)
-    attempts: list[AttemptRecord] = []
-    successful_candidates: list[Candidate] = []
-    successful_yields: list[float] = []
-
-    initial_indices = rng.choice(len(remaining), size=config.n_initial, replace=False)
-    initial_candidates = [remaining[i] for i in sorted(initial_indices, reverse=True)]
-    for candidate in initial_candidates:
-        remaining.remove(candidate)
-
-    bo_iteration = 0
-    for idx in range(1, config.budget + 1):
-        if idx <= config.n_initial:
-            candidate = initial_candidates[config.n_initial - idx]
-        else:
-            bo_iteration += 1
-            candidate = choose_next_candidate(
-                rng=rng,
-                encoder=encoder,
-                observed_candidates=successful_candidates,
-                observed_yields=successful_yields,
-                remaining_candidates=remaining,
-                iteration_index=bo_iteration,
-            )
-            remaining.remove(candidate)
-
-        result = oracle.evaluate(candidate)
-        record = AttemptRecord(
-            evaluation_index=idx,
-            batch_index=idx,
-            batch_size=1,
-            parameter_values=candidate.to_parameter_values(),
-            status=result.status,
-            objective_values=result.objective_values,
-            failure_reason=result.failure_reason,
-        )
-        attempts.append(record)
-
-        digest = _candidate_digest(candidate)
-        if result.status == "success" and result.objective_values is not None:
-            measured_yield = float(result.objective_values[OBJECTIVE_NAME])
-            successful_candidates.append(candidate)
-            successful_yields.append(measured_yield)
-            print(
-                f"[{idx:02d}/{config.budget}] success yield={measured_yield:6.2f}% "
-                f"base={candidate.base}; ligand={candidate.ligand}; solvent={candidate.solvent}; "
-                f"concentration={candidate.concentration}; temperature_c={candidate.temperature_c}"
-            )
-            logfire.info("objective_success", evaluation_index=idx, candidate_id=digest, measured_yield=measured_yield)
-        else:
-            print(
-                f"[{idx:02d}/{config.budget}] failed reason={result.failure_reason} "
-                f"base={candidate.base}; ligand={candidate.ligand}; solvent={candidate.solvent}; "
-                f"concentration={candidate.concentration}; temperature_c={candidate.temperature_c}"
-            )
-            logfire.info("objective_failure", evaluation_index=idx, candidate_id=digest, reason=result.failure_reason)
-
-    best_idx = None
-    best_value = None
-    for i, value in enumerate(successful_yields):
-        if best_value is None or value > best_value:
-            best_value = value
-            best_idx = i
-
-    best_parameters = successful_candidates[best_idx].to_parameter_values() if best_idx is not None else None
-    ordered_results: list[dict[str, Any]] = [asdict(record) for record in attempts]
-    summary = {
-        "case_id": CASE_ID,
-        "cache_buster_nonce": config.cache_buster_nonce,
-        "objective_name": OBJECTIVE_NAME,
-        "objective_direction": OBJECTIVE_DIRECTION,
-        "objective_unit": OBJECTIVE_UNIT,
-        "attempted_evaluations": len(attempts),
-        "completed_evaluations": len(successful_yields),
-        "failed_evaluations": len(attempts) - len(successful_yields),
+def _build_summary(case_id: str, results: List[Dict[str, object]]) -> Dict[str, object]:
+    completed = len(results)
+    successful = sum(1 for r in results if r["status"] == "success")
+    attempted = completed
+    best_value, best_parameters = _best_success(results)
+    return {
+        "case_id": case_id,
+        "objective_name": "yield",
+        "objective_direction": "maximize",
+        "objective_unit": "percent",
+        "completed_evaluations": completed,
+        "attempted_evaluations": attempted,
+        "successful_evaluations": successful,
         "best_objective_value": best_value,
         "best_parameters": best_parameters,
-        "results": ordered_results,
-        "generated_at_utc": datetime.now(UTC).isoformat(),
-        "config": asdict(config),
+        "results": results,
     }
-    _write_json(config.output_path, summary)
+
+
+def run_campaign(
+    budget: int = 60,
+    seed: int = 818064,
+    case_id: str = "direct_arylation",
+    results_path: str = "local_results.json",
+    manifest_path: str = "campaign_manifest.json",
+    preflight: bool = False,
+) -> Dict[str, object]:
+    logfire.info("starting direct arylation campaign", budget=budget, seed=seed, preflight=preflight)
+    if budget <= 0:
+        raise ValueError("budget must be positive")
+    if preflight:
+        payload = {
+            "case_id": case_id,
+            "objective_name": "yield",
+            "objective_direction": "maximize",
+            "objective_unit": "percent",
+            "planned_budget": budget,
+            "environment": {
+                "DIRECT_ARYLATION_API_URL_set": bool(os.getenv("DIRECT_ARYLATION_API_URL")),
+            },
+            "search_space": {
+                "parameters": ["base", "ligand", "solvent", "concentration", "temperature_c"],
+                "search_space_size": 1728,
+            },
+            "execution": {
+                "strategy": "12-point stratified random initial design followed by random-forest UCB with mutation and random candidate pools",
+                "results_path": results_path,
+                "manifest_path": manifest_path,
+            },
+            "checked_at": _utc_now(),
+        }
+        _save_results(Path("preflight_summary.json"), payload)
+        return payload
+
+    rng = random.Random(seed)
+    evaluator = DirectArylationEvaluator(timeout_s=30.0)
+    results: List[Dict[str, object]] = []
+    tried_keys = set()
+    initial_design = stratified_initial_design(rng, n=min(12, budget))
+    batch_index = 0
+
+    while len(results) < budget:
+        if len(results) < len(initial_design):
+            candidate = initial_design[len(results)]
+        else:
+            train_x, train_y = _success_training_data(results)
+            top_candidates = _sorted_success_candidates(results)
+            pool = build_candidate_pool(rng, tried_keys, top_candidates, pool_size=256)
+            if len(train_y) >= 5:
+                bundle = fit_surrogate(train_x, train_y, seed + len(results))
+                mean, std, optimistic = score_candidates(bundle, pool)
+                noise = [rng.random() * 1e-6 for _ in pool]
+                scored = list(zip(pool, mean.tolist(), std.tolist(), optimistic.tolist(), noise))
+                scored.sort(key=lambda item: (item[3], item[1], item[2], item[4]), reverse=True)
+                candidate = scored[0][0]
+                logfire.debug(
+                    "selected model-guided candidate",
+                    attempt=len(results) + 1,
+                    optimistic_score=scored[0][3],
+                    predicted_mean=scored[0][1],
+                    predicted_std=scored[0][2],
+                )
+            else:
+                candidate = pool[0]
+                logfire.debug("selected random candidate due to sparse data", attempt=len(results) + 1)
+
+        key = canonical_key(candidate)
+        if key in tried_keys:
+            raise RuntimeError("internal error: duplicate candidate selected")
+        tried_keys.add(key)
+        outcome = evaluator.evaluate(candidate)
+        batch_index += 1
+        record = _result_record(len(results) + 1, batch_index, 1, candidate, outcome)
+        results.append(record)
+
+        summary = _build_summary(case_id, results)
+        _save_results(Path(results_path), summary)
+        best_value = summary["best_objective_value"]
+        logfire.info(
+            "evaluation complete",
+            attempt=len(results),
+            status=outcome["status"],
+            best_objective_value=best_value,
+            candidate=record["parameter_values"],
+        )
+
+    final_payload = _build_summary(case_id, results)
+    _save_results(Path(results_path), final_payload)
     manifest = {
         "package_modules": [
             "direct_arylation_campaign.__init__",
+            "direct_arylation_campaign.space",
             "direct_arylation_campaign.bo",
-            "direct_arylation_campaign.oracle",
+            "direct_arylation_campaign.evaluator",
             "direct_arylation_campaign.campaign",
         ],
         "run_entrypoint": "run_direct_arylation_campaign.py",
-        "latest_local_results": str(Path(config.output_path).resolve()),
+        "latest_local_results": results_path,
+        "updated_at": _utc_now(),
     }
-    _write_json(config.manifest_path, manifest)
-
-    print(
-        "Campaign complete: "
-        f"attempted={summary['attempted_evaluations']} successful={summary['completed_evaluations']} "
-        f"best_yield={summary['best_objective_value']}"
-    )
-    return summary
+    Path(manifest_path).write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return final_payload

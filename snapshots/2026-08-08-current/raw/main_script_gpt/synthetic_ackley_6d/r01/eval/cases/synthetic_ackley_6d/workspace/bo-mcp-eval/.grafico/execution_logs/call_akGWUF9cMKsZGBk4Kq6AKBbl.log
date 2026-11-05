@@ -1,0 +1,42 @@
+exit_code=0
+
+=== stdout (raw) ===
+    def next_action(self, campaign_id: str) -> dict[str, Any]:
+        """Return the server's loop decision for one campaign, flattened.
+
+        Thin projection of ``POST /api/v1/campaigns/status/batch`` for a
+        single id: the returned dict carries the campaign's ``status``,
+        ``iteration``, ``n_results``, and the server-computed
+        recommendation flattened to ``action``/``reason``/``urgency``.
+        The continue/stop decision belongs to the server — callers branch
+        on ``action`` (``"bo_generate_suggestions"`` means another round)
+        and must not re-derive it from local state.
+        """
+        response = self._json_request(
+            "POST",
+            "/api/v1/campaigns/status/batch",
+            json={"campaign_ids": [campaign_id], "verbosity": "minimal"},
+        )
+        campaign = (response.get("campaigns") or {}).get(campaign_id)
+        if campaign is None:
+            raise BoMcpOperationError(
+                f"BO-MCP has no status for campaign {campaign_id}: "
+                f"{response.get('errors') or response.get('failed_ids')}",
+                response,
+            )
+        recommendation = campaign.get("next_action_recommendation") or {}
+        return {
+            "status": campaign.get("status"),
+            "iteration": campaign.get("iteration"),
+            "n_results": campaign.get("n_results"),
+            "action": recommendation.get("action"),
+            "reason": recommendation.get("reason"),
+            "urgency": recommendation.get("urgency"),
+        }
+
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

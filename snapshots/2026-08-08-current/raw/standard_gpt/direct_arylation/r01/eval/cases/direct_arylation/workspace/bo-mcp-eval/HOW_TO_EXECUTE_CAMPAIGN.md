@@ -1,127 +1,123 @@
 # Direct Arylation BO-MCP Campaign
 
-This workspace contains a BO-MCP-only benchmark runner for the fixed 1,728-point direct arylation search space.
+Chat Trace ID: `e989e59e-6b70-4e48-88bf-388af427448f`
 
-Ownership marker required in every created campaign name:
-- `akg-eval-d41fdff5899e4d9285ea23b6eba50ccd`
+## Required environment
 
-Cache-buster nonce carried in artifacts and recommended command label:
-- `c40d694a-460e-4bea-92a6-eab07cd2f46d`
+Set these before running:
 
-## Required environment variables
-
-Set all of these before running:
 - `BO_MCP_API_URL`
 - `BO_MCP_API_KEY`
 - `DIRECT_ARYLATION_API_URL`
 
-Optional:
-- normal Logfire environment variables, if you want telemetry beyond local files
+The script always creates or resumes only campaigns whose name contains the required ownership marker:
 
-The oracle is called only at:
-- `${DIRECT_ARYLATION_API_URL}/v1/evaluate`
+- `akg-eval-32a412988ff64242ba3d82ec8e357298`
 
-with POST JSON shaped exactly like:
-```json
-{"base":"Potassium acetate","ligand":"(t-Bu)PhCPhos","solvent":"DMAc","concentration":0.1,"temperature_c":105}
-```
-
-## Exact execution command
-
-Run from this workspace directory:
+## Run a fresh 60-attempt invocation
 
 ```bash
-PYTHONPATH=/app python3 -u run_direct_arylation_campaign.py --campaign-label run-c40d694a-460e-4bea-92a6-eab07cd2f46d
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_yield_baybe.py
 ```
 
-Defaults used by that command:
-- attempted-evaluation budget: `60`
-- `--poll-s 180`
-- `--heartbeat-s 1800`
-- `--stop-file STOP`
-- artifact root: `artifacts/direct_arylation`
+Default behavior:
 
-## Resume command
+- creates a new BO-MCP campaign with backend `baybe`
+- uses objective `yield` with direction `maximize` and unit `percent`
+- uses a per-invocation attempted-evaluation budget of exactly `60`
+- evaluates one BO suggestion at a time against `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate`
+- pauses the campaign cleanly at the end of the invocation
 
-If the process stops and you want to continue the same campaign, reuse the campaign id from stdout or the artifact directory name:
+## Resume an existing owned campaign
+
+Use the `campaign_id` recorded in `artifacts/direct_arylation_yield_baybe/campaign.json` or `summary.json`:
 
 ```bash
-PYTHONPATH=/app python3 -u run_direct_arylation_campaign.py --campaign-id <campaign_id>
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_yield_baybe.py --campaign-id <campaign_id>
 ```
 
-The script refuses to resume or report on campaigns whose names do not contain the exact ownership marker.
+Behavior:
 
-## What the runner does
+- if the campaign is `paused`, the script sends `resume`
+- if the campaign is `completed`, the script sends `reopen`
+- if the campaign is already `running`, the script continues it
+- any campaign without the ownership marker is rejected
 
-- creates a BO-MCP campaign if `--campaign-id` is not supplied
-- uses the exact parameter names:
-  - `base`
-  - `ligand`
-  - `solvent`
-  - `concentration`
-  - `temperature_c`
-- optimizes objective metadata:
-  - `objective_name = yield`
-  - `objective_direction = maximize`
-  - `units = percent`
-- evaluates exactly one candidate at a time
-- never exceeds 60 attempted oracle evaluations for the campaign
-- treats non-2xx oracle responses as failed attempted evaluations that still consume budget
-- records failed attempts locally and retires the corresponding BO suggestion
-- preserves the intentional spelling `Butyornitrile`
+## Dry-run smoke test
 
-## Stdout tags
+This does not call BO-MCP or the oracle and does not consume evaluation budget:
 
-The entrypoint emits only tagged status lines:
-- `[EVENT]` campaign lifecycle and state changes
-- `[RESULT]` one full line per successful experiment
-- `[ALERT]` failed attempted evaluations or other stop-worthy problems
-- `[HEARTBEAT]` liveness
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_yield_baybe.py --dry-run --artifacts-dir artifacts/direct_arylation_yield_baybe_smoke
+```
 
 ## Stop-file behavior
 
 Default stop file: `STOP` in the current working directory.
 
-Behavior:
-1. the runner checks for the stop file at the top of each loop iteration, before asking BO-MCP for a new suggestion
-2. if present, it prints an `[EVENT]` line
-3. it deletes the stop file immediately to avoid stale-stop reuse on resume
-4. it exits cleanly and pauses the campaign if the campaign is still running
+At the top of each loop iteration, before generating or reusing the next suggestion, the script checks for the stop file.
+If present, it:
 
-Create the stop file with, for example:
+1. prints an `[EVENT]` line
+2. deletes the stop file
+3. pauses the campaign normally
+4. exits cleanly
+
+To request a clean stop:
 
 ```bash
 touch STOP
 ```
 
-## Artifacts written
+You can override the path:
 
-For a real run, artifacts are written under:
-- `artifacts/direct_arylation/<campaign_id>/`
+```bash
+PYTHONUNBUFFERED=1 uv run python run_direct_arylation_yield_baybe.py --stop-file path/to/STOP
+```
 
-Files:
-- `artifacts/direct_arylation/<campaign_id>/run.log`
-  - detailed file log
-- `artifacts/direct_arylation/<campaign_id>/attempts.jsonl`
-  - one JSON record per attempted evaluation
-  - successful records use:
-    - `parameter_values` with exact lowercase names
-    - `objective_values` exactly `{"yield": <number>}`
-  - failed records still include `status` and `parameter_values`
-- `artifacts/direct_arylation/<campaign_id>/summary.json`
-  - current best conditions
-  - current best measured yield
-  - successful and attempted evaluation counts
-  - all evaluated candidates with statuses and objective values
+## Tagged stdout lines
 
-## Validation already performed here
+The entrypoint prints concise monitor-friendly lines only:
 
-Bounded local smoke test completed successfully with a mock oracle service and one BO iteration.
+- `[EVENT]` lifecycle transitions, stop conditions, start/finish notes
+- `[ALERT]` oracle or submission failures
+- `[RESULT]` one line per attempted evaluation, including status and yield when available
+- `[HEARTBEAT]` liveness updates during long runs
 
-Smoke-test campaign id:
-- `f3d0d91d-10db-4c32-825a-8aeb49a599e3`
+Everything else is written to the run log on disk.
 
-Smoke-test artifact directory:
-- `artifacts/direct_arylation/f3d0d91d-10db-4c32-825a-8aeb49a599e3`
+## Artifacts
 
-That smoke test used a mock oracle, so it is not benchmark data and should not be resumed for the real run.
+Default artifact directory:
+
+- `artifacts/direct_arylation_yield_baybe`
+
+Important files written there:
+
+- `run.log` — full log output
+- `campaign.json` — latest BO-MCP campaign metadata, including `campaign_id`
+- `attempts.jsonl` — one JSON record per attempted evaluation
+- `summary.json` — aggregate report including best conditions, best measured yield, counts, and full attempt history
+- `diagnostics.json` — final BO-MCP diagnostics snapshot for the invocation
+- `run_metadata.json` — trace id, ownership marker, and run settings
+
+## Expected outputs
+
+After a normal run, `summary.json` contains enough data to report:
+
+- final `campaign_id`
+- best conditions
+- best measured yield
+- attempted evaluation count
+- successful submission count
+- every attempted candidate with status and objective values when available
+
+## Validation
+
+Recommended quick checks after a run:
+
+```bash
+python -m json.tool artifacts/direct_arylation_yield_baybe/summary.json >/dev/null
+python -m json.tool artifacts/direct_arylation_yield_baybe/campaign.json >/dev/null
+wc -l artifacts/direct_arylation_yield_baybe/attempts.jsonl
+```

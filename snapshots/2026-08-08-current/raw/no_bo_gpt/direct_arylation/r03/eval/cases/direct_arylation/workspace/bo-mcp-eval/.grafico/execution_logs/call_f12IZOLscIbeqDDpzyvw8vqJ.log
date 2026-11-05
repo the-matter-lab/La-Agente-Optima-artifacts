@@ -1,0 +1,32 @@
+exit_code=0
+
+=== stdout (raw) ===
+{
+  "best_objective_value": 54.0,
+  "best_parameters": {
+    "base": "Cesium pivalate",
+    "ligand": "(t-Bu)PhCPhos",
+    "solvent": "p-Xylene",
+    "concentration": 0.153,
+    "temperature_c": 105
+  },
+  "attempted_evaluations": 10,
+  "successful_evaluations": 10,
+  "failed_evaluations": 0,
+  "results_path": "/app/outputs/cells/direct_arylation_no_bo_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/preflight_results.json"
+}
+
+
+=== stderr (raw) ===
+/app/outputs/cells/direct_arylation_no_bo_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py:34: LogfireNotConfiguredWarning: Instrumentation will have no effect until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.instrument_requests()
+/app/outputs/cells/direct_arylation_no_bo_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py:104: LogfireNotConfiguredWarning: No logs or spans will be created until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.info('Starting campaign', nonce=NONCE, budget=self.config.budget, remaining=attempts_remaining, mock=self.use_mock)
+
+
+=== stderr (model-visible) ===
+/app/outputs/cells/direct_arylation_no_bo_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py:34: LogfireNotConfiguredWarning: Instrumentation will have no effect until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.instrument_requests()
+
+/app/outputs/cells/direct_arylation_no_bo_gpt_r03/eval/cases/direct_arylation/workspace/bo-mcp-eval/direct_arylation_bo/campaign.py:104: LogfireNotConfiguredWarning: No logs or spans will be created until `logfire.configure()` has been called. Set the environment variable LOGFIRE_IGNORE_NO_CONFIG=1 or add ignore_no_config=true in pyproject.toml to suppress this warning.
+  logfire.info('Starting campaign', nonce=NONCE, budget=self.config.budget, remaining=attempts_remaining, mock=self.use_mock)

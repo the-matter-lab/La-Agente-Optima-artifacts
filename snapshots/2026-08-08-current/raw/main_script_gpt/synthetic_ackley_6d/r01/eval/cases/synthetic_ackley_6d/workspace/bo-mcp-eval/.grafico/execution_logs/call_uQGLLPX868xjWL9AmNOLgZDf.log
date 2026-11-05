@@ -1,0 +1,17 @@
+exit_code=1
+
+=== stdout (raw) ===
+True
+(self, suggestion_id: 'str', status: 'str') -> 'dict[str, Any]'
+
+
+=== stderr (raw) ===
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+AttributeError: 'NoneType' object has no attribute 'splitlines'
+
+
+=== stderr (model-visible) ===
+Traceback (most recent call last):
+  File "<stdin>", line 6, in <module>
+AttributeError: 'NoneType' object has no attribute 'splitlines'

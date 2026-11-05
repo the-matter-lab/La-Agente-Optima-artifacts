@@ -1,134 +1,107 @@
-# HOW_TO_EXECUTE_CAMPAIGN.md
+# Direct Arylation BO-MCP Campaign Execution
 
-Cache-buster nonce: `f8cfd946-3972-4d92-97e3-98d984cbbd2a`
+This campaign preserves the ownership marker `akg-eval-e57752da9fc444fe8fad4fc363fd1b2b` in every BO-MCP campaign name it creates. Do not create, resume, or report any campaign that does not contain that exact marker.
 
-This campaign optimizes **measured direct arylation yield** with BO-MCP over the exact fixed fully crossed 1,728-point search space using only oracle calls selected by the optimization workflow. Every campaign created/resumed by the script is required to carry the ownership marker `akg-eval-101d38bff75e48f397a2480db7da4fb3` in its name.
+## Required environment variables
 
-## Files
-- Entrypoint: `run_direct_arylation_yield_bo.py`
-- Package: `direct_arylation_yield_bo/`
-- Manifest: `campaign_manifest.json`
-- Latest repair smoke-test artifact dir: `artifacts/direct_arylation_yield_bo/71a4c41d-c9d0-432a-b43a-20386c1447a0`
-- Latest repair smoke-test campaign id to resume: `71a4c41d-c9d0-432a-b43a-20386c1447a0`
-
-## Important repair note
-Do **not** reuse `053fe5fa-a423-4026-930e-d52856ffeb37` for the benchmark run. That older smoke-test campaign was created before the repair, so BO-MCP persisted it with `max_observations=1`. The repaired script now separates:
-- local attempted-evaluation cap: `--max-attempts`
-- BO-MCP campaign observation budget at creation time: `--campaign-max-observations`
-
-## Required environment
-Set these before running:
 - `BO_MCP_API_URL`
 - `BO_MCP_API_KEY`
 - `DIRECT_ARYLATION_API_URL`
-- `PYTHONPATH=/app:.`
 
-The runner uses only:
-- BO-MCP via `BoMcpClient.from_env()`
-- Oracle POSTs to `${DIRECT_ARYLATION_API_URL}/v1/evaluate`
+The script reads the oracle only from `DIRECT_ARYLATION_API_URL` and uses `POST ${DIRECT_ARYLATION_API_URL}/v1/evaluate` with exactly these five parameters:
 
-## Exact command to run now
-This resumes the repaired smoke-test campaign and continues it to the required **60 total attempted evaluations**:
+- `base`
+- `ligand`
+- `solvent`
+- `concentration`
+- `temperature_c`
 
-```bash
-PYTHONPATH=/app:. python -u run_direct_arylation_yield_bo.py \
-  --campaign-id 71a4c41d-c9d0-432a-b43a-20386c1447a0 \
-  --max-attempts 60 \
-  --poll-s 180 \
-  --heartbeat-s 1800
-```
+## Files
 
-This campaign already contains 2 attempted evaluations from repair smoke testing, so the command above should perform the remaining attempted evaluations until the local ledger reaches exactly 60, without exceeding the benchmark budget.
+- Entrypoint: `run_direct_arylation_bo.py`
+- Package: `direct_arylation_bo/`
+- Manifest: `campaign_manifest.json`
+- Artifact root: `artifacts/direct_arylation_bo_akg-eval-e57752da9fc444fe8fad4fc363fd1b2b/`
 
-## Fresh-start command (only if you intentionally do not reuse the repaired smoke test)
-```bash
-PYTHONPATH=/app:. python -u run_direct_arylation_yield_bo.py \
-  --max-attempts 60 \
-  --campaign-max-observations 60 \
-  --poll-s 180 \
-  --heartbeat-s 1800
-```
+## Tagged stdout lines
 
-Any newly created campaign name will include both:
-- ownership marker `akg-eval-101d38bff75e48f397a2480db7da4fb3`
-- cache-buster nonce `f8cfd946-3972-4d92-97e3-98d984cbbd2a`
+The runner emits monitor-friendly unbuffered lines only with these tags:
 
-## Search space encoded in the campaign
-- `base`: Potassium acetate | Potassium pivalate | Cesium acetate | Cesium pivalate
-- `ligand`: BrettPhos | Di-tert-butylphenylphosphine | (t-Bu)PhCPhos | Tricyclohexylphosphine | PPh3 | XPhos | P(2-furyl)3 | Methyldiphenylphosphine | 1268824-69-6 | JackiePhos | SCHEMBL15068049 | Me2PPh
-- `solvent`: DMAc | Butyornitrile | Butyl Ester | p-Xylene
-- `concentration`: 0.057 | 0.1 | 0.153
-- `temperature_c`: 90 | 105 | 120
-
-The spelling `Butyornitrile` is preserved exactly.
-
-## Campaign behavior
-- Objective name: `yield`
-- Direction: maximize
-- Units: percent
-- Backend: BO-MCP backend `auto`
-- Batch size: 1
-- Initial design size: 12
-- Random seed default: 20260730
-- Default BO-MCP campaign observation budget at creation: 60
-- Local attempted-evaluation cap: `--max-attempts` (default 60)
-- Non-2xx oracle responses count as failed attempted evaluations
-- Failed attempted evaluations are logged locally and the corresponding suggestion is marked `rejected`
-- Successful measurements are submitted back to BO-MCP with the suggestion id
-- Duplicate BO suggestions are allowed; result submission retries with `force=True` only when BO-MCP reports a duplicate-coordinate rejection
-- If BO-MCP rejects suggestion generation for a resumed campaign, the runner emits `[ALERT]` and exits cleanly instead of crashing
-
-## Stdout monitoring tags
-The runner prints these tags for monitors/UI:
-- `[EVENT]` state changes, campaign lifecycle changes, stop-file detection
-- `[ALERT]` failures or BO stop conditions
-- `[RESULT]` per-attempt outcomes and final campaign summary
+- `[EVENT]` lifecycle changes, intake validation, stop-file handling, polling sleeps
+- `[ALERT]` failed evaluations, diagnostics issues, unexpected stop conditions
+- `[RESULT]` per-experiment outcomes and final summary
 - `[HEARTBEAT]` liveness updates
 
-Every tagged line also repeats the nonce `f8cfd946-3972-4d92-97e3-98d984cbbd2a`.
+## Validate without creating a campaign
 
-## Stop / resume behavior
-- Stop file path default: `STOP` in the current working directory
-- To request a clean pause, create the file:
+```bash
+uv run python -u run_direct_arylation_bo.py --validate-only
+```
+
+Expected behavior:
+- validates the BO-MCP intake
+- prints tagged `[EVENT]` output
+- creates no BO-MCP campaign
+- consumes zero oracle evaluations
+
+## Execute the benchmark campaign
+
+Run exactly this command for the benchmark invocation:
+
+```bash
+uv run python -u run_direct_arylation_bo.py --max-attempts 60 --poll-s 180 --heartbeat-s 1800 --stop-file STOP
+```
+
+Behavior:
+- creates or resumes exactly one owned BayBE-backed BO-MCP campaign
+- attempts exactly 60 oracle evaluations unless you intentionally stop early
+- records every attempted evaluation, including failed non-2xx oracle calls
+- submits successful measurements to BO-MCP with `force=True` so optimizer-requested replicates remain valid
+- pauses the campaign at normal shutdown when the campaign is still running
+
+## Resume command
+
+If the process stops after a campaign has already been created, re-run with the same campaign id:
+
+```bash
+uv run python -u run_direct_arylation_bo.py --campaign-id <campaign_id> --max-attempts 60 --poll-s 180 --heartbeat-s 1800 --stop-file STOP
+```
+
+The script refuses to resume a campaign whose name does not include `akg-eval-e57752da9fc444fe8fad4fc363fd1b2b`.
+
+## Stop file
+
+- Default stop file: `STOP` in the current working directory
+- The runner checks for it at the top of each loop iteration, before suggestion generation
+- When present, the runner prints `[EVENT]`, deletes the file, writes reports, and exits cleanly
+
+Create the stop file with:
 
 ```bash
 touch STOP
 ```
 
-At the top of the next loop iteration, before requesting a new suggestion, the runner will:
-1. print `[EVENT]`
-2. delete `STOP`
-3. pause the campaign if it is running
-4. exit cleanly
+## Output artifacts
 
-Resume with the **same command** used previously.
+After the campaign is created, artifacts are written under:
 
-## Artifacts written
-Under `artifacts/direct_arylation_yield_bo/<campaign_id>/`:
-- `attempts.jsonl` — append-only ledger of every attempted evaluation, including failures
-- `summary.json` — final summary with best conditions, best measured yield, attempted/successful/failed counts, and all evaluated candidates
-- `bo_results.json` — BO-MCP result snapshot
-- `campaign.json` — latest campaign snapshot, including the BO-MCP campaign id
-- `campaign_id.txt` — just the campaign id
-- `diagnostics.json` — BO-MCP diagnostics snapshot
-- `run.log` — detailed file log
-- `run_config.json` — execution config, including the nonce `f8cfd946-3972-4d92-97e3-98d984cbbd2a`
-
-## Minimal validation after the run
-Check the final summary:
-
-```bash
-python - <<'PY'
-import json
-from pathlib import Path
-p = Path('artifacts/direct_arylation_yield_bo/71a4c41d-c9d0-432a-b43a-20386c1447a0/summary.json')
-summary = json.loads(p.read_text())
-print(summary['campaign_id'])
-print(summary['attempted_evaluations'])
-print(summary['successful_evaluations'])
-print(summary['best_measured_yield'])
-print(summary['best_conditions'])
-PY
+```text
+artifacts/direct_arylation_bo_akg-eval-e57752da9fc444fe8fad4fc363fd1b2b/<campaign_id>/
 ```
 
-For the final benchmark run, `attempted_evaluations` must be exactly `60`.
+Important files:
+
+- `attempts.jsonl` — append-only record of every attempted evaluation with status and yield when successful
+- `summary.json` — final structured summary with attempted/successful counts, best conditions, best yield, and all attempts
+- `report.md` — human-readable report listing all evaluated candidates with statuses and objective values
+- `diagnostics.json` — BO-MCP diagnostics when available
+
+## What to report at the end
+
+Use the generated artifacts to report:
+- best reaction conditions
+- best measured yield
+- attempted evaluation count
+- successful evaluation count
+- every evaluated candidate with status and objective value
+- the campaign id from the owned campaign

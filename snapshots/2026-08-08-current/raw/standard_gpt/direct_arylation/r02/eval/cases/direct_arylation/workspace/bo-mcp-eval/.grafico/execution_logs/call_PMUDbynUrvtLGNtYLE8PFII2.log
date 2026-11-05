@@ -1,0 +1,65 @@
+exit_code=0
+
+=== stdout (raw) ===
+direct_arylation_bo/campaign.py:17:from .reporting import append_jsonl, candidate_text, ensure_dir, read_attempts, utc_now, write_reports
+direct_arylation_bo/campaign.py:47:            "direct_arylation_bo.reporting",
+direct_arylation_bo/campaign.py:68:    if status == "paused":
+direct_arylation_bo/campaign.py:134:def _emit_attempt(attempt: dict[str, Any], max_attempts: int) -> None:
+direct_arylation_bo/campaign.py:136:        f"attempt={attempt['attempt_index']}/{max_attempts} status={attempt['status']} "
+direct_arylation_bo/campaign.py:146:def _maybe_heartbeat(last_heartbeat: float, heartbeat_s: int, attempted: int, max_attempts: int, campaign_id: str) -> float:
+direct_arylation_bo/campaign.py:149:        _event("HEARTBEAT", f"campaign_id={campaign_id} attempted={attempted}/{max_attempts} marker={MARKER}")
+direct_arylation_bo/campaign.py:154:def _pause_if_running(client: BoMcpClient, campaign_id: str) -> None:
+direct_arylation_bo/campaign.py:158:        client.lifecycle(campaign_id, action="pause")
+direct_arylation_bo/campaign.py:159:        _event("EVENT", f"paused campaign_id={campaign_id}")
+direct_arylation_bo/campaign.py:164:def run_campaign(*, campaign_id: str | None, max_attempts: int, oracle_timeout_s: float, poll_s: int, heartbeat_s: int, stop_file: str, validate_only: bool) -> dict[str, Any]:
+direct_arylation_bo/campaign.py:181:    attempts_path = artifact_dir / "attempts.jsonl"
+direct_arylation_bo/campaign.py:182:    existing_attempts = read_attempts(attempts_path)
+direct_arylation_bo/campaign.py:183:    attempted = len(existing_attempts)
+direct_arylation_bo/campaign.py:184:    successes = sum(1 for item in existing_attempts if item.get("status") == "success")
+direct_arylation_bo/campaign.py:187:        f"campaign_id={campaign_id} artifact_dir={artifact_dir} prior_attempts={attempted} prior_successes={successes}",
+direct_arylation_bo/campaign.py:189:    if attempted >= max_attempts:
+direct_arylation_bo/campaign.py:190:        _event("EVENT", f"attempt budget already exhausted at {attempted}/{max_attempts}")
+direct_arylation_bo/campaign.py:195:    while attempted < max_attempts:
+direct_arylation_bo/campaign.py:196:        last_heartbeat = _maybe_heartbeat(last_heartbeat, heartbeat_s, attempted, max_attempts, campaign_id)
+direct_arylation_bo/campaign.py:218:        _event("EVENT", f"evaluating attempt={attempt_index}/{max_attempts} suggestion_id={suggestion_id}")
+direct_arylation_bo/campaign.py:240:        append_jsonl(attempts_path, attempt_record)
+direct_arylation_bo/campaign.py:244:        _emit_attempt(attempt_record, max_attempts)
+direct_arylation_bo/campaign.py:256:    attempts = read_attempts(attempts_path)
+direct_arylation_bo/campaign.py:257:    report_paths = write_reports(
+direct_arylation_bo/campaign.py:260:        attempts=attempts,
+direct_arylation_bo/campaign.py:263:    best = max((item for item in attempts if item.get("status") == "success"), key=lambda item: item[OBJECTIVE_NAME], default=None)
+direct_arylation_bo/campaign.py:265:        _event("RESULT", f"best_yield=n/a attempted={len(attempts)} successful={successes}")
+direct_arylation_bo/campaign.py:269:            f"best_yield={best[OBJECTIVE_NAME]:.4f} attempted={len(attempts)} successful={successes} conditions=({candidate_text(best['candidate'])})",
+direct_arylation_bo/campaign.py:271:    _event("RESULT", f"campaign_id={campaign_id} summary_json={report_paths['summary_json']} report_md={report_paths['report_md']}")
+direct_arylation_bo/campaign.py:272:    _pause_if_running(client, campaign_id)
+direct_arylation_bo/campaign.py:276:        "attempts_path": str(attempts_path),
+direct_arylation_bo/campaign.py:278:        **report_paths,
+direct_arylation_bo/reporting.py:21:def read_attempts(path: Path) -> list[dict[str, Any]]:
+direct_arylation_bo/reporting.py:24:    attempts: list[dict[str, Any]] = []
+direct_arylation_bo/reporting.py:29:                attempts.append(json.loads(line))
+direct_arylation_bo/reporting.py:30:    return attempts
+direct_arylation_bo/reporting.py:46:def summarise_attempts(attempts: list[dict[str, Any]]) -> dict[str, Any]:
+direct_arylation_bo/reporting.py:47:    successes = [a for a in attempts if a.get("status") == "success"]
+direct_arylation_bo/reporting.py:48:    failures = [a for a in attempts if a.get("status") != "success"]
+direct_arylation_bo/reporting.py:52:        "attempted_evaluations": len(attempts),
+direct_arylation_bo/reporting.py:56:        "attempts": attempts,
+direct_arylation_bo/reporting.py:60:def write_reports(*, artifact_dir: Path, campaign_id: str, attempts: list[dict[str, Any]], diagnostics: dict[str, Any] | None) -> dict[str, str]:
+direct_arylation_bo/reporting.py:61:    summary = summarise_attempts(attempts)
+direct_arylation_bo/reporting.py:62:    summary["campaign_id"] = campaign_id
+direct_arylation_bo/reporting.py:63:    summary_path = artifact_dir / "summary.json"
+direct_arylation_bo/reporting.py:64:    with summary_path.open("w", encoding="utf-8") as handle:
+direct_arylation_bo/reporting.py:65:        json.dump(summary, handle, indent=2, sort_keys=True)
+direct_arylation_bo/reporting.py:72:    markdown_path = artifact_dir / "report.md"
+direct_arylation_bo/reporting.py:73:    best = summary["best"]
+direct_arylation_bo/reporting.py:78:        f"- Attempted evaluations: {summary['attempted_evaluations']}",
+direct_arylation_bo/reporting.py:79:        f"- Successful evaluations: {summary['successful_evaluations']}",
+direct_arylation_bo/reporting.py:80:        f"- Failed evaluations: {summary['failed_evaluations']}",
+direct_arylation_bo/reporting.py:94:    for attempt in attempts:
+direct_arylation_bo/reporting.py:103:        "summary_json": str(summary_path),
+direct_arylation_bo/reporting.py:104:        "report_md": str(markdown_path),
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===

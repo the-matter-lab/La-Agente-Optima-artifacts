@@ -1,0 +1,149 @@
+exit_code=0
+
+=== stdout (raw) ===
+    if attempt["status"] == "success":
+        _event("RESULT", f"{base} yield={attempt[OBJECTIVE_NAME]:.4f}")
+    else:
+        _event("ALERT", f"{base} error={attempt.get('error', 'unknown')}")
+
+
+def _maybe_heartbeat(last_heartbeat: float, heartbeat_s: int, attempted: int, max_attempts: int, campaign_id: str) -> float:
+    now = time.time()
+    if now - last_heartbeat >= heartbeat_s:
+        _event("HEARTBEAT", f"campaign_id={campaign_id} attempted={attempted}/{max_attempts} marker={MARKER}")
+        return now
+    return last_heartbeat
+
+
+def _pause_if_running(client: BoMcpClient, campaign_id: str) -> None:
+    campaign = client.get_campaign(campaign_id)
+    status = campaign.get("status")
+    if status == "running":
+        client.lifecycle(campaign_id, action="pause")
+        _event("EVENT", f"paused campaign_id={campaign_id}")
+    else:
+        _event("EVENT", f"leaving campaign_id={campaign_id} status={status}")
+
+
+def run_campaign(*, campaign_id: str | None, max_attempts: int, oracle_timeout_s: float, poll_s: int, heartbeat_s: int, stop_file: str, validate_only: bool) -> dict[str, Any]:
+    validate_space()
+    ensure_dir(ARTIFACT_ROOT)
+    client = BoMcpClient.from_env(timeout_s=120.0)
+    _event("EVENT", f"starting run validate_only={str(validate_only).lower()} marker={MARKER}")
+
+    intake = build_intake()
+    validation = client.validate_intake(intake)
+    if not validation.get("valid"):
+        raise RuntimeError(f"Campaign intake invalid: {validation.get('errors')}")
+    _event("EVENT", "validated BO-MCP intake")
+    if validate_only:
+        return {"validated": True}
+
+    campaign_id = _get_or_create_campaign(client, campaign_id)
+    artifact_dir = _prepare_artifact_dir(campaign_id)
+    log_path = artifact_dir / "run.log"
+    attempts_path = artifact_dir / "attempts.jsonl"
+    existing_attempts = read_attempts(attempts_path)
+    attempted = len(existing_attempts)
+    successes = sum(1 for item in existing_attempts if item.get("status") == "success")
+    _event(
+        "EVENT",
+        f"campaign_id={campaign_id} artifact_dir={artifact_dir} prior_attempts={attempted} prior_successes={successes}",
+    )
+    if attempted >= max_attempts:
+        _event("EVENT", f"attempt budget already exhausted at {attempted}/{max_attempts}")
+
+    last_heartbeat = 0.0
+    stop_path = Path(stop_file)
+
+    while attempted < max_attempts:
+        last_heartbeat = _maybe_heartbeat(last_heartbeat, heartbeat_s, attempted, max_attempts, campaign_id)
+        if stop_path.exists():
+            stop_path.unlink()
+            _event("EVENT", f"stop file detected and cleared at {stop_path}")
+            break
+
+        item = _next_pending_or_generate(client, campaign_id)
+        if not item:
+            _event("ALERT", "no suggestion or decision available")
+            break
+        if item.get("_decision_only"):
+            action = item.get("action", "")
+            if action in {"completed", "terminated", "stopped", "budget_exhausted", "no_suggestions"}:
+                _event("EVENT", f"next_action={action}; stopping invocation")
+                break
+            _event("EVENT", f"next_action={action}; sleeping {poll_s}s")
+            time.sleep(poll_s)
+            continue
+
+        attempt_index = attempted + 1
+        suggestion_id = item["suggestion_id"]
+        candidate = item["parameter_values"]
+        _event("EVENT", f"evaluating attempt={attempt_index}/{max_attempts} suggestion_id={suggestion_id}")
+        outcome = evaluate_candidate(candidate, timeout_s=oracle_timeout_s)
+        attempt_record = {
+            **outcome,
+            "attempt_index": attempt_index,
+            "campaign_id": campaign_id,
+            "created_at": utc_now(),
+            "suggestion_id": suggestion_id,
+        }
+
+        if outcome["status"] == "success":
+            submit_key = client.make_idempotency_key("submit", campaign_id, str(attempt_index), suggestion_id)
+            response = client.submit_results(
+                campaign_id,
+                results=[_submission_payload(item, attempt_record)],
+                idempotency_key=submit_key,
+                force=True,
+            )
+            attempt_record["result_ids"] = response.get("result_ids", [])
+        else:
+            client.update_suggestion_status(suggestion_id, "rejected")
+
+        append_jsonl(attempts_path, attempt_record)
+        attempted += 1
+        if attempt_record["status"] == "success":
+            successes += 1
+        _emit_attempt(attempt_record, max_attempts)
+
+    diagnostics = None
+    if successes:
+        try:
+            diagnostics = client.get_diagnostics(campaign_id, verbosity="standard", timeout_s=600.0)
+        except Exception as exc:  # pragma: no cover - best effort only
+            _event("ALERT", f"diagnostics_unavailable error={exc}")
+            if _RUN_LOG_PATH is not None:
+                with _RUN_LOG_PATH.open("a", encoding="utf-8") as handle:
+                    handle.write(f"[DEBUG] diagnostics_unavailable error={exc}\n")
+
+    attempts = read_attempts(attempts_path)
+    report_paths = write_reports(
+        artifact_dir=artifact_dir,
+        campaign_id=campaign_id,
+        attempts=attempts,
+        diagnostics=diagnostics,
+    )
+    best = max((item for item in attempts if item.get("status") == "success"), key=lambda item: item[OBJECTIVE_NAME], default=None)
+    if best is None:
+        _event("RESULT", f"best_yield=n/a attempted={len(attempts)} successful={successes}")
+    else:
+        _event(
+            "RESULT",
+            f"best_yield={best[OBJECTIVE_NAME]:.4f} attempted={len(attempts)} successful={successes} conditions=({candidate_text(best['candidate'])})",
+        )
+    _event("RESULT", f"campaign_id={campaign_id} summary_json={report_paths['summary_json']} report_md={report_paths['report_md']}")
+    _pause_if_running(client, campaign_id)
+    return {
+        "campaign_id": campaign_id,
+        "artifact_dir": str(artifact_dir),
+        "attempts_path": str(attempts_path),
+        "log_path": str(log_path),
+        **report_paths,
+    }
+
+
+=== stderr (raw) ===
+
+
+=== stderr (model-visible) ===
