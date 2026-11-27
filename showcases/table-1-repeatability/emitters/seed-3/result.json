@@ -1,0 +1,62 @@
+{
+  "molecule": "seed",
+  "repeat": 3,
+  "smiles": "CC1=CC2=CC=CC3=CC=CC(=C1)N32",
+  "rdkit": "2025.03.5",
+  "rdkit_seed": 84033,
+  "uff_status": 0,
+  "crest_s": 80.49997182190418,
+  "n_conformers": 1,
+  "energies_hartree": [
+    -36.36768686
+  ],
+  "selected_index": 0,
+  "initial_sha256": "bf7591c11ae35a68ae08d695eb66e92e49e2a7bfefb3716ed9df09170a872ea2",
+  "selected_sha256": "ddd3b74e76529bcb75b75266ba79b75300698191590f30417fd0ae5726367595",
+  "gpu": "NVIDIA RTX A4000",
+  "gpu4pyscf": "1.5.0",
+  "pyscf": "2.10.0",
+  "cupy": "13.4.1",
+  "grid_level": 3,
+  "scf_converged": true,
+  "scf_tol": 1e-09,
+  "scf_energy_hartree": -555.6963872007454,
+  "td_tol": 1e-06,
+  "solver": "gpu4pyscf.tdscf.rks.TDDFT",
+  "converged": {
+    "singlet": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "triplet": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "roots_eV": {
+    "singlet": [
+      1.3987004217033185,
+      3.3754029975496533,
+      3.406193208721672,
+      4.999870956963903,
+      5.246464089636256
+    ],
+    "triplet": [
+      1.1719013931031357,
+      1.9968577809726957,
+      2.0401689599379123,
+      3.9646946989751872,
+      4.097828154209671
+    ]
+  },
+  "S1_eV": 1.3987004217033185,
+  "T1_eV": 1.1719013931031357,
+  "gap_eV": 0.22679902860018286,
+  "td_run_seconds": 178.94702781550586
+}
