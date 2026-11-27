@@ -1,6 +1,6 @@
 # Repeat evaluations for Table 1
 
-This directory collects the four checks reported in the response to the reviewer’s question about measurement uncertainty. Archived campaign inputs and objectives come from the [La Agente Óptima artifacts](https://github.com/the-matter-lab/La-Agente-Optima-artifacts).
+These checks support the repeat evaluations reported alongside Table 1 in *Finite-space discovery across chemistry and materials*. They compare the best seed and final candidate for emitters and Xe/Kr MOFs, and check objective values for one ligand each in the cobalt and phosphine campaigns. The [showcase index](../README.md#contents) lists the original campaign archives (02–05).
 
 | Check | Inputs and method | Recorded results |
 |---|---|---|

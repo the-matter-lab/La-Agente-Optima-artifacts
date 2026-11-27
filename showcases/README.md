@@ -21,6 +21,8 @@ record and are not included.
 | `06-raise-contact-angle/` | Closed-loop contact-angle matching on the RAISE platform | Main text, *Closed-loop formulation optimization with RAISE*; SI `si:raise` |
 | `07-robochemflex-flow-photochemistry/` | Multi-objective flow photochemistry on RoboChem-Flex | Main text, *Multi-objective flow photochemistry with RoboChem-Flex*; SI `si:robochemflex:trace`, `si:robochemflex:cost`, `si:robridge`, Tab. `robochemflex-runs` |
 
+The [Table 1 repeatability checks](table-1-repeatability/README.md) collect the repeat evaluations for computational showcases 02–05.
+
 Every campaign here was run by **La Agente Óptima** (Óptima), the agentic
 framework reported in the paper. Campaign configuration and observations were
 held by **BO-MCP**, its BO backend service:
